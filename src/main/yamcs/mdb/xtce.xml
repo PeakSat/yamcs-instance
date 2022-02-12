@@ -1,341 +1,334 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SpaceSystem name="myproject" xmlns="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd">
-	<TelemetryMetaData>
-		<ParameterTypeSet>
-			<AggregateParameterType name="CCSDS_Packet_ID_Type">
-				<MemberList>
-					<Member name="Version" typeRef="CCSDS_Version_Type" />
-					<Member name="Type" typeRef="CCSDS_Type_Type" />
-					<Member name="SecHdrFlag" typeRef="CCSDS_Sec_Hdr_Flag_Type" />
-					<Member name="APID" typeRef="CCSDS_APID_Type" />
-				</MemberList>
-			</AggregateParameterType>
-			<IntegerParameterType name="CCSDS_Version_Type" signed="false">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="3" />
-			</IntegerParameterType>
-			<BooleanParameterType name="CCSDS_Type_Type" zeroStringValue="TM" oneStringValue="TC">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="1" />
-			</BooleanParameterType>
-			<BooleanParameterType name="CCSDS_Sec_Hdr_Flag_Type" zeroStringValue="NotPresent" oneStringValue="Present">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="1" />
-			</BooleanParameterType>
-			<IntegerParameterType name="CCSDS_APID_Type" signed="false">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="11" />
-			</IntegerParameterType>
-			<AggregateParameterType name="CCSDS_Packet_Sequence_Type">
-				<MemberList>
-					<Member name="GroupFlags" typeRef="CCSDS_Group_Flags_Type" />
-					<Member name="Count" typeRef="CCSDS_Source_Sequence_Count_Type" />
-				</MemberList>
-			</AggregateParameterType>
-			<EnumeratedParameterType name="CCSDS_Group_Flags_Type">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="2" />
-				<EnumerationList>
-					<Enumeration value="0" label="Continuation" />
-					<Enumeration value="1" label="First" />
-					<Enumeration value="2" label="Last" />
-					<Enumeration value="3" label="Standalone" />
-				</EnumerationList>
-			</EnumeratedParameterType>
-			<IntegerParameterType name="CCSDS_Source_Sequence_Count_Type" signed="false">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="14" />
-			</IntegerParameterType>
-			<IntegerParameterType name="CCSDS_Packet_Length_Type" signed="false" initialValue="0">
-				<UnitSet>
-					<Unit description="Size">Octets</Unit>
-				</UnitSet>
-				<IntegerDataEncoding sizeInBits="16" />
-			</IntegerParameterType>
-			<IntegerParameterType name="uint32_t" signed="false">
-				<UnitSet />
-				<IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
-			</IntegerParameterType>
-			<FloatParameterType name="float_t">
-				<UnitSet />
-				<FloatDataEncoding sizeInBits="32" />
-			</FloatParameterType>
-			<BooleanParameterType name="bool_t">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="8" />
-			</BooleanParameterType>
-			<AggregateParameterType name="vec3_t">
-				<MemberList>
-					<Member name="x" typeRef="float_t" />
-					<Member name="y" typeRef="float_t" />
-					<Member name="z" typeRef="float_t" />
-				</MemberList>
-			</AggregateParameterType>
-			<EnumeratedParameterType name="EnumerationTest">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="3" />
-				<EnumerationList>
-					<Enumeration value="0" label="ENUM_VALUE_0" />
-					<Enumeration value="1" label="ENUM_VALUE_1" />
-					<Enumeration value="2" label="ENUM_VALUE_2" />
-					<Enumeration value="3" label="ENUM_VALUE_3" />
-					<Enumeration value="4" label="ENUM_VALUE_4" />
-					<Enumeration value="5" label="ENUM_VALUE_5" />
-					<Enumeration value="6" label="ENUM_VALUE_6" />
-					<Enumeration value="7" label="ENUM_VALUE_7" />
-				</EnumerationList>
-			</EnumeratedParameterType>
-		</ParameterTypeSet>
-		<ParameterSet>
-			<Parameter name="CCSDS_Packet_ID" parameterTypeRef="CCSDS_Packet_ID_Type" />
-			<Parameter name="CCSDS_Packet_Sequence" parameterTypeRef="CCSDS_Packet_Sequence_Type" />
-			<Parameter name="CCSDS_Packet_Length" parameterTypeRef="CCSDS_Packet_Length_Type" />
-			<Parameter name="EpochUSNO" parameterTypeRef="float_t" />
-			<Parameter name="OrbitNumberCumulative" parameterTypeRef="uint32_t" />
-			<Parameter name="ElapsedSeconds" parameterTypeRef="uint32_t" />
-			<Parameter name="A" parameterTypeRef="float_t" />
-			<Parameter name="Height" parameterTypeRef="float_t" />
-			<Parameter name="Position" parameterTypeRef="vec3_t" />
-			<Parameter name="Velocity" parameterTypeRef="vec3_t" />
-			<Parameter name="Latitude" parameterTypeRef="float_t" />
-			<Parameter name="Longitude" parameterTypeRef="float_t" />
-			<Parameter name="Battery1_Voltage" parameterTypeRef="float_t" />
-			<Parameter name="Battery2_Voltage" parameterTypeRef="float_t" />
-			<Parameter name="Battery1_Temp" parameterTypeRef="float_t" />
-			<Parameter name="Battery2_Temp" parameterTypeRef="float_t" />
-			<Parameter name="Magnetometer" parameterTypeRef="vec3_t" />
-			<Parameter name="Sunsensor" parameterTypeRef="float_t" />
-			<Parameter name="Gyro" parameterTypeRef="vec3_t" />
-			<Parameter name="Detector_Temp" parameterTypeRef="float_t" />
-			<Parameter name="Shadow" parameterTypeRef="bool_t" />
-			<Parameter name="Contact_Golbasi_GS" parameterTypeRef="bool_t" />
-			<Parameter name="Contact_Svalbard" parameterTypeRef="bool_t" />
-			<Parameter name="Payload_Status" parameterTypeRef="bool_t" />
-			<Parameter name="Payload_Error_Flag" parameterTypeRef="bool_t" />
-			<Parameter name="ADCS_Error_Flag" parameterTypeRef="bool_t" />
-			<Parameter name="CDHS_Error_Flag" parameterTypeRef="bool_t" />
-			<Parameter name="COMMS_Error_Flag" parameterTypeRef="bool_t" />
-			<Parameter name="COMMS_Status" parameterTypeRef="bool_t" />
-			<Parameter name="CDHS_Status" parameterTypeRef="bool_t" />
-			<Parameter name="Mode_Night" parameterTypeRef="bool_t" />
-			<Parameter name="Mode_Day" parameterTypeRef="bool_t" />
-			<Parameter name="Mode_Payload" parameterTypeRef="bool_t" />
-			<Parameter name="Mode_XBand" parameterTypeRef="bool_t" />
-			<Parameter name="Mode_SBand" parameterTypeRef="bool_t" />
-			<Parameter name="Mode_Safe" parameterTypeRef="bool_t" />
-
-			<Parameter name="Enum_Para_1" parameterTypeRef="EnumerationTest" />
-			<Parameter name="Enum_Para_2" parameterTypeRef="EnumerationTest" />
-			<Parameter name="Enum_Para_3" parameterTypeRef="EnumerationTest" />
-		</ParameterSet>
-		<ContainerSet>
-			<SequenceContainer abstract="true" name="CCSDSPacket">
-				<EntryList>
-					<ParameterRefEntry parameterRef="CCSDS_Packet_ID" />
-					<ParameterRefEntry parameterRef="CCSDS_Packet_Sequence" />
-					<ParameterRefEntry parameterRef="CCSDS_Packet_Length" />
-				</EntryList>
-			</SequenceContainer>
-			<SequenceContainer name="TelemetryPacket">
-				<EntryList />
-				<BaseContainer containerRef="CCSDSPacket">
-					<RestrictionCriteria>
-						<ComparisonList>
-							<Comparison value="0" parameterRef="CCSDS_Packet_ID/Version" />
-							<Comparison value="TM" parameterRef="CCSDS_Packet_ID/Type" />
-						</ComparisonList>
-					</RestrictionCriteria>
-				</BaseContainer>
-			</SequenceContainer>
-			<SequenceContainer name="Spacecraft">
-				<EntryList>
-					<ParameterRefEntry parameterRef="EpochUSNO" />
-					<ParameterRefEntry parameterRef="OrbitNumberCumulative" />
-					<ParameterRefEntry parameterRef="ElapsedSeconds" />
-					<ParameterRefEntry parameterRef="A" />
-					<ParameterRefEntry parameterRef="Height" />
-					<ParameterRefEntry parameterRef="Position" />
-					<ParameterRefEntry parameterRef="Velocity" />
-					<ParameterRefEntry parameterRef="Latitude" />
-					<ParameterRefEntry parameterRef="Longitude" />
-					<ParameterRefEntry parameterRef="Battery1_Voltage" />
-					<ParameterRefEntry parameterRef="Battery2_Voltage" />
-					<ParameterRefEntry parameterRef="Battery1_Temp" />
-					<ParameterRefEntry parameterRef="Battery2_Temp" />
-					<ParameterRefEntry parameterRef="Magnetometer" />
-					<ParameterRefEntry parameterRef="Sunsensor" />
-					<ParameterRefEntry parameterRef="Gyro" />
-					<ParameterRefEntry parameterRef="Detector_Temp" />
-					<ParameterRefEntry parameterRef="Shadow" />
-					<ParameterRefEntry parameterRef="Contact_Golbasi_GS" />
-					<ParameterRefEntry parameterRef="Contact_Svalbard" />
-					<ParameterRefEntry parameterRef="Payload_Status" />
-					<ParameterRefEntry parameterRef="Payload_Error_Flag" />
-					<ParameterRefEntry parameterRef="ADCS_Error_Flag" />
-					<ParameterRefEntry parameterRef="CDHS_Error_Flag" />
-					<ParameterRefEntry parameterRef="COMMS_Error_Flag" />
-					<ParameterRefEntry parameterRef="COMMS_Status" />
-					<ParameterRefEntry parameterRef="CDHS_Status" />
-					<ParameterRefEntry parameterRef="Mode_Night" />
-					<ParameterRefEntry parameterRef="Mode_Day" />
-					<ParameterRefEntry parameterRef="Mode_Payload" />
-					<ParameterRefEntry parameterRef="Mode_XBand" />
-					<ParameterRefEntry parameterRef="Mode_SBand" />
-					<ParameterRefEntry parameterRef="Mode_Safe" />
-					<ParameterRefEntry parameterRef="Enum_Para_1">
-						<LocationInContainerInBits referenceLocation="containerStart">
-							<FixedValue>29</FixedValue>
-						</LocationInContainerInBits>
-					</ParameterRefEntry>
-					<ParameterRefEntry parameterRef="Enum_Para_2">
-						<LocationInContainerInBits referenceLocation="containerStart">
-							<FixedValue>27</FixedValue>
-						</LocationInContainerInBits>
-					</ParameterRefEntry>
-					<ParameterRefEntry parameterRef="Enum_Para_3">
-						<LocationInContainerInBits referenceLocation="containerStart">
-							<FixedValue>25</FixedValue>
-						</LocationInContainerInBits>
-					</ParameterRefEntry>
-				</EntryList>
-				<BaseContainer containerRef="TelemetryPacket">
-					<RestrictionCriteria>
-						<ComparisonList>
-							<Comparison value="NotPresent" parameterRef="CCSDS_Packet_ID/SecHdrFlag" />
-							<Comparison value="100" parameterRef="CCSDS_Packet_ID/APID" />
-						</ComparisonList>
-					</RestrictionCriteria>
-				</BaseContainer>
-			</SequenceContainer>
-		</ContainerSet>
-	</TelemetryMetaData>
-	<CommandMetaData>
-		<ArgumentTypeSet>
-			<IntegerArgumentType name="CCSDS_Version_Type" signed="false">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="3" />
-			</IntegerArgumentType>
-			<BooleanArgumentType name="CCSDS_Type_Type" zeroStringValue="TM" oneStringValue="TC">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="1" />
-			</BooleanArgumentType>
-			<BooleanArgumentType name="CCSDS_Sec_Hdr_Flag_Type" zeroStringValue="NotPresent" oneStringValue="Present">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="1" />
-			</BooleanArgumentType>
-			<IntegerArgumentType name="CCSDS_APID_Type" signed="false">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="11" />
-			</IntegerArgumentType>
-			<EnumeratedArgumentType name="CCSDS_Group_Flags_Type">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="2" />
-				<EnumerationList>
-					<Enumeration value="0" label="Continuation" />
-					<Enumeration value="1" label="First" />
-					<Enumeration value="2" label="Last" />
-					<Enumeration value="3" label="Standalone" />
-				</EnumerationList>
-			</EnumeratedArgumentType>
-			<IntegerArgumentType name="Packet_ID_Type" signed="false">
-				<UnitSet />
-				<IntegerDataEncoding sizeInBits="16" />
-			</IntegerArgumentType>
-			<IntegerArgumentType name="Battery_Type" signed="false">
-				<UnitSet />
-				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
-				<ValidRangeSet>
-					<ValidRange minInclusive="1" maxInclusive="3" />
-				</ValidRangeSet>
-			</IntegerArgumentType>
-		</ArgumentTypeSet>
-		<MetaCommandSet>
-			<MetaCommand name="CCSDSPacket" abstract="true">
-				<ArgumentList>
-					<Argument argumentTypeRef="CCSDS_Version_Type" name="CCSDS_Version" />
-					<Argument argumentTypeRef="CCSDS_Type_Type" name="CCSDS_Type" />
-					<Argument argumentTypeRef="CCSDS_Sec_Hdr_Flag_Type" name="CCSDS_Sec_Hdr_Flag" />
-					<Argument argumentTypeRef="CCSDS_APID_Type" name="CCSDS_APID" />
-					<Argument argumentTypeRef="CCSDS_Group_Flags_Type" name="CCSDS_Group_Flags" />
-				</ArgumentList>
-				<CommandContainer name="CCSDSPacket">
-					<EntryList>
-						<ArgumentRefEntry argumentRef="CCSDS_Version" />
-						<ArgumentRefEntry argumentRef="CCSDS_Type" />
-						<ArgumentRefEntry argumentRef="CCSDS_Sec_Hdr_Flag" />
-						<ArgumentRefEntry argumentRef="CCSDS_APID" />
-						<ArgumentRefEntry argumentRef="CCSDS_Group_Flags" />
-						<!-- Final value is set by post-processor after the command is submitted. -->
-						<FixedValueEntry name="CCSDS_Source_Sequence_Count" binaryValue="0000" sizeInBits="14" />
-						<!-- Final value is set by post-processor after the command is submitted. -->
-						<FixedValueEntry name="CCSDS_Packet_Length" binaryValue="0000" sizeInBits="16" />
-					</EntryList>
-				</CommandContainer>
-			</MetaCommand>
-			<MetaCommand name="MyProjectPacket" abstract="true">
-				<BaseMetaCommand metaCommandRef="CCSDSPacket">
-					<ArgumentAssignmentList>
-						<ArgumentAssignment argumentName="CCSDS_Version" argumentValue="0" />
-						<ArgumentAssignment argumentName="CCSDS_Type" argumentValue="TC" />
-						<ArgumentAssignment argumentName="CCSDS_Sec_Hdr_Flag" argumentValue="NotPresent" />
-						<ArgumentAssignment argumentName="CCSDS_APID" argumentValue="101" />
-						<ArgumentAssignment argumentName="CCSDS_Group_Flags" argumentValue="Standalone" />
-					</ArgumentAssignmentList>
-				</BaseMetaCommand>
-				<ArgumentList>
-					<Argument argumentTypeRef="Packet_ID_Type" name="Packet_ID" />
-				</ArgumentList>
-				<CommandContainer name="MyProjectPacket">
-					<EntryList>
-						<ArgumentRefEntry argumentRef="Packet_ID" />
-					</EntryList>
-					<BaseContainer containerRef="CCSDSPacket" />
-				</CommandContainer>
-			</MetaCommand>
-			<MetaCommand name="Reboot">
-				<BaseMetaCommand metaCommandRef="MyProjectPacket">
-					<ArgumentAssignmentList>
-						<ArgumentAssignment argumentName="Packet_ID" argumentValue="1" />
-					</ArgumentAssignmentList>
-				</BaseMetaCommand>
-				<CommandContainer name="Reboot">
-					<EntryList />
-					<BaseContainer containerRef="MyProjectPacket" />
-				</CommandContainer>
-				<DefaultSignificance consequenceLevel="vital" />
-			</MetaCommand>
-			<MetaCommand name="SwitchVoltageOn" shortDescription="Switches a battery on">
-				<BaseMetaCommand metaCommandRef="MyProjectPacket">
-					<ArgumentAssignmentList>
-						<ArgumentAssignment argumentName="Packet_ID" argumentValue="2" />
-					</ArgumentAssignmentList>
-				</BaseMetaCommand>
-				<ArgumentList>
-					<Argument argumentTypeRef="Battery_Type" name="Battery" shortDescription="Number of the battery" />
-				</ArgumentList>
-				<CommandContainer name="SwitchVoltageOn">
-					<EntryList>
-						<ArgumentRefEntry argumentRef="Battery" />
-					</EntryList>
-					<BaseContainer containerRef="MyProjectPacket" />
-				</CommandContainer>
-			</MetaCommand>
-			<MetaCommand name="SwitchVoltageOff" shortDescription="Switches a battery off">
-				<BaseMetaCommand metaCommandRef="MyProjectPacket">
-					<ArgumentAssignmentList>
-						<ArgumentAssignment argumentName="Packet_ID" argumentValue="3" />
-					</ArgumentAssignmentList>
-				</BaseMetaCommand>
-				<ArgumentList>
-					<Argument argumentTypeRef="Battery_Type" name="Battery" shortDescription="Number of the battery" />
-				</ArgumentList>
-				<CommandContainer name="SwitchVoltageOff">
-					<EntryList>
-						<ArgumentRefEntry argumentRef="Battery" />
-					</EntryList>
-					<BaseContainer containerRef="MyProjectPacket" />
-				</CommandContainer>
-			</MetaCommand>
-		</MetaCommandSet>
-	</CommandMetaData>
-</SpaceSystem>
+<SpaceSystem name="AcubeSAT" xmlns="http://www.omg.org/space/xtce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd">    <TelemetryMetaData>
+    
+        <!-- primary header TM & TC--> 
+    
+        <ParameterTypeSet>
+            <IntegerParameterType name="packet_version_number">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="3"></IntegerDataEncoding>
+    </IntegerParameterType>
+    
+    
+            <EnumeratedParameterType name="packet_type">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="1"></IntegerDataEncoding>
+                <EnumerationList>
+                    <Enumeration value="1" label="TC" />
+                    <Enumeration value="0" label="TM" /> 
+            </EnumerationList>
+        </EnumeratedParameterType>
+    
+            <IntegerParameterType name="secondary_header_flag">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="1"></IntegerDataEncoding>
+            </IntegerParameterType>
+    
+            <IntegerParameterType name="application_process_ID">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="11"></IntegerDataEncoding>
+    </IntegerParameterType>
+    
+            <IntegerParameterType name="sequence_flags">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="2"></IntegerDataEncoding>
+    </IntegerParameterType>
+    
+            <IntegerParameterType name="packet_sequence_count_or_packet_name">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="14"></IntegerDataEncoding>
+    </IntegerParameterType>
+    
+            <IntegerParameterType name="packet_data_length">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="16"></IntegerDataEncoding>
+    </IntegerParameterType>
+    
+    
+            <!-- secondary header TM-->
+            
+            <IntegerParameterType name="service_type_ID">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
+    </IntegerParameterType>
+    
+            <IntegerParameterType name="message_subtype_ID">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
+    </IntegerParameterType>
+    
+            <!-- the upper 2 need to be changed to enumerated --> 
+    
+           
+            <IntegerParameterType name="message_type_counter" signed="false">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="16"></IntegerDataEncoding>
+    </IntegerParameterType> 
+            <!-- <AbsoluteTimeParameterType name="time">
+    </AbsoluteTimeParameterType> -->
+     -->
+            <!-- secondary header TC --> 
+    
+            <EnumeratedParameterType name="response_band">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="1"></IntegerDataEncoding>
+                <EnumerationList>
+                    <Enumeration value="0" label="TC" />
+                    <Enumeration value="1" label="TM" />
+    </EnumerationList>
+    </EnumeratedParameterType>
+    
+            <!-- needs to be enumerated but i have questions --> 
+            <IntegerParameterType name="aknowledgement_flags">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="4"></IntegerDataEncoding>
+    </IntegerParameterType>
+    
+           <!-- next one are wrong types --> 
+            <IntegerParameterType name="source_data">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
+    </IntegerParameterType>
+    
+    
+            <IntegerParameterType name="spare">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
+    </IntegerParameterType>
+    
+            <IntegerParameterType name="packet_error_control">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
+    </IntegerParameterType>
+    
+            <!-- ST01 --> 
+    
+            <IntegerParameterType name="code">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
+    </IntegerParameterType>
+    
+            <IntegerParameterType name="data">
+                <UnitSet></UnitSet>
+                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
+    </IntegerParameterType>
+         
+    
+    </ParameterTypeSet>
+    
+        <ParameterSet>
+    
+            <Parameter parameterTypeRef="packet_version_number" name="packet_version_number" initialValue="0">
+                <LongDescription>The packet version number is set to 0 and identifies it as a space packet defined by
+                    CCSDS 133. 0-B-1. A space packet is also referred to as a version 1 CCSDS
+                    packet.
+                </LongDescription>
+            </Parameter>
+    
+            <Parameter parameterTypeRef="packet_type" name="packet_type">
+                <LongDescription>The packet type bit distinguishes between telemetry packets, for which this bit is
+                    set to 0, and telecommand packets, for which this bit is set to 1.</LongDescription>
+            </Parameter>
+    
+            <Parameter parameterTypeRef="secondary_header_flag" name="secondary_header_flag">
+                <LongDescription>The secondary header flag indicates the presence or absence of the packet
+                    secondary header. With the exception of spacecraft time packets (refer to clause
+                    6.9.4), all telemetry packets defined in this Standard have a packet secondary
+                    header field. With the exception of CPDU command packets (refer to clause
+                    9.3.1), all telecommand packets defined in this Standard have a packet
+                    secondary header field.</LongDescription>
+            </Parameter>
+    
+            <Parameter parameterTypeRef="application_process_ID" name="application_process_ID">
+                <LongDescription>The application process ID uniquely identifies the on-board application process
+                    that is source of the telemetry packet and destination of the telecommand
+                    packet. Some values of the application process ID field are reserved by the
+                    CCSDS standard, making them unavailable for use by PUS services.</LongDescription>
+            </Parameter>
+    
+            <Parameter parameterTypeRef="sequence_flags" name="sequence_flags">
+                <LongDescription>The sequence flags are defined by CCSDS but not used by the space packet protocol.
+                    This Standard uses the binary value "11" for the sequence flags, to indicate a stand-
+                    alone packet. All telemetry packets and telecommand packets defined within
+                    this Standard are stand alone packets.</LongDescription>
+            </Parameter>
+    
+            <Parameter parameterTypeRef="packet_sequence_count_or_packet_name" name="packet_sequence_count_or_packet_name">
+                <LongDescription>The packet sequence count is used for telemetry packets. It is incremented by 1
+                    whenever the source application process releases a packet. The packet sequence
+                    count wraps around from 2 14 -1 to zero.The telecommand packets carry either a packet sequence count or a packet name to
+                    identify them within the same communication session. For the purpose of this
+                    Standard, the telecommand packet sequence count or packet name field carries an
+                    identifier that used in combination with the source identifier specified in clause
+                    7.4.4.1, uniquely identify the telecommand packet.</LongDescription>
+            </Parameter>
+    
+            <Parameter parameterTypeRef="packet_data_length" name="packet_data_length">
+                <LongDescription>The packet data length field specifies the length of the packet data field. The value
+                    of the unsigned integer in the packet data length field is one less than the
+                    number of octets contained within the packet data field. The length of the entire
+                    packet, including the packet primary header, is 6 octets more than the length of
+                    the packet data field.</LongDescription>
+            </Parameter>
+    
+            <!-- secondary packet header TM --> 
+    
+            <Parameter parameterTypeRef="service_type_ID" name="service_type_ID_TM">
+            </Parameter>
+    
+            <Parameter parameterTypeRef="message_subtype_ID" name="message_subtype_ID_TM">
+    
+            </Parameter>
+    
+            <Parameter parameterTypeRef="message_type_counter" name="message_type_counter">
+    
+            </Parameter>
+    
+            <Parameter parameterTypeRef="data" name="PUS_Version">
+            </Parameter>
+    
+            <!-- <Parameter parameterTypeRef="time" name="time">
+                <LongDescription>Each application process shall set the time field of each telemetry packet
+                    it generates to the time tag of the related report.</LongDescription>
+            </Parameter> -->
+    
+            <!-- secondary packet header TC --> 
+    
+    
+            <Parameter parameterTypeRef="response_band" name="response_band">
+                <LongDescription>This bit will determine which band (UHF/S band) will be usedto downlink the response to the TC. 
+                    We also considered the option of setting it by a separate TC but the operational cost was 
+                    deemed too high. The option of using theMAPIDfield of the segment header was also discarded as this was considered too complex.
+                </LongDescription>
+            </Parameter>
+    
+            <Parameter parameterTypeRef="aknowledgement_flags" name="aknowledgement_flags"></Parameter>
+    
+            <Parameter parameterTypeRef="service_type_ID" name="service_type_ID_TC"></Parameter>
+    
+            <Parameter parameterTypeRef="message_subtype_ID" name="message_subtype_ID_TC"></Parameter>
+    
+            <Parameter parameterTypeRef="source_data" name="source_data">
+            </Parameter>
+    
+    
+            <Parameter parameterTypeRef="spare" name="spare">
+            </Parameter>
+    
+            <Parameter parameterTypeRef="packet_error_control" name="packet_error_control">
+            </Parameter>
+    
+            <!-- ST[01]  --> 
+    
+            <Parameter parameterTypeRef="packet_version_number" name="packet_version_number_ST01"></Parameter>
+            <Parameter parameterTypeRef="packet_type" name="packet_type_ST01"></Parameter>
+            <Parameter parameterTypeRef="secondary_header_flag" name="secondary_header_flag_ST01"></Parameter>
+            <Parameter parameterTypeRef="application_process_ID" name="application_process_ID_ST01"></Parameter>
+            <Parameter parameterTypeRef="sequence_flags" name="sequence_flags_ST01"></Parameter>
+            <Parameter parameterTypeRef="packet_sequence_count_or_packet_name" name="packet_sequence_count_ST01"></Parameter>
+    
+    
+            <!-- TM[1,2] --> 
+    
+            <Parameter parameterTypeRef="code" name="code_ST01"></Parameter>
+            <Parameter parameterTypeRef="data" name="data_ST01"></Parameter>
+    
+        </ParameterSet>
+    
+    
+        <ContainerSet>
+        <SequenceContainer name="packet_primary_header_TM">
+            <EntryList>
+        <ParameterRefEntry parameterRef="packet_version_number"></ParameterRefEntry>
+        <ParameterRefEntry parameterRef="packet_type"></ParameterRefEntry>
+        <ParameterRefEntry parameterRef="secondary_header_flag"></ParameterRefEntry>
+        <ParameterRefEntry parameterRef="application_process_ID"></ParameterRefEntry>
+        <ParameterRefEntry parameterRef="sequence_flags"></ParameterRefEntry>
+        <ParameterRefEntry parameterRef="packet_sequence_count_or_packet_name"></ParameterRefEntry>
+        <ParameterRefEntry parameterRef="packet_data_length"></ParameterRefEntry>
+        <ParameterRefEntry parameterRef="PUS_Version"></ParameterRefEntry>
+        <ParameterRefEntry parameterRef="service_type_ID_TM"></ParameterRefEntry>
+        <ParameterRefEntry parameterRef="message_subtype_ID_TM"></ParameterRefEntry> 
+        <ParameterRefEntry parameterRef="message_type_counter"></ParameterRefEntry>
+    </EntryList>
+    </SequenceContainer>
+    
+        <SequenceContainer name="packet_primary_header_TC">
+            <EntryList>
+                <ParameterRefEntry parameterRef="packet_version_number"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="packet_type"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="secondary_header_flag"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="application_process_ID"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="sequence_flags"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="packet_sequence_count_or_packet_name"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="packet_data_length"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="service_type_ID_TC"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="message_subtype_ID_TC"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="response_band"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="aknowledgement_flags"></ParameterRefEntry>
+        </EntryList>
+        </SequenceContainer>
+    
+    
+        <!-- ST[01] equest verification packets --> 
+        <!-- complete TM[1,1] (note: there havent been any comparisons --> 
+    
+        <SequenceContainer name="TM11">
+            <LongDescription>The request ID field alone cannot be used to identify the request since it does not
+                contain the identifier of the source of that request. That source identifier
+                corresponds to the destination identifier of the secondary header of the related
+                telemetry packet</LongDescription>
+            <EntryList>
+                <ParameterRefEntry parameterRef="packet_version_number_ST01"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="packet_type_ST01"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="secondary_header_flag_ST01"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="application_process_ID_ST01"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="sequence_flags_ST01"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="packet_sequence_count_ST01"></ParameterRefEntry>
+        </EntryList>
+            <BaseContainer containerRef="packet_primary_header_TM">
+                <RestrictionCriteria>
+                <ComparisonList>
+                    <Comparison value="1" parameterRef="service_type_ID_TM" />
+                    <Comparison value="1" parameterRef="message_subtype_ID_TM" />
+                </ComparisonList>
+        </RestrictionCriteria>
+        </BaseContainer>
+            
+        </SequenceContainer>
+    
+        <!-- TM[1,2] --> 
+    
+    
+        <!-- complete TM[1,2] --> 
+    
+        <SequenceContainer name="TM12">
+            <LongDescription>The request ID field alone cannot be used to identify the request since it does not contain the identifier of
+                the source of that request. That source identifier corresponds to the destination identifier of the
+                secondary header of the related telemetry packet, refer to clause</LongDescription>
+                <EntryList>
+                <ParameterRefEntry parameterRef="packet_version_number_ST01"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="packet_type_ST01"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="secondary_header_flag_ST01"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="application_process_ID_ST01"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="sequence_flags_ST01"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="packet_sequence_count_ST01"></ParameterRefEntry>
+                <ParameterRefEntry parameterRef="code_ST01"></ParameterRefEntry>
+            </EntryList>
+                    <BaseContainer containerRef="packet_primary_header_TM">
+                        <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="1" parameterRef="service_type_ID_TM" />
+                            <Comparison value="2" parameterRef="message_subtype_ID_TM" />
+                        </ComparisonList>
+                </RestrictionCriteria>
+                </BaseContainer>
+                    
+                </SequenceContainer>
+    
+    </ContainerSet>
+    
+    
+    </TelemetryMetaData>
+    
+    </SpaceSystem>
