@@ -1,334 +1,697 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SpaceSystem name="AcubeSAT" xmlns="http://www.omg.org/space/xtce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd">    <TelemetryMetaData>
-    
-        <!-- primary header TM & TC--> 
-    
-        <ParameterTypeSet>
-            <IntegerParameterType name="packet_version_number">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="3"></IntegerDataEncoding>
-    </IntegerParameterType>
-    
-    
-            <EnumeratedParameterType name="packet_type">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="1"></IntegerDataEncoding>
-                <EnumerationList>
-                    <Enumeration value="1" label="TC" />
-                    <Enumeration value="0" label="TM" /> 
-            </EnumerationList>
-        </EnumeratedParameterType>
-    
-            <IntegerParameterType name="secondary_header_flag">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="1"></IntegerDataEncoding>
-            </IntegerParameterType>
-    
-            <IntegerParameterType name="application_process_ID">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="11"></IntegerDataEncoding>
-    </IntegerParameterType>
-    
-            <IntegerParameterType name="sequence_flags">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="2"></IntegerDataEncoding>
-    </IntegerParameterType>
-    
-            <IntegerParameterType name="packet_sequence_count_or_packet_name">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="14"></IntegerDataEncoding>
-    </IntegerParameterType>
-    
-            <IntegerParameterType name="packet_data_length">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="16"></IntegerDataEncoding>
-    </IntegerParameterType>
-    
-    
+<xtce:SpaceSystem name="AcubeSAT" xmlns:xtce="http://www.omg.org/space/xtce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/space/xtce ../../../../omg/space/xtce/schema/SpaceSystemV1.2-27Feb2014-mods.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
+
+    <xtce:TelemetryMetaData>
+        <xtce:ParameterTypeSet>
+
+            <xtce:IntegerParameterType name="packet_version_number">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:EnumeratedParameterType name="packet_type">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="1" label="TC" />
+                    <xtce:Enumeration value="0" label="TM" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedParameterType>
+
+            <xtce:IntegerParameterType name="secondary_header_flag">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="application_process_ID">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="11"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="sequence_flags">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="packet_sequence_count_or_packet_name">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="14"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="packet_data_length">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+
             <!-- secondary header TM-->
-            
-            <IntegerParameterType name="service_type_ID">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
-    </IntegerParameterType>
-    
-            <IntegerParameterType name="message_subtype_ID">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
-    </IntegerParameterType>
-    
-            <!-- the upper 2 need to be changed to enumerated --> 
-    
-           
-            <IntegerParameterType name="message_type_counter" signed="false">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding encoding="unsigned" sizeInBits="16"></IntegerDataEncoding>
-    </IntegerParameterType> 
-            <!-- <AbsoluteTimeParameterType name="time">
-    </AbsoluteTimeParameterType> -->
-     -->
-            <!-- secondary header TC --> 
-    
-            <EnumeratedParameterType name="response_band">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="1"></IntegerDataEncoding>
-                <EnumerationList>
-                    <Enumeration value="0" label="TC" />
-                    <Enumeration value="1" label="TM" />
-    </EnumerationList>
-    </EnumeratedParameterType>
-    
-            <!-- needs to be enumerated but i have questions --> 
-            <IntegerParameterType name="aknowledgement_flags">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="4"></IntegerDataEncoding>
-    </IntegerParameterType>
-    
-           <!-- next one are wrong types --> 
-            <IntegerParameterType name="source_data">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
-    </IntegerParameterType>
-    
-    
-            <IntegerParameterType name="spare">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
-    </IntegerParameterType>
-    
-            <IntegerParameterType name="packet_error_control">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
-    </IntegerParameterType>
-    
-            <!-- ST01 --> 
-    
-            <IntegerParameterType name="code">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
-    </IntegerParameterType>
-    
-            <IntegerParameterType name="data">
-                <UnitSet></UnitSet>
-                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
-    </IntegerParameterType>
-         
-    
-    </ParameterTypeSet>
-    
-        <ParameterSet>
-    
-            <Parameter parameterTypeRef="packet_version_number" name="packet_version_number" initialValue="0">
-                <LongDescription>The packet version number is set to 0 and identifies it as a space packet defined by
-                    CCSDS 133. 0-B-1. A space packet is also referred to as a version 1 CCSDS
-                    packet.
-                </LongDescription>
-            </Parameter>
-    
-            <Parameter parameterTypeRef="packet_type" name="packet_type">
-                <LongDescription>The packet type bit distinguishes between telemetry packets, for which this bit is
-                    set to 0, and telecommand packets, for which this bit is set to 1.</LongDescription>
-            </Parameter>
-    
-            <Parameter parameterTypeRef="secondary_header_flag" name="secondary_header_flag">
-                <LongDescription>The secondary header flag indicates the presence or absence of the packet
+
+            <xtce:IntegerParameterType name="service_type_ID">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="message_subtype_ID">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <!-- the upper 2 need to be changed to enumerated -->
+
+
+            <xtce:IntegerParameterType name="message_type_counter" signed="false">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:AbsoluteTimeParameterType name="time">
+            </xtce:AbsoluteTimeParameterType>
+
+            <!-- secondary header TC -->
+
+            <xtce:EnumeratedParameterType name="response_band">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="TC" />
+                    <xtce:Enumeration value="1" label="TM" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedParameterType>
+
+            <!-- needs to be enumerated but i have questions -->
+            <xtce:IntegerParameterType name="aknowledgement_flags">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <!-- next one are wrong types -->
+            <xtce:IntegerParameterType name="source_data">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+
+            <xtce:IntegerParameterType name="spare">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="packet_error_control">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <!-- ST01 -->
+
+            <xtce:IntegerParameterType name="code">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="data">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="uint8_t" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="uint16_t" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="uint32_t" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="uint64_t" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="64" />
+            </xtce:IntegerParameterType>
+
+            <xtce:FloatParameterType name="float_t">
+                <xtce:UnitSet />
+                <xtce:FloatDataEncoding sizeInBits="32" />
+            </xtce:FloatParameterType>
+
+            <xtce:BooleanParameterType name="bool_t">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding sizeInBits="8" />
+            </xtce:BooleanParameterType>
+
+
+        </xtce:ParameterTypeSet>
+
+        <xtce:ParameterSet>
+
+            <!--
+                uint8_t = unsigned int
+                uint16_t = enumerated
+                uint32_t = deducted
+                uint64_t = absolute time
+             -->
+
+            <xtce:Parameter name="housekeeping_parameter_report_structure_ID_ST03" parameterTypeRef="uint16_t" />
+            <xtce:Parameter name="periodic_generation_action_status_ST03" parameterTypeRef="uint16_t" />
+            <xtce:Parameter name="collection_interval_ST03" parameterTypeRef="uint8_t" />
+            <xtce:Parameter name="N1_ST03" parameterTypeRef="uint8_t" />
+            <xtce:Parameter name="parameter_ID_ST03" parameterTypeRef="uint16_t" />
+            <xtce:Parameter name="NFA_ST03" parameterTypeRef="uint8_t" />
+            <xtce:Parameter name="super_commutated_sample_repetition_number_ST03" parameterTypeRef="uint8_t" />
+            <xtce:Parameter name="N2_ST03" parameterTypeRef="uint8_t" />
+
+            <xtce:Parameter name="parameter_value_ST03" parameterTypeRef="uint32_t" />
+
+            <xtce:Parameter name="start_time_ST04" parameterTypeRef="uint64_t" />
+            <xtce:Parameter name="end_time_ST04" parameterTypeRef="uint64_t" />
+            <xtce:Parameter name="N_ST04" parameterTypeRef="uint8_t" />
+            <xtce:Parameter name="parameter_ID_ST04" parameterTypeRef="uint16_t" />
+            <xtce:Parameter name="number_of_samples_ST04" parameterTypeRef="uint8_t" />
+            <xtce:Parameter name="value_ST04" parameterTypeRef="uint32_t" />
+            <xtce:Parameter name="time_ST04" parameterTypeRef="uint64_t" />
+            <xtce:Parameter name="mean_value_ST04" parameterTypeRef="uint32_t" />
+            <xtce:Parameter name="standard_deviation_value_ST04" parameterTypeRef="uint32_t" />
+
+            <xtce:Parameter name="max_transition_reporting_delay_ST12" parameterTypeRef="uint8_t" />
+            <xtce:Parameter name="N_ST12" parameterTypeRef="uint8_t" />
+            <xtce:Parameter name="PMON_ID_ST12" parameterTypeRef="uint16_t" />
+            <xtce:Parameter name="monitored_parameter_ID_ST12" parameterTypeRef="uint16_t" />
+            <xtce:Parameter name="validity_parameter_ST12" parameterTypeRef="uint16_t" />
+            <xtce:Parameter name="mask_ST12" parameterTypeRef="uint64_t" />
+            <xtce:Parameter name="expected_value_ST12" parameterTypeRef="uint64_t" />
+            <xtce:Parameter name="monitoring_intervale_ST12" parameterTypeRef="uint8_t" />
+            <xtce:Parameter name="PMON_status_ST12" parameterTypeRef="uint16_t" />
+            <xtce:Parameter name="repetition_number_ST12" parameterTypeRef="uint8_t" />
+            <xtce:Parameter name="check_type_ST12" parameterTypeRef="uint16_t" />
+
+            <xtce:Parameter name="are_you_alive_connection_ST17" parameterTypeRef="uint16_t" />
+
+
+
+
+
+
+            <xtce:Parameter parameterTypeRef="packet_version_number" name="packet_version_number" initialValue="0">
+                <xtce:LongDescription>The packet version number is set to 0 and identifies it as a space packet defined by
+                    CCSDS 133. 0-B-1. A space packet is also referred to as a version 1 CCSDS packet.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="packet_type" name="packet_type">
+                <xtce:LongDescription>The packet type bit distinguishes between telemetry packets, for which this bit is
+                    set to 0, and telecommand packets, for which this bit is set to 1.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="secondary_header_flag" name="secondary_header_flag">
+                <xtce:LongDescription>The secondary header flag indicates the presence or absence of the packet
                     secondary header. With the exception of spacecraft time packets (refer to clause
                     6.9.4), all telemetry packets defined in this Standard have a packet secondary
                     header field. With the exception of CPDU command packets (refer to clause
                     9.3.1), all telecommand packets defined in this Standard have a packet
-                    secondary header field.</LongDescription>
-            </Parameter>
-    
-            <Parameter parameterTypeRef="application_process_ID" name="application_process_ID">
-                <LongDescription>The application process ID uniquely identifies the on-board application process
+                    secondary header field.</xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="application_process_ID" name="application_process_ID">
+                <xtce:LongDescription>The application process ID uniquely identifies the on-board application process
                     that is source of the telemetry packet and destination of the telecommand
                     packet. Some values of the application process ID field are reserved by the
-                    CCSDS standard, making them unavailable for use by PUS services.</LongDescription>
-            </Parameter>
-    
-            <Parameter parameterTypeRef="sequence_flags" name="sequence_flags">
-                <LongDescription>The sequence flags are defined by CCSDS but not used by the space packet protocol.
+                    CCSDS standard, making them unavailable for use by PUS services.</xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="sequence_flags" name="sequence_flags">
+                <xtce:LongDescription>The sequence flags are defined by CCSDS but not used by the space packet protocol.
                     This Standard uses the binary value "11" for the sequence flags, to indicate a stand-
                     alone packet. All telemetry packets and telecommand packets defined within
-                    this Standard are stand alone packets.</LongDescription>
-            </Parameter>
-    
-            <Parameter parameterTypeRef="packet_sequence_count_or_packet_name" name="packet_sequence_count_or_packet_name">
-                <LongDescription>The packet sequence count is used for telemetry packets. It is incremented by 1
+                    this Standard are stand alone packets.</xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="packet_sequence_count_or_packet_name" name="packet_sequence_count_or_packet_name">
+                <xtce:LongDescription>The packet sequence count is used for telemetry packets. It is incremented by 1
                     whenever the source application process releases a packet. The packet sequence
                     count wraps around from 2 14 -1 to zero.The telecommand packets carry either a packet sequence count or a packet name to
                     identify them within the same communication session. For the purpose of this
                     Standard, the telecommand packet sequence count or packet name field carries an
                     identifier that used in combination with the source identifier specified in clause
-                    7.4.4.1, uniquely identify the telecommand packet.</LongDescription>
-            </Parameter>
-    
-            <Parameter parameterTypeRef="packet_data_length" name="packet_data_length">
-                <LongDescription>The packet data length field specifies the length of the packet data field. The value
+                    7.4.4.1, uniquely identify the telecommand packet.</xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="packet_data_length" name="packet_data_length">
+                <xtce:LongDescription>The packet data length field specifies the length of the packet data field. The value
                     of the unsigned integer in the packet data length field is one less than the
                     number of octets contained within the packet data field. The length of the entire
                     packet, including the packet primary header, is 6 octets more than the length of
-                    the packet data field.</LongDescription>
-            </Parameter>
-    
-            <!-- secondary packet header TM --> 
-    
-            <Parameter parameterTypeRef="service_type_ID" name="service_type_ID_TM">
-            </Parameter>
-    
-            <Parameter parameterTypeRef="message_subtype_ID" name="message_subtype_ID_TM">
-    
-            </Parameter>
-    
-            <Parameter parameterTypeRef="message_type_counter" name="message_type_counter">
-    
-            </Parameter>
-    
-            <Parameter parameterTypeRef="data" name="PUS_Version">
-            </Parameter>
-    
-            <!-- <Parameter parameterTypeRef="time" name="time">
-                <LongDescription>Each application process shall set the time field of each telemetry packet
-                    it generates to the time tag of the related report.</LongDescription>
-            </Parameter> -->
-    
-            <!-- secondary packet header TC --> 
-    
-    
-            <Parameter parameterTypeRef="response_band" name="response_band">
-                <LongDescription>This bit will determine which band (UHF/S band) will be usedto downlink the response to the TC. 
-                    We also considered the option of setting it by a separate TC but the operational cost was 
+                    the packet data field.</xtce:LongDescription>
+            </xtce:Parameter>
+
+            <!-- secondary packet header TM -->
+
+            <xtce:Parameter parameterTypeRef="service_type_ID" name="service_type_ID_TM">
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="message_subtype_ID" name="message_subtype_ID_TM">
+
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="message_type_counter" name="message_type_counter">
+
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="data" name="PUS_Version">
+            </xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="data" name="code_ST01">
+            </xtce:Parameter>
+
+            <!-- <xtce:Parameter parameterTypeRef="time" name="time">
+                <xtce:LongDescription>Each application process shall set the time field of each telemetry packet
+                    it generates to the time tag of the related report.</xtce:LongDescription>
+            </xtce:Parameter> -->
+
+            <!-- secondary packet header TC -->
+
+
+            <xtce:Parameter parameterTypeRef="response_band" name="response_band">
+                <xtce:LongDescription>This bit will determine which band (UHF/S band) will be usedto downlink the response to the TC.
+                    We also considered the option of setting it by a separate TC but the operational cost was
                     deemed too high. The option of using theMAPIDfield of the segment header was also discarded as this was considered too complex.
-                </LongDescription>
-            </Parameter>
-    
-            <Parameter parameterTypeRef="aknowledgement_flags" name="aknowledgement_flags"></Parameter>
-    
-            <Parameter parameterTypeRef="service_type_ID" name="service_type_ID_TC"></Parameter>
-    
-            <Parameter parameterTypeRef="message_subtype_ID" name="message_subtype_ID_TC"></Parameter>
-    
-            <Parameter parameterTypeRef="source_data" name="source_data">
-            </Parameter>
-    
-    
-            <Parameter parameterTypeRef="spare" name="spare">
-            </Parameter>
-    
-            <Parameter parameterTypeRef="packet_error_control" name="packet_error_control">
-            </Parameter>
-    
-            <!-- ST[01]  --> 
-    
-            <Parameter parameterTypeRef="packet_version_number" name="packet_version_number_ST01"></Parameter>
-            <Parameter parameterTypeRef="packet_type" name="packet_type_ST01"></Parameter>
-            <Parameter parameterTypeRef="secondary_header_flag" name="secondary_header_flag_ST01"></Parameter>
-            <Parameter parameterTypeRef="application_process_ID" name="application_process_ID_ST01"></Parameter>
-            <Parameter parameterTypeRef="sequence_flags" name="sequence_flags_ST01"></Parameter>
-            <Parameter parameterTypeRef="packet_sequence_count_or_packet_name" name="packet_sequence_count_ST01"></Parameter>
-    
-    
-            <!-- TM[1,2] --> 
-    
-            <Parameter parameterTypeRef="code" name="code_ST01"></Parameter>
-            <Parameter parameterTypeRef="data" name="data_ST01"></Parameter>
-    
-        </ParameterSet>
-    
-    
-        <ContainerSet>
-        <SequenceContainer name="packet_primary_header_TM">
-            <EntryList>
-        <ParameterRefEntry parameterRef="packet_version_number"></ParameterRefEntry>
-        <ParameterRefEntry parameterRef="packet_type"></ParameterRefEntry>
-        <ParameterRefEntry parameterRef="secondary_header_flag"></ParameterRefEntry>
-        <ParameterRefEntry parameterRef="application_process_ID"></ParameterRefEntry>
-        <ParameterRefEntry parameterRef="sequence_flags"></ParameterRefEntry>
-        <ParameterRefEntry parameterRef="packet_sequence_count_or_packet_name"></ParameterRefEntry>
-        <ParameterRefEntry parameterRef="packet_data_length"></ParameterRefEntry>
-        <ParameterRefEntry parameterRef="PUS_Version"></ParameterRefEntry>
-        <ParameterRefEntry parameterRef="service_type_ID_TM"></ParameterRefEntry>
-        <ParameterRefEntry parameterRef="message_subtype_ID_TM"></ParameterRefEntry> 
-        <ParameterRefEntry parameterRef="message_type_counter"></ParameterRefEntry>
-    </EntryList>
-    </SequenceContainer>
-    
-        <SequenceContainer name="packet_primary_header_TC">
-            <EntryList>
-                <ParameterRefEntry parameterRef="packet_version_number"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="packet_type"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="secondary_header_flag"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="application_process_ID"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="sequence_flags"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="packet_sequence_count_or_packet_name"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="packet_data_length"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="service_type_ID_TC"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="message_subtype_ID_TC"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="response_band"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="aknowledgement_flags"></ParameterRefEntry>
-        </EntryList>
-        </SequenceContainer>
-    
-    
-        <!-- ST[01] equest verification packets --> 
-        <!-- complete TM[1,1] (note: there havent been any comparisons --> 
-    
-        <SequenceContainer name="TM11">
-            <LongDescription>The request ID field alone cannot be used to identify the request since it does not
-                contain the identifier of the source of that request. That source identifier
-                corresponds to the destination identifier of the secondary header of the related
-                telemetry packet</LongDescription>
-            <EntryList>
-                <ParameterRefEntry parameterRef="packet_version_number_ST01"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="packet_type_ST01"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="secondary_header_flag_ST01"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="application_process_ID_ST01"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="sequence_flags_ST01"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="packet_sequence_count_ST01"></ParameterRefEntry>
-        </EntryList>
-            <BaseContainer containerRef="packet_primary_header_TM">
-                <RestrictionCriteria>
-                <ComparisonList>
-                    <Comparison value="1" parameterRef="service_type_ID_TM" />
-                    <Comparison value="1" parameterRef="message_subtype_ID_TM" />
-                </ComparisonList>
-        </RestrictionCriteria>
-        </BaseContainer>
-            
-        </SequenceContainer>
-    
-        <!-- TM[1,2] --> 
-    
-    
-        <!-- complete TM[1,2] --> 
-    
-        <SequenceContainer name="TM12">
-            <LongDescription>The request ID field alone cannot be used to identify the request since it does not contain the identifier of
-                the source of that request. That source identifier corresponds to the destination identifier of the
-                secondary header of the related telemetry packet, refer to clause</LongDescription>
-                <EntryList>
-                <ParameterRefEntry parameterRef="packet_version_number_ST01"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="packet_type_ST01"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="secondary_header_flag_ST01"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="application_process_ID_ST01"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="sequence_flags_ST01"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="packet_sequence_count_ST01"></ParameterRefEntry>
-                <ParameterRefEntry parameterRef="code_ST01"></ParameterRefEntry>
-            </EntryList>
-                    <BaseContainer containerRef="packet_primary_header_TM">
-                        <RestrictionCriteria>
-                        <ComparisonList>
-                            <Comparison value="1" parameterRef="service_type_ID_TM" />
-                            <Comparison value="2" parameterRef="message_subtype_ID_TM" />
-                        </ComparisonList>
-                </RestrictionCriteria>
-                </BaseContainer>
-                    
-                </SequenceContainer>
-    
-    </ContainerSet>
-    
-    
-    </TelemetryMetaData>
-    
-    </SpaceSystem>
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="aknowledgement_flags" name="aknowledgement_flags"></xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="service_type_ID" name="service_type_ID_TC"></xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="message_subtype_ID" name="message_subtype_ID_TC"></xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="source_data" name="source_data">
+            </xtce:Parameter>
+
+
+            <xtce:Parameter parameterTypeRef="spare" name="spare">
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="packet_error_control" name="packet_error_control">
+            </xtce:Parameter>
+
+            <!-- ST[01]  -->
+
+            <xtce:Parameter parameterTypeRef="packet_version_number" name="packet_version_number_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="packet_type" name="packet_type_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="secondary_header_flag" name="secondary_header_flag_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="application_process_ID" name="application_process_ID_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="sequence_flags" name="sequence_flags_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="packet_sequence_count_or_packet_name" name="packet_sequence_count_ST01"></xtce:Parameter>
+
+
+            <!-- TM[1,2] -->
+
+            <!-- <xtce:Parameter parameterTypeRef="code" name="code_ST01"></xtce:Parameter> -->
+            <xtce:Parameter parameterTypeRef="data" name="data_ST01"></xtce:Parameter>
+
+        </xtce:ParameterSet>
+
+
+        <xtce:ContainerSet>
+            <xtce:SequenceContainer name="packet_primary_header_TM">
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="packet_version_number"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_type"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="secondary_header_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="application_process_ID"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="sequence_flags"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_sequence_count_or_packet_name"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_data_length"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="PUS_Version"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="service_type_ID_TM"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="message_subtype_ID_TM"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="message_type_counter"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+            <xtce:SequenceContainer name="packet_primary_header_TC">
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="packet_version_number"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_type"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="secondary_header_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="application_process_ID"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="sequence_flags"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_sequence_count_or_packet_name"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_data_length"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="service_type_ID_TC"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="message_subtype_ID_TC"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="response_band"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="aknowledgement_flags"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+
+            <!-- ST[01] equest verification packets -->
+            <!-- complete TM[1,1] (note: there havent been any comparisons -->
+
+            <xtce:SequenceContainer name="TM11">
+                <xtce:LongDescription>The request ID field alone cannot be used to identify the request since it does not
+                    contain the identifier of the source of that request. That source identifier
+                    corresponds to the destination identifier of the secondary header of the related
+                    telemetry packet
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="packet_version_number_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_type_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="secondary_header_flag_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="application_process_ID_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="sequence_flags_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_sequence_count_ST01"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="packet_primary_header_TM">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
+                            <xtce:Comparison value="1" parameterRef="service_type_ID_TM" />
+                            <xtce:Comparison value="1" parameterRef="message_subtype_ID" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
+            <!-- TM[1,2] -->
+
+
+            <!-- complete TM[1,2] -->
+
+            <xtce:SequenceContainer name="TM12">
+                <xtce:LongDescription>The request ID field alone cannot be used to identify the request since it does not contain the identifier of
+                    the source of that request. That source identifier corresponds to the destination identifier of the
+                    secondary header of the related telemetry packet, refer to clause
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="packet_version_number_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_type_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="secondary_header_flag_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="application_process_ID_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="sequence_flags_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_sequence_count_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="code_ST01"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="packet_primary_header_TM">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
+                            <xtce:Comparison value="1" parameterRef="service_type_ID_TM" />
+                            <xtce:Comparison value="2" parameterRef="message_subtype_ID" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
+            <!-- TM[3,10] -->
+
+            <xtce:SequenceContainer name="TM310">
+                <xtce:LongDescription>TM[3,10] is a request packet. It is used to request the transmission of a telemetry packet.
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="housekeeping_parameter_report_structure_ID_ST03"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="periodic_generation_action_status_ST03"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="collection_interval_ST03"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="N1_ST03"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="parameter_ID_ST03"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="NFA_ST03"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="super_commutated_sample_repetition_number_ST03"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="N2_ST03"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="parameter_ID_ST03"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+            <!-- TM[3,25] -->
+
+            <xtce:SequenceContainer name="TM325">
+                <xtce:LongDescription>TM[3,25] is a request packet. It is used to request the transmission of a telemetry packet.
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="housekeeping_parameter_report_structure_ID_ST03"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="parameter_value_ST03"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+            <!-- TM[4,2] -->
+
+            <xtce:SequenceContainer name="TM42">
+                <xtce:LongDescription>The formats of the max value field, the min value field, the mean value field and the standard deviation value
+                    field are specific to the parameter identified by the associated parameter ID field.
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="start_time_ST04"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="end_time_ST04"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="N_ST04"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="parameter_ID_ST04"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="number_of_samples_ST04"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="value_ST04"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="time_ST04"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="value_ST04"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="time_ST04"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="mean_value_ST04"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="standard_deviation_value_ST04"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+            <!-- TM[12,9] -->
+
+            <xtce:SequenceContainer name="TM129">
+                <xtce:LongDescription>TM[12,9] is a request packet. It is used to request the transmission of a telemetry packet.
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="max_transition_reporting_delay_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="N_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="PMON_ID_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="monitored_parameter_ID_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="validity_parameter_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="mask_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="expected_value_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="monitoring_intervale_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="PMON_status_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="repetition_number_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="check_type_ST12"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+            <!-- TM[17,2] -->
+
+            <xtce:SequenceContainer name="TM172">
+                <xtce:LongDescription> TM[17,2] is a request packet. It is used to request the transmission of a telemetry packet.
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="are_you_alive_connection_ST17"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+        </xtce:ContainerSet>
+    </xtce:TelemetryMetaData>
+
+    <xtce:CommandMetaData>
+        <xtce:ArgumentTypeSet>
+            <!--
+                uint8_t = unsigned int
+                uint16_t = enumerated
+                uint32_t = deducted
+                uint64_t = absolute time
+            -->
+
+            <xtce:IntegerArgumentType name="collection_interval_ST03" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="N1_ST03" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="housekeeping_parameter_report_structure_ID_ST03" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="parameter_ID_ST03" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="NFA_ST03" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="super_commutated_sample_repetition_number_ST03" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="N2_ST03" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="uint32_t" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="uint64_t" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="64" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="N_ST03" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:BooleanArgumentType name="reset_flag_ST04" zeroStringValue="0" oneStringValue="1">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding sizeInBits="1" />
+            </xtce:BooleanArgumentType>
+
+            <xtce:IntegerArgumentType name="N_ST12" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="PMON_ID_ST12" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="are_you_alive_connection_ST17" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="N_ST20" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="parameter_ID_ST20" signed="false">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+            </xtce:IntegerArgumentType>
+        </xtce:ArgumentTypeSet>
+
+        <xtce:MetaCommandSet>
+
+            <xtce:MetaCommand name="TC31">
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_ST03" />
+                    <xtce:Argument argumentTypeRef="collection_interval_ST03" name="collection_interval_ST03" />
+                    <xtce:Argument argumentTypeRef="N1_ST03" name="N1_ST03" />
+                    <xtce:Argument argumentTypeRef="parameter_ID_ST03" name="parameter_ID_ST03" />
+                    <xtce:Argument argumentTypeRef="NFA_ST03" name="NFA_ST03" />
+                    <xtce:Argument argumentTypeRef="super_commutated_sample_repetition_number_ST03" name="super_commutated_sample_repetition_number_ST03" />
+                    <xtce:Argument argumentTypeRef="N2_ST03" name="N2_ST03" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="TC31">
+                    <xtce:LongDescription>TC[3,1] is a command packet. It is used to send telecommand.
+                    </xtce:LongDescription>
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_ST03" />
+                        <xtce:ArgumentRefEntry argumentRef="collection_interval_ST03" />
+                        <xtce:ArgumentRefEntry argumentRef="N1_ST03" />
+                        <xtce:ArgumentRefEntry argumentRef="parameter_ID_ST03" />
+                        <xtce:ArgumentRefEntry argumentRef="NFA_ST03" />
+                        <xtce:ArgumentRefEntry argumentRef="super_commutated_sample_repetition_number_ST03" />
+                        <xtce:ArgumentRefEntry argumentRef="N2_ST03" />
+                        <xtce:ArgumentRefEntry argumentRef="parameter_ID_ST03" />
+                    </xtce:EntryList>
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="TC39">
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="N_ST03" name="N_ST03" />
+                    <xtce:Argument argumentTypeRef="housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_ST03" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="TC39">
+                    <xtce:LongDescription>TC[3,9] is a command packet. It is used to send telecommand.
+                    </xtce:LongDescription>
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="N_ST03" />
+                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_ST03" />
+                    </xtce:EntryList>
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="TC327">
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="N_ST03" name="N_ST03" />
+                    <xtce:Argument argumentTypeRef="housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_ST03" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="TC327">
+                    <xtce:LongDescription>TC[3,27] is a command packet. It is used to send telecommand.
+                    </xtce:LongDescription>
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="N_ST03" />
+                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_ST03" />
+                    </xtce:EntryList>
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="TC41">
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="reset_flag_ST04" name="reset_flag_ST04" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="TC41">
+                    <xtce:LongDescription>TC[3,27] is a command packet. It is used to send telecommand.
+                    </xtce:LongDescription>
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="reset_flag_ST04" />
+                    </xtce:EntryList>
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="TC128">
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="N_ST12" name="N_ST12" />
+                    <xtce:Argument argumentTypeRef="PMON_ID_ST12" name="PMON_ID_ST12" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="TC128">
+                    <xtce:LongDescription>TC[12,8] is a command packet. It is used to send telecommand.
+                    </xtce:LongDescription>
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="N_ST12" />
+                        <xtce:ArgumentRefEntry argumentRef="PMON_ID_ST12" />
+                    </xtce:EntryList>
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="TC171">
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="are_you_alive_connection_ST17" name="are_you_alive_connection_ST17" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="TC171">
+                    <xtce:LongDescription> TM[17,1] is a command packet. It is used to send telecommand.
+                    </xtce:LongDescription>
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="are_you_alive_connection_ST17" />
+                    </xtce:EntryList>
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="TC201">
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="N_ST20" name="N_ST20" />
+                    <xtce:Argument argumentTypeRef="parameter_ID_ST20" name="parameter_ID_ST20" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="TC201">
+                    <xtce:LongDescription>TC[20,1] is a command packet. It is used to send telecommand.
+                    </xtce:LongDescription>
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="N_ST20" />
+                        <xtce:ArgumentRefEntry argumentRef="parameter_ID_ST20" />
+                    </xtce:EntryList>
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+        </xtce:MetaCommandSet>
+    </xtce:CommandMetaData>
+</xtce:SpaceSystem>
