@@ -1,0 +1,28 @@
+<!DOCTYPE html><html lang="en"><head></head><body>{% comment %}
+    Template tags in this file are interpreted server-side.
+    It looks a bit like Angular syntax, but it's not.
+{% endcomment %}
+
+  <base href="{{ contextPath }}/">
+  <meta charset="utf-8">
+  <title>{% if config.tag %}{{ config.tag }}{% else %}Yamcs{% endif %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% if config.tag %}{{ config.tag }}: {% endif %}Yamcs Mission Control">
+  <meta name="application-name" content="Yamcs">
+  <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+  <link rel="mask-icon" href="static/safari-pinned-tab.svg" color="#0000001">
+  <link rel="shortcut icon" href="static/favicon.ico">
+{% if config.extraHeaderHTML %}
+  {{ config.extraHeaderHTML }}
+{% endif %}
+<style>body,html{margin:0;padding:0;}body{background-color:#fff;-moz-osx-font-smoothing:grayscale;}@media print{*{overflow:visible!important;}}</style><link rel="stylesheet" href="static/styles.6e4b93aa6b6db618e2a3.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="static/styles.6e4b93aa6b6db618e2a3.css"></noscript>
+
+  <script id="appConfig" type="application/json">
+    {{ configJson }}
+  </script>
+  <app-root></app-root>
+<script src="static/runtime.bf3f24b7d16e0794daf9.js" defer></script><script src="static/polyfills.621a23a95bd4347cfa17.js" defer></script><script src="static/main.09eba85d7601e7bed723.js" defer></script>
+
+</body></html>
