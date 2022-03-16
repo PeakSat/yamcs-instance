@@ -561,8 +561,8 @@
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="TC" />
-                    <xtce:Enumeration value="1" label="TM" />
+                    <xtce:Enumeration value="0" label="UHF" />
+                    <xtce:Enumeration value="1" label="S" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
@@ -737,8 +737,6 @@
                 <xtce:Argument argumentTypeRef="parameter_ID" name="P31" />
             </xtce:ArgumentList>
                 <xtce:CommandContainer name="create_a_parameter_report_structure">
-                    <xtce:LongDescription>TC[3,1] is a command packet. It is used to send telecommand.
-                    </xtce:LongDescription>
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_ST03" />
                         <xtce:ArgumentRefEntry argumentRef="collection_interval_ST03" />
@@ -773,92 +771,178 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <!-- <xtce:MetaCommand name="TC39">
-                <xtce:ArgumentList>
+            <xtce:MetaCommand name="report_housekeeping_parameter_report_structures">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="3" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="9" />
+                </xtce:ArgumentAssignmentList>
+            </xtce:BaseMetaCommand>
+            <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="N_ST03" name="N_ST03" />
-                    <xtce:Argument argumentTypeRef="housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_ST03" />
+                    <xtce:Argument argumentTypeRef="housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_1" />
+                    <xtce:Argument argumentTypeRef="housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_2" />
+                    <xtce:Argument argumentTypeRef="housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_3" />
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC39">
-                    <xtce:LongDescription>TC[3,9] is a command packet. It is used to send telecommand.
-                    </xtce:LongDescription>
+                <xtce:CommandContainer name="report_housekeeping_parameter_report_structures">
                     <xtce:EntryList>
                         <xtce:ArgumentRefEntry argumentRef="N_ST03" />
-                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_ST03" />
+                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_1" />
+                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_2" />
+                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_3" />
                     </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC327">
+            <xtce:MetaCommand name="generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="3" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="27" />
+                </xtce:ArgumentAssignmentList>
+            </xtce:BaseMetaCommand>
+            <xtce:ArgumentList>
+                <xtce:Argument argumentTypeRef="N_ST03" name="N_ST03" />
+                <xtce:Argument argumentTypeRef="housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_1" />
+                <xtce:Argument argumentTypeRef="housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_2" />
+                <xtce:Argument argumentTypeRef="housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_3" />
+            </xtce:ArgumentList>
+            <xtce:CommandContainer name="generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
+                <xtce:EntryList>
+                    <xtce:ArgumentRefEntry argumentRef="N_ST03" />
+                    <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_1" />
+                    <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_2" />
+                    <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_3" />
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="Header_TC" />
+            </xtce:CommandContainer>
+        </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="report_the_parameter_statistics">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="4" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
+                </xtce:ArgumentAssignmentList>
+            </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="N_ST03" name="N_ST03" />
-                    <xtce:Argument argumentTypeRef="housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_ST03" />
+                    <xtce:Argument argumentTypeRef="reset_flag_ST04" name="reset_flag" />
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC327">
-                    <xtce:LongDescription>TC[3,27] is a command packet. It is used to send telecommand.
-                    </xtce:LongDescription>
+                <xtce:CommandContainer name="report_the_parameter_statistics">
                     <xtce:EntryList>
-                        <xtce:ArgumentRefEntry argumentRef="N_ST03" />
-                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_ST03" />
+                        <xtce:ArgumentRefEntry argumentRef="reset_flag" />
                     </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC41">
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="reset_flag_ST04" name="reset_flag_ST04" />
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC41">
-                    <xtce:LongDescription>TC[3,27] is a command packet. It is used to send telecommand.
-                    </xtce:LongDescription>
-                    <xtce:EntryList>
-                        <xtce:ArgumentRefEntry argumentRef="reset_flag_ST04" />
-                    </xtce:EntryList>
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
-
-            <xtce:MetaCommand name="TC128">
+            <xtce:MetaCommand name="report_parameter_monitoring_definitions">
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="N_ST12" name="N_ST12" />
-                    <xtce:Argument argumentTypeRef="PMON_ID_ST12" name="PMON_ID_ST12" />
+                    <xtce:Argument argumentTypeRef="PMON_ID_ST12" name="PMON_ID_1" />
+                    <xtce:Argument argumentTypeRef="PMON_ID_ST12" name="PMON_ID_2" />
+                    <xtce:Argument argumentTypeRef="PMON_ID_ST12" name="PMON_ID_3" />
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC128">
-                    <xtce:LongDescription>TC[12,8] is a command packet. It is used to send telecommand.
-                    </xtce:LongDescription>
+                <xtce:CommandContainer name="report_parameter_monitoring_definitions">
                     <xtce:EntryList>
                         <xtce:ArgumentRefEntry argumentRef="N_ST12" />
-                        <xtce:ArgumentRefEntry argumentRef="PMON_ID_ST12" />
+                        <xtce:ArgumentRefEntry argumentRef="PMON_ID_1" />
+                        <xtce:ArgumentRefEntry argumentRef="PMON_ID_2" />
+                        <xtce:ArgumentRefEntry argumentRef="PMON_ID_3" />
                     </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC171">
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="are_you_alive_connection_ST17" name="are_you_alive_connection_ST17" />
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC171">
-                    <xtce:LongDescription> TM[17,1] is a command packet. It is used to send telecommand.
-                    </xtce:LongDescription>
+            <xtce:MetaCommand name="are_you_alive_connection">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="17" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
+                </xtce:ArgumentAssignmentList>
+            </xtce:BaseMetaCommand>
+                <xtce:CommandContainer name="are_you_alive_connection">
                     <xtce:EntryList>
-                        <xtce:ArgumentRefEntry argumentRef="are_you_alive_connection_ST17" />
                     </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC201">
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="N_ST20" name="N_ST20" />
-                    <xtce:Argument argumentTypeRef="parameter_ID_ST20" name="parameter_ID_ST20" />
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC201">
-                    <xtce:LongDescription>TC[20,1] is a command packet. It is used to send telecommand.
-                    </xtce:LongDescription>
-                    <xtce:EntryList>
-                        <xtce:ArgumentRefEntry argumentRef="N_ST20" />
-                        <xtce:ArgumentRefEntry argumentRef="parameter_ID_ST20" />
+            <xtce:MetaCommand name="report_parameter_values">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="20" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
+                </xtce:ArgumentAssignmentList>
+            </xtce:BaseMetaCommand>
+            <xtce:ArgumentList>
+                <xtce:Argument argumentTypeRef="N_ST20" name="N_ST20"/>
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P1" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P2" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P3" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P4" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P5" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P6" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P7" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P8" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P9" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P10" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P11" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P12" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P13" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P14" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P15" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P16" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P17" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P18" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P19" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P20" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P21" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P22" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P23" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P24" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P25" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P26" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P27" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P28" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P29" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P30" />
+                <xtce:Argument argumentTypeRef="parameter_ID" name="P31" />
+            </xtce:ArgumentList>
+                <xtce:CommandContainer name="report_parameter_values">
+                    <xtce:EntryList >
+                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="P1" />
+                        <xtce:ArgumentRefEntry argumentRef="P2" />
+                        <xtce:ArgumentRefEntry argumentRef="P3" />
+                        <xtce:ArgumentRefEntry argumentRef="P4" />
+                        <xtce:ArgumentRefEntry argumentRef="P5" />
+                        <xtce:ArgumentRefEntry argumentRef="P6" />
+                        <xtce:ArgumentRefEntry argumentRef="P7" />
+                        <xtce:ArgumentRefEntry argumentRef="P8" />
+                        <xtce:ArgumentRefEntry argumentRef="P9" />
+                        <xtce:ArgumentRefEntry argumentRef="P10" />
+                        <xtce:ArgumentRefEntry argumentRef="P11" />
+                        <xtce:ArgumentRefEntry argumentRef="P12" />
+                        <xtce:ArgumentRefEntry argumentRef="P13" />
+                        <xtce:ArgumentRefEntry argumentRef="P14" />
+                        <xtce:ArgumentRefEntry argumentRef="P15" />
+                        <xtce:ArgumentRefEntry argumentRef="P17" />
+                        <xtce:ArgumentRefEntry argumentRef="P18" />
+                        <xtce:ArgumentRefEntry argumentRef="P19" />
+                        <xtce:ArgumentRefEntry argumentRef="P20" />
+                        <xtce:ArgumentRefEntry argumentRef="P21" />
+                        <xtce:ArgumentRefEntry argumentRef="P22" />
+                        <xtce:ArgumentRefEntry argumentRef="P23" />
+                        <xtce:ArgumentRefEntry argumentRef="P24" />
+                        <xtce:ArgumentRefEntry argumentRef="P25" />
+                        <xtce:ArgumentRefEntry argumentRef="P26" />
                     </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
-            </xtce:MetaCommand> -->
+            </xtce:MetaCommand>
 
-        </xtce:MetaCommandSet>
+        </xtce:MetaCommandSet> 
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>
