@@ -270,8 +270,8 @@
             <xtce:Parameter parameterTypeRef="application_process_ID" name="application_process_ID_ST01"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="sequence_flags" name="sequence_flags_ST01"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="packet_sequence_count_or_packet_name" name="packet_sequence_count_ST01"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="uint16_t" name="Temperature_1"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="uint8_t" name="Status_Temperature_1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="uint8_t" name="Temperature_1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="uint16_t" name="Status_Temperature_1"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="uint32_t" name="Temperature_2"></xtce:Parameter>
 
 
@@ -394,7 +394,6 @@
                 </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="housekeeping_parameter_report_structure_ID_ST03"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="parameter_value_ST03"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_primary_header_TM">
                     <xtce:RestrictionCriteria>
