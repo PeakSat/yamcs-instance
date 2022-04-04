@@ -18,6 +18,17 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
+
+            <xtce:EnumeratedParameterType name="parameter_ID">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="Temperature_1" />
+                    <xtce:Enumeration value="1" label="Status_Temperature_1" />
+                    <xtce:Enumeration value="2" label="Temperature_2" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedParameterType>
+
             <xtce:IntegerParameterType name="secondary_header_flag">
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
@@ -141,7 +152,7 @@
                 <xtce:IntegerDataEncoding sizeInBits="8" />
             </xtce:BooleanParameterType>
 
-            <xtce:ArrayParameterType name="IntegerArray" arrayTypeRef="uint16_t" numberOfDimensions="1">
+            <xtce:ArrayParameterType name="IntegerArray" arrayTypeRef="parameter_ID" numberOfDimensions="1">
                 <xtce:LongDescription>
 							This is some calibration values for a payload device
 						</xtce:LongDescription>
@@ -516,6 +527,8 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
+
+
             <xtce:IntegerArgumentType name="secondary_header_flag">
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
@@ -569,11 +582,12 @@
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1" label="Battery_Voltage" />
-                    <xtce:Enumeration value="2" label="Temperature_Sensor" />
+                    <xtce:Enumeration value="0" label="Temperature_1" />
+                    <xtce:Enumeration value="1" label="Status_Temperature_1" />
+                    <xtce:Enumeration value="2" label="Temperature_2" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
-
+    
             <!-- needs to be enumerated but i have questions -->
             <xtce:IntegerArgumentType name="aknowledgement_flags">
                 <xtce:UnitSet></xtce:UnitSet>
@@ -655,10 +669,11 @@
                     <xtce:Argument argumentTypeRef="sequence_flags" name="sequence_flags"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="packet_sequence_count_or_packet_name" name="packet_sequence_count_or_packet_name"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="packet_data_length" name="packet_data_length"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="aknowledgement_flags" name="PUS_version"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="aknowledgement_flags" name="aknowledgement_flags"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="service_type_ID_TC" name="service_type_ID_TC"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="message_subtype_ID_TC" name="message_subtype_ID_TC"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="response_band" name="response_band"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="aknowledgement_flags" name="aknowledgement_flags"></xtce:Argument>
+                    <!-- <xtce:Argument argumentTypeRef="response_band" name="response_band"></xtce:Argument> -->
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="packet_primary_header_TC">
                     <xtce:EntryList>
@@ -669,7 +684,8 @@
                         <xtce:ArgumentRefEntry argumentRef="sequence_flags" />
                         <xtce:ArgumentRefEntry argumentRef="packet_sequence_count_or_packet_name" />
                         <xtce:ArgumentRefEntry argumentRef="packet_data_length" />
-                        <xtce:ArgumentRefEntry argumentRef="response_band" />
+                        <!-- <xtce:ArgumentRefEntry argumentRef="response_band" /> -->
+                        <xtce:ArgumentRefEntry argumentRef="PUS_version" />
                         <xtce:ArgumentRefEntry argumentRef="aknowledgement_flags" />
                         <xtce:ArgumentRefEntry argumentRef="service_type_ID_TC" />
                         <xtce:ArgumentRefEntry argumentRef="message_subtype_ID_TC" />
@@ -680,10 +696,11 @@
             <xtce:MetaCommand name="Header_TC" abstract="true">
                 <xtce:BaseMetaCommand metaCommandRef="primary_header">
                     <xtce:ArgumentAssignmentList>
-                        <xtce:ArgumentAssignment argumentName="packet_version_number" argumentValue="2" />
-                        <xtce:ArgumentAssignment argumentName="packet_type" argumentValue="1" />
+                        <xtce:ArgumentAssignment argumentName="packet_version_number" argumentValue="0" />
+                        <xtce:ArgumentAssignment argumentName="packet_type" argumentValue="TC" />
                         <xtce:ArgumentAssignment argumentName="secondary_header_flag" argumentValue="1" />
                         <xtce:ArgumentAssignment argumentName="sequence_flags" argumentValue="3" />
+                        <xtce:ArgumentAssignment argumentName="PUS_version" argumentValue="2" />
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:CommandContainer name="Header_TC">
