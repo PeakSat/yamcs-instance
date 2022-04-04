@@ -599,12 +599,12 @@
 
             <xtce:IntegerArgumentType name="collection_interval_ST03" signed="false">
                 <xtce:UnitSet />
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="housekeeping_parameter_report_structure_ID_ST03" signed="false">
                 <xtce:UnitSet />
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint16_t" signed="false">
@@ -624,7 +624,7 @@
 
             <xtce:IntegerArgumentType name="N_ST03" signed="false">
                 <xtce:UnitSet />
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerArgumentType>
 
             <xtce:BooleanArgumentType name="reset_flag_ST04" zeroStringValue="0" oneStringValue="1">
@@ -730,27 +730,6 @@
                 <xtce:Argument argumentTypeRef="parameter_ID" name="P8" />
                 <xtce:Argument argumentTypeRef="parameter_ID" name="P9" />
                 <xtce:Argument argumentTypeRef="parameter_ID" name="P10" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P11" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P12" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P13" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P14" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P15" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P16" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P17" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P18" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P19" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P20" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P21" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P22" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P23" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P24" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P25" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P26" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P27" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P28" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P29" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P30" />
-                <xtce:Argument argumentTypeRef="parameter_ID" name="P31" />
             </xtce:ArgumentList>
                 <xtce:CommandContainer name="create_a_parameter_report_structure">
                     <xtce:EntryList >
@@ -767,21 +746,6 @@
                         <xtce:ArgumentRefEntry argumentRef="P8" />
                         <xtce:ArgumentRefEntry argumentRef="P9" />
                         <xtce:ArgumentRefEntry argumentRef="P10" />
-                        <xtce:ArgumentRefEntry argumentRef="P11" />
-                        <xtce:ArgumentRefEntry argumentRef="P12" />
-                        <xtce:ArgumentRefEntry argumentRef="P13" />
-                        <xtce:ArgumentRefEntry argumentRef="P14" />
-                        <xtce:ArgumentRefEntry argumentRef="P15" />
-                        <xtce:ArgumentRefEntry argumentRef="P17" />
-                        <xtce:ArgumentRefEntry argumentRef="P18" />
-                        <xtce:ArgumentRefEntry argumentRef="P19" />
-                        <xtce:ArgumentRefEntry argumentRef="P20" />
-                        <xtce:ArgumentRefEntry argumentRef="P21" />
-                        <xtce:ArgumentRefEntry argumentRef="P22" />
-                        <xtce:ArgumentRefEntry argumentRef="P23" />
-                        <xtce:ArgumentRefEntry argumentRef="P24" />
-                        <xtce:ArgumentRefEntry argumentRef="P25" />
-                        <xtce:ArgumentRefEntry argumentRef="P26" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
