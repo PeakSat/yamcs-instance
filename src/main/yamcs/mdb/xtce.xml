@@ -624,7 +624,7 @@
 
             <xtce:IntegerArgumentType name="N_ST03" signed="false">
                 <xtce:UnitSet />
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
             <xtce:BooleanArgumentType name="reset_flag_ST04" zeroStringValue="0" oneStringValue="1">
