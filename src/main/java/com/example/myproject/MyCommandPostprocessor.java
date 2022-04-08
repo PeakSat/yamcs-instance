@@ -52,9 +52,9 @@ public class MyCommandPostprocessor implements CommandPostprocessor {
     @Override
     public byte[] process(PreparedCommand pc) {
         byte[] binary = pc.getBinary();
-
+      
         // Set CCSDS packet length
-        // ByteArrayUtils.encodeShort(binary.length - 7, binary, 4);
+        ByteArrayUtils.encodeUnsignedShort(binary.length-6, binary,4);
 
         // // Set CCSDS sequence count
         // int seqCount = seqFiller.fill(binary);
