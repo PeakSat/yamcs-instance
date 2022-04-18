@@ -41,7 +41,12 @@ mdb:
 - type: "xtce"
   spec: "mdb/dt.xml"
 - type: xtce
+  spec: "mdb/pus.xml"
+- type: xtce
   spec: "mdb/xtce.xml"
+- type: xtce
+  spec: "mdb/pus-verification.xml"
+
 
 
 # Configuration for streams created at server startup
