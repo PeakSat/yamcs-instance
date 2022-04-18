@@ -122,7 +122,7 @@
 
             <xtce:IntegerParameterType name="data">
                 <xtce:UnitSet></xtce:UnitSet>
-                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+                <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="uint8_t" signed="false">
@@ -270,8 +270,6 @@
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
-
-            <!-- next one are wrong types -->
 
             <xtce:IntegerArgumentType name="collection_interval_ST03" signed="false">
                 <xtce:UnitSet />

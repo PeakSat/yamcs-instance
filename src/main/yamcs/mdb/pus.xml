@@ -2,8 +2,6 @@
 <xtce:SpaceSystem name="pus" xmlns:xtce="http://www.omg.org/space/xtce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/space/xtce /home/konkapo/OPS/xtcetools/src/main/resources/org/omg/space/xtce/schema/SpaceSystemV1.2-27Feb2014-mods.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
     <xtce:TelemetryMetaData>
-    
-        
         <xtce:ParameterSet>
 
             <xtce:Parameter name="housekeeping_parameter_report_structure_ID_ST03" parameterTypeRef="/dt/uint8_t" />
@@ -94,21 +92,17 @@
                 <xtce:LongDescription>Each application process shall set the time field of each telemetry packet
                     it generates to the time tag of the related report.</xtce:LongDescription>
             </xtce:Parameter> -->
-
-
-
+<!-- 
             <xtce:Parameter parameterTypeRef="/dt/response_band" name="response_band">
                 <xtce:LongDescription>This bit will determine which band (UHF/S band) will be usedto downlink the response to the TC.
                     We also considered the option of setting it by a separate TC but the operational cost was
                     deemed too high. The option of using theMAPIDfield of the segment header was also discarded as this was considered too complex.
                 </xtce:LongDescription>
-            </xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/aknowledgement_flags" name="aknowledgement_flags"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/service_type_ID" name="service_type_ID_TC"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/message_subtype_ID" name="message_subtype_ID_TC"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/source_data" name="source_data"></xtce:Parameter>
+            </xtce:Parameter> -->
+        
+            <!-- <xtce:Parameter parameterTypeRef="/dt/source_data" name="source_data"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/spare" name="spare"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/packet_error_control" name="packet_error_control"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/packet_error_control" name="packet_error_control"></xtce:Parameter> -->
             
 
         </xtce:ParameterSet>
@@ -125,6 +119,7 @@
                     <xtce:ParameterRefEntry parameterRef="packet_sequence_count_or_packet_name"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_data_length"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="PUS_Version"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="code_ST01"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="service_type_ID_TM"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="message_subtype_ID_TM"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="message_type_counter"></xtce:ParameterRefEntry>

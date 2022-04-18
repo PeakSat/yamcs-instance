@@ -13,6 +13,9 @@
             <xtce:Parameter parameterTypeRef="/dt/sequence_flags" name="sequence_flags_ST01"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/packet_sequence_count_or_packet_name" name="packet_sequence_count_ST01"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/data" name="data_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/aknowledgement_flags" name="aknowledgement_flags"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/service_type_ID" name="service_type_ID_TC"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/message_subtype_ID" name="message_subtype_ID_TC"></xtce:Parameter>
         </xtce:ParameterSet>
 
 
