@@ -4,7 +4,8 @@ import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-
+import java.util.logging.*;
+import java.util.logging.FileHandler;
 import org.yamcs.TmPacket;
 import org.yamcs.YConfiguration;
 import org.yamcs.tctm.AbstractPacketPreprocessor;
@@ -30,6 +31,8 @@ import org.yamcs.utils.TimeEncoding;
  * </pre>
  */
 public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
+    private static final Logger LOGGER = Logger.getLogger( MyPacketPreprocessor.class.getName() );
+    ConsoleHandler fh;
 
     private Map<Integer, AtomicInteger> seqCounts = new HashMap<>();
 
@@ -46,7 +49,8 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
 
     @Override
     public TmPacket process(TmPacket packet) {
-
+         fh = new ConsoleHandler();
+         
         byte[] bytes = packet.getPacket();
         if (bytes.length < 6) { // Expect at least the length of CCSDS primary header
             eventProducer.sendWarning("SHORT_PACKET",
@@ -57,17 +61,38 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
         }
 
         // Verify continuity for a given APID based on the CCSDS sequence counter
-        // int apidseqcount = ByteBuffer.wrap(bytes).getInt(0);
-        // int apid = (apidseqcount >> 16) & 0x07FF;
+         int apidseqcount = ByteBuffer.wrap(bytes).getInt(0);
+        //  int apid = (apidseqcount >> 16) & 0x07FF;
         // int seq = (apidseqcount) & 0x3FFF;
-        // AtomicInteger ai = seqCounts.computeIfAbsent(apid, k -> new AtomicInteger());
-        // int oldseq = ai.getAndSet(seq);
+        int apid = (apidseqcount << 5) & 0x07FF; // 11 bits
+        int seq = (apidseqcount << 18) & 0x3FFF; //
+        int packversion= (apidseqcount) & 0x7;
+        int secheader = (apidseqcount << 4) & 0x1;
+        int pusversion = (apidseqcount << 18) & 0x3FFF;
+        int packetlength = (apidseqcount << 32) & 0xFFFF;
+        AtomicInteger ai = seqCounts.computeIfAbsent(apid, k -> new AtomicInteger());
+        int oldseq = ai.getAndSet(seq);
 
-        // if (((seq - oldseq) & 0x3FFF) != 1) {
-        //     eventProducer.sendWarning("SEQ_COUNT_JUMP",
-        //             "Sequence count jump for APID: " + apid + " old seq: " + oldseq + " newseq: " + seq);
-        // }
-
+        if (((seq - oldseq) & 0x3FFF) != 1) {
+            eventProducer.sendWarning("SEQ_COUNT_JUMP",
+                    "Sequence count jump for APID: " + apid + " old seq: " + oldseq + " newseq: " + seq);
+        }
+        if(packversion != 0){
+            eventProducer.sendWarning("PACKET_VERSION_ERROR",
+                    "Wrong version number");
+            } 
+        if(secheader != 1){
+            eventProducer.sendWarning("SEC_HEADER_FLAG_ERROR",
+                        "Wrong secondary flag");
+                } 
+        if(packetlength != (bytes.length-6)){
+            eventProducer.sendWarning("PACKET_LENGTH_ERROR",
+                            "Wrong packet data length");
+                    } 
+       
+        LOGGER.info("Binary:" + bytes.toString()+ '\n');
+        LOGGER.info("Buffer:" + String.valueOf(apidseqcount)+ '\n');
+        LOGGER.info("Packet data length:" + String.valueOf(packetlength));                         
         // Our custom packets don't include a secundary header with time information.
         // Use Yamcs-local time instead.
         packet.setGenerationTime(TimeEncoding.getWallclockTime());
@@ -77,5 +102,7 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
         // packet.setSequenceCount(apidseqcount);
 
         return packet;
+
+
     }
 }

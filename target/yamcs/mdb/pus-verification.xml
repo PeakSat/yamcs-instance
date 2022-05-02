@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xtce:SpaceSystem name="pus-verification" xmlns:xtce="http://www.omg.org/space/xtce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/space/xtce /home/konkapo/OPS/xtcetools/src/main/resources/org/omg/space/xtce/schema/SpaceSystemV1.2-27Feb2014-mods.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
+
+    <xtce:TelemetryMetaData>
+    
+        
+        <xtce:ParameterSet>
+            <xtce:Parameter parameterTypeRef="/dt/data" name="code_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/packet_version_number" name="packet_version_number_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/packet_type" name="packet_type_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/secondary_header_flag" name="secondary_header_flag_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/application_process_ID" name="application_process_ID_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/sequence_flags" name="sequence_flags_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/packet_sequence_count_or_packet_name" name="packet_sequence_count_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/data" name="data_ST01"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/aknowledgement_flags" name="aknowledgement_flags"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/service_type_ID" name="service_type_ID_TC"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/message_subtype_ID" name="message_subtype_ID_TC"></xtce:Parameter>
+        </xtce:ParameterSet>
+
+
+        <xtce:ContainerSet>
+
+            <!-- ST[01] equest verification packets -->
+            <!-- complete TM[1,1] (note: there havent been any comparisons -->
+
+            <xtce:SequenceContainer name="TM11">
+                <xtce:LongDescription>The request ID field alone cannot be used to identify the request since it does not
+                    contain the identifier of the source of that request. That source identifier
+                    corresponds to the destination identifier of the secondary header of the related
+                    telemetry packet
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="packet_version_number_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_type_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="secondary_header_flag_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="application_process_ID_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="sequence_flags_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_sequence_count_ST01"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="/pus/packet_primary_header_TM">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
+                            <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
+                            <xtce:Comparison value="1" parameterRef="/pus/message_subtype_ID_TM" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
+
+            <!-- complete TM[1,2] -->
+
+            <xtce:SequenceContainer name="TM12">
+                <xtce:LongDescription>The request ID field alone cannot be used to identify the request since it does not contain the identifier of
+                    the source of that request. That source identifier corresponds to the destination identifier of the
+                    secondary header of the related telemetry packet, refer to clause
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="packet_version_number_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_type_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="secondary_header_flag_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="application_process_ID_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="sequence_flags_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_sequence_count_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="code_ST01"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="/pus/packet_primary_header_TM">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
+                            <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
+                            <xtce:Comparison value="2" parameterRef="/pus/message_subtype_ID_TM" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
+        </xtce:ContainerSet>
+    </xtce:TelemetryMetaData>
+
+</xtce:SpaceSystem>
