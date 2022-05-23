@@ -10,13 +10,13 @@ from time import sleep
 def send_tm(simulator):
     tm_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-    with io.open('testdata.ccsds', 'rb') as f:
+    with io.open('packets2.raw', 'rb') as f:
         simulator.tm_counter = 1
         header = bytearray(6)
         while f.readinto(header) == 6:
-            (len,) = unpack_from('>H', header, 4)
+            #(len,) = unpack_from('>H', header, 4)
 
-            packet = bytearray(len + 7)
+            packet = bytearray(19)
             f.seek(-6, io.SEEK_CUR)
             f.readinto(packet)
 
