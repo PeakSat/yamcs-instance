@@ -87,23 +87,7 @@
             <xtce:Parameter parameterTypeRef="/dt/message_type_counter" name="message_type_counter"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/data" name="PUS_Version"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/data" name="code_ST01"></xtce:Parameter>
-
-            <!-- <xtce:Parameter parameterTypeRef="/dt/time" name="time">
-                <xtce:LongDescription>Each application process shall set the time field of each telemetry packet
-                    it generates to the time tag of the related report.</xtce:LongDescription>
-            </xtce:Parameter> -->
-<!-- 
-            <xtce:Parameter parameterTypeRef="/dt/response_band" name="response_band">
-                <xtce:LongDescription>This bit will determine which band (UHF/S band) will be usedto downlink the response to the TC.
-                    We also considered the option of setting it by a separate TC but the operational cost was
-                    deemed too high. The option of using theMAPIDfield of the segment header was also discarded as this was considered too complex.
-                </xtce:LongDescription>
-            </xtce:Parameter> -->
-        
-            <!-- <xtce:Parameter parameterTypeRef="/dt/source_data" name="source_data"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/spare" name="spare"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/packet_error_control" name="packet_error_control"></xtce:Parameter> -->
-            
+    
 
         </xtce:ParameterSet>
 
@@ -177,9 +161,9 @@
 
             <xtce:SequenceContainer name="Housekeeping1">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/Temperature_1" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/Status_Temperature_1" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/Temperature_2" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardYear" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardMonth" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardDay" />
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="TM_325">
                     <xtce:RestrictionCriteria>

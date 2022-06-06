@@ -23,14 +23,17 @@
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="Temperature_1" />
-                    <xtce:Enumeration value="1" label="Status_Temperature_1" />
-                    <xtce:Enumeration value="2" label="Temperature_2" />
-                    <xtce:Enumeration value="3" label="Status_Temperature_3" />
-                    <xtce:Enumeration value="4" label="Temperature_4" />
-                    <xtce:Enumeration value="5" label="Status_Temperature_5" />
-                    <xtce:Enumeration value="6" label="Temperature_6" />
-                    <xtce:Enumeration value="7" label="Temperature_7" />
+                    <xtce:Enumeration value="0" label="OnBoardYear" />
+                    <xtce:Enumeration value="1" label="OnBoardMonth" />
+                    <xtce:Enumeration value="2" label="OnBoardDay" />
+                    <xtce:Enumeration value="3" label="OnBoardHour" />
+                    <xtce:Enumeration value="4" label="OnBoardMinute" />
+                    <xtce:Enumeration value="5" label="OnBoardSecond" />
+                    <xtce:Enumeration value="6" label="ReportParametersUnusedStack" />
+                    <xtce:Enumeration value="7" label="AvailableHeap" />
+                    <xtce:Enumeration value="293" label="OBCMCUTemperature" />
+                    <xtce:Enumeration value="301" label="OBCBootCounter" />
+                    <xtce:Enumeration value="329" label="OBCSystick" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
@@ -80,10 +83,6 @@
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
-            <!-- <xtce:AbsoluteTimeParameterType name="time">
-            </xtce:AbsoluteTimeParameterType>
-	     -->
-            <!-- secondary header TC -->
 
             <xtce:EnumeratedParameterType name="response_band">
                 <xtce:UnitSet></xtce:UnitSet>
@@ -177,20 +176,6 @@
 							This is some calibration values for a payload device
 						</xtce:LongDescription>
             </xtce:ArrayParameterType>
-
-<!-- 
-            <xtce:AggregateParameterType name="report_parameters_structure" shortDescription="The Statistics Report Structure">
-				<xtce:MemberList>
-                    <xtce:Member name="parameter_ID_ST20" typeRef="parameter_ID"></xtce:Member>
-                    <xtce:Member name="number_of_samples_ST04" typeRef="string3"></xtce:Member>
-				</xtce:MemberList>
-			</xtce:AggregateParameterType> -->
-
-            <!-- <xtce:ArrayParameterType name="report_parameters_structure_array" arrayTypeRef="report_parameters_structure" numberOfDimensions="1">
-                <xtce:LongDescription>
-							This is some calibration values for a payload device
-						</xtce:LongDescription>
-            </xtce:ArrayParameterType> -->
 
         </xtce:ParameterTypeSet>
 
