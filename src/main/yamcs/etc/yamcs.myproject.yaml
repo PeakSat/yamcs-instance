@@ -46,6 +46,9 @@ mdb:
   spec: "mdb/xtce.xml"
 - type: xtce
   spec: "mdb/pus-verification.xml"
+- type: xtce
+  spec: "mdb/pus-not-used.xml"
+
 
 
 

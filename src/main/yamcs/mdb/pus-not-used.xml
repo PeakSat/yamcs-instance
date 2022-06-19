@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xtce:SpaceSystem name="pus-not-used" xmlns:xtce="http://www.omg.org/space/xtce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/space/xtce /home/konkapo/OPS/xtcetools/src/main/resources/org/omg/space/xtce/schema/SpaceSystemV1.2-27Feb2014-mods.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
+
+    <xtce:TelemetryMetaData>
+        <xtce:ParameterSet>
+
+            <xtce:Parameter name="max_transition_reporting_delay_ST12" parameterTypeRef="/dt/uint8_t" />
+            <xtce:Parameter name="N_ST12" parameterTypeRef="/dt/uint8_t" />
+            <xtce:Parameter name="PMON_ID_ST12" parameterTypeRef="/dt/uint16_t" />
+            <xtce:Parameter name="monitored_parameter_ID_ST12" parameterTypeRef="/dt/uint16_t" />
+            <xtce:Parameter name="validity_parameter_ST12" parameterTypeRef="/dt/uint16_t" />
+            <xtce:Parameter name="mask_ST12" parameterTypeRef="/dt/uint64_t" />
+            <xtce:Parameter name="expected_value_ST12" parameterTypeRef="/dt/uint64_t" />
+            <xtce:Parameter name="monitoring_intervale_ST12" parameterTypeRef="/dt/uint8_t" />
+            <xtce:Parameter name="PMON_status_ST12" parameterTypeRef="/dt/uint16_t" />
+            <xtce:Parameter name="repetition_number_ST12" parameterTypeRef="/dt/uint8_t" />
+            <xtce:Parameter name="check_type_ST12" parameterTypeRef="/dt/uint16_t" />
+
+
+        </xtce:ParameterSet>
+
+
+        <xtce:ContainerSet>
+           
+            <!-- TM[12,9] -->
+
+            <xtce:SequenceContainer name="TM129">
+                <xtce:LongDescription>TM[12,9] is a request packet. It is used to request the transmission of a telemetry packet.
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="max_transition_reporting_delay_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="N_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="PMON_ID_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="monitored_parameter_ID_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="validity_parameter_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="mask_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="expected_value_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="monitoring_intervale_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="PMON_status_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="repetition_number_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="check_type_ST12"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="/pus/packet_primary_header_TM">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
+                            <xtce:Comparison value="12" parameterRef="/pus/service_type_ID_TM" />
+                            <xtce:Comparison value="9" parameterRef="/pus/message_subtype_ID_TM" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
+
+        </xtce:ContainerSet>
+    </xtce:TelemetryMetaData>
+
+    <xtce:CommandMetaData>
+        <xtce:MetaCommandSet>
+
+
+            <xtce:MetaCommand name="report_parameter_monitoring_definitions">
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST12" name="N_ST12" />
+                    <xtce:Argument argumentTypeRef="/dt/PMON_ID_ST12" name="PMON_ID_1" />
+                    <xtce:Argument argumentTypeRef="/dt/PMON_ID_ST12" name="PMON_ID_2" />
+                    <xtce:Argument argumentTypeRef="/dt/PMON_ID_ST12" name="PMON_ID_3" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="report_parameter_monitoring_definitions">
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="N_ST12" />
+                        <xtce:ArgumentRefEntry argumentRef="PMON_ID_1" />
+                        <xtce:ArgumentRefEntry argumentRef="PMON_ID_2" />
+                        <xtce:ArgumentRefEntry argumentRef="PMON_ID_3" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+        </xtce:MetaCommandSet> 
+    </xtce:CommandMetaData>
+</xtce:SpaceSystem>
