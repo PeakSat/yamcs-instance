@@ -34,6 +34,41 @@
                     <xtce:Enumeration value="293" label="OBCMCUTemperature" />
                     <xtce:Enumeration value="301" label="OBCBootCounter" />
                     <xtce:Enumeration value="329" label="OBCSystick" />
+                    <xtce:Enumeration value="13" label="MagnetometerRawX" />
+                    <xtce:Enumeration value="14" label="MagnetometerRawY" />
+                    <xtce:Enumeration value="15" label="MagnetometerRawZ" />
+                    <xtce:Enumeration value="17" label="MagnetometerFrequency" />
+                    <xtce:Enumeration value="17" label="MagnetometerCycleCountX" />
+                    <xtce:Enumeration value="18" label="MagnetometerCycleCountY" />
+                    <xtce:Enumeration value="19" label="MagnetometerCycleCountZ" />
+                    <xtce:Enumeration value="20" label="MagnetometerSelfTest" />
+                    <xtce:Enumeration value="43" label="GyroscopeX" />
+                    <xtce:Enumeration value="44" label="GyroscopeY" />
+                    <xtce:Enumeration value="45" label="GyroscopeZ" />
+                    <xtce:Enumeration value="46" label="GyroRegister1" />
+                    <xtce:Enumeration value="47" label="GyroRegister2" />
+                    <xtce:Enumeration value="48" label="GyroRegister3" />
+                    <xtce:Enumeration value="49" label="GyroRegister4" />
+                    <xtce:Enumeration value="50" label="GyroRegister5" />
+                    <xtce:Enumeration value="51" label="GyroRegister6" />
+                    <xtce:Enumeration value="52" label="GyroRegister7" />
+                    <xtce:Enumeration value="53" label="GyroRegister8" />
+                    <xtce:Enumeration value="54" label="GyroRegister9" />
+                    <xtce:Enumeration value="55" label="GyroRegister10" />
+                    <xtce:Enumeration value="56" label="GyroRegister11" />
+                    <xtce:Enumeration value="57" label="GyroRegister12" />
+                    <xtce:Enumeration value="77" label="GyroscopeTemperature" />
+                    <xtce:Enumeration value="78" label="ADCSBoardTemperature1" />
+                    <xtce:Enumeration value="79" label="ADCSBoardTemperature2" />
+                    <xtce:Enumeration value="144" label="MagnetometerSignX" />
+                    <xtce:Enumeration value="145" label="MagnetometerSignY" />
+                    <xtce:Enumeration value="146" label="MagnetometerSignZ" />
+                    <xtce:Enumeration value="150" label="GyroSignX" />
+                    <xtce:Enumeration value="151" label="GyroSignY" />
+                    <xtce:Enumeration value="152" label="GyroSignZ" />
+                    <xtce:Enumeration value="175" label="GyroBiasX" />
+                    <xtce:Enumeration value="176" label="GyroBiasY" />
+                    <xtce:Enumeration value="177" label="GyroBiasZ" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
@@ -124,6 +159,11 @@
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
+            <xtce:IntegerParameterType name="int8_t" signed="true">
+                <xtce:UnitSet />
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            </xtce:IntegerParameterType>
+
             <xtce:IntegerParameterType name="uint8_t" signed="false">
                 <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
@@ -151,7 +191,7 @@
 
             <xtce:BooleanParameterType name="bool_t">
                 <xtce:UnitSet />
-                <xtce:IntegerDataEncoding sizeInBits="8" />
+                <xtce:IntegerDataEncoding sizeInBits="1" />
             </xtce:BooleanParameterType>
 
             <xtce:ArrayParameterType name="IntegerArray" arrayTypeRef="parameter_ID" numberOfDimensions="1">
@@ -243,9 +283,52 @@
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="Temperature_1" />
-                    <xtce:Enumeration value="1" label="Status_Temperature_1" />
-                    <xtce:Enumeration value="2" label="Temperature_2" />
+                    <xtce:Enumeration value="0" label="OnBoardYear" />
+                        <xtce:Enumeration value="1" label="OnBoardMonth" />
+                        <xtce:Enumeration value="2" label="OnBoardDay" />
+                        <xtce:Enumeration value="3" label="OnBoardHour" />
+                        <xtce:Enumeration value="4" label="OnBoardMinute" />
+                        <xtce:Enumeration value="5" label="OnBoardSecond" />
+                        <xtce:Enumeration value="6" label="ReportParametersUnusedStack" />
+                        <xtce:Enumeration value="7" label="AvailableHeap" />
+                        <xtce:Enumeration value="293" label="OBCMCUTemperature" />
+                        <xtce:Enumeration value="301" label="OBCBootCounter" />
+                        <xtce:Enumeration value="329" label="OBCSystick" />
+                        <xtce:Enumeration value="13" label="MagnetometerRawX" />
+                        <xtce:Enumeration value="14" label="MagnetometerRawY" />
+                        <xtce:Enumeration value="15" label="MagnetometerRawZ" />
+                        <xtce:Enumeration value="17" label="MagnetometerFrequency" />
+                        <xtce:Enumeration value="17" label="MagnetometerCycleCountX" />
+                        <xtce:Enumeration value="18" label="MagnetometerCycleCountY" />
+                        <xtce:Enumeration value="19" label="MagnetometerCycleCountZ" />
+                        <xtce:Enumeration value="20" label="MagnetometerSelfTest" />
+                        <xtce:Enumeration value="43" label="GyroscopeX" />
+                        <xtce:Enumeration value="44" label="GyroscopeY" />
+                        <xtce:Enumeration value="45" label="GyroscopeZ" />
+                        <xtce:Enumeration value="46" label="GyroRegister1" />
+                        <xtce:Enumeration value="47" label="GyroRegister2" />
+                        <xtce:Enumeration value="48" label="GyroRegister3" />
+                        <xtce:Enumeration value="49" label="GyroRegister4" />
+                        <xtce:Enumeration value="50" label="GyroRegister5" />
+                        <xtce:Enumeration value="51" label="GyroRegister6" />
+                        <xtce:Enumeration value="52" label="GyroRegister7" />
+                        <xtce:Enumeration value="53" label="GyroRegister8" />
+                        <xtce:Enumeration value="54" label="GyroRegister9" />
+                        <xtce:Enumeration value="55" label="GyroRegister10" />
+                        <xtce:Enumeration value="56" label="GyroRegister11" />
+                        <xtce:Enumeration value="57" label="GyroRegister12" />
+                        <xtce:Enumeration value="77" label="GyroscopeTemperature" />
+                        <xtce:Enumeration value="78" label="ADCSBoardTemperature1" />
+                        <xtce:Enumeration value="79" label="ADCSBoardTemperature2" />
+                        <xtce:Enumeration value="144" label="MagnetometerSignX" />
+                        <xtce:Enumeration value="145" label="MagnetometerSignY" />
+                        <xtce:Enumeration value="146" label="MagnetometerSignZ" />
+                        <xtce:Enumeration value="150" label="GyroSignX" />
+                        <xtce:Enumeration value="151" label="GyroSignY" />
+                        <xtce:Enumeration value="152" label="GyroSignZ" />
+                        <xtce:Enumeration value="175" label="GyroBiasX" />
+                        <xtce:Enumeration value="176" label="GyroBiasY" />
+                        <xtce:Enumeration value="177" label="GyroBiasZ" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
     
