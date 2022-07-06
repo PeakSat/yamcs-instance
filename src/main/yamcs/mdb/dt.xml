@@ -72,6 +72,17 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
+            <xtce:EnumeratedParameterType name="structure_ID">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="0" />
+                    <xtce:Enumeration value="4" label="4" />
+                    <xtce:Enumeration value="6" label="6" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedParameterType>
+
+
             <xtce:IntegerParameterType name="secondary_header_flag">
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
@@ -329,6 +340,17 @@
                         <xtce:Enumeration value="175" label="GyroBiasX" />
                         <xtce:Enumeration value="176" label="GyroBiasY" />
                         <xtce:Enumeration value="177" label="GyroBiasZ" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedArgumentType>
+
+
+            <xtce:EnumeratedArgumentType name="structure_ID">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="0" />
+                    <xtce:Enumeration value="4" label="4" />
+                    <xtce:Enumeration value="6" label="6" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
     

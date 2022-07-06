@@ -4,8 +4,8 @@
     <xtce:TelemetryMetaData>
         <xtce:ParameterSet>
 
-            <xtce:Parameter name="housekeeping_parameter_report_structure_ID_ST03" parameterTypeRef="/dt/uint8_t" />
-            <xtce:Parameter name="periodic_generation_action_status_ST03" parameterTypeRef="/dt/bool_t" />
+            <xtce:Parameter name="housekeeping_parameter_report_structure_ID_ST03" parameterTypeRef="/dt/structure_ID" />
+            <xtce:Parameter name="periodic_generation_action_status_ST03" parameterTypeRef="/dt/uint8_t" />
             <xtce:Parameter name="collection_interval_ST03" parameterTypeRef="/dt/uint32_t" />
             <xtce:Parameter name="Number_Of_Simply_Commutated_Parameters" parameterTypeRef="/dt/uint16_t" />
             <!-- <xtce:Parameter name="parameters_report_structure" parameterTypeRef="/dt/report_parameters_structure_array" /> -->
@@ -300,7 +300,7 @@
                 </xtce:ArgumentAssignmentList>
             </xtce:BaseMetaCommand>
             <xtce:ArgumentList>
-                <xtce:Argument argumentTypeRef="/dt/housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_ST03" />
+                <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_ST03" />
                 <xtce:Argument argumentTypeRef="/dt/collection_interval_ST03" name="collection_interval_ST03" />
                 <xtce:Argument argumentTypeRef="/dt/uint16_t" name="N1_ST03"/>
                 <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P1" />
@@ -343,9 +343,9 @@
             </xtce:BaseMetaCommand>
             <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/N_ST03" name="N_ST03" />
-                    <xtce:Argument argumentTypeRef="/dt/housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_1" />
-                    <xtce:Argument argumentTypeRef="/dt/housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_2" />
-                    <xtce:Argument argumentTypeRef="/dt/housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_3" />
+                    <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_1" />
+                    <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_2" />
+                    <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_3" />
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="report_housekeeping_parameter_report_structures">
                     <xtce:EntryList>
@@ -367,9 +367,9 @@
             </xtce:BaseMetaCommand>
             <xtce:ArgumentList>
                 <xtce:Argument argumentTypeRef="/dt/N_ST03" name="N_ST03" />
-                <xtce:Argument argumentTypeRef="/dt/housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_1" />
-                <xtce:Argument argumentTypeRef="/dt/housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_2" />
-                <xtce:Argument argumentTypeRef="/dt/housekeeping_parameter_report_structure_ID_ST03" name="housekeeping_parameter_report_structure_ID_3" />
+                <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_1" />
+                <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_2" />
+                <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_3" />
             </xtce:ArgumentList>
             <xtce:CommandContainer name="generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
                 <xtce:EntryList>
