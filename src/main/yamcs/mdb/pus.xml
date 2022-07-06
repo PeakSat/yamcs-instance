@@ -198,7 +198,6 @@
                 <xtce:LongDescription> TM[17,2] is a request packet. It is used to request the transmission of a telemetry packet.
                 </xtce:LongDescription>
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="are_you_alive_connection_ST17"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_primary_header_TM">
                     <xtce:RestrictionCriteria>
