@@ -9,6 +9,7 @@
                 <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
+
             <xtce:EnumeratedParameterType name="packet_type">
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
@@ -141,6 +142,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
+
             <xtce:IntegerParameterType name="aknowledgement_flags">
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
@@ -239,6 +241,18 @@
             <xtce:IntegerArgumentType name="packet_version_number">
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="release_time" signed="false">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="32">
+                    <xtce:DefaultCalibrator>
+                        <xtce:PolynomialCalibrator>
+                            <xtce:Term coefficient="-15778296000" exponent="0" />
+                            <xtce:Term coefficient="10" exponent="1" />
+                        </xtce:PolynomialCalibrator>
+                    </xtce:DefaultCalibrator>
+                </xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="packet_type">
