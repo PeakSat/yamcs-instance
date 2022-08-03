@@ -44,11 +44,6 @@
                 </xtce:LongDescription>
             </xtce:Parameter>
 
-            <!-- <xtce:Parameter parameterTypeRef="/dt/release_time" name="release_time">
-                <xtce:LongDescription>The release time of the activity, which will be encoded in CUC format.
-                </xtce:LongDescription>
-            </xtce:Parameter> -->
-
             <xtce:Parameter parameterTypeRef="/dt/secondary_header_flag" name="secondary_header_flag">
                 <xtce:LongDescription>The secondary header flag indicates the presence or absence of the packet
                     secondary header. With the exception of spacecraft time packets (refer to clause
@@ -447,10 +442,30 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/release_time" name="release_time" />
+
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="insert_activity_into_time_based_schedule">
                     <xtce:EntryList>
                         <xtce:ArgumentRefEntry argumentRef="release_time" />
+
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="insert_activity_into_time_based_schedule_with_calendar">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="11" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="4" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/release_time_absolute" name="release_time_absolute" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="insert_activity_into_time_based_schedule_with_calendar">
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="release_time_absolute" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>

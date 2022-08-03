@@ -255,6 +255,25 @@
                 </xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
+            <xtce:AbsoluteTimeArgumentType name="release_time_absolute">
+                <xtce:Encoding>
+                    <xtce:IntegerDataEncoding sizeInBits="32">
+                        <xtce:DefaultCalibrator>
+                            <xtce:PolynomialCalibrator>
+                                <!-- <xtce:Term coefficient="-15778296000" exponent="0" />
+                                <xtce:Term coefficient="10" exponent="1" /> -->
+                                <xtce:Term coefficient="-1" exponent="0" />
+                                <xtce:Term coefficient="1" exponent="1" />
+                            </xtce:PolynomialCalibrator>
+                        </xtce:DefaultCalibrator>
+                    </xtce:IntegerDataEncoding>
+                </xtce:Encoding>
+                <xtce:ReferenceTime>
+                    <xtce:Epoch>UNIX</xtce:Epoch>
+                </xtce:ReferenceTime>
+            </xtce:AbsoluteTimeArgumentType>
+
+
             <xtce:EnumeratedArgumentType name="packet_type">
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
