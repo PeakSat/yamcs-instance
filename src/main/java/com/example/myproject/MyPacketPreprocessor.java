@@ -5,14 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.*;
-import java.util.logging.FileHandler;
 import org.yamcs.TmPacket;
 import org.yamcs.YConfiguration;
 import org.yamcs.tctm.AbstractPacketPreprocessor;
-import org.yamcs.utils.TimeEncoding;
 
 /**
- * Component capable of modifying packet binary received from a link, before passing it further into Yamcs.
+ * Component capable of modifying packet binary received from a link, before
+ * passing it further into Yamcs.
  * <p>
  * A single instance of this class is created, scoped to the link udp-in.
  * <p>
@@ -31,7 +30,7 @@ import org.yamcs.utils.TimeEncoding;
  * </pre>
  */
 public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
-    private static final Logger LOGGER = Logger.getLogger( MyPacketPreprocessor.class.getName() );
+    private static final Logger LOGGER = Logger.getLogger(MyPacketPreprocessor.class.getName());
     ConsoleHandler fh;
 
     private Map<Integer, AtomicInteger> seqCounts = new HashMap<>();
@@ -49,28 +48,29 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
 
     @Override
     public TmPacket process(TmPacket packet) {
-         fh = new ConsoleHandler();
-         
-        byte[] bytes = packet.getPacket();
+        fh = new ConsoleHandler();
 
+        byte[] bytes = packet.getPacket();
 
         if (bytes.length < 6) { // Expect at least the length of CCSDS primary header
             eventProducer.sendWarning("SHORT_PACKET",
                     "Short packet received, length: " + bytes.length + "; minimum required length is 6 bytes.");
-
             // If we return null, the packet is dropped.
             return null;
         }
         ByteBuffer byteBuffer = ByteBuffer.wrap(bytes);
         // Verify continuity for a given APID based on the CCSDS sequence counter
-         int apidseqcount = ByteBuffer.wrap(bytes).getInt(0);
-         short packetlength = ByteBuffer.wrap(bytes).getShort(4) ;
-        int apid = (apidseqcount >> 16) & 0x07FF;
+        int apidseqcount = ByteBuffer.wrap(bytes).getInt(0); // first 4 bytes (0-3)
+        short packetlength = ByteBuffer.wrap(bytes).getShort(4); // get 2 bytes (5-6)
+        int apid = (apidseqcount >> 16) & 0x07FF; // 11 bits ()
         int seqcount = (apidseqcount) & 0x3FFF; // 14 bits
-        int packversion= (apidseqcount >> 29) & 0x7;
-        int secheader = (apidseqcount >> 27) & 0x1;
-        int pusversion = ByteBuffer.wrap(bytes).getShort(6) & 0xF;
-        
+        int packversion = (apidseqcount >> 29) & 0x7; // 3 bits
+        int secheader = (apidseqcount >> 27) & 0x1; // 1 bit
+        int pusversion = ByteBuffer.wrap(bytes).get(6) & 0xF;// 4 bits
+        int serviceType = ByteBuffer.wrap(bytes).get(7) & 0xFF;// 8 bits
+        int messageType = ByteBuffer.wrap(bytes).get(8) & 0xFF;// 8 bits
+        int time = ByteBuffer.wrap(bytes).getInt(11) & 0xFFFFFFFF; // 32 bits
+
         AtomicInteger ai = seqCounts.computeIfAbsent(apid, k -> new AtomicInteger());
         int oldseq = ai.getAndSet(seqcount);
 
@@ -79,45 +79,46 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
             eventProducer.sendWarning("SEQ_COUNT_JUMP",
                     "Sequence count jump for APID: " + apid + " old seq: " + oldseq + " newseq: " + seqcount);
         }
-        if(packversion != 0){
+        if (packversion != 0) {
             LOGGER.info("PACKET_VERSION: " + String.valueOf(packversion));
             eventProducer.sendWarning("PACKET_VERSION_ERROR",
                     "Wrong version number");
 
-                } 
-        if(secheader != 1){
+        }
+        if (secheader != 1) {
             LOGGER.info("SEC_HEAD: " + String.valueOf(secheader));
             eventProducer.sendWarning("SEC_HEADER_FLAG_ERROR",
-                        "Wrong secondary flag");
-                
-                    } 
-        if(packetlength != (bytes.length-6)){
+                    "Wrong secondary flag");
+
+        }
+        if (packetlength != (bytes.length - 6)) {
             LOGGER.info("LENGTH");
             eventProducer.sendWarning("PACKET_LENGTH_ERROR",
-                            "Wrong packet data length");
-                    } 
-                    LOGGER.info("OK");  
-        // LOGGER.info("Sequence_count:" + String.valueOf(seqcount) + '\n');
-
-        // LOGGER.info("APID:" + String.valueOf(apid) + '\n');
-
-        // LOGGER.info("PUS:" + String.valueOf(pusversion) + '\n');
-
-        // LOGGER.info("Secondary_header:" + String.valueOf(secheader) + '\n');
-      
-        // LOGGER.info("Buffer:" + String.valueOf(apidseqcount)+ '\n');
-        
-        // LOGGER.info("Packet data length:" + String.valueOf(packetlength));                         
+                    "Wrong packet data length");
+        }
+        LOGGER.info("Sequence_count:" + String.valueOf(seqcount));
+        LOGGER.info("APID:" + String.valueOf(apid));
+        LOGGER.info("PUS:" + String.valueOf(pusversion));
+        LOGGER.info("Secondary_header:" + String.valueOf(secheader));
+        LOGGER.info("Buffer:" + String.valueOf(apidseqcount));
+        LOGGER.info("Time:" + String.valueOf(time));
+        // LOGGER.info("Packet data length:" + String.valueOf(packetlength));
         // // Our custom packets don't include a secundary header with time information.
         // Use Yamcs-local time instead.
-        packet.setGenerationTime(TimeEncoding.getWallclockTime());
+        packet.setGenerationTime(CUCtoUnix(time));
 
         // Use the full 32-bits, so that both APID and the count are included.
-        // Yamcs uses this attribute to uniquely identify the packet (together with the gentime)
+        // Yamcs uses this attribute to uniquely identify the packet (together with the
+        // gentime)
         // packet.setSequenceCount(apidseqcount);
 
         return packet;
 
+    }
 
+    // returns the unix timestamp in milliseconds
+    long CUCtoUnix(int time) {
+        long start = 1577829600; // 1/1/2020
+        return start * 1000 + time * 100 + 7237000; // adjust from UTC to GMT +0200
     }
 }
