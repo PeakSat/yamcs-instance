@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xtce:SpaceSystem name="dt" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
+<xtce:SpaceSystem name="dt" xmlns:xtce="http://www.omg.org/space/xtce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/space/xtce /home/konkapo/OPS/xtcetools/src/main/resources/org/omg/space/xtce/schema/SpaceSystemV1.2-27Feb2014-mods.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
     <xtce:TelemetryMetaData>
         <xtce:ParameterTypeSet>
@@ -8,7 +8,6 @@
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
-
 
             <xtce:EnumeratedParameterType name="packet_type">
                 <xtce:UnitSet></xtce:UnitSet>
@@ -22,6 +21,7 @@
 
             <xtce:EnumeratedParameterType name="parameter_ID">
                 <xtce:UnitSet></xtce:UnitSet>
+                z
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="OnBoardYear" />
@@ -142,7 +142,6 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
-
             <xtce:IntegerParameterType name="aknowledgement_flags">
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
@@ -241,18 +240,6 @@
             <xtce:IntegerArgumentType name="packet_version_number">
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
-            </xtce:IntegerArgumentType>
-
-            <xtce:IntegerArgumentType name="release_time" signed="false">
-                <xtce:UnitSet></xtce:UnitSet>
-                <xtce:IntegerDataEncoding sizeInBits="32">
-                    <xtce:DefaultCalibrator>
-                        <xtce:PolynomialCalibrator>
-                            <xtce:Term coefficient="-15778296000" exponent="0" />
-                            <xtce:Term coefficient="10" exponent="1" />
-                        </xtce:PolynomialCalibrator>
-                    </xtce:DefaultCalibrator>
-                </xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="packet_type">
