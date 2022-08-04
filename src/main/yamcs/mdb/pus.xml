@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xtce:SpaceSystem name="pus" xmlns:xtce="http://www.omg.org/space/xtce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/space/xtce /home/konkapo/OPS/xtcetools/src/main/resources/org/omg/space/xtce/schema/SpaceSystemV1.2-27Feb2014-mods.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
+<xtce:SpaceSystem name="pus" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
     <xtce:TelemetryMetaData>
         <xtce:ParameterSet>
 
             <xtce:Parameter name="housekeeping_parameter_report_structure_ID_ST03" parameterTypeRef="/dt/structure_ID">
-            <xtce:LongDescription>The housekeeping report structure ID</xtce:LongDescription>
+                <xtce:LongDescription>The housekeeping report structure ID</xtce:LongDescription>
             </xtce:Parameter>
 
 
@@ -13,22 +13,22 @@
 
             <xtce:Parameter name="collection_interval_ST03" parameterTypeRef="/dt/uint32_t" />
 
-            <xtce:Parameter name="number_of_simply_commutated_parameters" parameterTypeRef="/dt/uint16_t" >
-            <xtce:LongDescription>The number of simply commutated parameters contained in the housekeeping parameter report</xtce:LongDescription>
+            <xtce:Parameter name="number_of_simply_commutated_parameters" parameterTypeRef="/dt/uint16_t">
+                <xtce:LongDescription>The number of simply commutated parameters contained in the housekeeping parameter report</xtce:LongDescription>
             </xtce:Parameter>
 
             <xtce:Parameter name="start_time_ST04" parameterTypeRef="/dt/uint16_t">
-            <xtce:LongDescription>the start time of the time interval over which the time interval over which the
+                <xtce:LongDescription>the start time of the time interval over which the time interval over which the
                 evaluation of the parameter statistics was performed</xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter name="end_time_ST04" parameterTypeRef="/dt/uint16_t" >
-            <xtce:LongDescription>the end time of the time interval over which the time interval over which the
+            <xtce:Parameter name="end_time_ST04" parameterTypeRef="/dt/uint16_t">
+                <xtce:LongDescription>the end time of the time interval over which the time interval over which the
                 evaluation of the parameter statistics was performed </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter name="N_ST04" parameterTypeRef="/dt/uint16_t" >
-            <xtce:LongDescription>The number of the statistics report structures received</xtce:LongDescription>
+            <xtce:Parameter name="N_ST04" parameterTypeRef="/dt/uint16_t">
+                <xtce:LongDescription>The number of the statistics report structures received</xtce:LongDescription>
             </xtce:Parameter>
 
 
@@ -43,6 +43,11 @@
                     set to 0, and telecommand packets, for which this bit is set to 1.
                 </xtce:LongDescription>
             </xtce:Parameter>
+
+            <!-- <xtce:Parameter parameterTypeRef="/dt/release_time" name="release_time">
+                <xtce:LongDescription>The release time of the activity, which will be encoded in CUC format.
+                </xtce:LongDescription>
+            </xtce:Parameter> -->
 
             <xtce:Parameter parameterTypeRef="/dt/secondary_header_flag" name="secondary_header_flag">
                 <xtce:LongDescription>The secondary header flag indicates the presence or absence of the packet
@@ -88,30 +93,30 @@
             <!-- secondary packet header TM -->
 
             <xtce:Parameter parameterTypeRef="/dt/service_type_ID" name="service_type_ID_TM">
-            
-            <xtce:LongDescription>The service type identifier of the service type that contains that
+
+                <xtce:LongDescription>The service type identifier of the service type that contains that
                 message type.</xtce:LongDescription>
             </xtce:Parameter>
 
             <xtce:Parameter parameterTypeRef="/dt/message_subtype_ID" name="message_subtype_ID_TM">
-            <xtce:LongDescription>A message subtype identifier that uniquely identifies that message
+                <xtce:LongDescription>A message subtype identifier that uniquely identifies that message
                 type within that service type.</xtce:LongDescription>
             </xtce:Parameter>
 
             <xtce:Parameter parameterTypeRef="/dt/message_type_counter" name="message_type_counter">
-            <xtce:LongDescription>For each report that it generates, each application process that provides the
+                <xtce:LongDescription>For each report that it generates, each application process that provides the
                 capability to count the type of generated messages per destination and report the corresponding 
                 message type counter shall set the message type counter of the related telemetry packet to the value 
                 of the related counter.</xtce:LongDescription>
             </xtce:Parameter>
 
             <xtce:Parameter parameterTypeRef="/dt/data" name="PUS_version_number">
-            <xtce:LongDescription>The TM packet PUS version number reflects the
+                <xtce:LongDescription>The TM packet PUS version number reflects the
                 different versions of this Standard.</xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/data" name="code_ST01"></xtce:Parameter>s
-
+            <xtce:Parameter parameterTypeRef="/dt/data" name="code_ST01"></xtce:Parameter>
+            s
         </xtce:ParameterSet>
 
 
@@ -132,7 +137,6 @@
                     <xtce:ParameterRefEntry parameterRef="message_type_counter"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
             </xtce:SequenceContainer>
-
 
 
             <xtce:SequenceContainer name="TM310">
@@ -232,8 +236,7 @@
             <xtce:SequenceContainer name="TM172">
                 <xtce:LongDescription> TM[17,2] is a request packet. It is used to request the transmission of a telemetry packet.
                 </xtce:LongDescription>
-                <xtce:EntryList>
-                </xtce:EntryList>
+                <xtce:EntryList></xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_primary_header_TM">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
@@ -244,7 +247,7 @@
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
-<!-- 
+            <!-- 
             <xtce:SequenceContainer name="TM20_2">
                 <xtce:LongDescription>The formats of the max value field, the min value field, the mean value field and the standard deviation value
                     field are specific to the parameter identified by the associated parameter ID field.
@@ -285,7 +288,7 @@
                     <xtce:Argument argumentTypeRef="/dt/secondary_header_flag" name="secondary_header_flag"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/application_process_ID" name="application_process_ID"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/sequence_flags" name="sequence_flags"></xtce:Argument>
-                   
+
                     <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="PUS_version_number"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="aknowledgement_flags"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/service_type_ID_TC" name="service_type_ID_TC"></xtce:Argument>
@@ -299,9 +302,9 @@
                         <xtce:ArgumentRefEntry argumentRef="secondary_header_flag" />
                         <xtce:ArgumentRefEntry argumentRef="application_process_ID" />
                         <xtce:ArgumentRefEntry argumentRef="sequence_flags" />
-                        
+
                         <xtce:FixedValueEntry name="packet_data_length" binaryValue="0000" sizeInBits="16" />
-                        <xtce:FixedValueEntry name="packet_sequence_count_or_packet_name" binaryValue="0000" sizeInBits="14" /> 
+                        <xtce:FixedValueEntry name="packet_sequence_count_or_packet_name" binaryValue="0000" sizeInBits="14" />
                         <!-- <xtce:ArgumentRefEntry argumentRef="response_band" /> -->
                         <xtce:ArgumentRefEntry argumentRef="PUS_version_number" />
                         <xtce:ArgumentRefEntry argumentRef="aknowledgement_flags" />
@@ -329,31 +332,31 @@
 
             <xtce:MetaCommand name="create_a_parameter_report_structure">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="3" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-            </xtce:BaseMetaCommand>
-            <xtce:ArgumentList>
-                <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_ST03" />
-                <xtce:Argument argumentTypeRef="/dt/collection_interval_ST03" name="collection_interval_ST03" />
-                <xtce:Argument argumentTypeRef="/dt/uint16_t" name="N1_ST03"/>
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P1" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P2" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P3" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P4" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P5" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P6" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P7" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P8" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P9" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P10" />
-            </xtce:ArgumentList>
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="3" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_ST03" />
+                    <xtce:Argument argumentTypeRef="/dt/collection_interval_ST03" name="collection_interval_ST03" />
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="N1_ST03" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P1" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P2" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P3" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P4" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P5" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P6" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P7" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P8" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P9" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P10" />
+                </xtce:ArgumentList>
                 <xtce:CommandContainer name="create_a_parameter_report_structure">
-                    <xtce:EntryList >
+                    <xtce:EntryList>
                         <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_ST03" />
                         <xtce:ArgumentRefEntry argumentRef="collection_interval_ST03" />
-                        <xtce:ArgumentRefEntry argumentRef="N1_ST03"/>
+                        <xtce:ArgumentRefEntry argumentRef="N1_ST03" />
                         <xtce:ArgumentRefEntry argumentRef="P1" />
                         <xtce:ArgumentRefEntry argumentRef="P2" />
                         <xtce:ArgumentRefEntry argumentRef="P3" />
@@ -371,12 +374,12 @@
 
             <xtce:MetaCommand name="report_housekeeping_parameter_report_structures">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="3" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="9" />
-                </xtce:ArgumentAssignmentList>
-            </xtce:BaseMetaCommand>
-            <xtce:ArgumentList>
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="3" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="9" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/N_ST03" name="N_ST03" />
                     <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_1" />
                     <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_2" />
@@ -395,35 +398,35 @@
 
             <xtce:MetaCommand name="generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="3" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="27" />
-                </xtce:ArgumentAssignmentList>
-            </xtce:BaseMetaCommand>
-            <xtce:ArgumentList>
-                <xtce:Argument argumentTypeRef="/dt/N_ST03" name="N_ST03" />
-                <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_1" />
-                <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_2" />
-                <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_3" />
-            </xtce:ArgumentList>
-            <xtce:CommandContainer name="generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
-                <xtce:EntryList>
-                    <xtce:ArgumentRefEntry argumentRef="N_ST03" />
-                    <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_1" />
-                    <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_2" />
-                    <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_3" />
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="Header_TC" />
-            </xtce:CommandContainer>
-        </xtce:MetaCommand>
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="3" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="27" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST03" name="N_ST03" />
+                    <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_1" />
+                    <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_2" />
+                    <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_3" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="N_ST03" />
+                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_1" />
+                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_2" />
+                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_3" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
 
             <xtce:MetaCommand name="report_the_parameter_statistics">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="4" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-            </xtce:BaseMetaCommand>
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="4" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/reset_flag_ST04" name="reset_flag" />
                 </xtce:ArgumentList>
@@ -435,44 +438,61 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
+            <xtce:MetaCommand name="insert_activity_into_time_based_schedule">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="11" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="4" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/release_time" name="release_time" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="insert_activity_into_time_based_schedule">
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="release_time" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
             <xtce:MetaCommand name="are_you_alive_connection">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="17" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-            </xtce:BaseMetaCommand>
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="17" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
                 <xtce:CommandContainer name="are_you_alive_connection">
-                    <xtce:EntryList>
-                    </xtce:EntryList>
+                    <xtce:EntryList></xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
             <xtce:MetaCommand name="report_parameter_values">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-            </xtce:BaseMetaCommand>
-            <xtce:ArgumentList>
-                <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P1" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P2" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P3" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P4" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P5" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P6" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P7" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P8" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P9" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P10" />
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="20" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P1" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P2" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P3" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P4" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P5" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P6" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P7" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P8" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P9" />
+                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P10" />
 
-            </xtce:ArgumentList>
+                </xtce:ArgumentList>
                 <xtce:CommandContainer name="report_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="N_ST20" />
                         <xtce:ArgumentRefEntry argumentRef="P1" />
                         <xtce:ArgumentRefEntry argumentRef="P2" />
                         <xtce:ArgumentRefEntry argumentRef="P3" />
@@ -488,6 +508,6 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-        </xtce:MetaCommandSet> 
+        </xtce:MetaCommandSet>
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>

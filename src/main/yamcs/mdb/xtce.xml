@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xtce:SpaceSystem name="AcubeSAT" xmlns:xtce="http://www.omg.org/space/xtce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/space/xtce /home/konkapo/OPS/xtcetools/src/main/resources/org/omg/space/xtce/schema/SpaceSystemV1.2-27Feb2014-mods.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
+<xtce:SpaceSystem name="AcubeSAT" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
     <xtce:TelemetryMetaData>
-    
-        
+
+
         <xtce:ParameterSet>
 
 
             <xtce:Parameter name="housekeeping_parameter_report_structure_ID_ST03" parameterTypeRef="/dt/uint8_t" />
-            
+
             <xtce:Parameter name="parameter_ID_ST03" parameterTypeRef="/dt/IntegerArray" />
             <xtce:Parameter name="parameter_statistics_structure" parameterTypeRef="/dt/statistic_report_array" />
             <!-- <xtce:Parameter name="parameters_report_structure" parameterTypeRef="/dt/report_parameters_structure_array" /> -->
             <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="onBoardYear"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardMonth"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardDay"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardHour"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardMinute"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardSecond"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="reportParametersUnusedStack"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="availableHeap"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardDay"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardHour"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardMinute"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardSecond"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="reportParametersUnusedStack"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="availableHeap"></xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="obcBootCounter"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/uint64_t" name="obcSysTick"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/float_t" name="mcuTemperature"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcBoardTemperature1"></xtce:Parameter>   
+            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="obcBootCounter"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint64_t" name="obcSysTick"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="mcuTemperature"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcBoardTemperature1"></xtce:Parameter>
 
             <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerRawX"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerRawY"></xtce:Parameter> 
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerRawZ"></xtce:Parameter> 
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerFrequency"></xtce:Parameter> 
-            <xtce:Parameter parameterTypeRef="/dt/int8_t" name="magnetometerCycleCountX"></xtce:Parameter> 
-            <xtce:Parameter parameterTypeRef="/dt/int8_t" name="magnetometerCycleCountY"></xtce:Parameter> 
-            <xtce:Parameter parameterTypeRef="/dt/int8_t" name="magnetometerCycleCountZ"></xtce:Parameter>     
+            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerRawY"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerRawZ"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerFrequency"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/int8_t" name="magnetometerCycleCountX"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/int8_t" name="magnetometerCycleCountY"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/int8_t" name="magnetometerCycleCountZ"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="magnetometerSelfTest"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeX"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeY"></xtce:Parameter>
@@ -59,7 +59,6 @@
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasY"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasZ"></xtce:Parameter>
 
-                    
 
         </xtce:ParameterSet>
     </xtce:TelemetryMetaData>
