@@ -101,7 +101,7 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
         LOGGER.info("PUS:" + String.valueOf(pusversion));
         LOGGER.info("Secondary_header:" + String.valueOf(secheader));
         LOGGER.info("Buffer:" + String.valueOf(apidseqcount));
-        LOGGER.info("Current: "+String.valueOf(System.currentTimeMillis())+" Time before:" + String.valueOf(time)+" and after: "+String.valueOf(CUCtoUnix(time)));
+        LOGGER.info("Time:" + String.valueOf(time));
         // LOGGER.info("Packet data length:" + String.valueOf(packetlength));
         // // Our custom packets don't include a secundary header with time information.
         // Use Yamcs-local time instead.
