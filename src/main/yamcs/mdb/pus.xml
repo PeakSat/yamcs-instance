@@ -446,11 +446,12 @@
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/release_time" name="release_time" />
+                    <xtce:Argument argumentTypeRef="/dt/release_time" name="release_time_here" />
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="insert_activity_into_time_based_schedule">
                     <xtce:EntryList>
-                        <xtce:ArgumentRefEntry argumentRef="release_time" />
+                        <xtce:ArgumentRefEntry argumentRef="release_time_here" />
+                        <xtce:ParameterRefEntry parameterRef="release_time_param"></xtce:ParameterRefEntry>
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
