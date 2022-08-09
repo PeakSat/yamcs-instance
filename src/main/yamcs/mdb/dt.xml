@@ -342,6 +342,15 @@
                         <xtce:Enumeration value="177" label="GyroBiasZ" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
+            
+            <xtce:AbsoluteTimeArgumentType name="release_time_calendar">
+                <xtce:Encoding offset="1577836800" scale="0.1">
+                    <xtce:IntegerDataEncoding sizeInBits="32" />
+                </xtce:Encoding>
+                <xtce:ReferenceTime>
+                    <xtce:Epoch>UNIX</xtce:Epoch>
+                </xtce:ReferenceTime>
+            </xtce:AbsoluteTimeArgumentType>
 
 
             <xtce:EnumeratedArgumentType name="structure_ID">
