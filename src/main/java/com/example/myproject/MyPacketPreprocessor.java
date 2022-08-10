@@ -69,7 +69,7 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
         int pusversion = ByteBuffer.wrap(bytes).get(6) & 0xF;// 4 bits
         int serviceType = ByteBuffer.wrap(bytes).get(7) & 0xFF;// 8 bits
         int messageType = ByteBuffer.wrap(bytes).get(8) & 0xFF;// 8 bits
-        int time = ByteBuffer.wrap(bytes).getInt(11) & 0xFFFFFFFF; // 32 bits
+        long time = ByteBuffer.wrap(bytes).getInt(11) & 0xFFFFFFFF; // 32 bits. Long to prevent overflow
 
         AtomicInteger ai = seqCounts.computeIfAbsent(apid, k -> new AtomicInteger());
         int oldseq = ai.getAndSet(seqcount);
@@ -117,8 +117,9 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
     }
 
     // returns the unix timestamp in milliseconds
-    long CUCtoUnix(int time) {
+    long CUCtoUnix(long time) {
         long start = 1577829600; // 1/1/2020
         return start * 1000 + time * 100 + 7237000; // adjust from UTC to GMT +0200
     }
 }
+
