@@ -37,19 +37,9 @@
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeX"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeY"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeZ"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="gyroRegister1"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="gyroRegister2"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="gyroRegister3"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="gyroRegister4"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="gyroRegister5"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="gyroRegister6"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="gyroRegister7"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="gyroRegister8"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="gyroRegister9"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="gyroRegister10"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="gyroRegister11"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="gyroRegister12"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeTemperature"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeXTemperature"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeYTemperature"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeZTemperature"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="adcsBoardTemperature1"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="adcsBoardTemperature2"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroSignX"></xtce:Parameter>
@@ -58,9 +48,6 @@
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasX"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasY"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasZ"></xtce:Parameter>
-
-                    
-
         </xtce:ParameterSet>
     </xtce:TelemetryMetaData>
 
