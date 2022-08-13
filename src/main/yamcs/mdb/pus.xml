@@ -28,7 +28,18 @@
             </xtce:Parameter>
 
             <xtce:Parameter name="N_ST04" parameterTypeRef="/dt/uint16_t" >
-            <xtce:LongDescription>The number of the statistics report structures received</xtce:LongDescription>
+                <xtce:LongDescription>The number of the statistics report structures received</xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter name="destination_ID" parameterTypeRef="/dt/uint16_t" >
+                <xtce:LongDescription>Each application process shall set the destination ID field of each
+                    telemetry packet it generates to the application process user identifier of
+                    the application process addressed by the related report</xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter name="time" parameterTypeRef="/dt/generation_time">
+                <xtce:LongDescription>Each application process shall set the time field of each telemetry packet
+                    it generates to the time tag of the related report.</xtce:LongDescription>
             </xtce:Parameter>
 
 
@@ -110,7 +121,14 @@
                 different versions of this Standard.</xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/data" name="code_ST01"></xtce:Parameter>s
+            <xtce:Parameter parameterTypeRef="/dt/data" name="spacecraft_time_reference_status">
+            <xtce:LongDescription>Each application process that provides the capability to report the
+                spacecraft time reference status used when time tagging telemetry
+                packets shall set the spacecraft time reference status field of each
+                telemetry packet it generates to the status of the on-board time reference
+                used when time tagging that telemetry packet.
+            </xtce:LongDescription>
+        </xtce:Parameter>
 
         </xtce:ParameterSet>
 
@@ -126,10 +144,12 @@
                     <xtce:ParameterRefEntry parameterRef="packet_sequence_count_or_packet_name"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_data_length"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="PUS_version_number"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="code_ST01"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="spacecraft_time_reference_status"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="service_type_ID_TM"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="message_subtype_ID_TM"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="message_type_counter"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="destination_ID"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="time"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
