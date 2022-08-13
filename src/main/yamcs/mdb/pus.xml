@@ -308,9 +308,9 @@
                    
                     <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="PUS_version_number"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="aknowledgement_flags"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/service_type_ID_TC" name="service_type_ID_TC"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/message_subtype_ID_TC" name="message_subtype_ID_TC"></xtce:Argument>
-                    <!-- <xtce:Argument argumentTypeRef="/dt/response_band" name="response_band"></xtce:Argument> -->
+                    <xtce:Argument argumentTypeRef="/dt/service_type_ID_TC" name="service_type_ID"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/message_subtype_ID_TC" name="message_subtype_ID"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="source_ID"></xtce:Argument>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="packet_primary_header_TC">
                     <xtce:EntryList>
@@ -325,8 +325,9 @@
                         <!-- <xtce:ArgumentRefEntry argumentRef="response_band" /> -->
                         <xtce:ArgumentRefEntry argumentRef="PUS_version_number" />
                         <xtce:ArgumentRefEntry argumentRef="aknowledgement_flags" />
-                        <xtce:ArgumentRefEntry argumentRef="service_type_ID_TC" />
-                        <xtce:ArgumentRefEntry argumentRef="message_subtype_ID_TC" />
+                        <xtce:ArgumentRefEntry argumentRef="service_type_ID" />
+                        <xtce:ArgumentRefEntry argumentRef="message_subtype_ID" />
+                        <xtce:ArgumentRefEntry argumentRef="source_ID" />
                     </xtce:EntryList>
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
@@ -350,8 +351,8 @@
             <xtce:MetaCommand name="create_a_parameter_report_structure">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
                 <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="3" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="3" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
                 </xtce:ArgumentAssignmentList>
             </xtce:BaseMetaCommand>
             <xtce:ArgumentList>
@@ -392,8 +393,8 @@
             <xtce:MetaCommand name="report_housekeeping_parameter_report_structures">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
                 <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="3" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="9" />
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="3" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="9" />
                 </xtce:ArgumentAssignmentList>
             </xtce:BaseMetaCommand>
             <xtce:ArgumentList>
@@ -416,8 +417,8 @@
             <xtce:MetaCommand name="generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
                 <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="3" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="27" />
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="3" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="27" />
                 </xtce:ArgumentAssignmentList>
             </xtce:BaseMetaCommand>
             <xtce:ArgumentList>
@@ -440,8 +441,8 @@
             <xtce:MetaCommand name="report_the_parameter_statistics">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
                 <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="4" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="4" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
                 </xtce:ArgumentAssignmentList>
             </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
@@ -458,8 +459,8 @@
             <xtce:MetaCommand name="insert_activity_into_time_based_schedule">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
                     <xtce:ArgumentAssignmentList>
-                        <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="11" />
-                        <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="4" />
+                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
@@ -476,8 +477,8 @@
             <xtce:MetaCommand name="are_you_alive_connection">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
                 <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="17" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="17" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
                 </xtce:ArgumentAssignmentList>
             </xtce:BaseMetaCommand>
                 <xtce:CommandContainer name="are_you_alive_connection">
@@ -490,8 +491,8 @@
             <xtce:MetaCommand name="report_parameter_values">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
                 <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID_TC" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_TC" argumentValue="1" />
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
                 </xtce:ArgumentAssignmentList>
             </xtce:BaseMetaCommand>
             <xtce:ArgumentList>

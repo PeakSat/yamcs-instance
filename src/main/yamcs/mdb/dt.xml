@@ -266,6 +266,10 @@
                 <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
+            <xtce:IntegerArgumentType name="acknowledgment_flags">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
+            </xtce:IntegerArgumentType>
             <!-- secondary header TM-->
 
             <xtce:IntegerArgumentType name="service_type_ID_TC">
