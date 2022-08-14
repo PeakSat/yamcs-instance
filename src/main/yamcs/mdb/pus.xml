@@ -155,7 +155,7 @@
 
 
 
-            <xtce:SequenceContainer name="TM310">
+            <xtce:SequenceContainer name="TM_3_10">
                 <xtce:LongDescription>TM[3,10] is a request packet. It is used to request the transmission of a telemetry packet.
                 </xtce:LongDescription>
                 <xtce:EntryList>
@@ -185,7 +185,7 @@
 
             <!-- TM[3,25] -->
 
-            <xtce:SequenceContainer name="TM_325">
+            <xtce:SequenceContainer name="TM_3_25">
                 <xtce:LongDescription>TM[3,25] is a request packet. It is used to request the transmission of a telemetry packet.
                 </xtce:LongDescription>
                 <xtce:EntryList>
@@ -208,7 +208,7 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardMonth" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardDay" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_325">
+                <xtce:BaseContainer containerRef="TM_3_25">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="6" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
@@ -218,7 +218,7 @@
             </xtce:SequenceContainer>
             <!-- TM[4,2] -->
 
-            <xtce:SequenceContainer name="TM42">
+            <xtce:SequenceContainer name="TM_4_2">
                 <xtce:LongDescription>The formats of the max value field, the min value field, the mean value field and the standard deviation value
                     field are specific to the parameter identified by the associated parameter ID field.
                 </xtce:LongDescription>
@@ -249,7 +249,7 @@
 
             <!-- TM[17,2] -->
 
-            <xtce:SequenceContainer name="TM172">
+            <xtce:SequenceContainer name="TM_17_2">
                 <xtce:LongDescription> TM[17,2] is a request packet. It is used to request the transmission of a telemetry packet.
                 </xtce:LongDescription>
                 <xtce:EntryList>
@@ -322,7 +322,6 @@
                         
                         <xtce:FixedValueEntry name="packet_data_length" binaryValue="0000" sizeInBits="16" />
                         <xtce:FixedValueEntry name="packet_sequence_count_or_packet_name" binaryValue="0000" sizeInBits="14" /> 
-                        <!-- <xtce:ArgumentRefEntry argumentRef="response_band" /> -->
                         <xtce:ArgumentRefEntry argumentRef="PUS_version_number" />
                         <xtce:ArgumentRefEntry argumentRef="aknowledgement_flags" />
                         <xtce:ArgumentRefEntry argumentRef="service_type_ID" />
@@ -340,6 +339,8 @@
                         <xtce:ArgumentAssignment argumentName="secondary_header_flag" argumentValue="1" />
                         <xtce:ArgumentAssignment argumentName="sequence_flags" argumentValue="3" />
                         <xtce:ArgumentAssignment argumentName="PUS_version_number" argumentValue="2" />
+                        <xtce:ArgumentAssignment argumentName="source_ID" argumentValue="5" />
+                        <xtce:ArgumentAssignment argumentName="aknowledgement_flags" argumentValue="0" />
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:CommandContainer name="Header_TC">

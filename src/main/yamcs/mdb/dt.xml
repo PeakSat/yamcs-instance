@@ -84,10 +84,17 @@
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
-            <xtce:IntegerParameterType name="application_process_ID">
+            <xtce:EnumeratedParameterType name="application_process_ID">
                 <xtce:UnitSet></xtce:UnitSet>
-                <xtce:IntegerDataEncoding sizeInBits="11"></xtce:IntegerDataEncoding>
-            </xtce:IntegerParameterType>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="11"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="1" label="OBC" />
+                    <xtce:Enumeration value="2" label="COMMS" />
+                    <xtce:Enumeration value="3" label="ADCS" />
+                    <xtce:Enumeration value="4" label="SU" />
+                    <xtce:Enumeration value="5" label="GS" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedParameterType>
 
             <xtce:IntegerParameterType name="sequence_flags">
                 <xtce:UnitSet></xtce:UnitSet>
@@ -118,7 +125,6 @@
             </xtce:IntegerParameterType>
 
             <!-- the upper 2 need to be changed to enumerated -->
-
 
             <xtce:IntegerParameterType name="message_type_counter" signed="false">
                 <xtce:UnitSet></xtce:UnitSet>
@@ -255,17 +261,22 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-
-
             <xtce:IntegerArgumentType name="secondary_header_flag">
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
-
-            <xtce:IntegerArgumentType name="application_process_ID">
+            
+            <xtce:EnumeratedArgumentType name="application_process_ID">
                 <xtce:UnitSet></xtce:UnitSet>
-                <xtce:IntegerDataEncoding sizeInBits="11"></xtce:IntegerDataEncoding>
-            </xtce:IntegerArgumentType>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="11"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="1" label="OBC" />
+                    <xtce:Enumeration value="2" label="COMMS" />
+                    <xtce:Enumeration value="3" label="ADCS" />
+                    <xtce:Enumeration value="4" label="SU" />
+                    <xtce:Enumeration value="5" label="GS" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedArgumentType>
 
             <xtce:IntegerArgumentType name="sequence_flags">
                 <xtce:UnitSet></xtce:UnitSet>
