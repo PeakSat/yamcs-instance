@@ -238,6 +238,18 @@
 							This is some calibration values for a payload device
 						</xtce:LongDescription>
             </xtce:ArrayParameterType>
+            
+            <StringParameterType name="string1">
+                <StringDataEncoding encoding="UTF-8">
+                    <Variable maxSizeInBits="4096">
+                        <DynamicValue>
+                            <ParameterInstanceRef parameterRef="_yamcs_ignore" />
+                        </DynamicValue>
+                        <TerminationChar>00</TerminationChar>
+                    </Variable>
+                </StringDataEncoding>
+            </StringParameterType>
+            
 
         </xtce:ParameterTypeSet>
 
@@ -445,6 +457,7 @@
                 <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerArgumentType>
+
 
     </xtce:ArgumentTypeSet>
     <xtce:MetaCommandSet>

@@ -124,10 +124,14 @@
             <!-- secondary packet header TM -->
 
             <xtce:Parameter parameterTypeRef="/dt/service_type_ID" name="service_type_ID_TM">
-            
+
             <xtce:LongDescription>The service type identifier of the service type that contains that
                 message type.</xtce:LongDescription>
             </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/string1" name="message_logs">
+            </xtce:Parameter>
+
 
             <xtce:Parameter parameterTypeRef="/dt/message_subtype_ID" name="message_subtype_ID_TM">
             <xtce:LongDescription>A message subtype identifier that uniquely identifies that message
@@ -284,6 +288,22 @@
                         <xtce:ComparisonList>
                             <xtce:Comparison value="17" parameterRef="service_type_ID_TM" />
                             <xtce:Comparison value="2" parameterRef="message_subtype_ID_TM" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
+            <xtce:SequenceContainer name="log_messages">
+                <xtce:LongDescription> TM[128,128] is a request packet. It is used to request the transmission of a telemetry packet.
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="message_logs"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="packet_primary_header_TM">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
+                            <xtce:Comparison value="128" parameterRef="service_type_ID_TM" />
+                            <xtce:Comparison value="128" parameterRef="message_subtype_ID_TM" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
