@@ -163,7 +163,7 @@
                     <xtce:ParameterRefEntry parameterRef="periodic_generation_action_status_ST03"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="collection_interval_ST03"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="number_of_simply_commutated_parameters"></xtce:ParameterRefEntry>
-                    <xtce:ArrayParameterRefEntry parameterRef="/AcubeSAT/parameter_ID_ST03">
+                    <xtce:ArrayParameterRefEntry parameterRef="/OBC/parameter_ID_ST03">
                         <xtce:DimensionList>
                             <xtce:Size>
                                 <xtce:DynamicValue>
@@ -204,9 +204,9 @@
 
             <xtce:SequenceContainer name="Housekeeping1">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardYear" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardMonth" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardDay" />
+                    <xtce:ParameterRefEntry parameterRef="/OBC/onBoardYear" />
+                    <xtce:ParameterRefEntry parameterRef="/OBC/onBoardMonth" />
+                    <xtce:ParameterRefEntry parameterRef="/OBC/onBoardDay" />
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="TM_325">
                     <xtce:RestrictionCriteria>
@@ -226,7 +226,7 @@
                     <xtce:ParameterRefEntry parameterRef="start_time_ST04"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="end_time_ST04"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="N_ST04"></xtce:ParameterRefEntry>
-                    <xtce:ArrayParameterRefEntry parameterRef="/AcubeSAT/parameter_statistics_structure">
+                    <xtce:ArrayParameterRefEntry parameterRef="/OBC/parameter_statistics_structure">
                         <xtce:DimensionList>
                             <xtce:Size>
                                 <xtce:DynamicValue>
@@ -322,7 +322,6 @@
                         
                         <xtce:FixedValueEntry name="packet_data_length" binaryValue="0000" sizeInBits="16" />
                         <xtce:FixedValueEntry name="packet_sequence_count_or_packet_name" binaryValue="0000" sizeInBits="14" /> 
-                        <!-- <xtce:ArgumentRefEntry argumentRef="response_band" /> -->
                         <xtce:ArgumentRefEntry argumentRef="PUS_version_number" />
                         <xtce:ArgumentRefEntry argumentRef="aknowledgement_flags" />
                         <xtce:ArgumentRefEntry argumentRef="service_type_ID" />
@@ -345,6 +344,52 @@
                 <xtce:CommandContainer name="Header_TC">
                     <xtce:EntryList />
                     <xtce:BaseContainer containerRef="packet_primary_header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+ 
+
+            <xtce:MetaCommand name="insert_activity_into_time_based_schedule" abstract="true">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="N" />
+                    <xtce:Argument argumentTypeRef="/dt/release_time_calendar" name="release_time" />
+                    <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="PUS_version_number_of_time_scheduled"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="aknowledgement_flags_of_time_scheduled"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/service_type_ID_TC" name="service_type_ID_of_time_scheduled"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/message_subtype_ID_TC" name="message_subtype_ID_of_time_scheduled"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="source_ID_of_time_scheduled"></xtce:Argument>
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="insert_activity_into_time_based_schedule">
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="N" />
+                        <xtce:ArgumentRefEntry argumentRef="release_time" />
+                        <xtce:ArgumentRefEntry argumentRef="PUS_version_number_of_time_scheduled" />
+                        <xtce:ArgumentRefEntry argumentRef="aknowledgement_flags_of_time_scheduled" />
+                        <xtce:ArgumentRefEntry argumentRef="service_type_ID_of_time_scheduled" />
+                        <xtce:ArgumentRefEntry argumentRef="message_subtype_ID_of_time_scheduled" />
+                        <xtce:ArgumentRefEntry argumentRef="source_ID_of_time_scheduled" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="time_based_scheduled_are_you_alive_connection">
+                <xtce:BaseMetaCommand metaCommandRef="insert_activity_into_time_based_schedule">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID_of_time_scheduled" argumentValue="17" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="1" />
+                    <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
+                </xtce:ArgumentAssignmentList>
+            </xtce:BaseMetaCommand>
+                <xtce:CommandContainer name="time_based_scheduled_are_you_alive_connection">
+                    <xtce:EntryList>
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="insert_activity_into_time_based_schedule" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
@@ -456,23 +501,6 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="insert_activity_into_time_based_schedule">
-                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
-                    <xtce:ArgumentAssignmentList>
-                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
-                    </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/release_time_calendar" name="release_time" />
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="insert_activity_into_time_based_schedule">
-                    <xtce:EntryList>
-                        <xtce:ArgumentRefEntry argumentRef="release_time" />
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
 
             <xtce:MetaCommand name="are_you_alive_connection">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
