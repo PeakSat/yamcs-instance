@@ -38,7 +38,7 @@
                     <xtce:Enumeration value="12" label="ADCSuseUART" />
                     <xtce:Enumeration value="13" label="ADCSuseUART" />
                     <xtce:Enumeration value="5002" label="OBCMCUTemperature" />
-                    <xtce:Enumeration value="5003" label="OBCBootCounter" />
+                    <xtce:Enumeration value="5004" label="OBCBootCounter" />
                     <xtce:Enumeration value="5017" label="OBCSystick" />
                     <xtce:Enumeration value="1013" label="MagnetometerRawX" />
                     <xtce:Enumeration value="1014" label="MagnetometerRawY" />
