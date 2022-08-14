@@ -6,7 +6,6 @@
         
         <xtce:ParameterSet>
 
-
             <xtce:Parameter name="housekeeping_parameter_report_structure_ID_ST03" parameterTypeRef="/dt/uint8_t" />
             
             <xtce:Parameter name="parameter_ID_ST03" parameterTypeRef="/dt/IntegerArray" />
