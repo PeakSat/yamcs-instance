@@ -19,7 +19,14 @@
             <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardMinute"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardSecond"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="reportParametersUnusedStack"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="availableHeap"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="availableHeap"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="OBCuseRTT"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="OBCuseUART"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="OBCuseCAN"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="ADCSuseRTT"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="ADCSuseUART"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="ADCSuseCAN"></xtce:Parameter>    
+    
 
             <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="obcBootCounter"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/uint64_t" name="obcSysTick"></xtce:Parameter>    
