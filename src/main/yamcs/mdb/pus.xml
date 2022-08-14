@@ -163,7 +163,7 @@
                     <xtce:ParameterRefEntry parameterRef="periodic_generation_action_status_ST03"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="collection_interval_ST03"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="number_of_simply_commutated_parameters"></xtce:ParameterRefEntry>
-                    <xtce:ArrayParameterRefEntry parameterRef="/OBC/parameter_ID_ST03">
+                    <xtce:ArrayParameterRefEntry parameterRef="/AcubeSAT/parameter_ID_ST03">
                         <xtce:DimensionList>
                             <xtce:Size>
                                 <xtce:DynamicValue>
@@ -204,9 +204,9 @@
 
             <xtce:SequenceContainer name="Housekeeping1">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="/OBC/onBoardYear" />
-                    <xtce:ParameterRefEntry parameterRef="/OBC/onBoardMonth" />
-                    <xtce:ParameterRefEntry parameterRef="/OBC/onBoardDay" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardYear" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardMonth" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardDay" />
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="TM_325">
                     <xtce:RestrictionCriteria>
@@ -226,7 +226,7 @@
                     <xtce:ParameterRefEntry parameterRef="start_time_ST04"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="end_time_ST04"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="N_ST04"></xtce:ParameterRefEntry>
-                    <xtce:ArrayParameterRefEntry parameterRef="/OBC/parameter_statistics_structure">
+                    <xtce:ArrayParameterRefEntry parameterRef="/AcubeSAT/parameter_statistics_structure">
                         <xtce:DimensionList>
                             <xtce:Size>
                                 <xtce:DynamicValue>
