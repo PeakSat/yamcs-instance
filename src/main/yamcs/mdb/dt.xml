@@ -245,7 +245,7 @@
                         <DynamicValue>
                             <ParameterInstanceRef parameterRef="_yamcs_ignore" />
                         </DynamicValue>
-                        <TerminationChar>00</TerminationChar>
+                        <TerminationChar>0A</TerminationChar>
                     </Variable>
                 </StringDataEncoding>
             </StringParameterType>
