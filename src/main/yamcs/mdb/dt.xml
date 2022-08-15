@@ -338,7 +338,7 @@
             
             <xtce:AbsoluteTimeArgumentType name="release_time_calendar">
                 <xtce:Encoding offset="1577836800" scale="0.1">
-                    <xtce:IntegerDataEncoding sizeInBits="64" />
+                    <xtce:IntegerDataEncoding sizeInBits="32" />
                 </xtce:Encoding>
                 <xtce:ReferenceTime>
                     <xtce:Epoch>UNIX</xtce:Epoch>
