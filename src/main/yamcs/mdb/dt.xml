@@ -31,9 +31,25 @@
                     <xtce:Enumeration value="5" label="OnBoardSecond" />
                     <xtce:Enumeration value="6" label="ReportParametersUnusedStack" />
                     <xtce:Enumeration value="7" label="AvailableHeap" />
+                    <xtce:Enumeration value="8" label="OBCuseRTT" />
+                    <xtce:Enumeration value="9" label="OBCuseUART" />
+                    <xtce:Enumeration value="10" label="OBCuseCAN" />
+                    <xtce:Enumeration value="11" label="ADCSuseRTT" />
+                    <xtce:Enumeration value="12" label="ADCSuseUART" />
+                    <xtce:Enumeration value="5000" label="OBDHBoardTemperature1" />
+                    <xtce:Enumeration value="5001" label="OBDHBoardTemperature2" />
                     <xtce:Enumeration value="5002" label="OBCMCUTemperature" />
-                    <xtce:Enumeration value="5003" label="OBCBootCounter" />
+                    <xtce:Enumeration value="5004" label="OBCBootCounter" />
+                    <xtce:Enumeration value="5012" label="OBCOnBoardTime" />
+                    <xtce:Enumeration value="5014" label="OBCNANDcurrentlyUsedPartition" />
                     <xtce:Enumeration value="5017" label="OBCSystick" />
+                    <xtce:Enumeration value="5018" label="CANBusLoad1" />
+                    <xtce:Enumeration value="5019" label="CANBusLoad2" />
+                    <xtce:Enumeration value="5020" label="ActiveCAN" />
+                    <xtce:Enumeration value="5023" label="NANDLCLThreshold" />
+                    <xtce:Enumeration value="5024" label="MRAMLCLThreshold" />
+                    <xtce:Enumeration value="5025" label="OBCNANDOn" />
+                    <xtce:Enumeration value="5026" label="OBCMRAMOn" />
                     <xtce:Enumeration value="1013" label="MagnetometerRawX" />
                     <xtce:Enumeration value="1014" label="MagnetometerRawY" />
                     <xtce:Enumeration value="1015" label="MagnetometerRawZ" />
@@ -59,6 +75,11 @@
                     <xtce:Enumeration value="1189" label="GyroBiasX" />
                     <xtce:Enumeration value="1190" label="GyroBiasY" />
                     <xtce:Enumeration value="1191" label="GyroBiasZ" />
+                    <xtce:Enumeration value="1218" label="ADCSMCUTemperature" />
+                    <xtce:Enumeration value="1220" label="ADCSMCUBootCounter" />
+                    <xtce:Enumeration value="1221" label="ADCSMCUOnBoardTime" />
+                    <xtce:Enumeration value="1224" label="ADCSSystick" />
+
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
@@ -78,10 +99,17 @@
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
-            <xtce:IntegerParameterType name="application_process_ID">
+            <xtce:EnumeratedParameterType name="application_process_ID">
                 <xtce:UnitSet></xtce:UnitSet>
-                <xtce:IntegerDataEncoding sizeInBits="11"></xtce:IntegerDataEncoding>
-            </xtce:IntegerParameterType>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="11"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="1" label="OBC" />
+                    <xtce:Enumeration value="2" label="COMMS" />
+                    <xtce:Enumeration value="3" label="ADCS" />
+                    <xtce:Enumeration value="4" label="SU" />
+                    <xtce:Enumeration value="5" label="GS" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedParameterType>
 
             <xtce:IntegerParameterType name="sequence_flags">
                 <xtce:UnitSet></xtce:UnitSet>
@@ -112,7 +140,6 @@
             </xtce:IntegerParameterType>
 
             <!-- the upper 2 need to be changed to enumerated -->
-
 
             <xtce:IntegerParameterType name="message_type_counter" signed="false">
                 <xtce:UnitSet></xtce:UnitSet>
@@ -194,6 +221,14 @@
                 <xtce:UnitSet />
                 <xtce:IntegerDataEncoding sizeInBits="1" />
             </xtce:BooleanParameterType>
+<xtce:AbsoluteTimeParameterType name="time_conv">
+                <xtce:Encoding offset="1577836800" scale="0.1">
+                    <xtce:IntegerDataEncoding sizeInBits="32" />
+                </xtce:Encoding>
+                <xtce:ReferenceTime>
+                    <xtce:Epoch>UNIX</xtce:Epoch>
+                </xtce:ReferenceTime>
+            </xtce:AbsoluteTimeParameterType>
 
             <xtce:AbsoluteTimeParameterType name="generation_time">
                 <xtce:Encoding offset="1577836800" scale="0.1">
@@ -249,17 +284,22 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-
-
             <xtce:IntegerArgumentType name="secondary_header_flag">
                 <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
-
-            <xtce:IntegerArgumentType name="application_process_ID">
+            
+            <xtce:EnumeratedArgumentType name="application_process_ID">
                 <xtce:UnitSet></xtce:UnitSet>
-                <xtce:IntegerDataEncoding sizeInBits="11"></xtce:IntegerDataEncoding>
-            </xtce:IntegerArgumentType>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="11"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="1" label="OBC" />
+                    <xtce:Enumeration value="2" label="COMMS" />
+                    <xtce:Enumeration value="3" label="ADCS" />
+                    <xtce:Enumeration value="4" label="SU" />
+                    <xtce:Enumeration value="5" label="GS" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedArgumentType>
 
             <xtce:IntegerArgumentType name="sequence_flags">
                 <xtce:UnitSet></xtce:UnitSet>
@@ -305,6 +345,12 @@
                         <xtce:Enumeration value="5" label="OnBoardSecond" />
                         <xtce:Enumeration value="6" label="ReportParametersUnusedStack" />
                         <xtce:Enumeration value="7" label="AvailableHeap" />
+                        <xtce:Enumeration value="8" label="OBCuseRTT" />
+                        <xtce:Enumeration value="9" label="OBCuseUART" />
+                        <xtce:Enumeration value="10" label="OBCuseCAN" />
+                        <xtce:Enumeration value="11" label="ADCSuseRTT" />
+                        <xtce:Enumeration value="12" label="ADCSuseUART" />
+                        <xtce:Enumeration value="13" label="ADCSuseUART" />
                         <xtce:Enumeration value="5002" label="OBCMCUTemperature" />
                         <xtce:Enumeration value="5003" label="OBCBootCounter" />
                         <xtce:Enumeration value="5017" label="OBCSystick" />
