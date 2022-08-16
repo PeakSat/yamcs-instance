@@ -19,18 +19,20 @@
             <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardSecond"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="reportParametersUnusedStack"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="availableHeap"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="OBCuseRTT"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="OBCuseUART"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="OBCuseCAN"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="ADCSuseRTT"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="ADCSuseUART"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="ADCSuseCAN"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="obcUseRTT"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="obcUseUART"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="obcUseCAN"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="adcsUseRTT"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="adcsUseUART"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="adcsUseCAN"></xtce:Parameter>    
     
 
             <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="obcBootCounter"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/uint64_t" name="obcSysTick"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="mcuTemperature"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcBoardTemperature1"></xtce:Parameter>   
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcMCUTemperature"></xtce:Parameter>   
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="obdhBoardTemperature1"></xtce:Parameter>   
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="obdhBoardTemperature2"></xtce:Parameter>   
 
             <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerRawX"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerRawY"></xtce:Parameter> 
@@ -54,6 +56,12 @@
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasX"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasY"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasZ"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="adcsMCUTemperature"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="adcsMCUOnBoardTime"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint64_t" name="adcsSystick"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="adcsBootCounter"></xtce:Parameter>
+
+
         </xtce:ParameterSet>
     </xtce:TelemetryMetaData>
 
