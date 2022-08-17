@@ -10,7 +10,7 @@ from time import sleep
 def send_tm(simulator):
     tm_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-    with io.open('packets2.raw', 'rb') as f:
+    with io.open('packets.raw', 'rb') as f:
         simulator.tm_counter = 1
         header = bytearray(6)
         while f.readinto(header) == 6:
