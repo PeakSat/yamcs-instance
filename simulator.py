@@ -14,9 +14,9 @@ def send_tm(simulator):
         simulator.tm_counter = 1
         header = bytearray(6)
         while f.readinto(header) == 6:
-            #(len,) = unpack_from('>H', header, 4)
+            (len,) = unpack_from('>H', header, 4)
 
-            packet = bytearray(19)
+            packet = bytearray(len+6)
             f.seek(-6, io.SEEK_CUR)
             f.readinto(packet)
 
