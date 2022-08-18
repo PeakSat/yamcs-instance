@@ -22,7 +22,19 @@ services:
         warmupTime: 60
 
 dataLinks:
-  - name: udp-in
+  - name: CAN-bus
+    class: org.yamcs.tctm.UdpTmDataLink
+    stream: tm_realtime
+    port: 10017
+    packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
+
+  - name: ADCS-UART
+    class: org.yamcs.tctm.UdpTmDataLink
+    stream: tm_realtime
+    port: 10016
+    packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
+
+  - name: OBS-UART
     class: org.yamcs.tctm.UdpTmDataLink
     stream: tm_realtime
     port: 10015
