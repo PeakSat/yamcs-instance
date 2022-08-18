@@ -52,7 +52,7 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
 
         byte[] bytes = packet.getPacket();
 
-        if (bytes.length < 6) { // Expect at least the length of CCSDS primary header
+        if (bytes.length < 11) { // Expect at least the length of CCSDS primary and secondary header
             eventProducer.sendWarning("SHORT_PACKET",
                     "Short packet received, length: " + bytes.length + "; minimum required length is 6 bytes.");
             // If we return null, the packet is dropped.
@@ -102,7 +102,7 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
         LOGGER.info("Secondary_header:" + String.valueOf(secheader));
         LOGGER.info("Buffer:" + String.valueOf(apidseqcount));
         LOGGER.info("Time:" + String.valueOf(time));
-        // LOGGER.info("Packet data length:" + String.valueOf(packetlength));
+        //LOGGER.info("Packet data length:" + String.valueOf(packetlength));
         // // Our custom packets don't include a secundary header with time information.
         // Use Yamcs-local time instead.
         packet.setGenerationTime(CUCtoUnix(time));
