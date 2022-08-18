@@ -34,7 +34,7 @@ dataLinks:
     port: 10016
     packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
 
-  - name: OBS-UART
+  - name: OBC-UART
     class: org.yamcs.tctm.UdpTmDataLink
     stream: tm_realtime
     port: 10015
