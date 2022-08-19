@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xtce:SpaceSystem name="pus-verification" xmlns:xtce="http://www.omg.org/space/xtce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/space/xtce /home/konkapo/OPS/xtcetools/src/main/resources/org/omg/space/xtce/schema/SpaceSystemV1.2-27Feb2014-mods.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
+<xtce:SpaceSystem name="pus-verification" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
     <xtce:TelemetryMetaData>
     
