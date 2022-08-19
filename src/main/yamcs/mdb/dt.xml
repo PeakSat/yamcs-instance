@@ -483,10 +483,6 @@
 
 
     </xtce:ArgumentTypeSet>
-    <xtce:MetaCommandSet>
-        <xtce:MetaCommand name=""></xtce:MetaCommand>
-
-    </xtce:MetaCommandSet>
 
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>
