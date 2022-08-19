@@ -221,14 +221,6 @@
                 <xtce:UnitSet />
                 <xtce:IntegerDataEncoding sizeInBits="1" />
             </xtce:BooleanParameterType>
-<xtce:AbsoluteTimeParameterType name="time_conv">
-                <xtce:Encoding offset="1577836800" scale="0.1">
-                    <xtce:IntegerDataEncoding sizeInBits="32" />
-                </xtce:Encoding>
-                <xtce:ReferenceTime>
-                    <xtce:Epoch>UNIX</xtce:Epoch>
-                </xtce:ReferenceTime>
-            </xtce:AbsoluteTimeParameterType>
 
             <xtce:AbsoluteTimeParameterType name="generation_time">
                 <xtce:Encoding offset="1577836800" scale="0.1">
