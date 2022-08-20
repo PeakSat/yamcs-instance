@@ -1,6 +1,7 @@
 import binascii
 import io
 import socket
+import random
 import sys
 from struct import unpack_from
 from threading import Thread
@@ -14,14 +15,26 @@ def send_tm(simulator):
         simulator.tm_counter = 1
         header = bytearray(6)
         while f.readinto(header) == 6:
-            #(len,) = unpack_from('>H', header, 4)
+            (len,) = unpack_from('>H', header, 4)
 
-            packet = bytearray(19)
+            packet = bytearray(len+6)
             f.seek(-6, io.SEEK_CUR)
             f.readinto(packet)
 
-            tm_socket.sendto(packet, ('127.0.0.1', 10015))
-            simulator.tm_counter += 1
+            n = random.randint(0,2)
+            #OBC UART
+            if n == 0: 
+                tm_socket.sendto(packet, ('127.0.0.1', 10015))
+                simulator.tm_counter += 1
+            #ADSC UART
+            elif n == 1:
+                tm_socket.sendto(packet, ('127.0.0.1', 10016))
+                simulator.tm_counter += 1
+            #CAN BUS
+            else :
+                tm_socket.sendto(packet, ('127.0.0.1', 10017))
+                simulator.tm_counter += 1
+
 
             sleep(1)
 
