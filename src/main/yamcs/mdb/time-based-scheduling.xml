@@ -43,7 +43,6 @@
                     <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="1" />
                     <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
                     <xtce:ArgumentAssignment argumentName="N" argumentValue="1" />
-                    <xtce:ArgumentAssignment argumentName="source_ID" argumentValue="5" />
                     <xtce:ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
                     <xtce:ArgumentAssignment argumentName="aknowledgement_flags_of_time_scheduled" argumentValue="0" />
                 </xtce:ArgumentAssignmentList>
@@ -65,7 +64,6 @@
                     <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="1" />
                     <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
                     <xtce:ArgumentAssignment argumentName="N" argumentValue="1" />
-                    <xtce:ArgumentAssignment argumentName="source_ID" argumentValue="5" />
                     <xtce:ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
                     <xtce:ArgumentAssignment argumentName="aknowledgement_flags_of_time_scheduled" argumentValue="0" />
                 </xtce:ArgumentAssignmentList>
@@ -115,7 +113,6 @@
                     <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="9" />
                     <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
                     <xtce:ArgumentAssignment argumentName="N" argumentValue="1" />
-                    <xtce:ArgumentAssignment argumentName="source_ID" argumentValue="5" />
                     <xtce:ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
                     <xtce:ArgumentAssignment argumentName="aknowledgement_flags_of_time_scheduled" argumentValue="0" />
                 </xtce:ArgumentAssignmentList>
@@ -146,7 +143,6 @@
                     <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="27" />
                     <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
                     <xtce:ArgumentAssignment argumentName="N" argumentValue="1" />
-                    <xtce:ArgumentAssignment argumentName="source_ID" argumentValue="5" />
                     <xtce:ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
                     <xtce:ArgumentAssignment argumentName="aknowledgement_flags_of_time_scheduled" argumentValue="0" />
                 </xtce:ArgumentAssignmentList>
@@ -177,7 +173,6 @@
                     <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="1" />
                     <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
                     <xtce:ArgumentAssignment argumentName="N" argumentValue="1" />
-                    <xtce:ArgumentAssignment argumentName="source_ID" argumentValue="5" />
                     <xtce:ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
                     <xtce:ArgumentAssignment argumentName="aknowledgement_flags_of_time_scheduled" argumentValue="0" />
                 </xtce:ArgumentAssignmentList>
@@ -223,7 +218,6 @@
                     <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="1" />
                     <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
                     <xtce:ArgumentAssignment argumentName="N" argumentValue="1" />
-                    <xtce:ArgumentAssignment argumentName="source_ID" argumentValue="5" />
                     <xtce:ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
                     <xtce:ArgumentAssignment argumentName="aknowledgement_flags_of_time_scheduled" argumentValue="0" />
                 </xtce:ArgumentAssignmentList>
