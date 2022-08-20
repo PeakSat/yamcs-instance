@@ -38,11 +38,6 @@
                     the application process addressed by the related report</xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter name="time2" parameterTypeRef="/dt/time_conv">
-                <xtce:LongDescription>Each application process shall set the time field of each telemetry packet
-                    it generates to the time tag of the related report.</xtce:LongDescription>
-            </xtce:Parameter>
-
             <xtce:Parameter name="time" parameterTypeRef="/dt/generation_time">
                 <xtce:LongDescription>Each application process shall set the time field of each telemetry packet
                     it generates to the time tag of the related report.</xtce:LongDescription>
