@@ -369,6 +369,7 @@
                     <xtce:BaseContainer containerRef="packet_primary_header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
+ 
 
             <xtce:MetaCommand name="create_a_parameter_report_structure">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
@@ -478,23 +479,6 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="insert_activity_into_time_based_schedule">
-                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
-                    <xtce:ArgumentAssignmentList>
-                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
-                    </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/release_time_calendar" name="release_time" />
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="insert_activity_into_time_based_schedule">
-                    <xtce:EntryList>
-                        <xtce:ArgumentRefEntry argumentRef="release_time" />
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
 
             <xtce:MetaCommand name="are_you_alive_connection">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
