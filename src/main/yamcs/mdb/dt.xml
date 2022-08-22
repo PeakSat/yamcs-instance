@@ -102,6 +102,15 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
+            <xtce:EnumeratedParameterType name="activeCAN_ID">
+                <xtce:UnitSet></xtce:UnitSet>
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="1" label="CANbus1" />
+                    <xtce:Enumeration value="2" label="CANbus2" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedParameterType>
+
 
             <xtce:IntegerParameterType name="secondary_header_flag">
                 <xtce:UnitSet></xtce:UnitSet>

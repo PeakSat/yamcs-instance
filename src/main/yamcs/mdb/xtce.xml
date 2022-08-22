@@ -39,7 +39,7 @@
             <xtce:Parameter parameterTypeRef="/dt/partition_ID" name="obcNANDCurrentlyUsedMemoryPartition"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="CANbus1Load"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="CANbus2Load"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/application_process_ID" name="activeCAN"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/activeCAN_ID" name="activeCAN"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcNANDFLASHLCLThreshold"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcMRAMLCLThreshold"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcNANDFLASHON"></xtce:Parameter>
