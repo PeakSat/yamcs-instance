@@ -56,6 +56,9 @@
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeX"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeY"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeZ"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerSignX"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerSignY"></xtce:Parameter> 
+            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerSignZ"></xtce:Parameter> 
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeXTemperature"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeYTemperature"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeZTemperature"></xtce:Parameter>
