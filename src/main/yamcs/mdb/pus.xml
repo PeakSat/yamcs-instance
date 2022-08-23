@@ -218,6 +218,10 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature1" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature2" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsSystick" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature1" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature2" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDCurrentlyUsedMemoryPartition" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMCUSysTick" />
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="TM_3_25">
                     <xtce:RestrictionCriteria>
@@ -239,6 +243,10 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature1" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature2" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsSystick" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature1" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature2" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDCurrentlyUsedMemoryPartition" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMCUSysTick" />
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="TM_3_25">
                     <xtce:RestrictionCriteria>
@@ -268,12 +276,29 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroSignX" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroSignY" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroSignZ" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerSignX" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerSignY" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerSignZ" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroBiasX" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroBiasY" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroBiasZ" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsMCUTemperature" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsMCUOnBoardTime" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBootCounter" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature1" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature2" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMCUTemperature" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMCUBootCounter" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcOnBoardTime" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDCurrentlyUsedMemoryPartition" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMCUSysTick" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/CANbus1Load" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/CANbus2Load" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/activeCAN" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDFLASHLCLThreshold" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMRAMLCLThreshold" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDFLASHON" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMRAMON" />
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="TM_3_25">
                     <xtce:RestrictionCriteria>
