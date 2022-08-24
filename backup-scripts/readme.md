@@ -15,7 +15,7 @@ We can change some script parameters such as the backup time interval in seconds
 
 ### Gdrive Setup
 
-- `gdrive` manages the files using **our** account, so in order to set it up we first. The easiest way is running `./gdrive about` . You may be concerned giving access to a weirdly-named project, but that's how the developer named it (see [this](https://github.com/prasmussen/gdrive#news)).
+- `gdrive` manages the files using **our** account, so in order to set it up we first. The easiest way is running `./gdrive about` . You may be concerned giving access to a weirdly-named project, but that's how the developer named it (see [this](https://github.com/prasmussen/gdrive#news)). Currently the files are uploaded to a **stavrenas'** personal folder, so you must create an empty folder in your drive, copy the id and paste it in the `backup.sh` script.
   - The first time gdrive is launched (i.e. run gdrive about in your terminal not just gdrive), you will be prompted for a verification code. The code is obtained by following the printed url and authenticating with the google account for the drive you want access to. This will create a token file inside the .gdrive folder in your home directory. Note that anyone with access to this file will also have access to your google drive.
 
 ### Instructions:
