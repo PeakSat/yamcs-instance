@@ -22,6 +22,11 @@ We can change some script parameters such as the backup time interval in seconds
 
 If the gdrive setup is done correctly, each local backup will be mirrored to the Google Drive folder.
 
+#### `backup.sh`
+- Simply run `sh backup.sh` in the directory yamcs-instance/backup-scripts
+
+#### yamcsadmin 
+
 - Create a new **hot** backup at the backups directory : ` ./../target/bundle-tmp/bin/yamcsadmin backup create --backup-dir {BACKUP-PATH} --host localhost:9999 myproject` (works but does not display a confirmation message).
 - Create a new **cold** backup (instance not running) at the backups directory: `./../target/bundle-tmp/bin/yamcsadmin backup create --backup-dir {BACKUP-PATH} --data-dir {YAMCS_FOLDER}/target/yamcs/yamcs-data myproject`
 - **List** all backups: `./../target/bundle-tmp/bin/yamcsadmin backup list --backup-dir {BACKUP-PATH}`

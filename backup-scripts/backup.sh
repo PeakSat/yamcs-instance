@@ -3,7 +3,7 @@
 # Time interval in seconds
 time=30s
 
-# Backup path (the root directory is  /target/bundle-tmp)
+# Backup path (the root directory is /target/yamcs)
 path=../../backups
 
 # The Google Drive folder 
