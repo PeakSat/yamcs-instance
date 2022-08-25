@@ -35,4 +35,4 @@ If the gdrive setup is done correctly, each local backup will be mirrored to the
 
 ## Notes
 
-- The `{BACKUP_PATH}` is the relative path from the root folder yamcs-instance/target/bundle-tmp, so if the backups folder is in `yamcs-instance/backups`, the `{BACKUP_PATH}` becomes ` ../../backups`
+- The `{BACKUP_PATH}` is the relative path from the root folder yamcs-instance/target/yamcs, so if the backups folder is in `yamcs-instance/backups`, the `{BACKUP_PATH}` becomes ` ../../backups`

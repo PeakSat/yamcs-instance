@@ -7,7 +7,7 @@ time=30s
 path=../../backups
 
 # The Google Drive folder 
-folder_id=1Zwv-mxNNcUo-apVOaOC3pGpBD5L-x_Ci
+folder_id=1MQDNgPfBtXBGCVxOcK3GrmajePFCZewy
 
 # run the about command in order to ensure setup has been completed 
 ./gdrive about
