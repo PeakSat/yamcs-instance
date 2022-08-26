@@ -5,12 +5,10 @@
         <xtce:ParameterTypeSet>
 
             <xtce:IntegerParameterType name="packet_version_number">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
             <xtce:EnumeratedParameterType name="packet_type">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1" label="TC" />
@@ -20,7 +18,6 @@
 
 
             <xtce:EnumeratedParameterType name="parameter_ID">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="OnBoardYear" />
@@ -84,7 +81,6 @@
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="structure_ID">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="0" />
@@ -94,7 +90,6 @@
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="partition_ID">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1" label="Main" />
@@ -103,7 +98,6 @@
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="activeCAN_ID">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1" label="CANbus1" />
@@ -113,12 +107,10 @@
 
 
             <xtce:IntegerParameterType name="secondary_header_flag">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
             <xtce:EnumeratedParameterType name="application_process_ID">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="11"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1" label="OBC" />
@@ -130,12 +122,10 @@
             </xtce:EnumeratedParameterType>
 
             <xtce:IntegerParameterType name="sequence_flags">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
             
             <xtce:IntegerParameterType name="packet_sequence_count_or_packet_name">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="14"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
@@ -148,25 +138,21 @@
             <!-- secondary header TM-->
 
             <xtce:IntegerParameterType name="service_type_ID">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="message_subtype_ID">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
             <!-- the upper 2 need to be changed to enumerated -->
 
             <xtce:IntegerParameterType name="message_type_counter" signed="false">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
 
             <xtce:EnumeratedParameterType name="response_band">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="TC" />
@@ -175,68 +161,55 @@
             </xtce:EnumeratedParameterType>
 
             <xtce:IntegerParameterType name="aknowledgement_flags">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="source_data">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
 
             <xtce:IntegerParameterType name="spare">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="packet_error_control">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="code">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="data">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="int8_t" signed="true">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="uint8_t" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="uint16_t" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="uint32_t" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="uint64_t" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="64" />
             </xtce:IntegerParameterType>
 
             <xtce:FloatParameterType name="float_t">
-                <xtce:UnitSet />
                 <xtce:FloatDataEncoding sizeInBits="32" />
             </xtce:FloatParameterType>
 
             <xtce:BooleanParameterType name="bool_t">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding sizeInBits="1" />
             </xtce:BooleanParameterType>
 
@@ -293,12 +266,10 @@
         <xtce:ArgumentTypeSet>
 
             <xtce:IntegerArgumentType name="packet_version_number">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="packet_type">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1" label="TC" />
@@ -307,12 +278,10 @@
             </xtce:EnumeratedArgumentType>
 
             <xtce:IntegerArgumentType name="secondary_header_flag">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
             
             <xtce:EnumeratedArgumentType name="application_process_ID">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="11"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1" label="OBC" />
@@ -324,30 +293,25 @@
             </xtce:EnumeratedArgumentType>
 
             <xtce:IntegerArgumentType name="sequence_flags">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="acknowledgment_flags">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
             <!-- secondary header TM-->
 
             <xtce:IntegerArgumentType name="service_type_ID_TC">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="message_subtype_ID_TC">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
             <!-- secondary header TC -->
 
             <xtce:EnumeratedArgumentType name="response_band">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="UHF" />
@@ -356,7 +320,6 @@
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="parameter_ID">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="OnBoardYear" />
@@ -429,7 +392,6 @@
 
 
             <xtce:EnumeratedArgumentType name="structure_ID">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="0" />
@@ -440,68 +402,55 @@
     
             <!-- needs to be enumerated but i have questions -->
             <xtce:IntegerArgumentType name="aknowledgement_flags">
-                <xtce:UnitSet></xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
 
             <xtce:IntegerArgumentType name="collection_interval_ST03" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="housekeeping_parameter_report_structure_ID_ST03" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint16_t" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint32_t" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint64_t" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="64" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="N_ST03" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
             <xtce:BooleanArgumentType name="reset_flag_ST04" zeroStringValue="0" oneStringValue="1">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding sizeInBits="1" />
             </xtce:BooleanArgumentType>
 
             <xtce:IntegerArgumentType name="N_ST12" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="PMON_ID_ST12" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="are_you_alive_connection_ST17" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="N_ST20" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerArgumentType>
-
+            
             <xtce:IntegerArgumentType name="parameter_ID_ST20" signed="false">
-                <xtce:UnitSet />
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerArgumentType>
 
