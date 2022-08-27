@@ -1,38 +1,15 @@
-# Yamcs QuickStart
+# AcudeSAT Yamcs Instance
 
-This repository holds the source code to start a basic Yamcs application that monitors a simulated spacecraft in low earth orbit.
+This repository holds the source code of the Yamcs application used for the AcubeSAT mission.
 
-You may find it useful as a starting point for your own project.
+The primary Mission's Database is stored at Yamcs server, in which delivered data can be archived and then processed using the Yamcs web interface. The operator can also send TCs that are stored at the Yamcs database.
 
-
-## Prerequisites
-
-* Java 11
-* Maven 3.1+
-* Linux x64 or macOS
-
+Its structure is mainly following the XTCE encoding schema, with the exception of the constraints imposed by the Yamcs mission control software. 
+ 
 
 ## Running Yamcs
 
-Here are some commands to get things started:
-
-Compile this project:
-
-    mvn compile
-
-Start Yamcs on localhost:
-
-    mvn yamcs:run
-
-Same as yamcs:run, but allows a debugger to attach at port 7896:
-
-    mvn yamcs:debug
-    
-Delete all generated outputs and start over:
-
-    mvn clean
-
-This will also delete Yamcs data. Change the `dataDir` property in `yamcs.yaml` to another location on your file system if you don't want that.
+[Here](https://yamcs.org/getting-started) you can find prerequisites, basic commands and information to get things started with Yamcs.
 
 
 ## Telemetry
