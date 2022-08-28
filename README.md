@@ -102,7 +102,7 @@ The .xml files (located in yamcs-instance/src/main/yamcs/mdb) contain all the in
 
 ## Backup
 
-Backup scripts, which automate the uploading of the artifacts of the archive to a cloud service as backup, are included.
+Backup scripts, which automate the uploading of the artifacts of the archive to a cloud service as backup, have been implemented.
 
 There are some helper programms integrated in Yamcs, such as `yamcsadmin`. In order to install them, run:
 
