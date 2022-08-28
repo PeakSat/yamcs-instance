@@ -72,6 +72,20 @@ This project defines a few example CCSDS telecommands. The structure of the TC p
         * bits 16-23 contain the Message SubType ID
     * bits 24-39 contain the Source ID which corresponds to the application process user identifier of the application process that hosts the subservice user that generates that request
 
+## Data-Links
+
+In yamcs.myproject.yaml file (located in yamcs-instance/src/main/yamcs/etc), four Data-Links are implemented sending and receiving data in different ports.
+
+* Telemetry Data-Links 
+    * "CAN-bus", receiving data through port 10017
+    * "ADCS-UART", receiving data through port 10016
+    * "OBC-UART", receiving data through port 10015
+
+* Telecommanding Data-Link
+    * "udp-out", sending data at port 10025
+
+For now, simulator.py sends randomly packets to all three TM Data-Links, but they will, later, be used for the differentiation of the incoming packets based on their origin, as reflected by their names.
+
 ## Backup
 
 There are some helper programms integrated in Yamcs, such as `yamcsadmin`. In order to install them, run:
