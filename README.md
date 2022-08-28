@@ -90,6 +90,16 @@ In yamcs.myproject.yaml file (located in yamcs-instance/src/main/yamcs/etc), fou
 
 For now, simulator.py sends randomly packets to all three TM Data-Links, but they will, later, be used for the differentiation of the incoming packets based on their origin, as reflected by their names.
 
+## Mission Database
+
+The Mission Database describes the telemetry and commands that are processed by Yamcs. It tells Yamcs how to decode packets or how to encode telecommands. 
+
+The .xml files (located in yamcs-instance/src/main/yamcs/mdb) contain all the information regarding the parameters, the contianers and the commands used in AcubeSAT Yamcs Instance.
+
+* The dt.xml file contains all **ParameterTypes** for Telemetry and **ArgumentTypes** for Telecommanding.
+
+* The rest of the .xml files are used to define parameters, containers and commands for the mission. The .xml file in which a paremeter or container or command is defined, reflects ...
+
 ## Backup
 
 Backup scripts, which automate the uploading of the artifacts of the archive to a cloud service as backup, are included.
@@ -104,8 +114,3 @@ The backup scripts are in the `yamcs-instance/backup-scripts` directory. After n
 
 The backups are instance-wide, meaning *everything* is saved; parammeters, commands, alerts, logs, etc. These files are saved both locally, at a specified directory (in the backup.sh script) and online at the Google Drive folder of the account `yamcs.backup.acubesat@gmail.com`.
 
-## Bundling
-
-Running through Maven is useful during development, but it is not recommended for production environments. Instead bundle up your Yamcs application in a tar.gz file:
-
-    mvn package
