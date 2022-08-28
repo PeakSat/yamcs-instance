@@ -2,9 +2,11 @@
 
 This repository holds the source code of the Yamcs application used for the AcubeSAT mission.
 
-The primary Mission's Database is stored at Yamcs server, in which delivered data can be archived and then processed using the Yamcs web interface. The operator can also send TCs that are stored at the Yamcs database.
+The primary **Mission's Database** is stored at Yamcs server, in which **Telemetry data** can be archived and then processed using the Yamcs web interface. The operator can also send **Telecommands** that are stored at the Yamcs database.
 
-Its structure is mainly following the XTCE encoding schema, with the exception of the constraints imposed by the Yamcs mission control software.
+Yamcs includes a web interface which provides quick access and control over many of its features. The web interface runs on port 8090 and integrates with the security system of Yamcs.
+
+The application's structure is mainly following the XTCE encoding schema, with the exception of the constraints imposed by the Yamcs mission control software.
 
 
 ## Running Yamcs
@@ -28,25 +30,25 @@ To start pushing CCSDS packets into Yamcs, run the included Python script:
 This script opens the packets.raw file and sends packets at 1 Hz over UDP to Yamcs. The structure of the TM packets complies with the CCSDS Space Packet Protocol, consisting of a 6-byte primary header, a 10-byte secondary header and the data field.
 
 * Primary Header
-    * bits 0-2 contain the Packet Version Number (set to '000')
-    * bits 3-15 contain the Packet Identification Field
-        * bit 3 contains the Packet Type ('0' for TMs and '1' for TCs)
-        * bit 4 contains the Secondary Header Flag which indicates the presence or absence of the packet secondary header (set to '1' as all (with the exception of CPDU command packets) packets have a secondary header) 
-        * bits 5-15 contain the Application Process ID which, uniquely, identifies the on-board application process that is source of the TM packet/ destination of the TC packet (OBC, COMMS, ADCS, SU, GS)
-    * bits 16-31 contain the Packet Sequence Control Field
-        * bits 16-17 contain the Sequence Flags (set to'11' to indicate a stand-alone packet. All telemetry packets and telecommand packets defined within this Standard are stand alone packets)
-        * bits 18-31 contain the Packet Sequence Count or Packet Name (For TM packets it is incremented by 1 whenever the sourrce application process releases a packet.The telecommand packets carry either a packet sequence count or a packet name to identify them within the same communication session. For the purpose of this Standard, the telecommand packet sequence count or packet name field carries an identifier that, if used in combination with the source identifier, can uniquely identify the telecommand packet.)
-    * bits 32-47 contain the Packet Data Length which is equal to the number of octets contained within the packet data field. The length of the entire packet, including the packet primary header, is 6 octets more than the length of the packet data field.
+    * bits 0-2 contain the **Packet Version Number** (set to '000')
+    * bits 3-15 contain the **Packet Identification Field**
+        * bit 3 contains the **Packet Type** ('0' for TMs and '1' for TCs)
+        * bit 4 contains the **Secondary Header Flag** which indicates the presence or absence of the packet secondary header (set to '1' as all (with the exception of CPDU command packets) packets have a secondary header) 
+        * bits 5-15 contain the **Application Process ID** which, uniquely, identifies the on-board application process that is source of the TM packet/ destination of the TC packet (OBC, COMMS, ADCS, SU, GS)
+    * bits 16-31 contain the **Packet Sequence Control Field**
+        * bits 16-17 contain the **Sequence Flags** (set to'11' to indicate a stand-alone packet. All telemetry packets and telecommand packets defined within this Standard are stand alone packets)
+        * bits 18-31 contain the **Packet Sequence Count or Packet Name** (For TM packets it is incremented by 1 whenever the sourrce application process releases a packet.The telecommand packets carry either a packet sequence count or a packet name to identify them within the same communication session. For the purpose of this Standard, the telecommand packet sequence count or packet name field carries an identifier that, if used in combination with the source identifier, can uniquely identify the telecommand packet.)
+    * bits 32-47 contain the **Packet Data Length** which is equal to the number of octets contained within the packet data field. The length of the entire packet, including the packet primary header, is 6 octets more than the length of the packet data field.
 
 * Secondary Header
-    * bits 0-3 contain the TM Packet PUS Version Number which reflects the different versions of this Standard
-    * bits 4-7 contain the Spacecraft Time Reference Status which is the status of the on-board time reference used when time tagging that telemetry packet.
-    * bits 8-23 contain the Message Type identifier of a specific report
-        * bits 8-15 contain the Service Type ID
-        * bits 16-23 contain the Message SubType ID
-    * bits 24-31 contain the Type Counter each application process sets the message type counter of the related telemetry packet to the value of the related counter.
-    * bits 32-47 contain the Destination ID, meaning the application process user identifier of the application process addressed by the related report.
-    * bits 48-79 contain the Absolute Time which represents the time passed since the 2020-01-01 epoch on 100ms intervals.
+    * bits 0-3 contain the **TM Packet PUS Version Number** which reflects the different versions of this Standard
+    * bits 4-7 contain the **Spacecraft Time Reference Status** which is the status of the on-board time reference used when time tagging that telemetry packet.
+    * bits 8-23 contain the **Message Type** identifier of a specific report
+        * bits 8-15 contain the **Service Type ID**
+        * bits 16-23 contain the **Message SubType ID**
+    * bits 24-31 contain the **Type Counter** each application process sets the message type counter of the related telemetry packet to the value of the related counter.
+    * bits 32-47 contain the **Destination ID**, meaning the application process user identifier of the application process addressed by the related report.
+    * bits 48-79 contain the **Absolute Time** which represents the time passed since the 2020-01-01 epoch on 100ms intervals.
 
 If there is a need to send specific packets, then [ecss-services](https://gitlab.com/acubesat/obc/ecss-services) is required. To install, run:
 
@@ -61,16 +63,18 @@ This project defines a few example CCSDS telecommands. The structure of the TC p
 * Primary Header (same as Telemetry)
 
 * Secondary Header
-    * bits 0-3 contain the TC Packet PUS Version Number which reflects the different versions of this Standard
-    * bits 4-7 contain the Acknowledgement Flags each of which is set by the operator for each TC and determines the type of acknowledgement flag to be sent
+    * bits 0-3 contain the **TC Packet PUS Version Number** which reflects the different versions of this Standard
+    * bits 4-7 contain the **Acknowledgement Flags** each of which is set by the operator for each TC and determines the type of acknowledgement flag to be sent
         * bit 4: acknowledges completion whether the execution of the TC was successful or not
         * bit 5: acknowledges the progress of execution
         * bit 6: acknowledges that execution has started 
         * bit 7: acknowledges that the corresponding packet has been accepted by the application process
-    * bits 8-23 contain the Message Type identifier of a specific report
-        * bits 8-15 contain the Service Type ID
-        * bits 16-23 contain the Message SubType ID
-    * bits 24-39 contain the Source ID which corresponds to the application process user identifier of the application process that hosts the subservice user that generates that request
+    * bits 8-23 contain the **Message Type** identifier of a specific report
+        * bits 8-15 contain the **Service Type ID**
+        * bits 16-23 contain the **Message SubType ID**
+    * bits 24-39 contain the **Source ID** which corresponds to the application process user identifier of the application process that hosts the subservice user that generates that request
+
+Telecommands can be sent through the "Commanding" section on Yamcs web interface.
 
 ## Data-Links
 
@@ -87,6 +91,8 @@ In yamcs.myproject.yaml file (located in yamcs-instance/src/main/yamcs/etc), fou
 For now, simulator.py sends randomly packets to all three TM Data-Links, but they will, later, be used for the differentiation of the incoming packets based on their origin, as reflected by their names.
 
 ## Backup
+
+Backup scripts, which automate the uploading of the artifacts of the archive to a cloud service as backup, are included.
 
 There are some helper programms integrated in Yamcs, such as `yamcsadmin`. In order to install them, run:
 
