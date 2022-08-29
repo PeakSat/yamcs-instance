@@ -2,7 +2,7 @@
 
 This repository holds the source code of the Yamcs application used for the AcubeSAT mission.
 
-The primary **Mission's Database** is stored at Yamcs server, in which **Telemetry data** can be archived and then processed using the Yamcs web interface. The operator can also send **Telecommands** that are stored at the Yamcs database.
+The primary **Mission's Database** is stored at Yamcs server, in which **Telemetry** data can be archived and then processed using the Yamcs web interface. The operator can also send **Telecommands** that are stored at the Yamcs database.
 
 Yamcs includes a web interface which provides quick access and control over many of its features. The web interface runs on port 8090 and integrates with the security system of Yamcs.
 
@@ -17,6 +17,8 @@ To simply start the main yamcs instance, run:
 
     mvn yamcs:run
 
+View the Yamcs web interface by visiting http://localhost:8090
+
 In order to start yamcs with JMX enabled (required for hot backups) the commmand is:
 
     mvn yamcs:run -Dyamcs.jvmArgs="-Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
@@ -27,7 +29,9 @@ To start pushing CCSDS packets into Yamcs, run the included Python script:
 
     python simulator.py
 
-This script opens the packets.raw file and sends packets at 1 Hz over UDP to Yamcs. The structure of the TM packets complies with the CCSDS Space Packet Protocol, consisting of a 6-byte primary header, a 10-byte secondary header and the data field.
+This script opens the packets.raw file and sends packets at 1 Hz over UDP to Yamcs. To see information regarding the incoming packets and updates of the values of the parameters go to the "Packets" and "Parameters" pages, in the Telemetry section, on Yamcs web interface. 
+
+The structure of the TM packets complies with the CCSDS Space Packet Protocol, consisting of a 6-byte primary header, a 10-byte secondary header and the data field.
 
 * Primary Header
     * bits 0-2 contain the **Packet Version Number** (set to '000')
@@ -78,7 +82,7 @@ Telecommands can be sent through the "Commanding" section on Yamcs web interface
 
 ## Data-Links
 
-In yamcs.myproject.yaml file (located in yamcs-instance/src/main/yamcs/etc), four Data-Links are implemented sending and receiving data in different ports.
+In yamcs.myproject.yaml file (located in yamcs-instance/src/main/yamcs/etc), four Data-Links are implemented sending and receiving data in different ports. Every time a packet gets sent or received, the count of the respective data-link is increased.
 
 * Telemetry Data-Links 
     * "CAN-bus", receiving data through port 10017
@@ -94,7 +98,7 @@ For now, simulator.py sends randomly packets to all three TM Data-Links, but the
 
 The Mission Database describes the telemetry and commands that are processed by Yamcs. It tells Yamcs how to decode packets or how to encode telecommands. 
 
-The .xml files (located in yamcs-instance/src/main/yamcs/mdb) contain all the information regarding the parameters, the contianers and the commands used in AcubeSAT Yamcs Instance.
+The .xml files (located in yamcs-instance/src/main/yamcs/mdb) contain all the information regarding the parameters, the containers and the commands used in AcubeSAT Yamcs Instance.
 
 * The dt.xml file contains all **ParameterTypes** for Telemetry and **ArgumentTypes** for Telecommanding.
 
