@@ -12,7 +12,7 @@ folder_id=1MQDNgPfBtXBGCVxOcK3GrmajePFCZewy
 # run the about command in order to ensure setup has been completed 
 ./gdrive about
 
-while [ : ]; do
+while : ; do
     # this is a hot backup, meaning yamcs-instance is still running
     ./../target/bundle-tmp/bin/yamcsadmin backup create --backup-dir $path --host localhost:9999 myproject
     echo "Backup complete. List backups with the command ./../target/bundle-tmp/bin/yamcsadmin backup list --backup-dir $path"
