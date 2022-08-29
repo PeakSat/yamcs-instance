@@ -103,11 +103,11 @@ The .xml files (located in yamcs-instance/src/main/yamcs/mdb) contain all the in
 * The dt.xml file contains all **ParameterTypes** for Telemetry and **ArgumentTypes** for Telecommanding.
 
 * The rest of the .xml files are used to define parameters, containers and commands for the mission. The .xml file in which a paremeter or container or command is defined, reflects its use. More specifically:
-    * pus.xml: contains parameters, containers and commands, which implement the principal services that offer great control over reading/writing parameters from the Ground Station. This control refers to accessing and modifying parameter values (ST[20] parameter management service), generating periodic reports containing parameter values (ST[03] housekeeping service) and receiving statistics for a large number of parameters (ST[04] parameter statistics reporting service).
-    * pus-not-used.xml: its elements are used for monitoring parameters (ST[12] on-board-monitoring service) 
-    * pus-verification.xml: contains parameters and containers used to transmit to the Ground Station information about the status of a request's acceptance verification (ST[01] request verification service)
-    * time-based-scheduling.xml: contains commands that will be scheduled to be executed later in the mission timeline (ST[11] time-based scheduling service)
-    * xtce.xml: contains the ADCS and OBC parameters that will be used during the Environmental Campaign. 
+    * **pus.xml**: contains parameters, containers and commands, which implement the principal services that offer great control over reading/writing parameters from the Ground Station. This control refers to accessing and modifying parameter values (ST[20] parameter management service), generating periodic reports containing parameter values (ST[03] housekeeping service) and receiving statistics for a large number of parameters (ST[04] parameter statistics reporting service).
+    * **pus-not-used.xml**: its elements are used for monitoring parameters (ST[12] on-board-monitoring service) 
+    * **pus-verification.xml**: contains parameters and containers used to transmit to the Ground Station information about the status of a request's acceptance verification (ST[01] request verification service)
+    * **time-based-scheduling.xml**: contains commands that will be scheduled to be executed later in the mission timeline (ST[11] time-based scheduling service)
+    * **xtce.xml**: contains the ADCS and OBC parameters that will be used during the Environmental Campaign. 
 
 ## Backup
 
