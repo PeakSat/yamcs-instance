@@ -31,28 +31,7 @@ To start pushing CCSDS packets into Yamcs, run the included Python script:
 
 This script opens the packets.raw file and sends packets at 1 Hz over UDP to Yamcs. To see information regarding the incoming packets and updates of the values of the parameters go to the "Packets" and "Parameters" pages, in the Telemetry section, on Yamcs web interface. 
 
-The structure of the TM packets complies with the CCSDS Space Packet Protocol, consisting of a 6-byte primary header, a 10-byte secondary header and the data field.
-
-* Primary Header
-    * bits 0-2 contain the **Packet Version Number** (set to '000')
-    * bits 3-15 contain the **Packet Identification Field**
-        * bit 3 contains the **Packet Type** ('0' for TMs and '1' for TCs)
-        * bit 4 contains the **Secondary Header Flag** which indicates the presence or absence of the packet secondary header (set to '1' as all (with the exception of CPDU command packets) packets have a secondary header) 
-        * bits 5-15 contain the **Application Process ID** which, uniquely, identifies the on-board application process that is source of the TM packet/ destination of the TC packet (OBC, COMMS, ADCS, SU, GS)
-    * bits 16-31 contain the **Packet Sequence Control Field**
-        * bits 16-17 contain the **Sequence Flags** (set to'11' to indicate a stand-alone packet. All telemetry packets and telecommand packets defined within this Standard are stand alone packets)
-        * bits 18-31 contain the **Packet Sequence Count or Packet Name** (For TM packets it is incremented by 1 whenever the sourrce application process releases a packet.The telecommand packets carry either a packet sequence count or a packet name to identify them within the same communication session. For the purpose of this Standard, the telecommand packet sequence count or packet name field carries an identifier that, if used in combination with the source identifier, can uniquely identify the telecommand packet.)
-    * bits 32-47 contain the **Packet Data Length** which is equal to the number of octets contained within the packet data field. The length of the entire packet, including the packet primary header, is 6 octets more than the length of the packet data field.
-
-* Secondary Header
-    * bits 0-3 contain the **TM Packet PUS Version Number** which reflects the different versions of this Standard
-    * bits 4-7 contain the **Spacecraft Time Reference Status** which is the status of the on-board time reference used when time tagging that telemetry packet.
-    * bits 8-23 contain the **Message Type** identifier of a specific report
-        * bits 8-15 contain the **Service Type ID**
-        * bits 16-23 contain the **Message SubType ID**
-    * bits 24-31 contain the **Type Counter** each application process sets the message type counter of the related telemetry packet to the value of the related counter.
-    * bits 32-47 contain the **Destination ID**, meaning the application process user identifier of the application process addressed by the related report.
-    * bits 48-79 contain the **Absolute Time** which represents the time passed since the 2020-01-01 epoch on 100ms intervals.
+The structure of the TM packets complies with the [CCSDS Space Packet Protocol](<A HREF="https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32">) and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard , consisting of a 6-byte primary header, a 10-byte secondary header and the data field.
 
 If there is a need to send specific packets, then [ecss-services](https://gitlab.com/acubesat/obc/ecss-services) is required. To install, run:
 
@@ -62,21 +41,7 @@ Currently, this functionality is implemented in the branches `OPS-Testing` and `
 
 ## Telecommanding
 
-This project defines a few example CCSDS telecommands. The structure of the TC packets complies with the CCSDS Space Packet Protocol, consisting of a 6-byte primary header, a 5-byte secondary header and the data field.
-
-* Primary Header (same as Telemetry)
-
-* Secondary Header
-    * bits 0-3 contain the **TC Packet PUS Version Number** which reflects the different versions of this Standard
-    * bits 4-7 contain the **Acknowledgement Flags** each of which is set by the operator for each TC and determines the type of acknowledgement flag to be sent
-        * bit 4: acknowledges completion whether the execution of the TC was successful or not
-        * bit 5: acknowledges the progress of execution
-        * bit 6: acknowledges that execution has started 
-        * bit 7: acknowledges that the corresponding packet has been accepted by the application process
-    * bits 8-23 contain the **Message Type** identifier of a specific report
-        * bits 8-15 contain the **Service Type ID**
-        * bits 16-23 contain the **Message SubType ID**
-    * bits 24-39 contain the **Source ID** which corresponds to the application process user identifier of the application process that hosts the subservice user that generates that request
+This project defines a few example CCSDS telecommands. The structure of the TC packets complies with the [CCSDS Space Packet Protocol](<A HREF="https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32">) and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard, consisting of a 6-byte primary header, a 5-byte secondary header and the data field.
 
 Telecommands can be sent through the "Commanding" section on Yamcs web interface.
 
