@@ -31,7 +31,7 @@ To start pushing CCSDS packets into Yamcs, run the included Python script:
 
 This script opens the packets.raw file and sends packets at 1 Hz over UDP to Yamcs. To see information regarding the incoming packets and updates of the values of the parameters go to the "Packets" and "Parameters" pages, in the Telemetry section, on Yamcs web interface. 
 
-The structure of the TM packets complies with the [CCSDS Space Packet Protocol]("https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32") and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard , consisting of a 6-byte primary header, a 10-byte secondary header and the data field.
+The structure of the TM packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32) and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard , consisting of a 6-byte primary header, a 10-byte secondary header and the data field.
 
 If there is a need to send specific packets, then [ecss-services](https://gitlab.com/acubesat/obc/ecss-services) is required. To install, run:
 
@@ -41,7 +41,7 @@ Currently, this functionality is implemented in the branches `OPS-Testing` and `
 
 ## Telecommanding
 
-This project defines a few example CCSDS telecommands. The structure of the TC packets complies with the [CCSDS Space Packet Protocol]("https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32") and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard, consisting of a 6-byte primary header, a 5-byte secondary header and the data field.
+This project defines a few example CCSDS telecommands. The structure of the TC packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32) and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard, consisting of a 6-byte primary header, a 5-byte secondary header and the data field.
 
 Telecommands can be sent through the "Commanding" section on Yamcs web interface.
 
