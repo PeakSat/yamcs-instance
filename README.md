@@ -1,35 +1,35 @@
-# AcudeSAT Yamcs Instance
+# AcudeSAT YAMCS Instance
 
-This repository holds the source code of the Yamcs application used for the AcubeSAT mission.
+This repository holds the source code of the YAMCS application used for the AcubeSAT mission.
 
-The primary **Mission's Database** is stored at Yamcs server, in which **Telemetry** data can be archived and then processed using the Yamcs web interface. The operator can also send **Telecommands** that are stored at the Yamcs database.
+The primary **Mission's Database** is stored at YAMCS server, in which **Telemetry** data can be archived and then processed using the YAMCS web interface. The operator can also send **Telecommands** that are stored at the YAMCS database.
 
-Yamcs includes a web interface which provides quick access and control over many of its features. The web interface runs on port 8090 and integrates with the security system of Yamcs.
+YAMCS includes a web interface which provides quick access and control over many of its features. The web interface runs on port 8090 and integrates with the security system of YAMCS.
 
-The application's structure is mainly following the XTCE encoding schema, with the exception of the constraints imposed by the Yamcs mission control software.
+The application's structure is mainly following the XTCE encoding schema, with the exception of the constraints imposed by the YAMCS mission control software.
 
 
-## Running Yamcs
+## Running YAMCS
 
-[Here](https://yamcs.org/getting-started) you can find prerequisites, basic commands and information to get things started with Yamcs.
+[Here](https://yamcs.org/getting-started) you can find prerequisites, basic commands and information to get things started with YAMCS.
 
-To simply start the main yamcs instance, run:
+To simply start the main YAMCS instance, run:
 
     mvn yamcs:run
 
-View the Yamcs web interface by visiting http://localhost:8090
+View the YAMCS web interface by visiting http://localhost:8090
 
-In order to start yamcs with JMX enabled (required for hot backups) the commmand is:
+In order to start YAMCS with JMX enabled (required for hot backups) the commmand is:
 
     mvn yamcs:run -Dyamcs.jvmArgs="-Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
 
 ## Telemetry
 
-To start pushing CCSDS packets into Yamcs, run the included Python script:
+To start pushing CCSDS packets into YAMCS, run the included Python script:
 
     python simulator.py
 
-This script opens the packets.raw file and sends packets at 1 Hz over UDP to Yamcs. To see information regarding the incoming packets and updates of the values of the parameters go to the "Packets" and "Parameters" pages, in the Telemetry section, on Yamcs web interface. 
+This script opens the packets.raw file and sends packets at 1 Hz over UDP to YAMCS. To see information regarding the incoming packets and updates of the values of the parameters go to the "Packets" and "Parameters" pages, in the Telemetry section, on YAMCS web interface. 
 
 The structure of the TM packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32) and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard , consisting of a 6-byte primary header, a 10-byte secondary header and the data field.
 
@@ -37,13 +37,13 @@ If there is a need to send specific packets, then [ecss-services](https://gitlab
 
     git clone https://gitlab.com/acubesat/obc/ecss-services.git --recurse-submodules
 
-Currently, this functionality is implemented in the branches `OPS-Testing` and `ops-ecss`. After modifying `main.cpp`, the generated packets will be sent to port 10015 that Yamcs listens to.
+Currently, this functionality is implemented in the branches `OPS-Testing` and `ops-ecss`. After modifying `main.cpp`, the generated packets will be sent to port 10015 that YAMCS listens to.
 
 ## Telecommanding
 
 This project defines a few example CCSDS telecommands. The structure of the TC packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32) and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard, consisting of a 6-byte primary header, a 5-byte secondary header and the data field.
 
-Telecommands can be sent through the "Commanding" section on Yamcs web interface.
+Telecommands can be sent through the "Commanding" section on YAMCS web interface.
 
 ## Data-Links
 
@@ -61,9 +61,9 @@ For now, simulator.py sends randomly packets to all three TM Data-Links, but the
 
 ## Mission Database
 
-The Mission Database describes the telemetry and commands that are processed by Yamcs. It tells Yamcs how to decode packets or how to encode telecommands. 
+The Mission Database describes the telemetry and commands that are processed by YAMCS. It tells YAMCS how to decode packets or how to encode telecommands. 
 
-The .xml files (located in yamcs-instance/src/main/yamcs/mdb) contain all the information regarding the parameters, the containers and the commands used in AcubeSAT Yamcs Instance.
+The .xml files (located in yamcs-instance/src/main/yamcs/mdb) contain all the information regarding the parameters, the containers and the commands used in AcubeSAT YAMCS Instance.
 
 * The dt.xml file contains all **ParameterTypes** for Telemetry and **ArgumentTypes** for Telecommanding.
 
@@ -78,13 +78,13 @@ The .xml files (located in yamcs-instance/src/main/yamcs/mdb) contain all the in
 
 Backup scripts, which automate the uploading of the artifacts of the archive to a cloud service as backup, have been implemented.
 
-There are some helper programms integrated in Yamcs, such as `yamcsadmin`. In order to install them, run:
+There are some helper programms integrated in YAMCS, such as `yamcsadmin`. In order to install them, run:
 
     mvn clean package
 
 This step is **required** for the backup scripts to work. After execution, these programms will be installed in the directory `yamcs-instance/target/bundle-tmp/bin`.
 
-The backup scripts are in the `yamcs-instance/backup-scripts` directory. After navigating to that folder, simply run `sh backup.sh` to initiate the script. In order for the script to work, JMX **must** be enabled (see Running Yamcs section).
+The backup scripts are in the `yamcs-instance/backup-scripts` directory. After navigating to that folder, simply run `sh backup.sh` to initiate the script. In order for the script to work, JMX **must** be enabled (see Running YAMCS section).
 
 The backups are instance-wide, meaning *everything* is saved; parameters, commands, alerts, logs, etc. These files are saved both locally, at a specified directory (in the backup.sh script) and online at the Google Drive folder of the account `yamcs.backup.acubesat@gmail.com`.
 
