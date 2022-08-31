@@ -53,4 +53,4 @@ Create a new **cold** backup (instance not running) at the backups directory:
 
 - The `{BACKUP_PATH}` is the relative path from the root folder yamcs-instance/target/yamcs, so if the backups folder is in `yamcs-instance/backups`, the `{BACKUP_PATH}` becomes ` ../../backups`
 
-- If you want to download the backup folder from Drive, it's best to use `./gdrive download {folder_id}` (you can find the folder_id in the `backup.sh` script). This is because when manually downloading the folder from the browser, some file extensions break and the backups become unusable.
+- If you want to download the backup folder from Drive, it's best to use `./gdrive download {folder_id} --recursive` (you can find the folder_id in the `backup.sh` script). This is because when manually downloading the folder from the browser, some file extensions break and the backups become unusable.
