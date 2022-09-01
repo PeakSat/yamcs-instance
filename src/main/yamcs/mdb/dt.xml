@@ -4,8 +4,32 @@
     <xtce:TelemetryMetaData>
         <xtce:ParameterTypeSet>
 
-            <xtce:IntegerParameterType name="packet_version_number">
+            <xtce:IntegerParameterType name="transfer_frame_version_number">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="spacecraft_ID">
+                <xtce:IntegerDataEncoding sizeInBits="10"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="virtual_channel_ID">
                 <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="flag">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="channel_frame_count">
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="segment_length_ID">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="first_header_pointer">
+                <xtce:IntegerDataEncoding sizeInBits="11"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
             <xtce:EnumeratedParameterType name="packet_type">
@@ -15,6 +39,10 @@
                     <xtce:Enumeration value="0" label="TM" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
+
+            <xtce:IntegerParameterType name="packet_version_number">
+                <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
 
 
             <xtce:EnumeratedParameterType name="parameter_ID">
