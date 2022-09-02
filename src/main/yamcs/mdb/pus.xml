@@ -225,33 +225,8 @@
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
-
-            <xtce:SequenceContainer name="Housekeeping_pass">
+            <xtce:SequenceContainer name="Housekeeping_OBC">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerFrequency" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerCycleCountX" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerCycleCountY" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerCycleCountZ" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerSelfTest" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeXTemperature" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeYTemperature" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeZTemperature" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature1" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature2" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerSignX" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerSignY" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerSignZ" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroSignX" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroSignY" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroSignZ" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroBiasX" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroBiasY" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroBiasZ" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsMCUTemperature" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsMCUOnBoardTime" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBootCounter" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsSystick" />
-
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature1" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature2" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMCUTemperature" />
@@ -270,7 +245,55 @@
                 <xtce:BaseContainer containerRef="TM_3_25">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
+                            <xtce:Comparison value="2" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
+            <xtce:SequenceContainer name="Housekeeping_ADCS">
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerFrequency" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerCycleCountX" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerCycleCountY" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerCycleCountZ" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerSelfTest" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeXTemperature" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeYTemperature" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeZTemperature" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature1" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature2" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsMCUTemperature" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBootCounter" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsMCUOnBoardTime" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsSystick" />
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="TM_3_25">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
                             <xtce:Comparison value="4" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
+
+            <xtce:SequenceContainer name="Housekeeping_ADCS_not_used">
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerSignX" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerSignY" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerSignZ" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroSignX" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroSignY" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroSignZ" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroBiasX" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroBiasY" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroBiasZ" />
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="TM_3_25">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
+                            <xtce:Comparison value="6" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
