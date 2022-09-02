@@ -207,6 +207,29 @@
                 </xtce:LongDescription>
             </xtce:Parameter>
 
+            <!-- transfer frame secondary packet header TM -->
+
+            <xtce:Parameter parameterTypeRef="/dt/transfer_frame_version_number" name="transfer_frame_secondary_header_version_number" initialValue="0">
+                <xtce:LongDescription>This sub-field indicates which of up to four Secondary Header versions is used. The present Recommended Standard 
+                recognizes only one version, which is Version 1.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/transfer_frame_secondary_header_length" name="transfer_frame_secondary_header_length">
+                <xtce:LongDescription>TThis sub-field shall contain the total length of the Transfer Frame Secondary Header in octets minus one, represented 
+                as a binary number. The Transfer Frame Secondary Header Length shall be static within the associated Master or Virtual Channel throughout a
+                Mission Phase. When a Secondary Header is present, this length may be used to compute the location of the start of the field following the 
+                Secondary Header. 
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/virtual_channel_ID" name="transfer_frame_secondary_header_data_field">
+                <xtce:LongDescription>The Transfer Frame Secondary Header Data Field shall contain the Transfer Frame Secondary Header data. The Transfer 
+                Frame Secondary Header Data Field shall be of fixed length within the associated Master or Virtual Channel throughout a Mission Phase.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+
         </xtce:ParameterSet>
 
 
@@ -443,6 +466,31 @@
                         <xtce:ArgumentRefEntry argumentRef="service_type_ID" />
                         <xtce:ArgumentRefEntry argumentRef="message_subtype_ID" />
                         <xtce:ArgumentRefEntry argumentRef="source_ID" />
+                    </xtce:EntryList>
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="transfer_frame_primary_header" abstract="true">
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/transfer_frame_version_number" name="transfer_frame_version_number"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/flag" name="bypass_flag"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/flag" name="control_command_flag"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/application_process_ID" name="reserved_spare"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/sapcecraft_ID" name="sapcecraft_ID"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/virtual_channel_ID_TC" name="virtual_channel_ID_TC"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/frame_length" name="frame_length"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/frame_sequence_number" name="frame_sequence_number"></xtce:Argument>
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="transfer_frame_primary_header_TC">
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="transfer_frame_version_number" />
+                        <xtce:ArgumentRefEntry argumentRef="bypass_flag" />
+                        <xtce:ArgumentRefEntry argumentRef="control_command_flag" />
+                        <xtce:FixedValueEntry name="reserved_spare" binaryValue="00" sizeInBits="2"/>
+                        <xtce:ArgumentRefEntry argumentRef="sapcecraft_ID" />
+                        <xtce:ArgumentRefEntry argumentRef="virtual_channel_ID_TC" />
+                        <xtce:ArgumentRefEntry argumentRef="frame_length" />
+                        <xtce:ArgumentRefEntry argumentRef="frame_sequence_number" />
                     </xtce:EntryList>
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
