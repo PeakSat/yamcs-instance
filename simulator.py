@@ -9,34 +9,32 @@ from time import sleep
 
 
 def send_tm(simulator):
-    tm_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    host='127.0.0.1'
+    port=10015
+    tm_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
+    tm_socket.bind((host,port))
+    tm_socket.listen()
+    print ('server listening')
+    clientconn, clientaddr=tm_socket.accept()
+    print ('\n','connection established with',clientaddr)
+  
     with io.open('packets.raw', 'rb') as f:
-        simulator.tm_counter = 1
+        simulator.tm_counter = 0
         header = bytearray(6)
         while f.readinto(header) == 6:
             (len,) = unpack_from('>H', header, 4)
-
             packet = bytearray(len+6)
+
             f.seek(-6, io.SEEK_CUR)
             f.readinto(packet)
-
-            n = random.randint(0,2)
-            #OBC UART
-            if n == 0: 
-                tm_socket.sendto(packet, ('127.0.0.1', 10015))
-                simulator.tm_counter += 1
-            #ADSC UART
-            elif n == 1:
-                tm_socket.sendto(packet, ('127.0.0.1', 10016))
-                simulator.tm_counter += 1
-            #CAN BUS
-            else :
-                tm_socket.sendto(packet, ('127.0.0.1', 10017))
-                simulator.tm_counter += 1
+            clientconn.send(packet)
+            simulator.tm_counter+=1
 
 
-            sleep(1)
+            sleep(10)
+        
+    clientconn.close()
 
 
 def receive_tc(simulator):
