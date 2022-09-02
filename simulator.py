@@ -15,7 +15,7 @@ def send_tm(simulator):
 
     tm_socket.bind((host,port))
     tm_socket.listen()
-    print ('server listening')
+    print ('\n','server listening')
     clientconn, clientaddr=tm_socket.accept()
     print ('\n','connection established with',clientaddr)
   
