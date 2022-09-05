@@ -266,16 +266,19 @@
                     <xtce:ParameterRefEntry parameterRef="packet_order_flag"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="segment_length_ID"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="first_header_pointer"></xtce:ParameterRefEntry>
-                </xtce:EntryList>
-            </xtce:SequenceContainer>
-
-            <xtce:SequenceContainer name="transfer_frame_secondary_header_TM">
-                <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_version_number"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_length"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_data_field"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
             </xtce:SequenceContainer>
+
+            <!-- <xtce:SequenceContainer name="transfer_frame_secondary_header_TM">
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_version_number"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_length"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_data_field"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+            </xtce:SequenceContainer>-->
 
 
             <xtce:SequenceContainer name="TM_3_10">
@@ -296,7 +299,7 @@
                         </xtce:DimensionList>
                     </xtce:ArrayParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="packet_primary_header_TM">
+                <xtce:BaseContainer containerRef="transfer_frame_primary_header_TM">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="3" parameterRef="service_type_ID_TM" />
