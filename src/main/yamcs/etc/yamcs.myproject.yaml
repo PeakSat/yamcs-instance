@@ -22,7 +22,21 @@ services:
         warmupTime: 60
 
 dataLinks:
-  
+  - name: CAN-bus
+    enableAtStartup: true
+    class: org.yamcs.tctm.TcpTmDataLink
+    stream: tm_realtime
+    host: localhost
+    port: 10017
+    packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
+
+  - name: ADCS-UART
+    enableAtStartup: true
+    class: org.yamcs.tctm.TcpTmDataLink
+    stream: tm_realtime
+    host: localhost
+    port: 10016
+    packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
 
   - name: OBC-UART
     enableAtStartup: true

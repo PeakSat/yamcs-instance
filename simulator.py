@@ -9,21 +9,45 @@ from time import sleep
 
 
 def send_tm(simulator):
-    host='localhost'
-    port=10015
-    tm_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    host10015='localhost'
+    port10015=10015
+    tm_socket_10015 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    tm_socket.bind((host,port))
-    tm_socket.listen(1)
-    print ('\n','server listening')
+    host10016='localhost'
+    port10016=10016
+    tm_socket_10016 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    host10017='localhost'
+    port10017=10017
+    tm_socket_10017 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    tm_socket_10015.bind((host10015,port10015))
+    tm_socket_10015.listen(1)
+    print ('\n','server  10015 1istening')
+
+    tm_socket_10016.bind((host10016,port10016))
+    tm_socket_10016.listen(1)
+    print ('\n','server  10016 1istening')
+
+    tm_socket_10017.bind((host10017,port10017))
+    tm_socket_10017.listen(1)
+    print ('\n','server  10017 1istening')
 
   
     with io.open('testdata.ccsds', 'rb') as f:
         simulator.tm_counter = 0
         header = bytearray(6)
 
-        clientconn, clientaddr=tm_socket.accept()
-        print ('\n','connection established with',clientaddr)
+        clientconn10015, clientaddr10015=tm_socket_10015.accept()
+        print ('\n','connection 10015 established with',clientaddr10015)
+
+        clientconn10016, clientaddr10016=tm_socket_10016.accept()
+        print ('\n','connection 10016 established with',clientaddr10016)
+
+        clientconn10017, clientaddr10017=tm_socket_10017.accept()
+        print ('\n','connection 10017 established with',clientaddr10017)
+
+
         
         while f.readinto(header) == 6:
             (len,) = unpack_from('>H', header, 4)
@@ -32,14 +56,22 @@ def send_tm(simulator):
             f.seek(-6, io.SEEK_CUR)
             f.readinto(packet)
   
-            clientconn.send(packet)
-            print('\n', 'packet sent')
+            clientconn10015.send(packet)
+            print('\n', 'packet sent 10015')
+
+            clientconn10016.send(packet)
+            print('\n', 'packet sent 10016')
+
+            clientconn10017.send(packet)
+            print('\n', 'packet sent 10017')
             simulator.tm_counter+=1
 
 
             sleep(1)
         
-    clientconn.close()
+    clientconn10015.close()
+    clientconn10016.close()
+    clientconn10017.close()
     print("communication ended")
 
 
