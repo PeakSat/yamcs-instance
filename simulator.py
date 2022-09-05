@@ -9,32 +9,38 @@ from time import sleep
 
 
 def send_tm(simulator):
-    host='127.0.0.1'
+    host='localhost'
     port=10015
     tm_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     tm_socket.bind((host,port))
-    tm_socket.listen()
+    tm_socket.listen(1)
     print ('\n','server listening')
-    clientconn, clientaddr=tm_socket.accept()
-    print ('\n','connection established with',clientaddr)
+
   
-    with io.open('packets.raw', 'rb') as f:
+    with io.open('testdata.ccsds', 'rb') as f:
         simulator.tm_counter = 0
         header = bytearray(6)
+
+        clientconn, clientaddr=tm_socket.accept()
+        print ('\n','connection established with',clientaddr)
+        
         while f.readinto(header) == 6:
             (len,) = unpack_from('>H', header, 4)
-            packet = bytearray(len+6)
+            packet = bytearray(len+7)
 
             f.seek(-6, io.SEEK_CUR)
             f.readinto(packet)
+  
             clientconn.send(packet)
+            print('\n', 'packet sent')
             simulator.tm_counter+=1
 
 
-            sleep(10)
+            sleep(1)
         
     clientconn.close()
+    print("communication ended")
 
 
 def receive_tc(simulator):
