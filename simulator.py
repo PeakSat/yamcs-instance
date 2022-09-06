@@ -33,42 +33,41 @@ def send_tm(simulator):
     tm_socket_10017.listen(1)
     print ('\n','server  10017 1istening')
 
-  
-    with io.open('testdata.ccsds', 'rb') as f:
-        simulator.tm_counter = 0
-        header = bytearray(6)
+    clientconn10015, clientaddr10015=tm_socket_10015.accept()
+    print ('\n','connection 10015 established with',clientaddr10015)
 
-        clientconn10015, clientaddr10015=tm_socket_10015.accept()
-        print ('\n','connection 10015 established with',clientaddr10015)
+    clientconn10016, clientaddr10016=tm_socket_10016.accept()
+    print ('\n','connection 10016 established with',clientaddr10016)
 
-        clientconn10016, clientaddr10016=tm_socket_10016.accept()
-        print ('\n','connection 10016 established with',clientaddr10016)
+    clientconn10017, clientaddr10017=tm_socket_10017.accept()
+    print ('\n','connection 10017 established with',clientaddr10017)
 
-        clientconn10017, clientaddr10017=tm_socket_10017.accept()
-        print ('\n','connection 10017 established with',clientaddr10017)
+    while True:
+        with io.open('packets-1.raw', 'rb') as f:
+            simulator.tm_counter = 0
+            header = bytearray(6)
 
+            while f.readinto(header) == 6:
+                (len,) = unpack_from('>H', header, 4)
+                packet = bytearray(len+7)
 
-        
-        while f.readinto(header) == 6:
-            (len,) = unpack_from('>H', header, 4)
-            packet = bytearray(len+7)
+                f.seek(-6, io.SEEK_CUR)
+                f.readinto(packet)
+    
+                clientconn10015.send(packet)
+                print('\n', 'packet sent 10015')
 
-            f.seek(-6, io.SEEK_CUR)
-            f.readinto(packet)
-  
-            clientconn10015.send(packet)
-            print('\n', 'packet sent 10015')
+                clientconn10016.send(packet)
+                print('\n', 'packet sent 10016')
 
-            clientconn10016.send(packet)
-            print('\n', 'packet sent 10016')
-
-            clientconn10017.send(packet)
-            print('\n', 'packet sent 10017')
-            simulator.tm_counter+=1
+                clientconn10017.send(packet)
+                print('\n', 'packet sent 10017')
+                simulator.tm_counter+=1
 
 
-            sleep(1)
-        
+                sleep(1)
+            
+
     clientconn10015.close()
     clientconn10016.close()
     clientconn10017.close()
