@@ -65,7 +65,7 @@ def send_tm(simulator):
                 simulator.tm_counter+=1
 
 
-                sleep(1)
+                sleep(0.02)
             
 
     clientconn10015.close()
