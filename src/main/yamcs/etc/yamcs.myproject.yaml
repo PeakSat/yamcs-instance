@@ -25,6 +25,7 @@ dataLinks:
   - name: CAN-bus
     enableAtStartup: true
     class: org.yamcs.tctm.TcpTmDataLink
+    #class: org.yamcs.tctm.UdpTmDataLink
     stream: tm_realtime
     host: localhost
     port: 10017
@@ -33,6 +34,7 @@ dataLinks:
   - name: ADCS-UART
     enableAtStartup: true
     class: org.yamcs.tctm.TcpTmDataLink
+    #class: org.yamcs.tctm.UdpTmDataLink
     stream: tm_realtime
     host: localhost
     port: 10016
@@ -41,6 +43,7 @@ dataLinks:
   - name: OBC-UART
     enableAtStartup: true
     class: org.yamcs.tctm.TcpTmDataLink
+    #class: org.yamcs.tctm.UdpTmDataLink
     stream: tm_realtime
     host: localhost
     port: 10015
