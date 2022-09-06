@@ -42,7 +42,9 @@ def send_tm(simulator):
     clientconn10017, clientaddr10017=tm_socket_10017.accept()
     print ('\n','connection 10017 established with',clientaddr10017)
 
-    while True:
+    n=0
+
+    while n<900:
         with io.open('packets-1.raw', 'rb') as f:
             simulator.tm_counter = 0
             header = bytearray(6)
@@ -65,7 +67,8 @@ def send_tm(simulator):
                 simulator.tm_counter+=1
 
 
-                sleep(0.02)
+                sleep(0.01)
+        n+=1
             
 
     clientconn10015.close()
