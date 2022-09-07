@@ -122,7 +122,7 @@ class Simulator():
         cmdhex = None
         if self.last_tc:
             cmdhex = binascii.hexlify(self.last_tc).decode('ascii')
-        return 'Sent: {} packets. Received: {} commands. Last command: {}\n'.format(
+        return 'Sent: {} packets. Received: {} commands. Last command: {}'.format(
                          self.tm_counter, self.tc_counter, cmdhex)
 
 
