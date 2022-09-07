@@ -1,58 +1,93 @@
-# Yamcs QuickStart
+# AcudeSAT YAMCS Instance
 
-This repository holds the source code to start a basic Yamcs application that monitors a simulated spacecraft in low earth orbit.
+This repository holds the source code of the YAMCS application used for the AcubeSAT mission.
 
-You may find it useful as a starting point for your own project.
+The primary **Mission's Database** is stored at YAMCS server, in which **Telemetry** data can be archived and then processed using the YAMCS web interface. The operator can also send **Telecommands** that are stored at the YAMCS database.
 
+YAMCS includes a web interface which provides quick access and control over many of its features. The web interface runs on port 8090 and integrates with the security system of YAMCS.
 
-## Prerequisites
-
-* Java 11
-* Maven 3.1+
-* Linux x64 or macOS
+The application's structure is mainly following the XTCE encoding schema, with the exception of the constraints imposed by the YAMCS mission control software.
 
 
-## Running Yamcs
+## Running YAMCS
 
-Here are some commands to get things started:
+[Here](https://yamcs.org/getting-started) you can find prerequisites, basic commands and information to get things started with YAMCS.
 
-Compile this project:
-
-    mvn compile
-
-Start Yamcs on localhost:
+To simply start the main YAMCS instance, run:
 
     mvn yamcs:run
 
-Same as yamcs:run, but allows a debugger to attach at port 7896:
+View the YAMCS web interface by visiting http://localhost:8090
 
-    mvn yamcs:debug
-    
-Delete all generated outputs and start over:
+In order to start YAMCS with JMX enabled (required for hot backups) the commmand is:
 
-    mvn clean
-
-This will also delete Yamcs data. Change the `dataDir` property in `yamcs.yaml` to another location on your file system if you don't want that.
-
+    mvn yamcs:run -Dyamcs.jvmArgs="-Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
 
 ## Telemetry
 
-To start pushing CCSDS packets into Yamcs, run the included Python script:
+To start pushing CCSDS packets into YAMCS, run the included Python script:
 
     python simulator.py
 
-This script will send packets at 1 Hz over UDP to Yamcs. There is enough test data to run for a full calendar day.
+This script opens the packets.raw file and sends packets at 1 Hz over UDP to YAMCS. To see information regarding the incoming packets and updates of the values of the parameters go to the "Packets" and "Parameters" pages, in the Telemetry section, on YAMCS web interface. 
 
-The packets are a bit artificial and include a mixture of HK and accessory data.
+The structure of the TM packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32) and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard , consisting of a 6-byte primary header, a 10-byte secondary header and the data field.
 
+If there is a need to send specific packets, then [ecss-services](https://gitlab.com/acubesat/obc/ecss-services) is required. To install, run:
+
+    git clone https://gitlab.com/acubesat/obc/ecss-services.git --recurse-submodules
+
+Currently, this functionality is implemented in the branches `OPS-Testing` and `ops-ecss`. After modifying `main.cpp`, the generated packets will be sent to port 10015 that YAMCS listens to.
 
 ## Telecommanding
 
-This project defines a few example CCSDS telecommands. They are sent to UDP port 10025. The simulator.py script listens to this port. Commands  have no side effects. The script will only count them.
+This project defines a few example CCSDS telecommands. The structure of the TC packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32) and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard, consisting of a 6-byte primary header, a 5-byte secondary header and the data field.
 
+Telecommands can be sent through the "Commanding" section on YAMCS web interface.
 
-## Bundling
+## Data-Links
 
-Running through Maven is useful during development, but it is not recommended for production environments. Instead bundle up your Yamcs application in a tar.gz file:
+In yamcs.myproject.yaml file (located in yamcs-instance/src/main/yamcs/etc), four Data-Links are implemented sending and receiving data in different ports. Every time a packet gets sent or received, the count of the respective data-link is increased.
 
-    mvn package
+* Telemetry Data-Links 
+    * "CAN-bus", receiving data through port 10017
+    * "ADCS-UART", receiving data through port 10016
+    * "OBC-UART", receiving data through port 10015
+
+* Telecommanding Data-Link
+    * "udp-out", sending data at port 10025
+
+For now, simulator.py sends randomly packets to all three TM Data-Links, but they will, later, be used for the differentiation of the incoming packets based on their origin, as reflected by their names.
+
+## Mission Database
+
+The Mission Database describes the telemetry and commands that are processed by YAMCS. It tells YAMCS how to decode packets or how to encode telecommands. 
+
+The .xml files (located in yamcs-instance/src/main/yamcs/mdb) contain all the information regarding the parameters, the containers and the commands used in AcubeSAT YAMCS Instance.
+
+* The dt.xml file contains all **ParameterTypes** for Telemetry and **ArgumentTypes** for Telecommanding.
+
+* The rest of the .xml files are used to define parameters, containers and commands for the mission. The .xml file in which a paremeter or container or command is defined, reflects its use. More specifically:
+    * **pus.xml**: contains parameters, containers and commands, which implement the principal services that offer great control over reading/writing parameters from the Ground Station. This control refers to:
+        * accessing and modifying parameter values (ST[20] parameter management service) 
+        * generating periodic reports containing parameter values (ST[03] housekeeping service) 
+        * receiving statistics for a large number of parameters (ST[04] parameter statistics reporting service).
+    * **pus-not-used.xml**: its elements are used for monitoring parameters (ST[12] on-board-monitoring service) 
+    * **pus-verification.xml**: contains parameters and containers used to transmit to the Ground Station information about the status of a request's acceptance verification (ST[01] request verification service)
+    * **time-based-scheduling.xml**: contains commands that will be scheduled to be executed later in the mission timeline (ST[11] time-based scheduling service)
+    * **xtce.xml**: contains the ADCS and OBC parameters that will be used during the Environmental Campaign. 
+
+## Backup
+
+Backup scripts, which automate the uploading of the artifacts of the archive to a cloud service as backup, have been implemented.
+
+There are some helper programms integrated in YAMCS, such as `yamcsadmin`. In order to install them, run:
+
+    mvn clean package
+
+This step is **required** for the backup scripts to work. After execution, these programms will be installed in the directory `yamcs-instance/target/bundle-tmp/bin`.
+
+The backup scripts are in the `yamcs-instance/backup-scripts` directory. After navigating to that folder, simply run `sh backup.sh` to initiate the script. In order for the script to work, JMX **must** be enabled (see Running YAMCS section).
+
+The backups are instance-wide, meaning *everything* is saved; parameters, commands, alerts, logs, etc. These files are saved both locally, at a specified directory (in the backup.sh script) and online at the Google Drive folder of the account `yamcs.backup.acubesat@gmail.com`.
+
