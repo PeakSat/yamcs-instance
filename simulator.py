@@ -86,12 +86,18 @@ def send_tm(simulator):
 
 
 def receive_tc(simulator):
-    tc_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    tc_socket.bind(('127.0.0.1', 10025))
+    host = 'localhost'
+    portTC = 10025
+    tc_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tc_socket.bind((host, portTC))
+    tc_socket.listen(1)
+    print ('\n','server  10025 1istening')
+    clientconnTC, clientaddrTC = tc_socket.accept()
+    print ('\n','connection established with', clientaddrTC)
     while True:
-        data, _ = tc_socket.recvfrom(4096)
+        data = clientconnTC.recv(4096)
         simulator.last_tc = data
-        simulator.tc_counter += 1
+        simulator.tc_counter +=1
 
 
 class Simulator():
@@ -104,12 +110,13 @@ class Simulator():
         self.last_tc = None
 
     def start(self):
-        self.tm_thread = Thread(target=send_tm, args=(self,))
-        self.tm_thread.daemon = True
-        self.tm_thread.start()
         self.tc_thread = Thread(target=receive_tc, args=(self,))
         self.tc_thread.daemon = True
         self.tc_thread.start()
+        self.tm_thread = Thread(target=send_tm, args=(self,))
+        self.tm_thread.daemon = True
+        self.tm_thread.start()
+        
 
     def print_status(self):
         cmdhex = None
