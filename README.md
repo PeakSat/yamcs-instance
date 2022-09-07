@@ -1,4 +1,4 @@
-# AcudeSAT YAMCS Instance
+# AcubeSAT YAMCS Instance
 
 This repository holds the source code of the YAMCS application used for the AcubeSAT mission.
 
