@@ -21,15 +21,15 @@ def send_tm(simulator):
 
     tm_socket_OBC.bind((host,portOBC))
     tm_socket_OBC.listen(1)
-    print ('\n','server  10015 1istening')
+    print ('server  10015 1istening')
 
     tm_socket_ADCS.bind((host,portADCS))
     tm_socket_ADCS.listen(1)
-    print ('\n','server  10016 1istening')
+    print ('server  10016 1istening')
 
     tm_socket_CAN.bind((host,portCAN))
     tm_socket_CAN.listen(1)
-    print ('\n','server  10017 1istening')
+    print ('server  10017 1istening')
 
     clientconnOBC, clientaddrOBC=tm_socket_OBC.accept()
 
@@ -91,13 +91,13 @@ def receive_tc(simulator):
     tc_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     tc_socket.bind((host, portTC))
     tc_socket.listen(1)
-    print ('\n','server  10025 1istening')
+    print ('server  10025 1istening')
     clientconnTC, clientaddrTC = tc_socket.accept()
-    print ('\n','connection established with', clientaddrTC)
     while True:
-        data = clientconnTC.recv(4096)
+        data, _ = clientconnTC.recvfrom(4096)
         simulator.last_tc = data
-        simulator.tc_counter +=1
+        if (data!=b''):
+            simulator.tc_counter +=1
 
 
 class Simulator():
@@ -110,19 +110,19 @@ class Simulator():
         self.last_tc = None
 
     def start(self):
-        self.tc_thread = Thread(target=receive_tc, args=(self,))
-        self.tc_thread.daemon = True
-        self.tc_thread.start()
         self.tm_thread = Thread(target=send_tm, args=(self,))
         self.tm_thread.daemon = True
         self.tm_thread.start()
+        self.tc_thread = Thread(target=receive_tc, args=(self,))
+        self.tc_thread.daemon = True
+        self.tc_thread.start()
         
 
     def print_status(self):
         cmdhex = None
         if self.last_tc:
             cmdhex = binascii.hexlify(self.last_tc).decode('ascii')
-        return 'Sent: {} packets. Received: {} commands. Last command: {}'.format(
+        return 'Sent: {} packets. Received: {} commands. Last command: {}\n'.format(
                          self.tm_counter, self.tc_counter, cmdhex)
 
 
