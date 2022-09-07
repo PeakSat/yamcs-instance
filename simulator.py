@@ -9,44 +9,39 @@ from time import sleep
 
 
 def send_tm(simulator):
-    host10015='localhost'
-    port10015=10015
-    tm_socket_10015 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    host='localhost'
+    portOBC=10015
+    tm_socket_OBC = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    host10016='localhost'
-    port10016=10016
-    tm_socket_10016 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    portADCS=10016
+    tm_socket_ADCS = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    host10017='localhost'
-    port10017=10017
-    tm_socket_10017 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    portCAN=10017
+    tm_socket_CAN = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    tm_socket_10015.bind((host10015,port10015))
-    tm_socket_10015.listen(1)
+    tm_socket_OBC.bind((host,portOBC))
+    tm_socket_OBC.listen(1)
     print ('\n','server  10015 1istening')
 
-    tm_socket_10016.bind((host10016,port10016))
-    tm_socket_10016.listen(1)
+    tm_socket_ADCS.bind((host,portADCS))
+    tm_socket_ADCS.listen(1)
     print ('\n','server  10016 1istening')
 
-    tm_socket_10017.bind((host10017,port10017))
-    tm_socket_10017.listen(1)
+    tm_socket_CAN.bind((host,portCAN))
+    tm_socket_CAN.listen(1)
     print ('\n','server  10017 1istening')
 
-    clientconn10015, clientaddr10015=tm_socket_10015.accept()
-    print ('\n','connection 10015 established with',clientaddr10015)
+    clientconnOBC, clientaddrOBC=tm_socket_OBC.accept()
 
-    clientconn10016, clientaddr10016=tm_socket_10016.accept()
-    print ('\n','connection 10016 established with',clientaddr10016)
+    clientconnADCS, clientaddrADCS=tm_socket_ADCS.accept()
 
-    clientconn10017, clientaddr10017=tm_socket_10017.accept()
-    print ('\n','connection 10017 established with',clientaddr10017)
+    clientconnCAN, clientaddrCAN=tm_socket_CAN.accept()
 
-    n=0
+    c=0
     simulator.tm_counter = 0
     
-#sending 4500 packets
-    while n<900:
+#sending 2000 packets
+    while c<400:
         with io.open('packets-1.raw', 'rb') as f:
             header = bytearray(6)
 
@@ -56,25 +51,37 @@ def send_tm(simulator):
 
                 f.seek(-6, io.SEEK_CUR)
                 f.readinto(packet)
-    
-                clientconn10015.send(packet)
-                print('\n', 'packet sent 10015')
 
-                clientconn10016.send(packet)
-                print('\n', 'packet sent 10016')
+        #simultaneous sending
+                clientconnOBC.send(packet)
+                clientconnADCS.send(packet)
+                clientconnCAN.send(packet)
 
-                clientconn10017.send(packet)
-                print('\n', 'packet sent 10017')
                 simulator.tm_counter+=1
 
+        #sequential sending
+            #    n = random.randint(0,2)
+                #OBC UART
+            #    if n == 0: 
+            #        clientconnOBC.send(packet)
+            #        simulator.tm_counter += 1
+                #ADSC UART
+            #    elif n == 1:
+            #        clientconnADCS.send(packet)
+            #        simulator.tm_counter += 1
+                #CAN BUS
+            #    else :
+            #        clientconnCAN.send(packet)
+            #        simulator.tm_counter += 1
 
-                sleep(0.01)
-        n+=1
-            
+                sleep(1)
+        c+=1
 
-    clientconn10015.close()
-    clientconn10016.close()
-    clientconn10017.close()
+      
+
+    clientconnOBC.close()
+    clientconnADCS.close()
+    clientconnCAN.close()
     print("communication ended")
 
 
