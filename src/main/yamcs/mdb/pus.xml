@@ -214,7 +214,7 @@
                 <xtce:LongDescription>TM[20,2] is a request packet. It is used to request the transmission of a telemetry packet.
                 </xtce:LongDescription>
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="group_ID_ST20"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="report_parameter_value_group_ID"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_primary_header_TM">
                     <xtce:RestrictionCriteria>
@@ -254,10 +254,10 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeYTemperature" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeZTemperature" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_3_25">
+                <xtce:BaseContainer containerRef="TM_20_2">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="0" parameterRef="group_ID_ST20" />
+                            <xtce:Comparison value="0" parameterRef="report_parameter_value_group_ID" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -274,10 +274,10 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerCycleCountZ" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerSelfTest" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_3_25">
+                <xtce:BaseContainer containerRef="TM_20_2">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="1" parameterRef="group_ID_ST20" />
+                            <xtce:Comparison value="1" parameterRef="report_parameter_value_group_ID" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -293,10 +293,10 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsSystick" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBootCounter" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_3_25">
+                <xtce:BaseContainer containerRef="TM_20_2">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="2" parameterRef="group_ID_ST20" />
+                            <xtce:Comparison value="2" parameterRef="report_parameter_value_group_ID" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -308,10 +308,10 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/CANbus2Load" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/activeCAN" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_3_25">
+                <xtce:BaseContainer containerRef="TM_20_2">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="3" parameterRef="group_ID_ST20" />
+                            <xtce:Comparison value="3" parameterRef="report_parameter_value_group_ID" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -331,10 +331,10 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature1" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature2" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_3_25">
+                <xtce:BaseContainer containerRef="TM_20_2">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="4" parameterRef="group_ID_ST20" />
+                            <xtce:Comparison value="4" parameterRef="report_parameter_value_group_ID" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -349,10 +349,10 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardMonth" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDCurrentlyUsedMemoryPartition" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_3_25">
+                <xtce:BaseContainer containerRef="TM_20_2">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="5" parameterRef="group_ID_ST20" />
+                            <xtce:Comparison value="5" parameterRef="report_parameter_value_group_ID" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -854,8 +854,159 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
+            <xtce:MetaCommand name="set_float_parameter_values">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/float_parameters" name="Parameter_ID" />
+                    <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value"/>
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="set_float_parameter_values">
+                    <xtce:EntryList >
+                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
 
-            
+            <xtce:MetaCommand name="set_uint8_parameter_values">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint8_parameters" name="Parameter_ID" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_value"/>
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="set_uint8_parameter_values">
+                    <xtce:EntryList >
+                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="set_int8_parameter_values">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/int8_parameters" name="Parameter_ID" />
+                    <xtce:Argument argumentTypeRef="/dt/int8_t" name="new_value"/>
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="set_int8_parameter_values">
+                    <xtce:EntryList >
+                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="set_uint16_parameter_values">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_parameters" name="Parameter_ID" />
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="new_value"/>
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="set_uint16_parameter_values">
+                    <xtce:EntryList >
+                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="set_uint32_parameter_values">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint32_parameters" name="Parameter_ID" />
+                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value"/>
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="set_uint32_parameter_values">
+                    <xtce:EntryList >
+                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="set_uint64_parameter_values">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint64_parameters" name="Parameter_ID" />
+                    <xtce:Argument argumentTypeRef="/dt/uint64_t" name="new_value"/>
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="set_uint64_parameter_values">
+                    <xtce:EntryList >
+                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="set_bool_parameter_values">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/bool_parameters" name="Parameter_ID" />
+                    <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value"/>
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="set_bool_parameter_values">
+                    <xtce:EntryList >
+                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
             
 
         </xtce:MetaCommandSet> 
