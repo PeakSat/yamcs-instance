@@ -396,9 +396,9 @@
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="timestep=0.01" />
-                    <xtce:Enumeration value="2" label="OBC parameters" />
-                    <xtce:Enumeration value="4" label="ADCS parameters" />
-                    <xtce:Enumeration value="6" label="ADCS might not used" />
+                    <xtce:Enumeration value="4" label="OBC parameters" />
+                    <xtce:Enumeration value="2" label="ADCS parameters" />
+                    <xtce:Enumeration value="3" label="ADCS might not used" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
     

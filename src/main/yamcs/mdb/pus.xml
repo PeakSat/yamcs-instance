@@ -245,7 +245,7 @@
                 <xtce:BaseContainer containerRef="TM_3_25">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="2" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
+                            <xtce:Comparison value="4" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -271,7 +271,7 @@
                 <xtce:BaseContainer containerRef="TM_3_25">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="4" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
+                            <xtce:Comparison value="2" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -293,7 +293,7 @@
                 <xtce:BaseContainer containerRef="TM_3_25">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="6" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
+                            <xtce:Comparison value="3" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
