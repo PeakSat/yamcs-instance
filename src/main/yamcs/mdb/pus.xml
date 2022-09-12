@@ -861,14 +861,50 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
-                    <xtce:Argument argumentTypeRef="/dt/float_parameters" name="Parameter_ID" />
-                    <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value"/>
+                    <xtce:Argument argumentTypeRef="/dt/float_parameters" name="Parameter_ID1" />
+                    <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value1"/>
+                    <xtce:Argument argumentTypeRef="/dt/float_parameters" name="Parameter_ID2" />
+                    <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value2"/>
+                    <xtce:Argument argumentTypeRef="/dt/float_parameters" name="Parameter_ID3" />
+                    <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value3"/>
+                    <xtce:Argument argumentTypeRef="/dt/float_parameters" name="Parameter_ID4" />
+                    <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value4"/>
+                    <xtce:Argument argumentTypeRef="/dt/float_parameters" name="Parameter_ID5" />
+                    <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value5"/>
+                    <xtce:Argument argumentTypeRef="/dt/float_parameters" name="Parameter_ID6" />
+                    <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value6"/>
+                    <xtce:Argument argumentTypeRef="/dt/float_parameters" name="Parameter_ID7" />
+                    <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value7"/>
+                    <xtce:Argument argumentTypeRef="/dt/float_parameters" name="Parameter_ID8" />
+                    <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value8"/>
+                    <xtce:Argument argumentTypeRef="/dt/float_parameters" name="Parameter_ID9" />
+                    <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value9"/>
+                    <xtce:Argument argumentTypeRef="/dt/float_parameters" name="Parameter_ID10" />
+                    <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value10"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="set_float_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
-                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
-                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID1" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value1" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID2" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value2" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID3" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value3" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID4" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value4" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID5" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value5" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID6" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value6" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID7" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value7" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID8" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value8" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID9" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value9" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID10" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value10" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
@@ -883,14 +919,46 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint8_parameters" name="Parameter_ID" />
-                    <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_value"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint8_parameters" name="Parameter_ID1" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_value1"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint8_parameters" name="Parameter_ID2" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_value2"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint8_parameters" name="Parameter_ID3" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_value3"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint8_parameters" name="Parameter_ID4" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_value4"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint8_parameters" name="Parameter_ID5" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_value5"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint8_parameters" name="Parameter_ID6" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_value6"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint8_parameters" name="Parameter_ID7" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_value7"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint8_parameters" name="Parameter_ID8" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_value8"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint8_parameters" name="Parameter_ID9" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_value9"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="set_uint8_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
-                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
-                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID1" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value1" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID2" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value2" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID3" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value3" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID4" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value4" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID5" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value5" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID6" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value6" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID7" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value7" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID8" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value8" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID9" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value9" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
@@ -905,14 +973,22 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
-                    <xtce:Argument argumentTypeRef="/dt/int8_parameters" name="Parameter_ID" />
-                    <xtce:Argument argumentTypeRef="/dt/int8_t" name="new_value"/>
+                    <xtce:Argument argumentTypeRef="/dt/int8_parameters" name="Parameter_ID1" />
+                    <xtce:Argument argumentTypeRef="/dt/int8_t" name="new_value1"/>
+                    <xtce:Argument argumentTypeRef="/dt/int8_parameters" name="Parameter_ID2" />
+                    <xtce:Argument argumentTypeRef="/dt/int8_t" name="new_value2"/>
+                    <xtce:Argument argumentTypeRef="/dt/int8_parameters" name="Parameter_ID3" />
+                    <xtce:Argument argumentTypeRef="/dt/int8_t" name="new_value3"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="set_int8_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
-                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
-                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID1" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value1" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID2" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value2" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID3" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value3" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
@@ -927,14 +1003,22 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_parameters" name="Parameter_ID" />
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="new_value"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_parameters" name="Parameter_ID1" />
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="new_value1"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_parameters" name="Parameter_ID2" />
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="new_value2"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_parameters" name="Parameter_ID3" />
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="new_value3"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="set_uint16_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
-                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
-                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID1" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value1" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID2" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value2" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID3" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value3" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
@@ -949,14 +1033,50 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint32_parameters" name="Parameter_ID" />
-                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint32_parameters" name="Parameter_ID1" />
+                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value1"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint32_parameters" name="Parameter_ID2" />
+                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value2"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint32_parameters" name="Parameter_ID3" />
+                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value3"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint32_parameters" name="Parameter_ID4" />
+                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value4"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint32_parameters" name="Parameter_ID5" />
+                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value5"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint32_parameters" name="Parameter_ID6" />
+                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value6"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint32_parameters" name="Parameter_ID7" />
+                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value7"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint32_parameters" name="Parameter_ID8" />
+                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value8"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint32_parameters" name="Parameter_ID9" />
+                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value9"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint32_parameters" name="Parameter_ID10" />
+                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value10"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="set_uint32_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
-                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
-                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID1" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value1" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID2" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value2" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID3" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value3" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID4" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value4" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID5" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value5" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID6" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value6" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID7" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value7" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID8" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value8" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID9" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value9" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID10" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value10" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
@@ -971,14 +1091,18 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint64_parameters" name="Parameter_ID" />
-                    <xtce:Argument argumentTypeRef="/dt/uint64_t" name="new_value"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint64_parameters" name="Parameter_ID1" />
+                    <xtce:Argument argumentTypeRef="/dt/uint64_t" name="new_value1"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint64_parameters" name="Parameter_ID2" />
+                    <xtce:Argument argumentTypeRef="/dt/uint64_t" name="new_value2"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="set_uint64_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
-                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
-                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID1" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value1" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID2" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value2" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
@@ -993,14 +1117,50 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
-                    <xtce:Argument argumentTypeRef="/dt/bool_parameters" name="Parameter_ID" />
-                    <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value"/>
+                    <xtce:Argument argumentTypeRef="/dt/bool_parameters" name="Parameter_ID1" />
+                    <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value1"/>
+                    <xtce:Argument argumentTypeRef="/dt/bool_parameters" name="Parameter_ID2" />
+                    <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value2"/>
+                    <xtce:Argument argumentTypeRef="/dt/bool_parameters" name="Parameter_ID3" />
+                    <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value3"/>
+                    <xtce:Argument argumentTypeRef="/dt/bool_parameters" name="Parameter_ID4" />
+                    <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value4"/>
+                    <xtce:Argument argumentTypeRef="/dt/bool_parameters" name="Parameter_ID5" />
+                    <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value5"/>
+                    <xtce:Argument argumentTypeRef="/dt/bool_parameters" name="Parameter_ID6" />
+                    <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value6"/>
+                    <xtce:Argument argumentTypeRef="/dt/bool_parameters" name="Parameter_ID7" />
+                    <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value7"/>
+                    <xtce:Argument argumentTypeRef="/dt/bool_parameters" name="Parameter_ID8" />
+                    <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value8"/>
+                    <xtce:Argument argumentTypeRef="/dt/bool_parameters" name="Parameter_ID9" />
+                    <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value9"/>
+                    <xtce:Argument argumentTypeRef="/dt/bool_parameters" name="Parameter_ID10" />
+                    <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value10"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="set_bool_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
-                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
-                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID1" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value1" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID2" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value2" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID3" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value3" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID4" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value4" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID5" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value5" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID6" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value6" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID7" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value7" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID8" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value8" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID9" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value9" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID10" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value10" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
