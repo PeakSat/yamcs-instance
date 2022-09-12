@@ -9,10 +9,9 @@
             <xtce:LongDescription>The housekeeping report structure ID</xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter name="report_parameter_value_group_ID" parameterTypeRef="/dt/group_ID_ST20">
-            <xtce:LongDescription>The report paramter value group ID</xtce:LongDescription>
+            <xtce:Parameter name="number_of_parameters" parameterTypeRef="/dt/N_ST20" >
+                <xtce:LongDescription>The number of parameters requested in a parameter value report</xtce:LongDescription>
             </xtce:Parameter>
-
 
             <xtce:Parameter name="periodic_generation_action_status_ST03" parameterTypeRef="/dt/uint8_t" />
 
@@ -214,7 +213,7 @@
                 <xtce:LongDescription>TM[20,2] is a request packet. It is used to request the transmission of a telemetry packet.
                 </xtce:LongDescription>
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="report_parameter_value_group_ID"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="number_of_parameters"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_primary_header_TM">
                     <xtce:RestrictionCriteria>
@@ -257,7 +256,7 @@
                 <xtce:BaseContainer containerRef="TM_20_2">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="0" parameterRef="report_parameter_value_group_ID" />
+                            <xtce:Comparison value="6" parameterRef="number_of_parameters" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -277,7 +276,7 @@
                 <xtce:BaseContainer containerRef="TM_20_2">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="1" parameterRef="report_parameter_value_group_ID" />
+                           <xtce:Comparison value="8" parameterRef="number_of_parameters" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -296,7 +295,7 @@
                 <xtce:BaseContainer containerRef="TM_20_2">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="2" parameterRef="report_parameter_value_group_ID" />
+                            <xtce:Comparison value="7" parameterRef="number_of_parameters" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -311,7 +310,7 @@
                 <xtce:BaseContainer containerRef="TM_20_2">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="3" parameterRef="report_parameter_value_group_ID" />
+                            <xtce:Comparison value="3" parameterRef="number_of_parameters" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -334,7 +333,7 @@
                 <xtce:BaseContainer containerRef="TM_20_2">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="4" parameterRef="report_parameter_value_group_ID" />
+                            <xtce:Comparison value="10" parameterRef="number_of_parameters" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -346,13 +345,12 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMRAMLCLThreshold" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDFLASHON" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMRAMON" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardMonth" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDCurrentlyUsedMemoryPartition" />
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="TM_20_2">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="5" parameterRef="report_parameter_value_group_ID" />
+                            <xtce:Comparison value="5" parameterRef="number_of_parameters" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -638,7 +636,7 @@
                 </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="number_of_parameters"/>
                     <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P1" />
                     <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P2" />
                     <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P3" />
@@ -652,7 +650,7 @@
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="report_parameter_values">
                     <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="P1" />
                         <xtce:ArgumentRefEntry argumentRef="P2" />
                         <xtce:ArgumentRefEntry argumentRef="P3" />
@@ -676,7 +674,7 @@
                 </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="number_of_parameters"/>
                     <xtce:Argument argumentTypeRef="/dt/gyro_parameters" name="P1" />
                     <xtce:Argument argumentTypeRef="/dt/gyro_parameters" name="P2" />
                     <xtce:Argument argumentTypeRef="/dt/gyro_parameters" name="P3" />
@@ -686,7 +684,7 @@
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="report_gyro_parameter_values">
                     <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="P1" />
                         <xtce:ArgumentRefEntry argumentRef="P2" />
                         <xtce:ArgumentRefEntry argumentRef="P3" />
@@ -706,7 +704,7 @@
                 </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="number_of_parameters"/>
                     <xtce:Argument argumentTypeRef="/dt/magnetometer_parameters" name="P1" />
                     <xtce:Argument argumentTypeRef="/dt/magnetometer_parameters" name="P2" />
                     <xtce:Argument argumentTypeRef="/dt/magnetometer_parameters" name="P3" />
@@ -718,7 +716,7 @@
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="report_megnetometer_parameter_values">
                     <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="P1" />
                         <xtce:ArgumentRefEntry argumentRef="P2" />
                         <xtce:ArgumentRefEntry argumentRef="P3" />
@@ -740,7 +738,7 @@
                 </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="number_of_parameters"/>
                     <xtce:Argument argumentTypeRef="/dt/mcu_parameters" name="P1" />
                     <xtce:Argument argumentTypeRef="/dt/mcu_parameters" name="P2" />
                     <xtce:Argument argumentTypeRef="/dt/mcu_parameters" name="P3" />
@@ -751,7 +749,7 @@
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="report_mcu_parameter_values">
                     <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="P1" />
                         <xtce:ArgumentRefEntry argumentRef="P2" />
                         <xtce:ArgumentRefEntry argumentRef="P3" />
@@ -772,14 +770,14 @@
                 </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="number_of_parameters"/>
                     <xtce:Argument argumentTypeRef="/dt/can_parameters" name="P1" />
                     <xtce:Argument argumentTypeRef="/dt/can_parameters" name="P2" />
                     <xtce:Argument argumentTypeRef="/dt/can_parameters" name="P3" />
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="report_can_parameter_values">
                     <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="P1" />
                         <xtce:ArgumentRefEntry argumentRef="P2" />
                         <xtce:ArgumentRefEntry argumentRef="P3" />
@@ -796,7 +794,7 @@
                 </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="number_of_parameters"/>
                     <xtce:Argument argumentTypeRef="/dt/board_parameters" name="P1" />
                     <xtce:Argument argumentTypeRef="/dt/board_parameters" name="P2" />
                     <xtce:Argument argumentTypeRef="/dt/board_parameters" name="P3" />
@@ -810,7 +808,7 @@
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="report_board_parameter_values">
                     <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="P1" />
                         <xtce:ArgumentRefEntry argumentRef="P2" />
                         <xtce:ArgumentRefEntry argumentRef="P3" />
@@ -834,7 +832,7 @@
                 </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="N_ST20"/>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="number_of_parameters"/>
                     <xtce:Argument argumentTypeRef="/dt/memory_parameters" name="P1" />
                     <xtce:Argument argumentTypeRef="/dt/memory_parameters" name="P2" />
                     <xtce:Argument argumentTypeRef="/dt/memory_parameters" name="P3" />
@@ -843,7 +841,7 @@
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="report_memory_parameter_values">
                     <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="N_ST20"/>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="P1" />
                         <xtce:ArgumentRefEntry argumentRef="P2" />
                         <xtce:ArgumentRefEntry argumentRef="P3" />

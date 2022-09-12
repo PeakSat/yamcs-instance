@@ -164,18 +164,6 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
-            <xtce:EnumeratedParameterType name="group_ID_ST20">
-                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
-                <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="gyro_parameters" />
-                    <xtce:Enumeration value="1" label="magnetometer_parameters" />
-                    <xtce:Enumeration value="2" label="mcu_parameters" />
-                    <xtce:Enumeration value="3" label="can_parameters" />
-                    <xtce:Enumeration value="4" label="board_parameters" />
-                    <xtce:Enumeration value="5" label="memory_parameters" />
-                </xtce:EnumerationList>
-            </xtce:EnumeratedParameterType>
-
             <xtce:EnumeratedParameterType name="partition_ID">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
@@ -299,6 +287,10 @@
             <xtce:BooleanParameterType name="bool_t">
                 <xtce:IntegerDataEncoding sizeInBits="1" />
             </xtce:BooleanParameterType>
+
+            <xtce:IntegerParameterType name="N_ST20" signed="false">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+            </xtce:IntegerParameterType>
 
             <xtce:AbsoluteTimeParameterType name="generation_time">
                 <xtce:Encoding offset="1577836800" scale="0.1">
@@ -645,18 +637,6 @@
                     <xtce:Enumeration value="0" label="0" />
                     <xtce:Enumeration value="4" label="4" />
                     <xtce:Enumeration value="6" label="6" />
-                </xtce:EnumerationList>
-            </xtce:EnumeratedArgumentType>
-
-            <xtce:EnumeratedArgumentType name="group_ID_ST20">
-                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
-                <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="gyro_parameters" />
-                    <xtce:Enumeration value="1" label="magnetometer_parameters" />
-                    <xtce:Enumeration value="2" label="mcu_parameters" />
-                    <xtce:Enumeration value="3" label="can_parameters" />
-                    <xtce:Enumeration value="4" label="board_parameters" />
-                    <xtce:Enumeration value="5" label="memory_parameters" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
     
