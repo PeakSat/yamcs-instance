@@ -230,7 +230,7 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature1" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature2" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMCUTemperature" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMCUBootCounter" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcBootCounter" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcOnBoardTime" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDCurrentlyUsedMemoryPartition" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMCUSysTick" />
