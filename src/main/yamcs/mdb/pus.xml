@@ -223,7 +223,7 @@
                 </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/virtual_channel_ID" name="transfer_frame_secondary_header_data_field">
+            <xtce:Parameter parameterTypeRef="/dt/transfer_frame_secondary_header_data_field" name="transfer_frame_secondary_header_data_field">
                 <xtce:LongDescription>The Transfer Frame Secondary Header Data Field shall contain the Transfer Frame Secondary Header data. The Transfer 
                 Frame Secondary Header Data Field shall be of fixed length within the associated Master or Virtual Channel throughout a Mission Phase.
                 </xtce:LongDescription>
@@ -239,34 +239,34 @@
 
             <!-- CLCW -->
 
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="control_word_type" initialValue="0">
+            <xtce:Parameter parameterTypeRef="/dt/control_word_type" name="control_word_type" initialValue="0">
                 <xtce:LongDescription>This field is used to distinguish the CLCW from another type of report that may be alternatively contained in the field that 
                 carries the CLCW.
                 </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="ClCW_version_number" initialValue="0">
+            <xtce:Parameter parameterTypeRef="/dt/ClCW_version_number" name="ClCW_version_number" initialValue="0">
                 <xtce:LongDescription>The CLCW Version Number is included to provide future growth flexibility. At present a single ‘Version-1’ CLCW, whose binary 
                 encoded Version Number is ‘00’, is defined in this Recommended Standard.
                 </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="status_field">
+            <xtce:Parameter parameterTypeRef="/dt/status_field" name="status_field">
                 <xtce:LongDescription>Application of the Status Field is mission-specified.
                 </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="COP_in_effect" initialValue="01">
+            <xtce:Parameter parameterTypeRef="/dt/COP_in_effect" name="COP_in_effect" initialValue="01">
                 <xtce:LongDescription>The COP in Effect parameter shall be used to indicate the COP that is being used.
                 </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="virtual_channel_ID">
+            <xtce:Parameter parameterTypeRef="/dt/virtual_channel_ID_CLCW" name="virtual_channel_ID_CLCW">
                 <xtce:LongDescription>Each Virtual Channel in use has its own CLCW reporting activated.
                 </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="reserved_spare" initialValue="0">
+            <xtce:Parameter parameterTypeRef="/dt/reserved_spare" name="reserved_spare" initialValue="0">
                 <xtce:LongDescription>These two bits are reserved by CCSDS for future application.
                 </xtce:LongDescription>
             </xtce:Parameter>
@@ -301,27 +301,24 @@
                 </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="FARMB_counter">
+            <xtce:Parameter parameterTypeRef="/dt/FARMB_counter" name="FARMB_counter">
                 <xtce:LongDescription>This field contains the two least significant bits of a FARM-B Counter. This counter is maintained within the FARM and 
                 increments once each time a Type-B Transfer Frame is accepted in Bypass mode on a particular Virtual Channel. The field supports the verification
                 that Type-B Transfer Frames (Control or User Data) were accepted by the receiving end.
                 </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="reserved_spare_2" initialValue="0">
+            <xtce:Parameter parameterTypeRef="/dt/reserved_spare_2" name="reserved_spare_2" initialValue="0">
                 <xtce:LongDescription>This bit is reserved by CCSDS for future application.
                 </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="report_value">
+            <xtce:Parameter parameterTypeRef="/dt/report_value" name="report_value">
                 <xtce:LongDescription>This field contains the value of the Next Expected Frame Sequence Number, N(R), which is equal to the value of FARM’s 
                 Receiver_Frame_Sequence_Number, V(R). The FARM V(R) counter increments once each time a Type-AD Transfer Frame is accepted on a particular
                 Virtual Channel.
                 </xtce:LongDescription>
             </xtce:Parameter>
-
-
-
 
         </xtce:ParameterSet>
 
@@ -340,10 +337,6 @@
                     <xtce:ParameterRefEntry parameterRef="packet_order_flag"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="segment_length_ID"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="first_header_pointer"></xtce:ParameterRefEntry>
-                    <!--Optional secondary header-->
-                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_version_number"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_length"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_data_field"></xtce:ParameterRefEntry>
 
                     <xtce:ParameterRefEntry parameterRef="packet_version_number"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_type"></xtce:ParameterRefEntry>
@@ -361,6 +354,21 @@
                     <xtce:ParameterRefEntry parameterRef="destination_ID"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="time"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+            <xtce:SequenceContainer name="transfer_frame_secondary_header">
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_version_number"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_length"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_data_field"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="packet_primary_header_TM">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
+                            <xtce:Comparison value="1" parameterRef="transfer_frame_secondary_header_flag" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="operational_control_field">
@@ -388,9 +396,13 @@
                     <xtce:ParameterRefEntry parameterRef="ClCW_version_number"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="status_field"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="COP_in_effect"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="virtual_channel_ID"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="virtual_channel_ID_CLCW"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="reserved_spare"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="flags"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="no_RF_available_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="no_bit_log_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="lockout_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="wait_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="retransmit_flag"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="FARMB_counter"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="reserved_spare_2"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="report_value"></xtce:ParameterRefEntry>
@@ -570,8 +582,7 @@
                     <xtce:Argument argumentTypeRef="/dt/transfer_frame_version_number" name="transfer_frame_version_number"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/flag" name="bypass_flag"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/flag" name="control_command_flag"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/application_process_ID" name="reserved_spare"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/sapcecraft_ID" name="sapcecraft_ID"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/spacecraft_ID" name="spacecraft_ID"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/virtual_channel_ID_TC" name="virtual_channel_ID_TC"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/frame_length" name="frame_length"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/frame_sequence_number" name="frame_sequence_number"></xtce:Argument>
@@ -594,7 +605,7 @@
                         <xtce:ArgumentRefEntry argumentRef="bypass_flag" />
                         <xtce:ArgumentRefEntry argumentRef="control_command_flag" />
                         <xtce:FixedValueEntry name="reserved_spare" binaryValue="00" sizeInBits="2"/>
-                        <xtce:ArgumentRefEntry argumentRef="sapcecraft_ID" />
+                        <xtce:ArgumentRefEntry argumentRef="spacecraft_ID" />
                         <xtce:ArgumentRefEntry argumentRef="virtual_channel_ID_TC" />
                         <xtce:ArgumentRefEntry argumentRef="frame_length" />
                         <xtce:ArgumentRefEntry argumentRef="frame_sequence_number" /> 

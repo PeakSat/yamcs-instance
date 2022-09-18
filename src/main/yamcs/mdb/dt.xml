@@ -3,6 +3,7 @@
 
     <xtce:TelemetryMetaData>
         <xtce:ParameterTypeSet>
+        <!--Transfer Frame Header-->
 
             <xtce:IntegerParameterType name="transfer_frame_version_number">
                 <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
@@ -35,6 +36,49 @@
             <xtce:IntegerParameterType name="transfer_frame_secondary_header_length">
                 <xtce:IntegerDataEncoding sizeInBits="6"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="transfer_frame_secondary_header_data_field">
+                <xtce:IntegerDataEncoding sizeInBits="20"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <!--CLCW field-->
+
+            <xtce:IntegerParameterType name="control_word_type">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="ClCW_version_number">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="status_field">
+                <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="COP_in_effect">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="virtual_channel_ID_CLCW">
+                <xtce:IntegerDataEncoding sizeInBits="6"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="reserved_spare">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="FARMB_counter">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="reserved_spare_2">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="report_value">
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
 
             <xtce:EnumeratedParameterType name="packet_type">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
@@ -305,7 +349,7 @@
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
-            <xtce:IntegerArgumentType name="sapcecraft_ID">
+            <xtce:IntegerArgumentType name="spacecraft_ID">
                 <xtce:IntegerDataEncoding sizeInBits="10"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
