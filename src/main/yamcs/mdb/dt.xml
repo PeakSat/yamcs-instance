@@ -38,7 +38,12 @@
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="transfer_frame_secondary_header_data_field">
-                <xtce:IntegerDataEncoding sizeInBits="20"></xtce:IntegerDataEncoding>
+                <xtce:IntegerDataEncoding sizeInBits="63"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+            <!--Operetional Control Field-->
+
+            <xtce:IntegerParameterType name="operational_control">
+                <xtce:IntegerDataEncoding sizeInBits="30"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
             <!--CLCW field-->
@@ -77,6 +82,12 @@
 
             <xtce:IntegerParameterType name="report_value">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <!--Frame Error Control Field-->
+
+            <xtce:IntegerParameterType name="frame_error_control">
+                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
 
@@ -340,6 +351,7 @@
     <xtce:CommandMetaData>
 
         <xtce:ArgumentTypeSet>
+            <!--Transfer Frame Header TC-->
 
             <xtce:IntegerArgumentType name="transfer_frame_version_number">
                 <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
@@ -367,6 +379,12 @@
 
             <xtce:IntegerArgumentType name="packet_version_number">
                 <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
+            </xtce:IntegerArgumentType>
+
+            <!--Frame Error Control Field-->
+
+            <xtce:IntegerArgumentType name="frame_error_control">
+                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="packet_type">

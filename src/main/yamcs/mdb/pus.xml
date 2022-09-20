@@ -237,6 +237,17 @@
                 </xtce:LongDescription>
             </xtce:Parameter>
 
+            <xtce:Parameter parameterTypeRef="/dt/flag" name="report_type">
+                <xtce:LongDescription>In a Type-2 Report this field shall indicate the use of this report. If this bit is ‘0’, the contents of the report are project-specific 
+                and if this bit is ‘1’, the report contains an SDLS FSR. 
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/operational_control" name="operational_control">
+                <xtce:LongDescription>This field contains the remaining 30 bits of the operational control field. 
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
             <!-- CLCW -->
 
             <xtce:Parameter parameterTypeRef="/dt/control_word_type" name="control_word_type" initialValue="0">
@@ -319,6 +330,14 @@
                 Virtual Channel.
                 </xtce:LongDescription>
             </xtce:Parameter>
+            <!--Frame Error Control Field-->
+
+            <xtce:Parameter parameterTypeRef="/dt/frame_error_control" name="frame_error_control">
+                <xtce:LongDescription>The purpose of this field is to provide a capability for detecting errors which may have been introduced into the Transfer 
+                Frame during the transmission and data handling process.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
 
         </xtce:ParameterSet>
 
@@ -376,6 +395,8 @@
                 </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="type_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="report_type"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="operational_control"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_primary_header_TM">
                     <xtce:RestrictionCriteria>
@@ -414,6 +435,15 @@
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
+            <xtce:SequenceContainer name="frame_error_control_field">
+                <xtce:LongDescription>The purpose of this field is to provide a capability for detecting errors which may have been introduced into the Transfer 
+                Frame during the transmission and data handling process.
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="frame_error_control"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
             </xtce:SequenceContainer>
 
 
@@ -642,6 +672,17 @@
                 <xtce:CommandContainer name="Header_TC">
                     <xtce:EntryList />
                     <xtce:BaseContainer containerRef="packet_primary_header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="frame_error_control_field" abstract="true">
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/frame_error_control" name="frame_error_control"></xtce:Argument>
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="frame_error_control_field">
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="frame_error_control" />
+                    </xtce:EntryList>
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
  
