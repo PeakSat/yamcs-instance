@@ -52,9 +52,9 @@
             <xtce:Parameter parameterTypeRef="/dt/int8_t" name="magnetometerCycleCountY"></xtce:Parameter> 
             <xtce:Parameter parameterTypeRef="/dt/int8_t" name="magnetometerCycleCountZ"></xtce:Parameter>     
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="magnetometerSelfTest"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroMeasurementsX"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroMeasurementsY"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroMeasurementsZ"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeX"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeY"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeZ"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="magnetometerSignX"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="magnetometerSignY"></xtce:Parameter> 
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="magnetometerSignZ"></xtce:Parameter> 

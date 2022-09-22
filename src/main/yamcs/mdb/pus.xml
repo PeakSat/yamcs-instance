@@ -232,9 +232,9 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerRawX" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerRawY" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerRawZ" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroMeasurementsX" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroMeasurementsY" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroMeasurementsZ" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeX" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeY" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeZ" />
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="TM_3_25">
                     <xtce:RestrictionCriteria>
