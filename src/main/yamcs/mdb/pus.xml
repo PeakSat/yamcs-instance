@@ -678,45 +678,6 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="report_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="number_of_parameters"/>
-                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P1" />
-                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P2" />
-                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P3" />
-                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P4" />
-                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P5" />
-                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P6" />
-                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P7" />
-                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P8" />
-                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P9" />
-                    <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P10" />
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="report_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="P1" />
-                        <xtce:ArgumentRefEntry argumentRef="P2" />
-                        <xtce:ArgumentRefEntry argumentRef="P3" />
-                        <xtce:ArgumentRefEntry argumentRef="P4" />
-                        <xtce:ArgumentRefEntry argumentRef="P5" />
-                        <xtce:ArgumentRefEntry argumentRef="P6" />
-                        <xtce:ArgumentRefEntry argumentRef="P7" />
-                        <xtce:ArgumentRefEntry argumentRef="P8" />
-                        <xtce:ArgumentRefEntry argumentRef="P9" />
-                        <xtce:ArgumentRefEntry argumentRef="P10" />
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
-            
-
         </xtce:MetaCommandSet> 
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>
