@@ -69,6 +69,8 @@ mdb:
   spec: "mdb/pus-not-used.xml"
 - type: xtce
   spec: "mdb/time-based-scheduling.xml"
+- type: xtce
+  spec: "mdb/set-values.xml"
 
 
 
