@@ -71,6 +71,8 @@ mdb:
   spec: "mdb/time-based-scheduling.xml"
 - type: xtce
   spec: "mdb/set-values.xml"
+- type: xtce
+  spec: "mdb/report-values.xml"
 
 
 
