@@ -78,23 +78,23 @@
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="7"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCBootCounter" initialValue="5004"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMCUTemperature" initialValue="5002"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCSystick" initialValue="5017"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMCUTemperature" initialValue="5002"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSMCUTemperature" initialValue="1218"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSMCUBootCounter" initialValue="1220"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSMCUOnBoardTime" initialValue="1221"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSSystick" initialValue="1224"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSMCUBootCounter" initialValue="1220"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="report_mcu_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="OBCBootCounter" />
-                        <xtce:ArgumentRefEntry argumentRef="OBCMCUTemperature" />
                         <xtce:ArgumentRefEntry argumentRef="OBCSystick" />
+                        <xtce:ArgumentRefEntry argumentRef="OBCMCUTemperature" />
                         <xtce:ArgumentRefEntry argumentRef="ADCSMCUTemperature" />
-                        <xtce:ArgumentRefEntry argumentRef="ADCSMCUBootCounter" />
                         <xtce:ArgumentRefEntry argumentRef="ADCSMCUOnBoardTime" />
-                        <xtce:ArgumentRefEntry argumentRef="ADCSSystick" />  
+                        <xtce:ArgumentRefEntry argumentRef="ADCSSystick" /> 
+                        <xtce:ArgumentRefEntry argumentRef="ADCSMCUBootCounter" /> 
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>

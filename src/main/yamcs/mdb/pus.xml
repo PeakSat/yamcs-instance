@@ -401,7 +401,6 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardHour" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardMinute" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardSecond" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardYear" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature1" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature2" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature1" />
