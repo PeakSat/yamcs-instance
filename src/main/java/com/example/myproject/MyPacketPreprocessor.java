@@ -9,26 +9,6 @@ import org.yamcs.TmPacket;
 import org.yamcs.YConfiguration;
 import org.yamcs.tctm.AbstractPacketPreprocessor;
 
-/**
- * Component capable of modifying packet binary received from a link, before
- * passing it further into Yamcs.
- * <p>
- * A single instance of this class is created, scoped to the link udp-in.
- * <p>
- * This is specified in the configuration file yamcs.myproject.yaml:
- * 
- * <pre>
- * ...
- * dataLinks:
- *   - name: udp-in
- *     class: org.yamcs.tctm.UdpTmDataLink
- *     stream: tm_realtime
- *     host: localhost
- *     port: 10015
- *     packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
- * ...
- * </pre>
- */
 public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
     private static final Logger LOGGER = Logger.getLogger(MyPacketPreprocessor.class.getName());
     ConsoleHandler fh;
@@ -52,13 +32,14 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
 
         byte[] bytes = packet.getPacket();
 
-        if (bytes.length < 11) { // Expect at least the length of CCSDS primary and secondary header
+        // Expect at least the length of CCSDS primary and secondary header
+        if (bytes.length < 17) {
             eventProducer.sendWarning("SHORT_PACKET",
-                    "Short packet received, length: " + bytes.length + "; minimum required length is 6 bytes.");
+                    "Short packet received, length: " + bytes.length + "; minimum required length is 17 bytes.");
             // If we return null, the packet is dropped.
             return null;
         }
-        ByteBuffer byteBuffer = ByteBuffer.wrap(bytes);
+
         // Verify continuity for a given APID based on the CCSDS sequence counter
         int apidseqcount = ByteBuffer.wrap(bytes).getInt(0); // first 4 bytes (0-3)
         short packetlength = ByteBuffer.wrap(bytes).getShort(4); // get 2 bytes (5-6)
@@ -79,22 +60,25 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
             eventProducer.sendWarning("SEQ_COUNT_JUMP",
                     "Sequence count jump for APID: " + apid + " old seq: " + oldseq + " newseq: " + seqcount);
         }
+        
         if (packversion != 0) {
             LOGGER.info("PACKET_VERSION: " + String.valueOf(packversion));
             eventProducer.sendWarning("PACKET_VERSION_ERROR",
-                    "Wrong version number");
+                    "Wrong version number. Expected 0 and got " + String.valueOf(packversion));
 
         }
+
         if (secheader != 1) {
             LOGGER.info("SEC_HEAD: " + String.valueOf(secheader));
             eventProducer.sendWarning("SEC_HEADER_FLAG_ERROR",
-                    "Wrong secondary flag");
-
+                    "Wrong secondary flag. Expected 1 and got " + String.valueOf(secheader));
         }
+
         if (packetlength != (bytes.length - 6)) {
             LOGGER.info("LENGTH");
             eventProducer.sendWarning("PACKET_LENGTH_ERROR",
-                    "Wrong packet data length");
+                    "Wrong packet data length. Expected " + String.valueOf((bytes.length - 6)) + " and got "
+                            + String.valueOf(packetlength));
         }
         LOGGER.info("Sequence_count:" + String.valueOf(seqcount));
         LOGGER.info("APID:" + String.valueOf(apid));
@@ -102,7 +86,9 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
         LOGGER.info("Secondary_header:" + String.valueOf(secheader));
         LOGGER.info("Buffer:" + String.valueOf(apidseqcount));
         LOGGER.info("Time:" + String.valueOf(time));
-        //LOGGER.info("Packet data length:" + String.valueOf(packetlength));
+        LOGGER.info("ServiceType:" + String.valueOf(serviceType));
+        LOGGER.info("MessageType:" + String.valueOf(messageType));
+        LOGGER.info("Packet data length:" + String.valueOf(packetlength));
         // // Our custom packets don't include a secundary header with time information.
         // Use Yamcs-local time instead.
         packet.setGenerationTime(CUCtoUnix(time));
@@ -116,10 +102,9 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
 
     }
 
-    // returns the unix timestamp in milliseconds
+    // Returns the unix timestamp in milliseconds
     long CUCtoUnix(long time) {
         long start = 1577829600; // 1/1/2020
         return start * 1000 + time * 100 + 7237000; // adjust from UTC to GMT +0200
     }
 }
-
