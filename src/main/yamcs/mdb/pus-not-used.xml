@@ -24,7 +24,7 @@
            
             <!-- TM[12,9] -->
 
-            <xtce:SequenceContainer name="TM129">
+            <xtce:SequenceContainer name="TM[12,9]:parameter_monitoring_definition_report">
                 <xtce:LongDescription>TM[12,9] is a request packet. It is used to request the transmission of a telemetry packet.
                 </xtce:LongDescription>
                 <xtce:EntryList>
@@ -58,14 +58,14 @@
         <xtce:MetaCommandSet>
 
 
-            <xtce:MetaCommand name="report_parameter_monitoring_definitions">
+            <xtce:MetaCommand name="TC[12,8]:report_parameter_monitoring_definitions">
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/N_ST12" name="N_ST12" />
                     <xtce:Argument argumentTypeRef="/dt/PMON_ID_ST12" name="PMON_ID_1" />
                     <xtce:Argument argumentTypeRef="/dt/PMON_ID_ST12" name="PMON_ID_2" />
                     <xtce:Argument argumentTypeRef="/dt/PMON_ID_ST12" name="PMON_ID_3" />
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="report_parameter_monitoring_definitions">
+                <xtce:CommandContainer name="TC[12,8]:report_parameter_monitoring_definitions">
                     <xtce:EntryList>
                         <xtce:ArgumentRefEntry argumentRef="N_ST12" />
                         <xtce:ArgumentRefEntry argumentRef="PMON_ID_1" />
