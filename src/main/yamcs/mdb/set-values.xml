@@ -50,7 +50,7 @@
             <xtce:CommandContainer name="TC[20,3]:set_uint8_parameter_values">
                 <xtce:EntryList >
                     <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                    <xtce:ArgumentRefEntry argumentRef="Parameter_ID1" />
+                    <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
                     <xtce:ArgumentRefEntry argumentRef="new_value" />
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="/pus/Header_TC" />

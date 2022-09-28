@@ -189,6 +189,26 @@
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="TC[20,1]:report_time_parameter_values">
+                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OnBoardTime" initialValue="5012"/>
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="TC[20,1]:report_time_parameter_values">
+                    <xtce:EntryList >
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
+                        <xtce:ArgumentRefEntry argumentRef="OnBoardTime" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
            
         </xtce:MetaCommandSet> 
 

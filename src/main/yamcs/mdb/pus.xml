@@ -395,12 +395,6 @@
 
             <xtce:SequenceContainer name="board_parameters_report">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardYear" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardMonth" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardDay" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardHour" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardMinute" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardSecond" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature1" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature2" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature1" />
@@ -409,7 +403,7 @@
                 <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="10" parameterRef="number_of_parameters" />
+                            <xtce:Comparison value="4" parameterRef="number_of_parameters" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -427,6 +421,19 @@
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="5" parameterRef="number_of_parameters" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
+            <xtce:SequenceContainer name="time_parameter_report">
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardTime" />
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
+                            <xtce:Comparison value="1" parameterRef="number_of_parameters" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
