@@ -517,6 +517,9 @@
 
             <xtce:IntegerArgumentType name="N_ST03" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+                <xtce:ValidRangeSet>
+                    <xtce:ValidRange minInclusive="0" maxInclusive="3"/>
+                </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
             <xtce:BooleanArgumentType name="reset_flag_ST04" zeroStringValue="0" oneStringValue="1">
@@ -537,6 +540,9 @@
 
             <xtce:IntegerArgumentType name="N_ST20" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+                <xtce:ValidRangeSet>
+                    <xtce:ValidRange minInclusive="0" maxInclusive="3"/>
+                </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
             
             <xtce:IntegerArgumentType name="parameter_ID_ST20" signed="false">
