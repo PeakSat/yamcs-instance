@@ -29,7 +29,7 @@ To start pushing CCSDS packets into YAMCS, run the included Python script:
 
     python simulator.py
 
-This script opens the packets.raw file and sends packets at 1 Hz over UDP to YAMCS. To see information regarding the incoming packets and updates of the values of the parameters go to the "Packets" and "Parameters" pages, in the Telemetry section, on YAMCS web interface. 
+This script opens the packets.raw file and sends packets at 1 Hz over TCP to YAMCS. To see information regarding the incoming packets and updates of the values of the parameters go to the "Packets" and "Parameters" pages, in the Telemetry section, on YAMCS web interface. 
 
 The structure of the TM packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32) and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard , consisting of a 6-byte primary header, a 10-byte secondary header and the data field.
 
@@ -55,7 +55,7 @@ In yamcs.myproject.yaml file (located in yamcs-instance/src/main/yamcs/etc), fou
     * "OBC-UART", receiving data through port 10015
 
 * Telecommanding Data-Link
-    * "udp-out", sending data at port 10025
+    * "tcp-out", sending data at port 10025
 
 For now, simulator.py sends randomly packets to all three TM Data-Links, but they will, later, be used for the differentiation of the incoming packets based on their origin, as reflected by their names.
 
@@ -74,6 +74,8 @@ The .xml files (located in yamcs-instance/src/main/yamcs/mdb) contain all the in
         * receiving statistics for a large number of parameters (ST[04] parameter statistics reporting service).
     * **pus-not-used.xml**: its elements are used for monitoring parameters (ST[12] on-board-monitoring service) 
     * **pus-verification.xml**: contains parameters and containers used to transmit to the Ground Station information about the status of a request's acceptance verification (ST[01] request verification service)
+    * **report-values.xml**: contains commands for requesting the report of specific paramter values (ST[20] parameter management service)
+    * **set-values.xml**: contains commands for setting the values of specific paramterers to new ones (ST[20] parameter management service)
     * **time-based-scheduling.xml**: contains commands that will be scheduled to be executed later in the mission timeline (ST[11] time-based scheduling service)
     * **xtce.xml**: contains the ADCS and OBC parameters that will be used during the Environmental Campaign. 
 
