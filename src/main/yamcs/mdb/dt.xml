@@ -20,12 +20,6 @@
             <xtce:EnumeratedParameterType name="parameter_ID">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="OnBoardYear" />
-                    <xtce:Enumeration value="1" label="OnBoardMonth" />
-                    <xtce:Enumeration value="2" label="OnBoardDay" />
-                    <xtce:Enumeration value="3" label="OnBoardHour" />
-                    <xtce:Enumeration value="4" label="OnBoardMinute" />
-                    <xtce:Enumeration value="5" label="OnBoardSecond" />
                     <xtce:Enumeration value="6" label="ReportParametersUnusedStack" />
                     <xtce:Enumeration value="7" label="AvailableHeap" />
                     <xtce:Enumeration value="8" label="OBCuseRTT" />
@@ -327,12 +321,6 @@
             <xtce:EnumeratedArgumentType name="parameter_ID">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="OnBoardYear" />
-                    <xtce:Enumeration value="1" label="OnBoardMonth" />
-                    <xtce:Enumeration value="2" label="OnBoardDay" />
-                    <xtce:Enumeration value="3" label="OnBoardHour" />
-                    <xtce:Enumeration value="4" label="OnBoardMinute" />
-                    <xtce:Enumeration value="5" label="OnBoardSecond" />
                     <xtce:Enumeration value="6" label="ReportParametersUnusedStack" />
                     <xtce:Enumeration value="7" label="AvailableHeap" />
                     <xtce:Enumeration value="8" label="OBCuseRTT" />
@@ -397,13 +385,6 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="writable_uint16_parameters">
-                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
-                <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="OnBoardYear" />
-                </xtce:EnumerationList>
-            </xtce:EnumeratedArgumentType>
-
             <xtce:EnumeratedArgumentType name="writable_uint32_parameters">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
@@ -421,11 +402,6 @@
             <xtce:EnumeratedArgumentType name="writable_uint8_parameters">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1" label="OnBoardMonth" />
-                    <xtce:Enumeration value="2" label="OnBoardDay" />
-                    <xtce:Enumeration value="3" label="OnBoardHour" />
-                    <xtce:Enumeration value="4" label="OnBoardMinute" />
-                    <xtce:Enumeration value="5" label="OnBoardSecond" />
                     <xtce:Enumeration value="1016" label="MagnetometerFrequency" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>

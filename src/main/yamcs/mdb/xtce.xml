@@ -10,13 +10,7 @@
             
             <xtce:Parameter name="parameter_ID_ST03" parameterTypeRef="/dt/IntegerArray" />
             <xtce:Parameter name="parameter_statistics_structure" parameterTypeRef="/dt/statistic_report_array" />
-            <!-- <xtce:Parameter name="parameters_report_structure" parameterTypeRef="/dt/report_parameters_structure_array" /> -->
-            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="onBoardYear"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardMonth"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardDay"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardHour"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardMinute"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="onBoardSecond"></xtce:Parameter>    
+            <!-- <xtce:Parameter name="parameters_report_structure" parameterTypeRef="/dt/report_parameters_structure_array" /> -->  
             <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="reportParametersUnusedStack"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="availableHeap"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="obcUseRTT"></xtce:Parameter>    
@@ -25,8 +19,7 @@
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="adcsUseRTT"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="adcsUseUART"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="adcsUseCAN"></xtce:Parameter>    
-    
-
+            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="onBoardTime"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="obcBootCounter"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/uint64_t" name="obcSysTick"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="mcuTemperature"></xtce:Parameter>    
