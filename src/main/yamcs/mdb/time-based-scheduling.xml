@@ -58,9 +58,9 @@
         <xtce:MetaCommand name="TC[11,4][3,1]:time_based_scheduled_create_a_parameter_report_structure">
             <xtce:BaseMetaCommand metaCommandRef="TC[11,4]:insert_activity_into_time_based_schedule">
                 <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="3" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                    <xtce:ArgumentAssignment argumentName="service_type_ID_of_time_scheduled" argumentValue="17" />
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
+                    <xtce:ArgumentAssignment argumentName="service_type_ID_of_time_scheduled" argumentValue="3" />
                     <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="1" />
                     <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
                     <xtce:ArgumentAssignment argumentName="N" argumentValue="1" />
