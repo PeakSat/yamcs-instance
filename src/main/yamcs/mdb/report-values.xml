@@ -133,12 +133,6 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="10"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OnBoardYear" initialValue="0"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OnBoardMonth" initialValue="1"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OnBoardDay" initialValue="2"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OnBoardHour" initialValue="3"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OnBoardMinute" initialValue="4"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OnBoardSecond" initialValue="5"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBDHBoardTemperature1" initialValue="5000"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBDHBoardTemperature2" initialValue="5001"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSBoardTemperature1" initialValue="1092"/>
@@ -147,12 +141,6 @@
                 <xtce:CommandContainer name="TC[20,1]:report_board_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="OnBoardYear" />
-                        <xtce:ArgumentRefEntry argumentRef="OnBoardMonth" />
-                        <xtce:ArgumentRefEntry argumentRef="OnBoardDay" />
-                        <xtce:ArgumentRefEntry argumentRef="OnBoardHour" />
-                        <xtce:ArgumentRefEntry argumentRef="OnBoardMinute" />
-                        <xtce:ArgumentRefEntry argumentRef="OnBoardSecond" />
                         <xtce:ArgumentRefEntry argumentRef="OBDHBoardTemperature1" /> 
                         <xtce:ArgumentRefEntry argumentRef="OBDHBoardTemperature2" />
                         <xtce:ArgumentRefEntry argumentRef="ADCSBoardTemperature1" />
