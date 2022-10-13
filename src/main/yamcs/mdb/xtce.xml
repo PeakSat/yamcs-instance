@@ -33,7 +33,6 @@
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcMCUTemperature"></xtce:Parameter>   
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obdhBoardTemperature1"></xtce:Parameter>   
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obdhBoardTemperature2"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="obcMCUBootCounter"></xtce:Parameter> 
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="obcMCUSysTick"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="obcOnBoardTime"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/partition_ID" name="obcNANDCurrentlyUsedMemoryPartition"></xtce:Parameter>
@@ -56,6 +55,9 @@
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeX"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeY"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeZ"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="magnetometerSignX"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="magnetometerSignY"></xtce:Parameter> 
+            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="magnetometerSignZ"></xtce:Parameter> 
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeXTemperature"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeYTemperature"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeZTemperature"></xtce:Parameter>
