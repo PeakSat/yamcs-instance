@@ -46,6 +46,14 @@ dataLinks:
     port: 10015
     packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
 
+  - name: COMMS
+    enableAtStartup: true
+    class: org.yamcs.tctm.TcpTmDataLink
+    stream: tm_realtime
+    host: localhost
+    port: 10014
+    packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
+
   - name: tcp-out
     enableAtStartup: true
     class: org.yamcs.tctm.TcpTcDataLink
