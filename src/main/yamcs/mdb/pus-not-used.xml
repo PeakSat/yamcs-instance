@@ -19,8 +19,6 @@
 
         <xtce:ContainerSet>
             <xtce:SequenceContainer name="TM[12,9]:parameter_monitoring_definition_report">
-                <xtce:LongDescription>TM[12,9] is a request packet. It is used to request the transmission of a telemetry packet.
-                </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="max_transition_reporting_delay_ST12"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="N_ST12"></xtce:ParameterRefEntry>

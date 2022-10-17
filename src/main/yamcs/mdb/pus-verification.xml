@@ -22,7 +22,7 @@
                 <xtce:LongDescription>The request ID field alone cannot be used to identify the request since it does not
                     contain the identifier of the source of that request. That source identifier
                     corresponds to the destination identifier of the secondary header of the related
-                    telemetry packet
+                    telemetry packet.
                 </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="packet_version_number_ST01"></xtce:ParameterRefEntry>
@@ -45,7 +45,7 @@
             <xtce:SequenceContainer name="TM[1,2]:failed_acceptance_verification_report">
                 <xtce:LongDescription>The request ID field alone cannot be used to identify the request since it does not contain the identifier of
                     the source of that request. That source identifier corresponds to the destination identifier of the
-                    secondary header of the related telemetry packet, refer to clause
+                    secondary header of the related telemetry packet.
                 </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="packet_version_number_ST01"></xtce:ParameterRefEntry>

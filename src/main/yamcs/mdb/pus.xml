@@ -162,8 +162,6 @@
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="TM[3,10]:housekeeping_parameter_report">
-                <xtce:LongDescription>TM[3,10] is a request packet. It is used to request the transmission of a telemetry packet.
-                </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="housekeeping_parameter_report_structure_ID_ST03"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="periodic_generation_action_status_ST03"></xtce:ParameterRefEntry>
@@ -190,8 +188,6 @@
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="TM[3,25]:housekeeping_parameter_report">
-                <xtce:LongDescription>TM[3,25] is a request packet. It is used to request the transmission of a telemetry packet.
-                </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="housekeeping_parameter_report_structure_ID_ST03"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
@@ -206,8 +202,6 @@
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="TM[20,2]:parameter_value_report">
-                <xtce:LongDescription>TM[20,2] is a request packet. It is used to request the transmission of a telemetry packet.
-                </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="number_of_parameters"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
@@ -433,8 +427,9 @@
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="TM[4,2]:parameter_statistics_report">
-                <xtce:LongDescription>The formats of the max value field, the min value field, the mean value field and the standard deviation value
-                    field are specific to the parameter identified by the associated parameter ID field.
+                <xtce:LongDescription>
+                The formats of the max value field, the min value field, the mean value field and the standard deviation value
+                field, contained int he parameter_statistics_structure array, are specific to the parameter identified by the associated parameter ID field.
                 </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="start_time_ST04"></xtce:ParameterRefEntry>
@@ -461,8 +456,6 @@
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="TM[17,2]:are_you_alive_connection_test_report">
-                <xtce:LongDescription> TM[17,2] is a request packet. It is used to request the transmission of a telemetry packet.
-                </xtce:LongDescription>
                 <xtce:EntryList>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_primary_header_TM">
@@ -476,8 +469,6 @@
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="TM[128,128]:log_messages">
-                <xtce:LongDescription> TM[128,128] is a request packet. It is used to request the transmission of a telemetry packet.
-                </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="message_logs"></xtce:ParameterRefEntry>
                 </xtce:EntryList>

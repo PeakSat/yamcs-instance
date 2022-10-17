@@ -1,5 +1,5 @@
-    <?xml version="1.0" encoding="UTF-8"?>
-    <xtce:SpaceSystem name="time-based-scheduling" xmlns:xtce="http://www.omg.org/space/xtce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
+<?xml version="1.0" encoding="UTF-8"?>
+<xtce:SpaceSystem name="time-based-scheduling" xmlns:xtce="http://www.omg.org/space/xtce" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
   <!--Time-Based Sceduling Service (ST[11]) Commands -->
     <xtce:CommandMetaData>
