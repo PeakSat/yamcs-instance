@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xtce:SpaceSystem name="dt" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
+<!--Contains all ParameterTypes for Telemetry and ArgumentTypes for Telecommanding.-->
     <xtce:TelemetryMetaData>
         <xtce:ParameterTypeSet>
-
             <xtce:IntegerParameterType name="packet_version_number">
                 <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
@@ -15,7 +15,6 @@
                     <xtce:Enumeration value="0" label="TM" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
-
 
             <xtce:EnumeratedParameterType name="parameter_ID">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
@@ -70,7 +69,6 @@
                     <xtce:Enumeration value="1220" label="ADCSMCUBootCounter" />
                     <xtce:Enumeration value="1221" label="ADCSMCUOnBoardTime" />
                     <xtce:Enumeration value="1224" label="ADCSSystick" />
-
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
@@ -99,7 +97,6 @@
                     <xtce:Enumeration value="2" label="CANbus2" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
-
 
             <xtce:IntegerParameterType name="secondary_header_flag">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
@@ -131,9 +128,6 @@
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
-
-            <!-- secondary header TM-->
-
             <xtce:IntegerParameterType name="service_type_ID">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
@@ -142,12 +136,9 @@
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
-            <!-- the upper 2 need to be changed to enumerated -->
-
             <xtce:IntegerParameterType name="message_type_counter" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
-
 
             <xtce:EnumeratedParameterType name="response_band">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
@@ -164,7 +155,6 @@
             <xtce:IntegerParameterType name="source_data">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
-
 
             <xtce:IntegerParameterType name="spare">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
@@ -255,15 +245,11 @@
                 </StringDataEncoding>
             </StringParameterType>
 
-
         </xtce:ParameterTypeSet>
-
     </xtce:TelemetryMetaData>
 
     <xtce:CommandMetaData>
-
         <xtce:ArgumentTypeSet>
-
             <xtce:IntegerArgumentType name="packet_version_number">
                 <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
@@ -298,7 +284,6 @@
             <xtce:IntegerArgumentType name="acknowledgment_flags">
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
-            <!-- secondary header TM-->
 
             <xtce:IntegerArgumentType name="service_type_ID_TC">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
@@ -307,8 +292,6 @@
             <xtce:IntegerArgumentType name="message_subtype_ID_TC">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
-
-            <!-- secondary header TC -->
 
             <xtce:EnumeratedArgumentType name="response_band">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
@@ -446,7 +429,6 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-
             <xtce:AbsoluteTimeArgumentType name="release_time_calendar">
                 <xtce:Encoding offset="1577836800" scale="0.1">
                     <xtce:IntegerDataEncoding sizeInBits="32" />
@@ -455,7 +437,6 @@
                     <xtce:Epoch>UNIX</xtce:Epoch>
                 </xtce:ReferenceTime>
             </xtce:AbsoluteTimeArgumentType>
-
 
             <xtce:EnumeratedArgumentType name="structure_ID">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
@@ -467,12 +448,9 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-
-            <!-- needs to be enumerated but i have questions -->
             <xtce:IntegerArgumentType name="aknowledgement_flags">
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
-
 
             <xtce:IntegerArgumentType name="collection_interval_ST03" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
@@ -551,8 +529,6 @@
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerArgumentType>
 
-
         </xtce:ArgumentTypeSet>
-
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>

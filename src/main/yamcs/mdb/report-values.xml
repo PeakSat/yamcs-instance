@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xtce:SpaceSystem name="report-values" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
-
+     <!-- Parameter Management Service (ST[20]) Report-Value Commands (TC[20,1]) of pre-made groups of related parameters-->
     <xtce:CommandMetaData>
         <xtce:MetaCommandSet> 
             <xtce:MetaCommand name="TC[20,1]:report_gyro_parameter_values">
@@ -197,8 +197,6 @@
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
-           
         </xtce:MetaCommandSet> 
-
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>
