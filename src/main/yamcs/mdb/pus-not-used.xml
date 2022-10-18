@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xtce:SpaceSystem name="pus-not-used" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
  
-<xtce:TelemetryMetaData>
+ <!-- ON-Board-Monitoring Service (ST[12]) TM and TC -->
+    <xtce:TelemetryMetaData>
         <xtce:ParameterSet>
-
             <xtce:Parameter name="max_transition_reporting_delay_ST12" parameterTypeRef="/dt/uint8_t" />
             <xtce:Parameter name="N_ST12" parameterTypeRef="/dt/uint8_t" />
             <xtce:Parameter name="PMON_ID_ST12" parameterTypeRef="/dt/uint16_t" />
@@ -15,18 +15,10 @@
             <xtce:Parameter name="PMON_status_ST12" parameterTypeRef="/dt/uint16_t" />
             <xtce:Parameter name="repetition_number_ST12" parameterTypeRef="/dt/uint8_t" />
             <xtce:Parameter name="check_type_ST12" parameterTypeRef="/dt/uint16_t" />
-
-
         </xtce:ParameterSet>
 
-
         <xtce:ContainerSet>
-           
-            <!-- TM[12,9] -->
-
             <xtce:SequenceContainer name="TM[12,9]:parameter_monitoring_definition_report">
-                <xtce:LongDescription>TM[12,9] is a request packet. It is used to request the transmission of a telemetry packet.
-                </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="max_transition_reporting_delay_ST12"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="N_ST12"></xtce:ParameterRefEntry>
@@ -49,15 +41,11 @@
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
-
-
         </xtce:ContainerSet>
     </xtce:TelemetryMetaData>
 
     <xtce:CommandMetaData>
         <xtce:MetaCommandSet>
-
-
             <xtce:MetaCommand name="TC[12,8]:report_parameter_monitoring_definitions">
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/N_ST12" name="number_of_parameters" />
@@ -75,7 +63,6 @@
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
-
         </xtce:MetaCommandSet> 
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>
