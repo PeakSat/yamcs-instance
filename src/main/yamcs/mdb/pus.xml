@@ -459,7 +459,6 @@
                         </xtce:Dimension>
                     </xtce:DimensionList>
                 </xtce:ArrayParameterRefEntry> -->
-
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_primary_header_TM">
                     <xtce:RestrictionCriteria>

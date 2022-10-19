@@ -73,7 +73,7 @@
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="structure_ID">
-                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="0" />
                     <xtce:Enumeration value="2" label="2" />
