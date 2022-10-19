@@ -1,0 +1,16 @@
+---
+yamcs_port_out: 10025
+obc_port_in: 10015
+adcs_port_in: 10016
+canBus_port_in: 10017
+uart_serial_0: "/dev/ttyUSB0"
+uart_serial_1: "/dev/ttyUSB1"
+uart_serial_2: "/dev/ttyUSB2"
+usb_serial_0: "/dev/ttyACM0"
+usb_serial_1: "/dev/ttyACM1"
+usb_serial_2: "/dev/ttyACM2"
+baud_rate: 115200
+IPv4: "127.0.0.1"
+serial_timeout: 30
+max_tc_size: 1024
+socket_backlog_level: 1
