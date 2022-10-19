@@ -28,7 +28,7 @@
             </xtce:Parameter>
 
             <!--Parameters used in TM[4,2] Container-->
-            <xtce:Parameter name="start_time_ST04" parameterTypeRef="/dt/uint16_t">
+            <xtce:Parameter name="start_time_ST04" parameterTypeRef="/dt/uint32_t">
             <xtce:LongDescription>the start time of the time interval over which the time interval over which the
                 evaluation of the parameter statistics was performed</xtce:LongDescription>
             </xtce:Parameter>
@@ -521,8 +521,8 @@
                         <xtce:ArgumentRefEntry argumentRef="secondary_header_flag" />
                         <xtce:ArgumentRefEntry argumentRef="application_process_ID" />
                         <xtce:ArgumentRefEntry argumentRef="sequence_flags" />
-                        <xtce:FixedValueEntry name="packet_data_length" binaryValue="0000" sizeInBits="16" />
                         <xtce:FixedValueEntry name="packet_sequence_count_or_packet_name" binaryValue="0000" sizeInBits="14" />
+                        <xtce:FixedValueEntry name="packet_data_length" binaryValue="0000" sizeInBits="16" />
                         <xtce:ArgumentRefEntry argumentRef="PUS_version_number" />
                         <xtce:ArgumentRefEntry argumentRef="aknowledgement_flags" />
                         <xtce:ArgumentRefEntry argumentRef="service_type_ID" />
