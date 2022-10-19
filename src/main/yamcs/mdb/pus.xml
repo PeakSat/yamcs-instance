@@ -7,15 +7,15 @@
         <xtce:ParameterSet>
             <!--Parameters used in TM[3,10] Container-->
             <xtce:Parameter name="housekeeping_parameter_report_structure_ID_ST03" parameterTypeRef="/dt/structure_ID">
-            <xtce:LongDescription>The housekeeping report structure ID</xtce:LongDescription>
+                <xtce:LongDescription>The housekeeping report structure ID</xtce:LongDescription>
             </xtce:Parameter>
 
             <xtce:Parameter name="periodic_generation_action_status_ST03" parameterTypeRef="/dt/uint8_t" />
 
             <xtce:Parameter name="collection_interval_ST03" parameterTypeRef="/dt/uint32_t" />
 
-            <xtce:Parameter name="number_of_simply_commutated_parameters" parameterTypeRef="/dt/uint16_t" >
-            <xtce:LongDescription>The number of simply commutated parameters contained in the housekeeping parameter report</xtce:LongDescription>
+            <xtce:Parameter name="number_of_simply_commutated_parameters" parameterTypeRef="/dt/uint16_t">
+                <xtce:LongDescription>The number of simply commutated parameters contained in the housekeeping parameter report</xtce:LongDescription>
             </xtce:Parameter>
 
             <!--Parameter used in TM[20,2]-->
@@ -33,12 +33,12 @@
                 evaluation of the parameter statistics was performed</xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter name="end_time_ST04" parameterTypeRef="/dt/uint16_t" >
-            <xtce:LongDescription>the end time of the time interval over which the time interval over which the
+            <xtce:Parameter name="end_time_ST04" parameterTypeRef="/dt/uint32_t">
+                <xtce:LongDescription>the end time of the time interval over which the
                 evaluation of the parameter statistics was performed </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter name="N_ST04" parameterTypeRef="/dt/uint16_t" >
+            <xtce:Parameter name="N_ST04" parameterTypeRef="/dt/uint16_t">
                 <xtce:LongDescription>The number of the statistics report structures received</xtce:LongDescription>
             </xtce:Parameter>
 
@@ -117,12 +117,12 @@
             </xtce:Parameter>
 
             <xtce:Parameter parameterTypeRef="/dt/message_subtype_ID" name="message_subtype_ID_TM">
-            <xtce:LongDescription>A message subtype identifier that uniquely identifies that message
+                <xtce:LongDescription>A message subtype identifier that uniquely identifies that message
                 type within that service type.</xtce:LongDescription>
             </xtce:Parameter>
 
             <xtce:Parameter parameterTypeRef="/dt/message_type_counter" name="message_type_counter">
-            <xtce:LongDescription>For each report that it generates, each application process that provides the
+                <xtce:LongDescription>For each report that it generates, each application process that provides the
                 capability to count the type of generated messages per destination and report the corresponding 
                 message type counter shall set the message type counter of the related telemetry packet to the value 
                 of the related counter.</xtce:LongDescription>
@@ -340,7 +340,7 @@
                 <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                           <xtce:Comparison value="8" parameterRef="number_of_parameters" />
+                            <xtce:Comparison value="8" parameterRef="number_of_parameters" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -444,6 +444,22 @@
                             </xtce:Size>
                         </xtce:DimensionList>
                     </xtce:ArrayParameterRefEntry>
+                    <!-- Proper implementation -->
+                    <!-- <xtce:ArrayParameterRefEntry parameterRef="/AcubeSAT/parameter_statistics_structure">
+                    <xtce:DimensionList>
+                        <xtce:Dimension>
+                            <xtce:StartingIndex>
+                                <xtce:FixedValue>0</xtce:FixedValue>
+                            </xtce:StartingIndex>
+                            <xtce:EndingIndex>
+                                <xtce:DynamicValue>
+                                    <xtce:ParameterInstanceRef parameterRef="N_ST04" />
+                                </xtce:DynamicValue>
+                            </xtce:EndingIndex>
+                        </xtce:Dimension>
+                    </xtce:DimensionList>
+                </xtce:ArrayParameterRefEntry> -->
+
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_primary_header_TM">
                     <xtce:RestrictionCriteria>
@@ -507,7 +523,7 @@
                         <xtce:ArgumentRefEntry argumentRef="application_process_ID" />
                         <xtce:ArgumentRefEntry argumentRef="sequence_flags" />
                         <xtce:FixedValueEntry name="packet_data_length" binaryValue="0000" sizeInBits="16" />
-                        <xtce:FixedValueEntry name="packet_sequence_count_or_packet_name" binaryValue="0000" sizeInBits="14" /> 
+                        <xtce:FixedValueEntry name="packet_sequence_count_or_packet_name" binaryValue="0000" sizeInBits="14" />
                         <xtce:ArgumentRefEntry argumentRef="PUS_version_number" />
                         <xtce:ArgumentRefEntry argumentRef="aknowledgement_flags" />
                         <xtce:ArgumentRefEntry argumentRef="service_type_ID" />
@@ -613,11 +629,11 @@
 
             <xtce:MetaCommand name="TC[4,1]:report_the_parameter_statistics">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="4" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-            </xtce:BaseMetaCommand>
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="4" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/reset_flag_ST04" name="reset_flag" />
                 </xtce:ArgumentList>
