@@ -53,6 +53,9 @@ dataLinks:
     host: localhost
     port: 10014
     packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
+    packetInputStreamClassName: com.example.myproject.CustomCcsdsPacketInputStream
+    packetInputStreamArgs: 
+      maxPacketLength: 10000
 
   - name: tcp-out
     enableAtStartup: true
