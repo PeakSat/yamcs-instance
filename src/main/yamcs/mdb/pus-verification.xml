@@ -32,7 +32,7 @@
                     <xtce:ParameterRefEntry parameterRef="sequence_flags_ST01"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_sequence_count_ST01"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_primary_header_TM">
+                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -56,7 +56,7 @@
                     <xtce:ParameterRefEntry parameterRef="packet_sequence_count_ST01"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="code_ST01"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_primary_header_TM">
+                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />

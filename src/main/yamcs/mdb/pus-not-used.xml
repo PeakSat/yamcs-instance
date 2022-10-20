@@ -32,7 +32,7 @@
                     <xtce:ParameterRefEntry parameterRef="repetition_number_ST12"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="check_type_ST12"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_primary_header_TM">
+                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="12" parameterRef="/pus/service_type_ID_TM" />

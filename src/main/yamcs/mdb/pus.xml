@@ -142,8 +142,9 @@
         </xtce:ParameterSet>
 
         <xtce:ContainerSet>
-            <xtce:SequenceContainer name="packet_primary_header_TM">
+            <xtce:SequenceContainer name="packet_header_TM">
                 <xtce:EntryList>
+                    <!--Primary Header-->
                     <xtce:ParameterRefEntry parameterRef="packet_version_number"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_type"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="secondary_header_flag"></xtce:ParameterRefEntry>
@@ -151,6 +152,7 @@
                     <xtce:ParameterRefEntry parameterRef="sequence_flags"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_sequence_count_or_packet_name"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_data_length"></xtce:ParameterRefEntry>
+                    <!--Secondary Header-->
                     <xtce:ParameterRefEntry parameterRef="PUS_version_number"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="spacecraft_time_reference_status"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="service_type_ID_TM"></xtce:ParameterRefEntry>
@@ -177,7 +179,7 @@
                         </xtce:DimensionList>
                     </xtce:ArrayParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="packet_primary_header_TM">
+                <xtce:BaseContainer containerRef="packet_header_TM">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="3" parameterRef="service_type_ID_TM" />
@@ -191,7 +193,7 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="housekeeping_parameter_report_structure_ID_ST03"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="packet_primary_header_TM">
+                <xtce:BaseContainer containerRef="packet_header_TM">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="3" parameterRef="service_type_ID_TM" />
@@ -205,7 +207,7 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="number_of_parameters"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="packet_primary_header_TM">
+                <xtce:BaseContainer containerRef="packet_header_TM">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="20" parameterRef="service_type_ID_TM" />
@@ -460,7 +462,7 @@
                     </xtce:DimensionList>
                 </xtce:ArrayParameterRefEntry> -->
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="packet_primary_header_TM">
+                <xtce:BaseContainer containerRef="packet_header_TM">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="4" parameterRef="service_type_ID_TM" />
@@ -473,7 +475,7 @@
             <xtce:SequenceContainer name="TM[17,2]:are_you_alive_connection_test_report">
                 <xtce:EntryList>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="packet_primary_header_TM">
+                <xtce:BaseContainer containerRef="packet_header_TM">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="17" parameterRef="service_type_ID_TM" />
@@ -487,7 +489,7 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="message_logs"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="packet_primary_header_TM">
+                <xtce:BaseContainer containerRef="packet_header_TM">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="128" parameterRef="service_type_ID_TM" />
@@ -501,21 +503,24 @@
 
     <xtce:CommandMetaData>
         <xtce:MetaCommandSet>
-            <xtce:MetaCommand name="primary_header" abstract="true">
+            <xtce:MetaCommand name="header" abstract="true">
                 <xtce:ArgumentList>
+                    <!--Primary Header-->
                     <xtce:Argument argumentTypeRef="/dt/packet_version_number" name="packet_version_number"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/packet_type" name="packet_type"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/secondary_header_flag" name="secondary_header_flag"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/application_process_ID" name="application_process_ID"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/sequence_flags" name="sequence_flags"></xtce:Argument>
+                    <!--Secondary Header-->
                     <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="PUS_version_number"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="aknowledgement_flags"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/service_type_ID_TC" name="service_type_ID"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/message_subtype_ID_TC" name="message_subtype_ID"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="source_ID"></xtce:Argument>
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="packet_primary_header_TC">
+                <xtce:CommandContainer name="packet_header_TC">
                     <xtce:EntryList>
+                        <!--Primary Header-->
                         <xtce:ArgumentRefEntry argumentRef="packet_version_number" />
                         <xtce:ArgumentRefEntry argumentRef="packet_type" />
                         <xtce:ArgumentRefEntry argumentRef="secondary_header_flag" />
@@ -523,6 +528,7 @@
                         <xtce:ArgumentRefEntry argumentRef="sequence_flags" />
                         <xtce:FixedValueEntry name="packet_data_length" binaryValue="0000" sizeInBits="16" />
                         <xtce:FixedValueEntry name="packet_sequence_count_or_packet_name" binaryValue="0000" sizeInBits="14" />
+                        <!--Secondary Header-->
                         <xtce:ArgumentRefEntry argumentRef="PUS_version_number" />
                         <xtce:ArgumentRefEntry argumentRef="aknowledgement_flags" />
                         <xtce:ArgumentRefEntry argumentRef="service_type_ID" />
@@ -533,7 +539,7 @@
             </xtce:MetaCommand>
 
             <xtce:MetaCommand name="Header_TC" abstract="true">
-                <xtce:BaseMetaCommand metaCommandRef="primary_header">
+                <xtce:BaseMetaCommand metaCommandRef="header">
                     <xtce:ArgumentAssignmentList>
                         <xtce:ArgumentAssignment argumentName="packet_version_number" argumentValue="0" />
                         <xtce:ArgumentAssignment argumentName="packet_type" argumentValue="TC" />
@@ -546,7 +552,7 @@
                 </xtce:BaseMetaCommand>
                 <xtce:CommandContainer name="Header_TC">
                     <xtce:EntryList />
-                    <xtce:BaseContainer containerRef="packet_primary_header_TC" />
+                    <xtce:BaseContainer containerRef="packet_header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
