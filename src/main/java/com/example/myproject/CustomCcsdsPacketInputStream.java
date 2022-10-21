@@ -28,9 +28,9 @@ public class CustomCcsdsPacketInputStream implements PacketInputStream {
 
     @Override
     public byte[] readPacket() throws IOException {
-        byte[] hdr = new byte[6];
+        byte[] hdr = new byte[12];
         dataInputStream.readFully(hdr);
-        int remaining = ((hdr[4] & 0xFF) << 8) + (hdr[5] & 0xFF) + 1;
+        int remaining = ((hdr[10] & 0xFF) << 8) + (hdr[11] & 0xFF) + 1;
         int pktLength = remaining + hdr.length;
         if (pktLength > maxPacketLength) {
             throw new IOException("Invalid packet read: "
