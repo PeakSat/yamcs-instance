@@ -7,6 +7,7 @@ from dataclasses import dataclass
 from logging import config
 import logging
 import socket
+from time import sleep
 import yaml
 import serial
 from cobs import cobs
@@ -26,6 +27,7 @@ class Settings:
         IP: The application IP for establishing connection.
         timeout: Read data from the serial port untl a \n is received or N=timeout seconds have passed.
         max_size: Max bytes to compose a TC.
+        enabled/disabled: Used to enable/disable socket options
     """
 
     yamcs_port_out: int
@@ -43,6 +45,8 @@ class Settings:
     serial_timeout: int
     max_tc_size: int
     socket_backlog_level: int
+    enabled: int
+    disabled: int
 
 
 def clamp(n, smallest, largest):
@@ -53,11 +57,13 @@ def connect_to_port(settings: Settings, port: int) -> socket:
     """
     This function is used to connect to a TCP socket.
     If the processes initialized by this script are not terminated properly (this can happen
-    if an exception occures),the TCP connections might not close. YAMCS tries every 10 seconds
-    to reconnect to these ports, so after that time period everything should be reset.
+    if an exception occures),the TCP connections might not close. By enabling the REUSEADDR
+    (reuse address) option, the script will try to reconnect to that previously opened port
+    that is at a TIME_WAIT state.
     """
     logging.info("Awaiting socket connection with YAMCS port " + str(port) + "...")
     yamcs_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    yamcs_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, settings.enabled)
     try:
         yamcs_socket.bind((settings.IPv4, port))
     except OSError:
@@ -101,43 +107,55 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
 
     tcp_client = connect_to_port(settings, yamcs_port_in)
 
-    with serial.Serial(
-        serial_port, baudrate=settings.baud_rate, timeout=settings.serial_timeout
-    ) as ser:
+    while True:
 
-        # Read any messages already stored to the buffer.
-        # If YAMCS receives this, it's gonna fail and the script will produce a TCP exception.
-        ser.readline()
+        try:
+            ser = serial.Serial(
+                serial_port,
+                baudrate=settings.baud_rate,
+                timeout=settings.serial_timeout,
+            )
 
-        while True:
-            message = ser.readline()
-            # not using decode("utf-8") since it will break printing (all new line characters will result in an new line)
-            logging.info(f"{ser.name} said: {message}")
+            # Read any messages already stored to the buffer.
+            # If YAMCS receives this, it's gonna fail and the script will produce a TCP exception.
+            ser.readline()
 
-            # finds exclamation mark ! in the byte array
-            idx = message.find(0x021)
-            if idx == -1:
-                continue
+            while True:
+                message = ser.readline()
+                # not using decode("utf-8") since it will break printing (all new line characters will result in an new line)
+                logging.info(f"{ser.name}: {message}")
 
-            dirty_packet = message[idx + 2 :]
-            packet = bytearray()
-            packet_byte_decimal = 0
-            for packet_byte in dirty_packet:
-                # if the next character is a space, add the number
-                if packet_byte == 0x020:
-                    # Corrupted message: If this decimal ends up larger than 256 we are certain
-                    # that corruption has occured since OBC sends 8 bit words.
-                    clamp(packet_byte_decimal, 0, 256)
+                # finds exclamation mark ! in the byte array
+                idx = message.find(0x021)
+                if idx == -1:
+                    continue
 
-                    packet.append(packet_byte_decimal)
-                    packet_byte_decimal = 0
-                else:
-                    # convert from ascii to integer
-                    packet_byte_int = packet_byte - 48
-                    # actually translate the number. Each extra number added means the final is an order of magnitude bigger
-                    packet_byte_decimal = packet_byte_decimal * 10 + packet_byte_int
+                dirty_packet = message[idx + 2 :]
+                packet = bytearray()
+                packet_byte_decimal = 0
+                for packet_byte in dirty_packet:
+                    # if the next character is a space, add the number
+                    if packet_byte == 0x020:
+                        # Corrupted message: If this decimal ends up larger than 256 we are certain
+                        # that corruption has occured since OBC sends 8 bit words.
+                        clamp(packet_byte_decimal, 0, 256)
 
-            tcp_client.send(bytes(packet))
+                        packet.append(packet_byte_decimal)
+                        packet_byte_decimal = 0
+                    else:
+                        # convert from ascii to integer
+                        packet_byte_int = packet_byte - 48
+                        # actually translate the number. Each extra number added means the final is an order of magnitude bigger
+                        packet_byte_decimal = packet_byte_decimal * 10 + packet_byte_int
+
+                tcp_client.send(bytes(packet))
+        except serial.SerialException:
+            logging.error(
+                "No device is connected at port "
+                + serial_port
+                + ". Please connect a device."
+            )
+            sleep(5)
 
 
 def yamcs_client(settings: Settings, serial_port: str = None):
@@ -153,19 +171,28 @@ def yamcs_client(settings: Settings, serial_port: str = None):
 
     tcp_client = connect_to_port(settings, settings.yamcs_port_out)
 
-    with serial.Serial(
-        port=serial_port,
-        baudrate=settings.baud_rate,
-        timeout=settings.serial_timeout,
-    ) as port:
+    while True:
 
-        while True:
-            data, _ = tcp_client.recvfrom(settings.max_tc_size)
-            logging.info("YAMCS said: " + data.hex())
+        try:
+            port = serial.Serial(
+                port=serial_port,
+                baudrate=settings.baud_rate,
+                timeout=settings.serial_timeout,
+            )
+            while True:
+                data, _ = tcp_client.recvfrom(settings.max_tc_size)
+                logging.info("YAMCS: " + data.hex())
 
-            encoded_data = cobs.encode(data)
-            port.write(encoded_data)
-            port.write(b"\x00")
+                encoded_data = cobs.encode(data)
+                port.write(encoded_data)
+                port.write(b"\x00")
+        except serial.SerialException:
+            logging.error(
+                "No device is connected at port "
+                + serial_port
+                + ". Please connect a device."
+            )
+            sleep(5)
 
 
 if __name__ == "__main__":
