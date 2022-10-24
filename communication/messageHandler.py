@@ -61,22 +61,24 @@ def connect_to_port(settings: Settings, port: int) -> socket:
     (reuse address) option, the script will try to reconnect to that previously opened port
     that is at a TIME_WAIT state.
     """
-    logging.info("Awaiting socket connection with YAMCS port " + str(port) + "...")
+    logging.debug("Awaiting socket connection with YAMCS port " +
+                 str(port) + "...")
     yamcs_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    yamcs_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, settings.enabled)
+    yamcs_socket.setsockopt(
+        socket.SOL_SOCKET, socket.SO_REUSEADDR, settings.enabled)
     try:
         yamcs_socket.bind((settings.IPv4, port))
     except OSError:
-        logging.error(
+        logging.exception(
             "Port "
             + str(port)
-            + " not closed (probably from previous script execution). Kill threads with Ctrl+C and try again in a few seconds."
+            + " not closed (probably from previous script execution)."
         )
         exit(1)
 
     yamcs_socket.listen(settings.socket_backlog_level)
     yamcs_client, _ = yamcs_socket.accept()
-    logging.info("Connected to " + str(port))
+    logging.debug("Connected to " + str(port))
     return yamcs_client
 
 
@@ -130,7 +132,7 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
                 if idx == -1:
                     continue
 
-                dirty_packet = message[idx + 2 :]
+                dirty_packet = message[idx + 2:]
                 packet = bytearray()
                 packet_byte_decimal = 0
                 for packet_byte in dirty_packet:
@@ -138,7 +140,7 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
                     if packet_byte == 0x020:
                         # Corrupted message: If this decimal ends up larger than 256 we are certain
                         # that corruption has occured since OBC sends 8 bit words.
-                        clamp(packet_byte_decimal, 0, 256)
+                        clamp(packet_byte_decimal, 0, 255)
 
                         packet.append(packet_byte_decimal)
                         packet_byte_decimal = 0
@@ -150,7 +152,7 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
 
                 tcp_client.send(bytes(packet))
         except serial.SerialException:
-            logging.error(
+            logging.warning(
                 "No device is connected at port "
                 + serial_port
                 + ". Please connect a device."
@@ -187,7 +189,7 @@ def yamcs_client(settings: Settings, serial_port: str = None):
                 port.write(encoded_data)
                 port.write(b"\x00")
         except serial.SerialException:
-            logging.error(
+            logging.warning(
                 "No device is connected at port "
                 + serial_port
                 + ". Please connect a device."
@@ -213,9 +215,6 @@ if __name__ == "__main__":
                 settings.adcs_port_in,
             ),
         ).start()
-
-    Todo:
-            * DEBUG should also append to a text file
     """
 
     # setup logging
@@ -224,7 +223,7 @@ if __name__ == "__main__":
         try:
             data = yaml.safe_load(stream)
             settings = Settings(**data)
-            logging.info("Successfully read settings file.")
+            logging.debug("Successfully read settings file.")
         except yaml.YAMLError:
             logging.exception("File reading error.")
 
@@ -244,3 +243,21 @@ if __name__ == "__main__":
         ),
     )
     obc_listener_thread.start()
+
+    adcs_listener_thread = Thread(
+        target=mcu_client,
+        args=(
+            settings,
+            adcs_serial_port,
+            settings.adcs_port_in,
+        ),
+    ).start()
+
+    can_listener_thread = Thread(
+        target=mcu_client,
+        args=(
+            settings,
+            can_serial_port,
+            settings.canBus_port_in,
+        ),
+    ).start()
