@@ -142,7 +142,10 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
                         # that corruption has occured since OBC sends 8 bit words.
                         clamp(packet_byte_decimal, 0, 255)
 
-                        packet.append(packet_byte_decimal)
+                        try:
+                            packet.append(packet_byte_decimal)
+                        except ValueError:
+                            logging.warning("Byte is corrupted: "+str(packet_byte_decimal))
                         packet_byte_decimal = 0
                     else:
                         # convert from ascii to integer
@@ -158,6 +161,7 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
                 + ". Please connect a device."
             )
             sleep(5)
+
 
 
 def yamcs_client(settings: Settings, serial_port: str = None):
