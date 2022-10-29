@@ -57,9 +57,9 @@ def connect_to_port(settings: Settings, port: int) -> socket:
     """
     This function is used to connect to a TCP socket.
     If the processes initialized by this script are not terminated properly (this can happen
-    if an exception occures),the TCP connections might not close. By enabling the REUSEADDR
-    (reuse address) option, the script will try to reconnect to that previously opened port
-    that is at a TIME_WAIT state.
+    if an exception occurs),the TCP connections might not close. By enabling the REUSEADDR
+    (reuse address) option, the script will try to reconnect to the already opened port
+    that is in a TIME_WAIT state.
     """
     logging.debug("Awaiting socket connection with YAMCS port " +
                  str(port) + "...")
