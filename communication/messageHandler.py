@@ -45,8 +45,8 @@ class Settings:
     serial_timeout: int
     max_tc_size: int
     socket_backlog_level: int
-    enabled: int
-    disabled: int
+    socket_options_enabled: int
+    socket_options_disabled: int
 
 
 def clamp(n, smallest, largest):
@@ -65,7 +65,7 @@ def connect_to_port(settings: Settings, port: int) -> socket:
                  str(port) + "...")
     yamcs_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     yamcs_socket.setsockopt(
-        socket.SOL_SOCKET, socket.SO_REUSEADDR, settings.enabled)
+        socket.SOL_SOCKET, socket.SO_REUSEADDR, settings.socket_options_enabled)
     try:
         yamcs_socket.bind((settings.IPv4, port))
     except OSError:
