@@ -34,6 +34,10 @@
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcMRAMLCLThreshold"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcNANDFLASHON"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcMRAMON"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/obcSpacecraftRefTime" name="obcSpacecraftRefTime"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/obcOperationalMode" name="obcOperationalMode"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="obcReconfigurationTimer"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="obcLastFailedEvent"></xtce:Parameter>
             <!--ADCS Parameters that will be used in the Enviromental Campaign-->
             <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerRawX"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="magnetometerRawY"></xtce:Parameter> 
@@ -60,10 +64,13 @@
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasX"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasY"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasZ"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="adcsFlashInt"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="adcsSRAMInt"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="adcsMCUTemperature"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="adcsMCUOnBoardTime"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint64_t" name="adcsSystick"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="adcsBootCounter"></xtce:Parameter>
+
         </xtce:ParameterSet>
     </xtce:TelemetryMetaData>
 
