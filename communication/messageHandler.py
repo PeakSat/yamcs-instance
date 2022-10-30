@@ -17,6 +17,17 @@ space = 0x020
 delimiter = b"\x00"
 
 
+class YAMCSClosedPortException(Exception):
+    """Raised when YAMCS refuses connection."""
+
+    def __init__(
+        self,
+        message="Probably packet header fields are initialized improperly or packet is corrupt.",
+    ):
+        self.message = message
+        super().__init__(self.message)
+
+
 @dataclass
 class Settings:
     """
@@ -58,10 +69,10 @@ class Settings:
 def clamp(n, smallest, largest):
     """
     Clips the input given a lower bound and an upper bound.
-    It is necessary because if a byte larger than 256 is appended, 
-    an exception will occur. 
+    It is necessary because if a byte larger than 256 is appended,
+    an exception will occur.
     This means that some data might not be accurate, but later evaluation
-    by the operator will make this clear. 
+    by the operator will make this clear.
     """
     return max(smallest, min(n, largest))
 
@@ -108,9 +119,9 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
     8 1 1 9 2 0 0 2 0 ... -> garbage
     So we need to parse a sequence of numbers as a single decimal.
     In order to do this, we must first convert all ascii numbers to decimal form.
-    Also we need to keep track of the space characters. If we receive numbers one after the other 
+    Also we need to keep track of the space characters. If we receive numbers one after the other
     (whithout space characters in between), we need to multiply the previous entry by 10, in order
-    to parse the whole decimal. 
+    to parse the whole decimal.
     Note:
         If the debugging messages are altered, this script will have undetermined behavior, since
         it relies on the existence of the exclamation mark "!" to detect actual TMs being sent.
@@ -163,6 +174,8 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
                 + ". Please connect a device."
             )
             sleep(settings.reconnection_timeout)
+        except socket.error as error:
+            raise YAMCSClosedPortException(error)
 
 
 def yamcs_client(settings: Settings, serial_port: str = None):
