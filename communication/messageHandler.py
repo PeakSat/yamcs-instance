@@ -12,9 +12,9 @@ import yaml
 import serial
 from cobs import cobs
 
-exclamation_mark = 0x021
-space = 0x020
-delimiter = b"\x00"
+EXCLAMATION_MARK = 0x021
+SPACE = 0x020
+DELIMITER = b"\x00"
 
 
 class YAMCSClosedPortException(Exception):
@@ -151,7 +151,7 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
                 # not using decode("utf-8") since it will break printing (all new line characters will result in an new line)
                 logging.info(f"{ser.name}: {message}")
 
-                idx = message.find(exclamation_mark)
+                idx = message.find(EXCLAMATION_MARK)
                 if idx == -1:
                     continue
 
@@ -159,7 +159,7 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
                 packet = bytearray()
                 packet_byte_decimal = 0
                 for packet_byte in raw_packet:
-                    if packet_byte == space:
+                    if packet_byte == SPACE:
                         packet_byte_decimal = clamp(packet_byte_decimal, 0, 255)
                         packet_byte_decimal = 0
                     else:
@@ -205,7 +205,7 @@ def yamcs_client(settings: Settings, serial_port: str = None):
 
                 encoded_data = cobs.encode(data)
                 port.write(encoded_data)
-                port.write(delimiter)
+                port.write(DELIMITER)
         except serial.SerialException:
             logging.warning(
                 "No device is connected at port "
