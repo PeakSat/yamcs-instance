@@ -17,8 +17,6 @@ space = 0x020
 delimiter = b"\x00"
 
 
-
-
 @dataclass
 class Settings:
     """
@@ -58,6 +56,13 @@ class Settings:
 
 
 def clamp(n, smallest, largest):
+    """
+    Clips the input given a lower bound and an upper bound.
+    It is necessary because if a byte larger than 256 is appended, 
+    an exception will occur. 
+    This means that some data might not be accurate, but later evaluation
+    by the operator will make this clear. 
+    """
     return max(smallest, min(n, largest))
 
 
@@ -96,19 +101,19 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
     Opens a new TCP stream socket.
     It listens to the specified serial port for TM messages.
     They usually come in the following form:
-    '1801 [debug    ] New TM[3,25] message! 8 1 192 2 0 15 32 3 25 0 2 0 1 37 165 53 0 0 0 0 0 \n'
+    '1801 [debug    ]OBC New TM[3,25] message! 8 1 192 2 0 15 32 3 25 0 2 0 1 37 165 53 0 0 0 0 0 \n'
     This string is split after the "!", returning the actual packet.
     All the bytes after that are sent to YAMCS.
     If we try to convert the characters one by one from ASCII to integer, we will get something like:
     8 1 1 9 2 0 0 2 0 ... -> garbage
     So we need to parse a sequence of numbers as a single decimal.
-
+    In order to do this, we must first convert all ascii numbers to decimal form.
+    Also we need to keep track of the space characters. If we receive numbers one after the other 
+    (whithout space characters in between), we need to multiply the previous entry by 10, in order
+    to parse the whole decimal. 
     Note:
         If the debugging messages are altered, this script will have undetermined behavior, since
         it relies on the existence of the exclamation mark "!" to detect actual TMs being sent.
-
-    Todo:
-        * Incoming messages will mention the subsystem name right after [debug    ].
     """
     if yamcs_port_in is None:
         yamcs_port_in = settings.obc_port_in
@@ -144,21 +149,10 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
                 packet_byte_decimal = 0
                 for packet_byte in raw_packet:
                     if packet_byte == space:
-                        # Corrupted message: If this decimal ends up larger than 256 we are certain
-                        # that corruption has occured since OBC sends 8 bit words.
                         packet_byte_decimal = clamp(packet_byte_decimal, 0, 255)
-
-                        try:
-                            packet.append(packet_byte_decimal)
-                        except ValueError:
-                            logging.warning(
-                                "Byte is corrupted: " + str(packet_byte_decimal)
-                            )
                         packet_byte_decimal = 0
                     else:
-                        # convert from ascii to integer
                         packet_byte_int = packet_byte - 48
-                        # actually translate the number. Each extra number added means the final is an order of magnitude bigger
                         packet_byte_decimal = packet_byte_decimal * 10 + packet_byte_int
 
                 tcp_client.send(bytes(packet))
@@ -255,20 +249,20 @@ if __name__ == "__main__":
     )
     obc_listener_thread.start()
 
-    adcs_listener_thread = Thread(
-        target=mcu_client,
-        args=(
-            settings,
-            adcs_serial_port,
-            settings.adcs_port_in,
-        ),
-    ).start()
+    # adcs_listener_thread = Thread(
+    #     target=mcu_client,
+    #     args=(
+    #         settings,
+    #         adcs_serial_port,
+    #         settings.adcs_port_in,
+    #     ),
+    # ).start()
 
-    can_listener_thread = Thread(
-        target=mcu_client,
-        args=(
-            settings,
-            can_serial_port,
-            settings.canBus_port_in,
-        ),
-    ).start()
+    # can_listener_thread = Thread(
+    #     target=mcu_client,
+    #     args=(
+    #         settings,
+    #         can_serial_port,
+    #         settings.canBus_port_in,
+    #     ),
+    # ).start()
