@@ -12,6 +12,12 @@ import yaml
 import serial
 from cobs import cobs
 
+exclamation_mark = 0x021
+space = 0x020
+delimiter = b"\x00"
+
+
+
 
 @dataclass
 class Settings:
@@ -27,7 +33,8 @@ class Settings:
         IP: The application IP for establishing connection.
         timeout: Read data from the serial port untl a \n is received or N=timeout seconds have passed.
         max_size: Max bytes to compose a TC.
-        enabled/disabled: Used to enable/disable socket options
+        enabled/disabled: Used to enable/disable socket options.
+        reconnection_timeout: Seconds to wait if device is not connected.
     """
 
     yamcs_port_out: int
@@ -47,6 +54,7 @@ class Settings:
     socket_backlog_level: int
     socket_options_enabled: int
     socket_options_disabled: int
+    reconnection_timeout: int
 
 
 def clamp(n, smallest, largest):
@@ -61,11 +69,11 @@ def connect_to_port(settings: Settings, port: int) -> socket:
     (reuse address) option, the script will try to reconnect to the already opened port
     that is in a TIME_WAIT state.
     """
-    logging.debug("Awaiting socket connection with YAMCS port " +
-                 str(port) + "...")
+    logging.debug("Awaiting socket connection with YAMCS port " + str(port) + "...")
     yamcs_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     yamcs_socket.setsockopt(
-        socket.SOL_SOCKET, socket.SO_REUSEADDR, settings.socket_options_enabled)
+        socket.SOL_SOCKET, socket.SO_REUSEADDR, settings.socket_options_enabled
+    )
     try:
         yamcs_socket.bind((settings.IPv4, port))
     except OSError:
@@ -127,25 +135,25 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
                 # not using decode("utf-8") since it will break printing (all new line characters will result in an new line)
                 logging.info(f"{ser.name}: {message}")
 
-                # finds exclamation mark ! in the byte array
-                idx = message.find(0x021)
+                idx = message.find(exclamation_mark)
                 if idx == -1:
                     continue
 
-                dirty_packet = message[idx + 2:]
+                raw_packet = message[idx + 2 :]
                 packet = bytearray()
                 packet_byte_decimal = 0
-                for packet_byte in dirty_packet:
-                    # if the next character is a space, add the number
-                    if packet_byte == 0x020:
+                for packet_byte in raw_packet:
+                    if packet_byte == space:
                         # Corrupted message: If this decimal ends up larger than 256 we are certain
                         # that corruption has occured since OBC sends 8 bit words.
-                        clamp(packet_byte_decimal, 0, 255)
+                        packet_byte_decimal = clamp(packet_byte_decimal, 0, 255)
 
                         try:
                             packet.append(packet_byte_decimal)
                         except ValueError:
-                            logging.warning("Byte is corrupted: "+str(packet_byte_decimal))
+                            logging.warning(
+                                "Byte is corrupted: " + str(packet_byte_decimal)
+                            )
                         packet_byte_decimal = 0
                     else:
                         # convert from ascii to integer
@@ -160,8 +168,7 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
                 + serial_port
                 + ". Please connect a device."
             )
-            sleep(5)
-
+            sleep(settings.reconnection_timeout)
 
 
 def yamcs_client(settings: Settings, serial_port: str = None):
@@ -191,14 +198,14 @@ def yamcs_client(settings: Settings, serial_port: str = None):
 
                 encoded_data = cobs.encode(data)
                 port.write(encoded_data)
-                port.write(b"\x00")
+                port.write(delimiter)
         except serial.SerialException:
             logging.warning(
                 "No device is connected at port "
                 + serial_port
                 + ". Please connect a device."
             )
-            sleep(5)
+            sleep(settings.reconnection_timeout)
 
 
 if __name__ == "__main__":

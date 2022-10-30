@@ -16,3 +16,4 @@ max_tc_size: 1024
 socket_backlog_level: 1
 socket_options_enabled: 1
 socket_options_disabled: 0
+reconnection_timeout: 5
