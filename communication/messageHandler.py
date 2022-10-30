@@ -7,9 +7,25 @@ from dataclasses import dataclass
 from logging import config
 import logging
 import socket
+from time import sleep
 import yaml
 import serial
 from cobs import cobs
+
+EXCLAMATION_MARK = 0x021
+SPACE = 0x020
+DELIMITER = b"\x00"
+
+
+class YAMCSClosedPortException(Exception):
+    """Raised when YAMCS refuses connection."""
+
+    def __init__(
+        self,
+        message="Probably packet header fields are initialized improperly or packet is corrupt.",
+    ):
+        self.message = message
+        super().__init__(self.message)
 
 
 @dataclass
@@ -26,6 +42,8 @@ class Settings:
         IP: The application IP for establishing connection.
         timeout: Read data from the serial port untl a \n is received or N=timeout seconds have passed.
         max_size: Max bytes to compose a TC.
+        enabled/disabled: Used to enable/disable socket options.
+        reconnection_timeout: Seconds to wait if device is not connected.
     """
 
     yamcs_port_out: int
@@ -43,9 +61,19 @@ class Settings:
     serial_timeout: int
     max_tc_size: int
     socket_backlog_level: int
+    socket_options_enabled: int
+    socket_options_disabled: int
+    reconnection_timeout: int
 
 
 def clamp(n, smallest, largest):
+    """
+    Clips the input given a lower bound and an upper bound.
+    It is necessary because if a byte larger than 256 is appended,
+    an exception will occur.
+    This means that some data might not be accurate, but later evaluation
+    by the operator will make this clear.
+    """
     return max(smallest, min(n, largest))
 
 
@@ -53,24 +81,28 @@ def connect_to_port(settings: Settings, port: int) -> socket:
     """
     This function is used to connect to a TCP socket.
     If the processes initialized by this script are not terminated properly (this can happen
-    if an exception occures),the TCP connections might not close. YAMCS tries every 10 seconds
-    to reconnect to these ports, so after that time period everything should be reset.
+    if an exception occurs),the TCP connections might not close. By enabling the REUSEADDR
+    (reuse address) option, the script will try to reconnect to the already opened port
+    that is in a TIME_WAIT state.
     """
-    logging.info("Awaiting socket connection with YAMCS port " + str(port) + "...")
+    logging.debug("Awaiting socket connection with YAMCS port " + str(port) + "...")
     yamcs_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    yamcs_socket.setsockopt(
+        socket.SOL_SOCKET, socket.SO_REUSEADDR, settings.socket_options_enabled
+    )
     try:
         yamcs_socket.bind((settings.IPv4, port))
     except OSError:
-        logging.error(
+        logging.exception(
             "Port "
             + str(port)
-            + " not closed (probably from previous script execution). Kill threads with Ctrl+C and try again in a few seconds."
+            + " not closed (probably from previous script execution)."
         )
         exit(1)
 
     yamcs_socket.listen(settings.socket_backlog_level)
     yamcs_client, _ = yamcs_socket.accept()
-    logging.info("Connected to " + str(port))
+    logging.debug("Connected to " + str(port))
     return yamcs_client
 
 
@@ -80,19 +112,19 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
     Opens a new TCP stream socket.
     It listens to the specified serial port for TM messages.
     They usually come in the following form:
-    '1801 [debug    ] New TM[3,25] message! 8 1 192 2 0 15 32 3 25 0 2 0 1 37 165 53 0 0 0 0 0 \n'
+    '1801 [debug    ]OBC New TM[3,25] message! 8 1 192 2 0 15 32 3 25 0 2 0 1 37 165 53 0 0 0 0 0 \n'
     This string is split after the "!", returning the actual packet.
     All the bytes after that are sent to YAMCS.
     If we try to convert the characters one by one from ASCII to integer, we will get something like:
     8 1 1 9 2 0 0 2 0 ... -> garbage
     So we need to parse a sequence of numbers as a single decimal.
-
+    In order to do this, we must first convert all ascii numbers to decimal form.
+    Also we need to keep track of the space characters. If we receive numbers one after the other
+    (whithout space characters in between), we need to multiply the previous entry by 10, in order
+    to parse the whole decimal.
     Note:
         If the debugging messages are altered, this script will have undetermined behavior, since
         it relies on the existence of the exclamation mark "!" to detect actual TMs being sent.
-
-    Todo:
-        * Incoming messages will mention the subsystem name right after [debug    ].
     """
     if yamcs_port_in is None:
         yamcs_port_in = settings.obc_port_in
@@ -101,43 +133,49 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
 
     tcp_client = connect_to_port(settings, yamcs_port_in)
 
-    with serial.Serial(
-        serial_port, baudrate=settings.baud_rate, timeout=settings.serial_timeout
-    ) as ser:
+    while True:
 
-        # Read any messages already stored to the buffer.
-        # If YAMCS receives this, it's gonna fail and the script will produce a TCP exception.
-        ser.readline()
+        try:
+            ser = serial.Serial(
+                serial_port,
+                baudrate=settings.baud_rate,
+                timeout=settings.serial_timeout,
+            )
 
-        while True:
-            message = ser.readline()
-            # not using decode("utf-8") since it will break printing (all new line characters will result in an new line)
-            logging.info(f"{ser.name} said: {message}")
+            # Read any messages already stored to the buffer.
+            # If YAMCS receives this, it's gonna fail and the script will produce a TCP exception.
+            ser.readline()
 
-            # finds exclamation mark ! in the byte array
-            idx = message.find(0x021)
-            if idx == -1:
-                continue
+            while True:
+                message = ser.readline()
+                # not using decode("utf-8") since it will break printing (all new line characters will result in an new line)
+                logging.info(f"{ser.name}: {message}")
 
-            dirty_packet = message[idx + 2 :]
-            packet = bytearray()
-            packet_byte_decimal = 0
-            for packet_byte in dirty_packet:
-                # if the next character is a space, add the number
-                if packet_byte == 0x020:
-                    # Corrupted message: If this decimal ends up larger than 256 we are certain
-                    # that corruption has occured since OBC sends 8 bit words.
-                    clamp(packet_byte_decimal, 0, 256)
+                idx = message.find(EXCLAMATION_MARK)
+                if idx == -1:
+                    continue
 
-                    packet.append(packet_byte_decimal)
-                    packet_byte_decimal = 0
-                else:
-                    # convert from ascii to integer
-                    packet_byte_int = packet_byte - 48
-                    # actually translate the number. Each extra number added means the final is an order of magnitude bigger
-                    packet_byte_decimal = packet_byte_decimal * 10 + packet_byte_int
+                raw_packet = message[idx + 2 :]
+                packet = bytearray()
+                packet_byte_decimal = 0
+                for packet_byte in raw_packet:
+                    if packet_byte == SPACE:
+                        packet_byte_decimal = clamp(packet_byte_decimal, 0, 255)
+                        packet_byte_decimal = 0
+                    else:
+                        packet_byte_int = packet_byte - 48
+                        packet_byte_decimal = packet_byte_decimal * 10 + packet_byte_int
 
-            tcp_client.send(bytes(packet))
+                tcp_client.send(bytes(packet))
+        except serial.SerialException:
+            logging.warning(
+                "No device is connected at port "
+                + serial_port
+                + ". Please connect a device."
+            )
+            sleep(settings.reconnection_timeout)
+        except socket.error as error:
+            raise YAMCSClosedPortException(error)
 
 
 def yamcs_client(settings: Settings, serial_port: str = None):
@@ -153,19 +191,28 @@ def yamcs_client(settings: Settings, serial_port: str = None):
 
     tcp_client = connect_to_port(settings, settings.yamcs_port_out)
 
-    with serial.Serial(
-        port=serial_port,
-        baudrate=settings.baud_rate,
-        timeout=settings.serial_timeout,
-    ) as port:
+    while True:
 
-        while True:
-            data, _ = tcp_client.recvfrom(settings.max_tc_size)
-            logging.info("YAMCS said: " + data.hex())
+        try:
+            port = serial.Serial(
+                port=serial_port,
+                baudrate=settings.baud_rate,
+                timeout=settings.serial_timeout,
+            )
+            while True:
+                data, _ = tcp_client.recvfrom(settings.max_tc_size)
+                logging.info("YAMCS: " + data.hex())
 
-            encoded_data = cobs.encode(data)
-            port.write(encoded_data)
-            port.write(b"\x00")
+                encoded_data = cobs.encode(data)
+                port.write(encoded_data)
+                port.write(DELIMITER)
+        except serial.SerialException:
+            logging.warning(
+                "No device is connected at port "
+                + serial_port
+                + ". Please connect a device."
+            )
+            sleep(settings.reconnection_timeout)
 
 
 if __name__ == "__main__":
@@ -186,9 +233,6 @@ if __name__ == "__main__":
                 settings.adcs_port_in,
             ),
         ).start()
-
-    Todo:
-            * DEBUG should also append to a text file
     """
 
     # setup logging
@@ -197,7 +241,7 @@ if __name__ == "__main__":
         try:
             data = yaml.safe_load(stream)
             settings = Settings(**data)
-            logging.info("Successfully read settings file.")
+            logging.debug("Successfully read settings file.")
         except yaml.YAMLError:
             logging.exception("File reading error.")
 
@@ -217,3 +261,21 @@ if __name__ == "__main__":
         ),
     )
     obc_listener_thread.start()
+
+    adcs_listener_thread = Thread(
+        target=mcu_client,
+        args=(
+            settings,
+            adcs_serial_port,
+            settings.adcs_port_in,
+        ),
+    ).start()
+
+    can_listener_thread = Thread(
+        target=mcu_client,
+        args=(
+            settings,
+            can_serial_port,
+            settings.canBus_port_in,
+        ),
+    ).start()

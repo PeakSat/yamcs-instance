@@ -1,3 +1,4 @@
 
 #exclude target directory
 target/
+*.log
