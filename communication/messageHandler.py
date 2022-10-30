@@ -96,7 +96,7 @@ def connect_to_port(settings: Settings, port: int) -> socket:
         logging.exception(
             "Port "
             + str(port)
-            + " not closed (probably from previous script execution)."
+            + " not available (check if YAMCS is running)."
         )
         exit(1)
 
