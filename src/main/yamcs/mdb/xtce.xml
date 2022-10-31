@@ -18,8 +18,8 @@
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="adcsUseUART"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="adcsUseCAN"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="onBoardTime"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="obcBootCounter"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/uint64_t" name="obcSysTick"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="obcBootCounter"></xtce:Parameter>    
+            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="obcSysTick"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="mcuTemperature"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcMCUTemperature"></xtce:Parameter>   
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obdhBoardTemperature1"></xtce:Parameter>   
@@ -53,17 +53,17 @@
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="magnetometerSignX"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="magnetometerSignY"></xtce:Parameter> 
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="magnetometerSignZ"></xtce:Parameter> 
-            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeXTemperature"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeYTemperature"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="gyroscopeZTemperature"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="adcsBoardTemperature1"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="adcsBoardTemperature2"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="gyroscopeXTemperature"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="gyroscopeYTemperature"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="gyroscopeZTemperature"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="adcsBoardTemperature1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="adcsBoardTemperature2"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroSignX"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroSignY"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroSignZ"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasX"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasY"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/bool_t" name="gyroBiasZ"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="gyroBiasX"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="gyroBiasY"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/float_t" name="gyroBiasZ"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="adcsFlashInt"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="adcsSRAMInt"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="adcsMCUTemperature"></xtce:Parameter>
