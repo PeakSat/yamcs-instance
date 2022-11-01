@@ -43,6 +43,7 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
         // Verify continuity for a given APID based on the CCSDS sequence counter
         int apidseqcount = ByteBuffer.wrap(bytes).getInt(0); // first 4 bytes (0-3)
         short packetlength = ByteBuffer.wrap(bytes).getShort(4); // get 2 bytes (5-6)
+        packetlength++;
         int apid = (apidseqcount >> 16) & 0x07FF; // 11 bits ()
         int seqcount = (apidseqcount) & 0x3FFF; // 14 bits
         int packversion = (apidseqcount >> 29) & 0x7; // 3 bits

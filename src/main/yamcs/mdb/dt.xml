@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xtce:SpaceSystem name="dt" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
+<!--Contains all ParameterTypes for Telemetry and ArgumentTypes for Telecommanding.-->
     <xtce:TelemetryMetaData>
         <xtce:ParameterTypeSet>
         <!--Transfer Frame Header-->
@@ -107,12 +108,6 @@
             <xtce:EnumeratedParameterType name="parameter_ID">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="OnBoardYear" />
-                    <xtce:Enumeration value="1" label="OnBoardMonth" />
-                    <xtce:Enumeration value="2" label="OnBoardDay" />
-                    <xtce:Enumeration value="3" label="OnBoardHour" />
-                    <xtce:Enumeration value="4" label="OnBoardMinute" />
-                    <xtce:Enumeration value="5" label="OnBoardSecond" />
                     <xtce:Enumeration value="6" label="ReportParametersUnusedStack" />
                     <xtce:Enumeration value="7" label="AvailableHeap" />
                     <xtce:Enumeration value="8" label="OBCuseRTT" />
@@ -163,12 +158,11 @@
                     <xtce:Enumeration value="1220" label="ADCSMCUBootCounter" />
                     <xtce:Enumeration value="1221" label="ADCSMCUOnBoardTime" />
                     <xtce:Enumeration value="1224" label="ADCSSystick" />
-
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="structure_ID">
-                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="0" />
                     <xtce:Enumeration value="2" label="2" />
@@ -193,7 +187,6 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
-
             <xtce:IntegerParameterType name="secondary_header_flag">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
@@ -212,18 +205,17 @@
             <xtce:IntegerParameterType name="sequence_flags">
                 <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
-            
+
             <xtce:IntegerParameterType name="packet_sequence_count_or_packet_name">
                 <xtce:IntegerDataEncoding sizeInBits="14"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="packet_data_length" signed="false" initialValue="0">
-                <xtce:UnitSet><xtce:Unit description="Size">Octets</xtce:Unit></xtce:UnitSet>
+                <xtce:UnitSet>
+                    <xtce:Unit description="Size">Octets</xtce:Unit>
+                </xtce:UnitSet>
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
-
-
-            <!-- secondary header TM-->
 
             <xtce:IntegerParameterType name="service_type_ID">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
@@ -233,12 +225,9 @@
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
-            <!-- the upper 2 need to be changed to enumerated -->
-
             <xtce:IntegerParameterType name="message_type_counter" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
-
 
             <xtce:EnumeratedParameterType name="response_band">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
@@ -255,7 +244,6 @@
             <xtce:IntegerParameterType name="source_data">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
-
 
             <xtce:IntegerParameterType name="spare">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
@@ -314,12 +302,10 @@
                 </xtce:ReferenceTime>
             </xtce:AbsoluteTimeParameterType>
 
-            <xtce:ArrayParameterType name="IntegerArray" arrayTypeRef="parameter_ID" numberOfDimensions="1">
-
-            </xtce:ArrayParameterType>
+            <xtce:ArrayParameterType name="IntegerArray" arrayTypeRef="parameter_ID" numberOfDimensions="1"></xtce:ArrayParameterType>
 
             <xtce:AggregateParameterType name="statistics_report_structure" shortDescription="The Statistics Report Structure">
-				<xtce:MemberList>
+                <xtce:MemberList>
                     <xtce:Member name="parameter_ID_ST04" typeRef="parameter_ID"></xtce:Member>
                     <xtce:Member name="number_of_samples_ST04" typeRef="uint16_t"></xtce:Member>
                     <xtce:Member name="max_value" typeRef="float_t"></xtce:Member>
@@ -327,16 +313,16 @@
                     <xtce:Member name="min_value" typeRef="float_t"></xtce:Member>
                     <xtce:Member name="min_time" typeRef="uint32_t"></xtce:Member>
                     <xtce:Member name="mean_value" typeRef="float_t"></xtce:Member>
-                    <xtce:Member name ="standard_deviation_value" typeRef="float_t"></xtce:Member>
-				</xtce:MemberList>
-			</xtce:AggregateParameterType>
+                    <xtce:Member name="standard_deviation_value" typeRef="float_t"></xtce:Member>
+                </xtce:MemberList>
+            </xtce:AggregateParameterType>
 
             <xtce:ArrayParameterType name="statistic_report_array" arrayTypeRef="statistics_report_structure" numberOfDimensions="1">
                 <xtce:LongDescription>
 							This is some calibration values for a payload device
 						</xtce:LongDescription>
             </xtce:ArrayParameterType>
-            
+
             <StringParameterType name="string1">
                 <StringDataEncoding encoding="UTF-8">
                     <Variable maxSizeInBits="4096">
@@ -347,14 +333,11 @@
                     </Variable>
                 </StringDataEncoding>
             </StringParameterType>
-            
 
         </xtce:ParameterTypeSet>
-
     </xtce:TelemetryMetaData>
 
     <xtce:CommandMetaData>
-
         <xtce:ArgumentTypeSet>
             <!--Transfer Frame Header TC-->
 
@@ -403,7 +386,7 @@
             <xtce:IntegerArgumentType name="secondary_header_flag">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
-            
+
             <xtce:EnumeratedArgumentType name="application_process_ID">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="11"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
@@ -422,7 +405,6 @@
             <xtce:IntegerArgumentType name="acknowledgment_flags">
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
-            <!-- secondary header TM-->
 
             <xtce:IntegerArgumentType name="service_type_ID_TC">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
@@ -431,8 +413,6 @@
             <xtce:IntegerArgumentType name="message_subtype_ID_TC">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
-
-            <!-- secondary header TC -->
 
             <xtce:EnumeratedArgumentType name="response_band">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
@@ -445,12 +425,6 @@
             <xtce:EnumeratedArgumentType name="parameter_ID">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="OnBoardYear" />
-                    <xtce:Enumeration value="1" label="OnBoardMonth" />
-                    <xtce:Enumeration value="2" label="OnBoardDay" />
-                    <xtce:Enumeration value="3" label="OnBoardHour" />
-                    <xtce:Enumeration value="4" label="OnBoardMinute" />
-                    <xtce:Enumeration value="5" label="OnBoardSecond" />
                     <xtce:Enumeration value="6" label="ReportParametersUnusedStack" />
                     <xtce:Enumeration value="7" label="AvailableHeap" />
                     <xtce:Enumeration value="8" label="OBCuseRTT" />
@@ -515,13 +489,6 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="writable_uint16_parameters">
-                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
-                <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="OnBoardYear" />
-                </xtce:EnumerationList>
-            </xtce:EnumeratedArgumentType>
-
             <xtce:EnumeratedArgumentType name="writable_uint32_parameters">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
@@ -529,7 +496,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-             <xtce:EnumeratedArgumentType name="writable_uint64_parameters">
+            <xtce:EnumeratedArgumentType name="writable_uint64_parameters">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1224" label="ADCSSystick" />
@@ -539,11 +506,6 @@
             <xtce:EnumeratedArgumentType name="writable_uint8_parameters">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1" label="OnBoardMonth" />
-                    <xtce:Enumeration value="2" label="OnBoardDay" />
-                    <xtce:Enumeration value="3" label="OnBoardHour" />
-                    <xtce:Enumeration value="4" label="OnBoardMinute" />
-                    <xtce:Enumeration value="5" label="OnBoardSecond" />
                     <xtce:Enumeration value="1016" label="MagnetometerFrequency" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
@@ -588,9 +550,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-
-            
-             <xtce:AbsoluteTimeArgumentType name="release_time_calendar">
+            <xtce:AbsoluteTimeArgumentType name="release_time_calendar">
                 <xtce:Encoding offset="1577836800" scale="0.1">
                     <xtce:IntegerDataEncoding sizeInBits="32" />
                 </xtce:Encoding>
@@ -598,7 +558,6 @@
                     <xtce:Epoch>UNIX</xtce:Epoch>
                 </xtce:ReferenceTime>
             </xtce:AbsoluteTimeArgumentType>
-
 
             <xtce:EnumeratedArgumentType name="structure_ID">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
@@ -609,13 +568,10 @@
                     <xtce:Enumeration value="3" label="ADCS might not used" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
-    
-    
-            <!-- needs to be enumerated but i have questions -->
+
             <xtce:IntegerArgumentType name="aknowledgement_flags">
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
-
 
             <xtce:IntegerArgumentType name="collection_interval_ST03" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
@@ -632,7 +588,7 @@
             <xtce:FloatArgumentType name="float_t">
                 <xtce:FloatDataEncoding sizeInBits="32" />
             </xtce:FloatArgumentType>
-            
+
             <xtce:BooleanArgumentType name="bool_t">
                 <xtce:IntegerDataEncoding sizeInBits="1" />
             </xtce:BooleanArgumentType>
@@ -659,6 +615,9 @@
 
             <xtce:IntegerArgumentType name="N_ST03" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+                <xtce:ValidRangeSet>
+                    <xtce:ValidRange minInclusive="0" maxInclusive="3" />
+                </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
             <xtce:BooleanArgumentType name="reset_flag_ST04" zeroStringValue="0" oneStringValue="1">
@@ -667,6 +626,9 @@
 
             <xtce:IntegerArgumentType name="N_ST12" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+                <xtce:ValidRangeSet>
+                    <xtce:ValidRange minInclusive="0" maxInclusive="3" />
+                </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="PMON_ID_ST12" signed="false">
@@ -679,14 +641,15 @@
 
             <xtce:IntegerArgumentType name="N_ST20" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+                <xtce:ValidRangeSet>
+                    <xtce:ValidRange minInclusive="0" maxInclusive="3" />
+                </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
-            
+
             <xtce:IntegerArgumentType name="parameter_ID_ST20" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerArgumentType>
 
-
-    </xtce:ArgumentTypeSet>
-
+        </xtce:ArgumentTypeSet>
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>

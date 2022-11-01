@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xtce:SpaceSystem name="pus" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
+<!--Contains parameters, containers and commands ST[20] parameter management service, ST[03] housekeeping service and  ST[04] parameter 
+    statistics reporting service-->
     <xtce:TelemetryMetaData>
-        
         <xtce:ParameterSet>
-
+            <!--Parameters used in TM[3,10] Container-->
             <xtce:Parameter name="housekeeping_parameter_report_structure_ID_ST03" parameterTypeRef="/dt/structure_ID">
-            <xtce:LongDescription>The housekeeping report structure ID</xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter name="number_of_parameters" parameterTypeRef="/dt/N_ST20" >
-                <xtce:LongDescription>The number of parameters requested in a parameter value report</xtce:LongDescription>
+                <xtce:LongDescription>The housekeeping report structure ID</xtce:LongDescription>
             </xtce:Parameter>
 
             <xtce:Parameter name="periodic_generation_action_status_ST03" parameterTypeRef="/dt/uint8_t" />
 
             <xtce:Parameter name="collection_interval_ST03" parameterTypeRef="/dt/uint32_t" />
 
-            <xtce:Parameter name="number_of_simply_commutated_parameters" parameterTypeRef="/dt/uint16_t" >
-            <xtce:LongDescription>The number of simply commutated parameters contained in the housekeeping parameter report</xtce:LongDescription>
+            <xtce:Parameter name="number_of_simply_commutated_parameters" parameterTypeRef="/dt/uint16_t">
+                <xtce:LongDescription>The number of simply commutated parameters contained in the housekeeping parameter report</xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter name="start_time_ST04" parameterTypeRef="/dt/uint16_t">
+            <!--Parameter used in TM[20,2]-->
+            <xtce:Parameter name="number_of_parameters" parameterTypeRef="/dt/N_ST20" >
+                <xtce:LongDescription>The number of parameters requested in a parameter value report</xtce:LongDescription>
+            </xtce:Parameter>
+
+            <!--Parameter used in TM[128,128]-->
+            <xtce:Parameter name="message_logs" parameterTypeRef="/dt/string1">
+            </xtce:Parameter>
+
+            <!--Parameters used in TM[4,2] Container-->
+            <xtce:Parameter name="start_time_ST04" parameterTypeRef="/dt/uint32_t">
             <xtce:LongDescription>the start time of the time interval over which the time interval over which the
                 evaluation of the parameter statistics was performed</xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter name="end_time_ST04" parameterTypeRef="/dt/uint16_t" >
-            <xtce:LongDescription>the end time of the time interval over which the time interval over which the
+            <xtce:Parameter name="end_time_ST04" parameterTypeRef="/dt/uint32_t">
+                <xtce:LongDescription>the end time of the time interval over which the
                 evaluation of the parameter statistics was performed </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter name="N_ST04" parameterTypeRef="/dt/uint16_t" >
+            <xtce:Parameter name="N_ST04" parameterTypeRef="/dt/uint16_t">
                 <xtce:LongDescription>The number of the statistics report structures received</xtce:LongDescription>
             </xtce:Parameter>
 
-              <!-- primary packet header TM -->
-
+            <!--Parameters used in the Packet Primary Header (TM)-->
             <xtce:Parameter parameterTypeRef="/dt/packet_version_number" name="packet_version_number" initialValue="0">
                 <xtce:LongDescription>The packet version number is set to 0 and identifies it as a space packet defined by
                     CCSDS 133. 0-B-1. A space packet is also referred to as a version 1 CCSDS packet.
@@ -121,9 +127,6 @@
                     of the related counter.</xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/string1" name="message_logs">
-            </xtce:Parameter>
-
             <xtce:Parameter name="destination_ID" parameterTypeRef="/dt/uint16_t" >
                 <xtce:LongDescription>Each application process shall set the destination ID field of each
                     telemetry packet it generates to the application process user identifier of
@@ -136,7 +139,6 @@
             </xtce:Parameter>
 
             <!-- transfer frame primary packet header TM -->
-
             <xtce:Parameter parameterTypeRef="/dt/transfer_frame_version_number" name="transfer_frame_version_number" initialValue="0">
                 <xtce:LongDescription>The transfer frame version number shall identify the data unit as a Transfer Frame defined by this Recommended Standard
                 </xtce:LongDescription>
@@ -344,7 +346,6 @@
 
         </xtce:ParameterSet>
 
-
         <xtce:ContainerSet>
             <xtce:SequenceContainer name="packet_primary_header_TM">
                 <xtce:EntryList>
@@ -479,11 +480,7 @@
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
-            <!-- TM[3,25] -->
-
-            <xtce:SequenceContainer name="TM_3_25">
-                <xtce:LongDescription>TM[3,25] is a request packet. It is used to request the transmission of a telemetry packet.
-                </xtce:LongDescription>
+            <xtce:SequenceContainer name="TM[3,25]:housekeeping_parameter_report">
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="housekeeping_parameter_report_structure_ID_ST03"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
@@ -497,9 +494,7 @@
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
-            <xtce:SequenceContainer name="TM_20_2">
-                <xtce:LongDescription>TM[20,2] is a request packet. It is used to request the transmission of a telemetry packet.
-                </xtce:LongDescription>
+            <xtce:SequenceContainer name="TM[20,2]:parameter_value_report">
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="number_of_parameters"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
@@ -513,8 +508,7 @@
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
-
-
+        <!--The Housekeeping Structure Containers-->
             <xtce:SequenceContainer name="Housekeeping_0.01">
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerRawX" />
@@ -524,7 +518,7 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeY" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeZ" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_3_25">
+                <xtce:BaseContainer containerRef="TM[3,25]:housekeeping_parameter_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="0" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
@@ -550,7 +544,7 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDFLASHON" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMRAMON" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_3_25">
+                <xtce:BaseContainer containerRef="TM[3,25]:housekeeping_parameter_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="4" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
@@ -576,7 +570,7 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsMCUOnBoardTime" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsSystick" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_3_25">
+                <xtce:BaseContainer containerRef="TM[3,25]:housekeeping_parameter_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="2" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
@@ -584,7 +578,6 @@
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
-
 
             <xtce:SequenceContainer name="Housekeeping_ADCS_not_used">
                 <xtce:EntryList>
@@ -598,7 +591,7 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroBiasY" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroBiasZ" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_3_25">
+                <xtce:BaseContainer containerRef="TM[3,25]:housekeeping_parameter_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="3" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
@@ -607,8 +600,7 @@
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
-            <!-- TM[20,2] -->
-
+            <!--The TM[20,2] Report-Value Parameter Groups Containers -->
             <xtce:SequenceContainer name="gyro_parameters_report">
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeX" />
@@ -618,7 +610,7 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeYTemperature" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/gyroscopeZTemperature" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_20_2">
+                <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="6" parameterRef="number_of_parameters" />
@@ -638,10 +630,10 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerCycleCountZ" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/magnetometerSelfTest" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_20_2">
+                <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                           <xtce:Comparison value="8" parameterRef="number_of_parameters" />
+                            <xtce:Comparison value="8" parameterRef="number_of_parameters" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -657,7 +649,7 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsSystick" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBootCounter" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_20_2">
+                <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="7" parameterRef="number_of_parameters" />
@@ -672,7 +664,7 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/CANbus2Load" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/activeCAN" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_20_2">
+                <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="3" parameterRef="number_of_parameters" />
@@ -683,21 +675,15 @@
 
             <xtce:SequenceContainer name="board_parameters_report">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardYear" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardMonth" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardDay" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardHour" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardMinute" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardSecond" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature1" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature2" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature1" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBoardTemperature2" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_20_2">
+                <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="10" parameterRef="number_of_parameters" />
+                            <xtce:Comparison value="4" parameterRef="number_of_parameters" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -711,7 +697,7 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMRAMON" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDCurrentlyUsedMemoryPartition" />
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM_20_2">
+                <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="5" parameterRef="number_of_parameters" />
@@ -719,11 +705,24 @@
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
-            <!-- TM[4,2] -->
 
-            <xtce:SequenceContainer name="TM_4_2">
-                <xtce:LongDescription>The formats of the max value field, the min value field, the mean value field and the standard deviation value
-                    field are specific to the parameter identified by the associated parameter ID field.
+            <xtce:SequenceContainer name="time_parameter_report">
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/onBoardTime" />
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
+                            <xtce:Comparison value="1" parameterRef="number_of_parameters" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
+            <xtce:SequenceContainer name="TM[4,2]:parameter_statistics_report">
+                <xtce:LongDescription>
+                The formats of the max value field, the min value field, the mean value field and the standard deviation value
+                field, contained int he parameter_statistics_structure array, are specific to the parameter identified by the associated parameter ID field.
                 </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="start_time_ST04"></xtce:ParameterRefEntry>
@@ -738,6 +737,21 @@
                             </xtce:Size>
                         </xtce:DimensionList>
                     </xtce:ArrayParameterRefEntry>
+                    <!-- Proper implementation -->
+                    <!-- <xtce:ArrayParameterRefEntry parameterRef="/AcubeSAT/parameter_statistics_structure">
+                    <xtce:DimensionList>
+                        <xtce:Dimension>
+                            <xtce:StartingIndex>
+                                <xtce:FixedValue>0</xtce:FixedValue>
+                            </xtce:StartingIndex>
+                            <xtce:EndingIndex>
+                                <xtce:DynamicValue>
+                                    <xtce:ParameterInstanceRef parameterRef="N_ST04" />
+                                </xtce:DynamicValue>
+                            </xtce:EndingIndex>
+                        </xtce:Dimension>
+                    </xtce:DimensionList>
+                </xtce:ArrayParameterRefEntry> -->
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_primary_header_TM">
                     <xtce:RestrictionCriteria>
@@ -749,12 +763,7 @@
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
-
-            <!-- TM[17,2] -->
-
-            <xtce:SequenceContainer name="TM_17_2">
-                <xtce:LongDescription> TM[17,2] is a request packet. It is used to request the transmission of a telemetry packet.
-                </xtce:LongDescription>
+            <xtce:SequenceContainer name="TM[17,2]:are_you_alive_connection_test_report">
                 <xtce:EntryList>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_primary_header_TM">
@@ -767,9 +776,7 @@
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
-            <xtce:SequenceContainer name="log_messages">
-                <xtce:LongDescription> TM[128,128] is a request packet. It is used to request the transmission of a telemetry packet.
-                </xtce:LongDescription>
+            <xtce:SequenceContainer name="TM[128,128]:log_messages">
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="message_logs"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
@@ -782,14 +789,11 @@
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
-
-
         </xtce:ContainerSet>
     </xtce:TelemetryMetaData>
 
     <xtce:CommandMetaData>
         <xtce:MetaCommandSet>
-
             <xtce:MetaCommand name="primary_header" abstract="true">
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/transfer_frame_version_number" name="transfer_frame_version_number"></xtce:Argument>
@@ -805,7 +809,6 @@
                     <xtce:Argument argumentTypeRef="/dt/secondary_header_flag" name="secondary_header_flag"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/application_process_ID" name="application_process_ID"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/sequence_flags" name="sequence_flags"></xtce:Argument>
-
                     <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="PUS_version_number"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="aknowledgement_flags"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/service_type_ID_TC" name="service_type_ID"></xtce:Argument>
@@ -828,9 +831,8 @@
                         <xtce:ArgumentRefEntry argumentRef="secondary_header_flag" />
                         <xtce:ArgumentRefEntry argumentRef="application_process_ID" />
                         <xtce:ArgumentRefEntry argumentRef="sequence_flags" />
-                        
+                        <xtce:FixedValueEntry name="packet_sequence_count_or_packet_name" binaryValue="0000" sizeInBits="14" />
                         <xtce:FixedValueEntry name="packet_data_length" binaryValue="0000" sizeInBits="16" />
-                        <xtce:FixedValueEntry name="packet_sequence_count_or_packet_name" binaryValue="0000" sizeInBits="14" /> 
                         <xtce:ArgumentRefEntry argumentRef="PUS_version_number" />
                         <xtce:ArgumentRefEntry argumentRef="aknowledgement_flags" />
                         <xtce:ArgumentRefEntry argumentRef="service_type_ID" />
@@ -870,7 +872,7 @@
             </xtce:MetaCommand>
  
 
-            <xtce:MetaCommand name="create_a_parameter_report_structure">
+            <xtce:MetaCommand name="TC[3,1]:create_a_parameter_report_structure">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
                 <xtce:ArgumentAssignmentList>
                     <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="3" />
@@ -880,39 +882,25 @@
             <xtce:ArgumentList>
                 <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_ST03" />
                 <xtce:Argument argumentTypeRef="/dt/collection_interval_ST03" name="collection_interval_ST03" />
-                <xtce:Argument argumentTypeRef="/dt/uint16_t" name="N1_ST03"/>
+                <xtce:Argument argumentTypeRef="/dt/N_ST03" name="number_of_parameters"/>
                 <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P1" />
                 <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P2" />
                 <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P3" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P4" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P5" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P6" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P7" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P8" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P9" />
-                <xtce:Argument argumentTypeRef="/dt/parameter_ID" name="P10" />
             </xtce:ArgumentList>
-                <xtce:CommandContainer name="create_a_parameter_report_structure">
+                <xtce:CommandContainer name="TC[3,1]:create_a_parameter_report_structure">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_ST03" />
                         <xtce:ArgumentRefEntry argumentRef="collection_interval_ST03" />
-                        <xtce:ArgumentRefEntry argumentRef="N1_ST03"/>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="P1" />
                         <xtce:ArgumentRefEntry argumentRef="P2" />
                         <xtce:ArgumentRefEntry argumentRef="P3" />
-                        <xtce:ArgumentRefEntry argumentRef="P4" />
-                        <xtce:ArgumentRefEntry argumentRef="P5" />
-                        <xtce:ArgumentRefEntry argumentRef="P6" />
-                        <xtce:ArgumentRefEntry argumentRef="P7" />
-                        <xtce:ArgumentRefEntry argumentRef="P8" />
-                        <xtce:ArgumentRefEntry argumentRef="P9" />
-                        <xtce:ArgumentRefEntry argumentRef="P10" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="report_housekeeping_parameter_report_structures">
+            <xtce:MetaCommand name="TC[3,9]:report_housekeeping_parameter_report_structures">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
                 <xtce:ArgumentAssignmentList>
                     <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="3" />
@@ -920,14 +908,14 @@
                 </xtce:ArgumentAssignmentList>
             </xtce:BaseMetaCommand>
             <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST03" name="N_ST03" />
+                    <xtce:Argument argumentTypeRef="/dt/N_ST03" name="number_of_parameters" />
                     <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_1" />
                     <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_2" />
                     <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_3" />
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="report_housekeeping_parameter_report_structures">
+                <xtce:CommandContainer name="TC[3,9]:report_housekeeping_parameter_report_structures">
                     <xtce:EntryList>
-                        <xtce:ArgumentRefEntry argumentRef="N_ST03" />
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters" />
                         <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_1" />
                         <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_2" />
                         <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_3" />
@@ -936,7 +924,7 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
+            <xtce:MetaCommand name="TC[3,27]:generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
                 <xtce:ArgumentAssignmentList>
                     <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="3" />
@@ -944,14 +932,14 @@
                 </xtce:ArgumentAssignmentList>
             </xtce:BaseMetaCommand>
             <xtce:ArgumentList>
-                <xtce:Argument argumentTypeRef="/dt/N_ST03" name="N_ST03" />
+                <xtce:Argument argumentTypeRef="/dt/N_ST03" name="number_of_parameters" />
                 <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_1" />
                 <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_2" />
                 <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_3" />
             </xtce:ArgumentList>
-            <xtce:CommandContainer name="generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
+            <xtce:CommandContainer name="TC[3,27]:generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
                 <xtce:EntryList>
-                    <xtce:ArgumentRefEntry argumentRef="N_ST03" />
+                    <xtce:ArgumentRefEntry argumentRef="number_of_parameters" />
                     <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_1" />
                     <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_2" />
                     <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_3" />
@@ -960,17 +948,17 @@
             </xtce:CommandContainer>
         </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="report_the_parameter_statistics">
+            <xtce:MetaCommand name="TC[4,1]:report_the_parameter_statistics">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="4" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-            </xtce:BaseMetaCommand>
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="4" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/reset_flag_ST04" name="reset_flag" />
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="report_the_parameter_statistics">
+                <xtce:CommandContainer name="TC[4,1]:report_the_parameter_statistics">
                     <xtce:EntryList>
                         <xtce:ArgumentRefEntry argumentRef="reset_flag" />
                     </xtce:EntryList>
@@ -978,21 +966,19 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-
-            <xtce:MetaCommand name="are_you_alive_connection">
+            <xtce:MetaCommand name="TC[17,1]:are_you_alive_connection">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
                 <xtce:ArgumentAssignmentList>
                     <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="17" />
                     <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
                 </xtce:ArgumentAssignmentList>
             </xtce:BaseMetaCommand>
-                <xtce:CommandContainer name="are_you_alive_connection">
+                <xtce:CommandContainer name="TC[17,1]:are_you_alive_connection">
                     <xtce:EntryList>
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
-
         </xtce:MetaCommandSet> 
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>

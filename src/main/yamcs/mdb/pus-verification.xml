@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xtce:SpaceSystem name="pus-verification" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
+    <!-- Request Verification Service (ST[01]) TM and TC -->
     <xtce:TelemetryMetaData>
-    
-        
         <xtce:ParameterSet>
             <xtce:Parameter parameterTypeRef="/dt/data" name="code_ST01"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/packet_version_number" name="packet_version_number_ST01"></xtce:Parameter>
@@ -18,17 +17,12 @@
             <xtce:Parameter parameterTypeRef="/dt/message_subtype_ID" name="message_subtype_ID_TC"></xtce:Parameter>
         </xtce:ParameterSet>
 
-
         <xtce:ContainerSet>
-
-            <!-- ST[01] equest verification packets -->
-            <!-- complete TM[1,1] (note: there havent been any comparisons -->
-
-            <xtce:SequenceContainer name="TM11">
+            <xtce:SequenceContainer name="TM[1,1]:successful_acceptance_verification_report">
                 <xtce:LongDescription>The request ID field alone cannot be used to identify the request since it does not
                     contain the identifier of the source of that request. That source identifier
                     corresponds to the destination identifier of the secondary header of the related
-                    telemetry packet
+                    telemetry packet.
                 </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="packet_version_number_ST01"></xtce:ParameterRefEntry>
@@ -48,13 +42,10 @@
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
-
-            <!-- complete TM[1,2] -->
-
-            <xtce:SequenceContainer name="TM12">
+            <xtce:SequenceContainer name="TM[1,2]:failed_acceptance_verification_report">
                 <xtce:LongDescription>The request ID field alone cannot be used to identify the request since it does not contain the identifier of
                     the source of that request. That source identifier corresponds to the destination identifier of the
-                    secondary header of the related telemetry packet, refer to clause
+                    secondary header of the related telemetry packet.
                 </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="packet_version_number_ST01"></xtce:ParameterRefEntry>
@@ -74,8 +65,6 @@
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
-
         </xtce:ContainerSet>
     </xtce:TelemetryMetaData>
-
 </xtce:SpaceSystem>
