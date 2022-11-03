@@ -114,7 +114,13 @@ async def connect_to_port_background(settings: Settings, port: int, serial_port:
     (reuse address) option, the script will try to reconnect to the already opened port
     that is in a TIME_WAIT state.
     """
-    _, writer = await asyncio.open_connection(settings.IPv4, port)
+    yamcs_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    yamcs_socket.setsockopt(
+        socket.SOL_SOCKET, socket.SO_REUSEADDR, settings.socket_options_enabled
+    )
+    yamcs_socket.bind((settings.IPv4, port))
+
+    _, writer = await asyncio.open_connection(sock=yamcs_socket)
     while True:
 
         try:
