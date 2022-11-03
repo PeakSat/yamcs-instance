@@ -31,7 +31,7 @@
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcMRAMLCLThreshold"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcNANDFLASHON"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcMRAMON"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/obcSpacecraftRefTime" name="obcSpacecraftRefTime"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/obcSpacecraftTimeRef" name="obcSpacecraftTimeRef"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/obcOperationalMode" name="obcOperationalMode"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="obcReconfigurationTimer"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="obcLastFailedEvent"></xtce:Parameter>
