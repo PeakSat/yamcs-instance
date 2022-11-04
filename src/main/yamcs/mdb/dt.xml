@@ -6,7 +6,7 @@
         <xtce:ParameterTypeSet>
         <!--Transfer Frame Header-->
 
-            <xtce:IntegerParameterType name="transfer_frame_version_number">
+            <xtce:IntegerParameterType name="transfer_frame_version_number" signed="false">
                 <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
@@ -14,7 +14,7 @@
                 <xtce:IntegerDataEncoding sizeInBits="10"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
-            <xtce:IntegerParameterType name="virtual_channel_ID">
+            <xtce:IntegerParameterType name="virtual_channel_ID" signed="false">
                 <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
@@ -22,7 +22,7 @@
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
-            <xtce:IntegerParameterType name="channel_frame_count">
+            <xtce:IntegerParameterType name="channel_frame_count" signed="false">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
