@@ -385,13 +385,6 @@
                     <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_length"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_data_field"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="packet_primary_header_TM">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="1" parameterRef="transfer_frame_secondary_header_flag" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="operational_control_field">
