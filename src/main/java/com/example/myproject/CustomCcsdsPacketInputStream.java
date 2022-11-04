@@ -7,13 +7,11 @@ import org.yamcs.tctm.PacketInputStream;
 import org.yamcs.YConfiguration;
 
 /**
- * Reads CCSDS packets from an input stream:
- * first it reads 6 bytes primary header, it derives the length from the last two bytes and reads the remaining of the
+ * Reads Transfer Frame CCSDS packets from an input stream:
+ * first it reads 6 bytes transfer frame header and 6 bytes primary header, it derives the length from the last two bytes of the primary header and reads the remaining of the
  * data.
  * 
  * It also support a maxLength property to limit the size of the packet that is being read.
- * 
- * @author nm
  *
  */
 public class CustomCcsdsPacketInputStream implements PacketInputStream {
