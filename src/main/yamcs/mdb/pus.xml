@@ -142,9 +142,8 @@
         </xtce:ParameterSet>
 
         <xtce:ContainerSet>
-            <xtce:SequenceContainer name="packet_header_TM">
+            <xtce:SequenceContainer name="primary_header_TM">
                 <xtce:EntryList>
-                    <!--Primary Header-->
                     <xtce:ParameterRefEntry parameterRef="packet_version_number"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_type"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="secondary_header_flag"></xtce:ParameterRefEntry>
@@ -152,7 +151,11 @@
                     <xtce:ParameterRefEntry parameterRef="sequence_flags"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_sequence_count_or_packet_name"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_data_length"></xtce:ParameterRefEntry>
-                    <!--Secondary Header-->
+                </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+            <xtce:SequenceContainer name="secondary_header_TM">
+                <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="PUS_version_number"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="spacecraft_time_reference_status"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="service_type_ID_TM"></xtce:ParameterRefEntry>
@@ -161,6 +164,13 @@
                     <xtce:ParameterRefEntry parameterRef="destination_ID"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="time"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+            <xtce:SequenceContainer name="packet_header_TM">
+                <xtce:EntryList>
+                    <xtce:ContainerRefEntry containerRef="secondary_header_TM"></xtce:ContainerRefEntry>
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="primary_header_TM"></xtce:BaseContainer>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="TM[3,10]:housekeeping_parameter_report">
