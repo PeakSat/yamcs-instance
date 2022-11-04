@@ -602,14 +602,14 @@
                 </xtce:ArgumentAssignmentList>
             </xtce:BaseMetaCommand>
             <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST03" name="number_of_parameters" />
+                    <xtce:Argument argumentTypeRef="/dt/N_ST03" name="number_of_structures" />
                     <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_1" />
                     <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_2" />
                     <xtce:Argument argumentTypeRef="/dt/structure_ID" name="housekeeping_parameter_report_structure_ID_3" />
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC[3,9]:report_housekeeping_parameter_report_structures">
                     <xtce:EntryList>
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <xtce:ArgumentRefEntry argumentRef="number_of_structures" />
                         <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_1" />
                         <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_2" />
                         <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_3" />
