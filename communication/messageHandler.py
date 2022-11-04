@@ -161,6 +161,7 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
                 for packet_byte in raw_packet:
                     if packet_byte == SPACE:
                         packet_byte_decimal = clamp(packet_byte_decimal, 0, 255)
+                        packet.append(packet_byte_decimal)
                         packet_byte_decimal = 0
                     else:
                         packet_byte_int = packet_byte - 48
