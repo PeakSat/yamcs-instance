@@ -197,18 +197,18 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
 
 def sendIfConnected(packet: bytearray, settings: Settings, yamcs_port_in: int):
     """
-    This function uses the global variable X to connect to yamcs.
+    This function uses the global variable yamcs_global_socket to connect to yamcs.
     The connect_to_port function is blocking, and more specifically the socket.accept()
     function might take up to 10 seconds to execute, meaning crucial data might be lost,
     since it is not even logged in the file.
 
     Since this function runs in the background each time a new packet arrives, it does not
-    know about previous executions, so X remains None for some seconds, producing continuously
+    know about previous executions, so yamcs_global_socket remains None for some seconds, producing continuously
     an OSError: Adress already in use, which we want to supress.
     Also, if YAMCS crashes for some reason, a BrokenPipe error will be raised, which we also want
     to supress
     """
-    global yamcs_global_socket,connection_state
+    global yamcs_global_socket, connection_state
     if connection_state == ConnectionState.NOT_CONNECTED:
         connection_state = ConnectionState.CONNECTING
 
