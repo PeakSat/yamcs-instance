@@ -208,9 +208,9 @@ def sendIfConnected(packet: bytearray, settings: Settings, yamcs_port_in: int):
     Also, if YAMCS crashes for some reason, a BrokenPipe error will be raised, which we also want
     to supress
     """
-    global yamcs_global_socket
+    global yamcs_global_socket,connection_state
     if connection_state == ConnectionState.NOT_CONNECTED:
-        logging.debug("Connecting to port " + yamcs_port_in)
+        logging.debug("Connecting to port " + str(yamcs_port_in))
         connection_state = ConnectionState.CONNECTING
 
         yamcs_global_socket = connect_to_port(settings, yamcs_port_in)
