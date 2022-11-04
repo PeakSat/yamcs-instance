@@ -313,20 +313,20 @@ if __name__ == "__main__":
     )
     obc_listener_thread.start()
 
-    # adcs_listener_thread = Thread(
-    #     target=mcu_client,
-    #     args=(
-    #         settings,
-    #         adcs_serial_port,
-    #         settings.adcs_port_in,
-    #     ),
-    # ).start()
+    adcs_listener_thread = Thread(
+        target=mcu_client,
+        args=(
+            settings,
+            adcs_serial_port,
+            settings.adcs_port_in,
+        ),
+    ).start()
 
-    # can_listener_thread = Thread(
-    #     target=mcu_client,
-    #     args=(
-    #         settings,
-    #         can_serial_port,
-    #         settings.canBus_port_in,
-    #     ),
-    # ).start()
+    can_listener_thread = Thread(
+        target=mcu_client,
+        args=(
+            settings,
+            can_serial_port,
+            settings.canBus_port_in,
+        ),
+    ).start()
