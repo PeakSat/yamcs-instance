@@ -6,7 +6,6 @@ from threading import Thread
 from dataclasses import dataclass
 from logging import config
 import logging
-import asyncio
 import socket
 from time import sleep
 import yaml
@@ -16,8 +15,6 @@ from cobs import cobs
 EXCLAMATION_MARK = 0x021
 SPACE = 0x020
 DELIMITER = b"\x00"
-loop = asyncio.new_event_loop
-
 yamcs_socket = None
 
 class YAMCSClosedPortException(Exception):
