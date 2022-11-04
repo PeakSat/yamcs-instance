@@ -42,7 +42,7 @@
                 <xtce:IntegerDataEncoding sizeInBits="63"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
             <!--Operetional Control Field-->
-
+<!--This field is normally 32 bits long, but the first 2 bits are flags, so the remainder is 30 bits long -->
             <xtce:IntegerParameterType name="operational_control">
                 <xtce:IntegerDataEncoding sizeInBits="30"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
