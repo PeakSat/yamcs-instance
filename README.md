@@ -37,7 +37,7 @@ If there is a need to send specific packets, then [ecss-services](https://gitlab
 
     git clone https://gitlab.com/acubesat/obc/ecss-services.git --recurse-submodules
 
-Currently, this functionality is implemented in the branches `OPS-Testing` and `ops-ecss`. After modifying `main.cpp`, the generated packets will be sent to port 10015 that YAMCS listens to.
+Currently, this functionality is implemented in TCP in the branch [`ops-ecss-tcp`](https://gitlab.com/acubesat/obc/ecss-services/-/tree/ops-ecss-tcp). Generated packets will be sent to port 10015 that YAMCS listens to.
 
 ## Telecommanding
 
