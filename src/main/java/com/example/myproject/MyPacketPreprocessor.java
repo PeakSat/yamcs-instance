@@ -105,7 +105,7 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
 
     // Returns the unix timestamp in milliseconds
     long CUCtoUnix(long time) {
-        long start = 1577829600; // 1/1/2020
+        long start = 1577836800; // 1/1/2020
         return start * 1000 + time * 100 + 7237000; // adjust from UTC to GMT +0200
     }
 }

@@ -17,7 +17,7 @@
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="adcsUseRTT"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="adcsUseUART"></xtce:Parameter>    
             <xtce:Parameter parameterTypeRef="/dt/bool_t" name="adcsUseCAN"></xtce:Parameter>    
-            <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="obcBootCounter"></xtce:Parameter>          
+            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="obcBootCounter"></xtce:Parameter>          
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcMCUTemperature"></xtce:Parameter>   
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obdhBoardTemperature1"></xtce:Parameter>   
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obdhBoardTemperature2"></xtce:Parameter>

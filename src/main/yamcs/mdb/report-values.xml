@@ -132,7 +132,7 @@
                 </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="10"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="4"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBDHBoardTemperature1" initialValue="5000"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBDHBoardTemperature2" initialValue="5001"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSBoardTemperature1" initialValue="1092"/>

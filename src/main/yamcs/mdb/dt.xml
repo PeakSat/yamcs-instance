@@ -79,12 +79,13 @@
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="structure_ID">
-                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="0" />
-                    <xtce:Enumeration value="2" label="2" />
-                    <xtce:Enumeration value="4" label="4" />
-                    <xtce:Enumeration value="6" label="6" />
+                    <xtce:Enumeration value="1" label="1" />
+                    <xtce:Enumeration value="3" label="3" />
+                    <xtce:Enumeration value="4" label="3" />
+                    <xtce:Enumeration value="5" label="5" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
@@ -211,7 +212,7 @@
             </xtce:IntegerParameterType>
 
             <xtce:AbsoluteTimeParameterType name="generation_time">
-                <xtce:Encoding offset="1640995200" scale="0.1">
+                <xtce:Encoding offset="1577836800" scale="0.1">
                     <xtce:IntegerDataEncoding sizeInBits="32" />
                 </xtce:Encoding>
                 <xtce:ReferenceTime>
@@ -473,7 +474,6 @@
                     <xtce:Enumeration value="3" label="Housekeeping ADCS 0.01sec" />
                     <xtce:Enumeration value="4" label="Housekeeping ADCS 3sec" />
                     <xtce:Enumeration value="5" label="Housekeeping ADCS 5sec" />
-                    
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
@@ -483,10 +483,6 @@
 
             <xtce:IntegerArgumentType name="collection_interval_ST03" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
-            </xtce:IntegerArgumentType>
-
-            <xtce:IntegerArgumentType name="housekeeping_parameter_report_structure_ID_ST03" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="report_parameter_value_group_ID" signed="false">
