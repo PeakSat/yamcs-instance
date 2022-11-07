@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xtce:SpaceSystem name="dt" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
-<!--Contains all ParameterTypes for Telemetry and ArgumentTypes for Telecommanding.-->
+    <!--Contains all ParameterTypes for Telemetry and ArgumentTypes for Telecommanding.-->
     <xtce:TelemetryMetaData>
         <xtce:ParameterTypeSet>
             <xtce:IntegerParameterType name="packet_version_number">
@@ -78,16 +78,9 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
-            <xtce:EnumeratedParameterType name="structure_ID">
-                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
-                <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="0" />
-                    <xtce:Enumeration value="1" label="1" />
-                    <xtce:Enumeration value="3" label="3" />
-                    <xtce:Enumeration value="4" label="3" />
-                    <xtce:Enumeration value="5" label="5" />
-                </xtce:EnumerationList>
-            </xtce:EnumeratedParameterType>
+            <xtce:IntegerParameterType name="structure_ID">
+                <xtce:IntegerDataEncoding sizeInBits="8" encoding="unsigned"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
 
             <xtce:EnumeratedParameterType name="partition_ID">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
