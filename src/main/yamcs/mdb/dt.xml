@@ -246,7 +246,7 @@
             </StringParameterType>
 
             <xtce:EnumeratedParameterType name="obcSpacecraftTimeRef">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="Spacecraft" />
                     <xtce:Enumeration value="1" label="GroundStation" />
