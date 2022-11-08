@@ -169,13 +169,13 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCNANDcurrentlyUsedPartition" initialValue="5014"/>
-                    <xtce:Argument argumentTypeRef="/dt/partition_ID" name="new_value"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMemoryPartition" initialValue="5014"/>
+                    <xtce:Argument argumentTypeRef="/dt/memoryPartition" name="new_value"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC[20,3]:set_partition">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="OBCNANDcurrentlyUsedPartition" />
+                        <xtce:ArgumentRefEntry argumentRef="OBCMemoryPartition" />
                         <xtce:ArgumentRefEntry argumentRef="new_value" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
@@ -192,7 +192,7 @@
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ActiveCAN" initialValue="5020"/>
-                    <xtce:Argument argumentTypeRef="/dt/activeCAN_ID" name="new_value"/>
+                    <xtce:Argument argumentTypeRef="/dt/activeCAN_t" name="new_value"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC[20,3]:set_CANBus">
                     <xtce:EntryList >

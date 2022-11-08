@@ -234,7 +234,7 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature2" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMCUTemperature" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcBootCounter" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDCurrentlyUsedMemoryPartition" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMemoryPartition" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMCUSysTick" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/CANbus1Load" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/CANbus2Load" />
@@ -263,7 +263,7 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature2" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcSpacecraftTimeRef" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcOperationalMode" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDCurrentlyUsedMemoryPartition" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMemoryPartition" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcReconfigurationTimer" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcLastFailedEvent" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMCUSysTick" />
@@ -440,7 +440,7 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMRAMLCLThreshold" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDFLASHON" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMRAMON" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDCurrentlyUsedMemoryPartition" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMemoryPartition" />
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
                     <xtce:RestrictionCriteria>

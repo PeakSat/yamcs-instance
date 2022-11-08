@@ -23,16 +23,16 @@
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obdhBoardTemperature2"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="obcMCUSysTick"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="obcOnBoardTime"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/partition_ID" name="obcNANDCurrentlyUsedMemoryPartition"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/memoryPartition" name="obcMemoryPartition"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="CANbus1Load"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="CANbus2Load"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/activeCAN_ID" name="activeCAN"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/activeCAN_t" name="activeCAN"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcNANDFLASHLCLThreshold"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcMRAMLCLThreshold"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcNANDFLASHON"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="obcMRAMON"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/obcSpacecraftTimeRef" name="obcSpacecraftTimeRef"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/obcOperationalMode" name="obcOperationalMode"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/obcOperationalMode_t" name="obcOperationalMode"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint32_t" name="obcReconfigurationTimer"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="obcLastFailedEvent"></xtce:Parameter>
             <!--ADCS Parameters that will be used in the Enviromental Campaign-->

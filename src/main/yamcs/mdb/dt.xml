@@ -64,7 +64,7 @@
                     <xtce:Enumeration value="5009" label="OBCSpacecraftRefTime" />
                     <xtce:Enumeration value="5010" label="OBCOnBoardTime" />
                     <xtce:Enumeration value="5011" label="OBCOperationalMode" />
-                    <xtce:Enumeration value="5012" label="OBCNANDcurrentlyUsedPartition" />
+                    <xtce:Enumeration value="5012" label="OBCMemoryPartition" />
                     <xtce:Enumeration value="5013" label="OBCReconfigurationTimer" />
                     <xtce:Enumeration value="5014" label="ObcLastFailedEvent" />
                     <xtce:Enumeration value="5015" label="OBCSystick" />
@@ -82,19 +82,19 @@
                 <xtce:IntegerDataEncoding sizeInBits="8" encoding="unsigned"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
-            <xtce:EnumeratedParameterType name="partition_ID">
-                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
+            <xtce:EnumeratedParameterType name="memoryPartition">
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1" label="Main" />
-                    <xtce:Enumeration value="2" label="Backup" />
+                    <xtce:Enumeration value="0" label="Used" />
+                    <xtce:Enumeration value="1" label="NotUsed" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
-            <xtce:EnumeratedParameterType name="activeCAN_ID">
-                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
+            <xtce:EnumeratedParameterType name="activeCAN_t">
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1" label="CANbus1" />
-                    <xtce:Enumeration value="2" label="CANbus2" />
+                    <xtce:Enumeration value="0" label="Main" />
+                    <xtce:Enumeration value="1" label="Reductant" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
@@ -143,8 +143,8 @@
             <xtce:EnumeratedParameterType name="response_band">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="TC" />
-                    <xtce:Enumeration value="1" label="TM" />
+                    <xtce:Enumeration value="0" label="UHF" />
+                    <xtce:Enumeration value="1" label="S" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
@@ -248,15 +248,18 @@
             <xtce:EnumeratedParameterType name="obcSpacecraftTimeRef">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="TIME_CORRECT" />
-                    <xtce:Enumeration value="1" label="TIME_NOT_CORRECT" />
+                    <xtce:Enumeration value="0" label="Spacecraft" />
+                    <xtce:Enumeration value="1" label="GroundStation" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
-            <xtce:EnumeratedParameterType name="obcOperationalMode">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
+            <xtce:EnumeratedParameterType name="obcOperationalMode_t">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="OPERATIONAL MODE HOLDER" />
+                    <xtce:Enumeration value="0" label="CommisionMode" />
+                    <xtce:Enumeration value="1" label="NominalMode" />
+                    <xtce:Enumeration value="2" label="ScienceMode" />
+                    <xtce:Enumeration value="3" label="SafeMode" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
@@ -364,7 +367,7 @@
                     <xtce:Enumeration value="5009" label="OBCSpacecraftRefTime" />
                     <xtce:Enumeration value="5010" label="OBCOnBoardTime" />
                     <xtce:Enumeration value="5011" label="OBCOperationalMode" />
-                    <xtce:Enumeration value="5012" label="OBCNANDcurrentlyUsedPartition" />
+                    <xtce:Enumeration value="5012" label="OBCMemoryPartition" />
                     <xtce:Enumeration value="5013" label="OBCReconfigurationTimer" />
                     <xtce:Enumeration value="5014" label="ObcLastFailedEvent" />
                     <xtce:Enumeration value="5015" label="OBCSystick" />
@@ -434,19 +437,19 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="partition_ID">
-                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
+            <xtce:EnumeratedArgumentType name="memoryPartition">
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1" label="Main" />
-                    <xtce:Enumeration value="2" label="Backup" />
+                    <xtce:Enumeration value="0" label="Used" />
+                    <xtce:Enumeration value="1" label="NotUsed" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="activeCAN_ID">
-                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
+            <xtce:EnumeratedArgumentType name="activeCAN_t">
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1" label="CANbus1" />
-                    <xtce:Enumeration value="2" label="CANbus2" />
+                    <xtce:Enumeration value="0" label="Main" />
+                    <xtce:Enumeration value="1" label="Reductant" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
@@ -550,18 +553,13 @@
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerArgumentType>
 
-            <xtce:EnumeratedArgumentType name="obcSpacecraftRefTime">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
+            <xtce:EnumeratedArgumentType name="obcOperationalMode_t">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="TIME_CORRECT" />
-                    <xtce:Enumeration value="1" label="TIME_NOT_CORRECT" />
-                </xtce:EnumerationList>
-            </xtce:EnumeratedArgumentType>
-
-            <xtce:EnumeratedArgumentType name="obcOperationalMode">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
-                <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="OPERATIONAL MODE HOLDER" />
+                    <xtce:Enumeration value="0" label="CommisionMode" />
+                    <xtce:Enumeration value="1" label="NominalMode" />
+                    <xtce:Enumeration value="2" label="ScienceMode" />
+                    <xtce:Enumeration value="3" label="SafeMode" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 

@@ -163,7 +163,7 @@
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="MRAMLCLThreshold" initialValue="5024"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCNANDOn" initialValue="5025"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMRAMOn" initialValue="5026"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCNANDcurrentlyUsedPartition" initialValue="5014"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMemoryPartition" initialValue="5012"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC[20,1]:report_memory_parameter_values">
                     <xtce:EntryList >
@@ -172,7 +172,7 @@
                         <xtce:ArgumentRefEntry argumentRef="MRAMLCLThreshold" />
                         <xtce:ArgumentRefEntry argumentRef="OBCNANDOn" />
                         <xtce:ArgumentRefEntry argumentRef="OBCMRAMOn" />
-                        <xtce:ArgumentRefEntry argumentRef="OBCNANDcurrentlyUsedPartition" /> 
+                        <xtce:ArgumentRefEntry argumentRef="OBCMemoryPartition" /> 
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>
