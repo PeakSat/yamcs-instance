@@ -474,10 +474,6 @@
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
-            <xtce:IntegerArgumentType name="collection_interval_ST03" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
-            </xtce:IntegerArgumentType>
-
             <xtce:IntegerArgumentType name="report_parameter_value_group_ID" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
@@ -513,7 +509,14 @@
             <xtce:IntegerArgumentType name="N_ST03" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                 <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="0" maxInclusive="3" />
+                    <xtce:ValidRange minInclusive="1" maxInclusive="3" />
+                </xtce:ValidRangeSet>
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="uint16_t{1-3}" signed="false">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+                <xtce:ValidRangeSet>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="3" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
@@ -524,7 +527,7 @@
             <xtce:IntegerArgumentType name="N_ST12" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                 <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="0" maxInclusive="3" />
+                    <xtce:ValidRange minInclusive="1" maxInclusive="3" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
@@ -539,7 +542,7 @@
             <xtce:IntegerArgumentType name="N_ST20" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
                 <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="0" maxInclusive="3" />
+                    <xtce:ValidRange minInclusive="1" maxInclusive="3" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
