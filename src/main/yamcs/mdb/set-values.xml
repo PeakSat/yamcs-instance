@@ -12,7 +12,7 @@
                 </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="number_of_parameters"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-3}" name="number_of_parameters"/>
                     <xtce:Argument argumentTypeRef="/dt/writable_float_parameters" name="Parameter_ID1" />
                     <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value1"/>
                     <xtce:Argument argumentTypeRef="/dt/writable_float_parameters" name="Parameter_ID2" />
@@ -64,7 +64,7 @@
                 </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="number_of_parameters"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-3}" name="number_of_parameters"/>
                     <xtce:Argument argumentTypeRef="/dt/writable_int8_parameters" name="Parameter_ID1" />
                     <xtce:Argument argumentTypeRef="/dt/int8_t" name="new_value1"/>
                     <xtce:Argument argumentTypeRef="/dt/writable_int8_parameters" name="Parameter_ID2" />
@@ -94,7 +94,7 @@
                 </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="number_of_parameters"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-2}" name="number_of_parameters"/>
                     <xtce:Argument argumentTypeRef="/dt/writable_uint32_parameters" name="Parameter_ID1" />
                     <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value1"/>
                     <xtce:Argument argumentTypeRef="/dt/writable_uint32_parameters" name="Parameter_ID2" />
@@ -142,7 +142,7 @@
                 </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="number_of_parameters" />
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-3}" name="number_of_parameters" />
                     <xtce:Argument argumentTypeRef="/dt/writable_bool_parameters" name="Parameter_ID1" />
                     <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value1"/>
                     <xtce:Argument argumentTypeRef="/dt/writable_bool_parameters" name="Parameter_ID2" />

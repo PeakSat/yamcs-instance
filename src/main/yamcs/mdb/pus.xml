@@ -19,7 +19,7 @@
             </xtce:Parameter>
 
             <!--Parameter used in TM[20,2]-->
-            <xtce:Parameter name="number_of_parameters" parameterTypeRef="/dt/N_ST20">
+            <xtce:Parameter name="number_of_parameters" parameterTypeRef="/dt/uint16_t">
                 <xtce:LongDescription>The number of parameters requested in a parameter value report</xtce:LongDescription>
             </xtce:Parameter>
 
@@ -37,7 +37,7 @@
                 evaluation of the parameter statistics was performed </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter name="N_ST04" parameterTypeRef="/dt/uint16_t">
+            <xtce:Parameter name="number_of_structures" parameterTypeRef="/dt/uint16_t">
                 <xtce:LongDescription>The number of the statistics report structures received</xtce:LongDescription>
             </xtce:Parameter>
 
@@ -490,12 +490,12 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="start_time_ST04"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="end_time_ST04"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="N_ST04"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="number_of_structures"></xtce:ParameterRefEntry>
                     <xtce:ArrayParameterRefEntry parameterRef="/AcubeSAT/parameter_statistics_structure">
                         <xtce:DimensionList>
                             <xtce:Size>
                                 <xtce:DynamicValue>
-                                    <xtce:ParameterInstanceRef parameterRef="N_ST04" />
+                                    <xtce:ParameterInstanceRef parameterRef="number_of_structures" />
                                 </xtce:DynamicValue>
                             </xtce:Size>
                         </xtce:DimensionList>
@@ -645,7 +645,7 @@
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST03" name="number_of_structures" />
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-3}" name="number_of_structures" />
                     <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_1" />
                     <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_2" />
                     <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_3" />
@@ -669,7 +669,7 @@
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST03" name="number_of_structures" />
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-3}" name="number_of_structures" />
                     <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_1" />
                     <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_2" />
                     <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_3" />

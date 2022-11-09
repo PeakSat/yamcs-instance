@@ -263,6 +263,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
+
         </xtce:ParameterTypeSet>
     </xtce:TelemetryMetaData>
 
@@ -494,6 +495,13 @@
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
+            <xtce:IntegerArgumentType name="uint8_t{1-3}" signed="false">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+                <xtce:ValidRangeSet>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="3" />
+                </xtce:ValidRangeSet>
+            </xtce:IntegerArgumentType>
+
             <xtce:IntegerArgumentType name="int8_t" signed="true">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
@@ -502,18 +510,10 @@
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerArgumentType>
 
-            <xtce:IntegerArgumentType name="uint32_t" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
-            </xtce:IntegerArgumentType>
-
-            <xtce:IntegerArgumentType name="uint64_t" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="64" />
-            </xtce:IntegerArgumentType>
-
-            <xtce:IntegerArgumentType name="N_ST03" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            <xtce:IntegerArgumentType name="uint16_t{1-2}" signed="false">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
                 <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="1" maxInclusive="3" />
+                    <xtce:ValidRange minInclusive="1" maxInclusive="2" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
@@ -524,16 +524,24 @@
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
-            <xtce:BooleanArgumentType name="reset_flag_ST04" zeroStringValue="0" oneStringValue="1">
-                <xtce:IntegerDataEncoding sizeInBits="1" />
-            </xtce:BooleanArgumentType>
+            <xtce:IntegerArgumentType name="uint32_t" signed="false">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
+            </xtce:IntegerArgumentType>
 
-            <xtce:IntegerArgumentType name="N_ST12" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+            <xtce:IntegerArgumentType name="uint32_t{1-3}" signed="false">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
                 <xtce:ValidRangeSet>
                     <xtce:ValidRange minInclusive="1" maxInclusive="3" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="uint64_t" signed="false">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="64" />
+            </xtce:IntegerArgumentType>
+
+            <xtce:BooleanArgumentType name="reset_flag_ST04" zeroStringValue="0" oneStringValue="1">
+                <xtce:IntegerDataEncoding sizeInBits="1" />
+            </xtce:BooleanArgumentType>
 
             <xtce:IntegerArgumentType name="PMON_ID_ST12" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
@@ -541,13 +549,6 @@
 
             <xtce:IntegerArgumentType name="are_you_alive_connection_ST17" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
-            </xtce:IntegerArgumentType>
-
-            <xtce:IntegerArgumentType name="N_ST20" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
-                <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="1" maxInclusive="3" />
-                </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="OBCOperationalMode_t">
