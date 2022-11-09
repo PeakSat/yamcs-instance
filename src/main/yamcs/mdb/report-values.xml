@@ -120,7 +120,7 @@
                 <xtce:CommandContainer name="TC[20,1]:report_can_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="CANbus1Load" />
+                        <xtce:ArgumentRefEntry argumentRef="CANBusLoad1" />
                         <xtce:ArgumentRefEntry argumentRef="CANBusLoad2" />
                         <xtce:ArgumentRefEntry argumentRef="ActiveCAN" />
                     </xtce:EntryList>
