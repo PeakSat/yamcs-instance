@@ -84,6 +84,8 @@
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSMCUOnBoardTime" initialValue="1221"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSSystick" initialValue="1224"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSMCUBootCounter" initialValue="1220"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCOperationalMode" initialValue="5011"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ObcLastFailedEvent" initialValue="5014"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC[20,1]:report_mcu_parameter_values">
                     <xtce:EntryList >
@@ -95,6 +97,8 @@
                         <xtce:ArgumentRefEntry argumentRef="ADCSMCUOnBoardTime" />
                         <xtce:ArgumentRefEntry argumentRef="ADCSSystick" /> 
                         <xtce:ArgumentRefEntry argumentRef="ADCSMCUBootCounter" /> 
+                        <xtce:ArgumentRefEntry argumentRef="OBCOperationalMode" /> 
+                        <xtce:ArgumentRefEntry argumentRef="ObcLastFailedEvent" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>
@@ -119,6 +123,28 @@
                         <xtce:ArgumentRefEntry argumentRef="CANbus1Load" />
                         <xtce:ArgumentRefEntry argumentRef="CANBusLoad2" />
                         <xtce:ArgumentRefEntry argumentRef="ActiveCAN" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="TC[20,1]:report_timer_parameter_values">
+                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCReconfigurationTimer" initialValue="5013"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCSpacecraftRefTime" initialValue="5009"/>
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="TC[20,1]:report_timer_parameter_values">
+                    <xtce:EntryList >
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
+                        <xtce:ArgumentRefEntry argumentRef="OBCReconfigurationTimer" />
+                        <xtce:ArgumentRefEntry argumentRef="OBCSpacecraftRefTime" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>
@@ -164,6 +190,8 @@
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCNANDOn" initialValue="5025"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMRAMOn" initialValue="5026"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMemoryPartition" initialValue="5012"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSFlashInt" initialValue="1227"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSSRAMInt" initialValue="1228"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC[20,1]:report_memory_parameter_values">
                     <xtce:EntryList >
@@ -173,6 +201,8 @@
                         <xtce:ArgumentRefEntry argumentRef="OBCNANDOn" />
                         <xtce:ArgumentRefEntry argumentRef="OBCMRAMOn" />
                         <xtce:ArgumentRefEntry argumentRef="OBCMemoryPartition" /> 
+                        <xtce:ArgumentRefEntry argumentRef="ADCSFlashInt" />
+                        <xtce:ArgumentRefEntry argumentRef="ADCSSRAMInt" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>

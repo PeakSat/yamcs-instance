@@ -372,11 +372,13 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsMCUOnBoardTime" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsSystick" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsBootCounter" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcOperationalMode" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcLastFailedEvent" />
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="7" parameterRef="number_of_parameters" />
+                            <xtce:Comparison value="9" parameterRef="number_of_parameters" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
@@ -418,6 +420,20 @@
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
+            <xtce:SequenceContainer name="timer_parameters_report">
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcReconfigurationTimer" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcSpacecraftTimeRef" />
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
+                            <xtce:Comparison value="2" parameterRef="number_of_parameters" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
             <xtce:SequenceContainer name="board_parameters_report">
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obdhBoardTemperature1" />
@@ -441,11 +457,13 @@
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcNANDFLASHON" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMRAMON" />
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/obcMemoryPartition" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsFlashInt" />
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/adcsSRAMInt" />
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="TM[20,2]:parameter_value_report">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
-                            <xtce:Comparison value="5" parameterRef="number_of_parameters" />
+                            <xtce:Comparison value="7" parameterRef="number_of_parameters" />
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>

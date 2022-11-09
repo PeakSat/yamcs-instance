@@ -396,6 +396,7 @@
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="5012" label="OBCOnBoardTime" />
+                    <xtce:Enumeration value="5013" label="OBCReconfigurationTimer" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 

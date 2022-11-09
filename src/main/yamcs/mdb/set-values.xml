@@ -94,15 +94,19 @@
                 </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
-                    <xtce:Argument argumentTypeRef="/dt/writable_uint32_parameters" name="Parameter_ID" />
-                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value"/>
+                    <xtce:Argument argumentTypeRef="/dt/N_ST20" name="number_of_parameters"/>
+                    <xtce:Argument argumentTypeRef="/dt/writable_uint32_parameters" name="Parameter_ID1" />
+                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value1"/>
+                    <xtce:Argument argumentTypeRef="/dt/writable_uint32_parameters" name="Parameter_ID2" />
+                    <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value2"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC[20,3]:set_uint32_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
-                        <xtce:ArgumentRefEntry argumentRef="new_value" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID1" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value1" />
+                        <xtce:ArgumentRefEntry argumentRef="Parameter_ID2" />
+                        <xtce:ArgumentRefEntry argumentRef="new_value2" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>
