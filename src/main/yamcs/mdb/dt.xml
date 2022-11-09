@@ -16,7 +16,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
-            <xtce:EnumeratedParameterType name="parameter_ID">
+            <xtce:EnumeratedParameterType name="parameterId_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="6" label="ReportParametersUnusedStack" />
@@ -61,7 +61,7 @@
                     <xtce:Enumeration value="5001" label="OBDHBoardTemperature2" />
                     <xtce:Enumeration value="5002" label="OBCMCUTemperature" />
                     <xtce:Enumeration value="5004" label="OBCBootCounter" />
-                    <xtce:Enumeration value="5009" label="OBCSpacecraftRefTime" />
+                    <xtce:Enumeration value="5009" label="OBCSpacecraftTimeRef" />
                     <xtce:Enumeration value="5010" label="OBCOnBoardTime" />
                     <xtce:Enumeration value="5011" label="OBCOperationalMode" />
                     <xtce:Enumeration value="5012" label="OBCMemoryPartition" />
@@ -78,11 +78,11 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
-            <xtce:IntegerParameterType name="structure_ID">
+            <xtce:IntegerParameterType name="structureId_t">
                 <xtce:IntegerDataEncoding sizeInBits="8" encoding="unsigned"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
 
-            <xtce:EnumeratedParameterType name="memoryPartition">
+            <xtce:EnumeratedParameterType name="OBCMemoryPartition_t">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="Used" />
@@ -213,12 +213,12 @@
                 </xtce:ReferenceTime>
             </xtce:AbsoluteTimeParameterType>
 
-            <xtce:ArrayParameterType name="IntegerArray" arrayTypeRef="parameter_ID" numberOfDimensions="1"></xtce:ArrayParameterType>
+            <xtce:ArrayParameterType name="parameterIdArray_t" arrayTypeRef="parameterId_t" numberOfDimensions="1"></xtce:ArrayParameterType>
 
             <xtce:AggregateParameterType name="statistics_report_structure" shortDescription="The Statistics Report Structure">
                 <xtce:MemberList>
-                    <xtce:Member name="parameter_ID_ST04" typeRef="parameter_ID"></xtce:Member>
-                    <xtce:Member name="number_of_samples_ST04" typeRef="uint16_t"></xtce:Member>
+                    <xtce:Member name="parameterId" typeRef="parameterId_t"></xtce:Member>
+                    <xtce:Member name="number_of_samples" typeRef="uint16_t"></xtce:Member>
                     <xtce:Member name="max_value" typeRef="float_t"></xtce:Member>
                     <xtce:Member name="max_time" typeRef="uint32_t"></xtce:Member>
                     <xtce:Member name="min_value" typeRef="float_t"></xtce:Member>
@@ -245,7 +245,7 @@
                 </StringDataEncoding>
             </StringParameterType>
 
-            <xtce:EnumeratedParameterType name="obcSpacecraftTimeRef">
+            <xtce:EnumeratedParameterType name="OBCSpacecraftTimeRef_t">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="Spacecraft" />
@@ -253,7 +253,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
-            <xtce:EnumeratedParameterType name="obcOperationalMode_t">
+            <xtce:EnumeratedParameterType name="OBCOperationalMode_t">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="CommisionMode" />
@@ -319,7 +319,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="parameter_ID">
+            <xtce:EnumeratedArgumentType name="parameterId_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="6" label="ReportParametersUnusedStack" />
@@ -364,7 +364,7 @@
                     <xtce:Enumeration value="5001" label="OBDHBoardTemperature2" />
                     <xtce:Enumeration value="5002" label="OBCMCUTemperature" />
                     <xtce:Enumeration value="5004" label="OBCBootCounter" />
-                    <xtce:Enumeration value="5009" label="OBCSpacecraftRefTime" />
+                    <xtce:Enumeration value="5009" label="OBCSpacecraftTimeRef" />
                     <xtce:Enumeration value="5010" label="OBCOnBoardTime" />
                     <xtce:Enumeration value="5011" label="OBCOperationalMode" />
                     <xtce:Enumeration value="5012" label="OBCMemoryPartition" />
@@ -438,7 +438,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="memoryPartition">
+            <xtce:EnumeratedArgumentType name="OBCMemoryPartition_t">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="Used" />
@@ -463,7 +463,7 @@
                 </xtce:ReferenceTime>
             </xtce:AbsoluteTimeArgumentType>
 
-            <xtce:EnumeratedArgumentType name="structure_ID">
+            <xtce:EnumeratedArgumentType name="structureId_t">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="Housekeeping OBC 1sec" />
@@ -550,17 +550,21 @@
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
-            <xtce:IntegerArgumentType name="parameter_ID_ST20" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
-            </xtce:IntegerArgumentType>
-
-            <xtce:EnumeratedArgumentType name="obcOperationalMode_t">
+            <xtce:EnumeratedArgumentType name="OBCOperationalMode_t">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="CommisionMode" />
                     <xtce:Enumeration value="1" label="NominalMode" />
                     <xtce:Enumeration value="2" label="ScienceMode" />
                     <xtce:Enumeration value="3" label="SafeMode" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedArgumentType>
+
+            <xtce:EnumeratedArgumentType name="OBCSpacecraftTimeRef_t">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="Spacecraft" />
+                    <xtce:Enumeration value="1" label="GroundStation" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
