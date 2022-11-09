@@ -173,7 +173,7 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMemoryPartition" initialValue="5014"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMemoryPartition" initialValue="5012"/>
                     <xtce:Argument argumentTypeRef="/dt/memoryPartition" name="new_value"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC[20,3]:set_partition">
@@ -195,7 +195,7 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ActiveCAN" initialValue="5020"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ActiveCAN" initialValue="5018"/>
                     <xtce:Argument argumentTypeRef="/dt/activeCAN_t" name="new_value"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC[20,3]:set_CANBus">

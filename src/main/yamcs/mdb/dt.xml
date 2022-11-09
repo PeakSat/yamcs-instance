@@ -384,10 +384,10 @@
             <xtce:EnumeratedArgumentType name="writable_float_parameters">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="5023" label="NANDLCLThreshold" />
-                    <xtce:Enumeration value="5024" label="MRAMLCLThreshold" />
-                    <xtce:Enumeration value="5025" label="OBCNANDOn" />
-                    <xtce:Enumeration value="5026" label="OBCMRAMOn" />
+                    <xtce:Enumeration value="5021" label="NANDLCLThreshold" />
+                    <xtce:Enumeration value="5022" label="MRAMLCLThreshold" />
+                    <xtce:Enumeration value="5023" label="OBCNANDOn" />
+                    <xtce:Enumeration value="5024" label="OBCMRAMOn" />
                     <xtce:Enumeration value="1221" label="ADCSMCUOnBoardTime" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
@@ -395,7 +395,7 @@
             <xtce:EnumeratedArgumentType name="writable_uint32_parameters">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="5012" label="OBCOnBoardTime" />
+                    <xtce:Enumeration value="5010" label="OBCOnBoardTime" />
                     <xtce:Enumeration value="5013" label="OBCReconfigurationTimer" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
