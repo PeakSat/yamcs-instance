@@ -85,7 +85,7 @@
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSSystick" initialValue="1224"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSMCUBootCounter" initialValue="1220"/>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCOperationalMode" initialValue="5011"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ObcLastFailedEvent" initialValue="5014"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCLastFailedEvent" initialValue="5014"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC[20,1]:report_mcu_parameter_values">
                     <xtce:EntryList >
@@ -98,7 +98,7 @@
                         <xtce:ArgumentRefEntry argumentRef="ADCSSystick" /> 
                         <xtce:ArgumentRefEntry argumentRef="ADCSMCUBootCounter" /> 
                         <xtce:ArgumentRefEntry argumentRef="OBCOperationalMode" /> 
-                        <xtce:ArgumentRefEntry argumentRef="ObcLastFailedEvent" />
+                        <xtce:ArgumentRefEntry argumentRef="OBCLastFailedEvent" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>

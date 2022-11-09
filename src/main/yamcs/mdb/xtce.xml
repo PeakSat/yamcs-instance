@@ -26,7 +26,7 @@
             <xtce:Parameter parameterTypeRef="/dt/OBCMemoryPartition_t" name="OBCMemoryPartition"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="OBCCANBUSLoad1"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="OBCCANBUSLoad2"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/activeCAN_t" name="OBCCANBUSActive"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/OBCCANBUSActive_t" name="OBCCANBUSActive"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="OBCNANDFLASHLCLThreshold"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="OBCMRAMLCLThreshold"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/float_t" name="OBCNANDFLASHON"></xtce:Parameter>

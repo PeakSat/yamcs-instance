@@ -90,7 +90,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
-            <xtce:EnumeratedParameterType name="activeCAN_t">
+            <xtce:EnumeratedParameterType name="OBCCANBUSActive_t">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="Main" />
