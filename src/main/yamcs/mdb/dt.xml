@@ -475,6 +475,10 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
+            <xtce:IntegerArgumentType name="custom_structureId_t">
+                <xtce:IntegerDataEncoding sizeInBits="8" encoding="unsigned"></xtce:IntegerDataEncoding>
+            </xtce:IntegerArgumentType>
+
             <xtce:IntegerArgumentType name="aknowledgement_flags">
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>

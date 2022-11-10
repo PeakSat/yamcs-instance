@@ -661,6 +661,28 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
+            <xtce:MetaCommand name="custom_TC[3,9]:report_housekeeping_parameter_report_structures">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="3" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="9" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-2}" name="number_of_structures" />
+                    <xtce:Argument argumentTypeRef="/dt/custom_structureId_t" name="housekeeping_parameter_report_structure_ID_1" />
+                    <xtce:Argument argumentTypeRef="/dt/custom_structureId_t" name="housekeeping_parameter_report_structure_ID_2" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="custom_TC[3,9]:report_housekeeping_parameter_report_structures">
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_structures" />
+                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_1" />
+                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_2" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
             <xtce:MetaCommand name="TC[3,27]:generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">
                     <xtce:ArgumentAssignmentList>
@@ -680,6 +702,28 @@
                         <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_1" />
                         <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_2" />
                         <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_3" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="custom_TC[3,27]:generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
+                <xtce:BaseMetaCommand metaCommandRef="Header_TC">
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="3" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="27" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-2}" name="number_of_structures" />
+                    <xtce:Argument argumentTypeRef="/dt/custom_structureId_t" name="housekeeping_parameter_report_structure_ID_1" />
+                    <xtce:Argument argumentTypeRef="/dt/custom_structureId_t" name="housekeeping_parameter_report_structure_ID_2" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="custom_TC[3,27]:generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_structures" />
+                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_1" />
+                        <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_2" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
