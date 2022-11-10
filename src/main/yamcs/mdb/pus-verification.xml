@@ -22,7 +22,7 @@
 
         <xtce:ContainerSet>
 
-            <xtce:SequenceContainer name="primary_header_verification_TM">
+            <xtce:SequenceContainer name="verification_data">
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="packet_version_number"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_type"></xtce:ParameterRefEntry>
@@ -33,11 +33,11 @@
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
-            <xtce:SequenceContainer name="packet_header_verification_TM">
+            <xtce:SequenceContainer name="verification_base_containers">
                 <xtce:EntryList>
-                    <xtce:ContainerRefEntry containerRef="/pus/secondary_header_TM"></xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="verification_data"></xtce:ContainerRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="primary_header_verification_TM"></xtce:BaseContainer>
+                <xtce:BaseContainer containerRef="/pus/packet_header_TM"></xtce:BaseContainer>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="TM[1,1]:successful_acceptance_verification_report">
