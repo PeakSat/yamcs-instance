@@ -645,7 +645,7 @@
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-3}" name="number_of_structures" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t{1-3}" name="number_of_structures" />
                     <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_1" />
                     <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_2" />
                     <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_3" />
@@ -691,7 +691,7 @@
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-3}" name="number_of_structures" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t{1-3}" name="number_of_structures" />
                     <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_1" />
                     <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_2" />
                     <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_3" />
