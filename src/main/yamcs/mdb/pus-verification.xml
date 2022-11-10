@@ -16,8 +16,6 @@
             <xtce:Parameter parameterTypeRef="/dt/ExecutionProgressErrorType_t" name="ExecutionProgressErrorType"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/ExecutionCompletionErrorType_t" name="ExecutionCompletionErrorType"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/RoutingErrorType_t" name="RoutingErrorType"></xtce:Parameter>
-            
-
         </xtce:ParameterSet>
 
         <xtce:ContainerSet>
