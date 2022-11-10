@@ -263,6 +263,102 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
+            <xtce:EnumeratedParameterType name="AcceptanceErrorType_t">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="UnknownAcceptanceError" />
+                    <xtce:Enumeration value="1" label="MessageTooShort" />
+                    <xtce:Enumeration value="2" label="TooManyBitsRead" />
+                    <xtce:Enumeration value="4" label="StringTooShort" />
+                    <xtce:Enumeration value="5" label="UnacceptableMessage" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedParameterType>
+
+
+            <xtce:EnumeratedParameterType name="ExecutionStartErrorType_t">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="UnknownExecutionStartError" />
+                    <xtce:Enumeration value="1" label="EventActionDefinitionIDExistsError" />
+                    <xtce:Enumeration value="2" label="EventActionDeleteEnabledDefinitionError" />
+                    <xtce:Enumeration value="3" label="EventActionUnknownEventDefinitionError" />
+                    <xtce:Enumeration value="4" label="EventActionUnknownEventActionDefinitionIDError" />
+                    <xtce:Enumeration value="5" label="SubServiceExecutionStartError" />
+                    <xtce:Enumeration value="6" label="InstructionExecutionStartError" />
+                    <xtce:Enumeration value="7" label="SetNonExistingParameter" />
+                    <xtce:Enumeration value="8" label="GetNonExistingParameter" />
+                    <xtce:Enumeration value="9" label="NonExistingPacketStore" />
+                    <xtce:Enumeration value="10" label="SetPacketStoreWithOpenRetrievalInProgress" />
+                    <xtce:Enumeration value="11" label="SetPacketStoreWithByTimeRangeRetrieval" />
+                    <xtce:Enumeration value="12" label="GetPacketStoreWithByTimeRangeRetrieval" />
+                    <xtce:Enumeration value="13" label="GetPacketStoreWithOpenRetrievalInProgress" />
+                    <xtce:Enumeration value="14" label="ByTimeRangeRetrievalAlreadyEnabled" />
+                    <xtce:Enumeration value="15" label="AlreadyExistingPacketStore" />
+                    <xtce:Enumeration value="16" label="MaxNumberOfPacketStoresReached" />
+                    <xtce:Enumeration value="17" label="GetPacketStoreWithStorageStatusEnabled" />
+                    <xtce:Enumeration value="18" label="DeletionOfPacketWithByTimeRangeRetrieval" />
+                    <xtce:Enumeration value="19" label="DeletionOfPacketWithOpenRetrievalInProgress" />
+                    <xtce:Enumeration value="20" label="InvalidTimeWindow" />
+                    <xtce:Enumeration value="21" label="DestinationPacketStoreNotEmtpy" />
+                    <xtce:Enumeration value="22" label="InvalidReportingRateError" />
+                    <xtce:Enumeration value="23" label="EventActionDefinitionsMapIsFull" />
+                    <xtce:Enumeration value="24" label="RequestedNonExistingStructure" />
+                    <xtce:Enumeration value="25" label="RequestedAlreadyExistingStructure" />
+                    <xtce:Enumeration value="26" label="RequestedDeletionOfEnabledHousekeeping" />
+                    <xtce:Enumeration value="27" label="AlreadyExistingParameter" />
+                    <xtce:Enumeration value="28" label="RequestedAppendToEnabledHousekeeping" />
+                    <xtce:Enumeration value="29" label="ExceededMaxNumberOfHousekeepingStructures" />
+                    <xtce:Enumeration value="30" label="ExceededMaxNumberOfSimplyCommutatedParameters" />
+                    <xtce:Enumeration value="31" label="InvalidSamplingRateError" />
+                    <xtce:Enumeration value="32" label="MaxStatisticDefinitionsReached" />
+                    <xtce:Enumeration value="33" label="InvalidVirtualChannel" />
+                    <xtce:Enumeration value="34" label="DeletionOfPacketStoreWithStorageStatusEnabled" />
+                    <xtce:Enumeration value="35" label="CopyOfPacketsFailed" />
+                    <xtce:Enumeration value="36" label="UnableToHandlePacketStoreSize" />
+                    <xtce:Enumeration value="37" label="InvalidRequestToDeleteAllParameterMonitoringDefinitions" />
+                    <xtce:Enumeration value="38" label="InvalidRequestToDeleteParameterMonitoringDefinition" />
+                    <xtce:Enumeration value="39" label="AddAlreadyExistingParameter" />
+                    <xtce:Enumeration value="40" label="ParameterMonitoringListIsFull" />
+                    <xtce:Enumeration value="41" label="HighLimitIsLowerThanLowLimit" />
+                    <xtce:Enumeration value="42" label="HighThresholdIsLowerThanLowThreshold" />
+                    <xtce:Enumeration value="43" label="ModifyParameterNotInTheParameterMonitoringList" />
+                    <xtce:Enumeration value="44" label="DifferentParameterMonitoringDefinitionAndMonitoredParameter" />
+                    <xtce:Enumeration value="45" label="GetNonExistingParameterMonitoringDefinition" />
+                    <xtce:Enumeration value="46" label="ReportParameterNotInTheParameterMonitoringList" />
+                    <xtce:Enumeration value="47" label="AllServiceTypesAlreadyAllowed" />
+                    <xtce:Enumeration value="48" label="MaxReportTypesReached" />
+                    <xtce:Enumeration value="49" label="MaxServiceTypesReached" />
+                    <xtce:Enumeration value="50" label="NotControlledApplication" />
+                    <xtce:Enumeration value="51" label="ParameterValueMissing" />
+                    <xtce:Enumeration value="52" label="ParameterReadOnly" />
+                    <xtce:Enumeration value="53" label="ParameterWriteOnly" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedParameterType>
+
+            <xtce:EnumeratedParameterType name="ExecutionProgressErrorType_t">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="UnknownExecutionProgressError" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedParameterType>
+
+
+            <xtce:EnumeratedParameterType name="ExecutionCompletionErrorType_t">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="UnknownExecutionCompletionError" />
+                    <xtce:Enumeration value="1" label="ChecksumFailed" />
+                    <xtce:Enumeration value="2" label="AddressOutOfRange" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedParameterType>
+
+            <xtce:EnumeratedParameterType name="RoutingErrorType_t">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="UnknownRoutingError" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedParameterType>
+
 
         </xtce:ParameterTypeSet>
     </xtce:TelemetryMetaData>
