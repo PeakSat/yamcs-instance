@@ -13,9 +13,9 @@
             <xtce:Parameter parameterTypeRef="/dt/AcceptanceErrorType_t" name="AcceptanceErrorType"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/ExecutionStartErrorType_t" name="ExecutionStartErrorType"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="stepID"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/FailedProgressOfExecution_t" name="FailedProgressOfExecution"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/FailedCompletionOfExecution_t" name="FailedCompletionOfExecution"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/FailedRoutingReport_t" name="FailedRoutingReport"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/ExecutionProgressErrorType_t" name="ExecutionProgressErrorType"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/ExecutionCompletionErrorType_t" name="ExecutionCompletionErrorType"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/RoutingErrorType_t" name="RoutingErrorType"></xtce:Parameter>
             
 
         </xtce:ParameterSet>
@@ -126,7 +126,7 @@
                 </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="stepID"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="FailedProgressOfExecution"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="ExecutionProgressErrorType"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="/pus/packet_header_TM">
                     <xtce:RestrictionCriteria>
@@ -156,7 +156,7 @@
                 <xtce:LongDescription>TODO: EDIT.                
                 </xtce:LongDescription>
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="FailedCompletionOfExecution"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="ExecutionCompletionErrorType"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="/pus/packet_header_TM">
                     <xtce:RestrictionCriteria>
@@ -172,7 +172,7 @@
                 <xtce:LongDescription>TODO: EDIT.                
                 </xtce:LongDescription>
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="FailedRoutingReport"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="RoutingErrorType"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="/pus/packet_header_TM">
                     <xtce:RestrictionCriteria>
