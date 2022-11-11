@@ -35,7 +35,13 @@
                 <xtce:EntryList>
                     <xtce:ContainerRefEntry containerRef="verification_data"></xtce:ContainerRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_header_TM"></xtce:BaseContainer>
+                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
+                            <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="TM[1,1]:successful_acceptance_verification_report">
