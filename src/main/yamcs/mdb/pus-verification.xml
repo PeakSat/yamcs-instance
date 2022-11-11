@@ -4,12 +4,12 @@
     <!-- Request Verification Service (ST[01]) TM and TC -->
     <xtce:TelemetryMetaData>
         <xtce:ParameterSet>
-            <xtce:Parameter parameterTypeRef="/dt/packet_version_number" name="packet_version_number"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/packet_type" name="packet_type"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/secondary_header_flag" name="secondary_header_flag"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/application_process_ID" name="application_process_ID"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/sequence_flags" name="sequence_flags"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/dt/packet_sequence_count_or_packet_name" name="packet_sequence_count"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/packet_version_number" name="source_packet_version_number"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/packet_type" name="source_packet_type"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/secondary_header_flag" name="source_secondary_header_flag"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/application_process_ID" name="source_application_process_ID"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/sequence_flags" name="source_sequence_flags"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/packet_sequence_count_or_packet_name" name="source_packet_sequence_count"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/AcceptanceErrorType_t" name="AcceptanceErrorType"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/ExecutionStartErrorType_t" name="ExecutionStartErrorType"></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="stepID"></xtce:Parameter>
@@ -22,12 +22,12 @@
 
             <xtce:SequenceContainer name="verification_data">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="packet_version_number"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="packet_type"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="secondary_header_flag"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="application_process_ID"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="sequence_flags"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="packet_sequence_count"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="source_packet_version_number"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="source_packet_type"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="source_secondary_header_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="source_application_process_ID"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="source_sequence_flags"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="source_packet_sequence_count"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
@@ -45,7 +45,7 @@
                     telemetry packet.
                 </xtce:LongDescription>
                 <xtce:EntryList></xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
+                <xtce:BaseContainer containerRef="verification_base_containers">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -63,7 +63,7 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="AcceptanceErrorType"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
+                <xtce:BaseContainer containerRef="verification_base_containers">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -77,7 +77,7 @@
                 <xtce:LongDescription>TODO: EDIT
                 </xtce:LongDescription>
                 <xtce:EntryList></xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
+                <xtce:BaseContainer containerRef="verification_base_containers">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -93,7 +93,7 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="ExecutionStartErrorType"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
+                <xtce:BaseContainer containerRef="verification_base_containers">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -109,7 +109,7 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="stepID"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
+                <xtce:BaseContainer containerRef="verification_base_containers">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -126,7 +126,7 @@
                     <xtce:ParameterRefEntry parameterRef="stepID"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="ExecutionProgressErrorType"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
+                <xtce:BaseContainer containerRef="verification_base_containers">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -140,7 +140,7 @@
                 <xtce:LongDescription>TODO: EDIT.
                 </xtce:LongDescription>
                 <xtce:EntryList></xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
+                <xtce:BaseContainer containerRef="verification_base_containers">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -156,7 +156,7 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="ExecutionCompletionErrorType"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
+                <xtce:BaseContainer containerRef="verification_base_containers">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -172,7 +172,7 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="RoutingErrorType"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
+                <xtce:BaseContainer containerRef="verification_base_containers">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
