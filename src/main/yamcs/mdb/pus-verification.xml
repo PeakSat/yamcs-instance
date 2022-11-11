@@ -31,7 +31,7 @@
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
-            <xtce:SequenceContainer name="verification_base_containers">
+            <xtce:SequenceContainer name="verification_base_container">
                 <xtce:EntryList>
                     <xtce:ContainerRefEntry containerRef="verification_data"></xtce:ContainerRefEntry>
                 </xtce:EntryList>
@@ -51,7 +51,7 @@
                     telemetry packet.
                 </xtce:LongDescription>
                 <xtce:EntryList></xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_containers">
+                <xtce:BaseContainer containerRef="verification_base_container">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -69,7 +69,7 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="AcceptanceErrorType"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_containers">
+                <xtce:BaseContainer containerRef="verification_base_container">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -83,7 +83,7 @@
                 <xtce:LongDescription>TODO: EDIT
                 </xtce:LongDescription>
                 <xtce:EntryList></xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_containers">
+                <xtce:BaseContainer containerRef="verification_base_container">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -99,7 +99,7 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="ExecutionStartErrorType"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_containers">
+                <xtce:BaseContainer containerRef="verification_base_container">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -115,7 +115,7 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="stepID"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_containers">
+                <xtce:BaseContainer containerRef="verification_base_container">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -132,7 +132,7 @@
                     <xtce:ParameterRefEntry parameterRef="stepID"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="ExecutionProgressErrorType"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_containers">
+                <xtce:BaseContainer containerRef="verification_base_container">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -146,7 +146,7 @@
                 <xtce:LongDescription>TODO: EDIT.
                 </xtce:LongDescription>
                 <xtce:EntryList></xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_containers">
+                <xtce:BaseContainer containerRef="verification_base_container">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -162,7 +162,7 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="ExecutionCompletionErrorType"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_containers">
+                <xtce:BaseContainer containerRef="verification_base_container">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
@@ -178,7 +178,7 @@
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="RoutingErrorType"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_containers">
+                <xtce:BaseContainer containerRef="verification_base_container">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
                             <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
