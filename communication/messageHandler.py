@@ -16,10 +16,8 @@ from cobs import cobs
 EXCLAMATION_MARK = 0x021
 SPACE = 0x020
 DELIMITER = b"\x00"
-
 TC_HEADER = 11
 yamcs_global_socket = None
-
 
 class ConnectionState(Enum):
     NOT_CONNECTED = 0
