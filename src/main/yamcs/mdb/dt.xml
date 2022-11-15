@@ -234,16 +234,16 @@
 						</xtce:LongDescription>
             </xtce:ArrayParameterType>
 
-            <StringParameterType name="string1">
-                <StringDataEncoding encoding="UTF-8">
-                    <Variable maxSizeInBits="4096">
-                        <DynamicValue>
-                            <ParameterInstanceRef parameterRef="_yamcs_ignore" />
-                        </DynamicValue>
-                        <TerminationChar>0A</TerminationChar>
-                    </Variable>
-                </StringDataEncoding>
-            </StringParameterType>
+            <xtce:StringParameterType name="string1">
+                <xtce:StringDataEncoding encoding="UTF-8">
+                    <xtce:Variable maxSizeInBits="4096">
+                        <xtce:DynamicValue>
+                            <xtce:ParameterInstanceRef parameterRef="_yamcs_ignore" />
+                        </xtce:DynamicValue>
+                        <xtce:TerminationChar>0A</xtce:TerminationChar>
+                    </xtce:Variable>
+                </xtce:StringDataEncoding>
+            </xtce:StringParameterType>
 
             <xtce:EnumeratedParameterType name="OBCSpacecraftTimeRef_t">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"></xtce:IntegerDataEncoding>
