@@ -5,6 +5,7 @@ running OBC/ADCS software and a running YAMCS instance.
 from threading import Thread
 from dataclasses import dataclass
 from logging import config
+from enum import Enum
 import logging
 import socket
 from time import sleep
@@ -15,6 +16,16 @@ from cobs import cobs
 EXCLAMATION_MARK = 0x021
 SPACE = 0x020
 DELIMITER = b"\x00"
+TC_HEADER = 11
+yamcs_global_socket = None
+
+class ConnectionState(Enum):
+    NOT_CONNECTED = 0
+    CONNECTING = 1
+    CONNECTED = 2
+
+
+connection_state = ConnectionState.NOT_CONNECTED
 
 
 class YAMCSClosedPortException(Exception):
@@ -94,9 +105,7 @@ def connect_to_port(settings: Settings, port: int) -> socket:
         yamcs_socket.bind((settings.IPv4, port))
     except OSError:
         logging.exception(
-            "Port "
-            + str(port)
-            + " not closed (probably from previous script execution)."
+            "Port " + str(port) + " not available (check if YAMCS is running)."
         )
         exit(1)
 
@@ -130,8 +139,6 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
         yamcs_port_in = settings.obc_port_in
     if serial_port is None:
         serial_port = settings.usb_serial_0
-
-    tcp_client = connect_to_port(settings, yamcs_port_in)
 
     while True:
 
@@ -167,7 +174,14 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
                         packet_byte_int = packet_byte - 48
                         packet_byte_decimal = packet_byte_decimal * 10 + packet_byte_int
 
-                tcp_client.send(bytes(packet))
+                Thread(
+                    target=sendIfConnected,
+                    args=(
+                        packet,
+                        settings,
+                        yamcs_port_in,
+                    ),
+                ).start()
         except serial.SerialException:
             logging.warning(
                 "No device is connected at port "
@@ -179,12 +193,45 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
             raise YAMCSClosedPortException(error)
 
 
+def sendIfConnected(packet: bytearray, settings: Settings, yamcs_port_in: int):
+    """
+    This function uses the global variable yamcs_global_socket to connect to yamcs.
+    The connect_to_port function is blocking, and more specifically the socket.accept()
+    function might take up to 10 seconds to execute, meaning crucial data might be lost,
+    since it is not even logged in the file.
+
+    Since this function runs in the background each time a new packet arrives, it does not
+    know about previous executions, so yamcs_global_socket remains None for some seconds, producing continuously
+    an OSError: Adress already in use, which we want to supress.
+    Also, if YAMCS crashes for some reason, a BrokenPipe error will be raised, which we also want
+    to supress
+    """
+    global yamcs_global_socket, connection_state
+    if connection_state == ConnectionState.NOT_CONNECTED:
+        connection_state = ConnectionState.CONNECTING
+
+        yamcs_global_socket = connect_to_port(settings, yamcs_port_in)
+
+        connection_state = ConnectionState.CONNECTED
+        yamcs_global_socket.send(bytes(packet))
+
+    elif connection_state == ConnectionState.CONNECTED:
+        try:
+            yamcs_global_socket.send(bytes(packet))
+        except BrokenPipeError:
+            yamcs_global_socket = None
+            connection_state = ConnectionState.NOT_CONNECTED
+
+
 def yamcs_client(settings: Settings, serial_port: str = None):
     """
-    Opens a new TCP stream socket.
-    It listens to the socket for any TC messages.
+    Opens a new TCP stream socket to listen for any TC messages from YAMCS.
     When they arrive, they are encoded using COBS and sent to the serial port.
     The devboard processes the TC when it receives the "\00" delimiter.
+    They are also logged in the telemetry.log file.
+    If YAMCS crashes the socket will read 5 empty messages every millisecond,
+    cluttering completely the logfile and the terminal, so we only print large
+    messages.
     """
 
     if serial_port is None:
@@ -202,7 +249,8 @@ def yamcs_client(settings: Settings, serial_port: str = None):
             )
             while True:
                 data, _ = tcp_client.recvfrom(settings.max_tc_size)
-                logging.info("YAMCS: " + data.hex())
+                if len(data) >= TC_HEADER:
+                    logging.info("YAMCS: " + data.hex())
 
                 encoded_data = cobs.encode(data)
                 port.write(encoded_data)
