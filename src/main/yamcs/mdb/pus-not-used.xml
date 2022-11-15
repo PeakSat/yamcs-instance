@@ -48,7 +48,7 @@
         <xtce:MetaCommandSet>
             <xtce:MetaCommand name="TC[12,8]:report_parameter_monitoring_definitions">
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/N_ST12" name="number_of_parameters" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t{1-3}" name="number_of_parameters" />
                     <xtce:Argument argumentTypeRef="/dt/PMON_ID_ST12" name="PMON_ID_1" />
                     <xtce:Argument argumentTypeRef="/dt/PMON_ID_ST12" name="PMON_ID_2" />
                     <xtce:Argument argumentTypeRef="/dt/PMON_ID_ST12" name="PMON_ID_3" />
