@@ -29,12 +29,12 @@ public class CustomCcsdsPacketInputStream implements PacketInputStream {
         byte[] hdr = new byte[12];
         dataInputStream.readFully(hdr);
         int remaining = ((hdr[10] & 0xFF) << 8) + (hdr[11] & 0xFF) + 1;
-        int pktLength = remaining + hdr.length;
-        if (pktLength > maxPacketLength) {
+        int packetLength = remaining + hdr.length;
+        if (packetLength > maxPacketLength) {
             throw new IOException("Invalid packet read: "
-                    + "packetLength (" + pktLength + ") > maxPacketLength(" + maxPacketLength + ")");
+                    + "packetLength (" + packetLength + ") > maxPacketLength(" + maxPacketLength + ")");
         }
-        byte[] packet = new byte[pktLength];
+        byte[] packet = new byte[packetLength];
         System.arraycopy(hdr, 0, packet, 0, hdr.length);
         dataInputStream.readFully(packet, hdr.length, remaining);
         return packet;
