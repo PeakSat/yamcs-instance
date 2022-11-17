@@ -213,7 +213,18 @@
                 </xtce:ReferenceTime>
             </xtce:AbsoluteTimeParameterType>
 
-            <xtce:ArrayParameterType name="parameterIdArray_t" arrayTypeRef="parameterId_t" numberOfDimensions="1"></xtce:ArrayParameterType>
+            <xtce:ArrayParameterType name="parameterIdArray_t" arrayTypeRef="parameterId_t">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayParameterType>
 
             <xtce:AggregateParameterType name="statistics_report_structure" shortDescription="The Statistics Report Structure">
                 <xtce:MemberList>
@@ -228,10 +239,20 @@
                 </xtce:MemberList>
             </xtce:AggregateParameterType>
 
-            <xtce:ArrayParameterType name="statistic_report_array" arrayTypeRef="statistics_report_structure" numberOfDimensions="1">
+            <xtce:ArrayParameterType name="statistic_report_array" arrayTypeRef="statistics_report_structure">
                 <xtce:LongDescription>
-							This is some calibration values for a payload device
-						</xtce:LongDescription>
+					This array type contains all parameter statistics structures sent in a single TM
+				</xtce:LongDescription>
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
             </xtce:ArrayParameterType>
 
             <xtce:StringParameterType name="string1">

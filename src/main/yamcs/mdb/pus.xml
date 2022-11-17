@@ -183,13 +183,19 @@
                     <xtce:ParameterRefEntry parameterRef="collection_interval_ST03"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="number_of_simply_commutated_parameters"></xtce:ParameterRefEntry>
                     <xtce:ArrayParameterRefEntry parameterRef="/AcubeSAT/parameter_ID_ST03">
-                        <xtce:DimensionList>
-                            <xtce:Size>
+                    <xtce:DimensionList>
+                        <xtce:Dimension>
+                            <xtce:StartingIndex>
+                                <xtce:FixedValue>0</xtce:FixedValue>
+                            </xtce:StartingIndex>
+                            <xtce:EndingIndex>
                                 <xtce:DynamicValue>
                                     <xtce:ParameterInstanceRef parameterRef="number_of_simply_commutated_parameters" />
+                                    <xtce:LinearAdjustment intercept="-1"/>
                                 </xtce:DynamicValue>
-                            </xtce:Size>
-                        </xtce:DimensionList>
+                            </xtce:EndingIndex>
+                        </xtce:Dimension>
+                    </xtce:DimensionList>
                     </xtce:ArrayParameterRefEntry>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_header_TM">
@@ -528,24 +534,14 @@
 
             <xtce:SequenceContainer name="TM[4,2]:parameter_statistics_report">
                 <xtce:LongDescription>
-                The formats of the max value field, the min value field, the mean value field and the standard deviation value
-                field, contained int he parameter_statistics_structure array, are specific to the parameter identified by the associated parameter ID field.
+                    The formats of the max value field, the min value field, the mean value field and the standard deviation value
+                    field, contained in the parameter_statistics_structure array, are specific to the parameter identified by the associated parameter ID field.
                 </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="start_time_ST04"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="end_time_ST04"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="number_of_structures"></xtce:ParameterRefEntry>
                     <xtce:ArrayParameterRefEntry parameterRef="/AcubeSAT/parameter_statistics_structure">
-                        <xtce:DimensionList>
-                            <xtce:Size>
-                                <xtce:DynamicValue>
-                                    <xtce:ParameterInstanceRef parameterRef="number_of_structures" />
-                                </xtce:DynamicValue>
-                            </xtce:Size>
-                        </xtce:DimensionList>
-                    </xtce:ArrayParameterRefEntry>
-                    <!-- Proper implementation -->
-                    <!-- <xtce:ArrayParameterRefEntry parameterRef="/AcubeSAT/parameter_statistics_structure">
                     <xtce:DimensionList>
                         <xtce:Dimension>
                             <xtce:StartingIndex>
@@ -553,12 +549,13 @@
                             </xtce:StartingIndex>
                             <xtce:EndingIndex>
                                 <xtce:DynamicValue>
-                                    <xtce:ParameterInstanceRef parameterRef="N_ST04" />
+                                    <xtce:ParameterInstanceRef parameterRef="number_of_structures" />
+                                    <xtce:LinearAdjustment intercept="-1"/>
                                 </xtce:DynamicValue>
                             </xtce:EndingIndex>
                         </xtce:Dimension>
                     </xtce:DimensionList>
-                </xtce:ArrayParameterRefEntry> -->
+                </xtce:ArrayParameterRefEntry> 
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_header_TM">
                     <xtce:RestrictionCriteria>
