@@ -535,7 +535,7 @@
             <xtce:SequenceContainer name="TM[4,2]:parameter_statistics_report">
                 <xtce:LongDescription>
                     The formats of the max value field, the min value field, the mean value field and the standard deviation value
-                    field, contained int he parameter_statistics_structure array, are specific to the parameter identified by the associated parameter ID field.
+                    field, contained in the parameter_statistics_structure array, are specific to the parameter identified by the associated parameter ID field.
                 </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="start_time_ST04"></xtce:ParameterRefEntry>
