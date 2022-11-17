@@ -241,7 +241,7 @@
 
             <xtce:ArrayParameterType name="statistic_report_array" arrayTypeRef="statistics_report_structure">
                 <xtce:LongDescription>
-					This is some calibration values for a payload device
+					This array type contains all parameter statistics structures sent in a single TM
 				</xtce:LongDescription>
                 <xtce:DimensionList>
                     <xtce:Dimension>
