@@ -395,13 +395,6 @@
                     <xtce:ParameterRefEntry parameterRef="report_type"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="operational_control"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="packet_primary_header_TM">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="1" parameterRef="ocf_flag" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="communications_link_control_word">
@@ -425,13 +418,6 @@
                     <xtce:ParameterRefEntry parameterRef="reserved_spare_2"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="report_value"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="operational_control_field">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="1" parameterRef="type_flag" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="frame_error_control_field">
