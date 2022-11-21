@@ -139,76 +139,8 @@
             </xtce:Parameter>
 
             <!-- transfer frame primary packet header TM -->
-            <xtce:Parameter parameterTypeRef="/dt/transfer_frame_version_number" name="transfer_frame_version_number" initialValue="0">
-                <xtce:LongDescription>The transfer frame version number shall identify the data unit as a Transfer Frame defined by this Recommended Standard
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/spacecraft_ID" name="spacecraft_ID">
-                <xtce:LongDescription>The Spacecraft Identifier shall provide the identification of the spacecraft which is associated with the 
-                data contained in the Transfer Frame. The Spacecraft Identifier shall be static throughout all Mission Phases. 
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/virtual_channel_ID" name="virtual_channel_ID">
-                <xtce:LongDescription>The Virtual Channel Identifier provides the identification of the Virtual Channel. There are no restrictions 
-                on the selection of Virtual Channel Identifiers. In particular, Virtual Channels are not required to be numbered consecutively.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="ocf_flag">
-                <xtce:LongDescription>The Operational Control Field Flag shall indicate the presence or absence of the Operational Control Field. 
-                It shall be ‘1’ if the Operational Control Field is present; it shall be ‘0’ if the Operational Control Field is not present.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/channel_frame_count" name="master_channel_frame_count">
-                <xtce:LongDescription>This field shall contain a sequential binary count (modulo-256) of each Transfer 
-                Frame transmitted within a specific Master Channel. The purpose of this field is to provide a running count of the Transfer Frames 
-                which have been transmitted through the same Master Channel. If the Master Channel Frame Count is re-set because of an unavoidable 
-                re-initialization, then the completeness of a sequence of Transfer Frames in the related Master Channel cannot be determined.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/channel_frame_count" name="virtual_channel_frame_count">
-                <xtce:LongDescription>This field shall contain a sequential binary count (modulo-256) of each Transfer Frame transmitted within a specific 
-                Virtual Channel. The purpose of this field is to provide individual accountability for each Virtual Channel, primarily to enable systematic 
-                Packet extraction from the Transfer Frame Data Field. If the Virtual Channel Frame Count is re-set because of an unavoidable re-initialization, 
-                the completeness of a sequence of Transfer Frames in the related Virtual Channel cannot be determined.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="transfer_frame_secondary_header_flag">
-                <xtce:LongDescription>The Transfer Frame Secondary Header Flag shall signal the presence or absence of the Transfer Frame Secondary Header. 
-                It shall be ‘1’ if a Transfer Frame Secondary Header is present; it shall be ‘0’ if a Transfer Frame Secondary Header is not present.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="synchronization_flag">
-                <xtce:LongDescription>The Synchronization Flag shall signal the type of data which are inserted into the Transfer Frame Data Field. It shall 
-                be ‘0’ if octet-synchronized and forward-ordered Packets or Idle Data are inserted; it shall be ‘1’ if a VCA_SDU is inserted.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="packet_order_flag">
-                <xtce:LongDescription>The Packet Order Flag depends on the value of the Synchronization Flag. If the Synchronization Flag is set to ‘0’, the 
-                Packet Order Flag is reserved for future use by the CCSDS and is set to ‘0’. If the Synchronization Flag is set to ‘1’, the use of the Packet Order 
-                Flag is undefined.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/segment_length_ID" name="segment_length_ID">
-                <xtce:LongDescription>The Segment Length Identifier depends on the value of the Synchronization Flag. If the Synchronization Flag is set to ‘0’, 
-                the Segment Length Identifier shall be set to "11". If the Synchronization Flag is set to ‘1’, then the Segment Length Identifier is undefined.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/first_header_pointer" name="first_header_pointer">
-                <xtce:LongDescription>The First Header Pointer depends on the value of the Synchronization Flag. If the Synchronization Flag is set to ‘0’, the 
-                First Header Pointer shall contain the position of the first octet of the first Packet that starts in the Transfer Frame Data Field. If the 
-                Synchronization Flag is set to ‘1’, then the First Header Pointer is undefined. The purpose of the First Header Pointer is to facilitate delimiting 
-                of variable-length Packets contained within the Transfer Frame Data Field by pointing directly to the location of the first Packet from which its
-                length may be determined
+            <xtce:Parameter parameterTypeRef="/dt/transfer_frame_header" name="Transfer_Frame_Header">
+                <xtce:LongDescription>A structure containing all parameters for the Transfer Frame Header
                 </xtce:LongDescription>
             </xtce:Parameter>
 
@@ -349,17 +281,7 @@
         <xtce:ContainerSet>
             <xtce:SequenceContainer name="packet_primary_header_TM">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="transfer_frame_version_number"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="spacecraft_ID"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="virtual_channel_ID"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="ocf_flag"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="master_channel_frame_count"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="virtual_channel_frame_count"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_flag"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="synchronization_flag"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="packet_order_flag"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="segment_length_ID"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="first_header_pointer"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="Transfer_Frame_Header"></xtce:ParameterRefEntry>
 
                     <xtce:ParameterRefEntry parameterRef="packet_version_number"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_type"></xtce:ParameterRefEntry>

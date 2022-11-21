@@ -6,6 +6,22 @@
         <xtce:ParameterTypeSet>
         <!--Transfer Frame Header-->
 
+            <xtce:AggregateParameterType name="transfer_frame_header" shortDescription="The Transfer Frame Header">
+                <xtce:MemberList>
+                    <xtce:Member name="transfer_frame_version_number" typeRef="transfer_frame_version_number"></xtce:Member>
+                    <xtce:Member name="spacecraft_ID" typeRef="spacecraft_ID"></xtce:Member>
+                    <xtce:Member name="virtual_channel_ID" typeRef="virtual_channel_ID"></xtce:Member>
+                    <xtce:Member name="ocf_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="master_channel_frame_count" typeRef="channel_frame_count"></xtce:Member>
+                    <xtce:Member name="virtual_channel_frame_count" typeRef="channel_frame_count"></xtce:Member>
+                    <xtce:Member name="transfer_frame_secondary_header_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="synchronization_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="packet_order_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="segment_length_ID" typeRef="segment_length_ID"></xtce:Member>
+                    <xtce:Member name="first_header_pointer" typeRef="first_header_pointer"></xtce:Member>
+                </xtce:MemberList>
+            </xtce:AggregateParameterType>    
+
             <xtce:IntegerParameterType name="transfer_frame_version_number" signed="false">
                 <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
