@@ -26,6 +26,7 @@
                     <xtce:Enumeration value="10" label="OBCuseCAN" />
                     <xtce:Enumeration value="11" label="ADCSuseRTT" />
                     <xtce:Enumeration value="12" label="ADCSuseUART" />
+                    <xtce:Enumeration value="13" label="ADCSuseCAN" />
                     <xtce:Enumeration value="1013" label="MagnetometerRawX" />
                     <xtce:Enumeration value="1014" label="MagnetometerRawY" />
                     <xtce:Enumeration value="1015" label="MagnetometerRawZ" />
@@ -447,6 +448,7 @@
                     <xtce:Enumeration value="10" label="OBCuseCAN" />
                     <xtce:Enumeration value="11" label="ADCSuseRTT" />
                     <xtce:Enumeration value="12" label="ADCSuseUART" />
+                    <xtce:Enumeration value="13" label="ADCSuseCAN" />
                     <xtce:Enumeration value="1013" label="MagnetometerRawX" />
                     <xtce:Enumeration value="1014" label="MagnetometerRawY" />
                     <xtce:Enumeration value="1015" label="MagnetometerRawZ" />

@@ -93,3 +93,13 @@ The backup scripts are in the `yamcs-instance/backup-scripts` directory. After n
 
 The backups are instance-wide, meaning *everything* is saved; parameters, commands, alerts, logs, etc. These files are saved both locally, at a specified directory (in the backup.sh script) and online at the Google Drive folder of the account `yamcs.backup.acubesat@gmail.com`.
 
+## MCU Communication
+
+To receive TMs and send TCs to the devboard, simply connect it with the PC using a usb cable and run:
+
+```bash
+    cd communication
+    python3 MessageHandler.py
+```
+The script will automatically connect to the running YAMCS instance and take care of the message forwarding to each end. You can safely remove the unused threads by deleting them. 
+
