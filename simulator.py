@@ -42,7 +42,7 @@ def send_tm(simulator):
     
 #sending 2000 packets
     while c<400:
-        with io.open('packets-1.raw', 'rb') as f:
+        with io.open('ecsspackets.raw', 'rb') as f:
             header = bytearray(6)
 
             while f.readinto(header) == 6:
