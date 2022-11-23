@@ -799,6 +799,36 @@
                     <xtce:EntryList></xtce:EntryList>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
+                <xtce:VerifierSet>
+                    <xtce:CompleteVerifier name="complete">
+                        <xtce:CustomAlgorithm name="completion_algorithm_test">
+                            <xtce:AncillaryDataSet>
+                                <xtce:AncillaryData name="Yamcs:AlrgorithmMandatoryInput">sentApid</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlrgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlrgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlrgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlrgorithmMandatoryInput">sentPacketType</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlrgorithmMandatoryInput">rcvdPacketType</xtce:AncillaryData>
+                            </xtce:AncillaryDataSet>
+                            <xtce:AlgorithmText language="JavaScript">
+                                if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sentSeq.value &#38;&#38; sentPacketType.value !== rcvdPacketType.value){
+                                    if(sentPacketType.value == "TC" &#38;&#38; rcvdPacketType.value == "TM") return true;
+                                    else return false; 
+                                }
+                            </xtce:AlgorithmText>
+                            <xtce:InputSet>
+                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
+                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/sequence_flags" inputName="sentSeq"/>
+                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/packet_type" inputName="sentPacketType" />
+                                <xtce:InputParameterInstanceRef parameterRef="application_process_ID" inputName="rcvdApid" />
+                                <xtce:InputParameterInstanceRef parameterRef="sequence_flags" inputName="rcvdSeq" />
+                                <xtce:InputParameterInstanceRef parameterRef="service_type_ID_TM" inputName="service_type_ID"/>
+                                <xtce:InputParameterInstanceRef parameterRef="packet_type" inputName="rcvdPacketType" />
+                            </xtce:InputSet>
+                        </xtce:CustomAlgorithm>
+                        <xtce:CheckWindow timeToStopChecking="PT5S" />
+                    </xtce:CompleteVerifier>
+                </xtce:VerifierSet>
             </xtce:MetaCommand>
         </xtce:MetaCommandSet>
     </xtce:CommandMetaData>
