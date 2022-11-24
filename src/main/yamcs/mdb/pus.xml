@@ -836,22 +836,15 @@
                         <xtce:CustomAlgorithm name="completion_algorithm_test">
                             <xtce:AncillaryDataSet>
                                 <xtce:AncillaryData name="Yamcs:AlrgorithmMandatoryInput">sentApid</xtce:AncillaryData>
-                                <xtce:AncillaryData name="Yamcs:AlrgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlrgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
-                                <xtce:AncillaryData name="Yamcs:AlrgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                             </xtce:AncillaryDataSet>
                             <xtce:AlgorithmText language="JavaScript">
-                                if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sentSeq.value){
-                                    return true;
-                                }
+                                if(rcvdApid.value == sentApid.value) return true;
                                 else return false; 
-            
                             </xtce:AlgorithmText>
                             <xtce:InputSet>
                                 <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
-                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/sequence_flags" inputName="sentSeq"/>
                                 <xtce:InputParameterInstanceRef parameterRef="application_process_ID" inputName="rcvdApid" />
-                                <xtce:InputParameterInstanceRef parameterRef="sequence_flags" inputName="rcvdSeq" />
                             </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" />
