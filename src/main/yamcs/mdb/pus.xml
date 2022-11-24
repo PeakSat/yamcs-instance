@@ -97,38 +97,37 @@
             </xtce:Parameter>
 
             <xtce:Parameter parameterTypeRef="/dt/data" name="PUS_version_number">
-            <xtce:LongDescription>The TM packet PUS version number reflects the
-                different versions of this Standard.</xtce:LongDescription>
+                <xtce:LongDescription>The TM packet PUS version number reflects the
+                    different versions of this Standard.</xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/data" name="spacecraft_time_reference_status">
-            <xtce:LongDescription>Each application process that provides the capability to report the
-                spacecraft time reference status used when time tagging telemetry
-                packets shall set the spacecraft time reference status field of each
-                telemetry packet it generates to the status of the on-board time reference
-                used when time tagging that telemetry packet.
-            </xtce:LongDescription>
+             <xtce:Parameter parameterTypeRef="/dt/data" name="spacecraft_time_reference_status">
+                <xtce:LongDescription>Each application process that provides the capability to report the
+                    spacecraft time reference status used when time tagging telemetry
+                    packets shall set the spacecraft time reference status field of each
+                    telemetry packet it generates to the status of the on-board time reference
+                    used when time tagging that telemetry packet.
+                </xtce:LongDescription>
             </xtce:Parameter>
 
             <xtce:Parameter parameterTypeRef="/dt/service_type_ID" name="service_type_ID_TM">
-            <xtce:LongDescription>The service type identifier of the service type that contains that
-                message type.
-            </xtce:LongDescription>
+                <xtce:LongDescription>The service type identifier of the service type that contains that
+                    message type.</xtce:LongDescription>
             </xtce:Parameter>
 
             <xtce:Parameter parameterTypeRef="/dt/message_subtype_ID" name="message_subtype_ID_TM">
                 <xtce:LongDescription>A message subtype identifier that uniquely identifies that message
-                type within that service type.</xtce:LongDescription>
+                    type within that service type.</xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/message_type_counter" name="message_type_counter">
+             <xtce:Parameter parameterTypeRef="/dt/message_type_counter" name="message_type_counter">
                 <xtce:LongDescription>For each report that it generates, each application process that provides the
-                capability to count the type of generated messages per destination and report the corresponding 
-                message type counter shall set the message type counter of the related telemetry packet to the value 
-                of the related counter.</xtce:LongDescription>
+                    capability to count the type of generated messages per destination and report the corresponding 
+                    message type counter shall set the message type counter of the related telemetry packet to the value 
+                    of the related counter.</xtce:LongDescription>
             </xtce:Parameter>
 
-             <xtce:Parameter name="destination_ID" parameterTypeRef="/dt/uint16_t" >
+            <xtce:Parameter name="destination_ID" parameterTypeRef="/dt/uint16_t" >
                 <xtce:LongDescription>Each application process shall set the destination ID field of each
                     telemetry packet it generates to the application process user identifier of
                     the application process addressed by the related report</xtce:LongDescription>
@@ -139,11 +138,151 @@
                     it generates to the time tag of the related report.</xtce:LongDescription>
             </xtce:Parameter>
 
+            <!-- transfer frame primary packet header TM -->
+            <xtce:Parameter parameterTypeRef="/dt/transfer_frame_header" name="Transfer_Frame_Header">
+                <xtce:LongDescription>A structure containing all parameters for the Transfer Frame Header
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <!-- transfer frame secondary packet header TM -->
+
+            <xtce:Parameter parameterTypeRef="/dt/transfer_frame_version_number" name="transfer_frame_secondary_header_version_number" initialValue="0">
+                <xtce:LongDescription>This sub-field indicates which of up to four Secondary Header versions is used. The present Recommended Standard 
+                recognizes only one version, which is Version 1.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/transfer_frame_secondary_header_length" name="transfer_frame_secondary_header_length">
+                <xtce:LongDescription>TThis sub-field shall contain the total length of the Transfer Frame Secondary Header in octets minus one, represented 
+                as a binary number. The Transfer Frame Secondary Header Length shall be static within the associated Master or Virtual Channel throughout a
+                Mission Phase. When a Secondary Header is present, this length may be used to compute the location of the start of the field following the 
+                Secondary Header. 
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/transfer_frame_secondary_header_data_field" name="transfer_frame_secondary_header_data_field">
+                <xtce:LongDescription>The Transfer Frame Secondary Header Data Field shall contain the Transfer Frame Secondary Header data. The Transfer 
+                Frame Secondary Header Data Field shall be of fixed length within the associated Master or Virtual Channel throughout a Mission Phase.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+             <!-- Operational Control Field TM -->
+
+            <xtce:Parameter parameterTypeRef="/dt/flag" name="type_flag">
+                <xtce:LongDescription>The Type Flag shall be ‘0’ if the Operational Control Field holds a Type-1-Report which shall contain a Communications
+                Link Control Word or ‘1’ if the Operational Control Field holds a Type-2-Report.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/flag" name="report_type">
+                <xtce:LongDescription>In a Type-2 Report this field shall indicate the use of this report. If this bit is ‘0’, the contents of the report are project-specific 
+                and if this bit is ‘1’, the report contains an SDLS FSR. 
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/operational_control" name="operational_control">
+                <xtce:LongDescription>This field contains the remaining 30 bits of the operational control field. 
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <!-- CLCW -->
+
+            <xtce:Parameter parameterTypeRef="/dt/control_word_type" name="control_word_type" initialValue="0">
+                <xtce:LongDescription>This field is used to distinguish the CLCW from another type of report that may be alternatively contained in the field that 
+                carries the CLCW.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/ClCW_version_number" name="ClCW_version_number" initialValue="0">
+                <xtce:LongDescription>The CLCW Version Number is included to provide future growth flexibility. At present a single ‘Version-1’ CLCW, whose binary 
+                encoded Version Number is ‘00’, is defined in this Recommended Standard.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/status_field" name="status_field">
+                <xtce:LongDescription>Application of the Status Field is mission-specified.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/COP_in_effect" name="COP_in_effect" initialValue="01">
+                <xtce:LongDescription>The COP in Effect parameter shall be used to indicate the COP that is being used.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/virtual_channel_ID_CLCW" name="virtual_channel_ID_CLCW">
+                <xtce:LongDescription>Each Virtual Channel in use has its own CLCW reporting activated.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/reserved_spare" name="reserved_spare" initialValue="0">
+                <xtce:LongDescription>These two bits are reserved by CCSDS for future application.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/flag" name="no_RF_available_flag">
+                <xtce:LongDescription>The No RF Available Flag shall provide a logical indication of the ‘ready’ status of the radio frequency (RF) elements 
+                within the space link provided by the Physical Layer.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/flag" name="no_bit_log_flag">
+                <xtce:LongDescription>The No Bit Lock Flag is an optional, mission-specific engineering measurement that provides a performance quality 
+                indicator that indicates specifically whether the Physical Layer is working normally by having enough signal energy to achieve bit 
+                synchronization with the received data stream. If the No Bit Lock Flag is not used, it shall be set permanently to ‘0’. If used, ‘0’ shall 
+                indicate bit lock has been achieved and ‘1’ shall indicate bit lock has not been achieved.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/flag" name="lockout_flag">
+                <xtce:LongDescription>The Lockout Flag shall be used to indicate the Lockout status of the FARM of a particular Virtual Channel.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/flag" name="wait_flag">
+                <xtce:LongDescription>The Wait Flag shall be used to indicate that the receiving end is unable to accept data for processing on a particular Virtual Channel.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/flag" name="retransmit_flag">
+                <xtce:LongDescription>The Retransmit Flag is used to speed the operation of the COP by providing immediate indication to the FOP at the sending 
+                end that retransmission is necessary.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/FARMB_counter" name="FARMB_counter">
+                <xtce:LongDescription>This field contains the two least significant bits of a FARM-B Counter. This counter is maintained within the FARM and 
+                increments once each time a Type-B Transfer Frame is accepted in Bypass mode on a particular Virtual Channel. The field supports the verification
+                that Type-B Transfer Frames (Control or User Data) were accepted by the receiving end.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/reserved_spare_2" name="reserved_spare_2" initialValue="0">
+                <xtce:LongDescription>This bit is reserved by CCSDS for future application.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+            <xtce:Parameter parameterTypeRef="/dt/report_value" name="report_value">
+                <xtce:LongDescription>This field contains the value of the Next Expected Frame Sequence Number, N(R), which is equal to the value of FARM’s 
+                Receiver_Frame_Sequence_Number, V(R). The FARM V(R) counter increments once each time a Type-AD Transfer Frame is accepted on a particular
+                Virtual Channel.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+            <!--Frame Error Control Field-->
+
+            <xtce:Parameter parameterTypeRef="/dt/frame_error_control" name="frame_error_control">
+                <xtce:LongDescription>The purpose of this field is to provide a capability for detecting errors which may have been introduced into the Transfer 
+                Frame during the transmission and data handling process.
+                </xtce:LongDescription>
+            </xtce:Parameter>
+
+
         </xtce:ParameterSet>
 
         <xtce:ContainerSet>
             <xtce:SequenceContainer name="packet_primary_header_TM">
                 <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="Transfer_Frame_Header"></xtce:ParameterRefEntry>
+
                     <xtce:ParameterRefEntry parameterRef="packet_version_number"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_type"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="secondary_header_flag"></xtce:ParameterRefEntry>
@@ -151,6 +290,7 @@
                     <xtce:ParameterRefEntry parameterRef="sequence_flags"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_sequence_count_or_packet_name"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_data_length"></xtce:ParameterRefEntry>
+
                     <xtce:ParameterRefEntry parameterRef="PUS_version_number"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="spacecraft_time_reference_status"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="service_type_ID_TM"></xtce:ParameterRefEntry>
@@ -161,7 +301,61 @@
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
-            <xtce:SequenceContainer name="TM[3,10]:housekeeping_parameter_report">
+            <xtce:SequenceContainer name="transfer_frame_secondary_header">
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_version_number"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_length"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_data_field"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+            <xtce:SequenceContainer name="operational_control_field">
+                <xtce:LongDescription>The purpose of this field is to provide a standardized mechanism for reporting a small number of real-time functions,
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="type_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="report_type"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="operational_control"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+            <xtce:SequenceContainer name="communications_link_control_word">
+                <xtce:LongDescription>The Communications Link Control Word (CLCW), which is the protocol data unit transmitted from the receiving end to the sending end, 
+                shall provide the mechanism by which the FARM at the receiving end reports the status of frame acceptance to the Frame Operation Procedure (FOP) at the 
+                sending end.
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="control_word_type"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="ClCW_version_number"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="status_field"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="COP_in_effect"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="virtual_channel_ID_CLCW"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="reserved_spare"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="no_RF_available_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="no_bit_log_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="lockout_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="wait_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="retransmit_flag"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="FARMB_counter"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="reserved_spare_2"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="report_value"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+            <xtce:SequenceContainer name="frame_error_control_field">
+                <xtce:LongDescription>The purpose of this field is to provide a capability for detecting errors which may have been introduced into the Transfer 
+                Frame during the transmission and data handling process.
+                </xtce:LongDescription>
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="frame_error_control"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+            </xtce:SequenceContainer>
+
+
+
+            <xtce:SequenceContainer name="TM_3_10">
+                <xtce:LongDescription>TM[3,10] is a request packet. It is used to request the transmission of a telemetry packet.
+                </xtce:LongDescription>
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="housekeeping_parameter_report_structure_ID_ST03"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="periodic_generation_action_status_ST03"></xtce:ParameterRefEntry>
@@ -503,6 +697,14 @@
         <xtce:MetaCommandSet>
             <xtce:MetaCommand name="primary_header" abstract="true">
                 <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/transfer_frame_version_number" name="transfer_frame_version_number"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/flag" name="bypass_flag"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/flag" name="control_command_flag"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/spacecraft_ID" name="spacecraft_ID"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/virtual_channel_ID_TC" name="virtual_channel_ID_TC"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/frame_length" name="frame_length"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/frame_sequence_number" name="frame_sequence_number"></xtce:Argument>
+
                     <xtce:Argument argumentTypeRef="/dt/packet_version_number" name="packet_version_number"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/packet_type" name="packet_type"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/secondary_header_flag" name="secondary_header_flag"></xtce:Argument>
@@ -516,6 +718,15 @@
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="packet_primary_header_TC">
                     <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="transfer_frame_version_number" />
+                        <xtce:ArgumentRefEntry argumentRef="bypass_flag" />
+                        <xtce:ArgumentRefEntry argumentRef="control_command_flag" />
+                        <xtce:FixedValueEntry name="reserved_spare" binaryValue="00" sizeInBits="2"/>
+                        <xtce:ArgumentRefEntry argumentRef="spacecraft_ID" />
+                        <xtce:ArgumentRefEntry argumentRef="virtual_channel_ID_TC" />
+                        <xtce:ArgumentRefEntry argumentRef="frame_length" />
+                        <xtce:ArgumentRefEntry argumentRef="frame_sequence_number" /> 
+
                         <xtce:ArgumentRefEntry argumentRef="packet_version_number" />
                         <xtce:ArgumentRefEntry argumentRef="packet_type" />
                         <xtce:ArgumentRefEntry argumentRef="secondary_header_flag" />
@@ -549,6 +760,18 @@
                     <xtce:BaseContainer containerRef="packet_primary_header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="frame_error_control_field" abstract="true">
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/frame_error_control" name="frame_error_control"></xtce:Argument>
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="frame_error_control_field">
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="frame_error_control" />
+                    </xtce:EntryList>
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+ 
 
             <xtce:MetaCommand name="TC[3,1]:create_a_parameter_report_structure">
                 <xtce:BaseMetaCommand metaCommandRef="Header_TC">

@@ -4,9 +4,109 @@
 <!--Contains all ParameterTypes for Telemetry and ArgumentTypes for Telecommanding.-->
     <xtce:TelemetryMetaData>
         <xtce:ParameterTypeSet>
-            <xtce:IntegerParameterType name="packet_version_number">
+        <!--Transfer Frame Header-->
+
+            <xtce:AggregateParameterType name="transfer_frame_header" shortDescription="The Transfer Frame Header">
+                <xtce:MemberList>
+                    <xtce:Member name="transfer_frame_version_number" typeRef="transfer_frame_version_number"></xtce:Member>
+                    <xtce:Member name="spacecraft_ID" typeRef="spacecraft_ID"></xtce:Member>
+                    <xtce:Member name="virtual_channel_ID" typeRef="virtual_channel_ID"></xtce:Member>
+                    <xtce:Member name="ocf_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="master_channel_frame_count" typeRef="channel_frame_count"></xtce:Member>
+                    <xtce:Member name="virtual_channel_frame_count" typeRef="channel_frame_count"></xtce:Member>
+                    <xtce:Member name="transfer_frame_secondary_header_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="synchronization_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="packet_order_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="segment_length_ID" typeRef="segment_length_ID"></xtce:Member>
+                    <xtce:Member name="first_header_pointer" typeRef="first_header_pointer"></xtce:Member>
+                </xtce:MemberList>
+            </xtce:AggregateParameterType>    
+
+            <xtce:IntegerParameterType name="transfer_frame_version_number" signed="false">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="spacecraft_ID">
+                <xtce:IntegerDataEncoding sizeInBits="10"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="virtual_channel_ID" signed="false">
                 <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="flag">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="channel_frame_count" signed="false">
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="segment_length_ID">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="first_header_pointer">
+                <xtce:IntegerDataEncoding sizeInBits="11"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="transfer_frame_secondary_header_length">
+                <xtce:IntegerDataEncoding sizeInBits="6"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="transfer_frame_secondary_header_data_field">
+                <xtce:IntegerDataEncoding sizeInBits="63"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+            <!--Operetional Control Field-->
+<!--This field is normally 32 bits long, but the first 2 bits are flags, so the remainder is 30 bits long -->
+            <xtce:IntegerParameterType name="operational_control">
+                <xtce:IntegerDataEncoding sizeInBits="30"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <!--CLCW field-->
+
+            <xtce:IntegerParameterType name="control_word_type">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="ClCW_version_number">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="status_field">
+                <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="COP_in_effect">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="virtual_channel_ID_CLCW">
+                <xtce:IntegerDataEncoding sizeInBits="6"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="reserved_spare">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="FARMB_counter">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="reserved_spare_2">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="report_value">
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <!--Frame Error Control Field-->
+
+            <xtce:IntegerParameterType name="frame_error_control">
+                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
 
             <xtce:EnumeratedParameterType name="packet_type">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
@@ -15,6 +115,11 @@
                     <xtce:Enumeration value="0" label="TM" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
+
+            <xtce:IntegerParameterType name="packet_version_number">
+                <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
 
             <xtce:EnumeratedParameterType name="parameter_ID">
                 <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
@@ -250,8 +355,40 @@
 
     <xtce:CommandMetaData>
         <xtce:ArgumentTypeSet>
+            <!--Transfer Frame Header TC-->
+
+            <xtce:IntegerArgumentType name="transfer_frame_version_number">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="flag">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="spacecraft_ID">
+                <xtce:IntegerDataEncoding sizeInBits="10"></xtce:IntegerDataEncoding>
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="virtual_channel_ID_TC">
+                <xtce:IntegerDataEncoding sizeInBits="6"></xtce:IntegerDataEncoding>
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="frame_length">
+                <xtce:IntegerDataEncoding sizeInBits="10"></xtce:IntegerDataEncoding>
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="frame_sequence_number">
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerArgumentType>
+
             <xtce:IntegerArgumentType name="packet_version_number">
                 <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
+            </xtce:IntegerArgumentType>
+
+            <!--Frame Error Control Field-->
+
+            <xtce:IntegerArgumentType name="frame_error_control">
+                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="packet_type">
