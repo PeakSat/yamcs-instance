@@ -49,16 +49,12 @@
             <xtce:MetaCommand name="TC[12,8]:report_parameter_monitoring_definitions">
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint8_t{1-3}" name="number_of_parameters" />
-                    <xtce:Argument argumentTypeRef="/dt/PMON_ID_ST12" name="PMON_ID_1" />
-                    <xtce:Argument argumentTypeRef="/dt/PMON_ID_ST12" name="PMON_ID_2" />
-                    <xtce:Argument argumentTypeRef="/dt/PMON_ID_ST12" name="PMON_ID_3" />
+                    <xtce:Argument argumentTypeRef="/dt/PMON_ID_ST12Array_t" name="PMON_IDs" />
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC[12,8]:report_parameter_monitoring_definitions">
                     <xtce:EntryList>
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters" />
-                        <xtce:ArgumentRefEntry argumentRef="PMON_ID_1" />
-                        <xtce:ArgumentRefEntry argumentRef="PMON_ID_2" />
-                        <xtce:ArgumentRefEntry argumentRef="PMON_ID_3" />
+                        <xtce:ArgumentRefEntry argumentRef="PMON_IDs" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>

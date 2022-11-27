@@ -243,7 +243,7 @@
             <xtce:ArrayParameterType name="statistic_report_array" arrayTypeRef="statistics_report_structure">
                 <xtce:LongDescription>
 					This array type contains all parameter statistics structures sent in a single TM
-				</xtce:LongDescription>
+                </xtce:LongDescription>
                 <xtce:DimensionList>
                     <xtce:Dimension>
                         <xtce:StartingIndex>
@@ -621,6 +621,13 @@
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
+            <xtce:IntegerArgumentType name="uint8_t{1-10}" signed="false">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+                <xtce:ValidRangeSet>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="10" />
+                </xtce:ValidRangeSet>
+            </xtce:IntegerArgumentType>
+
             <xtce:IntegerArgumentType name="int8_t" signed="true">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
@@ -640,6 +647,13 @@
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
                 <xtce:ValidRangeSet>
                     <xtce:ValidRange minInclusive="1" maxInclusive="3" />
+                </xtce:ValidRangeSet>
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="uint16_t{1-10}" signed="false">
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+                <xtce:ValidRangeSet>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="10" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
@@ -687,6 +701,72 @@
                     <xtce:Enumeration value="1" label="GroundStation" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
+
+
+            <xtce:ArrayArgumentType name="structureIdArray_t" arrayTypeRef="structureId_t">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="total_structures" />
+                                <xtce:LinearAdjustment intercept="-1" />
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
+
+            <xtce:ArrayArgumentType name="uint8Array_t" arrayTypeRef="uint8_t">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="total_structures" />
+                                <xtce:LinearAdjustment intercept="-1" />
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
+
+            <xtce:ArrayArgumentType name="parameterIdArray_t" arrayTypeRef="parameterId_t">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="total_parameters" />
+                                <xtce:LinearAdjustment intercept="-1" />
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
+
+            <xtce:ArrayArgumentType name="PMON_ID_ST12Array_t" arrayTypeRef="PMON_ID_ST12">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <xtce:LinearAdjustment intercept="-1" />
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
+            
 
         </xtce:ArgumentTypeSet>
     </xtce:CommandMetaData>
