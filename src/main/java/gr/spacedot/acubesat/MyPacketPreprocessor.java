@@ -1,4 +1,4 @@
-package com.example.myproject;
+package gr.spacedot.acubesat;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;

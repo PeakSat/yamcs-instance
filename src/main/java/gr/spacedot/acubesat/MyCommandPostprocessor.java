@@ -1,4 +1,4 @@
-package com.example.myproject;
+package gr.spacedot.acubesat;
 
 import org.yamcs.YConfiguration;
 import org.yamcs.cmdhistory.CommandHistoryPublisher;
