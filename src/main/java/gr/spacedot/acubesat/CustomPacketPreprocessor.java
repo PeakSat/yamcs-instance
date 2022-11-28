@@ -1,4 +1,4 @@
-package com.example.myproject;
+package gr.spacedot.acubesat;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;
@@ -9,20 +9,20 @@ import org.yamcs.TmPacket;
 import org.yamcs.YConfiguration;
 import org.yamcs.tctm.AbstractPacketPreprocessor;
 
-public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
-    private static final Logger LOGGER = Logger.getLogger(MyPacketPreprocessor.class.getName());
+public class CustomPacketPreprocessor extends AbstractPacketPreprocessor {
+    private static final Logger LOGGER = Logger.getLogger(CustomPacketPreprocessor.class.getName());
     ConsoleHandler fh;
 
     private Map<Integer, AtomicInteger> seqCounts = new HashMap<>();
 
     // Constructor used when this preprocessor is used without YAML configuration
-    public MyPacketPreprocessor(String yamcsInstance) {
+    public CustomPacketPreprocessor(String yamcsInstance) {
         this(yamcsInstance, YConfiguration.emptyConfig());
     }
 
     // Constructor used when this preprocessor is used with YAML configuration
     // (packetPreprocessorClassArgs)
-    public MyPacketPreprocessor(String yamcsInstance, YConfiguration config) {
+    public CustomPacketPreprocessor(String yamcsInstance, YConfiguration config) {
         super(yamcsInstance, config);
     }
 
