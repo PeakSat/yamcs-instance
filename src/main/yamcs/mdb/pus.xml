@@ -678,14 +678,13 @@
                     <xtce:ReceivedVerifier name="TC_receival">
                         <xtce:CustomAlgorithm name="received_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
-
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 1){
                                     return true;
                                 }else if(subtype.value == 2){
@@ -694,12 +693,12 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/AcceptanceErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/AcceptanceErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" />
@@ -707,14 +706,14 @@
                     <xtce:ExecutionVerifier name="TC_start_of_execution">
                         <xtce:CustomAlgorithm name="execution_algorithm">
                             <xtce:AncillaryDataSet>
-                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                             </xtce:AncillaryDataSet>
     
                             <xtce:AlgorithmText language="JavaScript">
-                                if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                                if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                     if(subtype.value == 3){
                                         return true;
                                     }else if(subtype.value == 4){
@@ -723,12 +722,12 @@
                                 }
                             </xtce:AlgorithmText>
                             <xtce:InputSet>
-                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                                 <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                                 <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionStartErrorType" inputName="errorCode" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionStartErrorType" inputName="errorCode" />
                             </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease" />
@@ -736,14 +735,14 @@
                     <xtce:CompleteVerifier name="TC_Completion">
                         <xtce:CustomAlgorithm name="completion_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 7){
                                     return true;
                                 }else if(subtype.value == 8){
@@ -752,12 +751,12 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
@@ -787,14 +786,14 @@
                     <xtce:ReceivedVerifier name="TC_receival">
                         <xtce:CustomAlgorithm name="received_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 1){
                                     return true;
                                 }else if(subtype.value == 2){
@@ -803,12 +802,12 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/AcceptanceErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/AcceptanceErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" />
@@ -816,14 +815,14 @@
                     <xtce:ExecutionVerifier name="TC_start_of_execution">
                         <xtce:CustomAlgorithm name="execution_algorithm">
                             <xtce:AncillaryDataSet>
-                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                             </xtce:AncillaryDataSet>
     
                             <xtce:AlgorithmText language="JavaScript">
-                                if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                                if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                     if(subtype.value == 3){
                                         return true;
                                     }else if(subtype.value == 4){
@@ -832,12 +831,12 @@
                                 }
                             </xtce:AlgorithmText>
                             <xtce:InputSet>
-                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                                 <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                                 <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionStartErrorType" inputName="errorCode" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionStartErrorType" inputName="errorCode" />
                             </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease" />
@@ -845,14 +844,14 @@
                     <xtce:CompleteVerifier name="TC_Completion">
                         <xtce:CustomAlgorithm name="completion_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 7){
                                     return true;
                                 }else if(subtype.value == 8){
@@ -861,12 +860,12 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
@@ -896,14 +895,14 @@
                     <xtce:ReceivedVerifier name="TC_receival">
                         <xtce:CustomAlgorithm name="received_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 1){
                                     return true;
                                 }else if(subtype.value == 2){
@@ -912,12 +911,12 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/AcceptanceErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/AcceptanceErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" />
@@ -925,14 +924,14 @@
                     <xtce:ExecutionVerifier name="TC_start_of_execution">
                         <xtce:CustomAlgorithm name="execution_algorithm">
                             <xtce:AncillaryDataSet>
-                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                             </xtce:AncillaryDataSet>
     
                             <xtce:AlgorithmText language="JavaScript">
-                                if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                                if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                     if(subtype.value == 3){
                                         return true;
                                     }else if(subtype.value == 4){
@@ -941,12 +940,12 @@
                                 }
                             </xtce:AlgorithmText>
                             <xtce:InputSet>
-                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                                 <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                                 <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionStartErrorType" inputName="errorCode" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionStartErrorType" inputName="errorCode" />
                             </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease" />
@@ -954,14 +953,14 @@
                     <xtce:CompleteVerifier name="TC_Completion">
                         <xtce:CustomAlgorithm name="completion_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 7){
                                     return true;
                                 }else if(subtype.value == 8){
@@ -970,12 +969,12 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
@@ -1005,14 +1004,14 @@
                     <xtce:ReceivedVerifier name="TC_receival">
                         <xtce:CustomAlgorithm name="received_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 1){
                                     return true;
                                 }else if(subtype.value == 2){
@@ -1021,12 +1020,12 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/AcceptanceErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/AcceptanceErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" />
@@ -1034,14 +1033,14 @@
                     <xtce:ExecutionVerifier name="TC_start_of_execution">
                         <xtce:CustomAlgorithm name="execution_algorithm">
                             <xtce:AncillaryDataSet>
-                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                             </xtce:AncillaryDataSet>
     
                             <xtce:AlgorithmText language="JavaScript">
-                                if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                                if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                     if(subtype.value == 3){
                                         return true;
                                     }else if(subtype.value == 4){
@@ -1050,12 +1049,12 @@
                                 }
                             </xtce:AlgorithmText>
                             <xtce:InputSet>
-                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                                 <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                                 <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionStartErrorType" inputName="errorCode" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionStartErrorType" inputName="errorCode" />
                             </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease" />
@@ -1063,14 +1062,14 @@
                     <xtce:CompleteVerifier name="TC_Completion">
                         <xtce:CustomAlgorithm name="completion_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 7){
                                     return true;
                                 }else if(subtype.value == 8){
@@ -1079,12 +1078,12 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
@@ -1114,14 +1113,14 @@
                     <xtce:ReceivedVerifier name="TC_receival">
                         <xtce:CustomAlgorithm name="received_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 1){
                                     return true;
                                 }else if(subtype.value == 2){
@@ -1130,12 +1129,12 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/AcceptanceErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/AcceptanceErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" />
@@ -1143,14 +1142,14 @@
                     <xtce:ExecutionVerifier name="TC_start_of_execution">
                         <xtce:CustomAlgorithm name="execution_algorithm">
                             <xtce:AncillaryDataSet>
-                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                             </xtce:AncillaryDataSet>
     
                             <xtce:AlgorithmText language="JavaScript">
-                                if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                                if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                     if(subtype.value == 3){
                                         return true;
                                     }else if(subtype.value == 4){
@@ -1159,12 +1158,12 @@
                                 }
                             </xtce:AlgorithmText>
                             <xtce:InputSet>
-                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                                 <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                                 <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionStartErrorType" inputName="errorCode" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionStartErrorType" inputName="errorCode" />
                             </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease" />
@@ -1172,14 +1171,14 @@
                     <xtce:CompleteVerifier name="TC_Completion">
                         <xtce:CustomAlgorithm name="completion_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 7){
                                     return true;
                                 }else if(subtype.value == 8){
@@ -1188,15 +1187,15 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
-                        <xtce:CheckWindow timeToStopChecking="P1T5S" timeWindowIsRelativeTo="commandRelease"/>
+                        <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
                     </xtce:CompleteVerifier>
                 </xtce:VerifierSet>
             </xtce:MetaCommand>
@@ -1221,14 +1220,14 @@
                     <xtce:ReceivedVerifier name="TC_receival">
                         <xtce:CustomAlgorithm name="received_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 1){
                                     return true;
                                 }else if(subtype.value == 2){
@@ -1237,12 +1236,12 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/AcceptanceErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/AcceptanceErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" />
@@ -1250,14 +1249,14 @@
                     <xtce:ExecutionVerifier name="TC_start_of_execution">
                         <xtce:CustomAlgorithm name="execution_algorithm">
                             <xtce:AncillaryDataSet>
-                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                             </xtce:AncillaryDataSet>
     
                             <xtce:AlgorithmText language="JavaScript">
-                                if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                                if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                     if(subtype.value == 3){
                                         return true;
                                     }else if(subtype.value == 4){
@@ -1266,12 +1265,12 @@
                                 }
                             </xtce:AlgorithmText>
                             <xtce:InputSet>
-                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                                 <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                                 <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionStartErrorType" inputName="errorCode" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionStartErrorType" inputName="errorCode" />
                             </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease" />
@@ -1279,14 +1278,14 @@
                     <xtce:CompleteVerifier name="TC_Completion">
                         <xtce:CustomAlgorithm name="completion_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 7){
                                     return true;
                                 }else if(subtype.value == 8){
@@ -1295,12 +1294,12 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
@@ -1323,14 +1322,14 @@
                     <xtce:ReceivedVerifier name="TC_receival">
                         <xtce:CustomAlgorithm name="received_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 1){
                                     return true;
                                 }else if(subtype.value == 2){
@@ -1339,12 +1338,12 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionStartErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionStartErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" />
@@ -1352,14 +1351,14 @@
                     <xtce:ExecutionVerifier name="TC_start_of_execution">
                         <xtce:CustomAlgorithm name="execution_algorithm">
                             <xtce:AncillaryDataSet>
-                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                             </xtce:AncillaryDataSet>
     
                             <xtce:AlgorithmText language="JavaScript">
-                                if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                                if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                     if(subtype.value == 3){
                                         return true;
                                     }else if(subtype.value == 4){
@@ -1368,12 +1367,12 @@
                                 }
                             </xtce:AlgorithmText>
                             <xtce:InputSet>
-                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                                 <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                                 <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                                <xtce:InputParameterInstanceRef parameterRef="pus-verification/AcceptanceErrorType" inputName="errorCode" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/AcceptanceErrorType" inputName="errorCode" />
                             </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease" />
@@ -1381,14 +1380,14 @@
                     <xtce:CompleteVerifier name="TC_Completion">
                         <xtce:CustomAlgorithm name="completion_algorithm">
                         <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sendApid</xtce:AncillaryData>
+                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sendApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
                                 if(subtype.value == 7){
                                     return true;
                                 }else if(subtype.value == 8){
@@ -1397,12 +1396,12 @@
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
-                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sendApid" />
+                            <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
                             <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
                             <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_application_process_ID" inputName="rcvdApid"/>
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
-                            <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                            <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
