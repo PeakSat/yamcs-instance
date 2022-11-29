@@ -5,7 +5,12 @@ public class FileEntity {
 
     private String name;
 
-    private int size;
+    public FileEntity(String path, String name) {
+        this.path = path;
+        this.name = name;
+    }
+
+    public FileEntity(){}
 
     public String getName() {
         return name;
