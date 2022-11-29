@@ -660,7 +660,7 @@
 							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
                         </xtce:AncillaryDataSet>
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sentSeq.value){
                                 if(subtype.value == 1){
                                     return true;
                                 }else if(subtype.value == 2){
