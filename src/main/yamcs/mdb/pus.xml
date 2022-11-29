@@ -760,7 +760,7 @@
                             <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
-                        <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease"/>
+                        <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
                     </xtce:CompleteVerifier>
                 </xtce:VerifierSet>
             </xtce:MetaCommand>
@@ -869,7 +869,7 @@
                             <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
-                        <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease"/>
+                        <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
                     </xtce:CompleteVerifier>
                 </xtce:VerifierSet>
             </xtce:MetaCommand>
@@ -978,7 +978,7 @@
                             <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
-                        <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease"/>
+                        <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
                     </xtce:CompleteVerifier>
                 </xtce:VerifierSet>
             </xtce:MetaCommand>
@@ -1087,7 +1087,7 @@
                             <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
-                        <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease"/>
+                        <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
                     </xtce:CompleteVerifier>
                 </xtce:VerifierSet>
             </xtce:MetaCommand>
@@ -1196,7 +1196,7 @@
                             <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
-                        <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease"/>
+                        <xtce:CheckWindow timeToStopChecking="P1T5S" timeWindowIsRelativeTo="commandRelease"/>
                     </xtce:CompleteVerifier>
                 </xtce:VerifierSet>
             </xtce:MetaCommand>
@@ -1303,7 +1303,7 @@
                             <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
-                        <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease"/>
+                        <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
                     </xtce:CompleteVerifier>
                 </xtce:VerifierSet>
             </xtce:MetaCommand>
@@ -1405,7 +1405,7 @@
                             <xtce:InputParameterInstanceRef parameterRef="pus-verification/ExecutionCompletionErrorType" inputName="errorCode" />
                         </xtce:InputSet>
                         </xtce:CustomAlgorithm>
-                        <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease"/>
+                        <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
                     </xtce:CompleteVerifier>
                 </xtce:VerifierSet>
             </xtce:MetaCommand>
