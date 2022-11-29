@@ -1,23 +1,31 @@
-package gr.spacedot.acubesat.file_handling;
+package gr.spacedot.acubesat.file_handling.network.utils;
+
+import gr.spacedot.acubesat.file_handling.entities.ChunkedFileEntity;
+import gr.spacedot.acubesat.file_handling.entities.FileEntity;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.Optional;
 
 
 public class Butcher {
     private static final int CHUNK_SIZE = 60_000;
 
-    public List<byte[]> splitFileInChunks(FileEntity fileEntity) {
+    public Optional<ChunkedFileEntity> splitFileInChunks(FileEntity fileEntity) {
+        ChunkedFileEntity splitFile = new ChunkedFileEntity();
+        splitFile.setName(fileEntity.getName());
+        splitFile.setPath(fileEntity.getPath());
 
         ArrayList<byte[]> chunks = new ArrayList<>();
 
         try {
             File file = new File(fileEntity.getPath(), fileEntity.getName());
             System.out.println("Path is " + file.getPath());
+            if(file.isDirectory())
+                return Optional.empty();
             byte[] contents = Files.readAllBytes(file.toPath());
             int numberOfChunks = contents.length / CHUNK_SIZE + 1;
 
@@ -27,6 +35,9 @@ public class Butcher {
         } catch (IOException e) {
             System.err.println("Can't read file with exception " + e);
         }
-        return chunks;
+        splitFile.setChunkSize(CHUNK_SIZE);
+        splitFile.setChunks(chunks);
+        return Optional.of(splitFile);
+
     }
 }
