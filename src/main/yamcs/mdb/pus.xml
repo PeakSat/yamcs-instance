@@ -718,7 +718,7 @@
                         </xtce:AncillaryDataSet>
 
                         <xtce:AlgorithmText language="JavaScript">
-                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sendSeq.value){
+                            if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sentSeq.value){
                                 if(subtype.value == 7){
                                     return true;
                                 }else if(subtype.value == 8){
