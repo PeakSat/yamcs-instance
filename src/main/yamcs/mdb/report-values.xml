@@ -227,6 +227,28 @@
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="TC[20,1]:report_custom_parameter_values">
+                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                <xtce:ArgumentAssignmentList>
+                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-10}" name="total_parameters" />
+                    <xtce:Argument argumentTypeRef="/dt/parameterIdArray_t" name="parameters" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="TC[20,1]:report_custom_parameter_values">
+                    <xtce:EntryList >
+                        <xtce:ArgumentRefEntry argumentRef="total_parameters"/>
+                        <xtce:ArgumentRefEntry argumentRef="parameters" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+
         </xtce:MetaCommandSet> 
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>

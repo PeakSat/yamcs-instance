@@ -70,19 +70,15 @@
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_structure_id" />
                     <xtce:Argument argumentTypeRef="/dt/uint32_t" name="collection_interval_milliseconds" />
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-3}" name="number_of_parameters" />
-                    <xtce:Argument argumentTypeRef="/dt/parameterId_t" name="P1" />
-                    <xtce:Argument argumentTypeRef="/dt/parameterId_t" name="P2" />
-                    <xtce:Argument argumentTypeRef="/dt/parameterId_t" name="P3" />
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-10}" name="total_parameters" />
+                    <xtce:Argument argumentTypeRef="/dt/parameterIdArray_t" name="parameters" />
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC[3,1]:create_a_parameter_report_structure">
                     <xtce:EntryList>
                         <xtce:ArgumentRefEntry argumentRef="new_structure_id" />
                         <xtce:ArgumentRefEntry argumentRef="collection_interval_milliseconds" />
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters" />
-                        <xtce:ArgumentRefEntry argumentRef="P1" />
-                        <xtce:ArgumentRefEntry argumentRef="P2" />
-                        <xtce:ArgumentRefEntry argumentRef="P3" />
+                        <xtce:ArgumentRefEntry argumentRef="total_parameters" />
+                        <xtce:ArgumentRefEntry argumentRef="parameters" />
                         </xtce:EntryList>
                         <xtce:BaseContainer containerRef="TC[11,4]:insert_activity_into_time_based_schedule" />
                     </xtce:CommandContainer>
@@ -102,17 +98,13 @@
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                        <xtce:Argument argumentTypeRef="/dt/uint8_t{1-3}" name="number_of_parameters" />
-                        <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_1" />
-                        <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_2" />
-                        <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_3" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t{1-10}" name="total_structures" />
+                    <xtce:Argument argumentTypeRef="/dt/structureIdArray_t" name="structures" />
                     </xtce:ArgumentList>
                     <xtce:CommandContainer name="TC[11,4][3,9]:time_based_scheduled_report_housekeeping_parameter_report_structures">
                         <xtce:EntryList>
-                            <xtce:ArgumentRefEntry argumentRef="number_of_parameters" />
-                            <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_1" />
-                            <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_2" />
-                            <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_3" />
+                            <xtce:ArgumentRefEntry argumentRef="total_structures" />
+                            <xtce:ArgumentRefEntry argumentRef="structures" />
                         </xtce:EntryList>
                         <xtce:BaseContainer containerRef="TC[11,4]:insert_activity_into_time_based_schedule" />
                     </xtce:CommandContainer>
@@ -132,17 +124,13 @@
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                        <xtce:Argument argumentTypeRef="/dt/uint8_t{1-3}" name="number_of_structures" />
-                        <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_1" />
-                        <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_2" />
-                        <xtce:Argument argumentTypeRef="/dt/structureId_t" name="housekeeping_parameter_report_structure_ID_3" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t{1-10}" name="total_structures" />
+                    <xtce:Argument argumentTypeRef="/dt/structureIdArray_t" name="structures" />
                     </xtce:ArgumentList>
                     <xtce:CommandContainer name="TC[11,4][3,27]:time_based_scheduled_generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
                         <xtce:EntryList>
-                            <xtce:ArgumentRefEntry argumentRef="number_of_structures" />
-                            <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_1" />
-                            <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_2" />
-                            <xtce:ArgumentRefEntry argumentRef="housekeeping_parameter_report_structure_ID_3" />
+                            <xtce:ArgumentRefEntry argumentRef="total_structures" />
+                            <xtce:ArgumentRefEntry argumentRef="structures" />
                         </xtce:EntryList>
                         <xtce:BaseContainer containerRef="TC[11,4]:insert_activity_into_time_based_schedule" />
                     </xtce:CommandContainer>
@@ -162,17 +150,13 @@
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint8_t{1-3}" name="number_of_parameters"/>
-                    <xtce:Argument argumentTypeRef="/dt/parameterId_t" name="P1" />
-                    <xtce:Argument argumentTypeRef="/dt/parameterId_t" name="P2" />
-                    <xtce:Argument argumentTypeRef="/dt/parameterId_t" name="P3" />
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-10}" name="total_parameters" />
+                    <xtce:Argument argumentTypeRef="/dt/parameterIdArray_t" name="parameters" />
                 </xtce:ArgumentList>
                     <xtce:CommandContainer name="TC[11,4][20,1]:time_based_scheduled_report_the_parameter_values">
                         <xtce:EntryList >
-                            <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                            <xtce:ArgumentRefEntry argumentRef="P1" />
-                            <xtce:ArgumentRefEntry argumentRef="P2" />
-                            <xtce:ArgumentRefEntry argumentRef="P3" />
+                            <xtce:ArgumentRefEntry argumentRef="total_parameters"/>
+                            <xtce:ArgumentRefEntry argumentRef="parameters" />
                         </xtce:EntryList>
                         <xtce:BaseContainer containerRef="TC[11,4]:insert_activity_into_time_based_schedule" />
                     </xtce:CommandContainer>
