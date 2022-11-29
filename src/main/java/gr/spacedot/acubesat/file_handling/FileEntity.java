@@ -1,9 +1,11 @@
-package gr.spacedot.acubesat.FileHandling;
+package gr.spacedot.acubesat.file_handling;
 
 public class FileEntity {
     private String path;
 
     private String name;
+
+    private int size;
 
     public String getName() {
         return name;
