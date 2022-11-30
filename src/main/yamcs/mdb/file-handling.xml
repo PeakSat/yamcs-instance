@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xtce:SpaceSystem name="file-handling"
+    xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
+
+    <xtce:TelemetryMetaData></xtce:TelemetryMetaData>
+    <xtce:CommandMetaData>
+        <xtce:MetaCommandSet>
+            <xtce:MetaCommand name="TC[23,14]:copy_file">
+                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="23" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="14" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/string_t" name="source_file_path" />
+                    <xtce:Argument argumentTypeRef="/dt/string_t" name="source_file_name" />
+                    <xtce:Argument argumentTypeRef="/dt/string_t" name="target_file_path" />
+                    <xtce:Argument argumentTypeRef="/dt/string_t" name="target_file_name" />
+                </xtce:ArgumentList>
+                <xtce:CommandContainer name="TC[23,14]:copy_file">
+                    <xtce:EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="source_file_path" />
+                        <xtce:ArgumentRefEntry argumentRef="source_file_name" />
+                        <xtce:ArgumentRefEntry argumentRef="target_file_path" />
+                        <xtce:ArgumentRefEntry argumentRef="target_file_name" />
+                    </xtce:EntryList>
+                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+        </xtce:MetaCommandSet>
+    </xtce:CommandMetaData>
+</xtce:SpaceSystem>
