@@ -9,7 +9,7 @@ import org.yamcs.utils.ByteArrayUtils;
 
 public class CustomCommandPostprocessor implements CommandPostprocessor {
 
-    private CcsdsSeqCountFiller seqFiller = new CcsdsSeqCountFiller();
+    private final CcsdsSeqCountFiller seqFiller = new CcsdsSeqCountFiller();
     private CommandHistoryPublisher commandHistory;
 
     // Constructor used when this postprocessor is used without YAML configuration
@@ -32,22 +32,22 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
     // This method must return the (possibly modified) packet binary.
     @Override
     public byte[] process(PreparedCommand pc) {
-         byte[] binary = pc.getBinary();
-      
-        // // Set CCSDS packet length
-         ByteArrayUtils.encodeUnsignedShort(binary.length-6, binary,4);
+        byte[] binary = pc.getBinary();
 
-        // // // Set CCSDS sequence count
-          int seqCount = seqFiller.fill(binary);
+        // Set CCSDS packet length
+        ByteArrayUtils.encodeUnsignedShort(binary.length - 6, binary, 4);
 
-        // // // Publish the sequence count to Command History. This has no special
-        // // // meaning to Yamcs, but it shows how to store custom information specific
-        // // // to a command.
-          commandHistory.publish(pc.getCommandId(), "ccsds-seqcount", seqCount);
+        // Set CCSDS sequence count
+        int seqCount = seqFiller.fill(binary);
 
-        // // // Since we modified the binary, update the binary in Command History too.
-        //  commandHistory.publish(pc.getCommandId(), PreparedCommand.CNAME_BINARY, binary);
+        // Publish the sequence count to Command History. This has no special
+        // meaning to Yamcs, but it shows how to store custom information specific
+        // to a command.
+        commandHistory.publish(pc.getCommandId(), "ccsds-seqcount", seqCount);
 
-         return binary;
+        // Since we modified the binary, update the binary in Command History too.
+        //commandHistory.publish(pc.getCommandId(), PreparedCommand.CNAME_BINARY, binary);
+
+        return binary;
     }
 }
