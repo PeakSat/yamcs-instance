@@ -652,13 +652,13 @@
                 </xtce:CommandContainer>
                 <xtce:VerifierSet>
                     <xtce:ReceivedVerifier name="TC_receival">
-                        <xtce:CustomAlgorithm name="received_algorithm">
-                        <xtce:AncillaryDataSet>
-                            <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
-							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
-							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
-							<xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
-                        </xtce:AncillaryDataSet>
+                        <xtce:CustomAlgorithm name="receival_algorithm">
+                            <xtce:AncillaryDataSet>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
+                            </xtce:AncillaryDataSet>
                         <xtce:AlgorithmText language="JavaScript">
                             if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sentSeq.value){
                                 if(subtype.value == 1){
@@ -666,6 +666,8 @@
                                 }else if(subtype.value == 2){
                                     return errorCode.value;
                                 }
+                            }else{
+                                return false;
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
@@ -680,7 +682,7 @@
                         <xtce:CheckWindow timeToStopChecking="PT5S" />
                     </xtce:ReceivedVerifier>
                     <xtce:ExecutionVerifier name="TC_start_of_execution">
-                        <xtce:CustomAlgorithm name="execution_algorithm">
+                        <xtce:CustomAlgorithm name="start_of_execution_algorithm">
                             <xtce:AncillaryDataSet>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
                                 <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
@@ -695,6 +697,8 @@
                                     }else if(subtype.value == 4){
                                         return errorCode.value;
                                     }
+                                }else{
+                                    return false;
                                 }
                             </xtce:AlgorithmText>
                             <xtce:InputSet>
@@ -708,7 +712,38 @@
                         </xtce:CustomAlgorithm>
                         <xtce:CheckWindow timeToStopChecking="PT5S" timeWindowIsRelativeTo="commandRelease" />
                     </xtce:ExecutionVerifier>
-                    <xtce:CompleteVerifier name="TC_Completion">
+                    <xtce:ExecutionVerifier name="TC_execution_progress">
+                        <xtce:CustomAlgorithm name="execution_progress_algorithm">
+                            <xtce:AncillaryDataSet>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentSeq</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdApid</xtce:AncillaryData>
+                                <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">rcvdSeq</xtce:AncillaryData>
+                            </xtce:AncillaryDataSet>
+                            <xtce:AlgorithmText language="JavaScript">
+                                if(rcvdApid.value == sentApid.value &#38;&#38; rcvdSeq.value == sentSeq.value){
+                                    if(subtype.value == 5){
+                                        return step.value;
+                                    }else if(subtype.value == 6){
+                                        return errorCode.value;
+                                    }
+                                }else{
+                                    return false;
+                                }
+                            </xtce:AlgorithmText>
+                            <xtce:InputSet>
+                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmd/arg/application_process_ID" inputName="sentApid" />
+                                <xtce:InputParameterInstanceRef parameterRef="/yamcs/cmdHist/packet_sequence_count_or_packet_name" inputName="sentSeq"/>
+                                <xtce:InputParameterInstanceRef parameterRef="message_subtype_ID_TM" inputName="subtype" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/stepID" inputName="step" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_application_process_ID" inputName="rcvdApid"/>
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/source_packet_sequence_count" inputName="rcvdSeq" />
+                                <xtce:InputParameterInstanceRef parameterRef="/pus-verification/ExecutionProgressErrorType" inputName="errorCode" />
+                            </xtce:InputSet>
+                        </xtce:CustomAlgorithm>
+                        <xtce:CheckWindow timeToStopChecking="PT15S" timeWindowIsRelativeTo="commandRelease"/>
+                    </xtce:ExecutionVerifier>
+                    <xtce:CompleteVerifier name="TC_completion">
                         <xtce:CustomAlgorithm name="completion_algorithm">
                         <xtce:AncillaryDataSet>
                             <xtce:AncillaryData name="Yamcs:AlgorithmMandatoryInput">sentApid</xtce:AncillaryData>
@@ -724,6 +759,8 @@
                                 }else if(subtype.value == 8){
                                     return errorCode.value;
                                 }
+                            }else{
+                                return false;
                             }
                         </xtce:AlgorithmText>
                         <xtce:InputSet>
