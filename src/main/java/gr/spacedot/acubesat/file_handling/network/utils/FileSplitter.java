@@ -24,7 +24,7 @@ public class FileSplitter {
         try {
             File file = new File(fileEntity.getPath(), fileEntity.getName());
             System.out.println("Path is " + file.getPath());
-            if(file.isDirectory())
+            if (file.isDirectory())
                 return Optional.empty();
             byte[] contents = Files.readAllBytes(file.toPath());
             int numberOfChunks = contents.length / CHUNK_SIZE + 1;

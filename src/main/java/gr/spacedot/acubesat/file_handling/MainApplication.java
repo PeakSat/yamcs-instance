@@ -2,6 +2,7 @@ package gr.spacedot.acubesat.file_handling;
 
 import gr.spacedot.acubesat.file_handling.entities.ChunkedFileEntity;
 import gr.spacedot.acubesat.file_handling.entities.FileEntity;
+import gr.spacedot.acubesat.file_handling.enums.LocalPaths;
 import gr.spacedot.acubesat.file_handling.network.utils.FileSplitter;
 import gr.spacedot.acubesat.file_handling.network.utils.FileReconstructor;
 
@@ -22,14 +23,14 @@ class MainApplication {
         LOGGER.info("Searching files in resources directory..");
 
         //In java, folders are File objects.
-        File folder = new File("src/main/resources/images");
+        File folder = new File(LocalPaths.RESOURCES_PATH +"/images");
         String[] files = folder.list();
 
         for (String file : files) {
 
             LOGGER.info("File " + file + " found");
-            FileEntity fileEntity = new FileEntity(folder.getPath(),file);
-            ChunkedFileEntity chunked = fileSplitter.splitFileInChunks(fileEntity).orElseThrow(()->new RuntimeException("File is directory"));
+            FileEntity fileEntity = new FileEntity(folder.getPath(), file);
+            ChunkedFileEntity chunked = fileSplitter.splitFileInChunks(fileEntity).orElseThrow(() -> new RuntimeException("File is directory"));
             LOGGER.info("Chunks size is " + chunked.getChunks().size());
 
             fileReconstructor.reconstruct(chunked);
