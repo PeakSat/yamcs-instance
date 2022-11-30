@@ -1,11 +1,7 @@
 package gr.spacedot.acubesat.file_handling.entities;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URI;
-import java.util.List;
 
 public class FileEntity {
     private String path;

@@ -49,7 +49,7 @@ public class CustomPacketPreprocessor extends AbstractPacketPreprocessor {
         int pusversion = ByteBuffer.wrap(bytes).get(6) & 0xF;// 4 bits
         int serviceType = ByteBuffer.wrap(bytes).get(7) & 0xFF;// 8 bits
         int messageType = ByteBuffer.wrap(bytes).get(8) & 0xFF;// 8 bits
-        long time = ByteBuffer.wrap(bytes).getInt(11) & 0xFFFFFFFF; // 32 bits. Long to prevent overflow
+        long time = ByteBuffer.wrap(bytes).getInt(11); // 32 bits. Long to prevent overflow
 
         AtomicInteger ai = seqCounts.computeIfAbsent(apid, k -> new AtomicInteger());
         int oldseq = ai.getAndSet(seqcount);

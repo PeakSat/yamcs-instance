@@ -11,13 +11,13 @@ import java.util.Arrays;
 import java.util.Optional;
 
 
-public class Butcher {
+public class FileSplitter {
     private static final int CHUNK_SIZE = 60_000;
 
     public Optional<ChunkedFileEntity> splitFileInChunks(FileEntity fileEntity) {
-        ChunkedFileEntity splitFile = new ChunkedFileEntity();
-        splitFile.setName(fileEntity.getName());
-        splitFile.setPath(fileEntity.getPath());
+        ChunkedFileEntity chunkedFileEntity = new ChunkedFileEntity();
+        chunkedFileEntity.setName(fileEntity.getName());
+        chunkedFileEntity.setPath(fileEntity.getPath());
 
         ArrayList<byte[]> chunks = new ArrayList<>();
 
@@ -35,9 +35,9 @@ public class Butcher {
         } catch (IOException e) {
             System.err.println("Can't read file with exception " + e);
         }
-        splitFile.setChunkSize(CHUNK_SIZE);
-        splitFile.setChunks(chunks);
-        return Optional.of(splitFile);
+        chunkedFileEntity.setChunkSize(CHUNK_SIZE);
+        chunkedFileEntity.setChunks(chunks);
+        return Optional.of(chunkedFileEntity);
 
     }
 }
