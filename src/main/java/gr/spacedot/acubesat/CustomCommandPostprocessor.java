@@ -7,25 +7,6 @@ import org.yamcs.tctm.CcsdsSeqCountFiller;
 import org.yamcs.tctm.CommandPostprocessor;
 import org.yamcs.utils.ByteArrayUtils;
 
-/**
- * Component capable of modifying command binary before passing it to the link for further dispatch.
- * <p>
- * A single instance of this class is created, scoped to the link udp-out.
- * <p>
- * This is specified in the configuration file yamcs.myproject.yaml:
- * 
- * <pre>
- * ...
- * dataLinks:
- *   - name: udp-out
- *     class: org.yamcs.tctm.UdpTcDataLink
- *     stream: tc_realtime
- *     host: localhost
- *     port: 10025
- *     commandPostprocessorClassName: com.example.myproject.MyCommandPostprocessor
- * ...
- * </pre>
- */
 public class CustomCommandPostprocessor implements CommandPostprocessor {
 
     private CcsdsSeqCountFiller seqFiller = new CcsdsSeqCountFiller();
