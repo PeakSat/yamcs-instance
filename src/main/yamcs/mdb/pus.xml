@@ -30,7 +30,7 @@
             </xtce:Parameter>
 
             <!--Parameter used in TM[128,128]-->
-            <xtce:Parameter name="message_logs" parameterTypeRef="/dt/string1"></xtce:Parameter>
+            <xtce:Parameter name="message_logs" parameterTypeRef="/dt/string1_t"></xtce:Parameter>
 
             <!--Parameters used in TM[4,2] Container-->
             <xtce:Parameter name="start_time_ST04" parameterTypeRef="/dt/uint32_t">
@@ -213,36 +213,6 @@
             <xtce:SequenceContainer name="TM[20,2]:parameter_value_report">
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="number_of_parameters"></xtce:ParameterRefEntry>
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="packet_header_TM">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="20" parameterRef="service_type_ID_TM" />
-                            <xtce:Comparison value="2" parameterRef="message_subtype_ID_TM" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
-
-
-            <xtce:SequenceContainer name="TM[20,2]:parameter_value_report_custom">
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="number_of_parameters"></xtce:ParameterRefEntry>
-                    <xtce:ArrayParameterRefEntry parameterRef="dt/id_value_pair">
-                        <xtce:DimensionList>
-                            <xtce:Dimension>
-                                <xtce:StartingIndex>
-                                    <xtce:FixedValue>0</xtce:FixedValue>
-                                </xtce:StartingIndex>
-                                <xtce:EndingIndex>
-                                    <xtce:DynamicValue>
-                                        <xtce:ParameterInstanceRef parameterRef="number_of_parameters" />
-                                        <xtce:LinearAdjustment intercept="-1" />
-                                    </xtce:DynamicValue>
-                                </xtce:EndingIndex>
-                            </xtce:Dimension>
-                        </xtce:DimensionList>
-                    </xtce:ArrayParameterRefEntry>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_header_TM">
                     <xtce:RestrictionCriteria>

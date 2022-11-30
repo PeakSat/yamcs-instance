@@ -256,7 +256,18 @@
                 </xtce:DimensionList>
             </xtce:ArrayParameterType>
 
-            <xtce:StringParameterType name="string1">
+            <xtce:StringParameterType name="string_t">
+                <xtce:StringDataEncoding encoding="UTF-8">
+                    <xtce:Variable maxSizeInBits="4096">
+                        <xtce:DynamicValue>
+                            <xtce:ParameterInstanceRef parameterRef="_yamcs_ignore" />
+                        </xtce:DynamicValue>
+                        <xtce:TerminationChar>00</xtce:TerminationChar>
+                    </xtce:Variable>
+                </xtce:StringDataEncoding>
+            </xtce:StringParameterType>
+
+            <xtce:StringParameterType name="string1_t">
                 <xtce:StringDataEncoding encoding="UTF-8">
                     <xtce:Variable maxSizeInBits="4096">
                         <xtce:DynamicValue>
@@ -766,8 +777,18 @@
                     </xtce:Dimension>
                 </xtce:DimensionList>
             </xtce:ArrayArgumentType>
-            
 
+            <xtce:StringArgumentType name="string_t">
+                <xtce:StringDataEncoding encoding="UTF-8">
+                    <xtce:Variable maxSizeInBits="4096">
+                        <xtce:DynamicValue>
+                            <xtce:ParameterInstanceRef parameterRef="_yamcs_ignore" />
+                        </xtce:DynamicValue>
+                        <xtce:TerminationChar>00</xtce:TerminationChar>
+                    </xtce:Variable>
+                </xtce:StringDataEncoding>
+            </xtce:StringArgumentType>
+            
         </xtce:ArgumentTypeSet>
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>

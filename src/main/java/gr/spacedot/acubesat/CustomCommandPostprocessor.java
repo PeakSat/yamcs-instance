@@ -7,10 +7,14 @@ import org.yamcs.tctm.CcsdsSeqCountFiller;
 import org.yamcs.tctm.CommandPostprocessor;
 import org.yamcs.utils.ByteArrayUtils;
 
+import java.util.logging.Logger;
+
 public class CustomCommandPostprocessor implements CommandPostprocessor {
 
     private final CcsdsSeqCountFiller seqFiller = new CcsdsSeqCountFiller();
     private CommandHistoryPublisher commandHistory;
+
+    private static final Logger LOGGER = Logger.getLogger(CustomCommandPostprocessor.class.getName());
 
     // Constructor used when this postprocessor is used without YAML configuration
     public CustomCommandPostprocessor(String yamcsInstance) {
@@ -40,13 +44,18 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
         // Set CCSDS sequence count
         int seqCount = seqFiller.fill(binary);
 
+        int serviceType = binary[7];
+        int messageType = binary[8];
+        LOGGER.info("Message type is "+messageType+" and service type is "+serviceType);
+
+
         // Publish the sequence count to Command History. This has no special
         // meaning to Yamcs, but it shows how to store custom information specific
         // to a command.
         commandHistory.publish(pc.getCommandId(), "ccsds-seqcount", seqCount);
 
         // Since we modified the binary, update the binary in Command History too.
-        //commandHistory.publish(pc.getCommandId(), PreparedCommand.CNAME_BINARY, binary);
+        // commandHistory.publish(pc.getCommandId(), PreparedCommand.CNAME_BINARY, binary);
 
         return binary;
     }

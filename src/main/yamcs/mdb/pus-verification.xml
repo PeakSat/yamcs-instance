@@ -19,7 +19,6 @@
         </xtce:ParameterSet>
 
         <xtce:ContainerSet>
-
             <xtce:SequenceContainer name="verification_data">
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="source_packet_version_number"></xtce:ParameterRefEntry>
