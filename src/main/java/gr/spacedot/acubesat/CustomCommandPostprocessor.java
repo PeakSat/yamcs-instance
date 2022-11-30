@@ -1,5 +1,6 @@
 package gr.spacedot.acubesat;
 
+import gr.spacedot.acubesat.file_handling.network.out.PacketParser;
 import org.yamcs.YConfiguration;
 import org.yamcs.cmdhistory.CommandHistoryPublisher;
 import org.yamcs.commanding.PreparedCommand;
@@ -13,6 +14,8 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
 
     private final CcsdsSeqCountFiller seqFiller = new CcsdsSeqCountFiller();
     private CommandHistoryPublisher commandHistory;
+
+    private final PacketParser packetParser = new PacketParser();
 
     private static final Logger LOGGER = Logger.getLogger(CustomCommandPostprocessor.class.getName());
 
@@ -46,7 +49,10 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
 
         int serviceType = binary[7];
         int messageType = binary[8];
-        LOGGER.info("Message type is "+messageType+" and service type is "+serviceType);
+        LOGGER.info("Message type is " + messageType + " and service type is " + serviceType);
+        if (serviceType == 23 && messageType == 14) {
+            packetParser.parsePacket(binary);
+        }
 
 
         // Publish the sequence count to Command History. This has no special
