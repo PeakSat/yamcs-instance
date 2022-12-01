@@ -37,7 +37,7 @@ If there is a need to send specific packets, then [ecss-services](https://gitlab
 
     git clone https://gitlab.com/acubesat/obc/ecss-services.git --recurse-submodules
 
-Currently, this functionality is implemented in the branches `OPS-Testing` and `ops-ecss`. After modifying `main.cpp`, the generated packets will be sent to port 10015 that YAMCS listens to.
+Currently, this functionality is implemented in TCP in the branch [`ops-ecss-tcp`](https://gitlab.com/acubesat/obc/ecss-services/-/tree/ops-ecss-tcp). Generated packets will be sent to port 10015 that YAMCS listens to.
 
 ## Telecommanding
 
@@ -92,4 +92,14 @@ This step is **required** for the backup scripts to work. After execution, these
 The backup scripts are in the `yamcs-instance/backup-scripts` directory. After navigating to that folder, simply run `sh backup.sh` to initiate the script. In order for the script to work, JMX **must** be enabled (see Running YAMCS section).
 
 The backups are instance-wide, meaning *everything* is saved; parameters, commands, alerts, logs, etc. These files are saved both locally, at a specified directory (in the backup.sh script) and online at the Google Drive folder of the account `yamcs.backup.acubesat@gmail.com`.
+
+## MCU Communication
+
+To receive TMs and send TCs to the devboard, simply connect it with the PC using a usb cable and run:
+
+```bash
+    cd communication
+    python3 MessageHandler.py
+```
+The script will automatically connect to the running YAMCS instance and take care of the message forwarding to each end. You can safely remove the unused threads by deleting them. 
 

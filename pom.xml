@@ -2,13 +2,13 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.example</groupId>
-  <artifactId>myproject</artifactId>
+  <groupId>gr.spacedot</groupId>
+  <artifactId>acubesat</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>My Project</name>
-  <url>https://example.com</url>
+  <name>SpaceDot Mission Control</name>
+  <url>https://acubesat.spacedot.gr//</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,7 +16,7 @@
     Update this to the latest Yamcs release.
     Check https://mvnrepository.com/artifact/org.yamcs/yamcs-core
     -->
-    <yamcsVersion>5.6.0</yamcsVersion>
+    <yamcsVersion>5.7.9</yamcsVersion>
   </properties>
 
   <dependencies>

@@ -28,7 +28,7 @@ dataLinks:
     stream: tm_realtime
     host: localhost
     port: 10017
-    packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
+    packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
 
   - name: ADCS-UART
     enableAtStartup: true
@@ -36,7 +36,7 @@ dataLinks:
     stream: tm_realtime
     host: localhost
     port: 10016
-    packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
+    packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
 
   - name: OBC-UART
     enableAtStartup: true
@@ -44,7 +44,7 @@ dataLinks:
     stream: tm_realtime
     host: localhost
     port: 10015
-    packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
+    packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
 
   - name: COMMS
     enableAtStartup: true
@@ -52,8 +52,8 @@ dataLinks:
     stream: tm_realtime
     host: localhost
     port: 10014
-    packetPreprocessorClassName: com.example.myproject.MyPacketPreprocessor
-    packetInputStreamClassName: com.example.myproject.CustomCcsdsPacketInputStream
+    packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+    packetInputStreamClassName: gr.spacedot.acubesat.CustomCcsdsPacketInputStream
     packetInputStreamArgs: 
       maxPacketLength: 10000
 
@@ -63,7 +63,7 @@ dataLinks:
     stream: tc_realtime
     host: localhost
     port: 10025
-    commandPostprocessorClassName: com.example.myproject.MyCommandPostprocessor
+    commandPostprocessorClassName: gr.spacedot.acubesat.CustomCommandPostprocessor
 
 mdb:
   # Configuration of the active loaders

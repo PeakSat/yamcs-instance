@@ -1,4 +1,4 @@
-package com.example.myproject;
+package gr.spacedot.acubesat;
 
 import org.yamcs.YConfiguration;
 import org.yamcs.cmdhistory.CommandHistoryPublisher;
@@ -26,19 +26,19 @@ import org.yamcs.utils.ByteArrayUtils;
  * ...
  * </pre>
  */
-public class MyCommandPostprocessor implements CommandPostprocessor {
+public class CustomCommandPostprocessor implements CommandPostprocessor {
 
     private CcsdsSeqCountFiller seqFiller = new CcsdsSeqCountFiller();
     private CommandHistoryPublisher commandHistory;
 
     // Constructor used when this postprocessor is used without YAML configuration
-    public MyCommandPostprocessor(String yamcsInstance) {
+    public CustomCommandPostprocessor(String yamcsInstance) {
         this(yamcsInstance, YConfiguration.emptyConfig());
     }
 
     // Constructor used when this postprocessor is used with YAML configuration
     // (commandPostprocessorClassArgs)
-    public MyCommandPostprocessor(String yamcsInstance, YConfiguration config) {
+    public CustomCommandPostprocessor(String yamcsInstance, YConfiguration config) {
     }
 
     // Called by Yamcs during initialization

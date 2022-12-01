@@ -1,4 +1,4 @@
-package com.example.myproject;
+package gr.spacedot.acubesat;
 
 import java.nio.ByteBuffer;
 import java.util.HashMap;
@@ -9,20 +9,20 @@ import org.yamcs.TmPacket;
 import org.yamcs.YConfiguration;
 import org.yamcs.tctm.AbstractPacketPreprocessor;
 
-public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
-    private static final Logger LOGGER = Logger.getLogger(MyPacketPreprocessor.class.getName());
+public class CustomPacketPreprocessor extends AbstractPacketPreprocessor {
+    private static final Logger LOGGER = Logger.getLogger(CustomPacketPreprocessor.class.getName());
     ConsoleHandler fh;
 
     private Map<Integer, AtomicInteger> seqCounts = new HashMap<>();
 
     // Constructor used when this preprocessor is used without YAML configuration
-    public MyPacketPreprocessor(String yamcsInstance) {
+    public CustomPacketPreprocessor(String yamcsInstance) {
         this(yamcsInstance, YConfiguration.emptyConfig());
     }
 
     // Constructor used when this preprocessor is used with YAML configuration
     // (packetPreprocessorClassArgs)
-    public MyPacketPreprocessor(String yamcsInstance, YConfiguration config) {
+    public CustomPacketPreprocessor(String yamcsInstance, YConfiguration config) {
         super(yamcsInstance, config);
     }
 
@@ -55,41 +55,48 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
 
         AtomicInteger ai = seqCounts.computeIfAbsent(apid, k -> new AtomicInteger());
         int oldseq = ai.getAndSet(seqcount);
-
+        StringBuilder stringBuilder = new StringBuilder();
+        String newline = System.getProperty("line.separator");
+        stringBuilder.append("New packet received!").append(newline);
         if (((seqcount - oldseq) & 0x3FFF) != 2) {
-            LOGGER.info("SEQ");
+            stringBuilder
+                    .append("Sequence count jump for APID: " + apid + " old seq: " + oldseq + " newseq: " + seqcount)
+                    .append(newline);
             eventProducer.sendWarning("SEQ_COUNT_JUMP",
                     "Sequence count jump for APID: " + apid + " old seq: " + oldseq + " newseq: " + seqcount);
         }
-        
+
         if (packversion != 0) {
-            LOGGER.info("PACKET_VERSION: " + String.valueOf(packversion));
+            stringBuilder.append("Wrong version number. Expected 0 and got " + String.valueOf(packversion)).append(newline);
             eventProducer.sendWarning("PACKET_VERSION_ERROR",
                     "Wrong version number. Expected 0 and got " + String.valueOf(packversion));
 
         }
 
         if (secheader != 1) {
-            LOGGER.info("SEC_HEAD: " + String.valueOf(secheader));
+            stringBuilder.append("Wrong secondary flag. Expected 1 and got " + String.valueOf(secheader)).append(newline);
             eventProducer.sendWarning("SEC_HEADER_FLAG_ERROR",
                     "Wrong secondary flag. Expected 1 and got " + String.valueOf(secheader));
         }
 
         if (packetlength != (bytes.length - 6)) {
-            LOGGER.info("LENGTH");
+            stringBuilder.append("Wrong packet data length. Expected " + String.valueOf((bytes.length - 6)) + " and got "
+            + String.valueOf(packetlength)).append(newline);
             eventProducer.sendWarning("PACKET_LENGTH_ERROR",
                     "Wrong packet data length. Expected " + String.valueOf((bytes.length - 6)) + " and got "
                             + String.valueOf(packetlength));
         }
-        LOGGER.info("Sequence_count:" + String.valueOf(seqcount));
-        LOGGER.info("APID:" + String.valueOf(apid));
-        LOGGER.info("PUS:" + String.valueOf(pusversion));
-        LOGGER.info("Secondary_header:" + String.valueOf(secheader));
-        LOGGER.info("Buffer:" + String.valueOf(apidseqcount));
-        LOGGER.info("Time:" + String.valueOf(time));
-        LOGGER.info("ServiceType:" + String.valueOf(serviceType));
-        LOGGER.info("MessageType:" + String.valueOf(messageType));
-        LOGGER.info("Packet data length:" + String.valueOf(packetlength));
+        stringBuilder.append("Sequence_count:" + String.valueOf(seqcount)).append(newline);
+        stringBuilder.append("APID:" + String.valueOf(apid)).append(newline);
+        stringBuilder.append("PUS:" + String.valueOf(pusversion)).append(newline);
+        stringBuilder.append("Secondary_header:" + String.valueOf(secheader)).append(newline);
+        stringBuilder.append("Buffer:" + String.valueOf(apidseqcount)).append(newline);
+        stringBuilder.append("Time:" + String.valueOf(time)).append(newline);
+        stringBuilder.append("ServiceType:" + String.valueOf(serviceType)).append(newline);
+        stringBuilder.append("MessageType:" + String.valueOf(messageType)).append(newline);
+        stringBuilder.append("Packet data length:" + String.valueOf(packetlength)).append(newline);
+        stringBuilder.append("----").append(newline);
+        LOGGER.info(stringBuilder.toString());
         // // Our custom packets don't include a secundary header with time information.
         // Use Yamcs-local time instead.
         packet.setGenerationTime(CUCtoUnix(time));
@@ -105,7 +112,7 @@ public class MyPacketPreprocessor extends AbstractPacketPreprocessor {
 
     // Returns the unix timestamp in milliseconds
     long CUCtoUnix(long time) {
-        long start = 1577829600; // 1/1/2020
-        return start * 1000 + time * 100 + 7237000; // adjust from UTC to GMT +0200
+        long start = 1577836800; // 1/1/2020 00:00:00 GMT +0200
+        return start * 1000 + time * 100;
     }
 }
