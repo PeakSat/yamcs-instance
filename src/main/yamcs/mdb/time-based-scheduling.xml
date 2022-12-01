@@ -3,12 +3,13 @@
 
   <!--Time-Based Sceduling Service (ST(11)) Commands -->
     <xtce:CommandMetaData>
+        
         <xtce:MetaCommandSet>
             <xtce:MetaCommand name="TC(11,4)_insert_activity_into_time_based_schedule" abstract="true">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <xtce:ArgumentAssignmentList>
-                        <xtce:ArgumentAssignment argumentName="/pus/service_type_ID" argumentValue="11" />
-                        <xtce:ArgumentAssignment argumentName="/pus/message_subtype_ID" argumentValue="4" />
+                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" /> <!--I dont think /pus/ was necessary since we assign the arguments that are inside /pus/Header_TC-->
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
@@ -34,37 +35,43 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC(11,4)(17,1)_time_based_scheduled_are_you_alive_connection">
+            <!-- This command is used to assign the necessary values to the TC(11,4) so that we don't have to repeat the assignments 
+                                        for every TC that's using it as a base meta command-->
+
+            <xtce:MetaCommand name="TC(11,4)_insert_activity_into_time_based_schedule_assignments" abstract="true">
                 <xtce:BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule">
                     <xtce:ArgumentAssignmentList>
-                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
-                        <xtce:ArgumentAssignment argumentName="service_type_ID_of_time_scheduled" argumentValue="17" />
-                        <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="1" />
                         <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
                         <xtce:ArgumentAssignment argumentName="N" argumentValue="1" />
                         <xtce:ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
                         <xtce:ArgumentAssignment argumentName="aknowledgement_flags_of_time_scheduled" argumentValue="0" />
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
+                <xtce:CommandContainer name="TC(11,4)_insert_activity_into_time_based_schedule_assignments">
+                    <xtce:EntryList></xtce:EntryList>
+                    <xtce:BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule"></xtce:BaseContainer>
+                </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="TC(11,4)(17,1)_time_based_scheduled_are_you_alive_connection">
+                <xtce:BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments">
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID_of_time_scheduled" argumentValue="17" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="1" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
                     <xtce:CommandContainer name="TC(11,4)(17,1)_time_based_scheduled_are_you_alive_connection">
                         <xtce:EntryList>
                         </xtce:EntryList>
-                        <xtce:BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule" />
+                        <xtce:BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
                     </xtce:CommandContainer>
             </xtce:MetaCommand>
 
             <xtce:MetaCommand name="TC(11,4)(3,1)_time_based_scheduled_create_a_parameter_report_structure">
-                <xtce:BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule">
+                <xtce:BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments">
                     <xtce:ArgumentAssignmentList>
-                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
                         <xtce:ArgumentAssignment argumentName="service_type_ID_of_time_scheduled" argumentValue="3" />
                         <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="1" />
-                        <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
-                        <xtce:ArgumentAssignment argumentName="N" argumentValue="1" />
-                        <xtce:ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
-                        <xtce:ArgumentAssignment argumentName="aknowledgement_flags_of_time_scheduled" argumentValue="0" />
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
@@ -80,21 +87,15 @@
                         <xtce:ArgumentRefEntry argumentRef="total_parameters" />
                         <xtce:ArgumentRefEntry argumentRef="parameters" />
                         </xtce:EntryList>
-                        <xtce:BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule" />
+                        <xtce:BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
                     </xtce:CommandContainer>
             </xtce:MetaCommand>
 
             <xtce:MetaCommand name="TC(11,4)(3,9)_time_based_scheduled_report_housekeeping_parameter_report_structures">
-                <xtce:BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule">
+                <xtce:BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments">
                     <xtce:ArgumentAssignmentList>
-                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
                         <xtce:ArgumentAssignment argumentName="service_type_ID_of_time_scheduled" argumentValue="3" />
                         <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="9" />
-                        <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
-                        <xtce:ArgumentAssignment argumentName="N" argumentValue="1" />
-                        <xtce:ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
-                        <xtce:ArgumentAssignment argumentName="aknowledgement_flags_of_time_scheduled" argumentValue="0" />
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
@@ -106,21 +107,15 @@
                             <xtce:ArgumentRefEntry argumentRef="total_structures" />
                             <xtce:ArgumentRefEntry argumentRef="structures" />
                         </xtce:EntryList>
-                        <xtce:BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule" />
+                        <xtce:BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
                     </xtce:CommandContainer>
             </xtce:MetaCommand>
 
             <xtce:MetaCommand name="TC(11,4)(3,27)_time_based_scheduled_generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
-                <xtce:BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule">
+                <xtce:BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments">
                     <xtce:ArgumentAssignmentList>
-                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
                         <xtce:ArgumentAssignment argumentName="service_type_ID_of_time_scheduled" argumentValue="3" />
                         <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="27" />
-                        <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
-                        <xtce:ArgumentAssignment argumentName="N" argumentValue="1" />
-                        <xtce:ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
-                        <xtce:ArgumentAssignment argumentName="aknowledgement_flags_of_time_scheduled" argumentValue="0" />
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
@@ -132,21 +127,15 @@
                             <xtce:ArgumentRefEntry argumentRef="total_structures" />
                             <xtce:ArgumentRefEntry argumentRef="structures" />
                         </xtce:EntryList>
-                        <xtce:BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule" />
+                        <xtce:BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
                     </xtce:CommandContainer>
             </xtce:MetaCommand>
 
             <xtce:MetaCommand name="TC(11,4)(20,1)_time_based_scheduled_report_the_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule">
+                <xtce:BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments">
                     <xtce:ArgumentAssignmentList>
-                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
                         <xtce:ArgumentAssignment argumentName="service_type_ID_of_time_scheduled" argumentValue="20" />
                         <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="1" />
-                        <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
-                        <xtce:ArgumentAssignment argumentName="N" argumentValue="1" />
-                        <xtce:ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
-                        <xtce:ArgumentAssignment argumentName="aknowledgement_flags_of_time_scheduled" argumentValue="0" />
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
@@ -158,21 +147,15 @@
                             <xtce:ArgumentRefEntry argumentRef="total_parameters"/>
                             <xtce:ArgumentRefEntry argumentRef="parameters" />
                         </xtce:EntryList>
-                        <xtce:BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule" />
+                        <xtce:BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
                     </xtce:CommandContainer>
             </xtce:MetaCommand>
 
             <xtce:MetaCommand name="TC(11,4)(4,1)_time_based_scheduled_report_the_parameter_statistics">
-                <xtce:BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule">
+                <xtce:BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments">
                     <xtce:ArgumentAssignmentList>
-                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
                         <xtce:ArgumentAssignment argumentName="service_type_ID_of_time_scheduled" argumentValue="4" />
                         <xtce:ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="1" />
-                        <xtce:ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
-                        <xtce:ArgumentAssignment argumentName="N" argumentValue="1" />
-                        <xtce:ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
-                        <xtce:ArgumentAssignment argumentName="aknowledgement_flags_of_time_scheduled" argumentValue="0" />
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
@@ -182,7 +165,7 @@
                     <xtce:EntryList>
                         <xtce:ArgumentRefEntry argumentRef="reset_flag" />
                     </xtce:EntryList>
-                        <xtce:BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule" />
+                        <xtce:BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
                     </xtce:CommandContainer>
             </xtce:MetaCommand>
         </xtce:MetaCommandSet>
