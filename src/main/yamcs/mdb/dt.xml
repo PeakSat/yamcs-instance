@@ -806,6 +806,7 @@
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
                                 <xtce:ArgumentInstanceRef argumentRef="chunk_size" />
+                                <xtce:LinearAdjustment intercept="-1" />
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
                     </xtce:Dimension>

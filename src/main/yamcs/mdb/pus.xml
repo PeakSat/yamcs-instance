@@ -605,7 +605,7 @@
                     <xtce:Argument argumentTypeRef="/dt/packet_version_number" name="packet_version_number"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/packet_type" name="packet_type"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/secondary_header_flag" name="secondary_header_flag"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/application_process_ID" name="application_process_ID" initialValue="1"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/application_process_ID" name="application_process_ID" initialValue="OBC"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/sequence_flags" name="sequence_flags"></xtce:Argument>
                     <!--Secondary Header-->
                     <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="PUS_version_number"></xtce:Argument>

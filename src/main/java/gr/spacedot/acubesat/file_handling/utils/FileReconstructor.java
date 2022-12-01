@@ -1,4 +1,4 @@
-package gr.spacedot.acubesat.file_handling.network.utils;
+package gr.spacedot.acubesat.file_handling.utils;
 
 import com.google.common.primitives.Bytes;
 import gr.spacedot.acubesat.file_handling.entities.ChunkedFileEntity;

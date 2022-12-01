@@ -3,8 +3,9 @@ package gr.spacedot.acubesat.file_handling;
 import gr.spacedot.acubesat.file_handling.entities.ChunkedFileEntity;
 import gr.spacedot.acubesat.file_handling.entities.FileEntity;
 import gr.spacedot.acubesat.file_handling.enums.LocalPaths;
-import gr.spacedot.acubesat.file_handling.network.utils.FileSplitter;
-import gr.spacedot.acubesat.file_handling.network.utils.FileReconstructor;
+import gr.spacedot.acubesat.file_handling.network.out.PacketSender;
+import gr.spacedot.acubesat.file_handling.utils.FileReconstructor;
+import gr.spacedot.acubesat.file_handling.utils.FileSplitter;
 
 import java.io.File;
 import java.util.logging.Logger;
@@ -30,7 +31,7 @@ class TestApplication {
 
             LOGGER.info("File " + file + " found");
             FileEntity fileEntity = new FileEntity(folder.getPath(), file);
-            ChunkedFileEntity chunked = fileSplitter.splitFileInChunks(fileEntity).orElseThrow(() -> new RuntimeException("File is directory"));
+            ChunkedFileEntity chunked = fileSplitter.splitFileInChunks(fileEntity);
             LOGGER.info("Chunks size is " + chunked.getChunks().size());
 
             fileReconstructor.reconstruct(chunked);

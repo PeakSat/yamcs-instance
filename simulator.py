@@ -117,9 +117,9 @@ class Simulator:
         self.last_tc = None
 
     def start(self):
-        self.tm_thread = Thread(target=send_tm, args=(self,))
-        self.tm_thread.daemon = True
-        self.tm_thread.start()
+        # self.tm_thread = Thread(target=send_tm, args=(self,))
+        # self.tm_thread.daemon = True
+        # self.tm_thread.start()
         self.tc_thread = Thread(target=receive_tc, args=(self,))
         self.tc_thread.daemon = True
         self.tc_thread.start()

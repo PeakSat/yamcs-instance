@@ -1,7 +1,9 @@
 package gr.spacedot.acubesat.file_handling.network.out;
 
 
+import gr.spacedot.acubesat.file_handling.entities.FileEntity;
 import gr.spacedot.acubesat.file_handling.enums.LocalPaths;
+import gr.spacedot.acubesat.file_handling.utils.FileSplitter;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -19,6 +21,10 @@ public class PacketParser {
 
     private static final String[] names = {"Source path", "Source name", "Target path", "Target name"};
 
+    private final PacketSender packetSender = new PacketSender();
+
+    private static FileSplitter fileSplitter = new FileSplitter();
+    
     /**
      * @param packet: a packet with the following structure:
      *                primary_header | secondary_header | data
@@ -45,17 +51,24 @@ public class PacketParser {
                 valuesCounter++;
             }
         }
+        System.out.println("Packet parsed!");
         processPaths(paths);
     }
 
     public void processPaths(Map<String, String> paths) {
         String sourcePath = paths.get("Source path");
         String targetPath = paths.get("Target path");
-        if (sourcePath.equals(LocalPaths.RESOURCES_PATH.toString())) {
+        if (sourcePath.equals(LocalPaths.RESOURCES_PATH.toString()) || sourcePath.equals(LocalPaths.IMAGES_PATH.toString()) ) {
             System.out.println("Source Path exists!");
+            FileEntity fileEntity = new FileEntity(sourcePath, paths.get("Source name"));
+            fileEntity.loadContents();
+            packetSender.sentPacketSegments(fileSplitter.splitFileInChunks(fileEntity));
         }
         if (targetPath.equals(LocalPaths.RECEIVED_PATH.toString())) {
             System.out.println("Target Path exists!");
+        }
+        else{
+            System.out.println("LOL what is this ");
         }
 
     }
