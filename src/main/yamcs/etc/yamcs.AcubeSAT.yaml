@@ -57,6 +57,56 @@ dataLinks:
     packetInputStreamArgs: 
       maxPacketLength: 10000
 
+  - name: UDP_COMMS
+    enabledAtStartup: true
+    class: org.yamcs.tctm.ccsds.UdpTmFrameLink
+    port: 10014 #UDP port to listen to
+    #### Raw frame decoder example. It is commented out because the simulator does not support generating encoded frames
+    #rawFrameDecoder:
+    #   codec: NONES
+    #   interleavingDepth: 5 # 1, 2, 3, 4, 5 or 8
+    #   errorCorrectionCapability: 16 #8 or 16
+    #   derandomize: true
+    ### Frame type has to be AOS (CCSDS 732.0-B-3), TM (CCSDS 132.0-B-2) or USLP (CCSDS 732.1-B-1)
+    frameType: "TM"
+    spacecraftId: 0xAB
+    frameLength: 1115 #decoded frame length
+    frameHeaderErrorControlPresent: true #2 bytes of reed-solomon (10,6) in the header of all frames
+    insertZoneLength: 0
+    errorDetection: CRC16 #NONE, CRC16 or CRC32 (only for USLP)
+    clcwStream: "clcw"    #publish the received CLCW (what they call OCF in the CCSDS AOS/TM/USLP standards) to this stream, to be used by the FOP1 
+    goodFrameStream: "good_frame_stream" #publish the good frames on this stream
+    badFrameStream: "bad_frame_stream"   #publish the bad frames on this stream
+    virtualChannels:
+      - vcId: 0
+        ocfPresent: true
+        service: "PACKET"  #supported services for AOS are M_PDU, B_PDU or VCA_SDU
+        maxPacketLength: 2048
+        packetPreprocessorClassName: org.yamcs.tctm.IssPacketPreprocessor
+        stream: "tm_realtime" #which yamcs stream to put the data on
+      - vcId: 1
+        ocfPresent: true
+        service: "PACKET"  #supported services for AOS are PACKET(M_PDU), B_PDU or VCA_SDU
+        maxPacketLength: 2048
+        stripEncapsulationHeader: true # drop the header before passing the packet to the preprocessor
+        packetPreprocessorClassName: org.yamcs.tctm.GenericPacketPreprocessor
+        packetPreprocessorArgs:
+          timestampOffset: 2 #where to read the 8 bytes timestamp offset from
+          seqCountOffset: 10 #where to read the 4 bytes sequence count from
+          errorDetection: #last two bytes are used for the error detection
+            type: "CRC-16-CCIIT" 
+        stream: "tm_realtime"
+        invalidPackets: DIVERT
+        invalidPacketsStream: invalid_tm_stream
+      - vcId: 2
+        ocfPresent: true
+        service: "PACKET" 
+        maxPacketLength: 2048
+        packetPreprocessorClassName: org.yamcs.tctm.IssPacketPreprocessor
+        stream: "tm_dump"
+      #vcId 63 is reserved for idle data and it does not have to be defined
+      
+
   - name: tcp-out
     enableAtStartup: true
     class: org.yamcs.tctm.TcpTcDataLink
@@ -93,6 +143,7 @@ streamConfig:
   tm:
     - name: "tm_realtime"
     - name: "tm_dump"
+  invalidTm: "invalid_tm_stream"
   cmdHist: ["cmdhist_realtime", "cmdhist_dump"]
   event: ["events_realtime", "events_dump"]
   param: ["pp_realtime", "sys_param", "proc_param"]
