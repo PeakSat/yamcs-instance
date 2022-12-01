@@ -30,7 +30,7 @@
             </xtce:Parameter>
 
             <!--Parameter used in TM[128,128]-->
-            <xtce:Parameter name="message_logs" parameterTypeRef="/dt/string1"></xtce:Parameter>
+            <xtce:Parameter name="message_logs" parameterTypeRef="/dt/string1"/>
 
             <!--Parameters used in TM[4,2] Container-->
             <xtce:Parameter name="start_time_ST04" parameterTypeRef="/dt/uint32_t">
@@ -149,41 +149,41 @@
         <xtce:ContainerSet>
             <xtce:SequenceContainer name="primary_header_TM">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="packet_version_number"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="packet_type"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="secondary_header_flag"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="application_process_ID"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="sequence_flags"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="packet_sequence_count_or_packet_name"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="packet_data_length"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="packet_version_number"/>
+                    <xtce:ParameterRefEntry parameterRef="packet_type"/>
+                    <xtce:ParameterRefEntry parameterRef="secondary_header_flag"/>
+                    <xtce:ParameterRefEntry parameterRef="application_process_ID"/>
+                    <xtce:ParameterRefEntry parameterRef="sequence_flags"/>
+                    <xtce:ParameterRefEntry parameterRef="packet_sequence_count_or_packet_name"/>
+                    <xtce:ParameterRefEntry parameterRef="packet_data_length"/>
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="secondary_header_TM">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="PUS_version_number"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="spacecraft_time_reference_status"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="service_type_ID_TM"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="message_subtype_ID_TM"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="message_type_counter"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="destination_ID"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="time"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="PUS_version_number"/>
+                    <xtce:ParameterRefEntry parameterRef="spacecraft_time_reference_status"/>
+                    <xtce:ParameterRefEntry parameterRef="service_type_ID_TM"/>
+                    <xtce:ParameterRefEntry parameterRef="message_subtype_ID_TM"/>
+                    <xtce:ParameterRefEntry parameterRef="message_type_counter"/>
+                    <xtce:ParameterRefEntry parameterRef="destination_ID"/>
+                    <xtce:ParameterRefEntry parameterRef="time"/>
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="packet_header_TM">
                 <xtce:EntryList>
-                    <xtce:ContainerRefEntry containerRef="secondary_header_TM"></xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="secondary_header_TM"/>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="primary_header_TM"></xtce:BaseContainer>
+                <xtce:BaseContainer containerRef="primary_header_TM"/>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="TM[3,10]:housekeeping_parameter_report">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="housekeeping_parameter_report_structure_ID_ST03"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="periodic_generation_action_status_ST03"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="collection_interval_ST03"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="number_of_simply_commutated_parameters"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="housekeeping_parameter_report_structure_ID_ST03"/>
+                    <xtce:ParameterRefEntry parameterRef="periodic_generation_action_status_ST03"/>
+                    <xtce:ParameterRefEntry parameterRef="collection_interval_ST03"/>
+                    <xtce:ParameterRefEntry parameterRef="number_of_simply_commutated_parameters"/>
                     <xtce:ArrayParameterRefEntry parameterRef="/AcubeSAT/parameter_ID_ST03">
                         <xtce:DimensionList>
                             <xtce:Dimension>
@@ -212,7 +212,7 @@
 
             <xtce:SequenceContainer name="TM[20,2]:parameter_value_report">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="number_of_parameters"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="number_of_parameters"/>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_header_TM">
                     <xtce:RestrictionCriteria>
@@ -226,7 +226,7 @@
 
             <xtce:SequenceContainer name="TM[3,25]:housekeeping_parameter_report">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="housekeeping_parameter_report_structure_ID_ST03"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="housekeeping_parameter_report_structure_ID_ST03"/>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_header_TM">
                     <xtce:RestrictionCriteria>
@@ -540,9 +540,9 @@
                     field, contained in the parameter_statistics_structure array, are specific to the parameter identified by the associated parameter ID field.
                 </xtce:LongDescription>
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="start_time_ST04"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="end_time_ST04"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="number_of_structures"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="start_time_ST04"/>
+                    <xtce:ParameterRefEntry parameterRef="end_time_ST04"/>
+                    <xtce:ParameterRefEntry parameterRef="number_of_structures"/>
                     <xtce:ArrayParameterRefEntry parameterRef="/AcubeSAT/parameter_statistics_structure">
                         <xtce:DimensionList>
                             <xtce:Dimension>
@@ -570,7 +570,7 @@
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="TM[17,2]:are_you_alive_connection_test_report">
-                <xtce:EntryList></xtce:EntryList>
+                <xtce:EntryList/>
                 <xtce:BaseContainer containerRef="packet_header_TM">
                     <xtce:RestrictionCriteria>
                         <xtce:ComparisonList>
@@ -583,7 +583,7 @@
 
             <xtce:SequenceContainer name="TM[128,128]:log_messages">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="message_logs"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="message_logs"/>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_header_TM">
                     <xtce:RestrictionCriteria>
@@ -602,17 +602,17 @@
             <xtce:MetaCommand name="header" abstract="true">
                 <xtce:ArgumentList>
                     <!--Primary Header-->
-                    <xtce:Argument argumentTypeRef="/dt/packet_version_number" name="packet_version_number"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/packet_type" name="packet_type"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/secondary_header_flag" name="secondary_header_flag"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/application_process_ID" name="application_process_ID"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/sequence_flags" name="sequence_flags"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/packet_version_number" name="packet_version_number"/>
+                    <xtce:Argument argumentTypeRef="/dt/packet_type" name="packet_type"/>
+                    <xtce:Argument argumentTypeRef="/dt/secondary_header_flag" name="secondary_header_flag"/>
+                    <xtce:Argument argumentTypeRef="/dt/application_process_ID" name="application_process_ID"/>
+                    <xtce:Argument argumentTypeRef="/dt/sequence_flags" name="sequence_flags"/>
                     <!--Secondary Header-->
-                    <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="PUS_version_number"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="aknowledgement_flags"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/service_type_ID_TC" name="service_type_ID"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/message_subtype_ID_TC" name="message_subtype_ID"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="source_ID"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="PUS_version_number"/>
+                    <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="aknowledgement_flags"/>
+                    <xtce:Argument argumentTypeRef="/dt/service_type_ID_TC" name="service_type_ID"/>
+                    <xtce:Argument argumentTypeRef="/dt/message_subtype_ID_TC" name="message_subtype_ID"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="source_ID"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="packet_header_TC">
                     <xtce:EntryList>
@@ -870,7 +870,7 @@
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:CommandContainer name="TC[17,1]:are_you_alive_connection">
-                    <xtce:EntryList></xtce:EntryList>
+                    <xtce:EntryList/>
                     <xtce:BaseContainer containerRef="Header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
