@@ -6,6 +6,7 @@
     <xtce:TelemetryMetaData></xtce:TelemetryMetaData>
     <xtce:CommandMetaData>
         <xtce:MetaCommandSet>
+
             <xtce:MetaCommand name="TC[23,14]:copy_file">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <xtce:ArgumentAssignmentList>
@@ -28,6 +29,23 @@
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="TC[24,1]:send_file_segment">
+                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <xtce:ArgumentAssignmentList>
+                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="24" />
+                        <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </xtce:ArgumentAssignmentList>
+                </xtce:BaseMetaCommand>
+                <xtce:ArgumentList>
+                    <xtce:Argument argumentTypeRef="/dt/string_t" name="target_file_path"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/string_t" name="target_file_name"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="current_chunk"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="total_chunks"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="chunk_size"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/byteArray" name="data"></xtce:Argument>
+                </xtce:ArgumentList>
             </xtce:MetaCommand>
         </xtce:MetaCommandSet>
     </xtce:CommandMetaData>
