@@ -418,9 +418,41 @@
                 <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
-            <xtce:IntegerArgumentType name="acknowledgment_flags">
+            <xtce:IntegerArgumentType name="int4_t">
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
+
+            <xtce:EnumeratedArgumentType name="ack_flags_bit_0">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="no_ack" />
+                    <xtce:Enumeration value="1" label="acceptance_ack" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedArgumentType>
+
+            <xtce:EnumeratedArgumentType name="ack_flags_bit_1">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="no_ack" />
+                    <xtce:Enumeration value="1" label="start_of_execution_ack" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedArgumentType>
+
+            <xtce:EnumeratedArgumentType name="ack_flags_bit_2">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="no_ack" />
+                    <xtce:Enumeration value="1" label="progress_of_execution_ack" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedArgumentType>
+
+            <xtce:EnumeratedArgumentType name="ack_flags_bit_3">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="0" label="no_ack" />
+                    <xtce:Enumeration value="1" label="completion_ack" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedArgumentType>
 
             <xtce:IntegerArgumentType name="service_type_ID_TC">
                 <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
