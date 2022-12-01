@@ -789,29 +789,15 @@
                 </xtce:StringDataEncoding>
             </xtce:StringArgumentType>
 
-            <xtce:BinaryArgumentType name="byte_t">
+            <xtce:StringArgumentType name="stringData_t">
                 <xtce:BinaryDataEncoding>
                     <xtce:SizeInBits>
-                        <xtce:FixedValue>8</xtce:FixedValue>
+                        <xtce:DynamicValue>
+                            <xtce:ArgumentInstanceRef argumentRef="chunk_size" />
+                        </xtce:DynamicValue>
                     </xtce:SizeInBits>
                 </xtce:BinaryDataEncoding>
-            </xtce:BinaryArgumentType>
-
-            <xtce:ArrayArgumentType arrayTypeRef="byte_t" name="byteArray">
-                <xtce:DimensionList>
-                    <xtce:Dimension>
-                        <xtce:StartingIndex>
-                            <xtce:FixedValue>0</xtce:FixedValue>
-                        </xtce:StartingIndex>
-                        <xtce:EndingIndex>
-                            <xtce:DynamicValue>
-                                <xtce:ArgumentInstanceRef argumentRef="chunk_size" />
-                                <xtce:LinearAdjustment intercept="-1" />
-                            </xtce:DynamicValue>
-                        </xtce:EndingIndex>
-                    </xtce:Dimension>
-                </xtce:DimensionList>
-            </xtce:ArrayArgumentType>
+            </xtce:StringArgumentType>
         </xtce:ArgumentTypeSet>
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>

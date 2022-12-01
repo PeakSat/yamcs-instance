@@ -23,8 +23,8 @@ public class PacketParser {
 
     private final PacketSender packetSender = new PacketSender();
 
-    private static FileSplitter fileSplitter = new FileSplitter();
-    
+    private static final FileSplitter fileSplitter = new FileSplitter();
+
     /**
      * @param packet: a packet with the following structure:
      *                primary_header | secondary_header | data
@@ -58,7 +58,9 @@ public class PacketParser {
     public void processPaths(Map<String, String> paths) {
         String sourcePath = paths.get("Source path");
         String targetPath = paths.get("Target path");
-        if (sourcePath.equals(LocalPaths.RESOURCES_PATH.toString()) || sourcePath.equals(LocalPaths.IMAGES_PATH.toString()) ) {
+        if (sourcePath.equals(LocalPaths.RESOURCES_PATH.toString())
+                || sourcePath.equals(LocalPaths.IMAGES_PATH.toString())
+                || sourcePath.equals(LocalPaths.FILES_PATH.toString())) {
             System.out.println("Source Path exists!");
             FileEntity fileEntity = new FileEntity(sourcePath, paths.get("Source name"));
             fileEntity.loadContents();
@@ -66,8 +68,7 @@ public class PacketParser {
         }
         if (targetPath.equals(LocalPaths.RECEIVED_PATH.toString())) {
             System.out.println("Target Path exists!");
-        }
-        else{
+        } else {
             System.out.println("LOL what is this ");
         }
 

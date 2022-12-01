@@ -44,7 +44,7 @@
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="current_chunk"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="total_chunks"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="chunk_size"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/string_t" name="data"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/stringData_t" name="data"></xtce:Argument>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC(24,1):send_file_segment">
                     <xtce:EntryList>
