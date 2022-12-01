@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xtce:SpaceSystem name="set-values" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
-    <!-- Parameter Management Service (ST[20]) Set-Value Commands (TC[20,3]) of pre-made groups of parameters based on their type-->
+    <!-- Parameter Management Service (ST(20]) Set-Value Commands (TC(20,3]) of pre-made groups of parameters based on their type-->
     <xtce:CommandMetaData>
         <xtce:MetaCommandSet> 
-                <xtce:MetaCommand name="TC[20,3]:set_float_parameter_values">
+                <xtce:MetaCommand name="TC(20,3)_set_float_parameter_values">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                 <xtce:ArgumentAssignmentList>
                     <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
@@ -20,7 +20,7 @@
                     <xtce:Argument argumentTypeRef="/dt/writable_float_parameters" name="Parameter_ID3" />
                     <xtce:Argument argumentTypeRef="/dt/float_t" name="new_value3"/>
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC[20,3]:set_float_parameter_values">
+                <xtce:CommandContainer name="TC(20,3)_set_float_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="Parameter_ID1" />
@@ -34,7 +34,7 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC[20,3]:set_uint8_parameter_values">
+            <xtce:MetaCommand name="TC(20,3)_set_uint8_parameter_values">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                 <xtce:ArgumentAssignmentList>
                     <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
@@ -46,7 +46,7 @@
                     <xtce:Argument argumentTypeRef="/dt/writable_uint8_parameters" name="Parameter_ID" />
                     <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_value"/>
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC[20,3]:set_uint8_parameter_values">
+                <xtce:CommandContainer name="TC(20,3)_set_uint8_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
@@ -56,7 +56,7 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC[20,3]:set_int8_parameter_values">
+            <xtce:MetaCommand name="TC(20,3)_set_int8_parameter_values">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                 <xtce:ArgumentAssignmentList>
                     <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
@@ -72,7 +72,7 @@
                     <xtce:Argument argumentTypeRef="/dt/writable_int8_parameters" name="Parameter_ID3" />
                     <xtce:Argument argumentTypeRef="/dt/int8_t" name="new_value3"/>
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC[20,3]:set_int8_parameter_values">
+                <xtce:CommandContainer name="TC(20,3)_set_int8_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="Parameter_ID1" />
@@ -86,7 +86,7 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC[20,3]:set_uint32_parameter_values">
+            <xtce:MetaCommand name="TC(20,3)_set_uint32_parameter_values">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                 <xtce:ArgumentAssignmentList>
                     <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
@@ -100,7 +100,7 @@
                     <xtce:Argument argumentTypeRef="/dt/writable_uint32_parameters" name="Parameter_ID2" />
                     <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_value2"/>
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC[20,3]:set_uint32_parameter_values">
+                <xtce:CommandContainer name="TC(20,3)_set_uint32_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="Parameter_ID1" />
@@ -112,7 +112,7 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC[20,3]:set_uint64_parameter_values">
+            <xtce:MetaCommand name="TC(20,3)_set_uint64_parameter_values">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                 <xtce:ArgumentAssignmentList>
                     <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
@@ -124,7 +124,7 @@
                     <xtce:Argument argumentTypeRef="/dt/writable_uint64_parameters" name="Parameter_ID" />
                     <xtce:Argument argumentTypeRef="/dt/uint64_t" name="new_value"/>
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC[20,3]:set_uint64_parameter_values">
+                <xtce:CommandContainer name="TC(20,3)_set_uint64_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="Parameter_ID" />
@@ -134,7 +134,7 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC[20,3]:set_bool_parameter_values">
+            <xtce:MetaCommand name="TC(20,3)_set_bool_parameter_values">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                 <xtce:ArgumentAssignmentList>
                     <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
@@ -150,7 +150,7 @@
                     <xtce:Argument argumentTypeRef="/dt/writable_bool_parameters" name="Parameter_ID3" />
                     <xtce:Argument argumentTypeRef="/dt/bool_t" name="new_value3"/>
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC[20,3]:set_bool_parameter_values">
+                <xtce:CommandContainer name="TC(20,3)_set_bool_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters" />
                         <xtce:ArgumentRefEntry argumentRef="Parameter_ID1" />
@@ -164,7 +164,7 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC[20,3]:set_partition">
+            <xtce:MetaCommand name="TC(20,3)_set_partition">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                 <xtce:ArgumentAssignmentList>
                     <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
@@ -176,7 +176,7 @@
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMemoryPartition" initialValue="5012"/>
                     <xtce:Argument argumentTypeRef="/dt/OBCMemoryPartition_t" name="new_value"/>
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC[20,3]:set_partition">
+                <xtce:CommandContainer name="TC(20,3)_set_partition">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="OBCMemoryPartition" />
@@ -186,7 +186,7 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC[20,3]:set_CANBus">
+            <xtce:MetaCommand name="TC(20,3)_set_CANBus">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                 <xtce:ArgumentAssignmentList>
                     <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
@@ -198,7 +198,7 @@
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ActiveCAN" initialValue="5018"/>
                     <xtce:Argument argumentTypeRef="/dt/activeCAN_t" name="new_value"/>
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC[20,3]:set_CANBus">
+                <xtce:CommandContainer name="TC(20,3)_set_CANBus">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="ActiveCAN" />
