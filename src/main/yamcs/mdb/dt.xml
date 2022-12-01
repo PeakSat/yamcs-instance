@@ -426,7 +426,7 @@
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
-                    <xtce:Enumeration value="1" label="acceptance_ack" />
+                    <xtce:Enumeration value="1" label="completion_ack" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
@@ -434,7 +434,7 @@
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
-                    <xtce:Enumeration value="1" label="start_of_execution_ack" />
+                    <xtce:Enumeration value="1" label="progress_of_execution_ack" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
@@ -442,7 +442,7 @@
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
-                    <xtce:Enumeration value="1" label="progress_of_execution_ack" />
+                    <xtce:Enumeration value="1" label="start_of_execution_ack" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
@@ -450,7 +450,7 @@
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
-                    <xtce:Enumeration value="1" label="completion_ack" />
+                    <xtce:Enumeration value="1" label="acceptance_ack" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
