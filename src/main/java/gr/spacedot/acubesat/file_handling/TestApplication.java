@@ -10,13 +10,13 @@ import java.io.File;
 import java.util.logging.Logger;
 
 
-class MainApplication {
+class TestApplication {
 
     static FileSplitter fileSplitter = new FileSplitter();
 
     static FileReconstructor fileReconstructor = new FileReconstructor();
 
-    private static final Logger LOGGER = Logger.getLogger(MainApplication.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(TestApplication.class.getName());
 
     public static void main(String[] args) {
 

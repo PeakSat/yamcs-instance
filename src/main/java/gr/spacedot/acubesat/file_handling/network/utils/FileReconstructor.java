@@ -9,8 +9,16 @@ import java.io.File;
 
 public class FileReconstructor {
 
+    public void createIfNotExists(String directory){
+        File folder = new File(directory);
+        if(!folder.exists()){
+            folder.mkdir();
+        }
+    }
+
     public FileEntity reconstruct(ChunkedFileEntity chunkedFileEntity) {
 
+        createIfNotExists(LocalPaths.RECEIVED_PATH.toString());
         File folder = new File(LocalPaths.RECEIVED_PATH.toString(), chunkedFileEntity.getName());
 
         FileEntity reconstructed = new FileEntity();
