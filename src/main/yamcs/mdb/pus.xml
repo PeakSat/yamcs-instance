@@ -643,7 +643,6 @@
                         <xtce:ArgumentAssignment argumentName="sequence_flags" argumentValue="3" />
                         <xtce:ArgumentAssignment argumentName="PUS_version_number" argumentValue="2" />
                         <xtce:ArgumentAssignment argumentName="source_ID" argumentValue="5" />
-                        <xtce:ArgumentAssignment argumentName="aknowledgement_flags" argumentValue="0" />
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:CommandContainer name="Header_TC">
