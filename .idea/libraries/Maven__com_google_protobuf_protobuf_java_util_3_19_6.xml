@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.google.protobuf:protobuf-java-util:3.19.6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../mnt/c/Users/stavr/.m2/repository/com/google/protobuf/protobuf-java-util/3.19.6/protobuf-java-util-3.19.6.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../../mnt/c/Users/stavr/.m2/repository/com/google/protobuf/protobuf-java-util/3.19.6/protobuf-java-util-3.19.6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../../mnt/c/Users/stavr/.m2/repository/com/google/protobuf/protobuf-java-util/3.19.6/protobuf-java-util-3.19.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
