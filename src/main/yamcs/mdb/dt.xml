@@ -422,7 +422,7 @@
                 <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
             </xtce:IntegerArgumentType>
 
-            <xtce:EnumeratedArgumentType name="ack_flags_bit_0">
+            <xtce:EnumeratedArgumentType name="completion_ack">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
@@ -430,7 +430,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="ack_flags_bit_1">
+            <xtce:EnumeratedArgumentType name="progress_of_execution_ack">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
@@ -438,7 +438,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="ack_flags_bit_2">
+            <xtce:EnumeratedArgumentType name="start_of_execution_ack">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
@@ -446,7 +446,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="ack_flags_bit_3">
+            <xtce:EnumeratedArgumentType name="acceptance_ack">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />

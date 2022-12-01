@@ -609,10 +609,10 @@
                     <xtce:Argument argumentTypeRef="/dt/sequence_flags" name="sequence_flags"></xtce:Argument>
                     <!--Secondary Header-->
                     <xtce:Argument argumentTypeRef="/dt/int4_t" name="PUS_version_number"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/ack_flags_bit_0" name="acknowledgement_flags_bit_3" initialValue="acceptance_ack"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/ack_flags_bit_1" name="acknowledgement_flags_bit_2" initialValue="start_of_execution_ack"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/ack_flags_bit_2" name="acknowledgement_flags_bit_1" initialValue="progress_of_execution_ack"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/ack_flags_bit_3" name="acknowledgement_flags_bit_0" initialValue="completion_ack"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/completion_ack" name="completion_ack" initialValue="completion_ack"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/progress_of_execution_ack" name="progress_of_execution_ack" initialValue="progress_of_execution_ack"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/start_of_execution_ack" name="start_of_execution_ack" initialValue="start_of_execution_ack"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/acceptance_ack" name="acceptance_ack" initialValue="acceptance_ack"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/service_type_ID_TC" name="service_type_ID"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/message_subtype_ID_TC" name="message_subtype_ID"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="source_ID"></xtce:Argument>
@@ -629,10 +629,10 @@
                         <xtce:FixedValueEntry name="packet_data_length" binaryValue="0000" sizeInBits="16" />
                         <!--Secondary Header-->
                         <xtce:ArgumentRefEntry argumentRef="PUS_version_number" />
-                        <xtce:ArgumentRefEntry argumentRef="acknowledgement_flags_bit_3" />
-                        <xtce:ArgumentRefEntry argumentRef="acknowledgement_flags_bit_2" />
-                        <xtce:ArgumentRefEntry argumentRef="acknowledgement_flags_bit_1" />
-                        <xtce:ArgumentRefEntry argumentRef="acknowledgement_flags_bit_0" />
+                        <xtce:ArgumentRefEntry argumentRef="completion_ack" />
+                        <xtce:ArgumentRefEntry argumentRef="progress_of_execution_ack" />
+                        <xtce:ArgumentRefEntry argumentRef="start_of_execution_ack" />
+                        <xtce:ArgumentRefEntry argumentRef="acceptance_ack" />
                         <xtce:ArgumentRefEntry argumentRef="service_type_ID" />
                         <xtce:ArgumentRefEntry argumentRef="message_subtype_ID" />
                         <xtce:ArgumentRefEntry argumentRef="source_ID" />
