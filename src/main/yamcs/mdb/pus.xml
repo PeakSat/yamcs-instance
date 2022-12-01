@@ -284,10 +284,15 @@
         </xtce:ParameterSet>
 
         <xtce:ContainerSet>
+            <xtce:SequenceContainer name="packet_header_TM">
+                <xtce:EntryList>
+                    <xtce:ContainerRefEntry containerRef="secondary_header_TM"></xtce:ContainerRefEntry>
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="primary_header_TM"></xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
             <xtce:SequenceContainer name="primary_header_TM">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="Transfer_Frame_Header"></xtce:ParameterRefEntry>
-
                     <xtce:ParameterRefEntry parameterRef="packet_version_number"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_type"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="secondary_header_flag"></xtce:ParameterRefEntry>
@@ -308,13 +313,6 @@
                     <xtce:ParameterRefEntry parameterRef="destination_ID"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="time"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
-            </xtce:SequenceContainer>
-
-            <xtce:SequenceContainer name="packet_header_TM">
-                <xtce:EntryList>
-                    <xtce:ContainerRefEntry containerRef="secondary_header_TM"></xtce:ContainerRefEntry>
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="primary_header_TM"></xtce:BaseContainer>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="TM[3,10]:housekeeping_parameter_report">
