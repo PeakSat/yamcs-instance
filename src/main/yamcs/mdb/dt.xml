@@ -538,7 +538,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="writable_float_parameters">
+            <xtce:EnumeratedArgumentType name="writableFloatParameters_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="5021" label="NANDLCLThreshold"/>
@@ -549,7 +549,24 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="writable_uint32_parameters">
+           <xtce:ArrayArgumentType arrayTypeRef="writableFloatParameters_t" name="writableFloatParameterArray">
+            <xtce:DimensionList>
+                <xtce:Dimension>
+                    <xtce:StartingIndex>
+                        <xtce:FixedValue>0</xtce:FixedValue>
+                    </xtce:StartingIndex>
+                    <xtce:EndingIndex>
+                        <xtce:DynamicValue>
+                            <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
+                            <xtce:LinearAdjustment intercept="-1"/>
+                        </xtce:DynamicValue>
+                    </xtce:EndingIndex>
+                </xtce:Dimension>
+            </xtce:DimensionList>
+           </xtce:ArrayArgumentType>
+
+
+            <xtce:EnumeratedArgumentType name="writableUint32Parameters_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="5010" label="OBCOnBoardTime"/>
@@ -557,21 +574,37 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="writable_uint64_parameters">
+            <xtce:ArrayArgumentType arrayTypeRef="writableUint32Parameters_t" name="writableUint32ParametersArray">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <xtce:LinearAdjustment intercept="-1"/>
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
+
+            <xtce:EnumeratedArgumentType name="writableUint64Parameters_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1224" label="ADCSSystick"/>
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="writable_uint8_parameters">
+            <xtce:EnumeratedArgumentType name="writableUint8Parameters_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1016" label="MagnetometerFrequency"/>
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="writable_int8_parameters">
+            <xtce:EnumeratedArgumentType name="writableInt8Parameters_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1017" label="MagnetometerCycleCountX"/>
@@ -580,7 +613,23 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="writable_bool_parameters">
+            <xtce:ArrayArgumentType arrayTypeRef="writableInt8Parameters_t" name="writableInt8ParametersArray">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <xtce:LinearAdjustment intercept="-1"/>
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
+
+            <xtce:EnumeratedArgumentType name="writableBoolParameters_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1158" label="MagnetometerSignX"/>
@@ -594,6 +643,22 @@
                     <xtce:Enumeration value="1191" label="GyroBiasZ"/>
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
+
+            <xtce:ArrayArgumentType arrayTypeRef="writableBoolParameters_t" name="writableBoolArray">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <xtce:LinearAdjustment intercept="-1"/>
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
 
             <xtce:EnumeratedArgumentType name="OBCMemoryPartition_t">
                 <xtce:IntegerDataEncoding sizeInBits="8"/>
@@ -643,9 +708,41 @@
                 <xtce:FloatDataEncoding sizeInBits="32"/>
             </xtce:FloatArgumentType>
 
+            <xtce:ArrayArgumentType arrayTypeRef="float_t" name="floatArray_t">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <xtce:LinearAdjustment intercept="-1"/>
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
+
             <xtce:BooleanArgumentType name="bool_t">
                 <xtce:IntegerDataEncoding sizeInBits="1"/>
             </xtce:BooleanArgumentType>
+
+            <xtce:ArrayArgumentType arrayTypeRef="bool_t" name="boolArray_t">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <xtce:LinearAdjustment intercept="-1"/>
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
 
             <xtce:IntegerArgumentType name="uint8_t" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
@@ -655,6 +752,13 @@
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
                 <xtce:ValidRangeSet>
                     <xtce:ValidRange minInclusive="1" maxInclusive="3"/>
+                </xtce:ValidRangeSet>
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="uint8_t{1-5}" signed="false">
+                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:ValidRangeSet>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="5"/>
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
@@ -687,6 +791,20 @@
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
+            <xtce:IntegerArgumentType name="uint16_t{1-5}" signed="false">
+                <xtce:IntegerDataEncoding sizeInBits="16"/>
+                <xtce:ValidRangeSet>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="5"/>
+                </xtce:ValidRangeSet>
+            </xtce:IntegerArgumentType>
+
+            <xtce:IntegerArgumentType name="uint16_t{1-9}">
+                <xtce:IntegerDataEncoding sizeInBits="16" />
+                <xtce:ValidRangeSet>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="9"/>
+                </xtce:ValidRangeSet>
+            </xtce:IntegerArgumentType>
+
             <xtce:IntegerArgumentType name="uint16_t{1-10}" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
                 <xtce:ValidRangeSet>
@@ -697,6 +815,22 @@
             <xtce:IntegerArgumentType name="uint32_t" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32"/>
             </xtce:IntegerArgumentType>
+
+            <xtce:ArrayArgumentType arrayTypeRef="uint32_t" name="uint32Array_t">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <xtce:LinearAdjustment intercept="-1"/>
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
 
             <xtce:IntegerArgumentType name="uint32_t{1-3}" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32"/>
@@ -749,6 +883,22 @@
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
                                 <xtce:ArgumentInstanceRef argumentRef="total_structures"/>
+                                <xtce:LinearAdjustment intercept="-1"/>
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
+
+            <xtce:ArrayArgumentType arrayTypeRef="int8_t" name="int8Array_t">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
                                 <xtce:LinearAdjustment intercept="-1"/>
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
