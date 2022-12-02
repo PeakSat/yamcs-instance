@@ -63,7 +63,7 @@ dataLinks:
     port: 10013 #UDP port to listen to
     frameType: "TM"
     spacecraftId: 0xAB
-    frameLength: 172 #decoded frame length
+    frameLength: 176 #decoded frame length
     insertZoneLength: 0 #ignored for TM frames
     errorDetection: NONE #NONE, CRC16 or CRC32 (only for USLP)
     clcwStream: "clcw"    #publish the received CLCW (what they call OCF in the CCSDS AOS/TM/USLP standards) to this stream, to be used by the FOP1 
@@ -135,8 +135,8 @@ streamConfig:
   tm:
     - name: "tm_realtime"
     - name: "tm_dump"
-   # - name: "clcw"
-    #  rootContainer: "/pus/communications_link_control_word"
+    #- name: "clcw"
+     # rootContainer: "/pus/communications_link_control_word"
   invalidTm: "invalid_tm_stream"
   cmdHist: ["cmdhist_realtime", "cmdhist_dump"]
   event: ["events_realtime", "events_dump"]
@@ -145,4 +145,3 @@ streamConfig:
   tc:
     - name: "tc_realtime"
       processor: "realtime"
-

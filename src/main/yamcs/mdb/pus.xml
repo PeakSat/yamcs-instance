@@ -289,7 +289,7 @@
                     <xtce:ContainerRefEntry containerRef="secondary_header_TM"></xtce:ContainerRefEntry>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="primary_header_TM"></xtce:BaseContainer>
-            </xtce:SequenceContainer>
+            </xtce:SequenceContainer>    
 
             <xtce:SequenceContainer name="primary_header_TM">
                 <xtce:EntryList>
