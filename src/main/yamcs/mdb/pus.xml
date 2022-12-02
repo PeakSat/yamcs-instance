@@ -814,7 +814,7 @@
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint8_t{1-10}" name="total_structures" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t{1-5}" name="total_structures" />
                     <xtce:Argument argumentTypeRef="/dt/structureIdArray_t" name="structures" />
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC(3,9)_report_housekeeping_parameter_report_structures">
@@ -854,7 +854,7 @@
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint8_t{1-10}" name="total_structures" />
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t{1-5}" name="total_structures" />
                     <xtce:Argument argumentTypeRef="/dt/structureIdArray_t" name="structures" />
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC(3,27)_generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
