@@ -538,7 +538,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="writable_float_parameters">
+            <xtce:EnumeratedArgumentType name="writableFloatParameters_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="5021" label="NANDLCLThreshold"/>
@@ -549,7 +549,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-           <xtce:ArrayArgumentType arrayTypeRef="writable_float_parameters" name="writable_float_parameters_array">
+           <xtce:ArrayArgumentType arrayTypeRef="writableFloatParameters_t" name="writableFloatParameterArray">
             <xtce:DimensionList>
                 <xtce:Dimension>
                     <xtce:StartingIndex>
@@ -566,7 +566,7 @@
            </xtce:ArrayArgumentType>
 
 
-            <xtce:EnumeratedArgumentType name="writable_uint32_parameters">
+            <xtce:EnumeratedArgumentType name="writableUint32Parameters_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="5010" label="OBCOnBoardTime"/>
@@ -574,21 +574,21 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="writable_uint64_parameters">
+            <xtce:EnumeratedArgumentType name="writableUint64Parameters_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1224" label="ADCSSystick"/>
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="writable_uint8_parameters">
+            <xtce:EnumeratedArgumentType name="writableUint8Parameters_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1016" label="MagnetometerFrequency"/>
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:EnumeratedArgumentType name="writable_int8_parameters">
+            <xtce:EnumeratedArgumentType name="writableInt8Parameters_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1017" label="MagnetometerCycleCountX"/>
@@ -597,7 +597,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:ArrayArgumentType arrayTypeRef="writable_int8_parameters" name="writable_int8_parameters_array">
+            <xtce:ArrayArgumentType arrayTypeRef="writableInt8Parameters_t" name="writableInt8ParametersArray">
                 <xtce:DimensionList>
                     <xtce:Dimension>
                         <xtce:StartingIndex>
@@ -613,7 +613,7 @@
                 </xtce:DimensionList>
             </xtce:ArrayArgumentType>
 
-            <xtce:EnumeratedArgumentType name="writable_bool_parameters">
+            <xtce:EnumeratedArgumentType name="writableBoolParameters_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="1158" label="MagnetometerSignX"/>
@@ -628,7 +628,7 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:ArrayArgumentType arrayTypeRef="writable_bool_parameters" name="writable_bool_array">
+            <xtce:ArrayArgumentType arrayTypeRef="writableBoolParameters_t" name="writableBoolArray">
                 <xtce:DimensionList>
                     <xtce:Dimension>
                         <xtce:StartingIndex>
@@ -692,7 +692,7 @@
                 <xtce:FloatDataEncoding sizeInBits="32"/>
             </xtce:FloatArgumentType>
 
-            <xtce:ArrayArgumentType arrayTypeRef="float_t" name="float_array">
+            <xtce:ArrayArgumentType arrayTypeRef="float_t" name="floatArray_t">
                 <xtce:DimensionList>
                     <xtce:Dimension>
                         <xtce:StartingIndex>

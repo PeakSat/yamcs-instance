@@ -13,8 +13,8 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t{1-5}" name="number_of_parameters"/>
-                    <xtce:Argument argumentTypeRef="/dt/writable_float_parameters_array" name="Parameter_IDs" />
-                    <xtce:Argument argumentTypeRef="/dt/float_array" name="new_values"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/writableFloatParameterArray" name="Parameter_IDs" />
+                    <xtce:Argument argumentTypeRef="/dt/floatArray_t" name="new_values"></xtce:Argument>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC(20,3)_set_float_parameter_values">
                     <xtce:EntryList >
@@ -35,7 +35,7 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
-                    <xtce:Argument argumentTypeRef="/dt/writable_uint8_parameters" name="Parameter_IDs" />
+                    <xtce:Argument argumentTypeRef="/dt/writableUint8Parameters_t" name="Parameter_IDs" />
                     <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_values"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC(20,3)_set_uint8_parameter_values">
@@ -57,7 +57,7 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t{1-3}" name="number_of_parameters"/>
-                    <xtce:Argument argumentTypeRef="/dt/writable_int8_parameters_array" name="Parameter_IDs"/>
+                    <xtce:Argument argumentTypeRef="/dt/writableInt8ParametersArray" name="Parameter_IDs"/>
                     <xtce:Argument argumentTypeRef="/dt/int8Array_t" name="new_values"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC(20,3)_set_int8_parameter_values">
@@ -79,9 +79,9 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t{1-2}" name="number_of_parameters"/>
-                    <xtce:Argument argumentTypeRef="/dt/writable_uint32_parameters" name="Parameter_ID1" />
+                    <xtce:Argument argumentTypeRef="/dt/writableUint32Parameters_t" name="Parameter_ID1" />
                     <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_values1"/>
-                    <xtce:Argument argumentTypeRef="/dt/writable_uint32_parameters" name="Parameter_ID2" />
+                    <xtce:Argument argumentTypeRef="/dt/writableUint32Parameters_t" name="Parameter_ID2" />
                     <xtce:Argument argumentTypeRef="/dt/uint32_t" name="new_values2"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC(20,3)_set_uint32_parameter_values">
@@ -105,7 +105,7 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
-                    <xtce:Argument argumentTypeRef="/dt/writable_uint64_parameters" name="Parameter_IDs" />
+                    <xtce:Argument argumentTypeRef="/dt/writableUint64Parameters_t" name="Parameter_IDs" />
                     <xtce:Argument argumentTypeRef="/dt/uint64_t" name="new_values"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC(20,3)_set_uint64_parameter_values">
@@ -127,7 +127,7 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t{1-9}" name="number_of_parameters" />
-                    <xtce:Argument argumentTypeRef="/dt/writable_bool_array" name="Parameter_IDs"/>
+                    <xtce:Argument argumentTypeRef="/dt/writableBoolArray" name="Parameter_IDs"/>
                     <xtce:Argument argumentTypeRef="/dt/boolArray_t" name="new_values"></xtce:Argument>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC(20,3)_set_bool_parameter_values">
