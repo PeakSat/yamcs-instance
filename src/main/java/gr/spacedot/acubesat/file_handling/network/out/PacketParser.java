@@ -36,7 +36,7 @@ public class PacketParser {
      *                spacecraft time reference status (4 bits), service type id (8 bits),
      *                message type id (8 bits) and message type counter (16 bits).
      */
-    public void parsePacket(byte[] packet) {
+    public void parseFileCopyPacket(byte[] packet) {
         HashMap<String, String> paths = new HashMap<>();
 
         byte[] data = Arrays.copyOfRange(packet, HEADER_SIZE, packet.length);

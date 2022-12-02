@@ -3,6 +3,7 @@ import io
 import socket
 import random
 import sys
+from fileHandler import processTC
 from struct import unpack_from
 from threading import Thread
 from time import sleep
@@ -29,7 +30,7 @@ def send_tm(simulator):
 
     tm_socket_OBC.bind((host, portOBC))
     tm_socket_OBC.listen(1)
-    print("server  10015 listening")
+    print("\nserver  10015 listening")
 
     tm_socket_ADCS.bind((host, portADCS))
     tm_socket_ADCS.listen(1)
@@ -97,13 +98,15 @@ def receive_tc(simulator):
     host = "localhost"
     portTC = 10025
     tc_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tc_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     tc_socket.bind((host, portTC))
     tc_socket.listen(1)
     print("server  10025 1istening")
-    clientconnTC, clientaddrTC = tc_socket.accept()
+    clientconnTC, _ = tc_socket.accept()
     while True:
         data, _ = clientconnTC.recvfrom(4096)
         simulator.last_tc = data
+        processTC(data)
         if data != b"":
             simulator.tc_counter += 1
 
@@ -125,11 +128,11 @@ class Simulator:
         self.tc_thread.start()
 
     def print_status(self):
-        cmdhex = None
+        cmdhex: str = ""
         if self.last_tc:
             cmdhex = binascii.hexlify(self.last_tc).decode("ascii")
-        return "Sent: {} packets. Received: {} commands. Last command: {}".format(
-            self.tm_counter, self.tc_counter, cmdhex
+        return "Sent: {} packets. Received: {} commands. Last command size: {}".format(
+            self.tm_counter, self.tc_counter, len(cmdhex)
         )
 
 
@@ -142,9 +145,9 @@ if __name__ == "__main__":
         while True:
             status = simulator.print_status()
             if status != prev_status:
-                sys.stdout.write("\r")
-                sys.stdout.write(status)
-                sys.stdout.flush()
+                # sys.stdout.write("\r")
+                # sys.stdout.write(status)
+                # sys.stdout.flush()
                 prev_status = status
             sleep(0.5)
     except KeyboardInterrupt:

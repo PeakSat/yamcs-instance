@@ -10,6 +10,8 @@ import org.yamcs.utils.ByteArrayUtils;
 
 import java.util.logging.Logger;
 
+import static java.lang.Thread.sleep;
+
 public class CustomCommandPostprocessor implements CommandPostprocessor {
 
     private final CcsdsSeqCountFiller seqFiller = new CcsdsSeqCountFiller();
@@ -41,6 +43,11 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
     public byte[] process(PreparedCommand pc) {
         byte[] binary = pc.getBinary();
 
+        try {
+            sleep(50);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         // Set CCSDS packet length
         ByteArrayUtils.encodeUnsignedShort(binary.length - 6, binary, 4);
 
@@ -51,7 +58,7 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
         int messageType = binary[8];
         LOGGER.info("Message type is " + messageType + " and service type is " + serviceType);
         if (serviceType == 23 && messageType == 14) {
-            packetParser.parsePacket(binary);
+            packetParser.parseFileCopyPacket(binary);
         }
 
 

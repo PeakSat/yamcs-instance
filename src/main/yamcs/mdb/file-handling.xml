@@ -3,7 +3,7 @@
     xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
-    <xtce:TelemetryMetaData></xtce:TelemetryMetaData>
+    <xtce:TelemetryMetaData/>
     <xtce:CommandMetaData>
         <xtce:MetaCommandSet>
 
@@ -39,12 +39,12 @@
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/string_t" name="target_file_path"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/string_t" name="target_file_name"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="current_chunk"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="total_chunks"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="chunk_size"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/stringData_t" name="data"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/string_t" name="target_file_path"/>
+                    <xtce:Argument argumentTypeRef="/dt/string_t" name="target_file_name"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="current_chunk"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="total_chunks"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="chunk_size"/>
+                    <xtce:Argument argumentTypeRef="/dt/stringData_t" name="data"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC(24,1):send_file_segment">
                     <xtce:EntryList>

@@ -10,6 +10,8 @@ import java.util.List;
 import com.google.gson.JsonObject;
 import gr.spacedot.acubesat.file_handling.entities.ChunkedFileEntity;
 
+import static java.lang.Thread.sleep;
+
 public class PacketSender {
     public void sentPacketSegments(ChunkedFileEntity chunkedFileEntity) {
 
@@ -30,7 +32,6 @@ public class PacketSender {
             mainBody.addProperty("total_chunks", totalChunks);
             mainBody.addProperty("current_chunk", chunk);
             mainBody.addProperty("chunk_size", currentChunk.length * 8); //get bits
-            System.out.println(currentChunk.length);
             mainBody.addProperty("data", data);
 
             JsonObject args = new JsonObject();
@@ -49,6 +50,7 @@ public class PacketSender {
             } catch (Exception e) {
                 System.out.println("Error sending request " + e);
             }
+
         }
     }
 

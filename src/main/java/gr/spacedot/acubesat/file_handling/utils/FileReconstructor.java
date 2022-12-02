@@ -8,14 +8,12 @@ import gr.spacedot.acubesat.file_handling.enums.LocalPaths;
 import java.io.File;
 
 public class FileReconstructor {
-
     public void createIfNotExists(String directory){
         File folder = new File(directory);
         if(!folder.exists()){
             folder.mkdir();
         }
     }
-
     public FileEntity reconstruct(ChunkedFileEntity chunkedFileEntity) {
 
         createIfNotExists(LocalPaths.RECEIVED_PATH.toString());
