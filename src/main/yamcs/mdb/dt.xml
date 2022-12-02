@@ -574,6 +574,22 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
+            <xtce:ArrayArgumentType arrayTypeRef="writableUint32Parameters_t" name="writableUint32ParametersArray">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <xtce:LinearAdjustment intercept="-1"/>
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
+
             <xtce:EnumeratedArgumentType name="writableUint64Parameters_t">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
@@ -799,6 +815,22 @@
             <xtce:IntegerArgumentType name="uint32_t" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32"/>
             </xtce:IntegerArgumentType>
+
+            <xtce:ArrayArgumentType arrayTypeRef="uint32_t" name="uint32Array_t">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <xtce:LinearAdjustment intercept="-1"/>
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
 
             <xtce:IntegerArgumentType name="uint32_t{1-3}" signed="false">
                 <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32"/>
