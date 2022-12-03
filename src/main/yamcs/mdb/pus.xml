@@ -235,6 +235,46 @@
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
+
+            <xtce:SequenceContainer name="newTM[20,2]:parameter_value_report">
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="number_of_parameters"></xtce:ParameterRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="0" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="1" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="2" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="3" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="4" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="packet_header_TM">
+                    <xtce:RestrictionCriteria>
+                        <xtce:ComparisonList>
+                            <xtce:Comparison value="20" parameterRef="service_type_ID_TM" />
+                            <xtce:Comparison value="2" parameterRef="message_subtype_ID_TM" />
+                        </xtce:ComparisonList>
+                    </xtce:RestrictionCriteria>
+                </xtce:BaseContainer>
+            </xtce:SequenceContainer>
+
             <xtce:SequenceContainer name="TM[3,25]:housekeeping_parameter_report">
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="housekeeping_parameter_report_structure_ID_ST03"></xtce:ParameterRefEntry>
