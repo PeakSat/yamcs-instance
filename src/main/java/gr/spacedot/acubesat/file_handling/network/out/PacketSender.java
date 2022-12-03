@@ -5,6 +5,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.List;
 
 import com.google.gson.JsonObject;
@@ -25,13 +26,13 @@ public class PacketSender {
             JsonObject mainBody = new JsonObject();
 
             byte[] currentChunk = chunks.get(chunk);
-            String data = new String(currentChunk, StandardCharsets.UTF_8);
+            String data = Base64.getEncoder().encodeToString(currentChunk);
 
             mainBody.addProperty("target_file_path", chunkedFileEntity.getPath());
             mainBody.addProperty("target_file_name", chunkedFileEntity.getName());
             mainBody.addProperty("total_chunks", totalChunks);
             mainBody.addProperty("current_chunk", chunk);
-            mainBody.addProperty("chunk_size", currentChunk.length * 8); //get bits
+            mainBody.addProperty("chunk_size", data.length() * 8); //get bits
             mainBody.addProperty("data", data);
 
             JsonObject args = new JsonObject();
@@ -42,7 +43,7 @@ public class PacketSender {
                             "http://localhost:8090/api/processors/AcubeSAT/realtime/commands/file-handling/TC(24,1):send_file_segment"))
                     .POST(HttpRequest.BodyPublishers.ofString(args.toString()))
                     .build();
-//            System.out.println("REQUEST SENT "+args);
+            System.out.println("REQUEST SENT "+args);
 
             try {
                 HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());

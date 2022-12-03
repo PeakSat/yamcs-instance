@@ -4,6 +4,7 @@ import socket
 import random
 import struct
 import sys
+import base64
 from struct import unpack_from
 from threading import Thread
 from time import sleep
@@ -62,6 +63,12 @@ def processFileSegment(data: bytearray) -> None:
         )
     )
     fileData = data[offset:]
+    fileBase64 = ""
+    for character in fileData:
+        fileBase64 += chr(character)
+
 
     file = open(targetFileName, "ab")
-    file.write(fileData)
+    fileString = open("test","at")
+    fileString.write(fileBase64)
+    file.write(base64.urlsafe_b64decode(fileBase64))
