@@ -43,11 +43,6 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
     public byte[] process(PreparedCommand pc) {
         byte[] binary = pc.getBinary();
 
-        try {
-            sleep(50);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
         // Set CCSDS packet length
         ByteArrayUtils.encodeUnsignedShort(binary.length - 6, binary, 4);
 
@@ -56,9 +51,17 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
 
         int serviceType = binary[7];
         int messageType = binary[8];
-        LOGGER.info("Message type is " + messageType + " and service type is " + serviceType);
         if (serviceType == 23 && messageType == 14) {
             packetParser.parseFileCopyPacket(binary);
+            // In packet parsing a lot of http requests are created. Since
+            // this is done in the same thread, the commands are sent when exciting
+            // the function, so an artificial delay is inserted in order to avoid
+            // sending more than 50 packets simultaneously, which corrupts the packets.
+            try {
+                sleep(50);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
 
 

@@ -3,7 +3,6 @@ import io
 import socket
 import random
 import sys
-from fileHandler import processTC
 from struct import unpack_from
 from threading import Thread
 from time import sleep
@@ -21,12 +20,15 @@ def send_tm(simulator):
     host = "localhost"
     portOBC = 10015
     tm_socket_OBC = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tm_socket_OBC.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     portADCS = 10016
     tm_socket_ADCS = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tm_socket_ADCS.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     portCAN = 10017
     tm_socket_CAN = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tm_socket_CAN.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     tm_socket_OBC.bind((host, portOBC))
     tm_socket_OBC.listen(1)
@@ -120,9 +122,9 @@ class Simulator:
         self.last_tc = None
 
     def start(self):
-        # self.tm_thread = Thread(target=send_tm, args=(self,))
-        # self.tm_thread.daemon = True
-        # self.tm_thread.start()
+        self.tm_thread = Thread(target=send_tm, args=(self,))
+        self.tm_thread.daemon = True
+        self.tm_thread.start()
         self.tc_thread = Thread(target=receive_tc, args=(self,))
         self.tc_thread.daemon = True
         self.tc_thread.start()
@@ -131,8 +133,8 @@ class Simulator:
         cmdhex: str = ""
         if self.last_tc:
             cmdhex = binascii.hexlify(self.last_tc).decode("ascii")
-        return "Sent: {} packets. Received: {} commands. Last command size: {}".format(
-            self.tm_counter, self.tc_counter, len(cmdhex)
+        return "Sent: {} packets. Received: {} commands. Last command {}".format(
+            self.tm_counter, self.tc_counter, cmdhex
         )
 
 
@@ -145,9 +147,9 @@ if __name__ == "__main__":
         while True:
             status = simulator.print_status()
             if status != prev_status:
-                # sys.stdout.write("\r")
-                # sys.stdout.write(status)
-                # sys.stdout.flush()
+                sys.stdout.write("\r")
+                sys.stdout.write(status)
+                sys.stdout.flush()
                 prev_status = status
             sleep(0.5)
     except KeyboardInterrupt:

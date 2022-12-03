@@ -17,18 +17,21 @@ public class FileReconstructor {
     public FileEntity reconstruct(ChunkedFileEntity chunkedFileEntity) {
 
         createIfNotExists(LocalPaths.RECEIVED_PATH.toString());
-        File folder = new File(LocalPaths.RECEIVED_PATH.toString(), chunkedFileEntity.getName());
+
+        // Create the file in the received folder
+        File received = new File(LocalPaths.RECEIVED_PATH.toString(), chunkedFileEntity.getName());
 
         FileEntity reconstructed = new FileEntity();
         reconstructed.setName(chunkedFileEntity.getName());
-        reconstructed.setPath(folder.getPath());
+        reconstructed.setPath(received.getPath());
 
+        // Put all chunks in a single array
         byte[] contents = new byte[]{};
         for (byte[] chunk : chunkedFileEntity.getChunks()) {
             contents = Bytes.concat(contents, chunk);
         }
         reconstructed.setContents(contents);
-        reconstructed.save(folder.getPath());
+        reconstructed.save(received.getPath());
 
         return reconstructed;
     }

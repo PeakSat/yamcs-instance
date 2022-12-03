@@ -26,6 +26,9 @@ public class PacketParser {
     private static final FileSplitter fileSplitter = new FileSplitter();
 
     /**
+     * Parses the source file path/name and target file path/name
+     * and saves them into a Map in order to be evaluated.
+     *
      * @param packet: a packet with the following structure:
      *                primary_header | secondary_header | data
      *                <p>
@@ -51,17 +54,25 @@ public class PacketParser {
                 valuesCounter++;
             }
         }
-        System.out.println("Packet parsed!");
         processPaths(paths);
     }
 
+    /**
+     * If the source file is local, then it sends the packet segments
+     * using the appropriate commands.
+     * TODO: If the source file is not local, it awaits for the file segment TMs
+     *
+     * @param paths: A map containing the source and target file path and name.
+     */
     public void processPaths(Map<String, String> paths) {
         String sourcePath = paths.get("Source path");
         String targetPath = paths.get("Target path");
-        if (sourcePath.equals(LocalPaths.RESOURCES_PATH.toString())
-                || sourcePath.equals(LocalPaths.IMAGES_PATH.toString())
-                || sourcePath.equals(LocalPaths.FILES_PATH.toString())) {
-            System.out.println("Source Path exists!");
+
+        if (
+                sourcePath.equals(LocalPaths.RESOURCES_PATH.toString())
+                        || sourcePath.equals(LocalPaths.IMAGES_PATH.toString())
+                        || sourcePath.equals(LocalPaths.FILES_PATH.toString())
+        ) {
             FileEntity fileEntity = new FileEntity(sourcePath, paths.get("Source name"));
             fileEntity.loadContents();
             packetSender.sentPacketSegments(fileSplitter.splitFileInChunks(fileEntity));

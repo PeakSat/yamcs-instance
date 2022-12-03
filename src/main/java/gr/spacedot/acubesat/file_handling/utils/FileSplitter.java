@@ -9,20 +9,25 @@ import java.util.Arrays;
 public class FileSplitter {
     private static final int CHUNK_SIZE_BYTES = 3000; //max value is 4032
 
+    /**
+     *
+     * @param fileEntity : The local file entity to be split into chunks.
+     * @return chunkedFileEntity: The same file with its contents split in a List
+     */
     public ChunkedFileEntity splitFileInChunks(FileEntity fileEntity) {
         ChunkedFileEntity chunkedFileEntity = new ChunkedFileEntity();
         chunkedFileEntity.setName(fileEntity.getName());
         chunkedFileEntity.setPath(fileEntity.getPath());
 
-        ArrayList<byte[]> chunks = new ArrayList<>();
         byte[] contents = fileEntity.getContents();
         int numberOfChunks = contents.length / CHUNK_SIZE_BYTES + 1;
-
         int chunkSize = Math.min(contents.length, CHUNK_SIZE_BYTES);
 
+        ArrayList<byte[]> chunks = new ArrayList<>();
         for (int chunk = 0; chunk < numberOfChunks - 1; chunk++)
             chunks.add(Arrays.copyOfRange(contents, chunk * chunkSize, (chunk + 1) * chunkSize));
-        // add last chunk manually to prevent zero padding
+
+        // Add last chunk manually to prevent zero padding
         chunks.add(Arrays.copyOfRange(contents, (numberOfChunks - 1) * chunkSize, contents.length));
 
         chunkedFileEntity.setChunkSize(chunkSize);

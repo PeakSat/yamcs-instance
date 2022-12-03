@@ -4,16 +4,26 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.google.gson.JsonObject;
 import gr.spacedot.acubesat.file_handling.entities.ChunkedFileEntity;
 
-import static java.lang.Thread.sleep;
 
 public class PacketSender {
+    private static final Logger LOGGER = Logger.getLogger(PacketSender.class.getName());
+
+    /**
+     * It sends each file chunk in a separate TC, including all important
+     * file metadata and information.
+     * <p>
+     * TODO: Log response only if it is not of status 200: OK
+     *
+     * @param chunkedFileEntity : the already split file to be sent.
+     *
+     */
     public void sentPacketSegments(ChunkedFileEntity chunkedFileEntity) {
 
         HttpClient client = HttpClient.newHttpClient();
@@ -43,13 +53,12 @@ public class PacketSender {
                             "http://localhost:8090/api/processors/AcubeSAT/realtime/commands/file-handling/TC(24,1):send_file_segment"))
                     .POST(HttpRequest.BodyPublishers.ofString(args.toString()))
                     .build();
-            System.out.println("REQUEST SENT "+args);
 
             try {
                 HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-//                System.out.println(response.body());
+//                LOGGER.info(response.body());
             } catch (Exception e) {
-                System.out.println("Error sending request " + e);
+                LOGGER.info("Error sending request " + e);
             }
 
         }

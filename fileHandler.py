@@ -1,29 +1,35 @@
-import binascii
-import io
-import socket
-import random
-import struct
-import sys
 import base64
-from struct import unpack_from
 from threading import Thread
-from time import sleep
+import binascii
+import socket
+import sys
 
 PACKET_HEADER_LENGTH = 11
 
 STRING_DELIMITER = 0x000
 
+previousChunk = -1
 
-def processTC(data: bytearray) -> None:
-    serviceType = data[7]
-    messageType = data[8]
-    print("Message type is {} and service type is {}".format(messageType, serviceType))
+
+def processTC(packet: bytearray) -> None:
+    """
+    Checks if the telecommand packet is of type [24,1] and
+    forwards the packet minus the headers to further processing.
+    """
+    serviceType = packet[7]
+    messageType = packet[8]
+
     if serviceType == 24 and messageType == 1:
-        processFileSegment(data[PACKET_HEADER_LENGTH - 1 :])
+        processFileSegment(packet[PACKET_HEADER_LENGTH - 1 :])
     pass
 
 
 def processFileSegment(data: bytearray) -> None:
+    """
+    Parses all necessary information regarding the target
+    file and writes the data to it.
+    """
+    global previousChunk
     targetFilePath: str = ""
     targetFileName: str = ""
     currentChunk: int
@@ -43,32 +49,81 @@ def processFileSegment(data: bytearray) -> None:
         if stringsFound == 2:
             offset = index + 1
             break
-    # src/main/resources/source/files smallFile.txt
 
-    print(
-        "Path is {} , name is {} and offset is {}".format(
-            targetFilePath, targetFileName, offset
+    global previousChunk
+    if previousChunk == -1:
+        print(
+            "Saving file from Path {} and name {}".format(
+                targetFilePath, targetFileName
+            )
         )
-    )
 
     currentChunk = data[offset] * 256 + data[offset + 1]
+    if currentChunk - previousChunk != 1:
+        exit("Packet loss: Missed packet {}".format(previousChunk + 1))
+    previousChunk = currentChunk
+
     offset += 2
     totalChunks = data[offset] * 256 + data[offset + 1]
     offset += 2
     chunkSize = data[offset] * 256 + data[offset + 1]
     offset += 2
+
     print(
         "currentChunk is {} , totalChunks is {} and chunkSize is {} ".format(
             currentChunk, totalChunks, chunkSize
         )
     )
-    fileData = data[offset:]
+
     fileBase64 = ""
-    for character in fileData:
+    for character in data[offset:]:
         fileBase64 += chr(character)
 
-
     file = open(targetFileName, "ab")
-    fileString = open("test","at")
-    fileString.write(fileBase64)
     file.write(base64.urlsafe_b64decode(fileBase64))
+
+
+def receive_tc(simulator):
+    """
+    Listens to YAMCS TCP port and prints in the terminal the received command.
+    """
+
+    host = "localhost"
+    portTC = 10025
+    tc_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tc_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    tc_socket.bind((host, portTC))
+    tc_socket.listen(1)
+    print("server  10025 1istening")
+    clientconnTC, _ = tc_socket.accept()
+    while True:
+        data, _ = clientconnTC.recvfrom(4096)
+        simulator.last_tc = data
+        processTC(data)
+        if data != b"":
+            simulator.tc_counter += 1
+
+
+class Simulator:
+    def __init__(self):
+        self.tc_counter = 0
+        self.tc_thread = None
+        self.last_tc = None
+
+    def start(self):
+        self.tc_thread = Thread(target=receive_tc, args=(self,))
+        self.tc_thread.daemon = True
+        self.tc_thread.start()
+
+
+if __name__ == "__main__":
+    simulator = Simulator()
+    simulator.start()
+
+    try:
+        prev_status = None
+        while True:
+            status = simulator.print_status()
+    except KeyboardInterrupt:
+        sys.stdout.write("\n")
+        sys.stdout.flush()
