@@ -3,6 +3,7 @@ from threading import Thread
 import binascii
 import socket
 import sys
+from time import sleep
 
 PACKET_HEADER_LENGTH = 11
 
@@ -94,7 +95,7 @@ def receive_tc(simulator):
     tc_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     tc_socket.bind((host, portTC))
     tc_socket.listen(1)
-    print("server  10025 1istening")
+    print("\nServer  10025 listening")
     clientconnTC, _ = tc_socket.accept()
     while True:
         data, _ = clientconnTC.recvfrom(4096)
@@ -115,6 +116,12 @@ class Simulator:
         self.tc_thread.daemon = True
         self.tc_thread.start()
 
+    def print_status(self):
+        cmdhex: str = ""
+        if self.last_tc:
+            cmdhex = binascii.hexlify(self.last_tc).decode("ascii")
+        return "Received: {} commands. Last command size {}".format(self.tc_counter, len(cmdhex))
+
 
 if __name__ == "__main__":
     simulator = Simulator()
@@ -124,6 +131,13 @@ if __name__ == "__main__":
         prev_status = None
         while True:
             status = simulator.print_status()
+            if status != prev_status:
+                sys.stdout.write("\r")
+                sys.stdout.write(status)
+                sys.stdout.write("\n")
+                sys.stdout.flush()
+                prev_status = status
+            sleep(0.5)
     except KeyboardInterrupt:
         sys.stdout.write("\n")
         sys.stdout.flush()

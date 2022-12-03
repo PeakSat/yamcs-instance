@@ -49,19 +49,20 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
         // Set CCSDS sequence count
         int seqCount = seqFiller.fill(binary);
 
+        // In packet parsing a lot of http requests are created. Since
+        // this is done in the same thread, the commands are sent when exciting
+        // the function, so an artificial delay is inserted in order to avoid
+        // sending more than 50 packets simultaneously, which corrupts the packets.
+        try {
+            sleep(50);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
         int serviceType = binary[7];
         int messageType = binary[8];
         if (serviceType == 23 && messageType == 14) {
             packetParser.parseFileCopyPacket(binary);
-            // In packet parsing a lot of http requests are created. Since
-            // this is done in the same thread, the commands are sent when exciting
-            // the function, so an artificial delay is inserted in order to avoid
-            // sending more than 50 packets simultaneously, which corrupts the packets.
-            try {
-                sleep(50);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
         }
 
 
