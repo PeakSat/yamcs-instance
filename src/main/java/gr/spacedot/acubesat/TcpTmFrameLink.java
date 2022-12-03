@@ -1,4 +1,4 @@
-package com.example.myproject;
+package gr.spacedot.acubesat;
 
 import java.io.EOFException;
 import java.io.IOException;
@@ -31,7 +31,6 @@ public class TcpTmFrameLink extends AbstractTmFrameLink implements Runnable {
     String packetInputStreamClassName;
     YConfiguration packetInputStreamArgs;
     PacketInputStream packetInputStream;
-    //Thread tcpthread;
     
     String packetPreprocessorClassName;
     Object packetPreprocessorArgs;
