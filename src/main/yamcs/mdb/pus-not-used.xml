@@ -20,17 +20,17 @@
         <xtce:ContainerSet>
             <xtce:SequenceContainer name="TM(12,9)_parameter_monitoring_definition_report">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="max_transition_reporting_delay_ST12"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="N_ST12"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="PMON_ID_ST12"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="monitored_parameter_ID_ST12"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="validity_parameter_ST12"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="mask_ST12"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="expected_value_ST12"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="monitoring_intervale_ST12"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="PMON_status_ST12"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="repetition_number_ST12"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="check_type_ST12"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="max_transition_reporting_delay_ST12"/>
+                    <xtce:ParameterRefEntry parameterRef="N_ST12"/>
+                    <xtce:ParameterRefEntry parameterRef="PMON_ID_ST12"/>
+                    <xtce:ParameterRefEntry parameterRef="monitored_parameter_ID_ST12"/>
+                    <xtce:ParameterRefEntry parameterRef="validity_parameter_ST12"/>
+                    <xtce:ParameterRefEntry parameterRef="mask_ST12"/>
+                    <xtce:ParameterRefEntry parameterRef="expected_value_ST12"/>
+                    <xtce:ParameterRefEntry parameterRef="monitoring_intervale_ST12"/>
+                    <xtce:ParameterRefEntry parameterRef="PMON_status_ST12"/>
+                    <xtce:ParameterRefEntry parameterRef="repetition_number_ST12"/>
+                    <xtce:ParameterRefEntry parameterRef="check_type_ST12"/>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="/pus/packet_header_TM">
                     <xtce:RestrictionCriteria>
