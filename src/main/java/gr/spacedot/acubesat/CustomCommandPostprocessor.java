@@ -8,6 +8,8 @@ import org.yamcs.tctm.CcsdsSeqCountFiller;
 import org.yamcs.tctm.CommandPostprocessor;
 import org.yamcs.utils.ByteArrayUtils;
 
+import com.google.protobuf.Message;
+
 import java.util.logging.Logger;
 
 import static java.lang.Thread.sleep;
@@ -37,7 +39,8 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
         this.commandHistory = commandHistory;
     }
 
-    // Called by Yamcs *after* a command was submitted, but *before* the link handles it.
+    // Called by Yamcs *after* a command was submitted, but *before* the link
+    // handles it.
     // This method must return the (possibly modified) packet binary.
     @Override
     public byte[] process(PreparedCommand pc) {
@@ -49,22 +52,25 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
         // Set CCSDS sequence count
         int seqCount = seqFiller.fill(binary);
 
+        int serviceType = binary[7];
+        int messageType = binary[8];
+
         // In packet parsing a lot of http requests are created. Since
         // this is done in the same thread, the commands are sent when exciting
         // the function, so an artificial delay is inserted in order to avoid
         // sending more than 50 packets simultaneously, which corrupts the packets.
-        try {
-            sleep(50);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+
+        if (serviceType == 24 && messageType == 1) {
+            try {
+                sleep(50);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
 
-        int serviceType = binary[7];
-        int messageType = binary[8];
         if (serviceType == 23 && messageType == 14) {
             packetParser.parseFileCopyPacket(binary);
         }
-
 
         // Publish the sequence count to Command History. This has no special
         // meaning to Yamcs, but it shows how to store custom information specific
@@ -72,7 +78,8 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
         commandHistory.publish(pc.getCommandId(), "ccsds-seqcount", seqCount);
 
         // Since we modified the binary, update the binary in Command History too.
-        // commandHistory.publish(pc.getCommandId(), PreparedCommand.CNAME_BINARY, binary);
+        // commandHistory.publish(pc.getCommandId(), PreparedCommand.CNAME_BINARY,
+        // binary);
 
         return binary;
     }
