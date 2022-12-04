@@ -10,6 +10,7 @@ import org.yamcs.utils.ByteArrayUtils;
 
 import com.google.protobuf.Message;
 
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 import static java.lang.Thread.sleep;
@@ -69,7 +70,8 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
         }
 
         if (serviceType == 23 && messageType == 14) {
-            packetParser.parseFileCopyPacket(binary);
+            HashMap<String,String> paths = packetParser.parseFileCopyPacket(binary);
+            packetParser.processPaths(paths);
         }
 
         // Publish the sequence count to Command History. This has no special
