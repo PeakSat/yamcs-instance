@@ -30,7 +30,7 @@
             </xtce:Parameter>
 
             <!--Parameter used in TM(128,128)-->
-            <xtce:Parameter name="message_logs" parameterTypeRef="/dt/string1"/>
+            <xtce:Parameter name="message_logs" parameterTypeRef="/dt/string1_t"/>
 
             <!--Parameters used in TM(4,2) Container-->
             <xtce:Parameter name="start_time_ST04" parameterTypeRef="/dt/uint32_t">
