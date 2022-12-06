@@ -143,6 +143,8 @@
                 <xtce:LongDescription>Each application process shall set the time field of each telemetry packet
                     it generates to the time tag of the related report.</xtce:LongDescription>
             </xtce:Parameter>
+            
+            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="parameterId"></xtce:Parameter>
 
         </xtce:ParameterSet>
 
@@ -212,7 +214,57 @@
 
             <xtce:SequenceContainer name="TM(20,2)_parameter_value_report">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="number_of_parameters"/>
+                    <xtce:ParameterRefEntry parameterRef="number_of_parameters"></xtce:ParameterRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="0" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="1" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="2" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="3" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="4" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="5" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="6" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="7" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="8" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="id_value_pair">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison parameterRef="number_of_parameters" value="9" comparisonOperator=">"/>
+                        </xtce:IncludeCondition>
+                    </xtce:ContainerRefEntry>
                 </xtce:EntryList>
                 <xtce:BaseContainer containerRef="packet_header_TM">
                     <xtce:RestrictionCriteria>
@@ -354,184 +406,297 @@
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
-            </xtce:SequenceContainer>
+            </xtce:SequenceContainer>id_value_pair
 
-            <!--The TM(20,2] Report-Value Parameter Groups Containers -->
-            <xtce:SequenceContainer name="ADCS_parameters_report">
+            <xtce:SequenceContainer name="id_value_pair">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroscopeX" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroscopeY" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroscopeZ" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroscopeXTemperature" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroscopeYTemperature" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroscopeZTemperature" />
+                    <xtce:ParameterRefEntry parameterRef="parameterId"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ReportParametersUnusedStack">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="6" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/AvailableHeap">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="7" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCUseRTT">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="8" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCUseUART">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="9" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCUseCAN">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="10" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSUseRTT">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="11" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>   
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSUseUART">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="12" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSUseCAN">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="13" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCBootCounter">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5004" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCMCUTemperature">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5002" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCPCBBoardTemperature1">
+                        <xtce:IncludeCondition> 
+                            <xtce:Comparison value="5000" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCPCBBoardTemperature2">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5001" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCMCUSysTick">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5015" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCOnBoardTime">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5010" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCMemoryPartition">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5012" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCCANBUSLoad1">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5016" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCCANBUSLoad2">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5017" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCCANBUSActive">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5018" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCNANDFLASHLCLThreshold">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5021" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCMRAMLCLThreshold">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5022" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCNANDFLASHON">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5023" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCMRAMON">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5024" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCSpacecraftTimeRef">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5009" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCOperationalMode">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5011" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCReconfigurationTimer">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5013" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                        </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCLastFailedEvent">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="5014" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerRawX">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1013" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerRawY">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1014" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerRawZ">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1015" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerFrequency">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1016" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerCycleCountX">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1017" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerCycleCountY">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1018" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerCycleCountZ">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1019" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerSelfTest">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1020" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroscopeX">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1043" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroscopeY">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1044" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroscopeZ">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1045" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerSignX">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1158" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerSignY">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1159" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerSignZ">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1160" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroscopeXTemperature">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1089" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroscopeYTemperature">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1090" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroscopeZTemperature">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1091" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSBoardTemperature1">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1092" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSBoardTemperature2">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1093" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroSignX">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1164" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroSignY">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1165" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroSignZ">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1166" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroBiasX">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1189" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroBiasY">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1190" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSGyroBiasZ">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1191" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSFlashInt">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1227" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSSRAMInt">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1228" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMCUTemperature">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1218" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMCUOnBoardTime">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1221" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSSystick">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1224" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSBootCounter">
+                        <xtce:IncludeCondition>
+                            <xtce:Comparison value="1220" parameterRef="parameterId" />
+                        </xtce:IncludeCondition>
+                    </xtce:ParameterRefEntry>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM(20,2)_parameter_value_report">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="6" parameterRef="number_of_parameters" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
-
-            <xtce:SequenceContainer name="mcu_parameters_report">
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCBootCounter" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCMCUSysTick" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCMCUTemperature" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMCUTemperature" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMCUOnBoardTime" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSSystick" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSBootCounter" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCOperationalMode" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCLastFailedEvent" />
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM(20,2)_parameter_value_report">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="9" parameterRef="number_of_parameters" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
-
-            <xtce:SequenceContainer name="ADCSMagnetometer_parameters_report">
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerRawX" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerRawY" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerRawZ" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerFrequency" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerCycleCountX" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerCycleCountY" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerCycleCountZ" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSMagnetometerSelfTest" />
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM(20,2)_parameter_value_report">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="8" parameterRef="number_of_parameters" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
-
-
-            <xtce:SequenceContainer name="can_parameters_report">
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCCANBUSLoad1" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCCANBUSLoad2" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCCANBUSActive" />
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM(20,2)_parameter_value_report">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="3" parameterRef="number_of_parameters" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
-
-            <xtce:SequenceContainer name="timer_parameters_report">
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCReconfigurationTimer" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCSpacecraftTimeRef" />
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM(20,2)_parameter_value_report">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="2" parameterRef="number_of_parameters" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
-
-            <xtce:SequenceContainer name="board_parameters_report">
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCPCBBoardTemperature1" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCPCBBoardTemperature2" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSBoardTemperature1" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSBoardTemperature2" />
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM(20,2)_parameter_value_report">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="4" parameterRef="number_of_parameters" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
-
-            <xtce:SequenceContainer name="memory_parameters_report">
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCNANDFLASHLCLThreshold" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCMRAMLCLThreshold" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCNANDFLASHON" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCMRAMON" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCMemoryPartition" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSFlashInt" />
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ADCSSRAMInt" />
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM(20,2)_parameter_value_report">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="7" parameterRef="number_of_parameters" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
-
-            <xtce:SequenceContainer name="time_parameter_report">
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="id" />
-                    <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCOnBoardTime" />
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="TM(20,2)_parameter_value_report">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="1" parameterRef="number_of_parameters" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="TM(4,2)_parameter_statistics_report">
