@@ -7,7 +7,7 @@
     <xtce:CommandMetaData>
         <xtce:MetaCommandSet>
 
-            <xtce:MetaCommand name="TC[23,14]:copy_file">
+            <xtce:MetaCommand name="TC(23,14)_copy_file">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <xtce:ArgumentAssignmentList>
                         <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="23" />
@@ -20,7 +20,7 @@
                     <xtce:Argument argumentTypeRef="/dt/string_t" name="target_file_path" />
                     <xtce:Argument argumentTypeRef="/dt/string_t" name="target_file_name" />
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC[23,14]:copy_file">
+                <xtce:CommandContainer name="TC(23,14)_copy_file">
                     <xtce:EntryList>
                         <xtce:ArgumentRefEntry argumentRef="source_file_path" />
                         <xtce:ArgumentRefEntry argumentRef="source_file_name" />
@@ -31,7 +31,7 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC(24,1):send_file_segment">
+            <xtce:MetaCommand name="TC(6,1)_load_object_memory_data">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <xtce:ArgumentAssignmentList>
                         <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="24" />
@@ -46,7 +46,8 @@
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="chunk_size"/>
                     <xtce:Argument argumentTypeRef="/dt/stringData_t" name="data"/>
                 </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(24,1):send_file_segment">
+
+                <xtce:CommandContainer name="TC(6,1)_load_object_memory_data">
                     <xtce:EntryList>
                         <xtce:ArgumentRefEntry argumentRef="target_file_path" />
                         <xtce:ArgumentRefEntry argumentRef="target_file_name" />
