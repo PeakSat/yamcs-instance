@@ -1,5 +1,6 @@
 package gr.spacedot.acubesat.file_handling.network.out;
 
+import java.io.File;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -38,8 +39,7 @@ public class PacketSender {
             byte[] currentChunk = chunks.get(chunk);
             String data = Base64.getEncoder().encodeToString(currentChunk);
 
-            mainBody.addProperty("target_file_path", chunkedFileEntity.getPath());
-            mainBody.addProperty("target_file_name", chunkedFileEntity.getName());
+            mainBody.addProperty("base", new File(chunkedFileEntity.getPath(),chunkedFileEntity.getName()).toString());
             mainBody.addProperty("total_chunks", totalChunks);
             mainBody.addProperty("current_chunk", chunk);
             mainBody.addProperty("chunk_size", data.length() * 8); //get bits
