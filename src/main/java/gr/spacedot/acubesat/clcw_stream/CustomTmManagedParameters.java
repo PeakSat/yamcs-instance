@@ -1,4 +1,4 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.clcw_stream;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.Map;
 
 import org.yamcs.ConfigurationException;
 import org.yamcs.YConfiguration;
-import gr.spacedot.acubesat.VcDownlinkHandler;
-import gr.spacedot.acubesat.VcTmPacketHandler;
+import gr.spacedot.acubesat.clcw_stream.VcDownlinkHandler;
+import gr.spacedot.acubesat.clcw_stream.VcTmPacketHandler;
 
 
 public class CustomTmManagedParameters extends DownlinkManagedParameters {

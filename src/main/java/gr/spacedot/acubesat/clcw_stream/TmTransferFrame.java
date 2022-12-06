@@ -1,4 +1,4 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.clcw_stream;
 /**
  * 
  * @author nm
@@ -13,8 +13,8 @@ public class TmTransferFrame extends DownlinkTransferFrame {
     private int shLength =-1;
     private boolean idle;
     
-    public TmTransferFrame(byte[] data, int spacecraftId, int virtualChannelId, byte[] ocf_data) {
-        super(data, spacecraftId, virtualChannelId, ocf_data);
+    public TmTransferFrame(byte[] data, int spacecraftId, int virtualChannelId) {
+        super(data, spacecraftId, virtualChannelId);
     }
 
     @Override

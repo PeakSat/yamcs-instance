@@ -65,6 +65,25 @@
 
             <!--CLCW field-->
 
+            <xtce:AggregateParameterType name="communications_link_control_word" shortDescription="CLCW">
+                <xtce:MemberList>
+                    <xtce:Member name="control_word_type" typeRef="control_word_type"></xtce:Member>
+                    <xtce:Member name="ClCW_version_number" typeRef="ClCW_version_number"></xtce:Member>
+                    <xtce:Member name="status_field" typeRef="status_field"></xtce:Member>
+                    <xtce:Member name="COP_in_effect" typeRef="COP_in_effect"></xtce:Member>
+                    <xtce:Member name="virtual_channel_ID_CLCW" typeRef="virtual_channel_ID_CLCW"></xtce:Member>
+                    <xtce:Member name="reserved_spare" typeRef="reserved_spare"></xtce:Member>
+                    <xtce:Member name="no_RF_available_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="no_bit_log_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="lockout_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="wait_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="retransmit_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="FARMB_counter" typeRef="FARMB_counter"></xtce:Member>
+                    <xtce:Member name="reserved_spare_2" typeRef="reserved_spare_2"></xtce:Member>
+                    <xtce:Member name="report_value" typeRef="report_value"></xtce:Member>
+                </xtce:MemberList>
+            </xtce:AggregateParameterType>
+
             <xtce:IntegerParameterType name="control_word_type">
                 <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
             </xtce:IntegerParameterType>

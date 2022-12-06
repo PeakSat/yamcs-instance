@@ -1,4 +1,4 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.clcw_stream;
 
 import org.yamcs.ConfigurationException;
 import org.yamcs.YConfiguration;

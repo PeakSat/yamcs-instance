@@ -1,15 +1,15 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.clcw_stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.yamcs.tctm.TcTmException;
-import gr.spacedot.acubesat.DownlinkManagedParameters.FrameErrorDetection;
-import gr.spacedot.acubesat.CustomTmManagedParameters.ServiceType;
-import gr.spacedot.acubesat.CustomTmManagedParameters.TmVcManagedParameters;
+import gr.spacedot.acubesat.clcw_stream.DownlinkManagedParameters.FrameErrorDetection;
+import gr.spacedot.acubesat.clcw_stream.CustomTmManagedParameters.ServiceType;
+import gr.spacedot.acubesat.clcw_stream.CustomTmManagedParameters.TmVcManagedParameters;
 import org.yamcs.tctm.ccsds.error.CrcCciitCalculator;
 import org.yamcs.utils.ByteArrayUtils;
-import gr.spacedot.acubesat.TmTransferFrame;
-import gr.spacedot.acubesat.DownlinkTransferFrame;
+import gr.spacedot.acubesat.clcw_stream.TmTransferFrame;
+import gr.spacedot.acubesat.clcw_stream.DownlinkTransferFrame;
 import org.yamcs.tctm.ccsds.CorruptedFrameException;
 
 /**
@@ -31,7 +31,7 @@ public class TmFrameDecoder implements TransferFrameDecoder {
     }
 
     @Override
-    public TmTransferFrame decode(byte[] data, int offset, int length, byte[] ocf_data) throws TcTmException {
+    public TmTransferFrame decode(byte[] data, int offset, int length) throws TcTmException {
         if (log.isTraceEnabled()) {
             log.trace("decoding frame buf length: {}, dataOffset: {} , dataLength: {}", data.length, offset, length);
         }
@@ -69,7 +69,7 @@ public class TmFrameDecoder implements TransferFrameDecoder {
             throw new TcTmException("Received data for unknown VirtualChannel " + virtualChannelId);
         }
 
-        TmTransferFrame ttf = new TmTransferFrame(data, spacecraftId, virtualChannelId, ocf_data);
+        TmTransferFrame ttf = new TmTransferFrame(data, spacecraftId, virtualChannelId);
         ttf.setVcFrameSeq(data[3] & 0xFF);
 
         boolean ocfPresent = (data[offset + 1] & 1) == 1;

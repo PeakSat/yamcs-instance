@@ -1,4 +1,4 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.clcw_stream;
 
 import java.util.Arrays;
 
@@ -12,7 +12,7 @@ import org.yamcs.yarch.Tuple;
 import org.yamcs.yarch.TupleDefinition;
 import org.yamcs.yarch.YarchDatabase;
 import org.yamcs.yarch.YarchDatabaseInstance;
-import gr.spacedot.acubesat.DownlinkTransferFrame;
+import gr.spacedot.acubesat.clcw_stream.DownlinkTransferFrame;
 
 /**
  * <p>

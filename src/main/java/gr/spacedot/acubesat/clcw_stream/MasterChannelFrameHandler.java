@@ -1,4 +1,4 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.clcw_stream;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,20 +10,20 @@ import org.yamcs.logging.Log;
 import org.yamcs.tctm.TcTmException;
 import org.yamcs.tctm.ccsds.TransferFrameDecoder.CcsdsFrameType;
 import org.yamcs.time.Instant;
-import gr.spacedot.acubesat.CustomClcwStreamHelper;
+import gr.spacedot.acubesat.clcw_stream.CustomClcwStreamHelper;
 
 
-import gr.spacedot.acubesat.TransferFrameDecoder;
-import gr.spacedot.acubesat.VcDownlinkHandler;
-import gr.spacedot.acubesat.DownlinkManagedParameters;
-import gr.spacedot.acubesat.FrameStreamHelper;
+import gr.spacedot.acubesat.clcw_stream.TransferFrameDecoder;
+import gr.spacedot.acubesat.clcw_stream.VcDownlinkHandler;
+import gr.spacedot.acubesat.clcw_stream.DownlinkManagedParameters;
+import gr.spacedot.acubesat.clcw_stream.FrameStreamHelper;
 import org.yamcs.tctm.ccsds.AosManagedParameters;
 import org.yamcs.tctm.ccsds.AosFrameDecoder;
-import gr.spacedot.acubesat.CustomTmManagedParameters;
-import gr.spacedot.acubesat.TmFrameDecoder;
+import gr.spacedot.acubesat.clcw_stream.CustomTmManagedParameters;
+import gr.spacedot.acubesat.clcw_stream.TmFrameDecoder;
 import org.yamcs.tctm.ccsds.UslpManagedParameters;
 import org.yamcs.tctm.ccsds.UslpFrameDecoder;
-import gr.spacedot.acubesat.DownlinkTransferFrame;
+import gr.spacedot.acubesat.clcw_stream.DownlinkTransferFrame;
 
 
 
@@ -89,10 +89,10 @@ public class MasterChannelFrameHandler {
         handlers = params.createVcHandlers(yamcsInstance, linkName);
     }
 
-    public void handleFrame(Instant ertime, byte[] data, int offset, int length, byte[] ocd_data) throws TcTmException {
+    public void handleFrame(Instant ertime, byte[] data, int offset, int length) throws TcTmException {
         DownlinkTransferFrame frame = null;
         try {
-            frame = frameDecoder.decode(data, offset, length, ocd_data);
+            frame = frameDecoder.decode(data, offset, length);
         } catch (TcTmException e) {
             badframeCount++;
             frameStreamHelper.sendBadFrame(badframeCount, ertime, data, offset, length, e.getMessage());

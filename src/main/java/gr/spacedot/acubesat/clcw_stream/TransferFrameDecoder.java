@@ -1,4 +1,4 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.clcw_stream;
 
 import org.yamcs.tctm.TcTmException;
 
@@ -37,5 +37,5 @@ public interface TransferFrameDecoder {
      * @return
      * @throws TcTmException
      */
-    DownlinkTransferFrame decode(byte[] data, int offset, int length, byte[] ocd_data) throws TcTmException;
+    DownlinkTransferFrame decode(byte[] data, int offset, int length) throws TcTmException;
 }

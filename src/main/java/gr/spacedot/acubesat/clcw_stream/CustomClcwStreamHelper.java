@@ -1,4 +1,4 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.clcw_stream;
 
 import java.util.Arrays;
 import java.util.function.IntConsumer;
@@ -37,6 +37,8 @@ public class CustomClcwStreamHelper {
     public static final String TM_ERTIME_COLUMN = "ertime";
     public static final String TM_OBT_COLUMN = "obt";
     public static final String TM_LINK_COLUMN = "link";
+    final static String SCID_CNAME = "scid";
+    final static String VCID_CNAME = "vcid";
     static TupleDefinition tdef;
     StreamSubscriber subscr;
     static {
@@ -48,8 +50,8 @@ public class CustomClcwStreamHelper {
         tdef.addColumn(new ColumnDefinition(TM_STATUS_COLUMN, DataType.INT));
         tdef.addColumn(new ColumnDefinition(TM_PACKET_COLUMN, DataType.BINARY));
         tdef.addColumn(new ColumnDefinition(TM_ERTIME_COLUMN, DataType.HRES_TIMESTAMP));
-        /*tdef.addColumn(new ColumnDefinition(TM_OBT_COLUMN, DataType.LONG));
-        tdef.addColumn(new ColumnDefinition(TM_LINK_COLUMN, DataType.ENUM));*/
+        tdef.addColumn(new ColumnDefinition(SCID_CNAME, DataType.INT));
+        tdef.addColumn(new ColumnDefinition(VCID_CNAME, DataType.INT));
     }
 
     /**
@@ -84,7 +86,7 @@ public class CustomClcwStreamHelper {
         long rectime = TimeEncoding.getWallclockTime();
         long gentime = TimeEncoding.getWallclockTime();
         int status = 1; 
-        stream.emitTuple(new Tuple(tdef, Arrays.asList(gentime, seq, rectime, status, getData(data, offset+length, 4), frame.getEarthRceptionTime())));
+        stream.emitTuple(new Tuple(tdef, Arrays.asList(gentime, seq, rectime, status, getData(data, offset+length-4, 4), frame.getEarthRceptionTime(), frame.getSpacecraftId(), frame.getVirtualChannelId())));
     }
 
     /**

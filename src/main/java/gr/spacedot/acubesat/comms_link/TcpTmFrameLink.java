@@ -1,4 +1,4 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.comms_link;
 
 import java.io.EOFException;
 import java.io.IOException;

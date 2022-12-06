@@ -1,12 +1,12 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.clcw_stream;
 
 import java.util.Map;
 
 import org.yamcs.YConfiguration;
 import org.yamcs.tctm.Link;
 import org.yamcs.utils.YObjectLoader;
-import gr.spacedot.acubesat.VcDownlinkHandler;
-import gr.spacedot.acubesat.VcDownlinkManagedParameters;
+import gr.spacedot.acubesat.clcw_stream.VcDownlinkHandler;
+import gr.spacedot.acubesat.clcw_stream.VcDownlinkManagedParameters;
 /**
  * Stores configuration related to Master channels for downlink.
  * 

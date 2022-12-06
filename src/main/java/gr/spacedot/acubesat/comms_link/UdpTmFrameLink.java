@@ -1,4 +1,4 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.comms_link;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -8,7 +8,7 @@ import java.net.SocketException;
 import org.yamcs.ConfigurationException;
 import org.yamcs.YConfiguration;
 import org.yamcs.utils.StringConverter;
-import gr.spacedot.acubesat.AbstractTmFrameLink;
+import gr.spacedot.acubesat.clcw_stream.AbstractTmFrameLink;
 
 /**
  * Receives telemetry fames via UDP. One UDP datagram = one TM frame.
@@ -38,7 +38,7 @@ public class UdpTmFrameLink extends AbstractTmFrameLink implements Runnable {
         super.init(instance, name, config);
         port = config.getInt("port");
         int maxLength = frameHandler.getMaxFrameSize();
-        datagram = new DatagramPacket(new byte[maxLength], maxLength);
+        datagram = new DatagramPacket(new byte[maxLength+4], maxLength+4);
     }
 
     @Override
@@ -66,12 +66,12 @@ public class UdpTmFrameLink extends AbstractTmFrameLink implements Runnable {
             try {
                 tmSocket.receive(datagram);
                 if (log.isTraceEnabled()) {
-                    log.trace("Received datagram of length {}: {}", datagram.getLength(), StringConverter
-                            .arrayToHexString(datagram.getData(), datagram.getOffset(), datagram.getLength(), true));
+                    log.trace("Received datagram of length {}: {}", (datagram.getLength()), StringConverter
+                            .arrayToHexString(datagram.getData(), datagram.getOffset(), (datagram.getLength()), true));
                 }
 
                 handleFrame(timeService.getHresMissionTime(), datagram.getData(), datagram.getOffset(),
-                        datagram.getLength(), datagram.getData());
+                        (datagram.getLength()));
 
             } catch (IOException e) {
                 if (!isRunningAndEnabled()) {

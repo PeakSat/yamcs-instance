@@ -1,4 +1,4 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.clcw_stream;
 
 import org.yamcs.ConfigurationException;
 import org.yamcs.TmPacket;
@@ -16,7 +16,7 @@ import org.yamcs.time.Instant;
 import org.yamcs.time.TimeService;
 import org.yamcs.utils.YObjectLoader;
 
-import gr.spacedot.acubesat.VcDownlinkHandler;
+import gr.spacedot.acubesat.clcw_stream.VcDownlinkHandler;
 import org.yamcs.tctm.ccsds.PacketDecoder;
 
 /**

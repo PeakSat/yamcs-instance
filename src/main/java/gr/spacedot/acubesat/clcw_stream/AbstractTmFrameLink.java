@@ -1,4 +1,4 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.clcw_stream;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +12,9 @@ import org.yamcs.tctm.Link;
 import org.yamcs.tctm.RawFrameDecoder;
 import org.yamcs.tctm.TcTmException;
 import org.yamcs.time.Instant;
-import gr.spacedot.acubesat.MasterChannelFrameHandler;
-//import org.yamcs.tctm.ccsds.MasterChannelFrameHandler;
+import gr.spacedot.acubesat.clcw_stream.MasterChannelFrameHandler;
 import org.yamcs.tctm.ccsds.CcsdsFrameDecoder;
-import gr.spacedot.acubesat.VcDownlinkHandler;
+import gr.spacedot.acubesat.clcw_stream.VcDownlinkHandler;
 
 
 public abstract class AbstractTmFrameLink extends AbstractLink implements AggregatedDataLink {
@@ -69,7 +68,7 @@ public abstract class AbstractTmFrameLink extends AbstractLink implements Aggreg
      * @param length
      *            - length of the frame data
      */
-    protected void handleFrame(Instant ert, byte[] data, int offset, int length, byte[] ocf_data) {
+    protected void handleFrame(Instant ert, byte[] data, int offset, int length) {
         try {
             frameCount.getAndIncrement();
             if (rawFrameDecoder != null) {
@@ -93,7 +92,7 @@ public abstract class AbstractTmFrameLink extends AbstractLink implements Aggreg
                 errFrameCount++;
             }
 
-            frameHandler.handleFrame(ert, data, offset, length, ocf_data);
+            frameHandler.handleFrame(ert, data, offset, length);
         } catch (TcTmException e) {
             eventProducer.sendWarning("Error processing frame: " + e.toString());
         }

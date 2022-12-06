@@ -60,7 +60,7 @@ dataLinks:
   - name: UDP_COMMS
     enabledAtStartup: true
     #class: org.yamcs.tctm.ccsds.UdpTmFrameLink
-    class: gr.spacedot.acubesat.UdpTmFrameLink
+    class: gr.spacedot.acubesat.comms_link.UdpTmFrameLink
     port: 10013 #UDP port to listen to
     frameType: "TM"
     spacecraftId: 0xAB

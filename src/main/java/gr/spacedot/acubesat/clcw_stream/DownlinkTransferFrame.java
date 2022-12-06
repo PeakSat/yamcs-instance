@@ -1,4 +1,4 @@
-package gr.spacedot.acubesat;
+package gr.spacedot.acubesat.clcw_stream;
 
 import org.yamcs.time.Instant;
 
@@ -43,7 +43,6 @@ public abstract class DownlinkTransferFrame {
     final protected int spacecraftId;
     final protected int virtualChannelId;
     final protected byte[] data;
-    final protected byte[] ocf_data;
     
     long vcFrameSeq;
     
@@ -55,11 +54,10 @@ public abstract class DownlinkTransferFrame {
     int firstHeaderPointer;
     private Instant ertime = Instant.INVALID_INSTANT;
     
-    public DownlinkTransferFrame(byte[] data, int spacecraftId, int virtualChannelId, byte[] ocf_data) {
+    public DownlinkTransferFrame(byte[] data, int spacecraftId, int virtualChannelId) {
         this.data = data;
         this.spacecraftId = spacecraftId;
         this.virtualChannelId = virtualChannelId;
-        this.ocf_data=ocf_data;
     }
     /**
      * 
@@ -175,13 +173,10 @@ public abstract class DownlinkTransferFrame {
      * 
      * @return the Operational Control Field.
      */
-    public byte[] getOcf() {
-        return ocf_data;
-    }
 
-    /*public int getOcf() {
+    public int getOcf() {
         return ocf;
-    }*/
+    }
     /**
      * 
      * @return true if this frame has an Operation Control Field set.
