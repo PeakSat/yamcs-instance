@@ -12,9 +12,10 @@ import org.yamcs.tctm.Link;
 import org.yamcs.tctm.RawFrameDecoder;
 import org.yamcs.tctm.TcTmException;
 import org.yamcs.time.Instant;
-import org.yamcs.tctm.ccsds.MasterChannelFrameHandler;
+import gr.spacedot.acubesat.MasterChannelFrameHandler;
+//import org.yamcs.tctm.ccsds.MasterChannelFrameHandler;
 import org.yamcs.tctm.ccsds.CcsdsFrameDecoder;
-import org.yamcs.tctm.ccsds.VcDownlinkHandler;
+import gr.spacedot.acubesat.VcDownlinkHandler;
 
 
 public abstract class AbstractTmFrameLink extends AbstractLink implements AggregatedDataLink {
