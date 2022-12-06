@@ -424,7 +424,7 @@
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint4_t" signed="false">
-                <xtce:IntegerDataEncoding sizeInBits="4" />
+                <xtce:IntegerDataEncoding sizeInBits="4"/>
             </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="completion_ack">
