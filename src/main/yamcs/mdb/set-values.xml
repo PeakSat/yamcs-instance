@@ -14,13 +14,13 @@
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t{1-5}" name="number_of_parameters"/>
                     <xtce:Argument argumentTypeRef="/dt/writableFloatParameterArray" name="parameter_ids" />
-                    <xtce:Argument argumentTypeRef="/dt/floatArray_t" name="new_values"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/floatArray_t" name="new_values"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC(20,3)_set_float_parameter_values">
                     <xtce:EntryList >
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
                         <xtce:ArgumentRefEntry argumentRef="parameter_ids" />
-                        <xtce:ArgumentRefEntry argumentRef="new_values"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="new_values"/>
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>
@@ -124,7 +124,7 @@
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t{1-9}" name="number_of_parameters" />
                     <xtce:Argument argumentTypeRef="/dt/writableBoolArray" name="parameter_ids"/>
-                    <xtce:Argument argumentTypeRef="/dt/boolArray_t" name="new_values"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/boolArray_t" name="new_values"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC(20,3)_set_bool_parameter_values">
                     <xtce:EntryList >
