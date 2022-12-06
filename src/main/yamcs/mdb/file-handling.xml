@@ -41,15 +41,14 @@
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/string_t" name="base"/>
                     <xtce:Argument argumentTypeRef="/dt/string_t" name="number_of_objects"/>
-                    <xtce:Argument argumentTypeRef="/dt/binaryDataArray_t" name="binary_data"/>
-
+                    <xtce:Argument argumentTypeRef="/dt/binaryData_t" name="binary_data"/>
                 </xtce:ArgumentList>
 
                 <xtce:CommandContainer name="TC(6,1)_load_object_memory_data">
                     <xtce:EntryList>
                         <xtce:ArgumentRefEntry argumentRef="base" />
                         <xtce:ArgumentRefEntry argumentRef="number_of_objects" />
-                        <xtce:ArgumentRefEntry argumentRef="binary_data" shortDescription="This hold offset, data , data size and checksum" />
+                        <xtce:ArgumentRefEntry argumentRef="binary_data" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>

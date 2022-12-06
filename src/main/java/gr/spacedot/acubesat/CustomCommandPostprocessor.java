@@ -8,6 +8,12 @@ import org.yamcs.tctm.CcsdsSeqCountFiller;
 import org.yamcs.tctm.CommandPostprocessor;
 import org.yamcs.utils.ByteArrayUtils;
 
+<<<<<<< HEAD
+=======
+import com.google.protobuf.Message;
+
+import java.util.HashMap;
+>>>>>>> parent of 7760b54 (add binary data array)
 import java.util.logging.Logger;
 
 import static java.lang.Thread.sleep;

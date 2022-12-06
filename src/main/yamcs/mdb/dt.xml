@@ -995,22 +995,6 @@
                     </xtce:SizeInBits>
                 </xtce:BinaryDataEncoding>
             </xtce:BinaryArgumentType>
-
-            <xtce:ArrayArgumentType name="binaryDataArray_t" arrayTypeRef="binaryData_t">
-                <xtce:DimensionList>
-                    <xtce:Dimension>
-                        <xtce:StartingIndex>
-                            <xtce:FixedValue>0</xtce:FixedValue>
-                        </xtce:StartingIndex>
-                        <xtce:EndingIndex>
-                            <xtce:DynamicValue>
-                                <xtce:ArgumentInstanceRef argumentRef="number_of_objects"/>
-                                <xtce:LinearAdjustment intercept="-1"/>
-                            </xtce:DynamicValue>
-                        </xtce:EndingIndex>
-                    </xtce:Dimension>
-                </xtce:DimensionList>
-            </xtce:ArrayArgumentType>
         </xtce:ArgumentTypeSet>
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>
