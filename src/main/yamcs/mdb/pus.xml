@@ -144,7 +144,7 @@
                     it generates to the time tag of the related report.</xtce:LongDescription>
             </xtce:Parameter>
             
-            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="parameterId"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/dt/uint16_t" name="parameterId"/>
 
         </xtce:ParameterSet>
 
@@ -214,7 +214,7 @@
 
             <xtce:SequenceContainer name="TM(20,2)_parameter_value_report">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="number_of_parameters"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="number_of_parameters"/>
                     <xtce:ContainerRefEntry containerRef="id_value_pair">
                         <xtce:IncludeCondition>
                             <xtce:Comparison parameterRef="number_of_parameters" value="0" comparisonOperator=">"/>
@@ -410,7 +410,7 @@
 
             <xtce:SequenceContainer name="id_value_pair">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="parameterId"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="parameterId"/>
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/ReportParametersUnusedStack">
                         <xtce:IncludeCondition>
                             <xtce:Comparison value="6" parameterRef="parameterId" />
@@ -773,14 +773,14 @@
                     <xtce:Argument argumentTypeRef="/dt/application_process_ID" name="application_process_ID" initialValue="OBC"/>
                     <xtce:Argument argumentTypeRef="/dt/sequence_flags" name="sequence_flags"/>
                     <!--Secondary Header-->
-                    <xtce:Argument argumentTypeRef="/dt/int4_t" name="PUS_version_number"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint4_t" name="PUS_version_number"/>
                     <xtce:Argument argumentTypeRef="/dt/completion_ack" name="completion_ack" initialValue="completion_ack"/>
                     <xtce:Argument argumentTypeRef="/dt/progress_of_execution_ack" name="progress_of_execution_ack" initialValue="progress_of_execution_ack"/>
                     <xtce:Argument argumentTypeRef="/dt/start_of_execution_ack" name="start_of_execution_ack" initialValue="start_of_execution_ack"/>
                     <xtce:Argument argumentTypeRef="/dt/acceptance_ack" name="acceptance_ack" initialValue="acceptance_ack"/>
-                    <xtce:Argument argumentTypeRef="/dt/service_type_ID_TC" name="service_type_ID"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/message_subtype_ID_TC" name="message_subtype_ID"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="source_ID"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/service_type_ID_TC" name="service_type_ID"/>
+                    <xtce:Argument argumentTypeRef="/dt/message_subtype_ID_TC" name="message_subtype_ID"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="source_ID"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="packet_header_TC">
                     <xtce:EntryList>

@@ -423,12 +423,12 @@
                 <xtce:IntegerDataEncoding sizeInBits="2"/>
             </xtce:IntegerArgumentType>
 
-            <xtce:IntegerArgumentType name="int4_t">
-                <xtce:IntegerDataEncoding sizeInBits="4"></xtce:IntegerDataEncoding>
+            <xtce:IntegerArgumentType name="uint4_t">
+                <xtce:IntegerDataEncoding sizeInBits="4"/>
             </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="completion_ack">
-                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+                <xtce:IntegerDataEncoding sizeInBits="1"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
                     <xtce:Enumeration value="1" label="completion_ack" />
@@ -436,7 +436,7 @@
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="progress_of_execution_ack">
-                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+                <xtce:IntegerDataEncoding sizeInBits="1"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
                     <xtce:Enumeration value="1" label="progress_of_execution_ack" />
@@ -444,7 +444,7 @@
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="start_of_execution_ack">
-                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+                <xtce:IntegerDataEncoding sizeInBits="1"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
                     <xtce:Enumeration value="1" label="start_of_execution_ack" />
@@ -452,7 +452,7 @@
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="acceptance_ack">
-                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+                <xtce:IntegerDataEncoding sizeInBits="1"/>
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
                     <xtce:Enumeration value="1" label="acceptance_ack" />
