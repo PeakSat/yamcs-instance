@@ -290,8 +290,6 @@
                 </xtce:BaseContainer>
             </xtce:SequenceContainer>
 
-            <!--The Housekeeping Structure Containers-->
-
             <xtce:SequenceContainer name="Housekeeping_OBC_1">
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="/AcubeSAT/OBCPCBBoardTemperature1" />
@@ -406,7 +404,7 @@
                         </xtce:ComparisonList>
                     </xtce:RestrictionCriteria>
                 </xtce:BaseContainer>
-            </xtce:SequenceContainer>id_value_pair
+            </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="id_value_pair">
                 <xtce:EntryList>
