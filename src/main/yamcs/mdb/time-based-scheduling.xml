@@ -14,11 +14,11 @@
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/uint16_t" name="N" />
                     <xtce:Argument argumentTypeRef="/dt/release_time_calendar" name="release_time" />
-                    <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="PUS_version_number_of_time_scheduled"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="aknowledgement_flags_of_time_scheduled"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/service_type_ID_TC" name="service_type_ID_of_time_scheduled"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/message_subtype_ID_TC" name="message_subtype_ID_of_time_scheduled"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="source_ID_of_time_scheduled"></xtce:Argument>
+                    <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="PUS_version_number_of_time_scheduled"/>
+                    <xtce:Argument argumentTypeRef="/dt/aknowledgement_flags" name="aknowledgement_flags_of_time_scheduled"/>
+                    <xtce:Argument argumentTypeRef="/dt/service_type_ID_TC" name="service_type_ID_of_time_scheduled"/>
+                    <xtce:Argument argumentTypeRef="/dt/message_subtype_ID_TC" name="message_subtype_ID_of_time_scheduled"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="source_ID_of_time_scheduled"/>
                 </xtce:ArgumentList>
                 <xtce:CommandContainer name="TC(11,4)_insert_activity_into_time_based_schedule">
                     <xtce:EntryList>
