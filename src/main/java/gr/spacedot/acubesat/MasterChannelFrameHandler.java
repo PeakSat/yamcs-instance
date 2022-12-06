@@ -89,10 +89,10 @@ public class MasterChannelFrameHandler {
         handlers = params.createVcHandlers(yamcsInstance, linkName);
     }
 
-    public void handleFrame(Instant ertime, byte[] data, int offset, int length) throws TcTmException {
+    public void handleFrame(Instant ertime, byte[] data, int offset, int length, byte[] ocd_data) throws TcTmException {
         DownlinkTransferFrame frame = null;
         try {
-            frame = frameDecoder.decode(data, offset, length);
+            frame = frameDecoder.decode(data, offset, length, ocd_data);
         } catch (TcTmException e) {
             badframeCount++;
             frameStreamHelper.sendBadFrame(badframeCount, ertime, data, offset, length, e.getMessage());
@@ -114,7 +114,7 @@ public class MasterChannelFrameHandler {
         frameStreamHelper.sendGoodFrame(frameCount, frame, data, offset, length);
         
         if (frame.hasOcf() && clcwHelper != null) {
-            clcwHelper.sendClcw(frame.getOcf());
+            clcwHelper.sendClcw(frameCount, frame, data, offset, length);
         }
 
         if (frame.containsOnlyIdleData()) {

@@ -37,5 +37,5 @@ public interface TransferFrameDecoder {
      * @return
      * @throws TcTmException
      */
-    DownlinkTransferFrame decode(byte[] data, int offset, int length) throws TcTmException;
+    DownlinkTransferFrame decode(byte[] data, int offset, int length, byte[] ocd_data) throws TcTmException;
 }

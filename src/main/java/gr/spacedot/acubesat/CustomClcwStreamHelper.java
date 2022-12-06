@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.function.IntConsumer;
 
 import org.yamcs.ConfigurationException;
+import org.yamcs.utils.TimeEncoding;
 import org.yamcs.yarch.ColumnDefinition;
 import org.yamcs.yarch.DataType;
 import org.yamcs.yarch.Stream;
@@ -32,9 +33,9 @@ public class CustomClcwStreamHelper {
     public static final String SEQNUM_COLUMN = "seqNum";
     public static final String TM_RECTIME_COLUMN = "rectime";
     public static final String TM_STATUS_COLUMN = "status";
+    public static final String TM_PACKET_COLUMN = "packet";
     public static final String TM_ERTIME_COLUMN = "ertime";
     public static final String TM_OBT_COLUMN = "obt";
-    public static final String TM_PACKET_COLUMN = "packet";
     public static final String TM_LINK_COLUMN = "link";
     static TupleDefinition tdef;
     StreamSubscriber subscr;
@@ -43,11 +44,11 @@ public class CustomClcwStreamHelper {
         //tdef.addColumn(new ColumnDefinition(CLCW_CNAME, DataType.INT));
         tdef.addColumn(new ColumnDefinition(GENTIME_COLUMN, DataType.TIMESTAMP));
         tdef.addColumn(new ColumnDefinition(SEQNUM_COLUMN, DataType.INT));
-        /*tdef.addColumn(new ColumnDefinition(TM_RECTIME_COLUMN, DataType.INT));
+        tdef.addColumn(new ColumnDefinition(TM_RECTIME_COLUMN, DataType.TIMESTAMP));
         tdef.addColumn(new ColumnDefinition(TM_STATUS_COLUMN, DataType.INT));
-        tdef.addColumn(new ColumnDefinition(TM_PACKET_COLUMN, DataType.INT));
+        tdef.addColumn(new ColumnDefinition(TM_PACKET_COLUMN, DataType.BINARY));
         tdef.addColumn(new ColumnDefinition(TM_ERTIME_COLUMN, DataType.HRES_TIMESTAMP));
-        tdef.addColumn(new ColumnDefinition(TM_OBT_COLUMN, DataType.LONG));
+        /*tdef.addColumn(new ColumnDefinition(TM_OBT_COLUMN, DataType.LONG));
         tdef.addColumn(new ColumnDefinition(TM_LINK_COLUMN, DataType.ENUM));*/
     }
 
@@ -75,8 +76,15 @@ public class CustomClcwStreamHelper {
      * 
      * @param clcw
      */
-    public void sendClcw(int clcw) {
+    /*public void sendClcw(int clcw) {
         stream.emitTuple(new Tuple(tdef, Arrays.asList(clcw)));
+    }*/
+
+    public void sendClcw(int seq, DownlinkTransferFrame frame, byte[] data, int offset, int length) {
+        long rectime = TimeEncoding.getWallclockTime();
+        long gentime = TimeEncoding.getWallclockTime();
+        int status = 1; 
+        stream.emitTuple(new Tuple(tdef, Arrays.asList(gentime, seq, rectime, status, getData(data, offset+length, 4), frame.getEarthRceptionTime())));
     }
 
     /**
@@ -102,6 +110,13 @@ public class CustomClcwStreamHelper {
     public void quit() {
         if (subscr != null) {
             stream.removeSubscriber(subscr);
+        }
+    }
+    private byte[] getData(byte[]data, int offset, int length) {
+        if(offset==0 && length == data.length) {
+            return data;
+        } else {
+            return Arrays.copyOfRange(data, offset, offset+length);
         }
     }
 }

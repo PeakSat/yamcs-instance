@@ -71,7 +71,7 @@ public class UdpTmFrameLink extends AbstractTmFrameLink implements Runnable {
                 }
 
                 handleFrame(timeService.getHresMissionTime(), datagram.getData(), datagram.getOffset(),
-                        datagram.getLength());
+                        datagram.getLength(), datagram.getData());
 
             } catch (IOException e) {
                 if (!isRunningAndEnabled()) {

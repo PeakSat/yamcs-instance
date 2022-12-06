@@ -31,7 +31,7 @@ public class TmFrameDecoder implements TransferFrameDecoder {
     }
 
     @Override
-    public TmTransferFrame decode(byte[] data, int offset, int length) throws TcTmException {
+    public TmTransferFrame decode(byte[] data, int offset, int length, byte[] ocf_data) throws TcTmException {
         if (log.isTraceEnabled()) {
             log.trace("decoding frame buf length: {}, dataOffset: {} , dataLength: {}", data.length, offset, length);
         }
@@ -69,7 +69,7 @@ public class TmFrameDecoder implements TransferFrameDecoder {
             throw new TcTmException("Received data for unknown VirtualChannel " + virtualChannelId);
         }
 
-        TmTransferFrame ttf = new TmTransferFrame(data, spacecraftId, virtualChannelId);
+        TmTransferFrame ttf = new TmTransferFrame(data, spacecraftId, virtualChannelId, ocf_data);
         ttf.setVcFrameSeq(data[3] & 0xFF);
 
         boolean ocfPresent = (data[offset + 1] & 1) == 1;

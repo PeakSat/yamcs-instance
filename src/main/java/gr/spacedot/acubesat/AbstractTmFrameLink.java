@@ -69,7 +69,7 @@ public abstract class AbstractTmFrameLink extends AbstractLink implements Aggreg
      * @param length
      *            - length of the frame data
      */
-    protected void handleFrame(Instant ert, byte[] data, int offset, int length) {
+    protected void handleFrame(Instant ert, byte[] data, int offset, int length, byte[] ocf_data) {
         try {
             frameCount.getAndIncrement();
             if (rawFrameDecoder != null) {
@@ -93,7 +93,7 @@ public abstract class AbstractTmFrameLink extends AbstractLink implements Aggreg
                 errFrameCount++;
             }
 
-            frameHandler.handleFrame(ert, data, offset, length);
+            frameHandler.handleFrame(ert, data, offset, length, ocf_data);
         } catch (TcTmException e) {
             eventProducer.sendWarning("Error processing frame: " + e.toString());
         }
