@@ -78,8 +78,7 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
         commandHistory.publish(pc.getCommandId(), "ccsds-seqcount", seqCount);
 
         // Since we modified the binary, update the binary in Command History too.
-        // commandHistory.publish(pc.getCommandId(), PreparedCommand.CNAME_BINARY,
-        // binary);
+        // commandHistory.publish(pc.getCommandId(), PreparedCommand.CNAME_BINARY,binary);
 
         return binary;
     }
