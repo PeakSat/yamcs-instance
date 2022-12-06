@@ -38,7 +38,7 @@ public class UdpTmFrameLink extends AbstractTmFrameLink implements Runnable {
         super.init(instance, name, config);
         port = config.getInt("port");
         int maxLength = frameHandler.getMaxFrameSize();
-        datagram = new DatagramPacket(new byte[maxLength+4], maxLength+4);
+        datagram = new DatagramPacket(new byte[maxLength], maxLength);
     }
 
     @Override
