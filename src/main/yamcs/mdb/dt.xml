@@ -985,6 +985,16 @@
                     </xtce:SizeInBits>
                 </xtce:BinaryDataEncoding>
             </xtce:StringArgumentType>
+
+            <xtce:BinaryArgumentType name="binaryData_t">
+                <xtce:BinaryDataEncoding>
+                    <xtce:SizeInBits>
+                        <xtce:DynamicValue>
+                            <xtce:ParameterInstanceRef parameterRef="_yamcs_ignore"/>
+                        </xtce:DynamicValue>
+                    </xtce:SizeInBits>
+                </xtce:BinaryDataEncoding>
+            </xtce:BinaryArgumentType>
         </xtce:ArgumentTypeSet>
     </xtce:CommandMetaData>
 </xtce:SpaceSystem>
