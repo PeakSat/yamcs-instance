@@ -108,7 +108,6 @@ def receive_tc(simulator):
     while True:
         data, _ = clientconnTC.recvfrom(4096)
         simulator.last_tc = data
-        processTC(data)
         if data != b"":
             simulator.tc_counter += 1
 
