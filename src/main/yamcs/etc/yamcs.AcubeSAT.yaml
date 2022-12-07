@@ -59,12 +59,13 @@ dataLinks:
 
   - name: UDP_COMMS
     enabledAtStartup: true
-    #class: org.yamcs.tctm.ccsds.UdpTmFrameLink
     class: gr.spacedot.acubesat.comms_link.UdpTmFrameLink
     port: 10013 #UDP port to listen to
     frameType: "TM"
     spacecraftId: 0xAB
-    frameLength: 176 # 189 for the 3 packets   176 clcw 172 2 packets
+    # adjust the frameLength  depending on the frame sent via the simulator
+    frameLength: 176 # 189 for the "frame_3_packets" frame // 176 for the "frame_2_packets_with_clcw" frame 
+    # 172 for the "frame_2_packets" frame
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
     insertZoneLength: 0 #ignored for TM frames
     errorDetection: NONE #NONE, CRC16 or CRC32 (only for USLP)
@@ -73,14 +74,12 @@ dataLinks:
     badFrameStream: "bad_frame_stream"   #publish the bad frames on this stream
     virtualChannels:
       - vcId: 0
-        #ocfPresent: true # there is a flag in the header for this 
-        service: "PACKET"  #supported services for AOS are M_PDU, B_PDU or VCA_SDU
+        service: "PACKET"  
         maxPacketLength: 2048
         packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
         stream: "tm_realtime" #which yamcs stream to put the data on
-      - vcId: 1
-        #ocfPresent: true # there is a flag in the header for this 
-        service: "PACKET"  #supported services for AOS are PACKET(M_PDU), B_PDU or VCA_SDU
+      - vcId: 1 
+        service: "PACKET" 
         maxPacketLength: 2048
         stripEncapsulationHeader: true # drop the header before passing the packet to the preprocessor
         packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
@@ -93,7 +92,6 @@ dataLinks:
         invalidPackets: DIVERT
         invalidPacketsStream: invalid_tm_stream
       - vcId: 2
-        #ocfPresent: true # there is a flag in the header for this 
         service: "PACKET" 
         maxPacketLength: 2048
         packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
