@@ -19,7 +19,8 @@ import org.yamcs.yarch.YarchDatabaseInstance;
  * A CLCW stream is a stream used to pass the CLCW (Command Link Control Word - see CCSDS 232.0-B-3) between the
  * receiver and the FOP1 processor.
  * <p>
- * It is just a stream where the tuples have one column, an integer.
+ * The Tuple of this stream has multiple columns and passes the parameters of the clcw field into the defined rootContainer 
+ * in order to be visualised in the web-interface
  * <p>
  * This class provides some methods to help create, publish and subscribe to such a stream.
  * 
@@ -28,30 +29,24 @@ import org.yamcs.yarch.YarchDatabaseInstance;
  */
 public class CustomClcwStreamHelper {
     Stream stream;
-    final static String CLCW_CNAME = "clcw";
     public static final String GENTIME_COLUMN = "gentime";
     public static final String SEQNUM_COLUMN = "seqNum";
     public static final String TM_RECTIME_COLUMN = "rectime";
     public static final String TM_STATUS_COLUMN = "status";
     public static final String TM_PACKET_COLUMN = "packet";
     public static final String TM_ERTIME_COLUMN = "ertime";
-    public static final String TM_OBT_COLUMN = "obt";
-    public static final String TM_LINK_COLUMN = "link";
-    final static String SCID_CNAME = "scid";
-    final static String VCID_CNAME = "vcid";
+    public static final String SCID_CNAME = "scid";
+    public static final String VCID_CNAME = "vcid";
     static TupleDefinition tdef;
     StreamSubscriber subscr;
     static {
         tdef = new TupleDefinition();
-        //tdef.addColumn(new ColumnDefinition(CLCW_CNAME, DataType.INT));
         tdef.addColumn(new ColumnDefinition(GENTIME_COLUMN, DataType.TIMESTAMP));
         tdef.addColumn(new ColumnDefinition(SEQNUM_COLUMN, DataType.INT));
         tdef.addColumn(new ColumnDefinition(TM_RECTIME_COLUMN, DataType.TIMESTAMP));
         tdef.addColumn(new ColumnDefinition(TM_STATUS_COLUMN, DataType.INT));
         tdef.addColumn(new ColumnDefinition(TM_PACKET_COLUMN, DataType.BINARY));
         tdef.addColumn(new ColumnDefinition(TM_ERTIME_COLUMN, DataType.HRES_TIMESTAMP));
-        //tdef.addColumn(new ColumnDefinition(TM_OBT_COLUMN, DataType.LONG));
-        //tdef.addColumn(new ColumnDefinition(TM_LINK_COLUMN, DataType.STRING));
         tdef.addColumn(new ColumnDefinition(SCID_CNAME, DataType.INT));
         tdef.addColumn(new ColumnDefinition(VCID_CNAME, DataType.INT));
     }
@@ -76,19 +71,16 @@ public class CustomClcwStreamHelper {
     }
 
     /**
-     * Sends the CLCW down the stream
+     * Sends the CLCW  fields down the "clcw" stream
      * 
      * @param clcw
      */
-    /*public void sendClcw(int clcw) {
-        stream.emitTuple(new Tuple(tdef, Arrays.asList(clcw)));
-    }*/
 
     public void sendClcw(int seq, DownlinkTransferFrame frame, byte[] data, int offset, int length) {
         long rectime = TimeEncoding.getWallclockTime();
+        //not able to get the generation time. Not needed as info just to fill the columns of the tuple.
         long gentime = TimeEncoding.getWallclockTime();
         int status = 0; 
-        //stream.emitTuple(new Tuple(tdef, Arrays.asList(gentime, seq, rectime, status, getData(data, offset+length-4, 4), frame.getEarthRceptionTime(), 0, "UDP_COMMS.vc0 ")));
         stream.emitTuple(new Tuple(tdef, Arrays.asList(gentime, seq, rectime, status, getData(data, offset+length-4, 4), frame.getEarthRceptionTime(), frame.getSpacecraftId(), frame.getVirtualChannelId())));
     }
 
