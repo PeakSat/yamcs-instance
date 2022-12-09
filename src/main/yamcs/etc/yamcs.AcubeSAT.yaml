@@ -73,6 +73,8 @@ mdb:
   spec: "mdb/set-values.xml"
 - type: xtce
   spec: "mdb/report-values.xml"
+- type: xtce
+  spec: "mdb/file-handling.xml"
 
 
 

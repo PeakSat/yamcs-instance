@@ -20,16 +20,19 @@ def send_tm(simulator):
     host = "localhost"
     portOBC = 10015
     tm_socket_OBC = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tm_socket_OBC.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     portADCS = 10016
     tm_socket_ADCS = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tm_socket_ADCS.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     portCAN = 10017
     tm_socket_CAN = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tm_socket_CAN.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     tm_socket_OBC.bind((host, portOBC))
     tm_socket_OBC.listen(1)
-    print("server  10015 listening")
+    print("\nserver  10015 listening")
 
     tm_socket_ADCS.bind((host, portADCS))
     tm_socket_ADCS.listen(1)
@@ -97,10 +100,11 @@ def receive_tc(simulator):
     host = "localhost"
     portTC = 10025
     tc_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tc_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     tc_socket.bind((host, portTC))
     tc_socket.listen(1)
     print("server  10025 1istening")
-    clientconnTC, clientaddrTC = tc_socket.accept()
+    clientconnTC, _ = tc_socket.accept()
     while True:
         data, _ = clientconnTC.recvfrom(4096)
         simulator.last_tc = data
@@ -125,10 +129,10 @@ class Simulator:
         self.tc_thread.start()
 
     def print_status(self):
-        cmdhex = None
+        cmdhex: str = ""
         if self.last_tc:
             cmdhex = binascii.hexlify(self.last_tc).decode("ascii")
-        return "Sent: {} packets. Received: {} commands. Last command: {}".format(
+        return "Sent: {} packets. Received: {} commands. Last command {}".format(
             self.tm_counter, self.tc_counter, cmdhex
         )
 
