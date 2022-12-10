@@ -70,7 +70,7 @@ dataLinks:
     insertZoneLength: 0 #ignored for TM frames
     errorDetection: NONE #NONE, CRC16 or CRC32 (only for USLP)
     clcwStream: "clcw"    #publish the received CLCW (what they call OCF in the CCSDS AOS/TM/USLP standards) to this stream, to be used by the FOP1 
-    goodFrameStream: "good_frame_stream" #publish the good frames on this stream
+    goodFrameStream: "frame_header" #publish the good frames on this stream
     badFrameStream: "bad_frame_stream"   #publish the bad frames on this stream
     virtualChannels:
       - vcId: 0
@@ -137,6 +137,8 @@ streamConfig:
     - name: "tm_dump"
     - name: "clcw"
       rootContainer: "/pus/communications_link_control_word"
+    - name: "frame_header"
+      rootContainer: "/pus/Transfer_Frame_Primary_Header"
   invalidTm: "invalid_tm_stream"
   cmdHist: ["cmdhist_realtime", "cmdhist_dump"]
   event: ["events_realtime", "events_dump"]

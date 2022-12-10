@@ -243,6 +243,12 @@
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
+            <xtce:SequenceContainer name="Transfer_Frame_Primary_Header">
+                <xtce:EntryList>
+                    <xtce:ParameterRefEntry parameterRef="Transfer_Frame_Header"></xtce:ParameterRefEntry>
+                </xtce:EntryList>
+            </xtce:SequenceContainer>
+
             <xtce:SequenceContainer name="Transfer_Frame_Secondary_Header">
                 <xtce:EntryList>
                     <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_version_number"></xtce:ParameterRefEntry>
