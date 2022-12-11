@@ -560,7 +560,14 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-           <xtce:ArrayArgumentType arrayTypeRef="writableFloatParameters_t" name="writableFloatParameterArray">
+            <xtce:AggregateArgumentType name="TC(20,3)_set_float_parameter_values_aggregate">
+                <xtce:MemberList>
+                    <xtce:Member typeRef="writableFloatParameters_t" name="float_parameter"/>
+                    <xtce:Member typeRef="float_t" name="new_value"/>
+                </xtce:MemberList>
+            </xtce:AggregateArgumentType>
+
+           <xtce:ArrayArgumentType arrayTypeRef="TC(20,3)_set_float_parameter_values_aggregate" name="writableFloatParameterArray">
             <xtce:DimensionList>
                 <xtce:Dimension>
                     <xtce:StartingIndex>
@@ -585,7 +592,14 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:ArrayArgumentType arrayTypeRef="writableUint32Parameters_t" name="writableUint32ParametersArray">
+            <xtce:AggregateArgumentType name="TC(20,3)_set_uint32_parameter_values_aggregate">
+                <xtce:MemberList>
+                    <xtce:Member typeRef="writableUint32Parameters_t" name="uint32_parameter"/>
+                    <xtce:Member typeRef="uint32_t" name="new_value"/>
+                </xtce:MemberList>
+            </xtce:AggregateArgumentType>
+
+            <xtce:ArrayArgumentType arrayTypeRef="TC(20,3)_set_uint32_parameter_values_aggregate" name="writableUint32ParametersArray">
                 <xtce:DimensionList>
                     <xtce:Dimension>
                         <xtce:StartingIndex>
@@ -624,7 +638,14 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:ArrayArgumentType arrayTypeRef="writableInt8Parameters_t" name="writableInt8ParametersArray">
+            <xtce:AggregateArgumentType name="TC(20,3)_set_int8_parameter_values_aggregate">
+                <xtce:MemberList>
+                    <xtce:Member typeRef="writableInt8Parameters_t" name="int8_parameter"/>
+                    <xtce:Member typeRef="int8_t" name="new_value"/>
+                </xtce:MemberList>
+            </xtce:AggregateArgumentType>
+
+            <xtce:ArrayArgumentType arrayTypeRef="TC(20,3)_set_int8_parameter_values_aggregate" name="writableInt8ParametersArray">
                 <xtce:DimensionList>
                     <xtce:Dimension>
                         <xtce:StartingIndex>
@@ -655,7 +676,14 @@
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:ArrayArgumentType arrayTypeRef="writableBoolParameters_t" name="writableBoolArray">
+            <xtce:AggregateArgumentType name="TC(20,3)_set_bool_parameter_values_aggregate">
+                <xtce:MemberList>
+                    <xtce:Member typeRef="writableBoolParameters_t" name="bool_parameter"/>
+                    <xtce:Member typeRef="bool_t" name="new_value"/>
+                </xtce:MemberList>
+            </xtce:AggregateArgumentType>
+
+            <xtce:ArrayArgumentType arrayTypeRef="TC(20,3)_set_bool_parameter_values_aggregate" name="writableBoolArray">
                 <xtce:DimensionList>
                     <xtce:Dimension>
                         <xtce:StartingIndex>
