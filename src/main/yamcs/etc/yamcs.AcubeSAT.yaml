@@ -57,6 +57,43 @@ dataLinks:
     packetInputStreamArgs: 
       maxPacketLength: 10000
 
+  - name: UDP_COMMS
+    enabledAtStartup: true
+    class: gr.spacedot.acubesat.comms_link.UdpTmFrameLink
+    port: 10013 
+    frameType: "TM"
+    spacecraftId: 0xAB
+    frameLength: 176 # 189 for the "frame_3_packets" frame // 176 for the "frame_2_packets_with_clcw" frame 
+    # 172 for the "frame_2_packets" frame
+    packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+    errorDetection: NONE 
+    clcwStream: "clcw"   
+    goodFrameStream: "good_frame_stream" 
+    badFrameStream: "bad_frame_stream"   
+    virtualChannels:
+      - vcId: 0
+        service: "PACKET"  
+        maxPacketLength: 2048
+        packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+        stream: "tm_realtime" 
+      - vcId: 1 
+        service: "PACKET" 
+        maxPacketLength: 2048
+        packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+        packetPreprocessorArgs:
+          timestampOffset: 2 
+          seqCountOffset: 10 
+          errorDetection: 
+            type: "CRC-16-CCIIT" 
+        stream: "tm_realtime"
+        invalidPackets: DIVERT
+        invalidPacketsStream: invalid_tm_stream
+      - vcId: 2
+        service: "PACKET" 
+        maxPacketLength: 2048
+        packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+        stream: "tm_realtime"
+      
   - name: tcp-out
     enableAtStartup: true
     class: org.yamcs.tctm.TcpTcDataLink
@@ -93,6 +130,9 @@ streamConfig:
   tm:
     - name: "tm_realtime"
     - name: "tm_dump"
+    - name: "clcw"
+      rootContainer: "/pus/communications_link_control_word"
+  invalidTm: "invalid_tm_stream"
   cmdHist: ["cmdhist_realtime", "cmdhist_dump"]
   event: ["events_realtime", "events_dump"]
   param: ["pp_realtime", "sys_param", "proc_param"]
@@ -100,4 +140,3 @@ streamConfig:
   tc:
     - name: "tc_realtime"
       processor: "realtime"
-

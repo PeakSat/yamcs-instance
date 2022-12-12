@@ -194,86 +194,12 @@
 
             <!-- CLCW -->
 
-            <xtce:Parameter parameterTypeRef="/dt/control_word_type" name="control_word_type" initialValue="0">
-                <xtce:LongDescription>This field is used to distinguish the CLCW from another type of report that may be alternatively contained in the field that 
-                carries the CLCW.
+            <xtce:Parameter parameterTypeRef="/dt/communications_link_control_word" name="CLCW">
+                <xtce:LongDescription>A structure containing all parameters for the Transfer Frame Header
                 </xtce:LongDescription>
             </xtce:Parameter>
 
-            <xtce:Parameter parameterTypeRef="/dt/ClCW_version_number" name="ClCW_version_number" initialValue="0">
-                <xtce:LongDescription>The CLCW Version Number is included to provide future growth flexibility. At present a single ‘Version-1’ CLCW, whose binary 
-                encoded Version Number is ‘00’, is defined in this Recommended Standard.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/status_field" name="status_field">
-                <xtce:LongDescription>Application of the Status Field is mission-specified.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/COP_in_effect" name="COP_in_effect" initialValue="01">
-                <xtce:LongDescription>The COP in Effect parameter shall be used to indicate the COP that is being used.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/virtual_channel_ID_CLCW" name="virtual_channel_ID_CLCW">
-                <xtce:LongDescription>Each Virtual Channel in use has its own CLCW reporting activated.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/reserved_spare" name="reserved_spare" initialValue="0">
-                <xtce:LongDescription>These two bits are reserved by CCSDS for future application.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="no_RF_available_flag">
-                <xtce:LongDescription>The No RF Available Flag shall provide a logical indication of the ‘ready’ status of the radio frequency (RF) elements 
-                within the space link provided by the Physical Layer.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="no_bit_log_flag">
-                <xtce:LongDescription>The No Bit Lock Flag is an optional, mission-specific engineering measurement that provides a performance quality 
-                indicator that indicates specifically whether the Physical Layer is working normally by having enough signal energy to achieve bit 
-                synchronization with the received data stream. If the No Bit Lock Flag is not used, it shall be set permanently to ‘0’. If used, ‘0’ shall 
-                indicate bit lock has been achieved and ‘1’ shall indicate bit lock has not been achieved.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="lockout_flag">
-                <xtce:LongDescription>The Lockout Flag shall be used to indicate the Lockout status of the FARM of a particular Virtual Channel.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="wait_flag">
-                <xtce:LongDescription>The Wait Flag shall be used to indicate that the receiving end is unable to accept data for processing on a particular Virtual Channel.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/flag" name="retransmit_flag">
-                <xtce:LongDescription>The Retransmit Flag is used to speed the operation of the COP by providing immediate indication to the FOP at the sending 
-                end that retransmission is necessary.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/FARMB_counter" name="FARMB_counter">
-                <xtce:LongDescription>This field contains the two least significant bits of a FARM-B Counter. This counter is maintained within the FARM and 
-                increments once each time a Type-B Transfer Frame is accepted in Bypass mode on a particular Virtual Channel. The field supports the verification
-                that Type-B Transfer Frames (Control or User Data) were accepted by the receiving end.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/reserved_spare_2" name="reserved_spare_2" initialValue="0">
-                <xtce:LongDescription>This bit is reserved by CCSDS for future application.
-                </xtce:LongDescription>
-            </xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/dt/report_value" name="report_value">
-                <xtce:LongDescription>This field contains the value of the Next Expected Frame Sequence Number, N(R), which is equal to the value of FARM’s 
-                Receiver_Frame_Sequence_Number, V(R). The FARM V(R) counter increments once each time a Type-AD Transfer Frame is accepted on a particular
-                Virtual Channel.
-                </xtce:LongDescription>
-            </xtce:Parameter>
+            
             <!--Frame Error Control Field-->
 
             <xtce:Parameter parameterTypeRef="/dt/frame_error_control" name="frame_error_control">
@@ -286,10 +212,15 @@
         </xtce:ParameterSet>
 
         <xtce:ContainerSet>
+            <xtce:SequenceContainer name="packet_header_TM">
+                <xtce:EntryList>
+                    <xtce:ContainerRefEntry containerRef="secondary_header_TM"></xtce:ContainerRefEntry>
+                </xtce:EntryList>
+                <xtce:BaseContainer containerRef="primary_header_TM"></xtce:BaseContainer>
+            </xtce:SequenceContainer>    
+
             <xtce:SequenceContainer name="primary_header_TM">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="Transfer_Frame_Header"></xtce:ParameterRefEntry>
-
                     <xtce:ParameterRefEntry parameterRef="packet_version_number"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="packet_type"></xtce:ParameterRefEntry>
                     <xtce:ParameterRefEntry parameterRef="secondary_header_flag"></xtce:ParameterRefEntry>
@@ -310,13 +241,6 @@
                     <xtce:ParameterRefEntry parameterRef="destination_ID"/>
                     <xtce:ParameterRefEntry parameterRef="time"/>
                 </xtce:EntryList>
-            </xtce:SequenceContainer>
-
-            <xtce:SequenceContainer name="packet_header_TM">
-                <xtce:EntryList>
-                    <xtce:ContainerRefEntry containerRef="secondary_header_TM"/>
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="primary_header_TM"/>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="Transfer_Frame_Secondary_Header">
@@ -343,20 +267,7 @@
                 sending end.
                 </xtce:LongDescription>
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="control_word_type"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="ClCW_version_number"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="status_field"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="COP_in_effect"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="virtual_channel_ID_CLCW"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="reserved_spare"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="no_RF_available_flag"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="no_bit_log_flag"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="lockout_flag"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="wait_flag"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="retransmit_flag"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="FARMB_counter"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="reserved_spare_2"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="report_value"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="CLCW"></xtce:ParameterRefEntry>
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
