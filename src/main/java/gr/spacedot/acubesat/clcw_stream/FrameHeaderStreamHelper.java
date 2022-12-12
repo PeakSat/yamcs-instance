@@ -1,6 +1,7 @@
 package gr.spacedot.acubesat.clcw_stream;
 
 import java.util.Arrays;
+import java.util.function.IntConsumer;
 
 import org.yamcs.ConfigurationException;
 import org.yamcs.time.Instant;
@@ -12,7 +13,7 @@ import org.yamcs.yarch.Tuple;
 import org.yamcs.yarch.TupleDefinition;
 import org.yamcs.yarch.YarchDatabase;
 import org.yamcs.yarch.YarchDatabaseInstance;
-import gr.spacedot.acubesat.clcw_stream.DownlinkTransferFrame;
+
 
 /**
  * <p>
@@ -25,62 +26,43 @@ import gr.spacedot.acubesat.clcw_stream.DownlinkTransferFrame;
  */
 public class FrameHeaderStreamHelper {
 
-    final static String RECTIME_CNAME = "rectime";
-    final static String SEQ_CNAME = "seq";
-
-    final static String ERTIME_CNAME = "ertime";
-    final static String SCID_CNAME = "scid";
-    final static String VCID_CNAME = "vcid";
-    final static String DATA_CNAME = "data";
-
+    static TupleDefinition fhtdef;
     public static final String GENTIME_COLUMN = "gentime";
-    public static final String TM_STATUS_COLUMN = "status";
-
     public static final String SEQNUM_COLUMN = "seqNum";
     public static final String TM_RECTIME_COLUMN = "rectime";
-    
-    
-
-    static TupleDefinition gftdef;
-    static TupleDefinition bftdef;
+    public static final String TM_STATUS_COLUMN = "status";
+    public static final String TM_PACKET_COLUMN = "packet";
+    public static final String TM_ERTIME_COLUMN = "ertime";
+    public static final String SCID_CNAME = "scid";
+    public static final String VCID_CNAME = "vcid";
 
     static {
-        gftdef = new TupleDefinition();
-        gftdef.addColumn(new ColumnDefinition(GENTIME_COLUMN, DataType.TIMESTAMP));
-        gftdef.addColumn(new ColumnDefinition(SEQNUM_COLUMN, DataType.INT));
-        gftdef.addColumn(new ColumnDefinition(TM_RECTIME_COLUMN, DataType.TIMESTAMP));
-        gftdef.addColumn(new ColumnDefinition(TM_STATUS_COLUMN, DataType.INT));
-        gftdef.addColumn(new ColumnDefinition(DATA_CNAME, DataType.BINARY));
-        gftdef.addColumn(new ColumnDefinition(ERTIME_CNAME, DataType.HRES_TIMESTAMP));
-        gftdef.addColumn(new ColumnDefinition(SCID_CNAME, DataType.INT));
-        gftdef.addColumn(new ColumnDefinition(VCID_CNAME, DataType.INT));
-
-
-        bftdef = new TupleDefinition();
-        bftdef.addColumn(new ColumnDefinition(RECTIME_CNAME, DataType.TIMESTAMP));
-        bftdef.addColumn(new ColumnDefinition(SEQ_CNAME, DataType.INT));
-        bftdef.addColumn(new ColumnDefinition(ERTIME_CNAME, DataType.HRES_TIMESTAMP));
-        bftdef.addColumn(new ColumnDefinition(DATA_CNAME, DataType.BINARY));
+        fhtdef = new TupleDefinition();
+        fhtdef.addColumn(new ColumnDefinition(GENTIME_COLUMN, DataType.TIMESTAMP));
+        fhtdef.addColumn(new ColumnDefinition(SEQNUM_COLUMN, DataType.INT));
+        fhtdef.addColumn(new ColumnDefinition(TM_RECTIME_COLUMN, DataType.TIMESTAMP));
+        fhtdef.addColumn(new ColumnDefinition(TM_STATUS_COLUMN, DataType.INT));
+        fhtdef.addColumn(new ColumnDefinition(TM_PACKET_COLUMN, DataType.BINARY));
+        fhtdef.addColumn(new ColumnDefinition(TM_ERTIME_COLUMN, DataType.HRES_TIMESTAMP));
+        fhtdef.addColumn(new ColumnDefinition(SCID_CNAME, DataType.INT));
+        fhtdef.addColumn(new ColumnDefinition(VCID_CNAME, DataType.INT));
 
     }
-    Stream goodFrameStream;
-    Stream badFrameStream;
+   
+    Stream stream;
 
-    public FrameStreamHelper(String yamcsInstance, String goodFrameStreamName, String badFrameStreamName) {
+    public FrameHeaderStreamHelper(String yamcsInstance, String FrameHeaaderStreamName) {
         YarchDatabaseInstance ydb = YarchDatabase.getInstance(yamcsInstance);
-        if (goodFrameStreamName != null) {
-            goodFrameStream = getStream(ydb, goodFrameStreamName);
-        }
-        if (badFrameStreamName != null) {
-            badFrameStream = getStream(ydb, badFrameStreamName);
+        if (stream != null) {
+            stream = getStream(ydb, FrameHeaaderStreamName);
         }
     }
 
-    private static Stream getStream(YarchDatabaseInstance ydb, String streamName) {
-        Stream stream = ydb.getStream(streamName);
+    public Stream getStream(YarchDatabaseInstance ydb, String streamName) {
+        stream = ydb.getStream(streamName);
         if (stream == null) {
             try {
-                ydb.execute("create stream " + streamName + gftdef.getStringDefinition());
+                ydb.execute("create stream " + streamName + fhtdef.getStringDefinition());
             } catch (Exception e) {
                 throw new ConfigurationException(e);
             }
@@ -89,35 +71,11 @@ public class FrameHeaderStreamHelper {
         return stream;
     }
 
-
-    /*public void sendGoodFrame(int seq, DownlinkTransferFrame frame, byte[] data, int offset, int length) {
-        if (goodFrameStream == null) {
-            return;
-        }
+    public void sendFrameHeaderStream(int seq, DownlinkTransferFrame frame, byte[] data, int offset, int length) {
         long rectime = TimeEncoding.getWallclockTime();
-        goodFrameStream.emitTuple(new Tuple(gftdef, Arrays.asList(rectime, seq, frame.getEarthRceptionTime(),
-                frame.getSpacecraftId(), frame.getVirtualChannelId(),
-                getData(data, offset, length))));
-    }*/
-
-    public void sendGoodFrame(int seq, DownlinkTransferFrame frame, byte[] data, int offset, int length) {
-        if (goodFrameStream == null) {
-            return;
-        }
-        //not able to get the generation time. Not needed as info just to fill the columns of the tuple.
         long gentime = TimeEncoding.getWallclockTime();
         int status = 0; 
-        long rectime = TimeEncoding.getWallclockTime();
-        goodFrameStream.emitTuple(new Tuple(gftdef, Arrays.asList(gentime, seq, rectime, status, getData(data, offset, 6), frame.getEarthRceptionTime(),
-                frame.getSpacecraftId(), frame.getVirtualChannelId())));
-
-    }
-
-    public void sendBadFrame(int seq, Instant ertime, byte[] data, int offset, int length, String errMsg) {
-        if (badFrameStream == null) {
-            return;
-        }
-
+        stream.emitTuple(new Tuple(fhtdef, Arrays.asList(gentime, seq, rectime, status, getData(data, 0, 6), frame.getEarthRceptionTime(), frame.getSpacecraftId(), frame.getVirtualChannelId())));
     }
 
     private byte[] getData(byte[]data, int offset, int length) {

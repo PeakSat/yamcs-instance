@@ -63,6 +63,7 @@ dataLinks:
     port: 10013 #UDP port to listen to
     frameType: "TM"
     spacecraftId: 0xAB
+    frameHeaderStream: "frame_header"
     # adjust the frameLength  depending on the frame sent via the simulator
     frameLength: 176 # 189 for the "frame_3_packets" frame // 176 for the "frame_2_packets_with_clcw" frame 
     # 172 for the "frame_2_packets" frame
@@ -70,7 +71,7 @@ dataLinks:
     insertZoneLength: 0 #ignored for TM frames
     errorDetection: NONE #NONE, CRC16 or CRC32 (only for USLP)
     clcwStream: "clcw"    #publish the received CLCW (what they call OCF in the CCSDS AOS/TM/USLP standards) to this stream, to be used by the FOP1 
-    goodFrameStream: "frame_header" #publish the good frames on this stream
+    goodFrameStream: "good_frame_stream" #publish the good frames on this stream
     badFrameStream: "bad_frame_stream"   #publish the bad frames on this stream
     virtualChannels:
       - vcId: 0
