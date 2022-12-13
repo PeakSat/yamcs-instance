@@ -60,34 +60,30 @@ dataLinks:
   - name: UDP_COMMS
     enabledAtStartup: true
     class: gr.spacedot.acubesat.comms_link.UdpTmFrameLink
-    port: 10013 #UDP port to listen to
+    port: 10013 
     frameType: "TM"
     spacecraftId: 0xAB
-    frameHeaderStream: "frame_header"
-    # adjust the frameLength  depending on the frame sent via the simulator
     frameLength: 176 # 189 for the "frame_3_packets" frame // 176 for the "frame_2_packets_with_clcw" frame 
     # 172 for the "frame_2_packets" frame
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
-    insertZoneLength: 0 #ignored for TM frames
-    errorDetection: NONE #NONE, CRC16 or CRC32 (only for USLP)
-    clcwStream: "clcw"    #publish the received CLCW (what they call OCF in the CCSDS AOS/TM/USLP standards) to this stream, to be used by the FOP1 
-    goodFrameStream: "good_frame_stream" #publish the good frames on this stream
-    badFrameStream: "bad_frame_stream"   #publish the bad frames on this stream
+    errorDetection: NONE 
+    clcwStream: "clcw"   
+    goodFrameStream: "good_frame_stream" 
+    badFrameStream: "bad_frame_stream"   
     virtualChannels:
       - vcId: 0
         service: "PACKET"  
         maxPacketLength: 2048
         packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
-        stream: "tm_realtime" #which yamcs stream to put the data on
+        stream: "tm_realtime" 
       - vcId: 1 
         service: "PACKET" 
         maxPacketLength: 2048
-        stripEncapsulationHeader: true # drop the header before passing the packet to the preprocessor
         packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
         packetPreprocessorArgs:
-          timestampOffset: 2 #where to read the 8 bytes timestamp offset from
-          seqCountOffset: 10 #where to read the 4 bytes sequence count from
-          errorDetection: #last two bytes are used for the error detection
+          timestampOffset: 2 
+          seqCountOffset: 10 
+          errorDetection: 
             type: "CRC-16-CCIIT" 
         stream: "tm_realtime"
         invalidPackets: DIVERT
@@ -96,10 +92,8 @@ dataLinks:
         service: "PACKET" 
         maxPacketLength: 2048
         packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
-        stream: "tm_dump"
-      #vcId 63 is reserved for idle data and it does not have to be defined
+        stream: "tm_realtime"
       
-
   - name: tcp-out
     enableAtStartup: true
     class: org.yamcs.tctm.TcpTcDataLink

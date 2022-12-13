@@ -53,7 +53,6 @@ public class MasterChannelFrameHandler {
      * Constructs based on the configuration
      * 
      * @param config
-
      */
     public MasterChannelFrameHandler(String yamcsInstance, String linkName, YConfiguration config) {
         log = new Log(getClass(), yamcsInstance);
