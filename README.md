@@ -1,6 +1,6 @@
-# AcubeSAT YAMCS Instance
+# AcubeSAT YAMCS Instance - COMMS Interface
 
-This repository holds the source code of the YAMCS application used for the AcubeSAT mission.
+This repository holds the source code of the YAMCS application used for the communication with COMMS. To find more information regarding the specific features of this communication as well as the changes made in Yamcs visit the [COMMS - YAMCS interface](https://gitlab.com/acubesat/ops/yamcs-instance/-/wikis/COMMS-YAMCS-Interface-info) wiki page.
 
 The primary **Mission's Database** is stored at YAMCS server, in which **Telemetry** data can be archived and then processed using the YAMCS web interface. The operator can also send **Telecommands** that are stored at the YAMCS database.
 
@@ -29,35 +29,36 @@ To start pushing CCSDS packets into YAMCS, run the included Python script:
 
     python simulator.py
 
-This script opens the packets.raw file and sends packets at 1 Hz over TCP to YAMCS. To see information regarding the incoming packets and updates of the values of the parameters go to the "Packets" and "Parameters" pages, in the Telemetry section, on YAMCS web interface. 
+This script opens the packets.raw file and sends packets at 1 Hz over TCP and frames over UDP to YAMCS. To see information regarding the incoming packets and updates of the values of the parameters go to the "Packets" and "Parameters" pages, in the Telemetry section, on YAMCS web interface. 
 
-The structure of the TM packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32) and the [ECSS-E-ST-70-41C](https://cloud.spacedot.gr/index.php/apps/files/?dir=/AcubeSAT/Subsystems/OBC%20-%20On-board%20Computer/Standards&openfile=18872) standard , consisting of a 6-byte primary header, a 11-byte secondary header and the data field.
+The structure of the TM packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/132x0b3.pdf#page=60) , consisting of a 6-byte tranfer frame primary header and optional 6-byte trailers.
+If there is a need to send specific packets, then [CCSDS Space Data Link Protocols](https://gitlab.com/acubesat/comms/software/ccsds-telemetry-packets) is required. To install, run:
 
-If there is a need to send specific packets, then [ecss-services](https://gitlab.com/acubesat/obc/ecss-services) is required. To install, run:
+    git clone https://gitlab.com/acubesat/comms/software/ccsds-telemetry-packets.git
 
-    git clone https://gitlab.com/acubesat/obc/ecss-services.git --recurse-submodules
-
-Currently, this functionality is implemented in TCP in the branch [`ops-ecss-tcp`](https://gitlab.com/acubesat/obc/ecss-services/-/tree/ops-ecss-tcp). Generated packets will be sent to port 10015 that YAMCS listens to.
+Currently, this functionality is not yet implemented in TCP. When implemented the generated packets will be sent to port 10013 that YAMCS listens to.
 
 ## Telecommanding
 
-This project defines a few example CCSDS telecommands. The structure of the TC packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32) and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard, consisting of a 6-byte primary header, a 5-byte secondary header and the data field.
+This project defines a few example CCSDS telecommands. The structure of the TC packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/232x0b4.pdf#page=69), consisting of a 5-byte tranfer frame primary header and optional 2-byte trailers.
 
 Telecommands can be sent through the "Commanding" section on YAMCS web interface.
 
 ## Data-Links
 
-In yamcs.myproject.yaml file (located in yamcs-instance/src/main/yamcs/etc), four Data-Links are implemented sending and receiving data in different ports. Every time a packet gets sent or received, the count of the respective data-link is increased.
+In yamcs.myproject.yaml file (located in yamcs-instance/src/main/yamcs/etc), six Data-Links are implemented sending and receiving data in different ports. Every time a packet gets sent or received, the count of the respective data-link is increased.
 
 * Telemetry Data-Links 
     * "CAN-bus", receiving data through port 10017
     * "ADCS-UART", receiving data through port 10016
     * "OBC-UART", receiving data through port 10015
+    * "UDP_COMMS", receiving data through port 10013
 
-* Telecommanding Data-Link
+* Telecommanding Data-Links
     * "tcp-out", sending data at port 10025
+    * "UDP_FRAME_OUT", sending data at port 10024
 
-For now, simulator.py sends randomly packets to all three TM Data-Links, but they will, later, be used for the differentiation of the incoming packets based on their origin, as reflected by their names.
+For now, simulator.py sends randomly packets to all three TCP TM Data-Links and custom frames to the UDP_COMMS link.
 
 ## Mission Database
 
