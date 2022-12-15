@@ -44,6 +44,7 @@ public class MasterChannelFrameHandler {
     DownlinkManagedParameters params;
     final CustomClcwStreamHelper clcwHelper;
     final FrameStreamHelper frameStreamHelper;
+    final FrameHeaderStreamHelper frameHeaderStreamHelper;
 
     String yamcsInstance;
     Log log;
@@ -64,8 +65,11 @@ public class MasterChannelFrameHandler {
 
         String goodFrameStreamName = config.getString("goodFrameStream", null);
         String badFrameStreamName = config.getString("badFrameStream", null);
+        String frameHeaderStreamName = config.getString("frameHeaderStream", null);
         
         frameStreamHelper = new FrameStreamHelper(yamcsInstance, goodFrameStreamName, badFrameStreamName);
+
+        frameHeaderStreamHelper = new FrameHeaderStreamHelper(yamcsInstance, frameHeaderStreamName);
 
         switch (frameType) {
         /*case AOS:
@@ -112,6 +116,8 @@ public class MasterChannelFrameHandler {
         frameCount++;
         
         frameStreamHelper.sendGoodFrame(frameCount, frame, data, offset, length);
+
+        frameHeaderStreamHelper.sendFrameHeaderStream(frameCount, frame, data, offset, length);
         
         if (frame.hasOcf() && clcwHelper != null) {
             clcwHelper.sendClcw(frameCount, frame, data, offset, length);
