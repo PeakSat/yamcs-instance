@@ -69,7 +69,8 @@ dataLinks:
     errorDetection: NONE 
     clcwStream: "clcw"   
     goodFrameStream: "good_frame_stream" 
-    badFrameStream: "bad_frame_stream"   
+    badFrameStream: "bad_frame_stream"
+    frameHeaderStream: "frame_header"
     virtualChannels:
       - vcId: 0
         service: "PACKET"  

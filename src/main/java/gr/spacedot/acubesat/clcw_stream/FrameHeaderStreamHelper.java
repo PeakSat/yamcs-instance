@@ -14,11 +14,14 @@ import org.yamcs.yarch.TupleDefinition;
 import org.yamcs.yarch.YarchDatabase;
 import org.yamcs.yarch.YarchDatabaseInstance;
 
+import org.yamcs.yarch.StreamSubscriber;
+
+
 
 /**
- * <p>
+ * 
  * Saves frame headers into the "frame_header" stream.
- * <p>Creates the stream if it doesn't already exist 
+ *  
  * 
  * 
  * @author nm
@@ -26,6 +29,7 @@ import org.yamcs.yarch.YarchDatabaseInstance;
  */
 public class FrameHeaderStreamHelper {
 
+    Stream stream;
     static TupleDefinition fhtdef;
     public static final String GENTIME_COLUMN = "gentime";
     public static final String SEQNUM_COLUMN = "seqNum";
@@ -48,13 +52,17 @@ public class FrameHeaderStreamHelper {
         fhtdef.addColumn(new ColumnDefinition(VCID_CNAME, DataType.INT));
 
     }
-   
-    Stream stream;
 
-    public FrameHeaderStreamHelper(String yamcsInstance, String FrameHeaaderStreamName) {
+    public FrameHeaderStreamHelper(String yamcsInstance, String FrameHeaderStreamName) {
         YarchDatabaseInstance ydb = YarchDatabase.getInstance(yamcsInstance);
-        if (stream != null) {
-            stream = getStream(ydb, FrameHeaaderStreamName);
+        stream = ydb.getStream(FrameHeaderStreamName);
+        if (stream == null) {
+            try {
+                ydb.execute("create stream " + FrameHeaderStreamName + fhtdef.getStringDefinition());
+            } catch (Exception e) {
+                throw new ConfigurationException(e);
+            }
+            stream = ydb.getStream(FrameHeaderStreamName);
         }
     }
 
