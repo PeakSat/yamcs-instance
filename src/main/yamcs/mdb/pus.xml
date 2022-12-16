@@ -874,14 +874,6 @@
         <xtce:MetaCommandSet>
             <xtce:MetaCommand name="header" abstract="true">
                 <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/transfer_frame_version_number" name="transfer_frame_version_number"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/flag" name="bypass_flag"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/flag" name="control_command_flag"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/spacecraft_ID" name="spacecraft_ID"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/virtual_channel_ID_TC" name="virtual_channel_ID_TC"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/frame_length" name="frame_length"></xtce:Argument>
-                    <xtce:Argument argumentTypeRef="/dt/frame_sequence_number" name="frame_sequence_number"></xtce:Argument>
-
                     <xtce:Argument argumentTypeRef="/dt/packet_version_number" name="packet_version_number"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/packet_type" name="packet_type"></xtce:Argument>
                     <xtce:Argument argumentTypeRef="/dt/secondary_header_flag" name="secondary_header_flag"></xtce:Argument>

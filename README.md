@@ -40,7 +40,7 @@ Currently, this functionality is not yet implemented in TCP. When implemented th
 
 ## Telecommanding
 
-This project defines a few example CCSDS telecommands. The structure of the TC packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/232x0b4.pdf#page=69), consisting of a 5-byte tranfer frame primary header and optional 2-byte trailers.
+This project defines a few example CCSDS telecommands. Yamcs won't be sending Frames to COMMS. It will continue to send the TC packets, the structure of which complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32) and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard, consisting of a 6-byte primary header, a 5-byte secondary header and the data field. COMMS will, then, distribute these TCs into Frames.
 
 Telecommands can be sent through the "Commanding" section on YAMCS web interface.
 
@@ -56,7 +56,6 @@ In yamcs.myproject.yaml file (located in yamcs-instance/src/main/yamcs/etc), six
 
 * Telecommanding Data-Links
     * "tcp-out", sending data at port 10025
-    * "UDP_FRAME_OUT", sending data at port 10024
 
 For now, simulator.py sends randomly packets to all three TCP TM Data-Links and custom frames to the UDP_COMMS link.
 
