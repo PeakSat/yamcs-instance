@@ -77,10 +77,13 @@ public class TCParser {
             fileEntity.loadContents();
             packetSender.sentPacketSegments(fileSplitter.splitFileInChunks(fileEntity));
         }
+        else{
+            System.out.println("Source path does not exist: "+sourcePath);
+        }
         if (targetPath.equals(LocalPaths.RECEIVED_PATH.toString())) {
             System.out.println("Target Path exists!");
         } else {
-            System.out.println("LOL what is this ");
+            System.out.println("Target path does not exist: "+targetPath);
         }
 
     }
