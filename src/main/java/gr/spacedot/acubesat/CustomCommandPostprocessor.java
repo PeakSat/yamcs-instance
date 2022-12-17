@@ -1,6 +1,6 @@
 package gr.spacedot.acubesat;
 
-import gr.spacedot.acubesat.file_handling.network.out.PacketParser;
+import gr.spacedot.acubesat.file_handling.network.out.TCParser;
 import org.yamcs.YConfiguration;
 import org.yamcs.cmdhistory.CommandHistoryPublisher;
 import org.yamcs.commanding.PreparedCommand;
@@ -18,7 +18,7 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
     private final CcsdsSeqCountFiller seqFiller = new CcsdsSeqCountFiller();
     private CommandHistoryPublisher commandHistory;
 
-    private final PacketParser packetParser = new PacketParser();
+    private final TCParser TCParser = new TCParser();
 
     private static final Logger LOGGER = Logger.getLogger(CustomCommandPostprocessor.class.getName());
 
@@ -68,8 +68,8 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
         }
 
         if (serviceType == 23 && messageType == 14) {
-            Map<String,String> paths = packetParser.parseFileCopyPacket(binary);
-            packetParser.processPaths(paths);
+            Map<String,String> paths = TCParser.parseFileCopyPacket(binary);
+            TCParser.processPaths(paths);
         }
 
         // Publish the sequence count to Command History. This has no special

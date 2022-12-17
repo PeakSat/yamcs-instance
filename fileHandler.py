@@ -22,7 +22,6 @@ def processTC(packet: bytearray) -> None:
 
     if serviceType == 24 and messageType == 1:
         processFileSegment(packet[PACKET_HEADER_LENGTH - 1 :])
-    pass
 
 
 def processFileSegment(data: bytearray) -> None:
@@ -30,7 +29,6 @@ def processFileSegment(data: bytearray) -> None:
     Parses all necessary information regarding the target
     file and writes the data to it.
     """
-    global previousChunk
     targetFilePath: str = ""
     targetFileName: str = ""
     currentChunk: int
@@ -70,11 +68,8 @@ def processFileSegment(data: bytearray) -> None:
     chunkSize = data[offset] * 256 + data[offset + 1]
     offset += 2
 
-    print(
-        "currentChunk is {} , totalChunks is {} and chunkSize is {} ".format(
-            currentChunk, totalChunks, chunkSize
-        )
-    )
+    if currentChunk == totalChunks - 1:
+        previousChunk = -1
 
     fileBase64 = ""
     for character in data[offset:]:
@@ -82,6 +77,7 @@ def processFileSegment(data: bytearray) -> None:
 
     file = open(targetFileName, "ab")
     file.write(base64.urlsafe_b64decode(fileBase64))
+    file.close()
 
 
 def receive_tc(simulator):
@@ -98,7 +94,7 @@ def receive_tc(simulator):
     print("\nServer  10025 listening")
     clientconnTC, _ = tc_socket.accept()
     while True:
-        data, _ = clientconnTC.recvfrom(4096)
+        data, _ = clientconnTC.recvfrom(65536)
         simulator.last_tc = data
         processTC(data)
         if data != b"":
@@ -117,10 +113,12 @@ class Simulator:
         self.tc_thread.start()
 
     def print_status(self):
-        cmdhex: str = ""
+        data: bytearray = []
         if self.last_tc:
-            cmdhex = binascii.hexlify(self.last_tc).decode("ascii")
-        return "Received: {} commands. Last command size {}".format(self.tc_counter, len(cmdhex))
+            data = self.last_tc
+        return "Received: {} commands. Last command size {}".format(
+            self.tc_counter, len(data)
+        )
 
 
 if __name__ == "__main__":
@@ -134,7 +132,6 @@ if __name__ == "__main__":
             if status != prev_status:
                 sys.stdout.write("\r")
                 sys.stdout.write(status)
-                sys.stdout.write("\n")
                 sys.stdout.flush()
                 prev_status = status
             sleep(0.5)

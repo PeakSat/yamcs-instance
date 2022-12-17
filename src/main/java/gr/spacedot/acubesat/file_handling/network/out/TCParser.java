@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PacketParser {
+public class TCParser {
 
     private static final int PRIMARY_HEADER_SIZE = 6;
 

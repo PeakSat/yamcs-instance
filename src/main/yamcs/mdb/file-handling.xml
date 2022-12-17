@@ -40,7 +40,7 @@
                 </xtce:BaseMetaCommand>
                 <xtce:ArgumentList>
                     <xtce:Argument argumentTypeRef="/dt/string_t" name="base"/>
-                    <xtce:Argument argumentTypeRef="/dt/string_t" name="number_of_objects"/>
+                    <xtce:Argument argumentTypeRef="/dt/uint8_t" name="number_of_objects"/>
                     <xtce:Argument argumentTypeRef="/dt/binaryDataArray_t" name="binary_data"/>
 
                 </xtce:ArgumentList>
