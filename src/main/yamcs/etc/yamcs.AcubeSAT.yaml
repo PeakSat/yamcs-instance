@@ -61,11 +61,13 @@ dataLinks:
     enabledAtStartup: true
     class: gr.spacedot.acubesat.comms_link.UdpTmFrameLink
     port: 10013 
+    host: localhost
     frameType: "TM"
     spacecraftId: 0xAB
     frameLength: 176 # 189 for the "frame_3_packets" frame // 176 for the "frame_2_packets_with_clcw" frame 
     # 172 for the "frame_2_packets" frame
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+    packetInputStreamClassName: gr.spacedot.acubesat.FixedPacketInputStream
     errorDetection: NONE 
     clcwStream: "clcw"   
     goodFrameStream: "good_frame_stream" 

@@ -1,29 +1,25 @@
 package gr.spacedot.acubesat.comms_link;
 
-import java.io.EOFException;
 import java.io.IOException;
+import java.io.EOFException;
+import java.net.SocketException;
 import java.net.ConnectException;
+
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import org.yamcs.utils.YObjectLoader;
 
 import org.yamcs.ConfigurationException;
 import org.yamcs.YConfiguration;
-import org.yamcs.utils.StringConverter;
-import org.yamcs.tctm.ccsds.AbstractTmFrameLink;
-import org.yamcs.tctm.PacketInputStream;
-import org.yamcs.tctm.CcsdsPacketInputStream;
+import org.yamcs.utils.StringConverter; 
+import org.yamcs.utils.YObjectLoader;
+import gr.spacedot.acubesat.clcw_stream.AbstractTmFrameLink;
+import gr.spacedot.acubesat.FixedPacketInputStream;
 
+public class UdpTmFrameLink extends AbstractTmFrameLink implements Runnable {
+    //definitions
 
-/**
- * Receives telemetry fames via UDP. One UDP datagram = one TM frame.
- * 
- */
-public class TcpTmFrameLink extends AbstractTmFrameLink implements Runnable {
-    private volatile int invalidDatagramCount = 0;
-
-    protected Socket tcptmSocket;
+    protected Socket frameSocket;
     protected String host;
     protected int port;
     protected long initialDelay;
@@ -31,47 +27,35 @@ public class TcpTmFrameLink extends AbstractTmFrameLink implements Runnable {
     String packetInputStreamClassName;
     YConfiguration packetInputStreamArgs;
     PacketInputStream packetInputStream;
-    
+
     String packetPreprocessorClassName;
     Object packetPreprocessorArgs;
+
     Thread thread;
 
-    /**
-     * Creates a new TCP Frame Data Link
-     * 
-     * @throws ConfigurationException
-     *             if port is not defined in the configuration
-     */
+    //functions 
 
+    public void init(String instance, String name, YConfiguration config) throws ConfigurationException {
+        super.init(instance, name, config);
+        port = config.getInt("port");
+        int maxLength = frameHandler.getMaxFrameSize();
+        datagram = new DatagramPacket(new byte[maxLength], maxLength);
+    }
     @Override
     public void init(String instance, String name, YConfiguration config) throws ConfigurationException {
         super.init(instance, name, config);
-        host = "localhost";
+        host = config.getString("host");
         port = config.getInt("port");
-        initialDelay = 0;
+        initialDelay = config.getLong("initialDelay", -1);
 
         if (config.containsKey("packetInputStreamClassName")) {
             this.packetInputStreamClassName = config.getString("packetInputStreamClassName");
-            this.packetInputStreamArgs = config.getConfig("packetInputStreamArgs");
+            //this.packetInputStreamArgs = config.getConfig("packetInputStreamArgs");
         } else {
-            this.packetInputStreamClassName = CcsdsPacketInputStream.class.getName();
+            this.packetInputStreamClassName = FixedPacketInputStream.class.getName();
             this.packetInputStreamArgs = YConfiguration.emptyConfig();
         }
 
-    }
-
-    protected void openSocket() throws IOException {
-        InetAddress address = InetAddress.getByName(host);
-        tcptmSocket = new Socket();
-        tcptmSocket.setKeepAlive(true);
-        tcptmSocket.connect(new InetSocketAddress(address, port), 1000);
-        try {
-            packetInputStream = YObjectLoader.loadObject(packetInputStreamClassName);
-        } catch (ConfigurationException e) {
-            log.error("Cannot instantiate the packetInput stream", e);
-            throw e;
-        }
-        packetInputStream.init(tcptmSocket.getInputStream(), packetInputStreamArgs);
     }
 
     @Override
@@ -82,26 +66,26 @@ public class TcpTmFrameLink extends AbstractTmFrameLink implements Runnable {
         notifyStarted();
     }
 
-
     @Override
     public void doStop() {
         if (thread != null) {
             thread.interrupt();
         }
-        if (tcptmSocket != null) {
+        if (frameSocket != null) {
             try {
-                tcptmSocket.close();
+                frameSocket.close();
             } catch (IOException e) {
-                log.warn("Exception got when closing the tm socket:", e);
+                log.warn("Exception got when closing the frame socket:", e);
             }
-            tcptmSocket = null;
+            frameSocket = null;
         }
         notifyStopped();
     }
 
+    //run
 
     @Override
-    /*public void run() {
+    public void run() {
         if (initialDelay > 0) {
             try {
                 Thread.sleep(initialDelay);
@@ -113,61 +97,92 @@ public class TcpTmFrameLink extends AbstractTmFrameLink implements Runnable {
         }
 
         while (isRunningAndEnabled()) {
-            TmPacket tmpkt = getNextPacket();
-            if (tmpkt == null) {
+            TmTransferFrame tfpkt = getNextFrame();
+            if (tfpkt == null) {
                 break;
             }
-            processPacket(tmpkt);
+            processPacket(tfpkt);
         }
-    }*/
+    }
 
-    //not sure about the offset
-
+    @Override
     public void run() {
         while (isRunningAndEnabled()) {
             try {
-                if (tcptmSocket == null) {
-                    openSocket();
-                    log.info("Link established to {}:{}", host, port);
-                }
-                else{
-                    //log.warn("Link 10014 already established");
-                }
-                /*byte[] packet = packetInputStream.readPacket();
-                //tmSocket.receive(datagram);
+                tmSocket.receive(datagram);
                 if (log.isTraceEnabled()) {
-                    log.trace("Received datagram of length {}: {}", packet.length, StringConverter
-                            .arrayToHexString(packet, 0, packet.length, true));
+                    log.trace("Received datagram of length {}: {}", (datagram.getLength()), StringConverter
+                            .arrayToHexString(datagram.getData(), datagram.getOffset(), (datagram.getLength()), true));
                 }
 
-                handleFrame(timeService.getHresMissionTime(), packet, datagram.getOffset()0,
-                        packet.length);
-                        */
+                handleFrame(timeService.getHresMissionTime(), datagram.getData(), datagram.getOffset(),
+                        (datagram.getLength()));
+
             } catch (IOException e) {
                 if (!isRunningAndEnabled()) {
                     break;
                 }
                 log.warn("exception {} thrown when reading from the UDP socket at port {}", port, e);
             } catch (Exception e) {
-                //log.error("Error processing frame", e);
+                log.error("Error processing frame", e);
             }
         }
     }
 
-    /*public TmPacket getNextPacket() {
-        TmPacket pwt = null;
+    public String getDetailedStatus() {
+        if (isDisabled()) {
+            return String.format("DISABLED (should connect to %s:%d)", host, port);
+        }
+        if (frameSocket == null) {
+            return String.format("Not connected to %s:%d", host, port);
+        } else {
+            return String.format("OK, connected to %s:%d", host, port);
+        }
+    }
+
+    @Override
+    public void doDisable() {
+        if (frameSocket != null) {
+            try {
+                frameSocket.close();
+            } catch (IOException e) {
+                log.warn("Exception got when closing the frame socket:", e);
+            }
+            frameSocket = null;
+        }
+        if (thread != null) {
+            thread.interrupt();
+        }
+    }
+
+    @Override
+    public void doEnable() {
+        thread = new Thread(this);
+        thread.setName(this.getClass().getSimpleName() + "-" + linkName);
+        thread.start();
+    }
+
+    @Override
+    protected Status connectionStatus() {
+        return (frameSocket == null) ? Status.UNAVAIL : Status.OK;
+    }
+
+    //~~~~~~from TCP TM link ~~~~~~`
+
+    public TmTransferFrame getNextFrame() {
+        TmTransferFrame tfwt = null;
         while (isRunningAndEnabled()) {
             try {
-                if (tcptmSocket == null) {
+                if (frameSocket == null) {
                     openSocket();
                     log.info("Link established to {}:{}", host, port);
                 }
-                byte[] packet = packetInputStream.readPacket();
-                updateStats(packet.length);
-                TmPacket pkt = new TmPacket(timeService.getMissionTime(), packet);
-                pkt.setEarthRceptionTime(timeService.getHresMissionTime());
-                pwt = packetPreprocessor.process(pkt);
-                if (pwt != null) {
+                byte[] frame = packetInputStream.readPacket();
+                updateStats(frame.length);
+                TmTransferFrame tfwt = new TmTransferFrame(timeService.getMissionTime(), frame);
+                tfwt.setEarthRceptionTime(timeService.getHresMissionTime());
+                pwt = packetPreprocessor.process(tfwt);
+                if (tfwt != null) {
                     break;
                 }
             } catch (IOException e) {
@@ -195,55 +210,22 @@ public class TcpTmFrameLink extends AbstractTmFrameLink implements Runnable {
             }
         }
         return pwt;
-    }*/
+    }
+
 
     private void forceClosedSocket() {
-        if (tcptmSocket != null) {
+        if (frameSocket != null) {
             try {
-                tcptmSocket.close();
+                frameSocket.close();
             } catch (Exception e2) {
             }
         }
-        tcptmSocket = null;
+        frameSocket = null;
     }
 
-    @Override
-    public void doDisable() {
-        if (tcptmSocket != null) {
-            try {
-                tcptmSocket.close();
-            } catch (IOException e) {
-                log.warn("Exception got when closing the tm socket:", e);
-            }
-            tcptmSocket = null;
-        }
-        if (thread != null) {
-            thread.interrupt();
-        }
-    }
 
-    @Override
-    public void doEnable() {
-        thread = new Thread(this);
-        thread.setName(this.getClass().getSimpleName() + "-" + linkName);
-        thread.start();
-    }
 
-    @Override
-    public String getDetailedStatus() {
-        if (isDisabled()) {
-            return String.format("DISABLED (should connect to %s:%d)", host, port);
-        }
-        if (tcptmSocket == null) {
-            return String.format("Not connected to %s:%d", host, port);
-        } else {
-            return String.format("OK (%s) %nValid datagrams received: %d%nInvalid datagrams received: %d",host,
-                    port, frameCount.get(), invalidDatagramCount);
-        }
-    }
 
-    @Override
-    protected Status connectionStatus() {
-        return (tcptmSocket == null) ? Status.UNAVAIL : Status.OK;
-    }
+
+
 }
