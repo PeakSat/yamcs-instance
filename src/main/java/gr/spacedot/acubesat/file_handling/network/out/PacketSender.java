@@ -11,6 +11,7 @@ import java.util.logging.Logger;
 
 import com.google.gson.JsonObject;
 import gr.spacedot.acubesat.file_handling.entities.ChunkedFileEntity;
+import io.netty.handler.codec.http.HttpResponseStatus;
 
 
 public class PacketSender {
@@ -19,8 +20,6 @@ public class PacketSender {
     /**
      * It sends each file chunk in a separate TC, including all important
      * file metadata and information.
-     * <p>
-     * TODO: Log response only if it is not of status 200: OK
      *
      * @param chunkedFileEntity : the already split file to be sent.
      *
@@ -56,7 +55,8 @@ public class PacketSender {
 
             try {
                 HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-//                LOGGER.info(response.body());
+                if(response.statusCode() != HttpResponseStatus.OK.code())
+                    LOGGER.info(response.body());
             } catch (Exception e) {
                 LOGGER.info("Error sending request " + e);
             }
