@@ -514,6 +514,9 @@
 
     <xtce:CommandMetaData>
         <xtce:ArgumentTypeSet>
+            <xtce:IntegerArgumentType name="packet_version_number">
+                <xtce:IntegerDataEncoding sizeInBits="3"/>
+            </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="packet_type">
                 <xtce:IntegerDataEncoding sizeInBits="1"/>
