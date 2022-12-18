@@ -64,7 +64,7 @@ dataLinks:
     host: localhost
     frameType: "TM"
     spacecraftId: 0xAB
-    frameLength: 176 # 189 for the "frame_3_packets" frame // 176 for the "frame_2_packets_with_clcw" frame 
+    frameLength: 172 # 189 for the "frame_3_packets" frame // 176 for the "frame_2_packets_with_clcw" frame 
     # 172 for the "frame_2_packets" frame
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
     packetInputStreamClassName: gr.spacedot.acubesat.FixedPacketInputStream
