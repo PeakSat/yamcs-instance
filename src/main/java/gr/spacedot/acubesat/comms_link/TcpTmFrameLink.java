@@ -15,9 +15,10 @@ import org.yamcs.utils.StringConverter;
 import org.yamcs.utils.YObjectLoader;
 import gr.spacedot.acubesat.clcw_stream.AbstractTmFrameLink;
 import gr.spacedot.acubesat.FixedPacketInputStream;
+import gr.spacedot.acubesat.comms_link.PacketInputStream;
+import gr.spacedot.acubesat.comms_link.PacketTooLongException;
 
-public class UdpTmFrameLink extends AbstractTmFrameLink implements Runnable {
-    //definitions
+public class TcpTmFrameLink extends AbstractTmFrameLink implements Runnable {
 
     protected Socket frameSocket;
     protected String host;
@@ -33,14 +34,7 @@ public class UdpTmFrameLink extends AbstractTmFrameLink implements Runnable {
 
     Thread thread;
 
-    //functions 
 
-    public void init(String instance, String name, YConfiguration config) throws ConfigurationException {
-        super.init(instance, name, config);
-        port = config.getInt("port");
-        int maxLength = frameHandler.getMaxFrameSize();
-        datagram = new DatagramPacket(new byte[maxLength], maxLength);
-    }
     @Override
     public void init(String instance, String name, YConfiguration config) throws ConfigurationException {
         super.init(instance, name, config);
@@ -55,7 +49,6 @@ public class UdpTmFrameLink extends AbstractTmFrameLink implements Runnable {
             this.packetInputStreamClassName = FixedPacketInputStream.class.getName();
             this.packetInputStreamArgs = YConfiguration.emptyConfig();
         }
-
     }
 
     @Override
@@ -82,49 +75,41 @@ public class UdpTmFrameLink extends AbstractTmFrameLink implements Runnable {
         notifyStopped();
     }
 
-    //run
-
-    @Override
-    public void run() {
-        if (initialDelay > 0) {
-            try {
-                Thread.sleep(initialDelay);
-                initialDelay = -1;
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                return;
-            }
-        }
-
-        while (isRunningAndEnabled()) {
-            TmTransferFrame tfpkt = getNextFrame();
-            if (tfpkt == null) {
-                break;
-            }
-            processPacket(tfpkt);
-        }
-    }
-
-    @Override
-    public void run() {
+    public void run(){
         while (isRunningAndEnabled()) {
             try {
-                tmSocket.receive(datagram);
+                if (frameSocket == null) {
+                    openSocket();
+                    log.info("Link established to {}:{}", host, port);
+                }
+                byte[] frame = packetInputStream.readPacket();
                 if (log.isTraceEnabled()) {
-                    log.trace("Received datagram of length {}: {}", (datagram.getLength()), StringConverter
-                            .arrayToHexString(datagram.getData(), datagram.getOffset(), (datagram.getLength()), true));
+                    log.trace("Received frame of length {}: {}", (frame.length), StringConverter
+                            .arrayToHexString(frame, 0, (frame.length), true));
                 }
-
-                handleFrame(timeService.getHresMissionTime(), datagram.getData(), datagram.getOffset(),
-                        (datagram.getLength()));
-
+                handleFrame(timeService.getHresMissionTime(), frame, 0,
+                        (frame.length));
             } catch (IOException e) {
-                if (!isRunningAndEnabled()) {
-                    break;
+                if (isRunningAndEnabled()) {
+                    String msg;
+                    if (e instanceof EOFException) {
+                        msg = "TM socket connection to " + host + ":" + port + " closed. Reconnecting in 10s.";
+                    } else {
+                        msg = "Cannot open or read TM socket " + host + ": " + port + ": "
+                                + ((e instanceof ConnectException) ? e.getMessage() : e.toString())
+                                + ". Retrying in 10 seconds.";
+                    }
+                    log.warn(msg);
                 }
-                log.warn("exception {} thrown when reading from the UDP socket at port {}", port, e);
-            } catch (Exception e) {
-                log.error("Error processing frame", e);
+                forceClosedSocket();
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e1) {
+                    Thread.currentThread().interrupt();
+                }
+            }catch (PacketTooLongException e) {
+                log.warn(e.toString());
+                forceClosedSocket();
             }
         }
     }
@@ -167,52 +152,6 @@ public class UdpTmFrameLink extends AbstractTmFrameLink implements Runnable {
         return (frameSocket == null) ? Status.UNAVAIL : Status.OK;
     }
 
-    //~~~~~~from TCP TM link ~~~~~~`
-
-    public TmTransferFrame getNextFrame() {
-        TmTransferFrame tfwt = null;
-        while (isRunningAndEnabled()) {
-            try {
-                if (frameSocket == null) {
-                    openSocket();
-                    log.info("Link established to {}:{}", host, port);
-                }
-                byte[] frame = packetInputStream.readPacket();
-                updateStats(frame.length);
-                TmTransferFrame tfwt = new TmTransferFrame(timeService.getMissionTime(), frame);
-                tfwt.setEarthRceptionTime(timeService.getHresMissionTime());
-                pwt = packetPreprocessor.process(tfwt);
-                if (tfwt != null) {
-                    break;
-                }
-            } catch (IOException e) {
-                if (isRunningAndEnabled()) {
-                    String msg;
-                    if (e instanceof EOFException) {
-                        msg = "TM socket connection to " + host + ":" + port + " closed. Reconnecting in 10s.";
-                    } else {
-                        msg = "Cannot open or read TM socket " + host + ": " + port + ": "
-                                + ((e instanceof ConnectException) ? e.getMessage() : e.toString())
-                                + ". Retrying in 10 seconds.";
-                    }
-                    log.warn(msg);
-                }
-                forceClosedSocket();
-                try {
-                    Thread.sleep(10000);
-                } catch (InterruptedException e1) {
-                    Thread.currentThread().interrupt();
-                    return null;
-                }
-            } catch (PacketTooLongException e) {
-                log.warn(e.toString());
-                forceClosedSocket();
-            }
-        }
-        return pwt;
-    }
-
-
     private void forceClosedSocket() {
         if (frameSocket != null) {
             try {
@@ -223,9 +162,18 @@ public class UdpTmFrameLink extends AbstractTmFrameLink implements Runnable {
         frameSocket = null;
     }
 
-
-
-
-
+    protected void openSocket() throws IOException {
+        InetAddress address = InetAddress.getByName(host);
+        frameSocket = new Socket();
+        frameSocket.setKeepAlive(true);
+        frameSocket.connect(new InetSocketAddress(address, port), 1000);
+        try {
+            packetInputStream = YObjectLoader.loadObject(packetInputStreamClassName);
+        } catch (ConfigurationException e) {
+            log.error("Cannot instantiate the packetInput stream", e);
+            throw e;
+        }
+        packetInputStream.init(frameSocket.getInputStream(), packetInputStreamArgs);
+    }
 
 }

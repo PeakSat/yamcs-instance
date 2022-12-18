@@ -6,6 +6,8 @@ import java.io.InputStream;
 
 import org.yamcs.YConfiguration;
 import org.yamcs.logging.Log;
+import gr.spacedot.acubesat.comms_link.PacketInputStream;
+import gr.spacedot.acubesat.comms_link.PacketTooLongException;
 
 /**
  * This input stream reads packets of a configurable fixed packet size.
@@ -13,18 +15,19 @@ import org.yamcs.logging.Log;
  * @author st
  *
  */
+ 
 public class FixedPacketInputStream implements PacketInputStream {
     private int frameLength;
     protected DataInputStream dataInputStream;
     static Log log = new Log(FixedPacketInputStream.class);
 
-    @Override
+    //@Override
     public void init(InputStream inputStream, YConfiguration args) {
         this.dataInputStream = new DataInputStream(inputStream);
-        this.packetSize = args.getInt("frameLength");
+        this.frameLength = args.getInt("frameLength");
     }
 
-    @Override
+    //@Override
     public byte[] readPacket() throws IOException, PacketTooLongException {
         log.trace("Reading packet length of fixed size {}", frameLength);
         byte[] data = new byte[frameLength];
@@ -32,23 +35,7 @@ public class FixedPacketInputStream implements PacketInputStream {
         return data;
     }
 
-    @Override
-    public void close() throws IOException {
-        dataInputStream.close();
-    }
-}
-tSize = args.getInt("frameLength");
-    }
-
-    @Override
-    public byte[] readPacket() throws IOException, PacketTooLongException {
-        log.trace("Reading packet length of fixed size {}", frameLength);
-        byte[] data = new byte[frameLength];
-        dataInputStream.readFully(data);
-        return data;
-    }
-
-    @Override
+    //@Override
     public void close() throws IOException {
         dataInputStream.close();
     }

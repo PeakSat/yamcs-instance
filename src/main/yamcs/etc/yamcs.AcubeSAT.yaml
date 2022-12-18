@@ -59,7 +59,7 @@ dataLinks:
 
   - name: UDP_COMMS
     enabledAtStartup: true
-    class: gr.spacedot.acubesat.comms_link.UdpTmFrameLink
+    class: gr.spacedot.acubesat.comms_link.TcpTmFrameLink
     port: 10013 
     host: localhost
     frameType: "TM"
