@@ -21,13 +21,11 @@ public class FixedPacketInputStream implements PacketInputStream {
     protected DataInputStream dataInputStream;
     static Log log = new Log(FixedPacketInputStream.class);
 
-    //@Override
     public void init(InputStream inputStream, YConfiguration args) {
         this.dataInputStream = new DataInputStream(inputStream);
         this.frameLength = args.getInt("frameLength");
-    }
+    }      
 
-    //@Override
     public byte[] readPacket() throws IOException, PacketTooLongException {
         log.trace("Reading packet length of fixed size {}", frameLength);
         byte[] data = new byte[frameLength];
@@ -35,7 +33,6 @@ public class FixedPacketInputStream implements PacketInputStream {
         return data;
     }
 
-    //@Override
     public void close() throws IOException {
         dataInputStream.close();
     }

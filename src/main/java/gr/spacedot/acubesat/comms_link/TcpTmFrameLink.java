@@ -24,6 +24,7 @@ public class TcpTmFrameLink extends AbstractTmFrameLink implements Runnable {
     protected String host;
     protected int port;
     protected long initialDelay;
+    protected int frameLength;
 
     String packetInputStreamClassName;
     YConfiguration packetInputStreamArgs;
@@ -40,11 +41,12 @@ public class TcpTmFrameLink extends AbstractTmFrameLink implements Runnable {
         super.init(instance, name, config);
         host = config.getString("host");
         port = config.getInt("port");
+        frameLength = config.getInt("frameLength");
         initialDelay = config.getLong("initialDelay", -1);
 
         if (config.containsKey("packetInputStreamClassName")) {
             this.packetInputStreamClassName = config.getString("packetInputStreamClassName");
-            //this.packetInputStreamArgs = config.getConfig("packetInputStreamArgs");
+            this.packetInputStreamArgs = config.getConfig("packetInputStreamArgs");
         } else {
             this.packetInputStreamClassName = FixedPacketInputStream.class.getName();
             this.packetInputStreamArgs = YConfiguration.emptyConfig();
