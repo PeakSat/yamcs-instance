@@ -514,41 +514,6 @@
 
     <xtce:CommandMetaData>
         <xtce:ArgumentTypeSet>
-            <!--Transfer Frame Header TC-->
-
-            <xtce:IntegerArgumentType name="transfer_frame_version_number">
-                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
-            </xtce:IntegerArgumentType>
-
-            <xtce:IntegerArgumentType name="flag">
-                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
-            </xtce:IntegerArgumentType>
-
-            <xtce:IntegerArgumentType name="spacecraft_ID">
-                <xtce:IntegerDataEncoding sizeInBits="10"></xtce:IntegerDataEncoding>
-            </xtce:IntegerArgumentType>
-
-            <xtce:IntegerArgumentType name="virtual_channel_ID_TC">
-                <xtce:IntegerDataEncoding sizeInBits="6"></xtce:IntegerDataEncoding>
-            </xtce:IntegerArgumentType>
-
-            <xtce:IntegerArgumentType name="frame_length">
-                <xtce:IntegerDataEncoding sizeInBits="10"></xtce:IntegerDataEncoding>
-            </xtce:IntegerArgumentType>
-
-            <xtce:IntegerArgumentType name="frame_sequence_number">
-                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
-            </xtce:IntegerArgumentType>
-
-            <xtce:IntegerArgumentType name="packet_version_number">
-                <xtce:IntegerDataEncoding sizeInBits="3"/>
-            </xtce:IntegerArgumentType>
-
-            <!--Frame Error Control Field-->
-
-            <xtce:IntegerArgumentType name="frame_error_control">
-                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
-            </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="packet_type">
                 <xtce:IntegerDataEncoding sizeInBits="1"/>
