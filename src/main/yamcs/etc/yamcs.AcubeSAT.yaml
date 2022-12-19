@@ -47,25 +47,18 @@ dataLinks:
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
 
   - name: COMMS
-    enableAtStartup: true
-    class: org.yamcs.tctm.TcpTmDataLink
-    stream: tm_realtime
-    host: localhost
-    port: 10014
-    packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
-    packetInputStreamClassName: gr.spacedot.acubesat.CustomCcsdsPacketInputStream
-    packetInputStreamArgs: 
-      maxPacketLength: 10000
-
-  - name: UDP_COMMS
     enabledAtStartup: true
-    class: gr.spacedot.acubesat.comms_link.UdpTmFrameLink
-    port: 10013 
+    class: gr.spacedot.acubesat.comms_link.TcpTmFrameLink
+    port: 10014 
+    host: localhost
     frameType: "TM"
     spacecraftId: 0xAB
     frameLength: 176 # 189 for the "frame_3_packets" frame // 176 for the "frame_2_packets_with_clcw" frame 
     # 172 for the "frame_2_packets" frame
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+    packetInputStreamClassName: gr.spacedot.acubesat.FixedPacketInputStream
+    packetInputStreamArgs: 
+      frameLength: 176
     errorDetection: NONE 
     clcwStream: "clcw"   
     goodFrameStream: "good_frame_stream" 

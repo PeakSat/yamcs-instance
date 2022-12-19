@@ -9,17 +9,10 @@ from time import sleep
 
 
 def send_tm(simulator):
-    tm_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+
     frame_2_packets = [10, 176, 1, 1, 24, 0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0]
     frame_3_packets = [10, 176, 1, 1, 24, 0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 8, 1, 195, 39, 0, 10, 32, 17, 2, 1, 70, 0, 1, 37, 165, 61, 202]    
     frame_2_packets_with_clcw = [10, 177, 1, 1, 24, 0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 1, 0, 16,1]
-
-
-    while True:
-        packet = bytearray(frame_2_packets_with_clcw)
-        tm_socket.sendto(packet, ('127.0.0.1', 10013))
-        simulator.tm_counter += 1
-        sleep(10)
 
     """
     This function reads the packets from the specified .raw
@@ -30,6 +23,9 @@ def send_tm(simulator):
 
     SEQUENTIAL_SENDING = False
     host = "localhost"
+    portCOMMS = 10014
+    tm_socket_COMMS = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
     portOBC = 10015
     tm_socket_OBC = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -38,6 +34,10 @@ def send_tm(simulator):
 
     portCAN = 10017
     tm_socket_CAN = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    tm_socket_COMMS.bind((host, portCOMMS))
+    tm_socket_COMMS.listen(1)
+    print("server  10014 listening")
 
     tm_socket_OBC.bind((host, portOBC))
     tm_socket_OBC.listen(1)
@@ -51,6 +51,8 @@ def send_tm(simulator):
     tm_socket_CAN.listen(1)
     print("server  10017 listening")
 
+    clientconnCOMMS, _ = tm_socket_COMMS.accept()
+
     clientconnOBC, _ = tm_socket_OBC.accept()
 
     clientconnADCS, _ = tm_socket_ADCS.accept()
@@ -59,6 +61,12 @@ def send_tm(simulator):
 
     packetCounter = 0
     simulator.tm_counter = 0
+
+    #sending to tcp comms link
+    while True:
+        clientconnCOMMS.send(bytearray(frame_2_packets_with_clcw))
+        simulator.tm_counter += 1
+        sleep(10)
 
     # sending 2000 packets
     while packetCounter < 400:

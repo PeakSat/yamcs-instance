@@ -52,7 +52,7 @@ In yamcs.myproject.yaml file (located in yamcs-instance/src/main/yamcs/etc), six
     * "CAN-bus", receiving data through port 10017
     * "ADCS-UART", receiving data through port 10016
     * "OBC-UART", receiving data through port 10015
-    * "UDP_COMMS", receiving data through port 10013
+    * "UDP_COMMS", receiving data through port 10014
 
 * Telecommanding Data-Links
     * "tcp-out", sending data at port 10025
