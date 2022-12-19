@@ -46,7 +46,7 @@ dataLinks:
     port: 10015
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
 
-  - name: UDP_COMMS
+  - name: COMMS
     enabledAtStartup: true
     class: gr.spacedot.acubesat.comms_link.TcpTmFrameLink
     port: 10014 
