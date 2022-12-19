@@ -40,16 +40,18 @@ public class CustomPacketPreprocessor extends AbstractPacketPreprocessor {
 
         // Verify continuity for a given APID based on the CCSDS sequence counter
         int apidseqcount = ByteBuffer.wrap(bytes).getInt(0); // first 4 bytes (0-3)
-        short packetlength = ByteBuffer.wrap(bytes).getShort(4); // get 2 bytes (5-6)
+        short packetlength = ByteBuffer.wrap(bytes).getShort(4); // get 2 bytes (4-5)
         packetlength++;
         int apid = (apidseqcount >> 16) & 0x07FF; // 11 bits ()
         int seqcount = (apidseqcount) & 0x3FFF; // 14 bits
         int packversion = (apidseqcount >> 29) & 0x7; // 3 bits
         int secheader = (apidseqcount >> 27) & 0x1; // 1 bit
         int pusversion = ByteBuffer.wrap(bytes).get(6) & 0xF;// 4 bits
-        int serviceType = ByteBuffer.wrap(bytes).get(7) & 0xFF;// 8 bits
-        int messageType = ByteBuffer.wrap(bytes).get(8) & 0xFF;// 8 bits
-        long time = ByteBuffer.wrap(bytes).getInt(11); // 32 bits. Long to prevent overflow
+        int serviceType = ByteBuffer.wrap(bytes).get(7);    //8 bits
+        int messageType = ByteBuffer.wrap(bytes).get(8);    //8 bits
+        short messageTypeCounter = ByteBuffer.wrap(bytes).getShort(9); //get 2 bytes (9-10)
+        short destinationID = ByteBuffer.wrap(bytes).getShort(11); // get 2 bytes (11-12)
+        long time = ByteBuffer.wrap(bytes).getInt(13); // 32 bits. Long to prevent overflow
 
         AtomicInteger ai = seqCounts.computeIfAbsent(apid, k -> new AtomicInteger());
         int oldseq = ai.getAndSet(seqcount);
