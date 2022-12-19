@@ -34,7 +34,7 @@
             <xtce:MetaCommand name="TC(6,1)_load_object_memory_data">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <xtce:ArgumentAssignmentList>
-                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="24" />
+                        <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="6" />
                         <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
                     </xtce:ArgumentAssignmentList>
                 </xtce:BaseMetaCommand>

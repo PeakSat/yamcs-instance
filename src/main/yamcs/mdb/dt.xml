@@ -1,217 +1,218 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xtce:SpaceSystem name="dt" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
-                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                  xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
-                  shortDescription="This is a bogus satellite telemetry and telecommand database."
-                  operationalStatus="unittest">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
+    shortDescription="This is a bogus satellite telemetry and telecommand database."
+    operationalStatus="unittest">
 
     <!--Contains all ParameterTypes for Telemetry and ArgumentTypes for Telecommanding.-->
     <xtce:TelemetryMetaData>
         <xtce:ParameterTypeSet>
             <xtce:IntegerParameterType name="packet_version_number">
-                <xtce:IntegerDataEncoding sizeInBits="3"/>
+                <xtce:IntegerDataEncoding sizeInBits="3" />
             </xtce:IntegerParameterType>
 
             <xtce:EnumeratedParameterType name="packet_type">
-                <xtce:IntegerDataEncoding sizeInBits="1"/>
+                <xtce:IntegerDataEncoding sizeInBits="1" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1" label="TC"/>
-                    <xtce:Enumeration value="0" label="TM"/>
+                    <xtce:Enumeration value="1" label="TC" />
+                    <xtce:Enumeration value="0" label="TM" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
+
             <xtce:EnumeratedParameterType name="parameterId_t">
-                <xtce:IntegerDataEncoding sizeInBits="16"/>
+                <xtce:IntegerDataEncoding sizeInBits="16" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="6" label="ReportParametersUnusedStack"/>
-                    <xtce:Enumeration value="7" label="AvailableHeap"/>
-                    <xtce:Enumeration value="8" label="OBCuseRTT"/>
-                    <xtce:Enumeration value="9" label="OBCuseUART"/>
-                    <xtce:Enumeration value="10" label="OBCuseCAN"/>
-                    <xtce:Enumeration value="11" label="ADCSuseRTT"/>
-                    <xtce:Enumeration value="12" label="ADCSuseUART"/>
-                    <xtce:Enumeration value="13" label="ADCSuseCAN"/>
-                    <xtce:Enumeration value="1013" label="MagnetometerRawX"/>
-                    <xtce:Enumeration value="1014" label="MagnetometerRawY"/>
-                    <xtce:Enumeration value="1015" label="MagnetometerRawZ"/>
-                    <xtce:Enumeration value="1016" label="MagnetometerFrequency"/>
-                    <xtce:Enumeration value="1017" label="MagnetometerCycleCountX"/>
-                    <xtce:Enumeration value="1018" label="MagnetometerCycleCountY"/>
-                    <xtce:Enumeration value="1019" label="MagnetometerCycleCountZ"/>
-                    <xtce:Enumeration value="1020" label="MagnetometerSelfTest"/>
-                    <xtce:Enumeration value="1043" label="GyroscopeX"/>
-                    <xtce:Enumeration value="1044" label="GyroscopeY"/>
-                    <xtce:Enumeration value="1045" label="GyroscopeZ"/>
-                    <xtce:Enumeration value="1089" label="GyroscopeXTemperature"/>
-                    <xtce:Enumeration value="1090" label="GyroscopeYTemperature"/>
-                    <xtce:Enumeration value="1091" label="GyroscopeZTemperature"/>
-                    <xtce:Enumeration value="1092" label="ADCSBoardTemperature1"/>
-                    <xtce:Enumeration value="1093" label="ADCSBoardTemperature2"/>
-                    <xtce:Enumeration value="1158" label="MagnetometerSignX"/>
-                    <xtce:Enumeration value="1159" label="MagnetometerSignY"/>
-                    <xtce:Enumeration value="1160" label="MagnetometerSignZ"/>
-                    <xtce:Enumeration value="1164" label="GyroSignX"/>
-                    <xtce:Enumeration value="1165" label="GyroSignY"/>
-                    <xtce:Enumeration value="1166" label="GyroSignZ"/>
-                    <xtce:Enumeration value="1189" label="GyroBiasX"/>
-                    <xtce:Enumeration value="1190" label="GyroBiasY"/>
-                    <xtce:Enumeration value="1191" label="GyroBiasZ"/>
-                    <xtce:Enumeration value="1218" label="ADCSMCUTemperature"/>
-                    <xtce:Enumeration value="1220" label="ADCSMCUBootCounter"/>
-                    <xtce:Enumeration value="1221" label="ADCSMCUOnBoardTime"/>
-                    <xtce:Enumeration value="1224" label="ADCSSystick"/>
-                    <xtce:Enumeration value="1227" label="ADCSFlashInt"/>
-                    <xtce:Enumeration value="1228" label="ADCSSRAMInt"/>
-                    <xtce:Enumeration value="5000" label="OBDHBoardTemperature1"/>
-                    <xtce:Enumeration value="5001" label="OBDHBoardTemperature2"/>
-                    <xtce:Enumeration value="5002" label="OBCMCUTemperature"/>
-                    <xtce:Enumeration value="5004" label="OBCBootCounter"/>
-                    <xtce:Enumeration value="5009" label="OBCSpacecraftTimeRef"/>
-                    <xtce:Enumeration value="5010" label="OBCOnBoardTime"/>
-                    <xtce:Enumeration value="5011" label="OBCOperationalMode"/>
-                    <xtce:Enumeration value="5012" label="OBCMemoryPartition"/>
-                    <xtce:Enumeration value="5013" label="OBCReconfigurationTimer"/>
-                    <xtce:Enumeration value="5014" label="ObcLastFailedEvent"/>
-                    <xtce:Enumeration value="5015" label="OBCSystick"/>
-                    <xtce:Enumeration value="5016" label="CANBusLoad1"/>
-                    <xtce:Enumeration value="5017" label="CANBusLoad2"/>
-                    <xtce:Enumeration value="5018" label="ActiveCAN"/>
-                    <xtce:Enumeration value="5021" label="NANDLCLThreshold"/>
-                    <xtce:Enumeration value="5022" label="MRAMLCLThreshold"/>
-                    <xtce:Enumeration value="5023" label="OBCNANDOn"/>
-                    <xtce:Enumeration value="5024" label="OBCMRAMOn"/>
+                    <xtce:Enumeration value="6" label="ReportParametersUnusedStack" />
+                    <xtce:Enumeration value="7" label="AvailableHeap" />
+                    <xtce:Enumeration value="8" label="OBCuseRTT" />
+                    <xtce:Enumeration value="9" label="OBCuseUART" />
+                    <xtce:Enumeration value="10" label="OBCuseCAN" />
+                    <xtce:Enumeration value="11" label="ADCSuseRTT" />
+                    <xtce:Enumeration value="12" label="ADCSuseUART" />
+                    <xtce:Enumeration value="13" label="ADCSuseCAN" />
+                    <xtce:Enumeration value="1013" label="MagnetometerRawX" />
+                    <xtce:Enumeration value="1014" label="MagnetometerRawY" />
+                    <xtce:Enumeration value="1015" label="MagnetometerRawZ" />
+                    <xtce:Enumeration value="1016" label="MagnetometerFrequency" />
+                    <xtce:Enumeration value="1017" label="MagnetometerCycleCountX" />
+                    <xtce:Enumeration value="1018" label="MagnetometerCycleCountY" />
+                    <xtce:Enumeration value="1019" label="MagnetometerCycleCountZ" />
+                    <xtce:Enumeration value="1020" label="MagnetometerSelfTest" />
+                    <xtce:Enumeration value="1043" label="GyroscopeX" />
+                    <xtce:Enumeration value="1044" label="GyroscopeY" />
+                    <xtce:Enumeration value="1045" label="GyroscopeZ" />
+                    <xtce:Enumeration value="1089" label="GyroscopeXTemperature" />
+                    <xtce:Enumeration value="1090" label="GyroscopeYTemperature" />
+                    <xtce:Enumeration value="1091" label="GyroscopeZTemperature" />
+                    <xtce:Enumeration value="1092" label="ADCSBoardTemperature1" />
+                    <xtce:Enumeration value="1093" label="ADCSBoardTemperature2" />
+                    <xtce:Enumeration value="1158" label="MagnetometerSignX" />
+                    <xtce:Enumeration value="1159" label="MagnetometerSignY" />
+                    <xtce:Enumeration value="1160" label="MagnetometerSignZ" />
+                    <xtce:Enumeration value="1164" label="GyroSignX" />
+                    <xtce:Enumeration value="1165" label="GyroSignY" />
+                    <xtce:Enumeration value="1166" label="GyroSignZ" />
+                    <xtce:Enumeration value="1189" label="GyroBiasX" />
+                    <xtce:Enumeration value="1190" label="GyroBiasY" />
+                    <xtce:Enumeration value="1191" label="GyroBiasZ" />
+                    <xtce:Enumeration value="1218" label="ADCSMCUTemperature" />
+                    <xtce:Enumeration value="1220" label="ADCSMCUBootCounter" />
+                    <xtce:Enumeration value="1221" label="ADCSMCUOnBoardTime" />
+                    <xtce:Enumeration value="1224" label="ADCSSystick" />
+                    <xtce:Enumeration value="1227" label="ADCSFlashInt" />
+                    <xtce:Enumeration value="1228" label="ADCSSRAMInt" />
+                    <xtce:Enumeration value="5000" label="OBDHBoardTemperature1" />
+                    <xtce:Enumeration value="5001" label="OBDHBoardTemperature2" />
+                    <xtce:Enumeration value="5002" label="OBCMCUTemperature" />
+                    <xtce:Enumeration value="5004" label="OBCBootCounter" />
+                    <xtce:Enumeration value="5009" label="OBCSpacecraftTimeRef" />
+                    <xtce:Enumeration value="5010" label="OBCOnBoardTime" />
+                    <xtce:Enumeration value="5011" label="OBCOperationalMode" />
+                    <xtce:Enumeration value="5012" label="OBCMemoryPartition" />
+                    <xtce:Enumeration value="5013" label="OBCReconfigurationTimer" />
+                    <xtce:Enumeration value="5014" label="ObcLastFailedEvent" />
+                    <xtce:Enumeration value="5015" label="OBCSystick" />
+                    <xtce:Enumeration value="5016" label="CANBusLoad1" />
+                    <xtce:Enumeration value="5017" label="CANBusLoad2" />
+                    <xtce:Enumeration value="5018" label="ActiveCAN" />
+                    <xtce:Enumeration value="5021" label="NANDLCLThreshold" />
+                    <xtce:Enumeration value="5022" label="MRAMLCLThreshold" />
+                    <xtce:Enumeration value="5023" label="OBCNANDOn" />
+                    <xtce:Enumeration value="5024" label="OBCMRAMOn" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
             <xtce:IntegerParameterType name="structureId_t">
-                <xtce:IntegerDataEncoding sizeInBits="8" encoding="unsigned"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" encoding="unsigned" />
             </xtce:IntegerParameterType>
 
             <xtce:EnumeratedParameterType name="OBCMemoryPartition_t">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="Used"/>
-                    <xtce:Enumeration value="1" label="NotUsed"/>
+                    <xtce:Enumeration value="0" label="Used" />
+                    <xtce:Enumeration value="1" label="NotUsed" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="OBCCANBUSActive_t">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="Main"/>
-                    <xtce:Enumeration value="1" label="Reductant"/>
+                    <xtce:Enumeration value="0" label="Main" />
+                    <xtce:Enumeration value="1" label="Reductant" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
             <xtce:IntegerParameterType name="secondary_header_flag">
-                <xtce:IntegerDataEncoding sizeInBits="1"/>
+                <xtce:IntegerDataEncoding sizeInBits="1" />
             </xtce:IntegerParameterType>
 
             <xtce:EnumeratedParameterType name="application_process_ID">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="11"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="11" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1" label="OBC"/>
-                    <xtce:Enumeration value="2" label="COMMS"/>
-                    <xtce:Enumeration value="3" label="ADCS"/>
-                    <xtce:Enumeration value="4" label="SU"/>
-                    <xtce:Enumeration value="5" label="GS"/>
+                    <xtce:Enumeration value="1" label="OBC" />
+                    <xtce:Enumeration value="2" label="COMMS" />
+                    <xtce:Enumeration value="3" label="ADCS" />
+                    <xtce:Enumeration value="4" label="SU" />
+                    <xtce:Enumeration value="5" label="GS" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
             <xtce:IntegerParameterType name="sequence_flags">
-                <xtce:IntegerDataEncoding sizeInBits="2"/>
+                <xtce:IntegerDataEncoding sizeInBits="2" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="packet_sequence_count_or_packet_name">
-                <xtce:IntegerDataEncoding sizeInBits="14"/>
+                <xtce:IntegerDataEncoding sizeInBits="14" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="packet_data_length" signed="false" initialValue="0">
                 <xtce:UnitSet>
                     <xtce:Unit description="Size">Octets</xtce:Unit>
                 </xtce:UnitSet>
-                <xtce:IntegerDataEncoding sizeInBits="16"/>
+                <xtce:IntegerDataEncoding sizeInBits="16" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="service_type_ID">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="message_subtype_ID">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="message_type_counter" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerParameterType>
 
             <xtce:EnumeratedParameterType name="response_band">
-                <xtce:IntegerDataEncoding sizeInBits="1"/>
+                <xtce:IntegerDataEncoding sizeInBits="1" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="UHF"/>
-                    <xtce:Enumeration value="1" label="S"/>
+                    <xtce:Enumeration value="0" label="UHF" />
+                    <xtce:Enumeration value="1" label="S" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
             <xtce:IntegerParameterType name="aknowledgement_flags">
-                <xtce:IntegerDataEncoding sizeInBits="4"/>
+                <xtce:IntegerDataEncoding sizeInBits="4" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="source_data">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="spare">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="packet_error_control">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="code">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="data">
-                <xtce:IntegerDataEncoding sizeInBits="4"/>
+                <xtce:IntegerDataEncoding sizeInBits="4" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="int8_t" signed="true">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="uint8_t" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="uint16_t" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="uint32_t" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
             </xtce:IntegerParameterType>
 
             <xtce:IntegerParameterType name="uint64_t" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="64"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="64" />
             </xtce:IntegerParameterType>
 
             <xtce:FloatParameterType name="float_t">
-                <xtce:FloatDataEncoding sizeInBits="32"/>
+                <xtce:FloatDataEncoding sizeInBits="32" />
             </xtce:FloatParameterType>
 
             <xtce:BooleanParameterType name="bool_t">
-                <xtce:IntegerDataEncoding sizeInBits="1"/>
+                <xtce:IntegerDataEncoding sizeInBits="1" />
             </xtce:BooleanParameterType>
 
             <xtce:IntegerParameterType name="N_ST20" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerParameterType>
 
             <xtce:AbsoluteTimeParameterType name="generation_time">
                 <xtce:Encoding offset="1577836800" scale="0.1">
-                    <xtce:IntegerDataEncoding sizeInBits="32"/>
+                    <xtce:IntegerDataEncoding sizeInBits="32" />
                 </xtce:Encoding>
                 <xtce:ReferenceTime>
                     <xtce:Epoch>UNIX</xtce:Epoch>
@@ -232,20 +233,21 @@
             </xtce:ArrayParameterType>
 
             <xtce:AggregateParameterType name="statistics_report_structure"
-                                         shortDescription="The Statistics Report Structure">
+                shortDescription="The Statistics Report Structure">
                 <xtce:MemberList>
-                    <xtce:Member name="parameterId" typeRef="parameterId_t"/>
-                    <xtce:Member name="number_of_samples" typeRef="uint16_t"/>
-                    <xtce:Member name="max_value" typeRef="float_t"/>
-                    <xtce:Member name="max_time" typeRef="uint32_t"/>
-                    <xtce:Member name="min_value" typeRef="float_t"/>
-                    <xtce:Member name="min_time" typeRef="uint32_t"/>
-                    <xtce:Member name="mean_value" typeRef="float_t"/>
-                    <xtce:Member name="standard_deviation_value" typeRef="float_t"/>
+                    <xtce:Member name="parameterId" typeRef="parameterId_t" />
+                    <xtce:Member name="number_of_samples" typeRef="uint16_t" />
+                    <xtce:Member name="max_value" typeRef="float_t" />
+                    <xtce:Member name="max_time" typeRef="uint32_t" />
+                    <xtce:Member name="min_value" typeRef="float_t" />
+                    <xtce:Member name="min_time" typeRef="uint32_t" />
+                    <xtce:Member name="mean_value" typeRef="float_t" />
+                    <xtce:Member name="standard_deviation_value" typeRef="float_t" />
                 </xtce:MemberList>
             </xtce:AggregateParameterType>
 
-            <xtce:ArrayParameterType name="statistic_report_array" arrayTypeRef="statistics_report_structure">
+            <xtce:ArrayParameterType name="statistic_report_array"
+                arrayTypeRef="statistics_report_structure">
                 <xtce:LongDescription>
                     This array type contains all parameter statistics structures sent in a single TM
                 </xtce:LongDescription>
@@ -276,7 +278,7 @@
                 <xtce:StringDataEncoding encoding="UTF-8">
                     <xtce:Variable maxSizeInBits="4096">
                         <xtce:DynamicValue>
-                            <xtce:ParameterInstanceRef parameterRef="_yamcs_ignore"/>
+                            <xtce:ParameterInstanceRef parameterRef="_yamcs_ignore" />
                         </xtce:DynamicValue>
                         <xtce:TerminationChar>0A</xtce:TerminationChar>
                     </xtce:Variable>
@@ -284,116 +286,124 @@
             </xtce:StringParameterType>
 
             <xtce:EnumeratedParameterType name="OBCSpacecraftTimeRef_t">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="Spacecraft"/>
-                    <xtce:Enumeration value="1" label="GroundStation"/>
+                    <xtce:Enumeration value="0" label="Spacecraft" />
+                    <xtce:Enumeration value="1" label="GroundStation" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="OBCOperationalMode_t">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="CommisionMode"/>
-                    <xtce:Enumeration value="1" label="NominalMode"/>
-                    <xtce:Enumeration value="2" label="ScienceMode"/>
-                    <xtce:Enumeration value="3" label="SafeMode"/>
+                    <xtce:Enumeration value="0" label="CommisionMode" />
+                    <xtce:Enumeration value="1" label="NominalMode" />
+                    <xtce:Enumeration value="2" label="ScienceMode" />
+                    <xtce:Enumeration value="3" label="SafeMode" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="AcceptanceErrorType_t">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="UnknownAcceptanceError"/>
-                    <xtce:Enumeration value="1" label="MessageTooShort"/>
-                    <xtce:Enumeration value="2" label="TooManyBitsRead"/>
-                    <xtce:Enumeration value="4" label="StringTooShort"/>
-                    <xtce:Enumeration value="5" label="UnacceptableMessage"/>
+                    <xtce:Enumeration value="0" label="UnknownAcceptanceError" />
+                    <xtce:Enumeration value="1" label="MessageTooShort" />
+                    <xtce:Enumeration value="2" label="TooManyBitsRead" />
+                    <xtce:Enumeration value="4" label="StringTooShort" />
+                    <xtce:Enumeration value="5" label="UnacceptableMessage" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
 
             <xtce:EnumeratedParameterType name="ExecutionStartErrorType_t">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="UnknownExecutionStartError"/>
-                    <xtce:Enumeration value="1" label="EventActionDefinitionIDExistsError"/>
-                    <xtce:Enumeration value="2" label="EventActionDeleteEnabledDefinitionError"/>
-                    <xtce:Enumeration value="3" label="EventActionUnknownEventDefinitionError"/>
-                    <xtce:Enumeration value="4" label="EventActionUnknownEventActionDefinitionIDError"/>
-                    <xtce:Enumeration value="5" label="SubServiceExecutionStartError"/>
-                    <xtce:Enumeration value="6" label="InstructionExecutionStartError"/>
-                    <xtce:Enumeration value="7" label="SetNonExistingParameter"/>
-                    <xtce:Enumeration value="8" label="GetNonExistingParameter"/>
-                    <xtce:Enumeration value="9" label="NonExistingPacketStore"/>
-                    <xtce:Enumeration value="10" label="SetPacketStoreWithOpenRetrievalInProgress"/>
-                    <xtce:Enumeration value="11" label="SetPacketStoreWithByTimeRangeRetrieval"/>
-                    <xtce:Enumeration value="12" label="GetPacketStoreWithByTimeRangeRetrieval"/>
-                    <xtce:Enumeration value="13" label="GetPacketStoreWithOpenRetrievalInProgress"/>
-                    <xtce:Enumeration value="14" label="ByTimeRangeRetrievalAlreadyEnabled"/>
-                    <xtce:Enumeration value="15" label="AlreadyExistingPacketStore"/>
-                    <xtce:Enumeration value="16" label="MaxNumberOfPacketStoresReached"/>
-                    <xtce:Enumeration value="17" label="GetPacketStoreWithStorageStatusEnabled"/>
-                    <xtce:Enumeration value="18" label="DeletionOfPacketWithByTimeRangeRetrieval"/>
-                    <xtce:Enumeration value="19" label="DeletionOfPacketWithOpenRetrievalInProgress"/>
-                    <xtce:Enumeration value="20" label="InvalidTimeWindow"/>
-                    <xtce:Enumeration value="21" label="DestinationPacketStoreNotEmtpy"/>
-                    <xtce:Enumeration value="22" label="InvalidReportingRateError"/>
-                    <xtce:Enumeration value="23" label="EventActionDefinitionsMapIsFull"/>
-                    <xtce:Enumeration value="24" label="RequestedNonExistingStructure"/>
-                    <xtce:Enumeration value="25" label="RequestedAlreadyExistingStructure"/>
-                    <xtce:Enumeration value="26" label="RequestedDeletionOfEnabledHousekeeping"/>
-                    <xtce:Enumeration value="27" label="AlreadyExistingParameter"/>
-                    <xtce:Enumeration value="28" label="RequestedAppendToEnabledHousekeeping"/>
-                    <xtce:Enumeration value="29" label="ExceededMaxNumberOfHousekeepingStructures"/>
-                    <xtce:Enumeration value="30" label="ExceededMaxNumberOfSimplyCommutatedParameters"/>
-                    <xtce:Enumeration value="31" label="InvalidSamplingRateError"/>
-                    <xtce:Enumeration value="32" label="MaxStatisticDefinitionsReached"/>
-                    <xtce:Enumeration value="33" label="InvalidVirtualChannel"/>
-                    <xtce:Enumeration value="34" label="DeletionOfPacketStoreWithStorageStatusEnabled"/>
-                    <xtce:Enumeration value="35" label="CopyOfPacketsFailed"/>
-                    <xtce:Enumeration value="36" label="UnableToHandlePacketStoreSize"/>
-                    <xtce:Enumeration value="37" label="InvalidRequestToDeleteAllParameterMonitoringDefinitions"/>
-                    <xtce:Enumeration value="38" label="InvalidRequestToDeleteParameterMonitoringDefinition"/>
-                    <xtce:Enumeration value="39" label="AddAlreadyExistingParameter"/>
-                    <xtce:Enumeration value="40" label="ParameterMonitoringListIsFull"/>
-                    <xtce:Enumeration value="41" label="HighLimitIsLowerThanLowLimit"/>
-                    <xtce:Enumeration value="42" label="HighThresholdIsLowerThanLowThreshold"/>
-                    <xtce:Enumeration value="43" label="ModifyParameterNotInTheParameterMonitoringList"/>
-                    <xtce:Enumeration value="44" label="DifferentParameterMonitoringDefinitionAndMonitoredParameter"/>
-                    <xtce:Enumeration value="45" label="GetNonExistingParameterMonitoringDefinition"/>
-                    <xtce:Enumeration value="46" label="ReportParameterNotInTheParameterMonitoringList"/>
-                    <xtce:Enumeration value="47" label="AllServiceTypesAlreadyAllowed"/>
-                    <xtce:Enumeration value="48" label="MaxReportTypesReached"/>
-                    <xtce:Enumeration value="49" label="MaxServiceTypesReached"/>
-                    <xtce:Enumeration value="50" label="NotControlledApplication"/>
-                    <xtce:Enumeration value="51" label="ParameterValueMissing"/>
-                    <xtce:Enumeration value="52" label="ParameterReadOnly"/>
-                    <xtce:Enumeration value="53" label="ParameterWriteOnly"/>
+                    <xtce:Enumeration value="0" label="UnknownExecutionStartError" />
+                    <xtce:Enumeration value="1" label="EventActionDefinitionIDExistsError" />
+                    <xtce:Enumeration value="2" label="EventActionDeleteEnabledDefinitionError" />
+                    <xtce:Enumeration value="3" label="EventActionUnknownEventDefinitionError" />
+                    <xtce:Enumeration value="4"
+                        label="EventActionUnknownEventActionDefinitionIDError" />
+                    <xtce:Enumeration value="5" label="SubServiceExecutionStartError" />
+                    <xtce:Enumeration value="6" label="InstructionExecutionStartError" />
+                    <xtce:Enumeration value="7" label="SetNonExistingParameter" />
+                    <xtce:Enumeration value="8" label="GetNonExistingParameter" />
+                    <xtce:Enumeration value="9" label="NonExistingPacketStore" />
+                    <xtce:Enumeration value="10" label="SetPacketStoreWithOpenRetrievalInProgress" />
+                    <xtce:Enumeration value="11" label="SetPacketStoreWithByTimeRangeRetrieval" />
+                    <xtce:Enumeration value="12" label="GetPacketStoreWithByTimeRangeRetrieval" />
+                    <xtce:Enumeration value="13" label="GetPacketStoreWithOpenRetrievalInProgress" />
+                    <xtce:Enumeration value="14" label="ByTimeRangeRetrievalAlreadyEnabled" />
+                    <xtce:Enumeration value="15" label="AlreadyExistingPacketStore" />
+                    <xtce:Enumeration value="16" label="MaxNumberOfPacketStoresReached" />
+                    <xtce:Enumeration value="17" label="GetPacketStoreWithStorageStatusEnabled" />
+                    <xtce:Enumeration value="18" label="DeletionOfPacketWithByTimeRangeRetrieval" />
+                    <xtce:Enumeration value="19" label="DeletionOfPacketWithOpenRetrievalInProgress" />
+                    <xtce:Enumeration value="20" label="InvalidTimeWindow" />
+                    <xtce:Enumeration value="21" label="DestinationPacketStoreNotEmtpy" />
+                    <xtce:Enumeration value="22" label="InvalidReportingRateError" />
+                    <xtce:Enumeration value="23" label="EventActionDefinitionsMapIsFull" />
+                    <xtce:Enumeration value="24" label="RequestedNonExistingStructure" />
+                    <xtce:Enumeration value="25" label="RequestedAlreadyExistingStructure" />
+                    <xtce:Enumeration value="26" label="RequestedDeletionOfEnabledHousekeeping" />
+                    <xtce:Enumeration value="27" label="AlreadyExistingParameter" />
+                    <xtce:Enumeration value="28" label="RequestedAppendToEnabledHousekeeping" />
+                    <xtce:Enumeration value="29" label="ExceededMaxNumberOfHousekeepingStructures" />
+                    <xtce:Enumeration value="30"
+                        label="ExceededMaxNumberOfSimplyCommutatedParameters" />
+                    <xtce:Enumeration value="31" label="InvalidSamplingRateError" />
+                    <xtce:Enumeration value="32" label="MaxStatisticDefinitionsReached" />
+                    <xtce:Enumeration value="33" label="InvalidVirtualChannel" />
+                    <xtce:Enumeration value="34"
+                        label="DeletionOfPacketStoreWithStorageStatusEnabled" />
+                    <xtce:Enumeration value="35" label="CopyOfPacketsFailed" />
+                    <xtce:Enumeration value="36" label="UnableToHandlePacketStoreSize" />
+                    <xtce:Enumeration value="37"
+                        label="InvalidRequestToDeleteAllParameterMonitoringDefinitions" />
+                    <xtce:Enumeration value="38"
+                        label="InvalidRequestToDeleteParameterMonitoringDefinition" />
+                    <xtce:Enumeration value="39" label="AddAlreadyExistingParameter" />
+                    <xtce:Enumeration value="40" label="ParameterMonitoringListIsFull" />
+                    <xtce:Enumeration value="41" label="HighLimitIsLowerThanLowLimit" />
+                    <xtce:Enumeration value="42" label="HighThresholdIsLowerThanLowThreshold" />
+                    <xtce:Enumeration value="43"
+                        label="ModifyParameterNotInTheParameterMonitoringList" />
+                    <xtce:Enumeration value="44"
+                        label="DifferentParameterMonitoringDefinitionAndMonitoredParameter" />
+                    <xtce:Enumeration value="45" label="GetNonExistingParameterMonitoringDefinition" />
+                    <xtce:Enumeration value="46"
+                        label="ReportParameterNotInTheParameterMonitoringList" />
+                    <xtce:Enumeration value="47" label="AllServiceTypesAlreadyAllowed" />
+                    <xtce:Enumeration value="48" label="MaxReportTypesReached" />
+                    <xtce:Enumeration value="49" label="MaxServiceTypesReached" />
+                    <xtce:Enumeration value="50" label="NotControlledApplication" />
+                    <xtce:Enumeration value="51" label="ParameterValueMissing" />
+                    <xtce:Enumeration value="52" label="ParameterReadOnly" />
+                    <xtce:Enumeration value="53" label="ParameterWriteOnly" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="ExecutionProgressErrorType_t">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="UnknownExecutionProgressError"/>
+                    <xtce:Enumeration value="0" label="UnknownExecutionProgressError" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
 
             <xtce:EnumeratedParameterType name="ExecutionCompletionErrorType_t">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="UnknownExecutionCompletionError"/>
-                    <xtce:Enumeration value="1" label="ChecksumFailed"/>
-                    <xtce:Enumeration value="2" label="AddressOutOfRange"/>
+                    <xtce:Enumeration value="0" label="UnknownExecutionCompletionError" />
+                    <xtce:Enumeration value="1" label="ChecksumFailed" />
+                    <xtce:Enumeration value="2" label="AddressOutOfRange" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="RoutingErrorType_t">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="UnknownRoutingError"/>
+                    <xtce:Enumeration value="0" label="UnknownRoutingError" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedParameterType>
 
@@ -404,42 +414,42 @@
     <xtce:CommandMetaData>
         <xtce:ArgumentTypeSet>
             <xtce:IntegerArgumentType name="packet_version_number">
-                <xtce:IntegerDataEncoding sizeInBits="3"/>
+                <xtce:IntegerDataEncoding sizeInBits="3" />
             </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="packet_type">
-                <xtce:IntegerDataEncoding sizeInBits="1"/>
+                <xtce:IntegerDataEncoding sizeInBits="1" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1" label="TC"/>
-                    <xtce:Enumeration value="0" label="TM"/>
+                    <xtce:Enumeration value="1" label="TC" />
+                    <xtce:Enumeration value="0" label="TM" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
             <xtce:IntegerArgumentType name="secondary_header_flag">
-                <xtce:IntegerDataEncoding sizeInBits="1"/>
+                <xtce:IntegerDataEncoding sizeInBits="1" />
             </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="application_process_ID">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="11"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="11" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1" label="OBC"/>
-                    <xtce:Enumeration value="2" label="COMMS"/>
-                    <xtce:Enumeration value="3" label="ADCS"/>
-                    <xtce:Enumeration value="4" label="SU"/>
-                    <xtce:Enumeration value="5" label="GS"/>
+                    <xtce:Enumeration value="1" label="OBC" />
+                    <xtce:Enumeration value="2" label="COMMS" />
+                    <xtce:Enumeration value="3" label="ADCS" />
+                    <xtce:Enumeration value="4" label="SU" />
+                    <xtce:Enumeration value="5" label="GS" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
             <xtce:IntegerArgumentType name="sequence_flags">
-                <xtce:IntegerDataEncoding sizeInBits="2"/>
+                <xtce:IntegerDataEncoding sizeInBits="2" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint4_t">
-                <xtce:IntegerDataEncoding sizeInBits="4"/>
+                <xtce:IntegerDataEncoding sizeInBits="4" />
             </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="completion_ack">
-                <xtce:IntegerDataEncoding sizeInBits="1"/>
+                <xtce:IntegerDataEncoding sizeInBits="1" />
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
                     <xtce:Enumeration value="1" label="completion_ack" />
@@ -447,7 +457,7 @@
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="progress_of_execution_ack">
-                <xtce:IntegerDataEncoding sizeInBits="1"/>
+                <xtce:IntegerDataEncoding sizeInBits="1" />
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
                     <xtce:Enumeration value="1" label="progress_of_execution_ack" />
@@ -455,7 +465,7 @@
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="start_of_execution_ack">
-                <xtce:IntegerDataEncoding sizeInBits="1"/>
+                <xtce:IntegerDataEncoding sizeInBits="1" />
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
                     <xtce:Enumeration value="1" label="start_of_execution_ack" />
@@ -463,7 +473,7 @@
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="acceptance_ack">
-                <xtce:IntegerDataEncoding sizeInBits="1"/>
+                <xtce:IntegerDataEncoding sizeInBits="1" />
                 <xtce:EnumerationList>
                     <xtce:Enumeration value="0" label="no_ack" />
                     <xtce:Enumeration value="1" label="acceptance_ack" />
@@ -471,121 +481,97 @@
             </xtce:EnumeratedArgumentType>
 
             <xtce:IntegerArgumentType name="service_type_ID_TC">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="message_subtype_ID_TC">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="response_band">
-                <xtce:IntegerDataEncoding sizeInBits="1"/>
+                <xtce:IntegerDataEncoding sizeInBits="1" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="UHF"/>
-                    <xtce:Enumeration value="1" label="S"/>
+                    <xtce:Enumeration value="0" label="UHF" />
+                    <xtce:Enumeration value="1" label="S" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="parameterId_t">
-                <xtce:IntegerDataEncoding sizeInBits="16"/>
+                <xtce:IntegerDataEncoding sizeInBits="16" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="6" label="ReportParametersUnusedStack"/>
-                    <xtce:Enumeration value="7" label="AvailableHeap"/>
-                    <xtce:Enumeration value="8" label="OBCuseRTT"/>
-                    <xtce:Enumeration value="9" label="OBCuseUART"/>
-                    <xtce:Enumeration value="10" label="OBCuseCAN"/>
-                    <xtce:Enumeration value="11" label="ADCSuseRTT"/>
-                    <xtce:Enumeration value="12" label="ADCSuseUART"/>
-                    <xtce:Enumeration value="13" label="ADCSuseCAN"/>
-                    <xtce:Enumeration value="1013" label="MagnetometerRawX"/>
-                    <xtce:Enumeration value="1014" label="MagnetometerRawY"/>
-                    <xtce:Enumeration value="1015" label="MagnetometerRawZ"/>
-                    <xtce:Enumeration value="1016" label="MagnetometerFrequency"/>
-                    <xtce:Enumeration value="1017" label="MagnetometerCycleCountX"/>
-                    <xtce:Enumeration value="1018" label="MagnetometerCycleCountY"/>
-                    <xtce:Enumeration value="1019" label="MagnetometerCycleCountZ"/>
-                    <xtce:Enumeration value="1020" label="MagnetometerSelfTest"/>
-                    <xtce:Enumeration value="1043" label="GyroscopeX"/>
-                    <xtce:Enumeration value="1044" label="GyroscopeY"/>
-                    <xtce:Enumeration value="1045" label="GyroscopeZ"/>
-                    <xtce:Enumeration value="1089" label="GyroscopeXTemperature"/>
-                    <xtce:Enumeration value="1090" label="GyroscopeYTemperature"/>
-                    <xtce:Enumeration value="1091" label="GyroscopeZTemperature"/>
-                    <xtce:Enumeration value="1092" label="ADCSBoardTemperature1"/>
-                    <xtce:Enumeration value="1093" label="ADCSBoardTemperature2"/>
-                    <xtce:Enumeration value="1158" label="MagnetometerSignX"/>
-                    <xtce:Enumeration value="1159" label="MagnetometerSignY"/>
-                    <xtce:Enumeration value="1160" label="MagnetometerSignZ"/>
-                    <xtce:Enumeration value="1164" label="GyroSignX"/>
-                    <xtce:Enumeration value="1165" label="GyroSignY"/>
-                    <xtce:Enumeration value="1166" label="GyroSignZ"/>
-                    <xtce:Enumeration value="1189" label="GyroBiasX"/>
-                    <xtce:Enumeration value="1190" label="GyroBiasY"/>
-                    <xtce:Enumeration value="1191" label="GyroBiasZ"/>
-                    <xtce:Enumeration value="1218" label="ADCSMCUTemperature"/>
-                    <xtce:Enumeration value="1220" label="ADCSMCUBootCounter"/>
-                    <xtce:Enumeration value="1221" label="ADCSMCUOnBoardTime"/>
-                    <xtce:Enumeration value="1224" label="ADCSSystick"/>
-                    <xtce:Enumeration value="1227" label="ADCSFlashInt"/>
-                    <xtce:Enumeration value="1228" label="ADCSSRAMInt"/>
-                    <xtce:Enumeration value="5000" label="OBDHBoardTemperature1"/>
-                    <xtce:Enumeration value="5001" label="OBDHBoardTemperature2"/>
-                    <xtce:Enumeration value="5002" label="OBCMCUTemperature"/>
-                    <xtce:Enumeration value="5004" label="OBCBootCounter"/>
-                    <xtce:Enumeration value="5009" label="OBCSpacecraftTimeRef"/>
-                    <xtce:Enumeration value="5010" label="OBCOnBoardTime"/>
-                    <xtce:Enumeration value="5011" label="OBCOperationalMode"/>
-                    <xtce:Enumeration value="5012" label="OBCMemoryPartition"/>
-                    <xtce:Enumeration value="5013" label="OBCReconfigurationTimer"/>
-                    <xtce:Enumeration value="5014" label="ObcLastFailedEvent"/>
-                    <xtce:Enumeration value="5015" label="OBCSystick"/>
-                    <xtce:Enumeration value="5016" label="CANBusLoad1"/>
-                    <xtce:Enumeration value="5017" label="CANBusLoad2"/>
-                    <xtce:Enumeration value="5018" label="ActiveCAN"/>
-                    <xtce:Enumeration value="5021" label="NANDLCLThreshold"/>
-                    <xtce:Enumeration value="5022" label="MRAMLCLThreshold"/>
-                    <xtce:Enumeration value="5023" label="OBCNANDOn"/>
-                    <xtce:Enumeration value="5024" label="OBCMRAMOn"/>
+                    <xtce:Enumeration value="6" label="ReportParametersUnusedStack" />
+                    <xtce:Enumeration value="7" label="AvailableHeap" />
+                    <xtce:Enumeration value="8" label="OBCuseRTT" />
+                    <xtce:Enumeration value="9" label="OBCuseUART" />
+                    <xtce:Enumeration value="10" label="OBCuseCAN" />
+                    <xtce:Enumeration value="11" label="ADCSuseRTT" />
+                    <xtce:Enumeration value="12" label="ADCSuseUART" />
+                    <xtce:Enumeration value="13" label="ADCSuseCAN" />
+                    <xtce:Enumeration value="1013" label="MagnetometerRawX" />
+                    <xtce:Enumeration value="1014" label="MagnetometerRawY" />
+                    <xtce:Enumeration value="1015" label="MagnetometerRawZ" />
+                    <xtce:Enumeration value="1016" label="MagnetometerFrequency" />
+                    <xtce:Enumeration value="1017" label="MagnetometerCycleCountX" />
+                    <xtce:Enumeration value="1018" label="MagnetometerCycleCountY" />
+                    <xtce:Enumeration value="1019" label="MagnetometerCycleCountZ" />
+                    <xtce:Enumeration value="1020" label="MagnetometerSelfTest" />
+                    <xtce:Enumeration value="1043" label="GyroscopeX" />
+                    <xtce:Enumeration value="1044" label="GyroscopeY" />
+                    <xtce:Enumeration value="1045" label="GyroscopeZ" />
+                    <xtce:Enumeration value="1089" label="GyroscopeXTemperature" />
+                    <xtce:Enumeration value="1090" label="GyroscopeYTemperature" />
+                    <xtce:Enumeration value="1091" label="GyroscopeZTemperature" />
+                    <xtce:Enumeration value="1092" label="ADCSBoardTemperature1" />
+                    <xtce:Enumeration value="1093" label="ADCSBoardTemperature2" />
+                    <xtce:Enumeration value="1158" label="MagnetometerSignX" />
+                    <xtce:Enumeration value="1159" label="MagnetometerSignY" />
+                    <xtce:Enumeration value="1160" label="MagnetometerSignZ" />
+                    <xtce:Enumeration value="1164" label="GyroSignX" />
+                    <xtce:Enumeration value="1165" label="GyroSignY" />
+                    <xtce:Enumeration value="1166" label="GyroSignZ" />
+                    <xtce:Enumeration value="1189" label="GyroBiasX" />
+                    <xtce:Enumeration value="1190" label="GyroBiasY" />
+                    <xtce:Enumeration value="1191" label="GyroBiasZ" />
+                    <xtce:Enumeration value="1218" label="ADCSMCUTemperature" />
+                    <xtce:Enumeration value="1220" label="ADCSMCUBootCounter" />
+                    <xtce:Enumeration value="1221" label="ADCSMCUOnBoardTime" />
+                    <xtce:Enumeration value="1224" label="ADCSSystick" />
+                    <xtce:Enumeration value="1227" label="ADCSFlashInt" />
+                    <xtce:Enumeration value="1228" label="ADCSSRAMInt" />
+                    <xtce:Enumeration value="5000" label="OBDHBoardTemperature1" />
+                    <xtce:Enumeration value="5001" label="OBDHBoardTemperature2" />
+                    <xtce:Enumeration value="5002" label="OBCMCUTemperature" />
+                    <xtce:Enumeration value="5004" label="OBCBootCounter" />
+                    <xtce:Enumeration value="5009" label="OBCSpacecraftTimeRef" />
+                    <xtce:Enumeration value="5010" label="OBCOnBoardTime" />
+                    <xtce:Enumeration value="5011" label="OBCOperationalMode" />
+                    <xtce:Enumeration value="5012" label="OBCMemoryPartition" />
+                    <xtce:Enumeration value="5013" label="OBCReconfigurationTimer" />
+                    <xtce:Enumeration value="5014" label="ObcLastFailedEvent" />
+                    <xtce:Enumeration value="5015" label="OBCSystick" />
+                    <xtce:Enumeration value="5016" label="CANBusLoad1" />
+                    <xtce:Enumeration value="5017" label="CANBusLoad2" />
+                    <xtce:Enumeration value="5018" label="ActiveCAN" />
+                    <xtce:Enumeration value="5021" label="NANDLCLThreshold" />
+                    <xtce:Enumeration value="5022" label="MRAMLCLThreshold" />
+                    <xtce:Enumeration value="5023" label="OBCNANDOn" />
+                    <xtce:Enumeration value="5024" label="OBCMRAMOn" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="writableFloatParameters_t">
-                <xtce:IntegerDataEncoding sizeInBits="16"/>
+                <xtce:IntegerDataEncoding sizeInBits="16" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="5021" label="NANDLCLThreshold"/>
-                    <xtce:Enumeration value="5022" label="MRAMLCLThreshold"/>
-                    <xtce:Enumeration value="5023" label="OBCNANDOn"/>
-                    <xtce:Enumeration value="5024" label="OBCMRAMOn"/>
-                    <xtce:Enumeration value="1221" label="ADCSMCUOnBoardTime"/>
+                    <xtce:Enumeration value="5021" label="NANDLCLThreshold" />
+                    <xtce:Enumeration value="5022" label="MRAMLCLThreshold" />
+                    <xtce:Enumeration value="5023" label="OBCNANDOn" />
+                    <xtce:Enumeration value="5024" label="OBCMRAMOn" />
+                    <xtce:Enumeration value="1221" label="ADCSMCUOnBoardTime" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-           <xtce:ArrayArgumentType arrayTypeRef="writableFloatParameters_t" name="writableFloatParameterArray">
-            <xtce:DimensionList>
-                <xtce:Dimension>
-                    <xtce:StartingIndex>
-                        <xtce:FixedValue>0</xtce:FixedValue>
-                    </xtce:StartingIndex>
-                    <xtce:EndingIndex>
-                        <xtce:DynamicValue>
-                            <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
-                            <xtce:LinearAdjustment intercept="-1"/>
-                        </xtce:DynamicValue>
-                    </xtce:EndingIndex>
-                </xtce:Dimension>
-            </xtce:DimensionList>
-           </xtce:ArrayArgumentType>
-
-
-            <xtce:EnumeratedArgumentType name="writableUint32Parameters_t">
-                <xtce:IntegerDataEncoding sizeInBits="16"/>
-                <xtce:EnumerationList>
-                    <xtce:Enumeration value="5010" label="OBCOnBoardTime"/>
-                    <xtce:Enumeration value="5013" label="OBCReconfigurationTimer"/>
-                </xtce:EnumerationList>
-            </xtce:EnumeratedArgumentType>
-
-            <xtce:ArrayArgumentType arrayTypeRef="writableUint32Parameters_t" name="writableUint32ParametersArray">
+            <xtce:ArrayArgumentType arrayTypeRef="writableFloatParameters_t"
+                name="writableFloatParameterArray">
                 <xtce:DimensionList>
                     <xtce:Dimension>
                         <xtce:StartingIndex>
@@ -594,7 +580,33 @@
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
                                 <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
-                                <xtce:LinearAdjustment intercept="-1"/>
+                                <xtce:LinearAdjustment intercept="-1" />
+                            </xtce:DynamicValue>
+                        </xtce:EndingIndex>
+                    </xtce:Dimension>
+                </xtce:DimensionList>
+            </xtce:ArrayArgumentType>
+
+
+            <xtce:EnumeratedArgumentType name="writableUint32Parameters_t">
+                <xtce:IntegerDataEncoding sizeInBits="16" />
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="5010" label="OBCOnBoardTime" />
+                    <xtce:Enumeration value="5013" label="OBCReconfigurationTimer" />
+                </xtce:EnumerationList>
+            </xtce:EnumeratedArgumentType>
+
+            <xtce:ArrayArgumentType arrayTypeRef="writableUint32Parameters_t"
+                name="writableUint32ParametersArray">
+                <xtce:DimensionList>
+                    <xtce:Dimension>
+                        <xtce:StartingIndex>
+                            <xtce:FixedValue>0</xtce:FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <xtce:DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <xtce:LinearAdjustment intercept="-1" />
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
                     </xtce:Dimension>
@@ -602,29 +614,30 @@
             </xtce:ArrayArgumentType>
 
             <xtce:EnumeratedArgumentType name="writableUint64Parameters_t">
-                <xtce:IntegerDataEncoding sizeInBits="16"/>
+                <xtce:IntegerDataEncoding sizeInBits="16" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1224" label="ADCSSystick"/>
+                    <xtce:Enumeration value="1224" label="ADCSSystick" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="writableUint8Parameters_t">
-                <xtce:IntegerDataEncoding sizeInBits="16"/>
+                <xtce:IntegerDataEncoding sizeInBits="16" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1016" label="MagnetometerFrequency"/>
+                    <xtce:Enumeration value="1016" label="MagnetometerFrequency" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="writableInt8Parameters_t">
-                <xtce:IntegerDataEncoding sizeInBits="16"/>
+                <xtce:IntegerDataEncoding sizeInBits="16" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1017" label="MagnetometerCycleCountX"/>
-                    <xtce:Enumeration value="1018" label="MagnetometerCycleCountY"/>
-                    <xtce:Enumeration value="1019" label="MagnetometerCycleCountZ"/>
+                    <xtce:Enumeration value="1017" label="MagnetometerCycleCountX" />
+                    <xtce:Enumeration value="1018" label="MagnetometerCycleCountY" />
+                    <xtce:Enumeration value="1019" label="MagnetometerCycleCountZ" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
-            <xtce:ArrayArgumentType arrayTypeRef="writableInt8Parameters_t" name="writableInt8ParametersArray">
+            <xtce:ArrayArgumentType arrayTypeRef="writableInt8Parameters_t"
+                name="writableInt8ParametersArray">
                 <xtce:DimensionList>
                     <xtce:Dimension>
                         <xtce:StartingIndex>
@@ -633,7 +646,7 @@
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
                                 <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
-                                <xtce:LinearAdjustment intercept="-1"/>
+                                <xtce:LinearAdjustment intercept="-1" />
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
                     </xtce:Dimension>
@@ -641,17 +654,17 @@
             </xtce:ArrayArgumentType>
 
             <xtce:EnumeratedArgumentType name="writableBoolParameters_t">
-                <xtce:IntegerDataEncoding sizeInBits="16"/>
+                <xtce:IntegerDataEncoding sizeInBits="16" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="1158" label="MagnetometerSignX"/>
-                    <xtce:Enumeration value="1159" label="MagnetometerSignY"/>
-                    <xtce:Enumeration value="1160" label="MagnetometerSignZ"/>
-                    <xtce:Enumeration value="1164" label="GyroSignX"/>
-                    <xtce:Enumeration value="1165" label="GyroSignY"/>
-                    <xtce:Enumeration value="1166" label="GyroSignZ"/>
-                    <xtce:Enumeration value="1189" label="GyroBiasX"/>
-                    <xtce:Enumeration value="1190" label="GyroBiasY"/>
-                    <xtce:Enumeration value="1191" label="GyroBiasZ"/>
+                    <xtce:Enumeration value="1158" label="MagnetometerSignX" />
+                    <xtce:Enumeration value="1159" label="MagnetometerSignY" />
+                    <xtce:Enumeration value="1160" label="MagnetometerSignZ" />
+                    <xtce:Enumeration value="1164" label="GyroSignX" />
+                    <xtce:Enumeration value="1165" label="GyroSignY" />
+                    <xtce:Enumeration value="1166" label="GyroSignZ" />
+                    <xtce:Enumeration value="1189" label="GyroBiasX" />
+                    <xtce:Enumeration value="1190" label="GyroBiasY" />
+                    <xtce:Enumeration value="1191" label="GyroBiasZ" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
@@ -664,7 +677,7 @@
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
                                 <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
-                                <xtce:LinearAdjustment intercept="-1"/>
+                                <xtce:LinearAdjustment intercept="-1" />
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
                     </xtce:Dimension>
@@ -672,24 +685,24 @@
             </xtce:ArrayArgumentType>
 
             <xtce:EnumeratedArgumentType name="OBCMemoryPartition_t">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="Used"/>
-                    <xtce:Enumeration value="1" label="NotUsed"/>
+                    <xtce:Enumeration value="0" label="Used" />
+                    <xtce:Enumeration value="1" label="NotUsed" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="activeCAN_t">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="Main"/>
-                    <xtce:Enumeration value="1" label="Reductant"/>
+                    <xtce:Enumeration value="0" label="Main" />
+                    <xtce:Enumeration value="1" label="Reductant" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
             <xtce:AbsoluteTimeArgumentType name="release_time_calendar">
                 <xtce:Encoding offset="1577836800" scale="0.1">
-                    <xtce:IntegerDataEncoding sizeInBits="32"/>
+                    <xtce:IntegerDataEncoding sizeInBits="32" />
                 </xtce:Encoding>
                 <xtce:ReferenceTime>
                     <xtce:Epoch>UNIX</xtce:Epoch>
@@ -697,26 +710,26 @@
             </xtce:AbsoluteTimeArgumentType>
 
             <xtce:EnumeratedArgumentType name="structureId_t">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="Housekeeping OBC 1sec"/>
-                    <xtce:Enumeration value="1" label="Housekeeping OBC 3sec"/>
-                    <xtce:Enumeration value="3" label="Housekeeping ADCS 0.01sec"/>
-                    <xtce:Enumeration value="4" label="Housekeeping ADCS 3sec"/>
-                    <xtce:Enumeration value="5" label="Housekeeping ADCS 5sec"/>
+                    <xtce:Enumeration value="0" label="Housekeeping OBC 1sec" />
+                    <xtce:Enumeration value="1" label="Housekeeping OBC 3sec" />
+                    <xtce:Enumeration value="3" label="Housekeeping ADCS 0.01sec" />
+                    <xtce:Enumeration value="4" label="Housekeeping ADCS 3sec" />
+                    <xtce:Enumeration value="5" label="Housekeeping ADCS 5sec" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
             <xtce:IntegerArgumentType name="aknowledgement_flags">
-                <xtce:IntegerDataEncoding sizeInBits="4"/>
+                <xtce:IntegerDataEncoding sizeInBits="4" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="report_parameter_value_group_ID" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
             <xtce:FloatArgumentType name="float_t">
-                <xtce:FloatDataEncoding sizeInBits="32"/>
+                <xtce:FloatDataEncoding sizeInBits="32" />
             </xtce:FloatArgumentType>
 
             <xtce:ArrayArgumentType arrayTypeRef="float_t" name="floatArray_t">
@@ -728,7 +741,7 @@
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
                                 <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
-                                <xtce:LinearAdjustment intercept="-1"/>
+                                <xtce:LinearAdjustment intercept="-1" />
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
                     </xtce:Dimension>
@@ -736,7 +749,7 @@
             </xtce:ArrayArgumentType>
 
             <xtce:BooleanArgumentType name="bool_t">
-                <xtce:IntegerDataEncoding sizeInBits="1"/>
+                <xtce:IntegerDataEncoding sizeInBits="1" />
             </xtce:BooleanArgumentType>
 
             <xtce:ArrayArgumentType arrayTypeRef="bool_t" name="boolArray_t">
@@ -748,7 +761,7 @@
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
                                 <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
-                                <xtce:LinearAdjustment intercept="-1"/>
+                                <xtce:LinearAdjustment intercept="-1" />
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
                     </xtce:Dimension>
@@ -756,75 +769,75 @@
             </xtce:ArrayArgumentType>
 
             <xtce:IntegerArgumentType name="uint8_t" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint8_t{1-3}" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                 <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="1" maxInclusive="3"/>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="3" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint8_t{1-5}" signed="false">
-                <xtce:IntegerDataEncoding sizeInBits="8"/>
+                <xtce:IntegerDataEncoding sizeInBits="8" />
                 <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="1" maxInclusive="5"/>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="5" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint8_t{1-10}" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                 <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="1" maxInclusive="10"/>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="10" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="int8_t" signed="true">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint16_t" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint16_t{1-2}" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
                 <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="1" maxInclusive="2"/>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="2" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint16_t{1-3}" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
                 <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="1" maxInclusive="3"/>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="3" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint16_t{1-5}" signed="false">
-                <xtce:IntegerDataEncoding sizeInBits="16"/>
+                <xtce:IntegerDataEncoding sizeInBits="16" />
                 <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="1" maxInclusive="5"/>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="5" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint16_t{1-9}">
                 <xtce:IntegerDataEncoding sizeInBits="16" />
                 <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="1" maxInclusive="9"/>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="9" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint16_t{1-10}" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
                 <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="1" maxInclusive="10"/>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="10" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint32_t" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
             </xtce:IntegerArgumentType>
 
             <xtce:ArrayArgumentType arrayTypeRef="uint32_t" name="uint32Array_t">
@@ -836,7 +849,7 @@
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
                                 <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
-                                <xtce:LinearAdjustment intercept="-1"/>
+                                <xtce:LinearAdjustment intercept="-1" />
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
                     </xtce:Dimension>
@@ -844,43 +857,43 @@
             </xtce:ArrayArgumentType>
 
             <xtce:IntegerArgumentType name="uint32_t{1-3}" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
                 <xtce:ValidRangeSet>
-                    <xtce:ValidRange minInclusive="1" maxInclusive="3"/>
+                    <xtce:ValidRange minInclusive="1" maxInclusive="3" />
                 </xtce:ValidRangeSet>
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="uint64_t" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="64"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="64" />
             </xtce:IntegerArgumentType>
 
             <xtce:BooleanArgumentType name="reset_flag_ST04" zeroStringValue="0" oneStringValue="1">
-                <xtce:IntegerDataEncoding sizeInBits="1"/>
+                <xtce:IntegerDataEncoding sizeInBits="1" />
             </xtce:BooleanArgumentType>
 
             <xtce:IntegerArgumentType name="PMON_ID_ST12" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
             </xtce:IntegerArgumentType>
 
             <xtce:IntegerArgumentType name="are_you_alive_connection_ST17" signed="false">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             </xtce:IntegerArgumentType>
 
             <xtce:EnumeratedArgumentType name="OBCOperationalMode_t">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="CommisionMode"/>
-                    <xtce:Enumeration value="1" label="NominalMode"/>
-                    <xtce:Enumeration value="2" label="ScienceMode"/>
-                    <xtce:Enumeration value="3" label="SafeMode"/>
+                    <xtce:Enumeration value="0" label="CommisionMode" />
+                    <xtce:Enumeration value="1" label="NominalMode" />
+                    <xtce:Enumeration value="2" label="ScienceMode" />
+                    <xtce:Enumeration value="3" label="SafeMode" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="OBCSpacecraftTimeRef_t">
-                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
+                <xtce:IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                 <xtce:EnumerationList>
-                    <xtce:Enumeration value="0" label="Spacecraft"/>
-                    <xtce:Enumeration value="1" label="GroundStation"/>
+                    <xtce:Enumeration value="0" label="Spacecraft" />
+                    <xtce:Enumeration value="1" label="GroundStation" />
                 </xtce:EnumerationList>
             </xtce:EnumeratedArgumentType>
 
@@ -893,8 +906,8 @@
                         </xtce:StartingIndex>
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
-                                <xtce:ArgumentInstanceRef argumentRef="total_structures"/>
-                                <xtce:LinearAdjustment intercept="-1"/>
+                                <xtce:ArgumentInstanceRef argumentRef="total_structures" />
+                                <xtce:LinearAdjustment intercept="-1" />
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
                     </xtce:Dimension>
@@ -910,7 +923,7 @@
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
                                 <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
-                                <xtce:LinearAdjustment intercept="-1"/>
+                                <xtce:LinearAdjustment intercept="-1" />
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
                     </xtce:Dimension>
@@ -925,8 +938,8 @@
                         </xtce:StartingIndex>
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
-                                <xtce:ArgumentInstanceRef argumentRef="total_structures"/>
-                                <xtce:LinearAdjustment intercept="-1"/>
+                                <xtce:ArgumentInstanceRef argumentRef="total_structures" />
+                                <xtce:LinearAdjustment intercept="-1" />
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
                     </xtce:Dimension>
@@ -941,8 +954,8 @@
                         </xtce:StartingIndex>
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
-                                <xtce:ArgumentInstanceRef argumentRef="total_parameters"/>
-                                <xtce:LinearAdjustment intercept="-1"/>
+                                <xtce:ArgumentInstanceRef argumentRef="total_parameters" />
+                                <xtce:LinearAdjustment intercept="-1" />
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
                     </xtce:Dimension>
@@ -957,8 +970,8 @@
                         </xtce:StartingIndex>
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
-                                <xtce:ArgumentInstanceRef argumentRef="number_of_parameters"/>
-                                <xtce:LinearAdjustment intercept="-1"/>
+                                <xtce:ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <xtce:LinearAdjustment intercept="-1" />
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
                     </xtce:Dimension>
@@ -990,7 +1003,7 @@
                 <xtce:BinaryDataEncoding>
                     <xtce:SizeInBits>
                         <xtce:DynamicValue>
-                            <xtce:ParameterInstanceRef parameterRef="_yamcs_ignore"/>
+                            <xtce:ParameterInstanceRef parameterRef="_yamcs_ignore" />
                         </xtce:DynamicValue>
                     </xtce:SizeInBits>
                 </xtce:BinaryDataEncoding>
@@ -1004,8 +1017,8 @@
                         </xtce:StartingIndex>
                         <xtce:EndingIndex>
                             <xtce:DynamicValue>
-                                <xtce:ArgumentInstanceRef argumentRef="number_of_objects"/>
-                                <xtce:LinearAdjustment intercept="-1"/>
+                                <xtce:ArgumentInstanceRef argumentRef="number_of_objects" />
+                                <xtce:LinearAdjustment intercept="-1" />
                             </xtce:DynamicValue>
                         </xtce:EndingIndex>
                     </xtce:Dimension>

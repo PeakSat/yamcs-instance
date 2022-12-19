@@ -5,25 +5,20 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import javax.xml.bind.DatatypeConverter;
 import java.util.List;
 import java.util.logging.Logger;
 
 import com.google.common.primitives.Bytes;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import gr.spacedot.acubesat.file_handling.entities.ChunkedFileEntity;
-import io.netty.handler.codec.base64.Base64;
 import io.netty.handler.codec.http.HttpResponseStatus;
 
 public class PacketSender {
     private static final Logger LOGGER = Logger.getLogger(PacketSender.class.getName());
 
     public static final int THRESHOLD_BYTES = 64000;
-    
+
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 
     /**
@@ -41,7 +36,7 @@ public class PacketSender {
 
         do {
             JsonObject mainBody = new JsonObject();
-            mainBody.addProperty("base", new File(chunkedFileEntity.getPath(), chunkedFileEntity.getName()).toString());
+            mainBody.addProperty("base", chunkedFileEntity.getName().toString());
             offset = putChunksIntoPacket(chunks, mainBody, offset);
 
             JsonObject args = new JsonObject();
@@ -60,7 +55,7 @@ public class PacketSender {
             } catch (Exception e) {
                 LOGGER.info("Error sending request " + e);
             }
-        }while (offset < chunks.size() - 1);
+        } while (offset < chunks.size() - 1);
 
     }
 
@@ -83,14 +78,15 @@ public class PacketSender {
             int chunkLength = currentChunk.length;
             byteOffset = chunkLength * chunk;
 
-            byte[] information = { (byte) byteOffset, (byte) chunkLength };
+            byte[] information = { (byte) (byteOffset >> 24), (byte) (byteOffset >> 16),
+                    (byte) (byteOffset >> 8), (byte) byteOffset, (byte) (chunkLength >> 8), (byte) chunkLength };
             byteOffset += chunkLength;
             messageSize += chunkLength + information.length;
 
             lastChunkIndex = chunk;
 
             if (messageSize <= THRESHOLD_BYTES) {
-                System.out.println("Added chunk " + chunk);
+                LOGGER.info("Added chunk " + chunk + " with size " + chunkLength);
                 String byteData = bytesToHex(Bytes.concat(information, currentChunk));
                 memoryData.add(byteData);
             } else
@@ -98,7 +94,7 @@ public class PacketSender {
         }
         int numberOfObjects = lastChunkIndex + 1 - startChunkIndex;
 
-        System.out.println("number_of_objects is " + numberOfObjects);
+        LOGGER.info("number_of_objects is " + numberOfObjects);
 
         mainbody.addProperty("number_of_objects", numberOfObjects);
         mainbody.add("binary_data", memoryData);
