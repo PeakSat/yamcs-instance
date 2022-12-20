@@ -16,7 +16,7 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 public class PacketSender {
     private static final Logger LOGGER = Logger.getLogger(PacketSender.class.getName());
 
-    public static final int THRESHOLD_BYTES = 30000;
+    public static final int THRESHOLD_BYTES = 32000;
 
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 
