@@ -10,7 +10,6 @@ import org.yamcs.utils.ByteArrayUtils;
 
 import java.util.Map;
 import java.util.logging.Logger;
-
 import static java.lang.Thread.sleep;
 
 public class CustomCommandPostprocessor implements CommandPostprocessor {
@@ -18,7 +17,7 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
     private final CcsdsSeqCountFiller seqFiller = new CcsdsSeqCountFiller();
     private CommandHistoryPublisher commandHistory;
 
-    private final TCParser TCParser = new TCParser();
+    private final TCParser tcparcer = new TCParser();
 
     private static final Logger LOGGER = Logger.getLogger(CustomCommandPostprocessor.class.getName());
 
@@ -59,7 +58,7 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
         // the function, so an artificial delay is inserted in order to avoid
         // sending more than 50 packets simultaneously, which corrupts the packets.
 
-        if (serviceType == 6 && messageType == 1) {
+        if (serviceType == 24 && messageType == 1) {
             try {
                 sleep(50);
             } catch (InterruptedException e) {
@@ -68,8 +67,8 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
         }
 
         if (serviceType == 23 && messageType == 14) {
-            Map<String,String> paths = TCParser.parseFileCopyPacket(binary);
-            TCParser.processPaths(paths);
+            Map<String,String> paths = tcparcer.parseFileCopyPacket(binary);
+            tcparcer.processPaths(paths);
         }
 
         // Publish the sequence count to Command History. This has no special

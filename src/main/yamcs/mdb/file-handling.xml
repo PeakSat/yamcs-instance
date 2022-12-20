@@ -3,7 +3,7 @@
     xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
 
-    <xtce:TelemetryMetaData/>
+    <xtce:TelemetryMetaData />
     <xtce:CommandMetaData>
         <xtce:MetaCommandSet>
 
@@ -31,7 +31,7 @@
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
 
-            <xtce:MetaCommand name="TC(6,1)_load_object_memory_data">
+            <xtce:MetaCommand name="TC(24,1):send_file_segment">
                 <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <xtce:ArgumentAssignmentList>
                         <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="6" />
@@ -44,16 +44,19 @@
                     <xtce:Argument argumentTypeRef="/dt/binaryDataArray_t" name="binary_data"/>
 
                 </xtce:ArgumentList>
-
-                <xtce:CommandContainer name="TC(6,1)_load_object_memory_data">
+                <xtce:CommandContainer name="TC(24,1):send_file_segment">
                     <xtce:EntryList>
-                        <xtce:ArgumentRefEntry argumentRef="base" />
-                        <xtce:ArgumentRefEntry argumentRef="number_of_objects" />
-                        <xtce:ArgumentRefEntry argumentRef="binary_data" shortDescription="This hold offset, data , data size and checksum" />
+                        <xtce:ArgumentRefEntry argumentRef="target_file_path" />
+                        <xtce:ArgumentRefEntry argumentRef="target_file_name" />
+                        <xtce:ArgumentRefEntry argumentRef="current_chunk" />
+                        <xtce:ArgumentRefEntry argumentRef="total_chunks" />
+                        <xtce:ArgumentRefEntry argumentRef="chunk_size" />
+                        <xtce:ArgumentRefEntry argumentRef="data" />
                     </xtce:EntryList>
                     <xtce:BaseContainer containerRef="/pus/Header_TC" />
                 </xtce:CommandContainer>
             </xtce:MetaCommand>
+
 
         </xtce:MetaCommandSet>
     </xtce:CommandMetaData>

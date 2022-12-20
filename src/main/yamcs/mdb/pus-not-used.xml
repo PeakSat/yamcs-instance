@@ -11,7 +11,7 @@
             <xtce:Parameter name="validity_parameter_ST12" parameterTypeRef="/dt/uint16_t" />
             <xtce:Parameter name="mask_ST12" parameterTypeRef="/dt/uint64_t" />
             <xtce:Parameter name="expected_value_ST12" parameterTypeRef="/dt/uint64_t" />
-            <xtce:Parameter name="monitoring_intervale_ST12" parameterTypeRef="/dt/uint8_t" />
+            <xtce:Parameter name="monitoring_interval_ST12" parameterTypeRef="/dt/uint8_t" />
             <xtce:Parameter name="PMON_status_ST12" parameterTypeRef="/dt/uint16_t" />
             <xtce:Parameter name="repetition_number_ST12" parameterTypeRef="/dt/uint8_t" />
             <xtce:Parameter name="check_type_ST12" parameterTypeRef="/dt/uint16_t" />
@@ -27,7 +27,7 @@
                     <xtce:ParameterRefEntry parameterRef="validity_parameter_ST12"/>
                     <xtce:ParameterRefEntry parameterRef="mask_ST12"/>
                     <xtce:ParameterRefEntry parameterRef="expected_value_ST12"/>
-                    <xtce:ParameterRefEntry parameterRef="monitoring_intervale_ST12"/>
+                    <xtce:ParameterRefEntry parameterRef="monitoring_interval_ST12"/>
                     <xtce:ParameterRefEntry parameterRef="PMON_status_ST12"/>
                     <xtce:ParameterRefEntry parameterRef="repetition_number_ST12"/>
                     <xtce:ParameterRefEntry parameterRef="check_type_ST12"/>
