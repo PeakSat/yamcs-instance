@@ -1,6 +1,4 @@
-import base64
 from threading import Thread
-import binascii
 import socket
 import sys
 from time import sleep
@@ -54,11 +52,13 @@ def processFileSegment(data: bytearray) -> None:
             + str(dataLength)
             + " packet index is "
             + str(packetIndex)
+            + " offset is "
+            +str(offset)
         )
         fileBinary = data[packetIndex : packetIndex + dataLength]
 
-        for character in fileBinary:
-            print("byte is "+str(int(character)))
+        # for character in fileBinary:
+        #     print("byte is "+str(int(character)))
 
         packetIndex += dataLength
 
@@ -68,7 +68,7 @@ def processFileSegment(data: bytearray) -> None:
             file.write(fileBinary)
             file.close()
         else:
-            file = open(base, "r+b")
+            file = open(base, "ab")
             file.seek(offset)
             file.write(fileBinary)
             file.close()
@@ -90,8 +90,8 @@ def receive_tc(simulator):
     while True:
         data, _ = clientconnTC.recvfrom(65536)
         simulator.last_tc = data
-        processTC(data)
         if data != b"":
+            processTC(data)
             simulator.tc_counter += 1
 
 

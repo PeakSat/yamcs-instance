@@ -1,6 +1,5 @@
 package gr.spacedot.acubesat.file_handling.network.out;
 
-import java.io.File;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -17,12 +16,12 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 public class PacketSender {
     private static final Logger LOGGER = Logger.getLogger(PacketSender.class.getName());
 
-    public static final int THRESHOLD_BYTES = 64000;
+    public static final int THRESHOLD_BYTES = 30000;
 
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 
     /**
-     * It sends a file split in chunks using one or more packets
+     * Sends a file split in chunks using one or more packets
      *
      * @param chunkedFileEntity : the already split file to be sent.
      */
@@ -53,7 +52,7 @@ public class PacketSender {
                 if (response.statusCode() != HttpResponseStatus.OK.code())
                     LOGGER.info(response.body());
             } catch (Exception e) {
-                LOGGER.info("Error sending request " + e);
+                LOGGER.info("Error sending request ");
             }
         } while (offset < chunks.size() - 1);
 
@@ -69,24 +68,23 @@ public class PacketSender {
 
         int messageSize = 0;
         int lastChunkIndex = 0;
-        int byteOffset = 0;
+        int byteOffset = startChunkIndex * data.get(0).length;
 
         JsonArray memoryData = new JsonArray();
 
         for (int chunk = startChunkIndex; chunk < data.size(); chunk++) {
             byte[] currentChunk = data.get(chunk);
             int chunkLength = currentChunk.length;
-            byteOffset = chunkLength * chunk;
 
             byte[] information = { (byte) (byteOffset >> 24), (byte) (byteOffset >> 16),
                     (byte) (byteOffset >> 8), (byte) byteOffset, (byte) (chunkLength >> 8), (byte) chunkLength };
             byteOffset += chunkLength;
             messageSize += chunkLength + information.length;
 
-            lastChunkIndex = chunk;
-
             if (messageSize <= THRESHOLD_BYTES) {
-                LOGGER.info("Added chunk " + chunk + " with size " + chunkLength);
+                lastChunkIndex = chunk;
+                LOGGER.info("Added chunk " + chunk + " with size " + chunkLength + ", offset " + byteOffset
+                        + ", message size: " + messageSize);
                 String byteData = bytesToHex(Bytes.concat(information, currentChunk));
                 memoryData.add(byteData);
             } else
@@ -99,7 +97,7 @@ public class PacketSender {
         mainbody.addProperty("number_of_objects", numberOfObjects);
         mainbody.add("binary_data", memoryData);
 
-        return lastChunkIndex;
+        return lastChunkIndex + 1;
     }
 
     public static String bytesToHex(byte[] bytes) {
