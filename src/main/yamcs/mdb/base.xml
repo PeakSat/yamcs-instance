@@ -59,7 +59,7 @@
 			</EnumeratedParameterType>
 
 			<IntegerParameterType name="uint4_t" signed="false">
-				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="4" />
 			</IntegerParameterType>
 
 			<IntegerParameterType name="int8_t" signed="true">
