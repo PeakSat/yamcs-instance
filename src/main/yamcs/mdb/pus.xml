@@ -68,7 +68,6 @@
                     9.3.1), all telecommand packets defined in this Standard have a packet
                     secondary header field.</xtce:LongDescription>
             </xtce:Parameter>
-
             <xtce:Parameter parameterTypeRef="/dt/application_process_ID" name="application_process_ID">
                 <xtce:LongDescription>The application process ID uniquely identifies the on-board application process
                     that is source of the telemetry packet and destination of the telecommand
