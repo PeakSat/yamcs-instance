@@ -1,184 +1,192 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xtce:SpaceSystem name="pus-verification" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
+<SpaceSystem name="pus-verification" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
+    shortDescription="This is a bogus satellite telemetry and telecommand database."
+    operationalStatus="unittest">
 
     <!-- Request Verification Service (ST(01]) TM and TC -->
-    <xtce:TelemetryMetaData>
-        <xtce:ParameterSet>
-            <xtce:Parameter parameterTypeRef="/dt/packet_version_number" name="source_packet_version_number"/>
-            <xtce:Parameter parameterTypeRef="/dt/packet_type" name="source_packet_type"/>
-            <xtce:Parameter parameterTypeRef="/dt/secondary_header_flag" name="source_secondary_header_flag"/>
-            <xtce:Parameter parameterTypeRef="/dt/application_process_ID" name="source_application_process_ID"/>
-            <xtce:Parameter parameterTypeRef="/dt/sequence_flags" name="source_sequence_flags"/>
-            <xtce:Parameter parameterTypeRef="/dt/packet_sequence_count_or_packet_name" name="source_packet_sequence_count"/>
-            <xtce:Parameter parameterTypeRef="/dt/AcceptanceErrorType_t" name="AcceptanceErrorType"/>
-            <xtce:Parameter parameterTypeRef="/dt/ExecutionStartErrorType_t" name="ExecutionStartErrorType"/>
-            <xtce:Parameter parameterTypeRef="/dt/uint8_t" name="stepID"/>
-            <xtce:Parameter parameterTypeRef="/dt/ExecutionProgressErrorType_t" name="ExecutionProgressErrorType"/>
-            <xtce:Parameter parameterTypeRef="/dt/ExecutionCompletionErrorType_t" name="ExecutionCompletionErrorType"/>
-            <xtce:Parameter parameterTypeRef="/dt/RoutingErrorType_t" name="RoutingErrorType"/>
-        </xtce:ParameterSet>
+    <TelemetryMetaData>
+        <ParameterSet>
 
-        <xtce:ContainerSet>
-            <xtce:SequenceContainer name="verification_data">
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="source_packet_version_number"/>
-                    <xtce:ParameterRefEntry parameterRef="source_packet_type"/>
-                    <xtce:ParameterRefEntry parameterRef="source_secondary_header_flag"/>
-                    <xtce:ParameterRefEntry parameterRef="source_application_process_ID"/>
-                    <xtce:ParameterRefEntry parameterRef="source_sequence_flags"/>
-                    <xtce:ParameterRefEntry parameterRef="source_packet_sequence_count"/>
-                </xtce:EntryList>
-            </xtce:SequenceContainer>
+            <Parameter parameterTypeRef="/base/packet_version_number" name="source_packet_version_number" />
+            <Parameter parameterTypeRef="/base/packet_type" name="source_packet_type" />
+            <Parameter parameterTypeRef="/base/secondary_header_flag" name="source_secondary_header_flag" />
+            <Parameter parameterTypeRef="/base/application_process_ID" name="source_application_process_ID" />
+            <Parameter parameterTypeRef="/base/sequence_flags" name="source_sequence_flags" />
+            <Parameter parameterTypeRef="/base/packet_sequence_count_or_packet_name" name="source_packet_sequence_count" />
+            <Parameter parameterTypeRef="/base/AcceptanceErrorType_t" name="AcceptanceErrorType" />
+            <Parameter parameterTypeRef="/base/ExecutionStartErrorType_t" name="ExecutionStartErrorType" />
+            <Parameter parameterTypeRef="/base/uint8_t" name="stepID" />
+            <Parameter parameterTypeRef="/base/ExecutionProgressErrorType_t" name="ExecutionProgressErrorType" />
+            <Parameter parameterTypeRef="/base/ExecutionCompletionErrorType_t" name="ExecutionCompletionErrorType" />
+            <Parameter parameterTypeRef="/base/RoutingErrorType_t" name="RoutingErrorType" />
 
-            <xtce:SequenceContainer name="verification_base_container">
-                <xtce:EntryList>
-                    <xtce:ContainerRefEntry containerRef="verification_data"/>
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="/pus/packet_header_TM">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
+        </ParameterSet>
+        <ContainerSet>
 
-            <xtce:SequenceContainer name="TM(1,1)_successful_acceptance_verification_report">
-                <xtce:LongDescription>TODO: EDIT. The request ID field alone cannot be used to identify the request since it does not
+            <SequenceContainer name="verification_data">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="source_packet_version_number" />
+                    <ParameterRefEntry parameterRef="source_packet_type" />
+                    <ParameterRefEntry parameterRef="source_secondary_header_flag" />
+                    <ParameterRefEntry parameterRef="source_application_process_ID" />
+                    <ParameterRefEntry parameterRef="source_sequence_flags" />
+                    <ParameterRefEntry parameterRef="source_packet_sequence_count" />
+                </EntryList>
+            </SequenceContainer>
+
+            <SequenceContainer name="verification_base_container">
+                <EntryList>
+                    <ContainerRefEntry containerRef="verification_data" />
+                </EntryList>
+                <BaseContainer containerRef="/pus/packet_header_TM">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="1" parameterRef="/pus/service_type_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
+
+            <SequenceContainer name="TM(1,1)_successful_acceptance_verification_report">
+                <LongDescription>TODO: EDIT. The request ID field alone cannot be used to
+                    identify the request since it does not
                     contain the identifier of the source of that request. That source identifier
                     corresponds to the destination identifier of the secondary header of the related
                     telemetry packet.
-                </xtce:LongDescription>
-                <xtce:EntryList/>
-                <xtce:BaseContainer containerRef="verification_base_container">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="1" parameterRef="/pus/message_subtype_ID_TM" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
+                </LongDescription>
+                <EntryList />
+                <BaseContainer containerRef="verification_base_container">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="1" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
 
-            <xtce:SequenceContainer name="TM(1,2)_failed_acceptance_verification_report">
-                <xtce:LongDescription>TODO: EDIT. The request ID field alone cannot be used to identify the request since it does not contain the identifier of
-                    the source of that request. That source identifier corresponds to the destination identifier of the
+            <SequenceContainer name="TM(1,2)_failed_acceptance_verification_report">
+                <LongDescription>TODO: EDIT. The request ID field alone cannot be used to
+                    identify the request since it does not contain the identifier of
+                    the source of that request. That source identifier corresponds to the
+                    destination identifier of the
                     secondary header of the related telemetry packet.
-                </xtce:LongDescription>
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="AcceptanceErrorType"/>
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_container">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="2" parameterRef="/pus/message_subtype_ID_TM" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
+                </LongDescription>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="AcceptanceErrorType" />
+                </EntryList>
+                <BaseContainer containerRef="verification_base_container">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="2" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
 
-            <xtce:SequenceContainer name="TM(1,3)_successful_start_of_execution_verification_report">
-                <xtce:LongDescription>TODO: EDIT
-                </xtce:LongDescription>
-                <xtce:EntryList/>
-                <xtce:BaseContainer containerRef="verification_base_container">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="3" parameterRef="/pus/message_subtype_ID_TM" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
+            <SequenceContainer name="TM(1,3)_successful_start_of_execution_verification_report">
+                <LongDescription>TODO: EDIT
+                </LongDescription>
+                <EntryList />
+                <BaseContainer containerRef="verification_base_container">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="3" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
 
-            <xtce:SequenceContainer name="TM(1,4)_failed_start_of_execution_verification_report">
-                <xtce:LongDescription>TODO: EDIT.                
-                </xtce:LongDescription>
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="ExecutionStartErrorType"/>
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_container">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="4" parameterRef="/pus/message_subtype_ID_TM" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
+            <SequenceContainer name="TM(1,4)_failed_start_of_execution_verification_report">
+                <LongDescription>TODO: EDIT.
+                </LongDescription>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="ExecutionStartErrorType" />
+                </EntryList>
+                <BaseContainer containerRef="verification_base_container">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="4" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
 
-            <xtce:SequenceContainer name="TM(1,5)_succesful_progress_of_execution_verification_report">
-                <xtce:LongDescription>TODO: EDIT.                
-                </xtce:LongDescription>
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="stepID"/>
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_container">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="5" parameterRef="/pus/message_subtype_ID_TM" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
+            <SequenceContainer name="TM(1,5)_succesful_progress_of_execution_verification_report">
+                <LongDescription>TODO: EDIT.
+                </LongDescription>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="stepID" />
+                </EntryList>
+                <BaseContainer containerRef="verification_base_container">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="5" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
 
-            <xtce:SequenceContainer name="TM(1,6)_failed_progress_of_execution_verification_report">
-                <xtce:LongDescription>TODO: EDIT.                
-                </xtce:LongDescription>
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="stepID"/>
-                    <xtce:ParameterRefEntry parameterRef="ExecutionProgressErrorType"/>
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_container">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="6" parameterRef="/pus/message_subtype_ID_TM" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
+            <SequenceContainer name="TM(1,6)_failed_progress_of_execution_verification_report">
+                <LongDescription>TODO: EDIT.
+                </LongDescription>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="stepID" />
+                    <ParameterRefEntry parameterRef="ExecutionProgressErrorType" />
+                </EntryList>
+                <BaseContainer containerRef="verification_base_container">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="6" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
 
-            <xtce:SequenceContainer name="TM(1,7)_successful_completion_of_execution_verification_report">
-                <xtce:LongDescription>TODO: EDIT.
-                </xtce:LongDescription>
-                <xtce:EntryList/>
-                <xtce:BaseContainer containerRef="verification_base_container">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="7" parameterRef="/pus/message_subtype_ID_TM" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
+            <SequenceContainer name="TM(1,7)_successful_completion_of_execution_verification_report">
+                <LongDescription>TODO: EDIT.
+                </LongDescription>
+                <EntryList />
+                <BaseContainer containerRef="verification_base_container">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="7" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
 
-            <xtce:SequenceContainer name="TM(1,8)_failed_completion_of_execution_verification_report">
-                <xtce:LongDescription>TODO: EDIT.                
-                </xtce:LongDescription>
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="ExecutionCompletionErrorType"/>
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_container">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="8" parameterRef="/pus/message_subtype_ID_TM" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
+            <SequenceContainer name="TM(1,8)_failed_completion_of_execution_verification_report">
+                <LongDescription>TODO: EDIT.
+                </LongDescription>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="ExecutionCompletionErrorType" />
+                </EntryList>
+                <BaseContainer containerRef="verification_base_container">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="8" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
 
-            <xtce:SequenceContainer name="TM(1,10)_failed_routing_verification_report">
-                <xtce:LongDescription>TODO: EDIT.                
-                </xtce:LongDescription>
-                <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="RoutingErrorType"/>
-                </xtce:EntryList>
-                <xtce:BaseContainer containerRef="verification_base_container">
-                    <xtce:RestrictionCriteria>
-                        <xtce:ComparisonList>
-                            <xtce:Comparison value="10" parameterRef="/pus/message_subtype_ID_TM" />
-                        </xtce:ComparisonList>
-                    </xtce:RestrictionCriteria>
-                </xtce:BaseContainer>
-            </xtce:SequenceContainer>
+            <SequenceContainer name="TM(1,10)_failed_routing_verification_report">
+                <LongDescription>TODO: EDIT.
+                </LongDescription>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="RoutingErrorType" />
+                </EntryList>
+                <BaseContainer containerRef="verification_base_container">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="10" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
 
-
-        </xtce:ContainerSet>
-    </xtce:TelemetryMetaData>
-</xtce:SpaceSystem>
+        </ContainerSet>
+    </TelemetryMetaData>
+</SpaceSystem>
