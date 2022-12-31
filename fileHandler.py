@@ -52,8 +52,6 @@ def processFileSegment(data: bytearray) -> None:
             + str(dataLength)
             + " packet index is "
             + str(packetIndex)
-            + " offset is "
-            +str(offset)
         )
         fileBinary = data[packetIndex : packetIndex + dataLength]
 
