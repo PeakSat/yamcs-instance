@@ -21,7 +21,7 @@
                     <Argument argumentTypeRef="/base/uint16_t{1-5}" name="number_of_parameters" />
                     <Argument argumentTypeRef="/dt/writableFloatParameterArray" name="parameter_ids_and_new_values" />
                 </ArgumentList>
-                <CommandContainer name="dynamic_TC(20,3)_container">
+                <CommandContainer name="dynamic_TC(20,3)_float_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
