@@ -38,7 +38,7 @@
                     <Argument argumentTypeRef="/base/uint8_t" name="message_subtype_ID_of_time_scheduled" />
                     <Argument argumentTypeRef="/base/uint16_t" name="source_ID_of_time_scheduled" />
                 </ArgumentList>
-                <CommandContainer name="TC(11,4)_insert_activity_into_time_based_schedule">
+                <CommandContainer name="TC(11,4)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="N" />
                         <ArgumentRefEntry argumentRef="release_time" />
@@ -72,9 +72,9 @@
                         <ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
-                <CommandContainer name="TC(11,4)_insert_activity_into_time_based_schedule_assignments">
+                <CommandContainer name="TC(11,4)_assignments_container">
                     <EntryList />
-                    <BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule" />
+                    <BaseContainer containerRef="TC(11,4)_container" />
                 </CommandContainer>
             </MetaCommand>
 
@@ -85,9 +85,9 @@
                         <ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="1" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
-                <CommandContainer name="TC(11,4)(17,1)_time_based_scheduled_are_you_alive_connection">
+                <CommandContainer name="TC(11,4)(17,1)_container">
                     <EntryList />
-                    <BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
+                    <BaseContainer containerRef="TC(11,4)_assignments_container" />
                 </CommandContainer>
             </MetaCommand>
 
@@ -104,14 +104,14 @@
                     <Argument argumentTypeRef="/base/uint16_t{1-10}" name="total_parameters" />
                     <Argument argumentTypeRef="/dt/parameterIdArray_t" name="parameters" />
                 </ArgumentList>
-                <CommandContainer name="TC(3,1)_create_a_parameter_report_structure">
+                <CommandContainer name="TC(3,1)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="new_structure_id" />
                         <ArgumentRefEntry argumentRef="collection_interval_milliseconds" />
                         <ArgumentRefEntry argumentRef="total_parameters" />
                         <ArgumentRefEntry argumentRef="parameters" />
                     </EntryList>
-                    <BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
+                    <BaseContainer containerRef="TC(11,4)_assignments_container" />
                 </CommandContainer>
             </MetaCommand>
 
@@ -126,12 +126,12 @@
                     <Argument argumentTypeRef="/base/uint8_t{1-10}" name="total_structures" />
                     <Argument argumentTypeRef="/dt/structureIdArray_t" name="structures" />
                 </ArgumentList>
-                <CommandContainer name="TC(11,4)(3,9)_time_based_scheduled_report_housekeeping_parameter_report_structures">
+                <CommandContainer name="TC(11,4)(3,9)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="total_structures" />
                         <ArgumentRefEntry argumentRef="structures" />
                     </EntryList>
-                    <BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
+                    <BaseContainer containerRef="TC(11,4)_assignments_container" />
                 </CommandContainer>
             </MetaCommand>
 
@@ -146,12 +146,12 @@
                     <Argument argumentTypeRef="/base/uint8_t{1-10}" name="total_structures" />
                     <Argument argumentTypeRef="/dt/structureIdArray_t" name="structures" />
                 </ArgumentList>
-                <CommandContainer name="TC(11,4)(3,27)_time_based_scheduled_generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
+                <CommandContainer name="TC(11,4)(3,27)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="total_structures" />
                         <ArgumentRefEntry argumentRef="structures" />
                     </EntryList>
-                    <BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
+                    <BaseContainer containerRef="TC(11,4)_assignments_container" />
                 </CommandContainer>
             </MetaCommand>
 
@@ -166,12 +166,12 @@
                     <Argument argumentTypeRef="/base/uint16_t{1-10}" name="total_parameters" />
                     <Argument argumentTypeRef="/dt/parameterIdArray_t" name="parameters" />
                 </ArgumentList>
-                <CommandContainer name="TC(11,4)(20,1)_time_based_scheduled_report_the_parameter_values">
+                <CommandContainer name="TC(11,4)(20,1)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="total_parameters" />
                         <ArgumentRefEntry argumentRef="parameters" />
                     </EntryList>
-                    <BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
+                    <BaseContainer containerRef="TC(11,4)_assignments_container" />
                 </CommandContainer>
             </MetaCommand>
 
@@ -185,11 +185,11 @@
                 <ArgumentList>
                     <Argument argumentTypeRef="/dt/reset_flag_ST04" name="reset_flag" />
                 </ArgumentList>
-                <CommandContainer name="TC(11,4)(4,1)_time_based_scheduled_report_the_parameter_statistics">
+                <CommandContainer name="TC(11,4)(4,1)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="reset_flag" />
                     </EntryList>
-                    <BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
+                    <BaseContainer containerRef="TC(11,4)_assignments_container" />
                 </CommandContainer>
             </MetaCommand>
 
@@ -204,12 +204,12 @@
                     <Argument argumentTypeRef="/base/uint8_t{1-10}" name="total_structures" />
                     <Argument argumentTypeRef="/base/uint8Array_t" name="structures" />
                 </ArgumentList>
-                <CommandContainer name="custom_TC(11,4)(3,9)_report_housekeeping_parameter_report_structures">
+                <CommandContainer name="custom_TC(11,4)(3,9)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="total_structures" />
                         <ArgumentRefEntry argumentRef="structures" />
                     </EntryList>
-                    <BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
+                    <BaseContainer containerRef="TC(11,4)_assignments_container" />
                 </CommandContainer>
             </MetaCommand>
 
@@ -224,12 +224,12 @@
                     <Argument argumentTypeRef="/base/uint8_t{1-10}" name="total_structures" />
                     <Argument argumentTypeRef="/base/uint8Array_t" name="structures" />
                 </ArgumentList>
-                <CommandContainer name="custom_TC(3,27)_generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
+                <CommandContainer name="custom_TC(3,27)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="total_structures" />
                         <ArgumentRefEntry argumentRef="structures" />
                     </EntryList>
-                    <BaseContainer containerRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments" />
+                    <BaseContainer containerRef="TC(11,4)_assignments_container" />
                 </CommandContainer>
             </MetaCommand>
 

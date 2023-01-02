@@ -21,7 +21,7 @@
                     <Argument argumentTypeRef="/base/uint16_t{1-5}" name="number_of_parameters" />
                     <Argument argumentTypeRef="/dt/writableFloatParameterArray" name="parameter_ids_and_new_values" />
                 </ArgumentList>
-                <CommandContainer name="dynamic_TC(20,3)_set_float_parameter_values">
+                <CommandContainer name="dynamic_TC(20,3)_float_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
@@ -42,7 +42,7 @@
                     <Argument argumentTypeRef="/dt/writableUint8Parameters_t" name="parameter_ids" />
                     <Argument argumentTypeRef="/base/uint8_t" name="new_value" />
                 </ArgumentList>
-                <CommandContainer name="TC(20,3)_set_uint8_parameter_values">
+                <CommandContainer name="TC(20,3)_uint8_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="parameter_ids" />
@@ -63,7 +63,7 @@
                     <Argument argumentTypeRef="/base/uint16_t{1-3}" name="number_of_parameters" />
                     <Argument argumentTypeRef="/dt/writableInt8ParametersArray" name="parameter_ids_and_new_values" />
                 </ArgumentList>
-                <CommandContainer name="dynamic_TC(20,3)_set_int8_parameter_values">
+                <CommandContainer name="dynamic_TC(20,3)_int8_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
@@ -83,7 +83,7 @@
                     <Argument argumentTypeRef="/base/uint16_t{1-2}" name="number_of_parameters" />
                     <Argument argumentTypeRef="/dt/writableUint32ParametersArray" name="parameter_ids_and_new_values" />
                 </ArgumentList>
-                <CommandContainer name="dynamic_TC(20,3)_set_uint32_parameter_values">
+                <CommandContainer name="dynamic_TC(20,3)_uint32_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
@@ -104,7 +104,7 @@
                     <Argument argumentTypeRef="/dt/writableUint64Parameters_t" name="parameter_ids" />
                     <Argument argumentTypeRef="/base/uint64_t" name="new_values" />
                 </ArgumentList>
-                <CommandContainer name="TC(20,3)_set_uint64_parameter_values">
+                <CommandContainer name="TC(20,3)_uint64_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="parameter_ids" />
@@ -125,7 +125,7 @@
                     <Argument argumentTypeRef="/base/uint16_t{1-9}" name="number_of_parameters" />
                     <Argument argumentTypeRef="/dt/writableBoolArray" name="parameter_ids_and_new_values" />
                 </ArgumentList>
-                <CommandContainer name="dynamic_TC(20,3)_set_bool_parameter_values">
+                <CommandContainer name="dynamic_TC(20,3)_bool_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
@@ -146,7 +146,7 @@
                     <Argument argumentTypeRef="/base/uint16_t" name="OBCMemoryPartition" initialValue="5012" />
                     <Argument argumentTypeRef="/dt/OBCMemoryPartition_t" name="new_value" />
                 </ArgumentList>
-                <CommandContainer name="TC(20,3)_set_partition">
+                <CommandContainer name="TC(20,3)_partition_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="OBCMemoryPartition" />
@@ -168,7 +168,7 @@
                     <Argument argumentTypeRef="/base/uint16_t" name="ActiveCAN" initialValue="5018" />
                     <Argument argumentTypeRef="/dt/activeCAN_t" name="new_value" />
                 </ArgumentList>
-                <CommandContainer name="TC(20,3)_set_CANBus">
+                <CommandContainer name="TC(20,3)_CANBus_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="ActiveCAN" />
@@ -197,7 +197,7 @@
                     <Argument argumentTypeRef="/dt/writableFloatParameters_t" name="Parameter_ID3" />
                     <Argument argumentTypeRef="/base/float_t" name="new_value3" />
                 </ArgumentList>
-                <CommandContainer name="TC(20,3)_set_float_parameter_values">
+                <CommandContainer name="TC(20,3)_float_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="Parameter_ID1" />
@@ -227,7 +227,7 @@
                     <Argument argumentTypeRef="/dt/writableInt8Parameters_t" name="Parameter_ID3" />
                     <Argument argumentTypeRef="/base/int8_t" name="new_value3" />
                 </ArgumentList>
-                <CommandContainer name="TC(20,3)_set_int8_parameter_values">
+                <CommandContainer name="TC(20,3)_int8_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="Parameter_ID1" />
@@ -255,7 +255,7 @@
                     <Argument argumentTypeRef="/dt/writableUint32Parameters_t" name="Parameter_ID2" />
                     <Argument argumentTypeRef="/base/uint32_t" name="new_value2" />
                 </ArgumentList>
-                <CommandContainer name="TC(20,3)_set_uint32_parameter_values">
+                <CommandContainer name="TC(20,3)_uint32_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="Parameter_ID1" />
@@ -283,7 +283,7 @@
                     <Argument argumentTypeRef="/dt/writableBoolParameters_t" name="Parameter_ID3" />
                     <Argument argumentTypeRef="/base/bool_t" name="new_value3" />
                 </ArgumentList>
-                <CommandContainer name="TC(20,3)_set_bool_parameter_values">
+                <CommandContainer name="TC(20,3)_bool_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="Parameter_ID1" />

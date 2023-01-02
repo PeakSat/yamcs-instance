@@ -23,7 +23,7 @@
                     <Argument argumentTypeRef="/base/string_t" name="target_file_path" />
                     <Argument argumentTypeRef="/base/string_t" name="target_file_name" />
                 </ArgumentList>
-                <CommandContainer name="TC(23,14)_copy_file">
+                <CommandContainer name="TC(23,14)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="source_file_path" />
                         <ArgumentRefEntry argumentRef="source_file_name" />
@@ -48,11 +48,11 @@
 
                 </ArgumentList>
 
-                <CommandContainer name="TC(6,1)_load_object_memory_data">
+                <CommandContainer name="TC(6,1)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="base" />
                         <ArgumentRefEntry argumentRef="number_of_objects" />
-                        <ArgumentRefEntry argumentRef="binary_data" shortDescription="This hold offset, data , data size and checksum" />
+                        <ArgumentRefEntry argumentRef="binary_data" shortDescription="This holds offset, data, data size and checksum" />
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
