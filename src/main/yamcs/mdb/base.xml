@@ -496,6 +496,33 @@
 				</BinaryDataEncoding>
 			</StringArgumentType>
 
+			<BinaryArgumentType name="binaryData_t">
+                <BinaryDataEncoding>
+                    <SizeInBits>
+                        <DynamicValue>
+                            <ParameterInstanceRef parameterRef="_yamcs_ignore" />
+                        </DynamicValue>
+                    </SizeInBits>
+                </BinaryDataEncoding>
+            </BinaryArgumentType>
+
+            <ArrayArgumentType name="binaryDataArray_t" arrayTypeRef="binaryData_t">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <DynamicValue>
+                                <ArgumentInstanceRef argumentRef="number_of_objects" />
+                                <LinearAdjustment intercept="-1" />
+                            </DynamicValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayArgumentType>
+
+
 		</ArgumentTypeSet>
 	</CommandMetaData>
 </SpaceSystem>

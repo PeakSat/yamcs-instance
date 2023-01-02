@@ -106,7 +106,7 @@ public class CustomPacketPreprocessor extends AbstractPacketPreprocessor {
         // packet.setSequenceCount(apidseqcount);
 
 
-        //TODO: if packet TM[24,2]:receive_file_segment is received, call TMListener/fileReconstructor
+        //TODO: if packet TM[24,2]:receive_file_segment is received, call TMParser/fileReconstructor
 
         return packet;
 

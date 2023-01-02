@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PacketParser {
+public class TCParser {
 
     private static final int PRIMARY_HEADER_SIZE = 6;
 
@@ -77,10 +77,13 @@ public class PacketParser {
             fileEntity.loadContents();
             packetSender.sentPacketSegments(fileSplitter.splitFileInChunks(fileEntity));
         }
+        else{
+            System.out.println("Source path does not exist: "+sourcePath);
+        }
         if (targetPath.equals(LocalPaths.RECEIVED_PATH.toString())) {
             System.out.println("Target Path exists!");
         } else {
-            System.out.println("LOL what is this ");
+            System.out.println("Target path does not exist: "+targetPath);
         }
 
     }

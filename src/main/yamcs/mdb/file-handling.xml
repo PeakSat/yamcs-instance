@@ -34,29 +34,25 @@
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="TC(24,1):send_file_segment">
+            <MetaCommand name="TC(6,1)_load_object_memory_data">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="24" />
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="6" />
                         <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base/string_t" name="target_file_path" />
-                    <Argument argumentTypeRef="/base/string_t" name="target_file_name" />
-                    <Argument argumentTypeRef="/base/uint16_t" name="current_chunk" />
-                    <Argument argumentTypeRef="/base/uint16_t" name="total_chunks" />
-                    <Argument argumentTypeRef="/base/uint16_t" name="chunk_size" />
-                    <Argument argumentTypeRef="/base/stringData_t" name="data" />
+                    <Argument argumentTypeRef="/base/string_t" name="base"/>
+                    <Argument argumentTypeRef="/base/uint8_t" name="number_of_objects"/>
+                    <Argument argumentTypeRef="/base/binaryDataArray_t" name="binary_data"/>
+
                 </ArgumentList>
-                <CommandContainer name="TC(24,1):send_file_segment">
+
+                <CommandContainer name="TC(6,1)_load_object_memory_data">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="target_file_path" />
-                        <ArgumentRefEntry argumentRef="target_file_name" />
-                        <ArgumentRefEntry argumentRef="current_chunk" />
-                        <ArgumentRefEntry argumentRef="total_chunks" />
-                        <ArgumentRefEntry argumentRef="chunk_size" />
-                        <ArgumentRefEntry argumentRef="data" />
+                        <ArgumentRefEntry argumentRef="base" />
+                        <ArgumentRefEntry argumentRef="number_of_objects" />
+                        <ArgumentRefEntry argumentRef="binary_data" shortDescription="This hold offset, data , data size and checksum" />
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FileSplitter {
-    private static final int CHUNK_SIZE_BYTES = 3000; //max value is 4032
+    private static final int CHUNK_SIZE_BYTES = 4096;
 
     /**
      *
