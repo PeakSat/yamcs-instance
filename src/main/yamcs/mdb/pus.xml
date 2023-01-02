@@ -1056,7 +1056,7 @@
                     <Argument argumentTypeRef="/base/uint8_t{1-5}" name="total_structures" />
                     <Argument argumentTypeRef="/dt/structureIdArray_t" name="structures" />
                 </ArgumentList>
-                <CommandContainer name="TC(3,9)_report_housekeeping_parameter_report_structures">
+                <CommandContainer name="TC(3,9)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="total_structures" />
                         <ArgumentRefEntry argumentRef="structures" />
@@ -1076,7 +1076,7 @@
                     <Argument argumentTypeRef="/base/uint8_t{1-10}" name="total_structures" />
                     <Argument argumentTypeRef="/base/uint8Array_t" name="structures" />
                 </ArgumentList>
-                <CommandContainer name="custom_TC(3,9)_report_housekeeping_parameter_report_structures">
+                <CommandContainer name="custom_TC(3,9)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="total_structures" />
                         <ArgumentRefEntry argumentRef="structures" />
@@ -1096,7 +1096,7 @@
                     <Argument argumentTypeRef="/base/uint8_t{1-5}" name="total_structures" />
                     <Argument argumentTypeRef="/dt/structureIdArray_t" name="structures" />
                 </ArgumentList>
-                <CommandContainer name="TC(3,27)_generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
+                <CommandContainer name="TC(3,27)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="total_structures" />
                         <ArgumentRefEntry argumentRef="structures" />
@@ -1116,7 +1116,7 @@
                     <Argument argumentTypeRef="/base/uint8_t{1-10}" name="total_structures" />
                     <Argument argumentTypeRef="/base/uint8Array_t" name="structures" />
                 </ArgumentList>
-                <CommandContainer name="custom_TC(3,27)_generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
+                <CommandContainer name="custom_TC(3,27)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="total_structures" />
                         <ArgumentRefEntry argumentRef="structures" />
@@ -1135,7 +1135,7 @@
                 <ArgumentList>
                     <Argument argumentTypeRef="/dt/reset_flag_ST04" name="reset_flag" />
                 </ArgumentList>
-                <CommandContainer name="TC(4,1)_report_the_parameter_statistics">
+                <CommandContainer name="TC(4,1)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="reset_flag" />
                     </EntryList>
@@ -1150,7 +1150,7 @@
                         <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
-                <CommandContainer name="TC(17,1)_are_you_alive_connection">
+                <CommandContainer name="TC(17,1)_container">
                     <EntryList />
                     <BaseContainer containerRef="Header_TC" />
                 </CommandContainer>
