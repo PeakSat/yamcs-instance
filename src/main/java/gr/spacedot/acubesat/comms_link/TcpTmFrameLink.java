@@ -89,8 +89,7 @@ public class TcpTmFrameLink extends AbstractTmFrameLink implements Runnable {
                     log.trace("Received frame of length {}: {}", (frame.length), StringConverter
                             .arrayToHexString(frame, 0, (frame.length), true));
                 }
-                handleFrame(timeService.getHresMissionTime(), frame, 0,
-                        (frame.length));
+                handleFrame(timeService.getHresMissionTime(), frame, 0,(frame.length));
             } catch (IOException e) {
                 if (isRunningAndEnabled()) {
                     String msg;
