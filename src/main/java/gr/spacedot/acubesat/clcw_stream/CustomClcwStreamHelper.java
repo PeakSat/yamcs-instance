@@ -76,12 +76,18 @@ public class CustomClcwStreamHelper {
      * @param clcw
      */
 
-    public void sendClcw(int seq, DownlinkTransferFrame frame, byte[] data, int offset, int length) {
+    public void sendClcw(int seq, DownlinkTransferFrame frame, byte[] data, int offset, int length, boolean fec) {
         long rectime = TimeEncoding.getWallclockTime();
         //not able to get the generation time. Not needed as info just to fill the columns of the tuple.
         long gentime = TimeEncoding.getWallclockTime();
         int status = 0; 
-        stream.emitTuple(new Tuple(tdef, Arrays.asList(gentime, seq, rectime, status, getData(data, offset+length-4, 4), frame.getEarthRceptionTime(), frame.getSpacecraftId(), frame.getVirtualChannelId())));
+        if (fec){
+            stream.emitTuple(new Tuple(tdef, Arrays.asList(gentime, seq, rectime, status, getData(data, offset+length-6, 4), frame.getEarthRceptionTime(), frame.getSpacecraftId(), frame.getVirtualChannelId())));
+        }
+        else{
+            stream.emitTuple(new Tuple(tdef, Arrays.asList(gentime, seq, rectime, status, getData(data, offset+length-4, 4), frame.getEarthRceptionTime(), frame.getSpacecraftId(), frame.getVirtualChannelId())));
+        }
+        
     }
 
     /**

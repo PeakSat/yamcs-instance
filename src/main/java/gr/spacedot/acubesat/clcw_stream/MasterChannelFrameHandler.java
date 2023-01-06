@@ -15,6 +15,7 @@ import gr.spacedot.acubesat.clcw_stream.CustomClcwStreamHelper;
 
 import gr.spacedot.acubesat.clcw_stream.TransferFrameDecoder;
 import gr.spacedot.acubesat.clcw_stream.VcDownlinkHandler;
+import gr.spacedot.acubesat.clcw_stream.DownlinkManagedParameters.FrameErrorDetection;
 import gr.spacedot.acubesat.clcw_stream.DownlinkManagedParameters;
 import gr.spacedot.acubesat.clcw_stream.FrameStreamHelper;
 import org.yamcs.tctm.ccsds.AosManagedParameters;
@@ -40,8 +41,10 @@ public class MasterChannelFrameHandler {
     int idleFrameCount;
     int frameCount;
     int badframeCount;
+    boolean fec;
     
     DownlinkManagedParameters params;
+    FrameErrorDetection errorDetection;
     final CustomClcwStreamHelper clcwHelper;
     final FrameStreamHelper frameStreamHelper;
     final FrameHeaderStreamHelper frameHeaderStreamHelper;
@@ -58,6 +61,7 @@ public class MasterChannelFrameHandler {
         log = new Log(getClass(), yamcsInstance);
         log.setContext(linkName);
 
+
         frameType = config.getEnum("frameType", CcsdsFrameType.class);
 
         String clcwStreamName = config.getString("clcwStream", null);
@@ -66,10 +70,18 @@ public class MasterChannelFrameHandler {
         String goodFrameStreamName = config.getString("goodFrameStream", null);
         String badFrameStreamName = config.getString("badFrameStream", null);
         String frameHeaderStreamName = config.getString("frameHeaderStream", null);
+        errorDetection = config.getEnum("errorDetection", FrameErrorDetection.class);
         
         frameStreamHelper = new FrameStreamHelper(yamcsInstance, goodFrameStreamName, badFrameStreamName);
 
         frameHeaderStreamHelper = new FrameHeaderStreamHelper(yamcsInstance, frameHeaderStreamName);
+
+        if (errorDetection == FrameErrorDetection.CRC16){
+            fec = true;
+        }
+        else{
+            fec = false;
+        }
 
         switch (frameType) {
         /*case AOS:
@@ -120,7 +132,7 @@ public class MasterChannelFrameHandler {
         frameHeaderStreamHelper.sendFrameHeaderStream(frameCount, frame, data, offset, length);
         
         if (frame.hasOcf() && clcwHelper != null) {
-            clcwHelper.sendClcw(frameCount, frame, data, offset, length);
+            clcwHelper.sendClcw(frameCount, frame, data, offset, length, fec);
         }
 
         if (frame.containsOnlyIdleData()) {
