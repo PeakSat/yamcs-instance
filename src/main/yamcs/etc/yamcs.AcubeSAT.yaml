@@ -59,7 +59,7 @@ dataLinks:
     packetInputStreamClassName: gr.spacedot.acubesat.FixedPacketInputStream
     packetInputStreamArgs: 
       frameLength: 128
-    errorDetection: CRC16 
+    errorDetection: NONE
     clcwStream: "clcw"   
     goodFrameStream: "good_frame_stream" 
     badFrameStream: "bad_frame_stream"

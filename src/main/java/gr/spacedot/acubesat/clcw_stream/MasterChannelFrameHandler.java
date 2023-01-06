@@ -41,7 +41,7 @@ public class MasterChannelFrameHandler {
     int idleFrameCount;
     int frameCount;
     int badframeCount;
-    boolean fec;
+    boolean errorDetectionEnabled;
     
     DownlinkManagedParameters params;
     FrameErrorDetection errorDetection;
@@ -77,10 +77,10 @@ public class MasterChannelFrameHandler {
         frameHeaderStreamHelper = new FrameHeaderStreamHelper(yamcsInstance, frameHeaderStreamName);
 
         if (errorDetection == FrameErrorDetection.CRC16){
-            fec = true;
+            errorDetectionEnabled = true;
         }
         else{
-            fec = false;
+            errorDetectionEnabled = false;
         }
 
         switch (frameType) {
@@ -132,7 +132,7 @@ public class MasterChannelFrameHandler {
         frameHeaderStreamHelper.sendFrameHeaderStream(frameCount, frame, data, offset, length);
         
         if (frame.hasOcf() && clcwHelper != null) {
-            clcwHelper.sendClcw(frameCount, frame, data, offset, length, fec);
+            clcwHelper.sendClcw(frameCount, frame, data, offset, length, errorDetectionEnabled);
         }
 
         if (frame.containsOnlyIdleData()) {
