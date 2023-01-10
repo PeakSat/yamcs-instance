@@ -100,7 +100,7 @@ public class VcTmPacketHandler implements TmPacketDataLink, VcDownlinkHandler {
             lastFrameSeq = frame.getVcFrameSeq();
 
             if (packetDecoder.hasIncompletePacket()) {
-                if (frameLoss != 0) {
+                if (frameLoss !=0) {
                     log.warn("Incomplete packet dropped because of frame loss ");
                     packetDecoder.reset();
                 } else {
