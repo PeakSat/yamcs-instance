@@ -54,7 +54,7 @@ dataLinks:
     frameType: "TM"
     spacecraftId: 0xAB
     frameLength: 98 # 189 for the "frame_3_packets" frame // 176 for the "frame_2_packets_with_clcw" frame 
-    # 172 for the "frame_2_packets" frame // 98 for "frame1/2"
+    # 172 for the "frame_2_packets" frame // 98 for "frame1/2" // 14 for segmantation packet into 3 frames
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
     packetInputStreamClassName: gr.spacedot.acubesat.FixedPacketInputStream
     packetInputStreamArgs: 
