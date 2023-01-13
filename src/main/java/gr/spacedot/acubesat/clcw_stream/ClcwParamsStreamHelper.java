@@ -1,7 +1,6 @@
 package gr.spacedot.acubesat.clcw_stream;
 
 import java.util.Arrays;
-import java.util.function.IntConsumer;
 
 import org.yamcs.ConfigurationException;
 import org.yamcs.utils.TimeEncoding;
@@ -27,7 +26,7 @@ import org.yamcs.yarch.YarchDatabaseInstance;
  * @author nm
  *
  */
-public class CustomClcwStreamHelper {
+public class ClcwParamsStreamHelper {
     Stream stream;
     public static final String GENTIME_COLUMN = "gentime";
     public static final String SEQNUM_COLUMN = "seqNum";
@@ -57,7 +56,7 @@ public class CustomClcwStreamHelper {
      * @param yamcsInstance
      * @param streamName
      */
-    public CustomClcwStreamHelper(String yamcsInstance, String streamName) {
+    public ClcwParamsStreamHelper(String yamcsInstance, String streamName) {
         YarchDatabaseInstance ydb = YarchDatabase.getInstance(yamcsInstance);
         stream = ydb.getStream(streamName);
         if (stream == null) {
@@ -76,7 +75,7 @@ public class CustomClcwStreamHelper {
      * @param clcw
      */
 
-    public void sendClcw(int seq, DownlinkTransferFrame frame, byte[] data, int offset, int length, boolean errorDetectionEnabled) {
+    public void sendClcwParams(int seq, DownlinkTransferFrame frame, byte[] data, int offset, int length, boolean errorDetectionEnabled) {
         long rectime = TimeEncoding.getWallclockTime();
         //not able to get the generation time. Not needed as info just to fill the columns of the tuple.
         long gentime = TimeEncoding.getWallclockTime();
@@ -95,26 +94,6 @@ public class CustomClcwStreamHelper {
      * 
      * @param c
      */
-    public void onClcw(IntConsumer c) {
-        if (subscr != null) {
-            stream.removeSubscriber(subscr);
-        }
-
-        subscr = new StreamSubscriber() {
-            @Override
-            public void onTuple(Stream stream, Tuple tuple) {
-                int clcw = (Integer) tuple.getColumn(0);
-                c.accept(clcw);
-            }
-        };
-        stream.addSubscriber(subscr);
-    }
-
-    public void quit() {
-        if (subscr != null) {
-            stream.removeSubscriber(subscr);
-        }
-    }
     private byte[] getData(byte[]data, int offset, int length) {
         if(offset==0 && length == data.length) {
             return data;

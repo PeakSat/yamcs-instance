@@ -77,17 +77,10 @@ def send_tm(simulator):
 
     #sending to tcp comms link
     while True:
-        clientconnCOMMS.send(bytearray(firstFrame))
+        clientconnCOMMS.send(bytearray(frame_2_packets_with_clcw))
         simulator.tm_counter += 1
         sleep(10)
-        clientconnCOMMS.send(bytearray(secondFrame))
-        simulator.tm_counter += 1
-        sleep(10)
-        clientconnCOMMS.send(bytearray(thirdFrame))
-        simulator.tm_counter += 1
-        sleep(100)
         
-
     # sending 2000 packets
     while packetCounter < 400:
         with io.open("ecsspackets.raw", "rb") as f:
