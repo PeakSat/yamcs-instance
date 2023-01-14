@@ -53,14 +53,15 @@ dataLinks:
     host: localhost
     frameType: "TM"
     spacecraftId: 0xAB
-    frameLength: 98 # 189 for the "frame_3_packets" frame // 176 for the "frame_2_packets_with_clcw" frame 
-    # 172 for the "frame_2_packets" frame // 98 for "frame1/2"
+    frameLength: 176 # 189 for the "frame_3_packets" frame // 176 for the "frame_2_packets_with_clcw" frame 
+    # 172 for the "frame_2_packets" frame // 98 for "frame1/2" // 14 for segmantation packet into 3 frames
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
     packetInputStreamClassName: gr.spacedot.acubesat.FixedPacketInputStream
     packetInputStreamArgs: 
-      frameLength: 98
+      frameLength: 176
     errorDetection: NONE 
-    clcwStream: "clcw"   
+    clcwStream: "clcw"  
+    clcwParamsStream: "clcw_params" 
     goodFrameStream: "good_frame_stream" 
     badFrameStream: "bad_frame_stream"
     frameHeaderStream: "frame_header"
@@ -124,7 +125,7 @@ streamConfig:
   tm:
     - name: "tm_realtime"
     - name: "tm_dump"
-    - name: "clcw"
+    - name: "clcw_params"
       rootContainer: "/pus/communications_link_control_word"
     - name: "frame_header"
       rootContainer: "/pus/Transfer_Frame_Primary_Header"

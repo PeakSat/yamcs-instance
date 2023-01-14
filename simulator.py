@@ -22,6 +22,10 @@ def send_tm(simulator):
     frame1 = [10, 176, 0, 1, 24, 0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 8, 1, 195, 39, 0, 10, 32, 17, 2]
     frame2 = [10, 176, 0, 2, 24, 8, 1, 70, 0, 1, 37, 165, 61, 202, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 0]
 
+    # segmentation of one packet into 3 frames
+    firstFrame =[10,  176,  0,  1,  8,  0,  8,  1,  195,  39,  0,  10,  32,  17 ]
+    secondFrame =[10,  176,  0,  2,  7,  255,  2,  1,  70,  0,  1,  37,  165,  61 ]
+    thirdFrame = [10,  176,  0,  3,  16,  1,  202,  1,  70,  0,  1,  37,  165,  61]
 
     """
     This function reads the packets from the specified .raw
@@ -73,14 +77,10 @@ def send_tm(simulator):
 
     #sending to tcp comms link
     while True:
-        clientconnCOMMS.send(bytearray(frame1))
-        simulator.tm_counter += 1
-        sleep(10)
-        clientconnCOMMS.send(bytearray(frame2))
+        clientconnCOMMS.send(bytearray(frame_2_packets_with_clcw))
         simulator.tm_counter += 1
         sleep(10)
         
-
     # sending 2000 packets
     while packetCounter < 400:
         with io.open("ecsspackets.raw", "rb") as f:
