@@ -9,4 +9,4 @@ test-job:
   stage: test
   script:
     - timeout 30 mvn yamcs:run
-    - echo "FINISH"
+    - $? | grep 1
