@@ -8,5 +8,4 @@ cache:
 test-job:
   stage: test
   script:
-    - mvn yamcs:run > output.txt &
     - sh startup-check.sh

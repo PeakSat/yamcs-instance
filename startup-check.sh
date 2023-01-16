@@ -1,6 +1,12 @@
+mvn yamcs:run &
+PID=$!
 sleep 10
-if grep -q Finished output.txt; then
-    exit 1
-else
+if ps -p $PID > /dev/null
+then
+    echo "Yamcs runs fine with PID = $PID"
+    kill $PID
     exit 0
+else 
+    echo "Yamcs did not start"
+    exit 1
 fi
