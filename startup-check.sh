@@ -1,2 +1,3 @@
-timeout -v 10  mvn yamcs:run > output.txt
+mvn yamcs:run > output.txt
+sleep 10
 grep Gracefully output.txt

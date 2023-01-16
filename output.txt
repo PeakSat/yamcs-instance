@@ -1,0 +1,21 @@
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m------------------------< [0;36mgr.spacedot:acubesat[0;1m >------------------------[m
+[[1;34mINFO[m] [1mBuilding AcubeSAT Mission Control 1.0.0-SNAPSHOT[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m>>> [0;32myamcs-maven-plugin:1.2.7:run[m [1m(default-cli)[0;1m > [0;1mprocess-classes[m @ [36macubesat[0;1m >>>[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36macubesat[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] Copying 4 resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.8.1:compile[m [1m(default-compile)[m @ [36macubesat[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m<<< [0;32myamcs-maven-plugin:1.2.7:run[m [1m(default-cli)[0;1m < [0;1mprocess-classes[m @ [36macubesat[0;1m <<<[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32myamcs-maven-plugin:1.2.7:run[m [1m(default-cli)[m @ [36macubesat[0;1m ---[m
+[[1;34mINFO[m] Creating configuration at /home/stavros/yamcs-instance/target/yamcs
+Gracefully stopping...
