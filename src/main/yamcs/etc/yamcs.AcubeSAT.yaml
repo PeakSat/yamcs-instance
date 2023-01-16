@@ -1,5 +1,5 @@
 services:
-  - class: org.yamcs.archive.XtceTmRecorder
+  - class: gr.spacedot.acubesat.clcw_stream.XtceTmRecorder
   - class: org.yamcs.archive.ParameterRecorder
   - class: org.yamcs.archive.AlarmRecorder
   - class: org.yamcs.archive.EventRecorder
