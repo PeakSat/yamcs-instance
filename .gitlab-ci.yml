@@ -8,4 +8,4 @@ cache:
 test-job:
   stage: test
   script:
-    - mvn yamcs:run
+    - timeout 30 mvn yamcs:run
