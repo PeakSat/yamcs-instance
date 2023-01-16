@@ -1,0 +1,11 @@
+image: maven:latest
+
+cache:
+  paths:
+    - .m2/repository/
+    - target/
+
+test-job:
+  stage: test
+  script:
+    - sh startup-check.sh
