@@ -154,7 +154,8 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
             ser.readline()
 
             while True:
-                message = ser.readline()
+                line = ser.readline()
+                message = cobs.decode(line)
                 # not using decode("utf-8") since it will break printing (all new line characters will result in an new line)
                 logging.info(f"{ser.name}: {message}")
 
@@ -311,20 +312,20 @@ if __name__ == "__main__":
     )
     obc_listener_thread.start()
 
-    adcs_listener_thread = Thread(
-        target=mcu_client,
-        args=(
-            settings,
-            adcs_serial_port,
-            settings.adcs_port_in,
-        ),
-    ).start()
-
-    can_listener_thread = Thread(
-        target=mcu_client,
-        args=(
-            settings,
-            can_serial_port,
-            settings.canBus_port_in,
-        ),
-    ).start()
+    # adcs_listener_thread = Thread(
+    #     target=mcu_client,
+    #     args=(
+    #         settings,
+    #         adcs_serial_port,
+    #         settings.adcs_port_in,
+    #     ),
+    # ).start()
+    #
+    # can_listener_thread = Thread(
+    #     target=mcu_client,
+    #     args=(
+    #         settings,
+    #         can_serial_port,
+    #         settings.canBus_port_in,
+    #     ),
+    # ).start()
