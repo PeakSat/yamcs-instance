@@ -1,4 +1,4 @@
 test-job:
-  stage: build and run
+  stage: test
   script:
     - mvn yamcs:run
