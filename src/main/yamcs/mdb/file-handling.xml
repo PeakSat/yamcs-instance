@@ -57,7 +57,3 @@
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
-
-        </MetaCommandSet>
-    </CommandMetaData>
-</SpaceSystem>
