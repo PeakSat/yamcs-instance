@@ -8,5 +8,4 @@ cache:
 test-job:
   stage: test
   script:
-    - timeout 20 mvn yamcs:run > output.txt
-    - grep Gracefully output.txt
+    - sh startup-check.sh
