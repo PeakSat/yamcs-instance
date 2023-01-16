@@ -1,6 +1,6 @@
 mvn yamcs:run &
 PID=$!
-sleep 30
+sleep 60
 if ps -p $PID > /dev/null
 then
     echo "Yamcs runs fine with PID = $PID"
