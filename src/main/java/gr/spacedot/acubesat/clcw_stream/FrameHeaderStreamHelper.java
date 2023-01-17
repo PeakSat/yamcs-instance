@@ -1,11 +1,8 @@
 package gr.spacedot.acubesat.clcw_stream;
 
 import java.util.Arrays;
-import java.util.function.IntConsumer;
 
 import org.yamcs.ConfigurationException;
-import java.nio.ByteBuffer;
-import org.yamcs.time.Instant;
 import org.yamcs.time.TimeService;
 import org.yamcs.utils.TimeEncoding;
 import org.yamcs.yarch.ColumnDefinition;
@@ -15,11 +12,6 @@ import org.yamcs.yarch.Tuple;
 import org.yamcs.yarch.TupleDefinition;
 import org.yamcs.yarch.YarchDatabase;
 import org.yamcs.yarch.YarchDatabaseInstance;
-
-
-import org.yamcs.yarch.StreamSubscriber;
-
-
 
 /**
  * 
@@ -33,7 +25,6 @@ import org.yamcs.yarch.StreamSubscriber;
 public class FrameHeaderStreamHelper {
 
     Stream stream;
-    TimeService timeService;
     static TupleDefinition fhtdef;
     public static final String GENTIME_COLUMN = "gentime";
     public static final String SEQNUM_COLUMN = "seqNum";
