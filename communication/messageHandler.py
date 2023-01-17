@@ -154,7 +154,8 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
             ser.readline()
 
             while True:
-                message = ser.readline()
+                line = ser.readline()
+                message = cobs.decode(line)
                 # not using decode("utf-8") since it will break printing (all new line characters will result in an new line)
                 logging.info(f"{ser.name}: {message}")
 
