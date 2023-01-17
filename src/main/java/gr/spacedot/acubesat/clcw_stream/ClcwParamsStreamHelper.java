@@ -77,8 +77,8 @@ public class ClcwParamsStreamHelper {
 
     public void sendClcwParams(int seq, DownlinkTransferFrame frame, byte[] data, int offset, int length, boolean errorDetectionEnabled) {
         long rectime = TimeEncoding.getWallclockTime();
-        //not able to get the generation time. Not needed as info just to fill the columns of the tuple.
-        long gentime = TimeEncoding.getWallclockTime();
+        long time =  1577836800L;
+        long gentime = time * 1000 +37000;
         int status = 0; 
         if (errorDetectionEnabled){
             stream.emitTuple(new Tuple(tdef, Arrays.asList(gentime, seq, rectime, status, getData(data, offset+length-6, 4), frame.getEarthRceptionTime(), frame.getSpacecraftId(), frame.getVirtualChannelId())));
