@@ -1,10 +1,8 @@
 package gr.spacedot.acubesat.clcw_stream;
 
 import java.util.Arrays;
-import java.util.function.IntConsumer;
 
 import org.yamcs.ConfigurationException;
-import org.yamcs.time.Instant;
 import org.yamcs.utils.TimeEncoding;
 import org.yamcs.yarch.ColumnDefinition;
 import org.yamcs.yarch.DataType;
@@ -13,10 +11,8 @@ import org.yamcs.yarch.Tuple;
 import org.yamcs.yarch.TupleDefinition;
 import org.yamcs.yarch.YarchDatabase;
 import org.yamcs.yarch.YarchDatabaseInstance;
-
-import org.yamcs.yarch.StreamSubscriber;
-
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  * 
@@ -81,7 +77,16 @@ public class FrameHeaderStreamHelper {
 
     public void sendFrameHeaderStream(int seq, DownlinkTransferFrame frame, byte[] data, int offset, int length) {
         long rectime = TimeEncoding.getWallclockTime();
-        long gentime = TimeEncoding.getWallclockTime();
+        // added 2 hours to the desired date (01-01-2022 00:00:00) in order to be compatible with the GMT+0000 time. 
+        // and the 37 leap seconds 
+        String fullDate = "01-01-2022 02:00:37"; 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        long gentime = 0L;
+        try {
+            gentime = sdf.parse(fullDate).getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         int status = 0; 
         stream.emitTuple(new Tuple(fhtdef, Arrays.asList(gentime, seq, rectime, status, getData(data, 0, 6), frame.getEarthRceptionTime(), frame.getSpacecraftId(), frame.getVirtualChannelId())));
     }
