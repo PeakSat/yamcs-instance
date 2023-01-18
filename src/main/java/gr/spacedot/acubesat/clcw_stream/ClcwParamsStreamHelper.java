@@ -12,6 +12,8 @@ import org.yamcs.yarch.Tuple;
 import org.yamcs.yarch.TupleDefinition;
 import org.yamcs.yarch.YarchDatabase;
 import org.yamcs.yarch.YarchDatabaseInstance;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 
 /**
@@ -77,8 +79,16 @@ public class ClcwParamsStreamHelper {
 
     public void sendClcwParams(int seq, DownlinkTransferFrame frame, byte[] data, int offset, int length, boolean errorDetectionEnabled) {
         long rectime = TimeEncoding.getWallclockTime();
-        long time =  1577836800L;
-        long gentime = time * 1000 +37000;
+        // added 2 hours to the desired date (01-01-2022 00:00:00) in order to be compatible with the GMT+0000 time. 
+        // and the 37 leap seconds 
+        String fullDate = "01-01-2022 02:00:37"; 
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        long gentime = 0L;
+        try {
+            gentime = sdf.parse(fullDate).getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         int status = 0; 
         if (errorDetectionEnabled){
             stream.emitTuple(new Tuple(tdef, Arrays.asList(gentime, seq, rectime, status, getData(data, offset+length-6, 4), frame.getEarthRceptionTime(), frame.getSpacecraftId(), frame.getVirtualChannelId())));
