@@ -252,10 +252,10 @@ def yamcs_client(settings: Settings, serial_port: str = None):
                 data, _ = tcp_client.recvfrom(settings.max_tc_size)
                 if len(data) >= TC_HEADER:
                     logging.info("YAMCS: " + data.hex())
+                    encoded_data = cobs.encode(data)
+                    port.write(encoded_data)
+                    port.write(DELIMITER)
 
-                encoded_data = cobs.encode(data)
-                port.write(encoded_data)
-                port.write(DELIMITER)
         except serial.SerialException:
             logging.warning(
                 "No device is connected at port "
@@ -312,20 +312,20 @@ if __name__ == "__main__":
     )
     obc_listener_thread.start()
 
-    adcs_listener_thread = Thread(
-        target=mcu_client,
-        args=(
-            settings,
-            adcs_serial_port,
-            settings.adcs_port_in,
-        ),
-    ).start()
-
-    can_listener_thread = Thread(
-        target=mcu_client,
-        args=(
-            settings,
-            can_serial_port,
-            settings.canBus_port_in,
-        ),
-    ).start()
+    # adcs_listener_thread = Thread(
+    #     target=mcu_client,
+    #     args=(
+    #         settings,
+    #         adcs_serial_port,
+    #         settings.adcs_port_in,
+    #     ),
+    # ).start()
+    #
+    # can_listener_thread = Thread(
+    #     target=mcu_client,
+    #     args=(
+    #         settings,
+    #         can_serial_port,
+    #         settings.canBus_port_in,
+    #     ),
+    # ).start()
