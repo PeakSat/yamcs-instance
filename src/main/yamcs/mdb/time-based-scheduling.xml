@@ -296,58 +296,6 @@
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="TC(11,7)_time_shift_activities_by_id_single">
-                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                    <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="7" />
-                    </ArgumentAssignmentList>
-                </BaseMetaCommand>
-                <ArgumentList>
-                    <Argument argumentTypeRef="/base/release_time_calendar" name="time_shift" />
-                    <Argument argumentTypeRef="/base/uint16_t" name="total_identifiers" initialValue="1" />
-                    <Argument argumentTypeRef="/base/uint8_t" name="source_id"/>
-                    <Argument argumentTypeRef="/base/uint16_t" name="application_id"/>
-                    <Argument argumentTypeRef="/base/uint16_t" name="sequence_count"/>
-                </ArgumentList>
-                <CommandContainer name="TC(11,7)_container">
-                    <EntryList>
-                        <ArgumentRefEntry argumentRef="time_shift" />
-                        <ArgumentRefEntry argumentRef="total_identifiers" />
-                        <ArgumentRefEntry argumentRef="source_id" />
-                        <ArgumentRefEntry argumentRef="application_id" />
-                        <ArgumentRefEntry argumentRef="sequence_count" />
-                    </EntryList>
-                    <BaseContainer containerRef="/pus/Header_TC" />
-                </CommandContainer>
-            </MetaCommand>
-
-            <MetaCommand name="TC(11,9)_report_activities_by_id_single">
-                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                    <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="9" />
-                    </ArgumentAssignmentList>
-                </BaseMetaCommand>
-                <ArgumentList>
-                    <Argument argumentTypeRef="/base/uint16_t" name="total_identifiers" initialValue="1" />
-                    <Argument argumentTypeRef="/base/uint8_t" name="source_id"/>
-                    <Argument argumentTypeRef="/base/uint16_t" name="application_id"/>
-                    <Argument argumentTypeRef="/base/uint16_t" name="sequence_count"/>
-                </ArgumentList>
-                <CommandContainer name="TC(11,5)_container">
-                    <EntryList>
-                        <ArgumentRefEntry argumentRef="total_identifiers" />
-                        <ArgumentRefEntry argumentRef="source_id" />
-                        <ArgumentRefEntry argumentRef="application_id" />
-                        <ArgumentRefEntry argumentRef="sequence_count" />
-                    </EntryList>
-                    <BaseContainer containerRef="/pus/Header_TC" />
-                </CommandContainer>
-            </MetaCommand>
-
-<!--     TODO: implement response TMs-->
-
         </MetaCommandSet>
     </CommandMetaData>
 </SpaceSystem>
