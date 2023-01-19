@@ -9,45 +9,6 @@
     <CommandMetaData>
         <MetaCommandSet>
 
-            <MetaCommand name="TC(11,1)_enable_time_based_scheduling">
-                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                    <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                    </ArgumentAssignmentList>
-                </BaseMetaCommand>
-                <CommandContainer name="TC(11,1)_container">
-                    <EntryList />
-                    <BaseContainer containerRef="/pus/Header_TC" />
-                </CommandContainer>
-            </MetaCommand>
-
-            <MetaCommand name="TC(11,2)_disable_time_based_scheduling">
-                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                    <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="2" />
-                    </ArgumentAssignmentList>
-                </BaseMetaCommand>
-                <CommandContainer name="TC(11,2)_container">
-                    <EntryList />
-                    <BaseContainer containerRef="/pus/Header_TC" />
-                </CommandContainer>
-            </MetaCommand>
-
-            <MetaCommand name="TC(11,3)_reset_time_based_schedule">
-                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                    <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
-                    </ArgumentAssignmentList>
-                </BaseMetaCommand>
-                <CommandContainer name="TC(11,3)_container">
-                    <EntryList />
-                    <BaseContainer containerRef="/pus/Header_TC" />
-                </CommandContainer>
-            </MetaCommand>
-            
             <MetaCommand name="TC(11,4)_insert_activity_into_time_based_schedule" abstract="true">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
@@ -269,30 +230,6 @@
                         <ArgumentRefEntry argumentRef="structures" />
                     </EntryList>
                     <BaseContainer containerRef="TC(11,4)_assignments_container" />
-                </CommandContainer>
-            </MetaCommand>
-
-            <MetaCommand name="TC(11,5)_delete_activities_by_id_single">
-                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                    <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="5" />
-                    </ArgumentAssignmentList>
-                </BaseMetaCommand>
-                <ArgumentList>
-                    <Argument argumentTypeRef="/base/uint16_t" name="total_identifiers" initialValue="1" />
-                    <Argument argumentTypeRef="/base/uint8_t" name="source_id"/>
-                    <Argument argumentTypeRef="/base/uint16_t" name="application_id"/>
-                    <Argument argumentTypeRef="/base/uint16_t" name="sequence_count"/>
-                </ArgumentList>
-                <CommandContainer name="TC(11,5)_container">
-                    <EntryList>
-                        <ArgumentRefEntry argumentRef="total_identifiers" />
-                        <ArgumentRefEntry argumentRef="source_id" />
-                        <ArgumentRefEntry argumentRef="application_id" />
-                        <ArgumentRefEntry argumentRef="sequence_count" />
-                    </EntryList>
-                    <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
 
