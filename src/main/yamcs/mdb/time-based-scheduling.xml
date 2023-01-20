@@ -213,7 +213,7 @@
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="custom_TC(3,27)_generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
+            <MetaCommand name="custom_TC(11,4)(3,27)_generate_a_one_shot_report_for_housekeeping_parameter_report_structures">
                 <BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="service_type_ID_of_time_scheduled" argumentValue="3" />
@@ -224,7 +224,7 @@
                     <Argument argumentTypeRef="/base/uint8_t{1-10}" name="total_structures" />
                     <Argument argumentTypeRef="/base/uint8Array_t" name="structures" />
                 </ArgumentList>
-                <CommandContainer name="custom_TC(3,27)_container">
+                <CommandContainer name="custom_TC(11,4)(3,27)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="total_structures" />
                         <ArgumentRefEntry argumentRef="structures" />
