@@ -87,7 +87,7 @@
 			</FloatParameterType>
 
 			<BooleanParameterType name="bool_t">
-				<IntegerDataEncoding sizeInBits="1" />
+				<IntegerDataEncoding sizeInBits="8" />
 			</BooleanParameterType>
 
 			<AbsoluteTimeParameterType name="generation_time">
