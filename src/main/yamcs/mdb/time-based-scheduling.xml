@@ -335,7 +335,7 @@
                     <Argument argumentTypeRef="/base/uint16_t" name="application_id"/>
                     <Argument argumentTypeRef="/base/uint16_t" name="sequence_count"/>
                 </ArgumentList>
-                <CommandContainer name="TC(11,5)_container">
+                <CommandContainer name="TC(11,9)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="total_identifiers" />
                         <ArgumentRefEntry argumentRef="source_id" />
