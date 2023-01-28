@@ -59,12 +59,6 @@
                     <!--Time-based-scheduling args-->
                     <Argument argumentTypeRef="/base/uint16_t" name="N" />
                     <Argument argumentTypeRef="/base/release_time_calendar" name="release_time" />
-                    <!--Primary TC header args-->
-                    <Argument argumentTypeRef="/base/packet_version_number" name="packet_version_number_of_time_scheduled" />
-                    <Argument argumentTypeRef="/base/packet_type" name="packet_type_of_time_scheduled" />
-                    <Argument argumentTypeRef="/base/secondary_header_flag" name="secondary_header_flag_of_time_scheduled" />
-                    <Argument argumentTypeRef="/base/application_process_ID" name="application_process_ID_of_time_scheduled" initialValue="OBC" />
-                    <Argument argumentTypeRef="/base/sequence_flags" name="sequence_flags_of_time_scheduled" />
                     <!--Secondary TC header args-->
                     <Argument argumentTypeRef="/base/uint4_t" name="PUS_version_number_of_time_scheduled" />
                     <Argument argumentTypeRef="/base/completion_ack" name="completion_ack_of_time_scheduled" initialValue="completion_ack" />
@@ -81,11 +75,6 @@
                     <EntryList>
                         <ArgumentRefEntry argumentRef="N" />
                         <ArgumentRefEntry argumentRef="release_time" />
-                        <ArgumentRefEntry argumentRef="packet_version_number_of_time_scheduled" />
-                        <ArgumentRefEntry argumentRef="packet_type_of_time_scheduled" />
-                        <ArgumentRefEntry argumentRef="secondary_header_flag_of_time_scheduled" />
-                        <ArgumentRefEntry argumentRef="application_process_ID_of_time_scheduled" />
-                        <ArgumentRefEntry argumentRef="sequence_flags_of_time_scheduled" />
                         <ArgumentRefEntry argumentRef="PUS_version_number_of_time_scheduled" />
                         <ArgumentRefEntry argumentRef="completion_ack_of_time_scheduled" />
                         <ArgumentRefEntry argumentRef="progress_of_execution_ack_of_time_scheduled" />
@@ -281,8 +270,8 @@
                 </BaseMetaCommand>
                 <ArgumentList>
                     <Argument argumentTypeRef="/base/uint16_t" name="total_identifiers" initialValue="1" />
-                    <Argument argumentTypeRef="/base/uint8_t" name="source_id"/>
-                    <Argument argumentTypeRef="/base/uint16_t" name="application_id"/>
+                    <Argument argumentTypeRef="/base/uint16_t" name="source_id"/>
+                    <Argument argumentTypeRef="/base/application_process_ID_uint16" name="application_id" initialValue="OBC"/>
                     <Argument argumentTypeRef="/base/uint16_t" name="sequence_count"/>
                 </ArgumentList>
                 <CommandContainer name="TC(11,5)_container">
@@ -304,15 +293,15 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base/release_time_calendar" name="time_shift" />
+                    <Argument argumentTypeRef="/base/int64_t" name="time_shift_seconds" />
                     <Argument argumentTypeRef="/base/uint16_t" name="total_identifiers" initialValue="1" />
-                    <Argument argumentTypeRef="/base/uint8_t" name="source_id"/>
-                    <Argument argumentTypeRef="/base/uint16_t" name="application_id"/>
+                    <Argument argumentTypeRef="/base/uint16_t" name="source_id"/>
+                    <Argument argumentTypeRef="/base/application_process_ID_uint16" name="application_id" initialValue="OBC"/>
                     <Argument argumentTypeRef="/base/uint16_t" name="sequence_count"/>
                 </ArgumentList>
                 <CommandContainer name="TC(11,7)_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="time_shift" />
+                        <ArgumentRefEntry argumentRef="time_shift_seconds" />
                         <ArgumentRefEntry argumentRef="total_identifiers" />
                         <ArgumentRefEntry argumentRef="source_id" />
                         <ArgumentRefEntry argumentRef="application_id" />
@@ -331,8 +320,8 @@
                 </BaseMetaCommand>
                 <ArgumentList>
                     <Argument argumentTypeRef="/base/uint16_t" name="total_identifiers" initialValue="1" />
-                    <Argument argumentTypeRef="/base/uint8_t" name="source_id"/>
-                    <Argument argumentTypeRef="/base/uint16_t" name="application_id"/>
+                    <Argument argumentTypeRef="/base/uint16_t" name="source_id"/>
+                    <Argument argumentTypeRef="/base/application_process_ID_uint16" name="application_id" initialValue="OBC"/>
                     <Argument argumentTypeRef="/base/uint16_t" name="sequence_count"/>
                 </ArgumentList>
                 <CommandContainer name="TC(11,9)_container">
@@ -342,6 +331,62 @@
                         <ArgumentRefEntry argumentRef="application_id" />
                         <ArgumentRefEntry argumentRef="sequence_count" />
                     </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(11,12)_summary_report_by_id">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="12"/>
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t" name="total_identifiers" initialValue="1" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="source_id"/>
+                    <Argument argumentTypeRef="/base/application_process_ID_uint16" name="application_id" initialValue="OBC"/>
+                    <Argument argumentTypeRef="/base/uint16_t" name="sequence_count"/>
+                </ArgumentList>
+                <CommandContainer name="TC(11,12)_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="total_identifiers" />
+                        <ArgumentRefEntry argumentRef="source_id" />
+                        <ArgumentRefEntry argumentRef="application_id" />
+                        <ArgumentRefEntry argumentRef="sequence_count" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(11,15)_time_shift_all_activities">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="15" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/int64_t" name="time_shift_seconds" />
+                </ArgumentList>
+                <CommandContainer name="TC(11,15)_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="time_shift_seconds" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(11,16)_summary_report_all_activities">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="16" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList/>
+                <CommandContainer name="TC(11,16)_container">
+                    <EntryList/>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
