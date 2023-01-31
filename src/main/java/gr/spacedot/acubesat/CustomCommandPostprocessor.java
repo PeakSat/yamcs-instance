@@ -58,7 +58,7 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
         // the function, so an artificial delay is inserted in order to avoid
         // sending more than 50 packets simultaneously, which corrupts the packets.
 
-        if (serviceType == 24 && messageType == 1) {
+        if (serviceType == 6 && messageType == 1) {
             try {
                 sleep(50);
             } catch (InterruptedException e) {

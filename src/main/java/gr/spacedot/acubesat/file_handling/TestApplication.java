@@ -1,64 +1,103 @@
 package gr.spacedot.acubesat.file_handling;
 
-import io.netty.handler.codec.http.HttpResponseStatus;
-
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
+import com.google.common.primitives.Bytes;
+import gr.spacedot.acubesat.file_handling.entities.ChunkedFileEntity;
+import gr.spacedot.acubesat.file_handling.entities.FileEntity;
+import gr.spacedot.acubesat.file_handling.enums.LocalPaths;
+import gr.spacedot.acubesat.file_handling.utils.FileSplitter;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.List;
 import java.util.logging.Logger;
 
-import com.google.gson.JsonObject;
+
+import static gr.spacedot.acubesat.file_handling.network.out.PacketSender.THRESHOLD_BYTES;
 
 class TestApplication {
 
     private static final Logger LOGGER = Logger.getLogger(TestApplication.class.getName());
 
-    private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
-    public static void main(String[] args) {
+    private static final FileSplitter fileSplitter = new FileSplitter();
 
-        HttpClient client = HttpClient.newHttpClient();
+    public static void main(String[] args) throws IOException {
 
-        JsonObject mainBody = new JsonObject();
-        mainBody.addProperty("base", "test base string");
-        byte[] data = { 0x32, 0x33 };
-        String dataString = "";
-        for (byte word : data)
-            dataString += word;
-        LOGGER.info("data base 64 is: " + Base64.getEncoder().encodeToString(data));
-        LOGGER.info("data string is: " + dataString);
-        LOGGER.info("data utf8 is: |" + (new String(data, StandardCharsets.UTF_8)) + "|");
-        LOGGER.info("data to hex is: |" + bytesToHex(data) + "|");
-        mainBody.addProperty("binary_data", data.toString());
+        int serverPort = 10015;
+        InetAddress host = InetAddress.getByName("stavros-pc");
+        Socket socket = new Socket("127.0.0.1",serverPort);
 
-        JsonObject arguments = new JsonObject();
-        arguments.add("args", mainBody);
+        OutputStream output = socket.getOutputStream();
 
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(
-                        "http://localhost:8090/api/processors/AcubeSAT/realtime/commands/file-handling/TC(6,1)_load_object_memory_data"))
-                .POST(HttpRequest.BodyPublishers.ofString(arguments.toString()))
-                .build();
+        FileEntity fileEntity = new FileEntity(LocalPaths.FILES_PATH.toString(), "smallFile.txt");
+        fileEntity.loadContents();
+        ChunkedFileEntity chunkedFileEntity = fileSplitter.splitFileInChunks(fileEntity);
+        List<byte[]> chunks = chunkedFileEntity.getChunks();
 
-        try {
-            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            if (response.statusCode() != HttpResponseStatus.OK.code())
-                LOGGER.info(response.body());
-        } catch (Exception e) {
-            LOGGER.info("Error sending request " + e);
-        }
+        int offset = 0;
+
+        do {
+
+            byte[] finalPacket = {};
+            offset = putChunksIntoPacket(chunks, finalPacket, offset, output);
+
+        } while (offset < chunks.size() - 1);
 
     }
 
-    public static String bytesToHex(byte[] bytes) {
-        char[] hexChars = new char[bytes.length * 2];
-        for (int j = 0; j < bytes.length; j++) {
-            int v = bytes[j] & 0xFF;
-            hexChars[j * 2] = HEX_ARRAY[v >>> 4];
-            hexChars[j * 2 + 1] = HEX_ARRAY[v & 0x0F];
+
+    /**
+     * Places the chunks into groups smaller than the maximum CCSDS packet limit.
+     *
+     * @param data:            The chunks of the file to be transmitted.
+     * @param startChunkIndex: The first chunk to be included.
+     * @return the starting index for the next packet.
+     */
+    private static int putChunksIntoPacket(List<byte[]> data, byte[] finalPacket, int startChunkIndex, OutputStream output) throws IOException {
+
+        int messageSize = 0;
+        int lastChunkIndex = 0;
+        int byteOffset = startChunkIndex * data.get(0).length;
+        byte[] byteData = {};
+
+        for (int chunk = startChunkIndex; chunk < data.size(); chunk++) {
+            byte[] currentChunk = data.get(chunk);
+            int chunkLength = currentChunk.length;
+
+            byte[] information = {(byte) (byteOffset >> 24), (byte) (byteOffset >> 16),
+                    (byte) (byteOffset >> 8), (byte) byteOffset, (byte) (chunkLength >> 8), (byte) chunkLength};
+            byteOffset += chunkLength;
+            messageSize += chunkLength + information.length;
+
+            if (messageSize <= THRESHOLD_BYTES) {
+                lastChunkIndex = chunk;
+                LOGGER.info("Added chunk " + chunk + " with size " + chunkLength + ", offset " + byteOffset
+                        + ", message size: " + messageSize);
+                byte[] segment = Bytes.concat(information, currentChunk);
+                byteData = Bytes.concat(byteData, segment);
+            } else
+                break;
         }
-        return new String(hexChars);
+        int numberOfObjects = lastChunkIndex + 1 - startChunkIndex;
+
+        LOGGER.info("number_of_objects is " + numberOfObjects);
+
+        byte[] numberOfObjectsArray = {(byte) numberOfObjects};
+        finalPacket = Bytes.concat(numberOfObjectsArray, finalPacket);
+
+        long time = System.currentTimeMillis(); // UNIX milliseconds
+        time /= 1000; // seconds
+        time -= 1640988000; // offset from 1/1/2022
+
+        int size = finalPacket.length + 16;
+
+        byte[] primaryHeader = {8, 1, (byte) 192, 0, (byte) (size >> 8), (byte) (size & 0xFF)};
+        byte[] secondaryHeader = {32, 6, 4, 0, 0, 0, 1, (byte) (time >> 24), (byte) (time >> 16), (byte) (time >> 8), (byte) (time & 0xFF)};
+
+        finalPacket = Bytes.concat(primaryHeader, secondaryHeader, finalPacket);
+
+        output.write(finalPacket);
+        return lastChunkIndex + 1;
     }
+
 }

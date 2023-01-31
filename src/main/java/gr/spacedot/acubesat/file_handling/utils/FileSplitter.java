@@ -10,7 +10,6 @@ public class FileSplitter {
     private static final int CHUNK_SIZE_BYTES = 4096;
 
     /**
-     *
      * @param fileEntity : The local file entity to be split into chunks.
      * @return chunkedFileEntity: The same file with its contents split in a List
      */

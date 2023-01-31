@@ -4,10 +4,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Optional;
-
-import javax.management.RuntimeErrorException;
 
 public class FileEntity {
     private String path;
@@ -59,15 +55,7 @@ public class FileEntity {
     }
 
     public void loadContents() {
-        /**
-         * When this function is called by yamcs-instance, the root
-         * path is ../yamcs-instance/target/yamcs/ instead of
-         * ../yamcs-instance/ , so we need to parse the latter.
-         */
-        File currentDir = new File(".").getAbsoluteFile().getParentFile();
-        File grandParentDir = currentDir.getParentFile().getParentFile();
-        File sourceDir = new File(grandParentDir,this.path);
-
+        File sourceDir = getTruePath();
         File file = new File(sourceDir, this.name);
         System.out.println("Path is " + file.toPath().toAbsolutePath());
         if (file.isDirectory())
@@ -78,5 +66,16 @@ public class FileEntity {
             throw new RuntimeException(
                     "Error loading contents for file : " + file.toPath().toAbsolutePath() + " . Exception is " + e);
         }
+    }
+
+    public File getTruePath(){
+        /**
+         * When this function is called by yamcs-instance, the root
+         * path is ../yamcs-instance/target/yamcs/ instead of
+         * ../yamcs-instance/ , so we need to parse the latter.
+         */
+        File currentDir = new File(".").getAbsoluteFile().getParentFile();
+        File grandParentDir = currentDir.getParentFile().getParentFile();
+        return new File(grandParentDir,this.path);
     }
 }

@@ -4,24 +4,24 @@ package gr.spacedot.acubesat.file_handling.network.out;
 import gr.spacedot.acubesat.file_handling.entities.FileEntity;
 import gr.spacedot.acubesat.file_handling.enums.LocalPaths;
 import gr.spacedot.acubesat.file_handling.utils.FileSplitter;
+import gr.spacedot.acubesat.file_handling.utils.PacketParser;
+import gr.spacedot.acubesat.file_handling.enums.PacketType;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
+
+import static gr.spacedot.acubesat.file_handling.utils.PacketParser.DELIMITER;
 
 public class TCParser {
 
-    private static final int PRIMARY_HEADER_SIZE = 6;
-
-    private static final int SECONDARY_HEADER_SIZE = 5;
-
-    private static final int HEADER_SIZE = PRIMARY_HEADER_SIZE + SECONDARY_HEADER_SIZE;
-
-    private static final int DELIMITER = 0;
-
     private static final String[] names = {"Source path", "Source name", "Target path", "Target name"};
 
-    private final PacketSender packetSender = new PacketSender();
+    private static final Logger LOGGER = Logger.getLogger(TCParser.class.getName());
+
+    private static final PacketSender packetSender = new PacketSender();
+
+    private static final PacketParser packetParser = new PacketParser();
 
     private static final FileSplitter fileSplitter = new FileSplitter();
 
@@ -29,20 +29,12 @@ public class TCParser {
      * Parses the source file path/name and target file path/name
      * and saves them into a Map in order to be evaluated.
      *
-     * @param packet: a packet with the following structure:
-     *                primary_header | secondary_header | data
-     *                <p>
-     *                primary_header: 6 bytes containing various data such
-     *                as packet version number, packet type, application id etc
-     *                <p>
-     *                secondary_header: 5 bytes containing PUS version number (4 bits)
-     *                spacecraft time reference status (4 bits), service type id (8 bits),
-     *                message type id (8 bits) and message type counter (16 bits).
+     * @param packet: a TC[6,1] file copy packet.
      */
-    public HashMap<String,String> parseFileCopyPacket(byte[] packet) {
+    public HashMap<String, String> parseFileCopyPacket(byte[] packet) {
         HashMap<String, String> paths = new HashMap<>();
 
-        byte[] data = Arrays.copyOfRange(packet, HEADER_SIZE, packet.length);
+        byte[] data = packetParser.parseData(packet, PacketType.TC);
         StringBuilder builder = new StringBuilder();
         int valuesCounter = 0;
         for (byte character : data) {
@@ -60,7 +52,6 @@ public class TCParser {
     /**
      * If the source file is local, then it sends the packet segments
      * using the appropriate commands.
-     * TODO: If the source file is not local, it awaits for the file segment TMs
      *
      * @param paths: A map containing the source and target file path and name.
      */
@@ -76,14 +67,13 @@ public class TCParser {
             FileEntity fileEntity = new FileEntity(sourcePath, paths.get("Source name"));
             fileEntity.loadContents();
             packetSender.sentPacketSegments(fileSplitter.splitFileInChunks(fileEntity));
-        }
-        else{
-            System.out.println("Source path does not exist: "+sourcePath);
+        } else {
+            LOGGER.info("Source path does not exist: " + sourcePath);
         }
         if (targetPath.equals(LocalPaths.RECEIVED_PATH.toString())) {
-            System.out.println("Target Path exists!");
+            LOGGER.info("Target Path exists!");
         } else {
-            System.out.println("Target path does not exist: "+targetPath);
+            LOGGER.info("Target path does not exist: " + targetPath);
         }
 
     }

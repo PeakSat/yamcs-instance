@@ -40,7 +40,7 @@
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="TC(20,1)_report_megnetometer_parameter_values">
+            <MetaCommand name="TC(20,1)_report_magnetometer_parameter_values">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
@@ -58,7 +58,7 @@
                     <Argument argumentTypeRef="/base/uint16_t" name="MagnetometerCycleCountZ" initialValue="1019" />
                     <Argument argumentTypeRef="/base/uint16_t" name="MagnetometerSelfTest" initialValue="1020" />
                 </ArgumentList>
-                <CommandContainer name="TC(20,1)_megnetometer_container">
+                <CommandContainer name="TC(20,1)_magnetometer_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="MagnetometerRawX" />
