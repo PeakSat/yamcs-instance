@@ -109,7 +109,7 @@
                 </BaseContainer>
             </SequenceContainer>
 
-            <SequenceContainer name="TM(1,5)_succesful_progress_of_execution_verification_report">
+            <SequenceContainer name="TM(1,5)_successful_progress_of_execution_verification_report">
                 <LongDescription>
                     Provides the capability to generate the successful progress of execution verification reports.
                 </LongDescription>

@@ -8,7 +8,7 @@
     <!--Time-Based Scheduling Service (ST(11)) Commands -->
     <CommandMetaData>
         <MetaCommandSet>
-            
+
             <MetaCommand name="TC(11,4)_insert_activity_into_time_based_schedule" abstract="true">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>

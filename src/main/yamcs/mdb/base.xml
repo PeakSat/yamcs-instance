@@ -215,6 +215,16 @@
 				</EnumerationList>
 			</EnumeratedParameterType>
 
+			<BinaryParameterType name="binaryData_t">
+				<BinaryDataEncoding>
+					<SizeInBits>
+						<DynamicValue>
+							<ParameterInstanceRef parameterRef="_yamcs_ignore" />
+						</DynamicValue>
+					</SizeInBits>
+				</BinaryDataEncoding>
+			</BinaryParameterType>
+
 		</ParameterTypeSet>
 	</TelemetryMetaData>
 	<CommandMetaData>
