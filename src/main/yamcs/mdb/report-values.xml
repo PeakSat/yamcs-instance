@@ -1,254 +1,259 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xtce:SpaceSystem name="report-values" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
+<SpaceSystem name="report-values" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
+    shortDescription="This is a bogus satellite telemetry and telecommand database."
+    operationalStatus="unittest">
 
-     <!-- Parameter Management Service (ST(20]) Report-Value Commands (TC(20,1]) of pre-made groups of related parameters-->
-    <xtce:CommandMetaData>
-        <xtce:MetaCommandSet> 
-            <xtce:MetaCommand name="TC(20,1)_report_gyro_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="6"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="GyroscopeX" initialValue="1043"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="GyroscopeY" initialValue="1044"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="GyroscopeZ" initialValue="1045"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="GyroscopeXTemperature" initialValue="1089"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="GyroscopeYTemperature" initialValue="1090"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="GyroscopeZTemperature" initialValue="1091"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,1)_report_gyro_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="GyroscopeX" />
-                        <xtce:ArgumentRefEntry argumentRef="GyroscopeY" />
-                        <xtce:ArgumentRefEntry argumentRef="GyroscopeZ" />
-                        <xtce:ArgumentRefEntry argumentRef="GyroscopeXTemperature" />
-                        <xtce:ArgumentRefEntry argumentRef="GyroscopeYTemperature" />
-                        <xtce:ArgumentRefEntry argumentRef="GyroscopeZTemperature" />  
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+    <!-- Parameter Management Service (ST(20]) Report-Value Commands (TC(20,1]) of pre-made groups
+    of related parameters-->
+    <CommandMetaData>
+        <MetaCommandSet>
 
-            <xtce:MetaCommand name="TC(20,1)_report_megnetometer_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="8"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="MagnetometerRawX" initialValue="1013"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="MagnetometerRawY" initialValue="1014"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="MagnetometerRawZ" initialValue="1015"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="MagnetometerFrequency" initialValue="1016"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="MagnetometerCycleCountX" initialValue="1017"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="MagnetometerCycleCountY" initialValue="1018"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="MagnetometerCycleCountZ" initialValue="1019"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="MagnetometerSelfTest" initialValue="1020"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,1)_report_megnetometer_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="MagnetometerRawX" />
-                        <xtce:ArgumentRefEntry argumentRef="MagnetometerRawY" />
-                        <xtce:ArgumentRefEntry argumentRef="MagnetometerRawZ" />
-                        <xtce:ArgumentRefEntry argumentRef="MagnetometerFrequency" />
-                        <xtce:ArgumentRefEntry argumentRef="MagnetometerCycleCountX" />
-                        <xtce:ArgumentRefEntry argumentRef="MagnetometerCycleCountY" />
-                        <xtce:ArgumentRefEntry argumentRef="MagnetometerCycleCountZ" />
-                        <xtce:ArgumentRefEntry argumentRef="MagnetometerSelfTest" />  
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="TC(20,1)_report_gyro_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t" name="number_of_parameters" initialValue="6" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="GyroscopeX" initialValue="1043" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="GyroscopeY" initialValue="1044" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="GyroscopeZ" initialValue="1045" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="GyroscopeXTemperature" initialValue="1089" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="GyroscopeYTemperature" initialValue="1090" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="GyroscopeZTemperature" initialValue="1091" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_gyro_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="GyroscopeX" />
+                        <ArgumentRefEntry argumentRef="GyroscopeY" />
+                        <ArgumentRefEntry argumentRef="GyroscopeZ" />
+                        <ArgumentRefEntry argumentRef="GyroscopeXTemperature" />
+                        <ArgumentRefEntry argumentRef="GyroscopeYTemperature" />
+                        <ArgumentRefEntry argumentRef="GyroscopeZTemperature" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-             <xtce:MetaCommand name="TC(20,1)_report_mcu_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="7"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCBootCounter" initialValue="5004"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCSystick" initialValue="5015"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMCUTemperature" initialValue="5002"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSMCUTemperature" initialValue="1218"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSMCUOnBoardTime" initialValue="1221"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSSystick" initialValue="1224"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSMCUBootCounter" initialValue="1220"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCOperationalMode" initialValue="5011"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCLastFailedEvent" initialValue="5014"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,1)_report_mcu_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="OBCBootCounter" />
-                        <xtce:ArgumentRefEntry argumentRef="OBCSystick" />
-                        <xtce:ArgumentRefEntry argumentRef="OBCMCUTemperature" />
-                        <xtce:ArgumentRefEntry argumentRef="ADCSMCUTemperature" />
-                        <xtce:ArgumentRefEntry argumentRef="ADCSMCUOnBoardTime" />
-                        <xtce:ArgumentRefEntry argumentRef="ADCSSystick" /> 
-                        <xtce:ArgumentRefEntry argumentRef="ADCSMCUBootCounter" /> 
-                        <xtce:ArgumentRefEntry argumentRef="OBCOperationalMode" /> 
-                        <xtce:ArgumentRefEntry argumentRef="OBCLastFailedEvent" />
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="TC(20,1)_report_magnetometer_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t" name="number_of_parameters" initialValue="8" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="MagnetometerRawX" initialValue="1013" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="MagnetometerRawY" initialValue="1014" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="MagnetometerRawZ" initialValue="1015" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="MagnetometerFrequency" initialValue="1016" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="MagnetometerCycleCountX" initialValue="1017" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="MagnetometerCycleCountY" initialValue="1018" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="MagnetometerCycleCountZ" initialValue="1019" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="MagnetometerSelfTest" initialValue="1020" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_magnetometer_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="MagnetometerRawX" />
+                        <ArgumentRefEntry argumentRef="MagnetometerRawY" />
+                        <ArgumentRefEntry argumentRef="MagnetometerRawZ" />
+                        <ArgumentRefEntry argumentRef="MagnetometerFrequency" />
+                        <ArgumentRefEntry argumentRef="MagnetometerCycleCountX" />
+                        <ArgumentRefEntry argumentRef="MagnetometerCycleCountY" />
+                        <ArgumentRefEntry argumentRef="MagnetometerCycleCountZ" />
+                        <ArgumentRefEntry argumentRef="MagnetometerSelfTest" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-            <xtce:MetaCommand name="TC(20,1)_report_can_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="3"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="CANBusLoad1" initialValue="5016" />
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="CANBusLoad2" initialValue="5017"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ActiveCAN" initialValue="5018"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,1)_report_can_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="CANBusLoad1" />
-                        <xtce:ArgumentRefEntry argumentRef="CANBusLoad2" />
-                        <xtce:ArgumentRefEntry argumentRef="ActiveCAN" />
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="TC(20,1)_report_mcu_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t" name="number_of_parameters" initialValue="7" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OBCBootCounter" initialValue="5004" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OBCSystick" initialValue="5015" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OBCMCUTemperature" initialValue="5002" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="ADCSMCUTemperature" initialValue="1218" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="ADCSMCUOnBoardTime" initialValue="1221" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="ADCSSystick" initialValue="1224" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="ADCSMCUBootCounter" initialValue="1220" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OBCOperationalMode" initialValue="5011" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OBCLastFailedEvent" initialValue="5014" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_mcu_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="OBCBootCounter" />
+                        <ArgumentRefEntry argumentRef="OBCSystick" />
+                        <ArgumentRefEntry argumentRef="OBCMCUTemperature" />
+                        <ArgumentRefEntry argumentRef="ADCSMCUTemperature" />
+                        <ArgumentRefEntry argumentRef="ADCSMCUOnBoardTime" />
+                        <ArgumentRefEntry argumentRef="ADCSSystick" />
+                        <ArgumentRefEntry argumentRef="ADCSMCUBootCounter" />
+                        <ArgumentRefEntry argumentRef="OBCOperationalMode" />
+                        <ArgumentRefEntry argumentRef="OBCLastFailedEvent" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-            <xtce:MetaCommand name="TC(20,1)_report_timer_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCReconfigurationTimer" initialValue="5013"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCSpacecraftRefTime" initialValue="5009"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,1)_report_timer_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="OBCReconfigurationTimer" />
-                        <xtce:ArgumentRefEntry argumentRef="OBCSpacecraftRefTime" />
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="TC(20,1)_report_can_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t" name="number_of_parameters" initialValue="3" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="CANBusLoad1" initialValue="5016" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="CANBusLoad2" initialValue="5017" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="ActiveCAN" initialValue="5018" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_can_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="CANBusLoad1" />
+                        <ArgumentRefEntry argumentRef="CANBusLoad2" />
+                        <ArgumentRefEntry argumentRef="ActiveCAN" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-            <xtce:MetaCommand name="TC(20,1)_report_board_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="4"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBDHBoardTemperature1" initialValue="5000"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBDHBoardTemperature2" initialValue="5001"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSBoardTemperature1" initialValue="1092"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSBoardTemperature2" initialValue="1093"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,1)_report_board_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="OBDHBoardTemperature1" /> 
-                        <xtce:ArgumentRefEntry argumentRef="OBDHBoardTemperature2" />
-                        <xtce:ArgumentRefEntry argumentRef="ADCSBoardTemperature1" />
-                        <xtce:ArgumentRefEntry argumentRef="ADCSBoardTemperature2" /> 
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="TC(20,1)_report_timer_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t" name="number_of_parameters" initialValue="1" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OBCReconfigurationTimer" initialValue="5013" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OBCSpacecraftRefTime" initialValue="5009" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_timer_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="OBCReconfigurationTimer" />
+                        <ArgumentRefEntry argumentRef="OBCSpacecraftRefTime" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-            <xtce:MetaCommand name="TC(20,1)_report_memory_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="5"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="NANDLCLThreshold" initialValue="5021"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="MRAMLCLThreshold" initialValue="5022"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCNANDOn" initialValue="5023"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMRAMOn" initialValue="5024"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMemoryPartition" initialValue="5012"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSFlashInt" initialValue="1227"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ADCSSRAMInt" initialValue="1228"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,1)_report_memory_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="NANDLCLThreshold" />
-                        <xtce:ArgumentRefEntry argumentRef="MRAMLCLThreshold" />
-                        <xtce:ArgumentRefEntry argumentRef="OBCNANDOn" />
-                        <xtce:ArgumentRefEntry argumentRef="OBCMRAMOn" />
-                        <xtce:ArgumentRefEntry argumentRef="OBCMemoryPartition" /> 
-                        <xtce:ArgumentRefEntry argumentRef="ADCSFlashInt" />
-                        <xtce:ArgumentRefEntry argumentRef="ADCSSRAMInt" />
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="TC(20,1)_report_board_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t" name="number_of_parameters" initialValue="4" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OBDHBoardTemperature1" initialValue="5000" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OBDHBoardTemperature2" initialValue="5001" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="ADCSBoardTemperature1" initialValue="1092" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="ADCSBoardTemperature2" initialValue="1093" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_board_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="OBDHBoardTemperature1" />
+                        <ArgumentRefEntry argumentRef="OBDHBoardTemperature2" />
+                        <ArgumentRefEntry argumentRef="ADCSBoardTemperature1" />
+                        <ArgumentRefEntry argumentRef="ADCSBoardTemperature2" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-            <xtce:MetaCommand name="TC(20,1)_report_time_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OnBoardTime" initialValue="5010"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,1)_report_time_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="OnBoardTime" />
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="TC(20,1)_report_memory_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t" name="number_of_parameters" initialValue="5" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="NANDLCLThreshold" initialValue="5021" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="MRAMLCLThreshold" initialValue="5022" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OBCNANDOn" initialValue="5023" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OBCMRAMOn" initialValue="5024" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OBCMemoryPartition" initialValue="5012" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="ADCSFlashInt" initialValue="1227" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="ADCSSRAMInt" initialValue="1228" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_memory_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="NANDLCLThreshold" />
+                        <ArgumentRefEntry argumentRef="MRAMLCLThreshold" />
+                        <ArgumentRefEntry argumentRef="OBCNANDOn" />
+                        <ArgumentRefEntry argumentRef="OBCMRAMOn" />
+                        <ArgumentRefEntry argumentRef="OBCMemoryPartition" />
+                        <ArgumentRefEntry argumentRef="ADCSFlashInt" />
+                        <ArgumentRefEntry argumentRef="ADCSSRAMInt" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-            <xtce:MetaCommand name="TC(20,1)_report_custom_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-10}" name="total_parameters" />
-                    <xtce:Argument argumentTypeRef="/dt/parameterIdArray_t" name="parameters" />
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,1)_report_custom_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="total_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="parameters" />
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="TC(20,1)_report_time_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t" name="number_of_parameters" initialValue="1" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OnBoardTime" initialValue="5010" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_time_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="OnBoardTime" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
+            <MetaCommand name="TC(20,1)_report_custom_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t{1-10}" name="total_parameters" />
+                    <Argument argumentTypeRef="/dt/parameterIdArray_t" name="parameters" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_custom_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="total_parameters" />
+                        <ArgumentRefEntry argumentRef="parameters" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-        </xtce:MetaCommandSet> 
-    </xtce:CommandMetaData>
-</xtce:SpaceSystem>
+        </MetaCommandSet>
+    </CommandMetaData>
+</SpaceSystem>

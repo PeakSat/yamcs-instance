@@ -1,5 +1,6 @@
 package gr.spacedot.acubesat;
 
+import gr.spacedot.acubesat.file_handling.network.out.TCParser;
 import org.yamcs.YConfiguration;
 import org.yamcs.cmdhistory.CommandHistoryPublisher;
 import org.yamcs.commanding.PreparedCommand;
@@ -7,29 +8,18 @@ import org.yamcs.tctm.CcsdsSeqCountFiller;
 import org.yamcs.tctm.CommandPostprocessor;
 import org.yamcs.utils.ByteArrayUtils;
 
-/**
- * Component capable of modifying command binary before passing it to the link for further dispatch.
- * <p>
- * A single instance of this class is created, scoped to the link udp-out.
- * <p>
- * This is specified in the configuration file yamcs.myproject.yaml:
- * 
- * <pre>
- * ...
- * dataLinks:
- *   - name: udp-out
- *     class: org.yamcs.tctm.UdpTcDataLink
- *     stream: tc_realtime
- *     host: localhost
- *     port: 10025
- *     commandPostprocessorClassName: com.example.myproject.MyCommandPostprocessor
- * ...
- * </pre>
- */
+import java.util.Map;
+import java.util.logging.Logger;
+import static java.lang.Thread.sleep;
+
 public class CustomCommandPostprocessor implements CommandPostprocessor {
 
-    private CcsdsSeqCountFiller seqFiller = new CcsdsSeqCountFiller();
+    private final CcsdsSeqCountFiller seqFiller = new CcsdsSeqCountFiller();
     private CommandHistoryPublisher commandHistory;
+
+    private final TCParser tcparcer = new TCParser();
+
+    private static final Logger LOGGER = Logger.getLogger(CustomCommandPostprocessor.class.getName());
 
     // Constructor used when this postprocessor is used without YAML configuration
     public CustomCommandPostprocessor(String yamcsInstance) {
@@ -47,26 +37,48 @@ public class CustomCommandPostprocessor implements CommandPostprocessor {
         this.commandHistory = commandHistory;
     }
 
-    // Called by Yamcs *after* a command was submitted, but *before* the link handles it.
+    // Called by Yamcs *after* a command was submitted, but *before* the link
+    // handles it.
     // This method must return the (possibly modified) packet binary.
     @Override
     public byte[] process(PreparedCommand pc) {
-         byte[] binary = pc.getBinary();
-      
-        // // Set CCSDS packet length
-         ByteArrayUtils.encodeUnsignedShort(binary.length-6, binary,4);
+        byte[] binary = pc.getBinary();
 
-        // // // Set CCSDS sequence count
-          int seqCount = seqFiller.fill(binary);
+        // Set CCSDS packet length
+        ByteArrayUtils.encodeUnsignedShort(binary.length - 6, binary, 4);
 
-        // // // Publish the sequence count to Command History. This has no special
-        // // // meaning to Yamcs, but it shows how to store custom information specific
-        // // // to a command.
-          commandHistory.publish(pc.getCommandId(), "ccsds-seqcount", seqCount);
+        // Set CCSDS sequence count
+        int seqCount = seqFiller.fill(binary);
 
-        // // // Since we modified the binary, update the binary in Command History too.
-        //  commandHistory.publish(pc.getCommandId(), PreparedCommand.CNAME_BINARY, binary);
+        int serviceType = binary[7];
+        int messageType = binary[8];
 
-         return binary;
+        // In packet parsing a lot of http requests are created. Since
+        // this is done in the same thread, the commands are sent when exciting
+        // the function, so an artificial delay is inserted in order to avoid
+        // sending more than 50 packets simultaneously, which corrupts the packets.
+
+        if (serviceType == 6 && messageType == 1) {
+            try {
+                sleep(50);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        if (serviceType == 23 && messageType == 14) {
+            Map<String,String> paths = tcparcer.parseFileCopyPacket(binary);
+            tcparcer.processPaths(paths);
+        }
+
+        // Publish the sequence count to Command History. This has no special
+        // meaning to Yamcs, but it shows how to store custom information specific
+        // to a command.
+        commandHistory.publish(pc.getCommandId(), "ccsds-seqcount", seqCount);
+
+        // Since we modified the binary, update the binary in Command History too.
+        // commandHistory.publish(pc.getCommandId(), PreparedCommand.CNAME_BINARY,binary);
+
+        return binary;
     }
 }

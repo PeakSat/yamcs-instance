@@ -154,7 +154,8 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
             ser.readline()
 
             while True:
-                message = ser.readline()
+                line = ser.readline()
+                message = cobs.decode(line)
                 # not using decode("utf-8") since it will break printing (all new line characters will result in an new line)
                 logging.info(f"{ser.name}: {message}")
 
@@ -251,10 +252,10 @@ def yamcs_client(settings: Settings, serial_port: str = None):
                 data, _ = tcp_client.recvfrom(settings.max_tc_size)
                 if len(data) >= TC_HEADER:
                     logging.info("YAMCS: " + data.hex())
+                    encoded_data = cobs.encode(data)
+                    port.write(encoded_data)
+                    port.write(DELIMITER)
 
-                encoded_data = cobs.encode(data)
-                port.write(encoded_data)
-                port.write(DELIMITER)
         except serial.SerialException:
             logging.warning(
                 "No device is connected at port "

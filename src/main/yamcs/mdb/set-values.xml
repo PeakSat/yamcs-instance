@@ -1,184 +1,302 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xtce:SpaceSystem name="set-values" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd" shortDescription="This is a bogus satellite telemetry and telecommand database." operationalStatus="unittest">
+<SpaceSystem name="set-values" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
+    shortDescription="This is a bogus satellite telemetry and telecommand database."
+    operationalStatus="unittest">
 
-    <!-- Parameter Management Service (ST(20]) Set-Value Commands (TC(20,3]) of pre-made groups of parameters based on their type-->
-    <xtce:CommandMetaData>
-        <xtce:MetaCommandSet> 
-                <xtce:MetaCommand name="TC(20,3)_set_float_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-5}" name="number_of_parameters"/>
-                    <xtce:Argument argumentTypeRef="/dt/writableFloatParameterArray" name="parameter_ids" />
-                    <xtce:Argument argumentTypeRef="/dt/floatArray_t" name="new_values"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,3)_set_float_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="parameter_ids" />
-                        <xtce:ArgumentRefEntry argumentRef="new_values"/>
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+    <!-- Parameter Management Service (ST(20]) Set-Value Commands (TC(20,3]) of pre-made groups of
+    parameters based on their type-->
+    <CommandMetaData>
+        <MetaCommandSet>
 
-            <xtce:MetaCommand name="TC(20,3)_set_uint8_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
-                    <xtce:Argument argumentTypeRef="/dt/writableUint8Parameters_t" name="parameter_ids" />
-                    <xtce:Argument argumentTypeRef="/dt/uint8_t" name="new_values"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,3)_set_uint8_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="parameter_ids" />
-                        <xtce:ArgumentRefEntry argumentRef="new_values" />
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="dynamic_TC(20,3)_set_float_parameter_values(no)">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t{1-5}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/dt/writableFloatParameterArray" name="parameter_ids_and_new_values" />
+                </ArgumentList>
+                <CommandContainer name="dynamic_TC(20,3)_float_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-            <xtce:MetaCommand name="TC(20,3)_set_int8_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-3}" name="number_of_parameters"/>
-                    <xtce:Argument argumentTypeRef="/dt/writableInt8ParametersArray" name="parameter_ids"/>
-                    <xtce:Argument argumentTypeRef="/dt/int8Array_t" name="new_values"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,3)_set_int8_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="parameter_ids"/>
-                        <xtce:ArgumentRefEntry argumentRef="new_values"/>
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="TC(20,3)_set_uint8_parameter_values(yes)">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t" name="number_of_parameters" initialValue="1" />
+                    <Argument argumentTypeRef="/dt/writableUint8Parameters_t" name="parameter_ids" />
+                    <Argument argumentTypeRef="/base/uint8_t" name="new_value" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,3)_uint8_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids" />
+                        <ArgumentRefEntry argumentRef="new_value" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-            <xtce:MetaCommand name="TC(20,3)_set_uint32_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-2}" name="number_of_parameters"/>
-                    <xtce:Argument argumentTypeRef="/dt/writableUint32ParametersArray" name="parameter_ids"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint32Array_t" name="new_values"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,3)_set_uint32_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="parameter_ids"/>
-                        <xtce:ArgumentRefEntry argumentRef="new_values"/>
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="dynamic_TC(20,3)_set_int8_parameter_values(no)">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t{1-3}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/dt/writableInt8ParametersArray" name="parameter_ids_and_new_values" />
+                </ArgumentList>
+                <CommandContainer name="dynamic_TC(20,3)_int8_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-            <xtce:MetaCommand name="TC(20,3)_set_uint64_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
-                    <xtce:Argument argumentTypeRef="/dt/writableUint64Parameters_t" name="parameter_ids" />
-                    <xtce:Argument argumentTypeRef="/dt/uint64_t" name="new_values"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,3)_set_uint64_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="parameter_ids" />
-                        <xtce:ArgumentRefEntry argumentRef="new_values" />
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="dynamic_TC(20,3)_set_uint32_parameter_values(no)">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t{1-2}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/dt/writableUint32ParametersArray" name="parameter_ids_and_new_values" />
+                </ArgumentList>
+                <CommandContainer name="dynamic_TC(20,3)_uint32_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-            <xtce:MetaCommand name="TC(20,3)_set_bool_parameter_values">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t{1-9}" name="number_of_parameters" />
-                    <xtce:Argument argumentTypeRef="/dt/writableBoolArray" name="parameter_ids"/>
-                    <xtce:Argument argumentTypeRef="/dt/boolArray_t" name="new_values"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,3)_set_bool_parameter_values">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters" />
-                        <xtce:ArgumentRefEntry argumentRef="parameter_ids"/>
-                        <xtce:ArgumentRefEntry argumentRef="new_values"/>
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="TC(20,3)_set_uint64_parameter_values(yes)">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t" name="number_of_parameters" initialValue="1" />
+                    <Argument argumentTypeRef="/dt/writableUint64Parameters_t" name="parameter_ids" />
+                    <Argument argumentTypeRef="/base/uint64_t" name="new_values" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,3)_uint64_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids" />
+                        <ArgumentRefEntry argumentRef="new_values" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-            <xtce:MetaCommand name="TC(20,3)_set_partition">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="OBCMemoryPartition" initialValue="5012"/>
-                    <xtce:Argument argumentTypeRef="/dt/OBCMemoryPartition_t" name="new_value"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,3)_set_partition">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="OBCMemoryPartition" />
-                        <xtce:ArgumentRefEntry argumentRef="new_value" />
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
+            <MetaCommand name="dynamic_TC(20,3)_set_bool_parameter_values(no)">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t{1-9}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/dt/writableBoolArray" name="parameter_ids_and_new_values" />
+                </ArgumentList>
+                <CommandContainer name="dynamic_TC(20,3)_bool_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
-            <xtce:MetaCommand name="TC(20,3)_set_CANBus">
-                <xtce:BaseMetaCommand metaCommandRef="/pus/Header_TC">
-                <xtce:ArgumentAssignmentList>
-                    <xtce:ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
-                    <xtce:ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
-                </xtce:ArgumentAssignmentList>
-                </xtce:BaseMetaCommand>
-                <xtce:ArgumentList>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="number_of_parameters" initialValue="1"/>
-                    <xtce:Argument argumentTypeRef="/dt/uint16_t" name="ActiveCAN" initialValue="5018"/>
-                    <xtce:Argument argumentTypeRef="/dt/activeCAN_t" name="new_value"/>
-                </xtce:ArgumentList>
-                <xtce:CommandContainer name="TC(20,3)_set_CANBus">
-                    <xtce:EntryList >
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
-                        <xtce:ArgumentRefEntry argumentRef="ActiveCAN" />
-                        <xtce:ArgumentRefEntry argumentRef="new_value" />
-                    </xtce:EntryList>
-                    <xtce:BaseContainer containerRef="/pus/Header_TC" />
-                </xtce:CommandContainer>
-            </xtce:MetaCommand>
-        </xtce:MetaCommandSet> 
-    </xtce:CommandMetaData>
-</xtce:SpaceSystem>
+            <MetaCommand name="TC(20,3)_set_partition(yes)">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t" name="number_of_parameters" initialValue="1" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="OBCMemoryPartition" initialValue="5012" />
+                    <Argument argumentTypeRef="/dt/OBCMemoryPartition_t" name="new_value" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,3)_partition_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="OBCMemoryPartition" />
+                        <ArgumentRefEntry argumentRef="new_value" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(20,3)_set_CANBus(yes)">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t" name="number_of_parameters" initialValue="1" />
+                    <Argument argumentTypeRef="/base/uint16_t" name="ActiveCAN" initialValue="5018" />
+                    <Argument argumentTypeRef="/dt/activeCAN_t" name="new_value" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,3)_CANBus_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="ActiveCAN" />
+                        <ArgumentRefEntry argumentRef="new_value" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+
+            <!--The TCs as they were implemented in the past since we cannot send dynamic set-values
+            TCs via the UI-->
+            <MetaCommand name="TC(20,3)_set_float_parameter_values(yes)">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t{1-3}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/dt/writableFloatParameters_t" name="Parameter_ID1" />
+                    <Argument argumentTypeRef="/base/float_t" name="new_value1" />
+                    <Argument argumentTypeRef="/dt/writableFloatParameters_t" name="Parameter_ID2" />
+                    <Argument argumentTypeRef="/base/float_t" name="new_value2" />
+                    <Argument argumentTypeRef="/dt/writableFloatParameters_t" name="Parameter_ID3" />
+                    <Argument argumentTypeRef="/base/float_t" name="new_value3" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,3)_float_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="Parameter_ID1" />
+                        <ArgumentRefEntry argumentRef="new_value1" />
+                        <ArgumentRefEntry argumentRef="Parameter_ID2" />
+                        <ArgumentRefEntry argumentRef="new_value2" />
+                        <ArgumentRefEntry argumentRef="Parameter_ID3" />
+                        <ArgumentRefEntry argumentRef="new_value3" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(20,3)_set_int8_parameter_values(yes)">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t{1-3}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/dt/writableInt8Parameters_t" name="Parameter_ID1" />
+                    <Argument argumentTypeRef="/base/int8_t" name="new_value1" />
+                    <Argument argumentTypeRef="/dt/writableInt8Parameters_t" name="Parameter_ID2" />
+                    <Argument argumentTypeRef="/base/int8_t" name="new_value2" />
+                    <Argument argumentTypeRef="/dt/writableInt8Parameters_t" name="Parameter_ID3" />
+                    <Argument argumentTypeRef="/base/int8_t" name="new_value3" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,3)_int8_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="Parameter_ID1" />
+                        <ArgumentRefEntry argumentRef="new_value1" />
+                        <ArgumentRefEntry argumentRef="Parameter_ID2" />
+                        <ArgumentRefEntry argumentRef="new_value2" />
+                        <ArgumentRefEntry argumentRef="Parameter_ID3" />
+                        <ArgumentRefEntry argumentRef="new_value3" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(20,3)_set_uint32_parameter_values(yes)">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t{1-2}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/dt/writableUint32Parameters_t" name="Parameter_ID1" />
+                    <Argument argumentTypeRef="/base/uint32_t" name="new_value1" />
+                    <Argument argumentTypeRef="/dt/writableUint32Parameters_t" name="Parameter_ID2" />
+                    <Argument argumentTypeRef="/base/uint32_t" name="new_value2" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,3)_uint32_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="Parameter_ID1" />
+                        <ArgumentRefEntry argumentRef="new_value1" />
+                        <ArgumentRefEntry argumentRef="Parameter_ID2" />
+                        <ArgumentRefEntry argumentRef="new_value2" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(20,3)_set_bool_parameter_values(yes)">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/uint16_t{1-3}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/dt/writableBoolParameters_t" name="Parameter_ID1" />
+                    <Argument argumentTypeRef="/base/bool_t" name="new_value1" />
+                    <Argument argumentTypeRef="/dt/writableBoolParameters_t" name="Parameter_ID2" />
+                    <Argument argumentTypeRef="/base/bool_t" name="new_value2" />
+                    <Argument argumentTypeRef="/dt/writableBoolParameters_t" name="Parameter_ID3" />
+                    <Argument argumentTypeRef="/base/bool_t" name="new_value3" />
+                </ArgumentList>
+                <CommandContainer name="TC(20,3)_bool_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="Parameter_ID1" />
+                        <ArgumentRefEntry argumentRef="new_value1" />
+                        <ArgumentRefEntry argumentRef="Parameter_ID2" />
+                        <ArgumentRefEntry argumentRef="new_value2" />
+                        <ArgumentRefEntry argumentRef="Parameter_ID3" />
+                        <ArgumentRefEntry argumentRef="new_value3" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+        </MetaCommandSet>
+    </CommandMetaData>
+</SpaceSystem>

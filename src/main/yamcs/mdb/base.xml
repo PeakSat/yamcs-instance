@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpaceSystem name="base" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
+	shortDescription="This is a bogus satellite telemetry and telecommand database."
+	operationalStatus="unittest">
+	<!-- Contains all ParameterTypes for Telemetry and ArgumentTypes for Telecommanding. -->
+	<TelemetryMetaData>
+		<ParameterTypeSet>
+
+			<IntegerParameterType name="packet_version_number">
+				<IntegerDataEncoding sizeInBits="3" />
+			</IntegerParameterType>
+
+			<EnumeratedParameterType name="packet_type">
+				<IntegerDataEncoding sizeInBits="1" />
+				<EnumerationList>
+					<Enumeration value="1" label="TC" />
+					<Enumeration value="0" label="TM" />
+				</EnumerationList>
+			</EnumeratedParameterType>
+
+			<IntegerParameterType name="secondary_header_flag">
+				<IntegerDataEncoding sizeInBits="1" />
+			</IntegerParameterType>
+
+			<EnumeratedParameterType name="application_process_ID">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="11" />
+				<EnumerationList>
+					<Enumeration value="1" label="OBC" />
+					<Enumeration value="2" label="COMMS" />
+					<Enumeration value="3" label="ADCS" />
+					<Enumeration value="4" label="SU" />
+					<Enumeration value="5" label="GS" />
+				</EnumerationList>
+			</EnumeratedParameterType>
+
+			<IntegerParameterType name="sequence_flags">
+				<IntegerDataEncoding sizeInBits="2" />
+			</IntegerParameterType>
+
+			<IntegerParameterType name="packet_sequence_count_or_packet_name">
+				<IntegerDataEncoding sizeInBits="14" />
+			</IntegerParameterType>
+
+			<IntegerParameterType name="packet_data_length" signed="false" initialValue="0">
+				<UnitSet>
+					<Unit description="Size"> Octets </Unit>
+				</UnitSet>
+				<IntegerDataEncoding sizeInBits="16" />
+			</IntegerParameterType>
+
+			<EnumeratedParameterType name="response_band">
+				<IntegerDataEncoding sizeInBits="1" />
+				<EnumerationList>
+					<Enumeration value="0" label="UHF" />
+					<Enumeration value="1" label="S" />
+				</EnumerationList>
+			</EnumeratedParameterType>
+
+			<IntegerParameterType name="uint4_t" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="4" />
+			</IntegerParameterType>
+
+			<IntegerParameterType name="int8_t" signed="true">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+			</IntegerParameterType>
+
+			<IntegerParameterType name="uint8_t" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+			</IntegerParameterType>
+
+			<IntegerParameterType name="uint16_t" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+			</IntegerParameterType>
+
+			<IntegerParameterType name="uint32_t" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
+			</IntegerParameterType>
+
+			<IntegerParameterType name="uint64_t" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="64" />
+			</IntegerParameterType>
+
+			<FloatParameterType name="float_t">
+				<FloatDataEncoding sizeInBits="32" />
+			</FloatParameterType>
+
+			<BooleanParameterType name="bool_t">
+				<IntegerDataEncoding sizeInBits="8" />
+			</BooleanParameterType>
+
+			<AbsoluteTimeParameterType name="generation_time">
+				<Encoding offset="1577836800" scale="0.1">
+					<IntegerDataEncoding sizeInBits="32" />
+				</Encoding>
+				<ReferenceTime>
+					<Epoch>UNIX</Epoch>
+				</ReferenceTime>
+			</AbsoluteTimeParameterType>
+
+			<StringParameterType name="string_t">
+				<StringDataEncoding encoding="UTF-8">
+					<Variable maxSizeInBits="4096">
+						<DynamicValue>
+							<ParameterInstanceRef parameterRef="_yamcs_ignore" />
+						</DynamicValue>
+						<TerminationChar>00</TerminationChar>
+					</Variable>
+				</StringDataEncoding>
+			</StringParameterType>
+
+			<StringParameterType name="string1_t">
+				<StringDataEncoding encoding="UTF-8">
+					<Variable maxSizeInBits="4096">
+						<DynamicValue>
+							<ParameterInstanceRef parameterRef="_yamcs_ignore" />
+						</DynamicValue>
+						<TerminationChar>0A</TerminationChar>
+					</Variable>
+				</StringDataEncoding>
+			</StringParameterType>
+
+			<EnumeratedParameterType name="AcceptanceErrorType_t">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<EnumerationList>
+					<Enumeration value="0" label="UnknownAcceptanceError" />
+					<Enumeration value="1" label="MessageTooShort" />
+					<Enumeration value="2" label="TooManyBitsRead" />
+					<Enumeration value="4" label="StringTooShort" />
+					<Enumeration value="5" label="UnacceptableMessage" />
+				</EnumerationList>
+			</EnumeratedParameterType>
+
+			<EnumeratedParameterType name="ExecutionStartErrorType_t">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<EnumerationList>
+					<Enumeration value="0" label="UnknownExecutionStartError" />
+					<Enumeration value="1" label="EventActionDefinitionIDExistsError" />
+					<Enumeration value="2" label="EventActionDeleteEnabledDefinitionError" />
+					<Enumeration value="3" label="EventActionUnknownEventDefinitionError" />
+					<Enumeration value="4" label="EventActionUnknownEventActionDefinitionIDError" />
+					<Enumeration value="5" label="SubServiceExecutionStartError" />
+					<Enumeration value="6" label="InstructionExecutionStartError" />
+					<Enumeration value="7" label="SetNonExistingParameter" />
+					<Enumeration value="8" label="GetNonExistingParameter" />
+					<Enumeration value="9" label="NonExistingPacketStore" />
+					<Enumeration value="10" label="SetPacketStoreWithOpenRetrievalInProgress" />
+					<Enumeration value="11" label="SetPacketStoreWithByTimeRangeRetrieval" />
+					<Enumeration value="12" label="GetPacketStoreWithByTimeRangeRetrieval" />
+					<Enumeration value="13" label="GetPacketStoreWithOpenRetrievalInProgress" />
+					<Enumeration value="14" label="ByTimeRangeRetrievalAlreadyEnabled" />
+					<Enumeration value="15" label="AlreadyExistingPacketStore" />
+					<Enumeration value="16" label="MaxNumberOfPacketStoresReached" />
+					<Enumeration value="17" label="GetPacketStoreWithStorageStatusEnabled" />
+					<Enumeration value="18" label="DeletionOfPacketWithByTimeRangeRetrieval" />
+					<Enumeration value="19" label="DeletionOfPacketWithOpenRetrievalInProgress" />
+					<Enumeration value="20" label="InvalidTimeWindow" />
+					<Enumeration value="21" label="DestinationPacketStoreNotEmtpy" />
+					<Enumeration value="22" label="InvalidReportingRateError" />
+					<Enumeration value="23" label="EventActionDefinitionsMapIsFull" />
+					<Enumeration value="24" label="RequestedNonExistingStructure" />
+					<Enumeration value="25" label="RequestedAlreadyExistingStructure" />
+					<Enumeration value="26" label="RequestedDeletionOfEnabledHousekeeping" />
+					<Enumeration value="27" label="AlreadyExistingParameter" />
+					<Enumeration value="28" label="RequestedAppendToEnabledHousekeeping" />
+					<Enumeration value="29" label="ExceededMaxNumberOfHousekeepingStructures" />
+					<Enumeration value="30" label="ExceededMaxNumberOfSimplyCommutatedParameters" />
+					<Enumeration value="31" label="InvalidSamplingRateError" />
+					<Enumeration value="32" label="MaxStatisticDefinitionsReached" />
+					<Enumeration value="33" label="InvalidVirtualChannel" />
+					<Enumeration value="34" label="DeletionOfPacketStoreWithStorageStatusEnabled" />
+					<Enumeration value="35" label="CopyOfPacketsFailed" />
+					<Enumeration value="36" label="UnableToHandlePacketStoreSize" />
+					<Enumeration value="37" label="InvalidRequestToDeleteAllParameterMonitoringDefinitions" />
+					<Enumeration value="38" label="InvalidRequestToDeleteParameterMonitoringDefinition" />
+					<Enumeration value="39" label="AddAlreadyExistingParameter" />
+					<Enumeration value="40" label="ParameterMonitoringListIsFull" />
+					<Enumeration value="41" label="HighLimitIsLowerThanLowLimit" />
+					<Enumeration value="42" label="HighThresholdIsLowerThanLowThreshold" />
+					<Enumeration value="43" label="ModifyParameterNotInTheParameterMonitoringList" />
+					<Enumeration value="44" label="DifferentParameterMonitoringDefinitionAndMonitoredParameter" />
+					<Enumeration value="45" label="GetNonExistingParameterMonitoringDefinition" />
+					<Enumeration value="46" label="ReportParameterNotInTheParameterMonitoringList" />
+					<Enumeration value="47" label="AllServiceTypesAlreadyAllowed" />
+					<Enumeration value="48" label="MaxReportTypesReached" />
+					<Enumeration value="49" label="MaxServiceTypesReached" />
+					<Enumeration value="50" label="NotControlledApplication" />
+					<Enumeration value="51" label="ParameterValueMissing" />
+					<Enumeration value="52" label="ParameterReadOnly" />
+					<Enumeration value="53" label="ParameterWriteOnly" />
+				</EnumerationList>
+			</EnumeratedParameterType>
+
+			<EnumeratedParameterType name="ExecutionProgressErrorType_t">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<EnumerationList>
+					<Enumeration value="0" label="UnknownExecutionProgressError" />
+				</EnumerationList>
+			</EnumeratedParameterType>
+
+			<EnumeratedParameterType name="ExecutionCompletionErrorType_t">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<EnumerationList>
+					<Enumeration value="0" label="UnknownExecutionCompletionError" />
+					<Enumeration value="1" label="ChecksumFailed" />
+					<Enumeration value="2" label="AddressOutOfRange" />
+				</EnumerationList>
+			</EnumeratedParameterType>
+
+			<EnumeratedParameterType name="RoutingErrorType_t">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<EnumerationList>
+					<Enumeration value="0" label="UnknownRoutingError" />
+				</EnumerationList>
+			</EnumeratedParameterType>
+
+			<BinaryParameterType name="binaryData_t">
+				<BinaryDataEncoding>
+					<SizeInBits>
+						<DynamicValue>
+							<ParameterInstanceRef parameterRef="_yamcs_ignore" />
+						</DynamicValue>
+					</SizeInBits>
+				</BinaryDataEncoding>
+			</BinaryParameterType>
+
+		</ParameterTypeSet>
+	</TelemetryMetaData>
+	<CommandMetaData>
+		<ArgumentTypeSet>
+
+			<IntegerArgumentType name="packet_version_number">
+				<IntegerDataEncoding sizeInBits="3" />
+			</IntegerArgumentType>
+
+			<EnumeratedArgumentType name="packet_type">
+				<IntegerDataEncoding sizeInBits="1" />
+				<EnumerationList>
+					<Enumeration value="1" label="TC" />
+					<Enumeration value="0" label="TM" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
+			<IntegerArgumentType name="secondary_header_flag">
+				<IntegerDataEncoding sizeInBits="1" />
+			</IntegerArgumentType>
+
+			<EnumeratedArgumentType name="application_process_ID">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="11" />
+				<EnumerationList>
+					<Enumeration value="1" label="OBC" />
+					<Enumeration value="2" label="COMMS" />
+					<Enumeration value="3" label="ADCS" />
+					<Enumeration value="4" label="SU" />
+					<Enumeration value="5" label="GS" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
+			<IntegerArgumentType name="sequence_flags">
+				<IntegerDataEncoding sizeInBits="2" />
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint4_t" signed="false">
+				<IntegerDataEncoding sizeInBits="4" />
+			</IntegerArgumentType>
+
+			<EnumeratedArgumentType name="completion_ack">
+				<IntegerDataEncoding sizeInBits="1" />
+				<EnumerationList>
+					<Enumeration value="0" label="no_ack" />
+					<Enumeration value="1" label="completion_ack" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
+			<EnumeratedArgumentType name="progress_of_execution_ack">
+				<IntegerDataEncoding sizeInBits="1" />
+				<EnumerationList>
+					<Enumeration value="0" label="no_ack" />
+					<Enumeration value="1" label="progress_of_execution_ack" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
+			<EnumeratedArgumentType name="start_of_execution_ack">
+				<IntegerDataEncoding sizeInBits="1" />
+				<EnumerationList>
+					<Enumeration value="0" label="no_ack" />
+					<Enumeration value="1" label="start_of_execution_ack" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
+			<EnumeratedArgumentType name="acceptance_ack">
+				<IntegerDataEncoding sizeInBits="1" />
+				<EnumerationList>
+					<Enumeration value="0" label="no_ack" />
+					<Enumeration value="1" label="acceptance_ack" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
+			<EnumeratedArgumentType name="response_band">
+				<IntegerDataEncoding sizeInBits="1" />
+				<EnumerationList>
+					<Enumeration value="0" label="UHF" />
+					<Enumeration value="1" label="S" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
+			<AbsoluteTimeArgumentType name="release_time_calendar">
+				<Encoding offset="1577836800" scale="0.1">
+					<IntegerDataEncoding sizeInBits="32" />
+				</Encoding>
+				<ReferenceTime>
+					<Epoch>UNIX</Epoch>
+				</ReferenceTime>
+			</AbsoluteTimeArgumentType>
+
+			<FloatArgumentType name="float_t">
+				<FloatDataEncoding sizeInBits="32" />
+			</FloatArgumentType>
+
+			<ArrayArgumentType arrayTypeRef="float_t" name="floatArray_t">
+				<DimensionList>
+					<Dimension>
+						<StartingIndex>
+							<FixedValue>0</FixedValue>
+						</StartingIndex>
+						<EndingIndex>
+							<DynamicValue>
+								<ArgumentInstanceRef argumentRef="number_of_parameters" />
+								<LinearAdjustment intercept="-1" />
+							</DynamicValue>
+						</EndingIndex>
+					</Dimension>
+				</DimensionList>
+			</ArrayArgumentType>
+
+			<BooleanArgumentType name="bool_t">
+				<IntegerDataEncoding sizeInBits="8" />
+			</BooleanArgumentType>
+
+			<ArrayArgumentType arrayTypeRef="bool_t" name="boolArray_t">
+				<DimensionList>
+					<Dimension>
+						<StartingIndex>
+							<FixedValue>0</FixedValue>
+						</StartingIndex>
+						<EndingIndex>
+							<DynamicValue>
+								<ArgumentInstanceRef argumentRef="number_of_parameters" />
+								<LinearAdjustment intercept="-1" />
+							</DynamicValue>
+						</EndingIndex>
+					</Dimension>
+				</DimensionList>
+			</ArrayArgumentType>
+
+			<IntegerArgumentType name="uint8_t" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint8_t{1-3}" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="3" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint8_t{1-5}" signed="false">
+				<IntegerDataEncoding sizeInBits="8" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="5" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint8_t{1-10}" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="10" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="int8_t" signed="true">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint16_t" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint16_t{1-2}" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="2" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint16_t{1-3}" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="3" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint16_t{1-5}" signed="false">
+				<IntegerDataEncoding sizeInBits="16" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="5" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint16_t{1-9}">
+				<IntegerDataEncoding sizeInBits="16" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="9" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint16_t{1-10}" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="10" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint32_t" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
+			</IntegerArgumentType>
+
+			<ArrayArgumentType arrayTypeRef="uint32_t" name="uint32Array_t">
+				<DimensionList>
+					<Dimension>
+						<StartingIndex>
+							<FixedValue>0</FixedValue>
+						</StartingIndex>
+						<EndingIndex>
+							<DynamicValue>
+								<ArgumentInstanceRef argumentRef="number_of_parameters" />
+								<LinearAdjustment intercept="-1" />
+							</DynamicValue>
+						</EndingIndex>
+					</Dimension>
+				</DimensionList>
+			</ArrayArgumentType>
+
+			<IntegerArgumentType name="uint32_t{1-3}" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="3" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint64_t" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="64" />
+			</IntegerArgumentType>
+
+			<ArrayArgumentType arrayTypeRef="int8_t" name="int8Array_t">
+				<DimensionList>
+					<Dimension>
+						<StartingIndex>
+							<FixedValue>0</FixedValue>
+						</StartingIndex>
+						<EndingIndex>
+							<DynamicValue>
+								<ArgumentInstanceRef argumentRef="number_of_parameters" />
+								<LinearAdjustment intercept="-1" />
+							</DynamicValue>
+						</EndingIndex>
+					</Dimension>
+				</DimensionList>
+			</ArrayArgumentType>
+
+			<ArrayArgumentType name="uint8Array_t" arrayTypeRef="uint8_t">
+				<DimensionList>
+					<Dimension>
+						<StartingIndex>
+							<FixedValue>0</FixedValue>
+						</StartingIndex>
+						<EndingIndex>
+							<DynamicValue>
+								<ArgumentInstanceRef argumentRef="total_structures" />
+								<LinearAdjustment intercept="-1" />
+							</DynamicValue>
+						</EndingIndex>
+					</Dimension>
+				</DimensionList>
+			</ArrayArgumentType>
+
+			<StringArgumentType name="string_t">
+				<StringDataEncoding encoding="UTF-8">
+					<Variable maxSizeInBits="4096">
+						<DynamicValue>
+							<ParameterInstanceRef parameterRef="_yamcs_ignore" />
+						</DynamicValue>
+						<TerminationChar>00</TerminationChar>
+					</Variable>
+				</StringDataEncoding>
+			</StringArgumentType>
+
+			<StringArgumentType name="stringData_t">
+				<BinaryDataEncoding>
+					<SizeInBits>
+						<DynamicValue>
+							<ArgumentInstanceRef argumentRef="chunk_size" />
+						</DynamicValue>
+					</SizeInBits>
+				</BinaryDataEncoding>
+			</StringArgumentType>
+
+			<BinaryArgumentType name="binaryData_t">
+                <BinaryDataEncoding>
+                    <SizeInBits>
+                        <DynamicValue>
+                            <ParameterInstanceRef parameterRef="_yamcs_ignore" />
+                        </DynamicValue>
+                    </SizeInBits>
+                </BinaryDataEncoding>
+            </BinaryArgumentType>
+
+            <ArrayArgumentType name="binaryDataArray_t" arrayTypeRef="binaryData_t">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <DynamicValue>
+                                <ArgumentInstanceRef argumentRef="number_of_objects" />
+                                <LinearAdjustment intercept="-1" />
+                            </DynamicValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayArgumentType>
+
+
+		</ArgumentTypeSet>
+	</CommandMetaData>
+</SpaceSystem>
