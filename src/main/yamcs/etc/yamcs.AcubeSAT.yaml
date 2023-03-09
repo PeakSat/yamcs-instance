@@ -69,6 +69,49 @@ dataLinks:
         lengthAdjustment: 7
         initialBytesToStrip: 0
 
+  - name: COMMS
+    enabledAtStartup: true
+    class: gr.spacedot.acubesat.comms_link.TcpTmFrameLink
+    port: 10014 
+    host: localhost
+    frameType: "TM"
+    spacecraftId: 0xAB
+    frameLength: 176 # 189 for the "frame_3_packets" frame // 176 for the "frame_2_packets_with_clcw" frame 
+    # 172 for the "frame_2_packets" frame // 98 for "frame1/2" // 14 for segmantation packet into 3 frames
+    # packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+    packetInputStreamClassName: gr.spacedot.acubesat.FixedPacketInputStream
+    packetInputStreamArgs: 
+      frameLength: 176
+    errorDetection: NONE 
+    clcwStream: "clcw"  
+    clcwParamsStream: "clcw_params" 
+    goodFrameStream: "good_frame_stream" 
+    badFrameStream: "bad_frame_stream"
+    frameHeaderStream: "frame_header"
+    virtualChannels:
+      - vcId: 0
+        service: "PACKET"  
+        maxPacketLength: 2048
+        packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+        stream: "tm_realtime" 
+      - vcId: 1 
+        service: "PACKET" 
+        maxPacketLength: 2048
+        packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+        packetPreprocessorArgs:
+          timestampOffset: 2 
+          seqCountOffset: 10 
+          errorDetection: 
+            type: "CRC-16-CCIIT" 
+        stream: "tm_realtime"
+        invalidPackets: DIVERT
+        invalidPacketsStream: invalid_tm_stream
+      - vcId: 2
+        service: "PACKET" 
+        maxPacketLength: 2048
+        packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+        stream: "tm_realtime"
+      
   - name: tcp-out
     enableAtStartup: true
     class: org.yamcs.tctm.TcpTcDataLink
@@ -109,6 +152,11 @@ streamConfig:
   tm:
     - name: "tm_realtime"
     - name: "tm_dump"
+    - name: "clcw_params"
+      rootContainer: "/pus/communications_link_control_word"
+    - name: "frame_header"
+      rootContainer: "/pus/Transfer_Frame_Primary_Header"
+  invalidTm: "invalid_tm_stream"
   cmdHist: ["cmdhist_realtime", "cmdhist_dump"]
   event: ["events_realtime", "events_dump"]
   param: ["pp_realtime", "sys_param", "proc_param"]
@@ -116,4 +164,3 @@ streamConfig:
   tc:
     - name: "tc_realtime"
       processor: "realtime"
-
