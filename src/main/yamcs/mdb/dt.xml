@@ -261,6 +261,14 @@
                 </EnumerationList>
             </EnumeratedArgumentType>
 
+            <EnumeratedArgumentType name="active_CAN">
+                <IntegerDataEncoding sizeInBits="8" />
+                <EnumerationList>
+                    <Enumeration value="0" label="Redundant" />
+                    <Enumeration value="1" label="Main" />
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
             <AggregateArgumentType name="TC(20,3)_set_float_parameter_values_aggregate">
                 <MemberList>
                     <Member typeRef="writableFloatParameters_t" name="float_parameter" />
