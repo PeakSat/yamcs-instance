@@ -102,7 +102,7 @@
             <xtce:Parameter parameterTypeRef="/base/float_t" name="COMMSPCBTemperature2" ></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/base/float_t" name="COMMSMCUTemperature" ></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/base/float_t" name="COMMSMCUInputVoltage" ></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/base/float_t" name="COMMSMCUBootCount" ></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base/uint32_t" name="COMMSMCUBootCount" ></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/base/uint32_t" name="COMMSMCUTime" ></xtce:Parameter>
 
             <xtce:Parameter parameterTypeRef="/dt/COMMSMemoryPartition_t" name="COMMSMemoryPartition" ></xtce:Parameter>

@@ -372,7 +372,7 @@
             </EnumeratedParameterType>
 
             <EnumeratedParameterType name="COMMSMemoryPartition_t">
-                <IntegerDataEncoding encoding="unsigned" sizeInBits="32"/>
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
                 <EnumerationList>
                     <Enumeration value="6" label="ReportParametersUnusedStack" />
                     <Enumeration value="7" label="AvailableHeap" />
