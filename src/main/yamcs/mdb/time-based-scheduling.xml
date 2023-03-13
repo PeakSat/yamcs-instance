@@ -5,6 +5,88 @@
     shortDescription="This is a bogus satellite telemetry and telecommand database."
     operationalStatus="unittest">
 
+
+    <TelemetryMetaData>
+        <ParameterSet>
+
+<!--            TODO: Check if its uint16 or uint8-->
+            <Parameter name="number_of_reports" parameterTypeRef="/base/uint16_t">
+                <LongDescription>
+                    The number of the time based scheduling reports received
+                </LongDescription>
+            </Parameter>
+
+            <Parameter name="number_of_summary_reports" parameterTypeRef="/base/uint16_t">
+                <LongDescription>
+                    The number of the time based scheduling summary reports received
+                </LongDescription>
+            </Parameter>
+
+        </ParameterSet>
+        <ContainerSet>
+
+            <SequenceContainer name="TM(11,10)_time_based_scheduling_report">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="number_of_reports" />
+                    <ArrayParameterRefEntry parameterRef="/AcubeSAT/TimeBasedSchedulingReportStructure">
+                        <DimensionList>
+                            <Dimension>
+                                <StartingIndex>
+                                    <FixedValue>0</FixedValue>
+                                </StartingIndex>
+                                <EndingIndex>
+                                    <DynamicValue>
+                                        <ParameterInstanceRef parameterRef="number_of_reports" />
+                                        <LinearAdjustment intercept="-1" />
+                                    </DynamicValue>
+                                </EndingIndex>
+                            </Dimension>
+                        </DimensionList>
+                    </ArrayParameterRefEntry>
+                </EntryList>
+                <BaseContainer containerRef="/pus/packet_header_TM">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="11" parameterRef="/pus/service_type_ID_TM" />
+                            <Comparison value="10" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
+
+            <SequenceContainer name="TM(11,13)_time_based_scheduling_summary_report">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="number_of_summary_reports" />
+                    <ArrayParameterRefEntry parameterRef="/AcubeSAT/TimeBasedSchedulingSummaryStructure">
+                        <DimensionList>
+                            <Dimension>
+                                <StartingIndex>
+                                    <FixedValue>0</FixedValue>
+                                </StartingIndex>
+                                <EndingIndex>
+                                    <DynamicValue>
+                                        <ParameterInstanceRef parameterRef="number_of_summary_reports" />
+                                        <LinearAdjustment intercept="-1" />
+                                    </DynamicValue>
+                                </EndingIndex>
+                            </Dimension>
+                        </DimensionList>
+                    </ArrayParameterRefEntry>
+                </EntryList>
+                <BaseContainer containerRef="/pus/packet_header_TM">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="11" parameterRef="/pus/service_type_ID_TM" />
+                            <Comparison value="13" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
+
+
+        </ContainerSet>
+    </TelemetryMetaData>
+
     <!--Time-Based Scheduling Service (ST(11)) Commands -->
     <CommandMetaData>
         <MetaCommandSet>

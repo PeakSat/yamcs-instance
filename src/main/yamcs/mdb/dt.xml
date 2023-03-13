@@ -138,6 +138,49 @@
                 </DimensionList>
             </ArrayParameterType>
 
+            <AggregateParameterType name="time_based_scheduling_report_summary_structure" shortDescription="Time Based Scheduling Summary Structure">
+                <MemberList>
+                    <Member name="releaseTime" typeRef="/base/generation_time" />
+                    <Member name="sourceID" typeRef="/base/uint16_t" />
+                    <Member name="applicationProcessId" typeRef="/base/application_process_ID" />
+                    <Member name="sequenceCount" typeRef="/base/packet_sequence_count_or_packet_name" />
+                </MemberList>
+            </AggregateParameterType>
+
+            <ArrayParameterType name="time_based_scheduling_report_summary_array" arrayTypeRef="time_based_scheduling_report_summary_structure">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <FixedValue>0</FixedValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayParameterType>
+
+            <AggregateParameterType name="time_based_scheduling_report_structure" shortDescription="Time Based Scheduling Report Structure">
+                <MemberList>
+                    <Member name="releaseTime" typeRef="/base/generation_time" />
+                    <Member name="request" typeRef="/base/string_t" />
+                </MemberList>
+            </AggregateParameterType>
+
+            <ArrayParameterType name="time_based_scheduling_report_array" arrayTypeRef="time_based_scheduling_report_structure">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <FixedValue>0</FixedValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayParameterType>
+
+
             <EnumeratedParameterType name="OBCOperationalMode_t">
                 <IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                 <EnumerationList>
@@ -147,7 +190,7 @@
                     <Enumeration value="3" label="SafeMode" />
                 </EnumerationList>
             </EnumeratedParameterType>
-            
+
             <EnumeratedParameterType name="OBCSpacecraftTimeRef_t">
                 <IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                 <EnumerationList>
@@ -155,7 +198,7 @@
                     <Enumeration value="1" label="GroundStation" />
                 </EnumerationList>
             </EnumeratedParameterType>
-            
+
 
         </ParameterTypeSet>
     </TelemetryMetaData>
