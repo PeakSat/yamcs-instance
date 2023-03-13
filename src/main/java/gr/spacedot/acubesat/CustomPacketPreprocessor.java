@@ -109,7 +109,7 @@ public class CustomPacketPreprocessor extends AbstractPacketPreprocessor {
         // packet.setSequenceCount(apidseqcount);
         if(serviceType == 6 && messageType == 4)
             listener.parseFileSegmentPacket(packet.getPacket());
-        packet.setGenerationTime(CUCtoUnix(time));
+        packet.setGenerationTime(System.currentTimeMillis());
 
         return packet;
 
