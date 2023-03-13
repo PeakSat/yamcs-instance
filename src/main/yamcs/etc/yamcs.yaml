@@ -14,6 +14,10 @@ dataDir: yamcs-data
 instances:
   - AcubeSAT
 
+buckets:
+  - name: files
+    path: ../../src/main/resources/received
+
 # Secret key unique to a particular Yamcs installation.
 # This is used to provide cryptographic signing.
 secretKey: changeme
