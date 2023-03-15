@@ -48,15 +48,19 @@
 	<CommandMetaData>
 		<MetaCommandSet>
 
-			<MetaCommand name="TC(12,8)_report_parameter_monitoring_definitions">
+			<MetaCommand name="TC(129,1)_change_active_CAN">
+				<BaseMetaCommand metaCommandRef="/pus/Header_TC">
+					<ArgumentAssignmentList>
+						<ArgumentAssignment argumentName="service_type_ID" argumentValue="129" />
+						<ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+					</ArgumentAssignmentList>
+				</BaseMetaCommand>
 				<ArgumentList>
-					<Argument argumentTypeRef="/base/uint8_t{1-3}" name="number_of_parameters" />
-					<Argument argumentTypeRef="/dt/PMON_ID_ST12Array_t" name="PMON_IDs" />
+					<Argument argumentTypeRef="/dt/active_CAN" name="active_can_bus" />
 				</ArgumentList>
-				<CommandContainer name="TC(12,8)_container">
+				<CommandContainer name="TC(129,420)_container">
 					<EntryList>
-						<ArgumentRefEntry argumentRef="number_of_parameters" />
-						<ArgumentRefEntry argumentRef="PMON_IDs" />
+						<ArgumentRefEntry argumentRef="active_can_bus" />
 					</EntryList>
 					<BaseContainer containerRef="/pus/Header_TC" />
 				</CommandContainer>

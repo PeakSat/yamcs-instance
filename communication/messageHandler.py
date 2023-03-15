@@ -4,7 +4,7 @@ running OBC/ADCS software and a running YAMCS instance.
 """
 from threading import Thread
 from dataclasses import dataclass
-from logging import config
+from logging import Logger, config
 from enum import Enum
 import logging
 import socket
@@ -19,10 +19,17 @@ DELIMITER = b"\x00"
 TC_HEADER = 11
 yamcs_global_socket = None
 
+
 class ConnectionState(Enum):
     NOT_CONNECTED = 0
     CONNECTING = 1
     CONNECTED = 2
+
+
+class ThreadType(Enum):
+    TELEMETRY = 0
+    OBC = 1
+    ADCS = 2
 
 
 connection_state = ConnectionState.NOT_CONNECTED
@@ -115,7 +122,12 @@ def connect_to_port(settings: Settings, port: int) -> socket:
     return yamcs_client
 
 
-def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int = None):
+def mcu_client(
+    settings: Settings,
+    type: ThreadType,
+    serial_port: str = None,
+    yamcs_port_in: int = None,
+):
     """
 
     Opens a new TCP stream socket.
@@ -140,6 +152,7 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
     if serial_port is None:
         serial_port = settings.usb_serial_0
 
+    fileLogger = getFileLogger(type)
     while True:
 
         try:
@@ -158,6 +171,7 @@ def mcu_client(settings: Settings, serial_port: str = None, yamcs_port_in: int =
                 message = cobs.decode(line)
                 # not using decode("utf-8") since it will break printing (all new line characters will result in an new line)
                 logging.info(f"{ser.name}: {message}")
+                fileLogger.info(message)
 
                 idx = message.find(EXCLAMATION_MARK)
                 if idx == -1:
@@ -265,6 +279,15 @@ def yamcs_client(settings: Settings, serial_port: str = None):
             sleep(settings.reconnection_timeout)
 
 
+def getFileLogger(type: ThreadType) -> Logger:
+    if type == ThreadType.TELEMETRY:
+        return logging.getLogger("telemetry")
+    elif type == ThreadType.OBC:
+        return logging.getLogger("obc")
+    elif type == ThreadType.ADCS:
+        return logging.getLogger("adcs")
+
+
 if __name__ == "__main__":
     """
     Example setup of a thread listening to the ADCS serial port and sending messages to the corresponding YAMCS socket.
@@ -306,6 +329,7 @@ if __name__ == "__main__":
         target=mcu_client,
         args=(
             settings,
+            ThreadType.OBC,
             obc_serial_port,
             settings.obc_port_in,
         ),
@@ -316,6 +340,7 @@ if __name__ == "__main__":
         target=mcu_client,
         args=(
             settings,
+            ThreadType.ADCS,
             adcs_serial_port,
             settings.adcs_port_in,
         ),
@@ -325,6 +350,7 @@ if __name__ == "__main__":
         target=mcu_client,
         args=(
             settings,
+            ThreadType.TELEMETRY,
             can_serial_port,
             settings.canBus_port_in,
         ),
