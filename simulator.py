@@ -26,9 +26,9 @@ def send_tm(simulator):
     tm_socket_ADCS = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     tm_socket_ADCS.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-    portCAN = 10017
-    tm_socket_CAN = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    tm_socket_CAN.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    # portCAN = 10017
+    # tm_socket_CAN = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # tm_socket_CAN.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
     tm_socket_OBC.bind((host, portOBC))
     tm_socket_OBC.listen(1)
@@ -38,15 +38,15 @@ def send_tm(simulator):
     tm_socket_ADCS.listen(1)
     print("server  10016 listening")
 
-    tm_socket_CAN.bind((host, portCAN))
-    tm_socket_CAN.listen(1)
-    print("server  10017 listening")
+    # tm_socket_CAN.bind((host, portCAN))
+    # tm_socket_CAN.listen(1)
+    # print("server  10017 listening")
 
     clientconnOBC, _ = tm_socket_OBC.accept()
 
     clientconnADCS, _ = tm_socket_ADCS.accept()
 
-    clientconnCAN, _ = tm_socket_CAN.accept()
+    # clientconnCAN, _ = tm_socket_CAN.accept()
 
     packetCounter = 0
     simulator.tm_counter = 0
@@ -75,12 +75,12 @@ def send_tm(simulator):
                         simulator.tm_counter += 1
                     # CAN BUS
                     else:
-                        clientconnCAN.send(packet)
+                        # clientconnCAN.send(packet)
                         simulator.tm_counter += 1
                 else:
                     clientconnOBC.send(packet)
                     clientconnADCS.send(packet)
-                    clientconnCAN.send(packet)
+                    # clientconnCAN.send(packet)
                     simulator.tm_counter += 1
 
                 sleep(1)
@@ -88,7 +88,7 @@ def send_tm(simulator):
 
     clientconnOBC.close()
     clientconnADCS.close()
-    clientconnCAN.close()
+    # clientconnCAN.close()
     print("communication ended")
 
 
