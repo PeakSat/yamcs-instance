@@ -12,8 +12,9 @@ services:
 dataDir: yamcs-data
 
 instances:
-  - AcubeSAT
-
+  - OBC
+  - ADCS
+  
 buckets:
   - name: files
     path: ../../src/main/resources/received

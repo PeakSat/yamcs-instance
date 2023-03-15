@@ -1,105 +1,105 @@
-services:
-  - class: org.yamcs.archive.XtceTmRecorder
-  - class: org.yamcs.archive.ParameterRecorder
-  - class: org.yamcs.archive.AlarmRecorder
-  - class: org.yamcs.archive.EventRecorder
-  - class: org.yamcs.archive.ReplayServer
-  - class: org.yamcs.parameter.SystemParametersService
-    args:
-      provideJvmVariables: true
-      provideFsVariables: true
-  - class: org.yamcs.ProcessorCreatorService
-    args:
-      name: realtime
-      type: realtime
-  - class: org.yamcs.archive.CommandHistoryRecorder
-  - class: org.yamcs.parameterarchive.ParameterArchive
-    args:
-      realtimeFiller:
-        enabled: true
-      backFiller:
-        enabled: false
-        warmupTime: 60
+# services:
+#   - class: org.yamcs.archive.XtceTmRecorder
+#   - class: org.yamcs.archive.ParameterRecorder
+#   - class: org.yamcs.archive.AlarmRecorder
+#   - class: org.yamcs.archive.EventRecorder
+#   - class: org.yamcs.archive.ReplayServer
+#   - class: org.yamcs.parameter.SystemParametersService
+#     args:
+#       provideJvmVariables: true
+#       provideFsVariables: true
+#   - class: org.yamcs.ProcessorCreatorService
+#     args:
+#       name: realtime
+#       type: realtime
+#   - class: org.yamcs.archive.CommandHistoryRecorder
+#   - class: org.yamcs.parameterarchive.ParameterArchive
+#     args:
+#       realtimeFiller:
+#         enabled: true
+#       backFiller:
+#         enabled: false
+#         warmupTime: 60
 
-dataLinks:
-  - name: CAN-bus
-    enableAtStartup: true
-    class: org.yamcs.tctm.TcpTmDataLink
-    stream: tm_realtime
-    host: localhost
-    port: 10017
-    packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
-    packetInputStreamClassName: org.yamcs.tctm.GenericPacketInputStream
-    packetInputStreamArgs: 
-        maxPacketLength: 65536
-        lengthFieldOffset: 4   # where to read the length from 
-        lengthFieldLength: 2   # the number of the bytes that contain the packet length
-        # adjust the length read from the offset defined above by this number of bytes. 
-        # we use 2 here because the simulator sets the length of the packet without the length itself
-        lengthAdjustment: 7
-        initialBytesToStrip: 0 # number of bytes to remove from the beginning
+# dataLinks:
+#   - name: CAN-bus
+#     enableAtStartup: true
+#     class: org.yamcs.tctm.TcpTmDataLink
+#     stream: tm_realtime
+#     host: localhost
+#     port: 10017
+#     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+#     packetInputStreamClassName: org.yamcs.tctm.GenericPacketInputStream
+#     packetInputStreamArgs: 
+#         maxPacketLength: 65536
+#         lengthFieldOffset: 4   # where to read the length from 
+#         lengthFieldLength: 2   # the number of the bytes that contain the packet length
+#         # adjust the length read from the offset defined above by this number of bytes. 
+#         # we use 2 here because the simulator sets the length of the packet without the length itself
+#         lengthAdjustment: 7
+#         initialBytesToStrip: 0 # number of bytes to remove from the beginning
 
-  - name: ADCS-UART
-    enableAtStartup: true
-    class: org.yamcs.tctm.TcpTmDataLink
-    stream: tm_realtime
-    host: localhost
-    port: 10016
-    packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
-    packetInputStreamClassName: org.yamcs.tctm.GenericPacketInputStream
-    packetInputStreamArgs: 
-        maxPacketLength: 65536
-        lengthFieldOffset: 4 
-        lengthFieldLength: 2 
-        lengthAdjustment: 7
-        initialBytesToStrip: 0
+#   - name: ADCS-UART
+#     enableAtStartup: true
+#     class: org.yamcs.tctm.TcpTmDataLink
+#     stream: tm_realtime
+#     host: localhost
+#     port: 10016
+#     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+#     packetInputStreamClassName: org.yamcs.tctm.GenericPacketInputStream
+#     packetInputStreamArgs: 
+#         maxPacketLength: 65536
+#         lengthFieldOffset: 4 
+#         lengthFieldLength: 2 
+#         lengthAdjustment: 7
+#         initialBytesToStrip: 0
 
-  - name: OBC-UART
-    enableAtStartup: true
-    class: org.yamcs.tctm.TcpTmDataLink
-    stream: tm_realtime
-    host: localhost
-    port: 10015
-    packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
-    packetInputStreamClassName: org.yamcs.tctm.GenericPacketInputStream
-    packetInputStreamArgs: 
-        maxPacketLength: 65536
-        lengthFieldOffset: 4  
-        lengthFieldLength: 2 
-        lengthAdjustment: 7
-        initialBytesToStrip: 0
+#   - name: OBC-UART
+#     enableAtStartup: true
+#     class: org.yamcs.tctm.TcpTmDataLink
+#     stream: tm_realtime
+#     host: localhost
+#     port: 10015
+#     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+#     packetInputStreamClassName: org.yamcs.tctm.GenericPacketInputStream
+#     packetInputStreamArgs: 
+#         maxPacketLength: 65536
+#         lengthFieldOffset: 4  
+#         lengthFieldLength: 2 
+#         lengthAdjustment: 7
+#         initialBytesToStrip: 0
 
-  - name: tcp-out
-    enableAtStartup: true
-    class: org.yamcs.tctm.TcpTcDataLink
-    stream: tc_realtime
-    host: localhost
-    port: 10025
-    commandPostprocessorClassName: gr.spacedot.acubesat.CustomCommandPostprocessor
+#   - name: tcp-out
+#     enableAtStartup: true
+#     class: org.yamcs.tctm.TcpTcDataLink
+#     stream: tc_realtime
+#     host: localhost
+#     port: 10025
+#     commandPostprocessorClassName: gr.spacedot.acubesat.CustomCommandPostprocessor
 
-mdb:
-  # Configuration of the active loaders
-  # Valid loaders are: sheet, xtce or fully qualified name of the class
-- type: xtce
-  spec: "mdb/dt.xml"
-- type: xtce
-  spec: "mdb/base.xml"
-- type: xtce
-  spec: "mdb/xtce.xml"
-- type: xtce
-  spec: "mdb/pus.xml"
-- type: xtce
-  spec: "mdb/pus-verification.xml"
-- type: xtce
-  spec: "mdb/pus-not-used.xml"
-- type: xtce
-  spec: "mdb/time-based-scheduling.xml"
-- type: xtce
-  spec: "mdb/set-values.xml"
-- type: xtce
-  spec: "mdb/report-values.xml"
-- type: xtce
-  spec: "mdb/file-handling.xml"
+# mdb:
+#   # Configuration of the active loaders
+#   # Valid loaders are: sheet, xtce or fully qualified name of the class
+# - type: xtce
+#   spec: "mdb/dt.xml"
+# - type: xtce
+#   spec: "mdb/base.xml"
+# - type: xtce
+#   spec: "mdb/xtce.xml"
+# - type: xtce
+#   spec: "mdb/pus.xml"
+# - type: xtce
+#   spec: "mdb/pus-verification.xml"
+# - type: xtce
+#   spec: "mdb/pus-not-used.xml"
+# - type: xtce
+#   spec: "mdb/time-based-scheduling.xml"
+# - type: xtce
+#   spec: "mdb/set-values.xml"
+# - type: xtce
+#   spec: "mdb/report-values.xml"
+# - type: xtce
+#   spec: "mdb/file-handling.xml"
 
 
 
