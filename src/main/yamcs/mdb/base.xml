@@ -27,11 +27,11 @@
 			<EnumeratedParameterType name="application_process_ID">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="11" />
 				<EnumerationList>
-					<Enumeration value="1" label="OBC" />
-					<Enumeration value="2" label="COMMS" />
-					<Enumeration value="3" label="ADCS" />
-					<Enumeration value="4" label="SU" />
-					<Enumeration value="5" label="GS" />
+					<Enumeration value="0" label="OBC" />
+					<Enumeration value="1" label="COMMS" />
+					<Enumeration value="2" label="ADCS" />
+					<Enumeration value="3" label="SU" />
+					<Enumeration value="4" label="GS" />
 				</EnumerationList>
 			</EnumeratedParameterType>
 
@@ -215,6 +215,16 @@
 				</EnumerationList>
 			</EnumeratedParameterType>
 
+			<BinaryParameterType name="binaryData_t">
+				<BinaryDataEncoding>
+					<SizeInBits>
+						<DynamicValue>
+							<ParameterInstanceRef parameterRef="_yamcs_ignore" />
+						</DynamicValue>
+					</SizeInBits>
+				</BinaryDataEncoding>
+			</BinaryParameterType>
+
 		</ParameterTypeSet>
 	</TelemetryMetaData>
 	<CommandMetaData>
@@ -239,11 +249,11 @@
 			<EnumeratedArgumentType name="application_process_ID">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="11" />
 				<EnumerationList>
-					<Enumeration value="1" label="OBC" />
-					<Enumeration value="2" label="COMMS" />
-					<Enumeration value="3" label="ADCS" />
-					<Enumeration value="4" label="SU" />
-					<Enumeration value="5" label="GS" />
+					<Enumeration value="0" label="OBC" />
+					<Enumeration value="1" label="COMMS" />
+					<Enumeration value="2" label="ADCS" />
+					<Enumeration value="3" label="SU" />
+					<Enumeration value="4" label="GS" />
 				</EnumerationList>
 			</EnumeratedArgumentType>
 

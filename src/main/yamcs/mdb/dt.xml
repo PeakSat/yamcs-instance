@@ -113,18 +113,42 @@
                 <MemberList>
                     <Member name="parameterId" typeRef="parameterId_t" />
                     <Member name="number_of_samples" typeRef="/base/uint16_t" />
-                    <Member name="max_value" typeRef="base/float_t" />
+                    <Member name="max_value" typeRef="/base/float_t" />
                     <Member name="max_time" typeRef="/base/uint32_t" />
-                    <Member name="min_value" typeRef="base/float_t" />
+                    <Member name="min_value" typeRef="/base/float_t" />
                     <Member name="min_time" typeRef="/base/uint32_t" />
-                    <Member name="mean_value" typeRef="base/float_t" />
-                    <Member name="standard_deviation_value" typeRef="base/float_t" />
+                    <Member name="mean_value" typeRef="/base/float_t" />
+                    <Member name="standard_deviation_value" typeRef="/base/float_t" />
                 </MemberList>
             </AggregateParameterType>
 
             <ArrayParameterType name="statistic_report_array" arrayTypeRef="statistics_report_structure">
                 <LongDescription>
                     This array type contains all parameter statistics structures sent in a single TM
+                </LongDescription>
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <FixedValue>0</FixedValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayParameterType>
+
+            <AggregateParameterType name="objectMemorySegment_t" shortDescription="File segment for downlink">
+                <MemberList>
+                    <Member name="offset" typeRef="/base/uint32_t" />
+                    <Member name="length" typeRef="/base/uint16_t" />
+                    <Member name="data" typeRef="/base/binaryData_t" />
+                </MemberList>
+            </AggregateParameterType>
+
+            <ArrayParameterType name="objectMemorySegmentArray_t" arrayTypeRef="objectMemorySegment_t">
+                <LongDescription>
+                    This array type contains file segments number_of_objects
                 </LongDescription>
                 <DimensionList>
                     <Dimension>
@@ -184,13 +208,13 @@
             <EnumeratedParameterType name="OBCOperationalMode_t">
                 <IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                 <EnumerationList>
-                    <Enumeration value="0" label="CommisionMode" />
+                    <Enumeration value="0" label="CommissionMode" />
                     <Enumeration value="1" label="NominalMode" />
                     <Enumeration value="2" label="ScienceMode" />
                     <Enumeration value="3" label="SafeMode" />
                 </EnumerationList>
             </EnumeratedParameterType>
-
+            
             <EnumeratedParameterType name="OBCSpacecraftTimeRef_t">
                 <IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                 <EnumerationList>
@@ -198,7 +222,7 @@
                     <Enumeration value="1" label="GroundStation" />
                 </EnumerationList>
             </EnumeratedParameterType>
-
+            
 
         </ParameterTypeSet>
     </TelemetryMetaData>
@@ -280,10 +304,18 @@
                 </EnumerationList>
             </EnumeratedArgumentType>
 
+            <EnumeratedArgumentType name="active_CAN">
+                <IntegerDataEncoding sizeInBits="8" />
+                <EnumerationList>
+                    <Enumeration value="0" label="Redundant" />
+                    <Enumeration value="1" label="Main" />
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
             <AggregateArgumentType name="TC(20,3)_set_float_parameter_values_aggregate">
                 <MemberList>
                     <Member typeRef="writableFloatParameters_t" name="float_parameter" />
-                    <Member typeRef="base/float_t" name="new_value" />
+                    <Member typeRef="/base/float_t" name="new_value" />
                 </MemberList>
             </AggregateArgumentType>
 
@@ -296,6 +328,29 @@
                         <EndingIndex>
                             <DynamicValue>
                                 <ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <LinearAdjustment intercept="-1" />
+                            </DynamicValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayArgumentType>
+
+            <AggregateArgumentType name="TC(6,3)_dump_object_memory_data_aggregate">
+                <MemberList>
+                    <Member typeRef="/base/uint32_t" name="offset" />
+                    <Member typeRef="/base/uint16_t" name="length" />
+                </MemberList>
+            </AggregateArgumentType>
+
+            <ArrayArgumentType arrayTypeRef="TC(6,3)_dump_object_memory_data_aggregate" name="memory_data_aggregate_array">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <DynamicValue>
+                                <ArgumentInstanceRef argumentRef="number_of_objects" />
                                 <LinearAdjustment intercept="-1" />
                             </DynamicValue>
                         </EndingIndex>
@@ -460,7 +515,7 @@
             <EnumeratedArgumentType name="OBCOperationalMode_t">
                 <IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                 <EnumerationList>
-                    <Enumeration value="0" label="CommisionMode" />
+                    <Enumeration value="0" label="CommissionMode" />
                     <Enumeration value="1" label="NominalMode" />
                     <Enumeration value="2" label="ScienceMode" />
                     <Enumeration value="3" label="SafeMode" />

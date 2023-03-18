@@ -6,7 +6,51 @@
     shortDescription="This is a bogus satellite telemetry and telecommand database."
     operationalStatus="unittest">
 
-    <TelemetryMetaData />
+    <TelemetryMetaData>
+        <ParameterSet>
+
+            <Parameter name="base" parameterTypeRef="/base/string_t" />
+            <Parameter name="number_of_objects" parameterTypeRef="/base/uint8_t" />
+            <Parameter name="object_memory_segment_array" parameterTypeRef="/dt/objectMemorySegmentArray_t" />
+
+        </ParameterSet>
+        <ContainerSet>
+
+            <SequenceContainer name="TM(6,4)_dumped_object_memory_data_report">
+                <LongDescription>
+                    This telemetry packet handles file segment downlink from the satellite.
+                </LongDescription>
+                <EntryList>
+                    <ParameterRefEntry parameterRef="base" />
+                    <ParameterRefEntry parameterRef="number_of_objects" />
+                    <ArrayParameterRefEntry parameterRef="object_memory_segment_array">
+                        <DimensionList>
+                            <Dimension>
+                                <StartingIndex>
+                                    <FixedValue>0</FixedValue>
+                                </StartingIndex>
+                                <EndingIndex>
+                                    <DynamicValue>
+                                        <ParameterInstanceRef parameterRef="number_of_objects" />
+                                        <LinearAdjustment intercept="-1" />
+                                    </DynamicValue>
+                                </EndingIndex>
+                            </Dimension>
+                        </DimensionList>
+                    </ArrayParameterRefEntry>
+                </EntryList>
+                <BaseContainer containerRef="/pus/packet_header_TM">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="6" parameterRef="/pus/service_type_ID_TM" />
+                            <Comparison value="4" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
+
+        </ContainerSet>
+    </TelemetryMetaData>
     <CommandMetaData>
         <MetaCommandSet>
 
@@ -45,14 +89,60 @@
                     <Argument argumentTypeRef="/base/string_t" name="base"/>
                     <Argument argumentTypeRef="/base/uint8_t" name="number_of_objects"/>
                     <Argument argumentTypeRef="/base/binaryDataArray_t" name="binary_data"/>
-
                 </ArgumentList>
-
                 <CommandContainer name="TC(6,1)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="base" />
                         <ArgumentRefEntry argumentRef="number_of_objects" />
-                        <ArgumentRefEntry argumentRef="binary_data" shortDescription="This holds offset, data, data size and checksum" />
+                        <ArgumentRefEntry argumentRef="binary_data" shortDescription="This holds offset, data and data size" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(6,3)_dump_object_memory_data_single">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="6" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/string_t" name="base"/>
+                    <Argument argumentTypeRef="/base/uint8_t" name="number_of_objects"/>
+                    <Argument argumentTypeRef="/dt/TC(6,3)_dump_object_memory_data_aggregate" name="object_data"/>
+                </ArgumentList>
+                <CommandContainer name="TC(6,3)_container_single">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="base" />
+                        <ArgumentRefEntry argumentRef="number_of_objects" />
+                        <ArgumentRefEntry argumentRef="object_data" shortDescription="This holds offset, and data size" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(6,3)_dump_object_memory_data_triple">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="6" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base/string_t" name="base"/>
+                    <Argument argumentTypeRef="/base/uint8_t" name="number_of_objects"/>
+                    <Argument argumentTypeRef="/dt/TC(6,3)_dump_object_memory_data_aggregate" name="object_data1"/>
+                    <Argument argumentTypeRef="/dt/TC(6,3)_dump_object_memory_data_aggregate" name="object_data2"/>
+                    <Argument argumentTypeRef="/dt/TC(6,3)_dump_object_memory_data_aggregate" name="object_data3"/>
+                </ArgumentList>
+                <CommandContainer name="TC(6,3)_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="base" />
+                        <ArgumentRefEntry argumentRef="number_of_objects" />
+                        <ArgumentRefEntry argumentRef="object_data1" shortDescription="This holds offset, and data size" />
+                        <ArgumentRefEntry argumentRef="object_data2" shortDescription="This holds offset, and data size" />
+                        <ArgumentRefEntry argumentRef="object_data3" shortDescription="This holds offset, and data size" />
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>

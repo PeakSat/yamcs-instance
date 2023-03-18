@@ -21,9 +21,9 @@ public class PacketSender {
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
 
     /**
-     * Sends a file split in chunks using one or more packets
+     * Sends a file split in chunks using one or more packets.
      *
-     * @param chunkedFileEntity : the already split file to be sent.
+     * @param chunkedFileEntity : the split file to be sent.
      */
     public void sentPacketSegments(ChunkedFileEntity chunkedFileEntity) {
 
@@ -35,7 +35,7 @@ public class PacketSender {
 
         do {
             JsonObject mainBody = new JsonObject();
-            mainBody.addProperty("base", chunkedFileEntity.getName().toString());
+            mainBody.addProperty("base", chunkedFileEntity.getName());
             offset = putChunksIntoPacket(chunks, mainBody, offset);
 
             JsonObject args = new JsonObject();
@@ -61,7 +61,9 @@ public class PacketSender {
     /**
      * Places the chunks into groups smaller than the maximum CCSDS packet limit.
      *
-     * @param chunks: The chunks of the file to be transmitted
+     * @param data:            The chunks of the file to be transmitted.
+     * @param mainbody:        The Json element that will be the body of the HTTP Request.
+     * @param startChunkIndex: The first chunk to be included.
      * @return the starting index for the next packet.
      */
     private int putChunksIntoPacket(List<byte[]> data, JsonObject mainbody, int startChunkIndex) {
@@ -76,15 +78,14 @@ public class PacketSender {
             byte[] currentChunk = data.get(chunk);
             int chunkLength = currentChunk.length;
 
-            byte[] information = { (byte) (byteOffset >> 24), (byte) (byteOffset >> 16),
-                    (byte) (byteOffset >> 8), (byte) byteOffset, (byte) (chunkLength >> 8), (byte) chunkLength };
+            byte[] information = {(byte) (byteOffset >> 24), (byte) (byteOffset >> 16),
+                    (byte) (byteOffset >> 8), (byte) byteOffset, (byte) (chunkLength >> 8), (byte) chunkLength};
             byteOffset += chunkLength;
             messageSize += chunkLength + information.length;
 
             if (messageSize <= THRESHOLD_BYTES) {
                 lastChunkIndex = chunk;
-                LOGGER.info("Added chunk " + chunk + " with size " + chunkLength + ", offset " + byteOffset
-                        + ", message size: " + messageSize);
+                LOGGER.info(String.format("Added chunk %d with size %d, offset %d, message size: %d", chunk, chunkLength, byteOffset, messageSize));
                 String byteData = bytesToHex(Bytes.concat(information, currentChunk));
                 memoryData.add(byteData);
             } else

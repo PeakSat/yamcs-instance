@@ -22,22 +22,6 @@ services:
         warmupTime: 60
 
 dataLinks:
-  - name: CAN-bus
-    enableAtStartup: true
-    class: org.yamcs.tctm.TcpTmDataLink
-    stream: tm_realtime
-    host: localhost
-    port: 10017
-    packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
-    packetInputStreamClassName: org.yamcs.tctm.GenericPacketInputStream
-    packetInputStreamArgs: 
-        maxPacketLength: 65536
-        lengthFieldOffset: 4   # where to read the length from 
-        lengthFieldLength: 2   # the number of the bytes that contain the packet length
-        # adjust the length read from the offset defined above by this number of bytes. 
-        # we use 2 here because the simulator sets the length of the packet without the length itself
-        lengthAdjustment: 7
-        initialBytesToStrip: 0 # number of bytes to remove from the beginning
 
   - name: ADCS-UART
     enableAtStartup: true
@@ -50,21 +34,6 @@ dataLinks:
     packetInputStreamArgs: 
         maxPacketLength: 65536
         lengthFieldOffset: 4 
-        lengthFieldLength: 2 
-        lengthAdjustment: 7
-        initialBytesToStrip: 0
-
-  - name: OBC-UART
-    enableAtStartup: true
-    class: org.yamcs.tctm.TcpTmDataLink
-    stream: tm_realtime
-    host: localhost
-    port: 10015
-    packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
-    packetInputStreamClassName: org.yamcs.tctm.GenericPacketInputStream
-    packetInputStreamArgs: 
-        maxPacketLength: 65536
-        lengthFieldOffset: 4  
         lengthFieldLength: 2 
         lengthAdjustment: 7
         initialBytesToStrip: 0

@@ -35,7 +35,7 @@
 
             <Parameter name="id" parameterTypeRef="/base/uint16_t">
                 <LongDescription>
-                    This parameter holds temporaly the ID of the reported parameters by TM(20,2]
+                    This parameter holds temporarily the ID of the reported parameters by TM(20,2]
                 </LongDescription>
             </Parameter>
 
@@ -84,9 +84,9 @@
             <Parameter parameterTypeRef="/base/secondary_header_flag" name="secondary_header_flag">
                 <LongDescription>
                     The secondary header flag indicates the presence or absence of the packet
-                    secondary header. With the exception of spacecraft time packets (refer to clause
+                    secondary header. Except spacecraft time packets (refer to clause
                     6.9.4), all telemetry packets defined in this Standard have a packet secondary
-                    header field. With the exception of CPDU command packets (refer to clause
+                    header field. Except CPDU command packets (refer to clause
                     9.3.1), all telecommand packets defined in this Standard have a packet
                     secondary header field.
                 </LongDescription>
@@ -106,14 +106,14 @@
                     The sequence flags are defined by CCSDS but not used by the space packet protocol.
                     This Standard uses the binary value "11" for the sequence flags, to indicate a
                     standalone packet. All telemetry packets and telecommand packets defined within
-                    this Standard are stand alone packets.
+                    this Standard are standalone packets.
                 </LongDescription>
             </Parameter>
 
             <Parameter parameterTypeRef="/base/packet_sequence_count_or_packet_name" name="packet_sequence_count_or_packet_name">
                 <LongDescription>
                     The packet sequence count is used for telemetry packets. It is incremented by 1
-                    whenever the sourrce application process releases a packet. The packet sequence
+                    whenever the source application process releases a packet. The packet sequence
                     count wraps around from 2 14 -1 to zero.The telecommand packets carry either a
                     packet sequence count or a packet name to identify them within the same communication
                     session. For the purpose of this Standard, the telecommand packet sequence count

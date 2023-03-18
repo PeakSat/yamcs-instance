@@ -10,8 +10,12 @@ import org.yamcs.TmPacket;
 import org.yamcs.YConfiguration;
 import org.yamcs.tctm.AbstractPacketPreprocessor;
 
+import gr.spacedot.acubesat.file_handling.network.in.TMParser;
+
 public class CustomPacketPreprocessor extends AbstractPacketPreprocessor {
     private static final Logger LOGGER = Logger.getLogger(CustomPacketPreprocessor.class.getName());
+
+    private final TMParser listener = new TMParser();
     private final Map<Integer, AtomicInteger> seqCounts = new HashMap<>();
 
     // Constructor used when this preprocessor is used without YAML configuration
@@ -40,9 +44,8 @@ public class CustomPacketPreprocessor extends AbstractPacketPreprocessor {
 
         // Verify continuity for a given APID based on the CCSDS sequence counter
         int apidseqcount = ByteBuffer.wrap(bytes).getInt(0); // first 4 bytes (0-3)
-        short packetlength = ByteBuffer.wrap(bytes).getShort(4); // get 2 bytes (4-5)
-        packetlength++;
-        int apid = (apidseqcount >> 16) & 0x07FF; // 11 bits ()
+        int datalength = ByteBuffer.wrap(bytes).getShort(4) + 1; // get 2 bytes (4-5)
+        int apid = (apidseqcount >> 16) & 0x07FF; // 11 bits 
         int seqcount = (apidseqcount) & 0x3FFF; // 14 bits
         int packversion = (apidseqcount >> 29) & 0x7; // 3 bits
         int secheader = (apidseqcount >> 27) & 0x1; // 1 bit
@@ -78,12 +81,12 @@ public class CustomPacketPreprocessor extends AbstractPacketPreprocessor {
                     "Wrong secondary flag. Expected 1 and got " + secheader);
         }
 
-        if (packetlength != (bytes.length - 6)) {
+        if (datalength != (bytes.length - 6)) {
             stringBuilder.append("Wrong packet data length. Expected ").append(bytes.length - 6).append(" and got ")
-                    .append(packetlength).append(newline);
+                    .append(datalength).append(newline);
             eventProducer.sendWarning("PACKET_LENGTH_ERROR",
                     "Wrong packet data length. Expected " + (bytes.length - 6) + " and got "
-                            + packetlength);
+                            + datalength);
         }
         stringBuilder.append("Sequence_count:").append(seqcount).append(newline);
         stringBuilder.append("APID:").append(apid).append(newline);
@@ -93,20 +96,20 @@ public class CustomPacketPreprocessor extends AbstractPacketPreprocessor {
         stringBuilder.append("Time:").append(time).append(newline);
         stringBuilder.append("ServiceType:").append(serviceType).append(newline);
         stringBuilder.append("MessageType:").append(messageType).append(newline);
-        stringBuilder.append("Packet data length:").append(packetlength).append(newline);
+        stringBuilder.append("Packet data length:").append(datalength).append(newline);
         stringBuilder.append("----").append(newline);
         LOGGER.info(stringBuilder.toString());
-        // // Our custom packets don't include a secundary header with time information.
+        // Our custom packets don't include a secundary header with time information.
         // Use Yamcs-local time instead.
-        packet.setGenerationTime(CUCtoUnix(time));
+
 
         // Use the full 32-bits, so that both APID and the count are included.
         // Yamcs uses this attribute to uniquely identify the packet (together with the
         // gentime)
         // packet.setSequenceCount(apidseqcount);
-
-
-        //TODO: if packet TM[24,2]:receive_file_segment is received, call TMParser/fileReconstructor
+        if(serviceType == 6 && messageType == 4)
+            listener.parseFileSegmentPacket(packet.getPacket());
+        packet.setGenerationTime(System.currentTimeMillis());
 
         return packet;
 
