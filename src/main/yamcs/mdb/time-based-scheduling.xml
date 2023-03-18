@@ -9,7 +9,6 @@
     <TelemetryMetaData>
         <ParameterSet>
 
-<!--            TODO: Check if its uint16 or uint8-->
             <Parameter name="number_of_reports" parameterTypeRef="/base/uint16_t">
                 <LongDescription>
                     The number of the time based scheduling reports received
@@ -472,8 +471,6 @@
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
-
-<!--     TODO: implement response TMs-->
 
         </MetaCommandSet>
     </CommandMetaData>
