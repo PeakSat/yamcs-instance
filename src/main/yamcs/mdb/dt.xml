@@ -264,8 +264,8 @@
             <EnumeratedArgumentType name="active_CAN">
                 <IntegerDataEncoding sizeInBits="8" />
                 <EnumerationList>
-                    <Enumeration value="0" label="Redundant" />
                     <Enumeration value="1" label="Main" />
+                    <Enumeration value="2" label="Redundant" />
                 </EnumerationList>
             </EnumeratedArgumentType>
 
