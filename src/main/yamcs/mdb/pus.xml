@@ -741,7 +741,7 @@
                     The formats of the max value field, the min value field, the mean value field
                     and the standard
                     deviation value
-                    field, contained in the parameter_statistics_structure array, are specific to
+                    field, contained in the ParameterStatisticsStructure array, are specific to
                     the parameter
                     identified by the associated parameter ID field.
                 </LongDescription>
@@ -749,7 +749,7 @@
                     <ParameterRefEntry parameterRef="start_time_ST04" />
                     <ParameterRefEntry parameterRef="end_time_ST04" />
                     <ParameterRefEntry parameterRef="number_of_structures" />
-                    <ArrayParameterRefEntry parameterRef="/AcubeSAT/parameter_statistics_structure">
+                    <ArrayParameterRefEntry parameterRef="/AcubeSAT/ParameterStatisticsStructure">
                         <DimensionList>
                             <Dimension>
                                 <StartingIndex>

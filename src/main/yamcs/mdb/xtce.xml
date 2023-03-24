@@ -6,9 +6,11 @@
         <ParameterSet>
             <Parameter name="housekeeping_parameter_report_structure_ID_ST03" parameterTypeRef="/base/uint8_t" />
             <Parameter name="parameter_ID_ST03" parameterTypeRef="/dt/parameterIdArray_t" />
-            <Parameter name="parameter_statistics_structure" parameterTypeRef="/dt/statistic_report_array" />
+            <Parameter name="ParameterStatisticsStructure" parameterTypeRef="/dt/statistic_report_array" />
             <!-- <Parameter name="parameters_report_structure" parameterTypeRef="/dt/report_parameters_structure_array" /> -->
-            <!--OBC Parameters that will be used in the Environmental Campaign-->
+            <Parameter parameterTypeRef="/dt/time_based_scheduling_report_array" name="TimeBasedSchedulingReportStructure"/>
+            <Parameter parameterTypeRef="/dt/time_based_scheduling_report_summary_array" name="TimeBasedSchedulingSummaryStructure"/>
+            <!--OBC Parameters that will be used in the Enviromental Campaign-->
             <Parameter parameterTypeRef="/base/uint16_t" name="ReportParametersUnusedStack" />
             <Parameter parameterTypeRef="/base/uint16_t" name="AvailableHeap" />
             <Parameter parameterTypeRef="/base/bool_t" name="OBCUseRTT" />

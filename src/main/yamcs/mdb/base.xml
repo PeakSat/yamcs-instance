@@ -257,6 +257,17 @@
 				</EnumerationList>
 			</EnumeratedArgumentType>
 
+			<EnumeratedArgumentType name="application_process_ID_uint16">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<EnumerationList>
+					<Enumeration value="1" label="OBC" />
+					<Enumeration value="2" label="COMMS" />
+					<Enumeration value="3" label="ADCS" />
+					<Enumeration value="4" label="SU" />
+					<Enumeration value="5" label="GS" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
 			<IntegerArgumentType name="sequence_flags">
 				<IntegerDataEncoding sizeInBits="2" />
 			</IntegerArgumentType>
@@ -424,6 +435,10 @@
 
 			<IntegerArgumentType name="uint32_t" signed="false">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="int64_t" signed="true">
+				<IntegerDataEncoding sizeInBits="64" />
 			</IntegerArgumentType>
 
 			<ArrayArgumentType arrayTypeRef="uint32_t" name="uint32Array_t">
