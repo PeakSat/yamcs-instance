@@ -24,7 +24,6 @@ services:
 dataLinks:
 
   - name: OBC-UART
-    enableAtStartup: true
     class: org.yamcs.tctm.TcpTmDataLink
     stream: tm_realtime
     host: localhost
@@ -39,7 +38,6 @@ dataLinks:
         initialBytesToStrip: 0
 
   - name: tcp-out
-    enableAtStartup: true
     class: org.yamcs.tctm.TcpTcDataLink
     stream: tc_realtime
     host: localhost
