@@ -1,4 +1,4 @@
-realtime-frame:
+realtime-comms:
   services:
     - class: org.yamcs.StreamTmPacketProvider
       args:
