@@ -8,7 +8,6 @@
     <!--Contains all ParameterTypes for Telemetry and ArgumentTypes for Telecommanding.-->
     <TelemetryMetaData>
         <ParameterTypeSet>
-
             <EnumeratedParameterType name="parameterId_t">
                 <IntegerDataEncoding sizeInBits="16" />
                 <EnumerationList>
@@ -71,6 +70,140 @@
                     <Enumeration value="5024" label="OBCMRAMOn" />
                 </EnumerationList>
             </EnumeratedParameterType>
+
+             <!--Transfer Frame Header-->
+
+             <xtce:AggregateParameterType name="transfer_frame_header" shortDescription="The Transfer Frame Header">
+                <xtce:MemberList>
+                    <xtce:Member name="transfer_frame_version_number" typeRef="transfer_frame_version_number"></xtce:Member>
+                    <xtce:Member name="spacecraft_ID" typeRef="spacecraft_ID"></xtce:Member>
+                    <xtce:Member name="virtual_channel_ID" typeRef="virtual_channel_ID"></xtce:Member>
+                    <xtce:Member name="ocf_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="master_channel_frame_count" typeRef="channel_frame_count"></xtce:Member>
+                    <xtce:Member name="virtual_channel_frame_count" typeRef="channel_frame_count"></xtce:Member>
+                    <xtce:Member name="transfer_frame_secondary_header_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="synchronization_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="packet_order_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="segment_length_ID" typeRef="segment_length_ID"></xtce:Member>
+                    <xtce:Member name="first_header_pointer" typeRef="first_header_pointer"></xtce:Member>
+                </xtce:MemberList>
+            </xtce:AggregateParameterType>    
+
+            <xtce:IntegerParameterType name="transfer_frame_version_number" signed="false">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="spacecraft_ID">
+                <xtce:IntegerDataEncoding sizeInBits="10"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="virtual_channel_ID" signed="false">
+                <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="flag">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="channel_frame_count" signed="false">
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="segment_length_ID">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="first_header_pointer">
+                <xtce:IntegerDataEncoding sizeInBits="11"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="transfer_frame_secondary_header_length">
+                <xtce:IntegerDataEncoding sizeInBits="6"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="transfer_frame_secondary_header_data_field">
+                <xtce:IntegerDataEncoding sizeInBits="63"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+            <!--Operetional Control Field-->
+<!--This field is normally 32 bits long, but the first 2 bits are flags, so the remainder is 30 bits long -->
+            <xtce:IntegerParameterType name="operational_control">
+                <xtce:IntegerDataEncoding sizeInBits="30"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <!--CLCW field-->
+
+            <xtce:AggregateParameterType name="communications_link_control_word" shortDescription="CLCW">
+                <xtce:MemberList>
+                    <xtce:Member name="control_word_type" typeRef="control_word_type"></xtce:Member>
+                    <xtce:Member name="ClCW_version_number" typeRef="ClCW_version_number"></xtce:Member>
+                    <xtce:Member name="status_field" typeRef="status_field"></xtce:Member>
+                    <xtce:Member name="COP_in_effect" typeRef="COP_in_effect"></xtce:Member>
+                    <xtce:Member name="virtual_channel_ID_CLCW" typeRef="virtual_channel_ID_CLCW"></xtce:Member>
+                    <xtce:Member name="reserved_spare" typeRef="reserved_spare"></xtce:Member>
+                    <xtce:Member name="no_RF_available_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="no_bit_log_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="lockout_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="wait_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="retransmit_flag" typeRef="flag"></xtce:Member>
+                    <xtce:Member name="FARMB_counter" typeRef="FARMB_counter"></xtce:Member>
+                    <xtce:Member name="reserved_spare_2" typeRef="reserved_spare_2"></xtce:Member>
+                    <xtce:Member name="report_value" typeRef="report_value"></xtce:Member>
+                </xtce:MemberList>
+            </xtce:AggregateParameterType>
+
+            <xtce:IntegerParameterType name="control_word_type">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="ClCW_version_number">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="status_field">
+                <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="COP_in_effect">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="virtual_channel_ID_CLCW">
+                <xtce:IntegerDataEncoding sizeInBits="6"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="reserved_spare">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="FARMB_counter">
+                <xtce:IntegerDataEncoding sizeInBits="2"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="reserved_spare_2">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="report_value">
+                <xtce:IntegerDataEncoding sizeInBits="8"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <!--Frame Error Control Field-->
+
+            <xtce:IntegerParameterType name="frame_error_control">
+                <xtce:IntegerDataEncoding sizeInBits="16"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:IntegerParameterType name="packet_version_number">
+                <xtce:IntegerDataEncoding sizeInBits="3"></xtce:IntegerDataEncoding>
+            </xtce:IntegerParameterType>
+
+            <xtce:EnumeratedParameterType name="packet_type">
+                <xtce:IntegerDataEncoding sizeInBits="1"></xtce:IntegerDataEncoding>
+                <xtce:EnumerationList>
+                    <xtce:Enumeration value="1" label="TC"/>
+                    <xtce:Enumeration value="0" label="TM"/>
+                </xtce:EnumerationList>
+            </xtce:EnumeratedParameterType>
 
             <IntegerParameterType name="structureId_t">
                 <IntegerDataEncoding sizeInBits="8" encoding="unsigned" />
@@ -222,7 +355,115 @@
                     <Enumeration value="1" label="GroundStation" />
                 </EnumerationList>
             </EnumeratedParameterType>
-            
+
+<!--COMMS ENUMS-->
+
+            <EnumeratedParameterType name="COMMSADMStatus_t">
+                <IntegerDataEncoding sizeInBits="8" encoding="unsigned"/>
+                <EnumerationList>
+                    <Enumeration value="0" label="Communications"/>
+                </EnumerationList>
+            </EnumeratedParameterType>
+
+            <EnumeratedParameterType name="COMMSUHFTXDataRate_t">
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="32"/>
+                <EnumerationList>
+                    <Enumeration value="5028" label="iSATDataPro"/>
+                    <Enumeration value="5029" label="iSATM2M"/>
+                    <Enumeration value="5030" label="BGAN"/>
+                    <Enumeration value="5031" label="BGANM2M"/>
+                </EnumerationList>
+            </EnumeratedParameterType>
+
+            <EnumeratedParameterType name="COMMSLNAGain_t">
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <EnumerationList>
+                    <Enumeration value="16" label="OnBoardComputer"/>
+                    <Enumeration value="17" label="STR"/>
+                    <Enumeration value="18" label="ADCS"/>
+                </EnumerationList>
+            </EnumeratedParameterType>
+
+            <EnumeratedParameterType name="COMMSPAGainUHFBand_t">
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <EnumerationList>
+                    <Enumeration value="14" label="GroundStation"/>
+                    <Enumeration value="5000" label="OBDHBoardTemperature1" />
+                    <Enumeration value="5001" label="OBDHBoardTemperature2" />
+                    <Enumeration value="5002" label="OBCMCUTemperature" />
+                    <Enumeration value="5004" label="OBCBootCounter" />
+                    <Enumeration value="5009" label="OBCSpacecraftTimeRef" />
+                    <Enumeration value="5010" label="OBCOnBoardTime" />
+                    <Enumeration value="5011" label="OBCOperationalMode" />
+                    <Enumeration value="5012" label="OBCMemoryPartition" />
+                    <Enumeration value="5013" label="OBCReconfigurationTimer" />
+                    <Enumeration value="5014" label="ObcLastFailedEvent" />
+                    <Enumeration value="5015" label="OBCSystick" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+
+            <EnumeratedParameterType name="COMMSPAGainSBand_t">
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="16"/>
+                <EnumerationList>
+                    <Enumeration value="1218" label="ADCSMCUTemperature" />
+                    <Enumeration value="1220" label="ADCSMCUBootCounter" />
+                    <Enumeration value="1221" label="ADCSMCUOnBoardTime" />
+                    <Enumeration value="1224" label="ADCSSystick" />
+                    <Enumeration value="1227" label="ADCSFlashInt" />
+                    <Enumeration value="1228" label="ADCSSRAMInt" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+
+            <EnumeratedParameterType name="COMMSMemoryPartition_t">
+                <IntegerDataEncoding encoding="unsigned" sizeInBits="8"/>
+                <EnumerationList>
+                    <Enumeration value="6" label="ReportParametersUnusedStack" />
+                    <Enumeration value="7" label="AvailableHeap" />
+                </EnumerationList>
+            </EnumeratedParameterType>
+
+
+            <EnumeratedParameterType name="AllCOMMSParameters">
+                <EnumerationList>
+                    <Enumeration value="2000" label="COMMSUHFPATemperature"/>
+                    <Enumeration value="2001" label="COMMSSBandPATemperature"/>
+                    <Enumeration value="2002" label="COMMSPCBTemperature"/>
+                    <Enumeration value="2003" label="COMMSADMStatus"/>
+                    <Enumeration value="2004" label="COMMSUHFTXDataRate"/>
+                    <Enumeration value="2005" label="COMMSUHFRXDataRate"/>
+                    <Enumeration value="2006" label="COMMSSBandSymbolRate"/>
+                    <Enumeration value="2007" label="COMMSCWInterval"/>
+                    <Enumeration value="2008" label="COMMSGMSKBeaconInterval"/>
+                    <Enumeration value="2009" label="COMMSUHFBandTXPower"/>
+                    <Enumeration value="2010" label="COMMSSBandTXPower"/>
+                    <Enumeration value="2011" label="COMMSChannelNoUHFBand"/>
+                    <Enumeration value="2012" label="COMMSChannelNoSBand"/>
+                    <Enumeration value="2013" label="COMMSLNAGain"/>
+                    <Enumeration value="2014" label="COMMSPAGainUHFBand"/>
+                    <Enumeration value="2015" label="COMMSPAGainSBand"/>
+                    <Enumeration value="2016" label="COMMSVGAGain"/>
+                    <Enumeration value="2017" label="COMMSRSSI"/>
+                    <Enumeration value="2018" label="COMMSUHFBandTXOn"/>
+                    <Enumeration value="2019" label="COMMSUHFBandRXOn"/>
+                    <Enumeration value="2020" label="COMMSSBandTXOn"/>
+                    <Enumeration value="2021" label="COMMSNoOfRejectedPackets"/>
+                    <Enumeration value="2022" label="COMMSInvalidHMAC"/>
+                    <Enumeration value="2023" label="COMMSInvalidPacketStructure"/>
+                    <Enumeration value="2024" label="COMMSInvalidSpacecraftID"/>
+                    <Enumeration value="2025" label="COMMSFrameSequenceCounter"/>
+                    <Enumeration value="2026" label="COMMSPCBTemperature1"/>
+                    <Enumeration value="2027" label="COMMSPCBTemperature2"/>
+                    <Enumeration value="2028" label="COMMSMCUTemperature"/>
+                    <Enumeration value="2029" label="COMMSMCUInputVoltage"/>
+                    <Enumeration value="2030" label="COMMSMCUBootCount"/>
+                    <Enumeration value="2031" label="COMMSMCUTime"/>
+                    <Enumeration value="2032" label="COMMSMemoryPartition"/>
+                    <Enumeration value="2033" label="COMMSLastFailedEvent"/>
+                    <Enumeration value="2034" label="COMMSMCUSystick"/>
+                    <Enumeration value="2035" label="COMMSFLASHInt"/>
+                    <Enumeration value="2036" label="COMMSSRAMInt"/>
+                </EnumerationList>
+            </EnumeratedParameterType>
 
         </ParameterTypeSet>
     </TelemetryMetaData>
