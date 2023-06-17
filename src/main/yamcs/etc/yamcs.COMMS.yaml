@@ -106,4 +106,4 @@ streamConfig:
   parameterAlarm: ["alarms_realtime"]
   tc:
     - name: "tc_realtime"
-      processor: "realtime-comms"
+      processor: "realtime"
