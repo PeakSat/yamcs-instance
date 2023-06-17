@@ -1,0 +1,109 @@
+services:
+  - class: org.yamcs.archive.XtceTmRecorder
+  - class: org.yamcs.archive.ParameterRecorder
+  - class: org.yamcs.archive.AlarmRecorder
+  - class: org.yamcs.archive.EventRecorder
+  - class: org.yamcs.archive.ReplayServer
+  - class: org.yamcs.parameter.SystemParametersService
+    args:
+      provideJvmVariables: true
+      provideFsVariables: true
+  - class: org.yamcs.ProcessorCreatorService
+    args:
+      name: realtime-comms
+      type: realtime-comms
+  - class: org.yamcs.archive.CommandHistoryRecorder
+  - class: org.yamcs.parameterarchive.ParameterArchive
+    args:
+      realtimeFiller:
+        enabled: true
+      backFiller:
+        enabled: false
+        warmupTime: 60
+
+dataLinks:
+  - name: COMMS
+    enabledAtStartup: true
+    class: gr.spacedot.acubesat.comms_link.TcpTmFrameLink
+    port: 10014
+    host: localhost
+    frameType: "TM"
+    spacecraftId: 0xAB
+    frameLength: 176 # 189 for the "frame_3_packets" frame // 176 for the "frame_2_packets_with_clcw" frame
+    # 172 for the "frame_2_packets" frame // 98 for "frame1/2" // 14 for segmantation packet into 3 frames
+    # packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+    packetInputStreamClassName: gr.spacedot.acubesat.FixedPacketInputStream
+    packetInputStreamArgs:
+      frameLength: 176
+    errorDetection: NONE
+    clcwStream: "clcw"
+    clcwParamsStream: "clcw_params"
+    goodFrameStream: "good_frame_stream"
+    badFrameStream: "bad_frame_stream"
+    frameHeaderStream: "frame_header"
+    virtualChannels:
+      - vcId: 0
+        service: "PACKET"
+        maxPacketLength: 2048
+        packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+        stream: "tm_realtime"
+      - vcId: 1
+        service: "PACKET"
+        maxPacketLength: 2048
+        packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+        packetPreprocessorArgs:
+          timestampOffset: 2
+          seqCountOffset: 10
+          errorDetection:
+            type: "CRC-16-CCIIT"
+        stream: "tm_realtime"
+        invalidPackets: DIVERT
+        invalidPacketsStream: invalid_tm_stream
+      - vcId: 2
+        service: "PACKET"
+        maxPacketLength: 2048
+        packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
+        stream: "tm_realtime"
+
+mdb:
+  # Configuration of the active loaders
+  # Valid loaders are: sheet, xtce or fully qualified name of the class
+  - type: xtce
+    spec: "mdb/dt.xml"
+  - type: xtce
+    spec: "mdb/base.xml"
+  - type: xtce
+    spec: "mdb/xtce.xml"
+  - type: xtce
+    spec: "mdb/pus.xml"
+  - type: xtce
+    spec: "mdb/pus-verification.xml"
+  - type: xtce
+    spec: "mdb/pus-not-used.xml"
+  - type: xtce
+    spec: "mdb/time-based-scheduling.xml"
+  - type: xtce
+    spec: "mdb/set-values.xml"
+  - type: xtce
+    spec: "mdb/report-values.xml"
+  - type: xtce
+    spec: "mdb/file-handling.xml"
+
+
+# Configuration for streams created at server startup
+streamConfig:
+  tm:
+    - name: "tm_realtime"
+    - name: "tm_dump"
+    - name: "clcw_params"
+      rootContainer: "/pus/communications_link_control_word"
+    - name: "frame_header"
+      rootContainer: "/pus/Transfer_Frame_Primary_Header"
+  invalidTm: "invalid_tm_stream"
+  cmdHist: ["cmdhist_realtime", "cmdhist_dump"]
+  event: ["events_realtime", "events_dump"]
+  param: ["pp_realtime", "sys_param", "proc_param"]
+  parameterAlarm: ["alarms_realtime"]
+  tc:
+    - name: "tc_realtime"
+      processor: "realtime"

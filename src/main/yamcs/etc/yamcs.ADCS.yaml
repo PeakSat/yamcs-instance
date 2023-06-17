@@ -68,9 +68,6 @@ mdb:
 - type: xtce
   spec: "mdb/file-handling.xml"
 
-
-
-
 # Configuration for streams created at server startup
 streamConfig:
   tm:
