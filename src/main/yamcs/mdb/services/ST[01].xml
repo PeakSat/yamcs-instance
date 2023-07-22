@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SpaceSystem name="pus-verification" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+<SpaceSystem name="ST[01]" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
     shortDescription="This is a bogus satellite telemetry and telecommand database."
@@ -9,18 +9,18 @@
     <TelemetryMetaData>
         <ParameterSet>
 
-            <Parameter parameterTypeRef="/base/packet_version_number" name="source_packet_version_number" />
-            <Parameter parameterTypeRef="/base/packet_type" name="source_packet_type" />
-            <Parameter parameterTypeRef="/base/secondary_header_flag" name="source_secondary_header_flag" />
-            <Parameter parameterTypeRef="/base/application_process_ID" name="source_application_process_ID" />
-            <Parameter parameterTypeRef="/base/sequence_flags" name="source_sequence_flags" />
-            <Parameter parameterTypeRef="/base/packet_sequence_count_or_packet_name" name="source_packet_sequence_count" />
-            <Parameter parameterTypeRef="/base/AcceptanceErrorType_t" name="AcceptanceErrorType" />
-            <Parameter parameterTypeRef="/base/ExecutionStartErrorType_t" name="ExecutionStartErrorType" />
-            <Parameter parameterTypeRef="/base/uint8_t" name="stepID" />
-            <Parameter parameterTypeRef="/base/ExecutionProgressErrorType_t" name="ExecutionProgressErrorType" />
-            <Parameter parameterTypeRef="/base/ExecutionCompletionErrorType_t" name="ExecutionCompletionErrorType" />
-            <Parameter parameterTypeRef="/base/RoutingErrorType_t" name="RoutingErrorType" />
+            <Parameter parameterTypeRef="/base-dt/packet_version_number" name="source_packet_version_number" />
+            <Parameter parameterTypeRef="/base-dt/packet_type" name="source_packet_type" />
+            <Parameter parameterTypeRef="/base-dt/secondary_header_flag" name="source_secondary_header_flag" />
+            <Parameter parameterTypeRef="/base-dt/application_process_ID" name="source_application_process_ID" />
+            <Parameter parameterTypeRef="/base-dt/sequence_flags" name="source_sequence_flags" />
+            <Parameter parameterTypeRef="/base-dt/packet_sequence_count_or_packet_name" name="source_packet_sequence_count" />
+            <Parameter parameterTypeRef="/ST[01]-dt/AcceptanceErrorType_t" name="AcceptanceErrorType" />
+            <Parameter parameterTypeRef="/ST[01]-dt/ExecutionStartErrorType_t" name="ExecutionStartErrorType" />
+            <Parameter parameterTypeRef="/base-dt/uint8_t" name="stepID" />
+            <Parameter parameterTypeRef="/ST[01]-dt/ExecutionProgressErrorType_t" name="ExecutionProgressErrorType" />
+            <Parameter parameterTypeRef="/ST[01]-dt/ExecutionCompletionErrorType_t" name="ExecutionCompletionErrorType" />
+            <Parameter parameterTypeRef="/ST[01]-dt/RoutingErrorType_t" name="RoutingErrorType" />
 
         </ParameterSet>
         <ContainerSet>
