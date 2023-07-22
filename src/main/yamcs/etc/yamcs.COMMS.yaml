@@ -23,7 +23,6 @@ services:
 
 dataLinks:
   - name: COMMS
-    enabledAtStartup: true
     class: gr.spacedot.acubesat.comms_link.TcpTmFrameLink
     port: 10014
     host: localhost
