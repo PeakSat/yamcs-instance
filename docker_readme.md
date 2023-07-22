@@ -22,10 +22,11 @@ The dot . tells docker to build the image using the current directory. This will
 To run the container for the first time, execute the following command, again replacing `your-container-name`:
 
 ```bash
-docker run --name your-container-name -p 8090:8090 --mount source=yamcs-data,target=/yamcs-instance/target/yamcs/yamcs-data your-image-name 
+docker run --name your-container-name -p 8090:8090 --device=/dev/tty* --mount source=yamcs-data,target=/yamcs-instance/target/yamcs/yamcs-data your-image-name 
 ```
 * `-p 8090:8090` exposes the containers local port 8090 to the localhost's 8090 port.
 * `--mount source=yamcs-data, target=/yamcs-instance/target/yamcs/yamcs-data` binds the container's `/yamcs-instance/target/yamcs/yamcs-data` folder to a docker volume called `yamcs-data`. This volume has data that is persistent after container death. Without it, yamcs' data would be deleted each time the container is stopped/rebuilt.
+* `--device=/dev/tty*` gives access to all tty* devices to the container. Such devices might be the devboard (ttyACM*) or a uart-to-usb converter (ttyUSB*).
 
 When you execute the `run` command for the first time, the container will be created and started. 
 If everything goes well, yamcs will be automatically started and will be accessible at `localhost:8090`.
