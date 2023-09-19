@@ -22,7 +22,6 @@ services:
         warmupTime: 60
 
 dataLinks:
-
   - name: OBC-UART
     class: org.yamcs.tctm.TcpTmDataLink
     stream: tm_realtime
