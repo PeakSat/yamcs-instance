@@ -7,8 +7,44 @@ from struct import unpack_from
 from threading import Thread
 from time import sleep
 
+HOST = "localhost"
+
+def send_comms_frame(simulator):
+    frame_2_packets = [10, 176, 1, 1, 24, 0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0]
+    frame_3_packets = [10, 176, 1, 1, 24, 0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 8, 1, 195, 39, 0, 10, 32, 17, 2, 1, 70, 0, 1, 37, 165, 61, 202]    
+    frame_2_packets_with_clcw = [10, 177, 1, 1, 24, 0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 1, 0, 16,1]
+
+    packet42 = [8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0]
+    packet_17_2 = [8, 1, 195, 39, 0, 10, 32, 17, 2, 1, 70, 0, 1, 37, 165, 61, 202]
+
+    #segmentation and blocking test frames
+
+    frame1 = [10, 176, 0, 1, 24, 0, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 8, 1, 195, 39, 0, 10, 32, 17, 2]
+    frame2 = [10, 176, 0, 2, 24, 8, 1, 70, 0, 1, 37, 165, 61, 202, 8, 1, 195, 39, 0, 76, 32, 4, 2, 1, 70, 0, 1, 37, 165, 61, 202, 14, 224, 184, 148, 14, 224, 185, 92, 0, 2, 19, 152, 0, 3, 64, 160, 0, 0, 14, 224, 185, 92, 63, 128, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 63, 209, 5, 236, 19, 153, 0, 6, 65, 80, 0, 0, 14, 224, 185, 92, 64, 64, 0, 0, 14, 224, 185, 92, 65, 0, 0, 0,0,0,0,0, 0]
+
+    # segmentation of one packet into 3 frames
+    firstFrame =[10,  176,  0,  1,  8,  0,  8,  1,  195,  39,  0,  10,  32,  17 ]
+    secondFrame =[10,  176,  0,  2,  7,  255,  2,  1,  70,  0,  1,  37,  165,  61 ]
+    thirdFrame = [10,  176,  0,  3,  16,  1,  202,  1,  70,  0,  1,  37,  165,  61]
+
+    portCOMMS = 10014
+    tm_socket_COMMS = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    tm_socket_COMMS.bind((HOST, portCOMMS))
+    tm_socket_COMMS.listen(1)
+    print("server "+str(portCOMMS)+" listening")
+
+    clientconnCOMMS, _ = tm_socket_COMMS.accept()
+
+    #sending to tcp comms link
+    while True:
+        clientconnCOMMS.send(bytearray(frame_2_packets_with_clcw))
+        simulator.tm_counter += 1
+        sleep(10)
+        
 
 def send_tm(simulator):
+
     """
     This function reads the packets from the specified .raw
     file and sends them simultaneously to all data links. If
@@ -17,7 +53,7 @@ def send_tm(simulator):
     """
 
     SEQUENTIAL_SENDING = False
-    host = "localhost"
+
     portOBC = 10015
     tm_socket_OBC = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     tm_socket_OBC.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -30,15 +66,15 @@ def send_tm(simulator):
     # tm_socket_CAN = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # tm_socket_CAN.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-    tm_socket_OBC.bind((host, portOBC))
+    tm_socket_OBC.bind((HOST, portOBC))
     tm_socket_OBC.listen(1)
-    print("\nserver  10015 listening")
+    print("\nserver "+str(portOBC)+" listening")
 
-    tm_socket_ADCS.bind((host, portADCS))
+    tm_socket_ADCS.bind((HOST, portADCS))
     tm_socket_ADCS.listen(1)
-    print("server  10016 listening")
+    print("server "+str(portADCS)+" listening")
 
-    # tm_socket_CAN.bind((host, portCAN))
+    # tm_socket_CAN.bind((HOST, portCAN))
     # tm_socket_CAN.listen(1)
     # print("server  10017 listening")
 
@@ -103,7 +139,7 @@ def receive_tc(simulator):
     tc_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     tc_socket.bind((host, portTC))
     tc_socket.listen(1)
-    print("server  10025 1istening")
+    print("server "+str(portTC)+" listening")
     clientconnTC, _ = tc_socket.accept()
     while True:
         data, _ = clientconnTC.recvfrom(4096)
@@ -127,6 +163,9 @@ class Simulator:
         self.tc_thread = Thread(target=receive_tc, args=(self,))
         self.tc_thread.daemon = True
         self.tc_thread.start()
+        self.tm_thread = Thread(target=send_comms_frame, args=(self,))
+        self.tm_thread.daemon = True
+        self.tm_thread.start()
 
     def print_status(self):
         cmdhex: str = ""

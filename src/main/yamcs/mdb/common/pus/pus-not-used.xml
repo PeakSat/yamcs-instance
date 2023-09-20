@@ -4,17 +4,17 @@
 	<TelemetryMetaData>
 		<ParameterSet>
 
-			<Parameter name="max_transition_reporting_delay_ST12" parameterTypeRef="/base/uint8_t" />
-			<Parameter name="N_ST12" parameterTypeRef="/base/uint8_t" />
-			<Parameter name="PMON_ID_ST12" parameterTypeRef="/base/uint16_t" />
-			<Parameter name="monitored_parameter_ID_ST12" parameterTypeRef="/base/uint16_t" />
-			<Parameter name="validity_parameter_ST12" parameterTypeRef="/base/uint16_t" />
-			<Parameter name="mask_ST12" parameterTypeRef="/base/uint64_t" />
-			<Parameter name="expected_value_ST12" parameterTypeRef="/base/uint64_t" />
-			<Parameter name="monitoring_interval_ST12" parameterTypeRef="/base/uint8_t" />
-			<Parameter name="PMON_status_ST12" parameterTypeRef="/base/uint16_t" />
-			<Parameter name="repetition_number_ST12" parameterTypeRef="/base/uint8_t" />
-			<Parameter name="check_type_ST12" parameterTypeRef="/base/uint16_t" />
+			<Parameter name="max_transition_reporting_delay_ST12" parameterTypeRef="/base-dt/uint8_t" />
+			<Parameter name="N_ST12" parameterTypeRef="/base-dt/uint8_t" />
+			<Parameter name="PMON_ID_ST12" parameterTypeRef="/base-dt/uint16_t" />
+			<Parameter name="monitored_parameter_ID_ST12" parameterTypeRef="/base-dt/uint16_t" />
+			<Parameter name="validity_parameter_ST12" parameterTypeRef="/base-dt/uint16_t" />
+			<Parameter name="mask_ST12" parameterTypeRef="/base-dt/uint64_t" />
+			<Parameter name="expected_value_ST12" parameterTypeRef="/base-dt/uint64_t" />
+			<Parameter name="monitoring_interval_ST12" parameterTypeRef="/base-dt/uint8_t" />
+			<Parameter name="PMON_status_ST12" parameterTypeRef="/base-dt/uint16_t" />
+			<Parameter name="repetition_number_ST12" parameterTypeRef="/base-dt/uint8_t" />
+			<Parameter name="check_type_ST12" parameterTypeRef="/base-dt/uint16_t" />
 
 		</ParameterSet>
 		<ContainerSet>
