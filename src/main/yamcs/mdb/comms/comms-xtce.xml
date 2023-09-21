@@ -13,10 +13,10 @@
             <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="COMMSPCBTemperature"></xtce:Parameter>
 
             <xtce:Parameter parameterTypeRef="/comms-dt/COMMSADMStatus_t" name="COMMSADMStatus" ></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/comms-dt/COMMSUHFTXDataRate_t" name="COMMSUHFTXDataRate" ></xtce:Parameter>
-
-            <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="COMMSUHFRXDataRate" ></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="COMMSSBandSymbolRate" ></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/comms-dt/COMMSTXSampleRate_t" name="COMMSUHFTXSampleRate" ></xtce:Parameter>
+                                                                     
+            <xtce:Parameter parameterTypeRef="/comms-dt/COMMSTXSampleRate_t" name="COMMSSBandTXSampleRate" ></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/comms-dt/COMMSSBandTXSymbolRate_t" name="COMMSSBandSymbolRate" ></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/base-dt/uint16_t" name="COMMSCWInterval" ></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/base-dt/uint16_t" name="COMMSGMSKBeaconInterval" ></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="COMMSUHFBandTXPower" ></xtce:Parameter>
@@ -25,8 +25,8 @@
             <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="COMMSChannelNoSBand" ></xtce:Parameter>
 
             <xtce:Parameter parameterTypeRef="/comms-dt/COMMSLNAGain_t" name="COMMSLNAGain"></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/comms-dt/COMMSPAGainUHFBand_t" name="COMMSPAGainUHFBand" ></xtce:Parameter>
-            <xtce:Parameter parameterTypeRef="/comms-dt/COMMSPAGainSBand_t" name="COMMSPAGainSBand" ></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/comms-dt/COMMSPAGain_t" name="COMMSPAGainUHFBand" ></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/comms-dt/COMMSPAGain_t" name="COMMSPAGainSBand" ></xtce:Parameter>
 
             <xtce:Parameter parameterTypeRef="/base-dt/uint8_t" name="COMMSVGAGain" ></xtce:Parameter>
             <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="COMMSRSSI" ></xtce:Parameter>
