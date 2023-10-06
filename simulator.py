@@ -27,18 +27,18 @@ def send_comms_frame(simulator):
     secondFrame =[10,  176,  0,  2,  7,  255,  2,  1,  70,  0,  1,  37,  165,  61 ]
     thirdFrame = [10,  176,  0,  3,  16,  1,  202,  1,  70,  0,  1,  37,  165,  61]
 
-    portCOMMS = 10014
-    tm_socket_COMMS = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    portCOMMS_frames = 10014
+    tm_socket_COMMS_frames = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-    tm_socket_COMMS.bind((HOST, portCOMMS))
-    tm_socket_COMMS.listen(1)
-    print("server "+str(portCOMMS)+" listening")
+    tm_socket_COMMS_frames.bind((HOST, portCOMMS_frames))
+    tm_socket_COMMS_frames.listen(1)
+    print("server "+str(portCOMMS_frames)+" listening")
 
-    clientconnCOMMS, _ = tm_socket_COMMS.accept()
+    clientconnCOMMS_frames, _ = tm_socket_COMMS_frames.accept()
 
     #sending to tcp comms link
     while True:
-        clientconnCOMMS.send(bytearray(frame_2_packets_with_clcw))
+        clientconnCOMMS_frames.send(bytearray(frame_2_packets_with_clcw))
         simulator.tm_counter += 1
         sleep(10)
         
@@ -54,6 +54,10 @@ def send_tm(simulator):
 
     SEQUENTIAL_SENDING = False
 
+    portCOMMS = 10013
+    tm_socket_COMMS = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    tm_socket_COMMS.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
     portOBC = 10015
     tm_socket_OBC = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     tm_socket_OBC.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
@@ -66,6 +70,10 @@ def send_tm(simulator):
     # tm_socket_CAN = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # tm_socket_CAN.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
+    tm_socket_COMMS.bind((HOST, portCOMMS))
+    tm_socket_COMMS.listen(1)
+    print("\nserver "+str(portCOMMS)+" listening")
+
     tm_socket_OBC.bind((HOST, portOBC))
     tm_socket_OBC.listen(1)
     print("\nserver "+str(portOBC)+" listening")
@@ -77,6 +85,8 @@ def send_tm(simulator):
     # tm_socket_CAN.bind((HOST, portCAN))
     # tm_socket_CAN.listen(1)
     # print("server  10017 listening")
+
+    clientconnCOMMS, _ = tm_socket_COMMS.accept()
 
     clientconnOBC, _ = tm_socket_OBC.accept()
 
@@ -100,13 +110,17 @@ def send_tm(simulator):
                 f.readinto(packet)
 
                 if SEQUENTIAL_SENDING:
-                    n = random.randint(0, 2)
-                    # OBC UART
+                    n = random.randint(0, 3)
+                    # COMMS UART
                     if n == 0:
+                        clientconnCOMMS.send(packet)
+                        simulator.tm_counter += 1
+                    # OBC UART
+                    if n == 1:
                         clientconnOBC.send(packet)
                         simulator.tm_counter += 1
                     # ADSC UART
-                    elif n == 1:
+                    elif n == 2:
                         clientconnADCS.send(packet)
                         simulator.tm_counter += 1
                     # CAN BUS
@@ -114,6 +128,7 @@ def send_tm(simulator):
                         # clientconnCAN.send(packet)
                         simulator.tm_counter += 1
                 else:
+                    clientconnCOMMS.send(packet)
                     clientconnOBC.send(packet)
                     clientconnADCS.send(packet)
                     # clientconnCAN.send(packet)
@@ -122,6 +137,7 @@ def send_tm(simulator):
                 sleep(1)
         packetCounter += 1
 
+    clientconnCOMMS.close()
     clientconnOBC.close()
     clientconnADCS.close()
     # clientconnCAN.close()
