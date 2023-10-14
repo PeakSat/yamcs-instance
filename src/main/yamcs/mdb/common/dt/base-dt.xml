@@ -103,6 +103,17 @@
 				</EnumerationList>
 			</EnumeratedParameterType>
 
+			<EnumeratedParameterType name="application_process_ID_uint16">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<EnumerationList>
+					<Enumeration value="0" label="OBC" />
+					<Enumeration value="1" label="COMMS" />
+					<Enumeration value="2" label="ADCS" />
+					<Enumeration value="3" label="SU" />
+					<Enumeration value="4" label="GS" />
+				</EnumerationList>
+			</EnumeratedParameterType>
+
 			<IntegerParameterType name="sequence_flags">
 				<IntegerDataEncoding sizeInBits="2" />
 			</IntegerParameterType>
