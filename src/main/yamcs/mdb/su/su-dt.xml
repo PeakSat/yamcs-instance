@@ -40,6 +40,76 @@
                 </EnumerationList>
             </xtce:EnumeratedParameterType>
 
+            <xtce:EnumeratedParameterType name="AllSUParameters">
+                <EnumerationList>
+                    <xtce:Enumeration value="11" label="SUUseRTT" />
+                    <xtce:Enumeration value="12" label="SUSUseUART" />
+                    <xtce:Enumeration value="13" label="SUSUseCAN" />
+                    <xtce:Enumeration value="4000" label="SUPCBTemperature1" />
+                    <xtce:Enumeration value="4001" label="SUPCBTemperature2" />
+                    <xtce:Enumeration value="4002" label="SUPCBTemperatureControlValves" />
+                    <xtce:Enumeration value="4003" label="SUPCBTemperatureFlowValves" />
+                    <xtce:Enumeration value="4004" label="SUPDMSTemperature" />
+                    <xtce:Enumeration value="4005" label="SUGrowthMediumTemperature" />
+                    <xtce:Enumeration value="4006" label="SULEDIntensity1" />
+                    <xtce:Enumeration value="4007" label="SULEDIntensity2" />
+                    <xtce:Enumeration value="4008" label="SULEDIntensity3" />
+                    <xtce:Enumeration value="4009" label="SULEDIntensity4" />
+                    <xtce:Enumeration value="4010" label="SUPressureLevelSensor1" />
+                    <xtce:Enumeration value="4011" label="SUPressureLevelSensor2" />
+                    <xtce:Enumeration value="4012" label="SUHumidityLevelSensor1" />
+                    <xtce:Enumeration value="4013" label="SUHumidityLevelSensor2" />
+                    <xtce:Enumeration value="4014" label="SUNumberOfPhotosTaken" />
+                    <xtce:Enumeration value="4015" label="SUPumpFlowRate1" />
+                    <xtce:Enumeration value="4016" label="SUPumpFlowRate2" />
+                    <xtce:Enumeration value="4017" label="SUControlChamberValve1" />
+                    <xtce:Enumeration value="4018" label="SUControlChamberValve2" />
+                    <xtce:Enumeration value="4019" label="SUControlChamberValve3" />
+                    <xtce:Enumeration value="4020" label="SUControlSandwitchValve1" />
+                    <xtce:Enumeration value="4021" label="SUControlSandwitchValve2" />
+                    <xtce:Enumeration value="4022" label="SUControlSandwitchValve3" />
+                    <xtce:Enumeration value="4023" label="SUFlowValveInlet1" />
+                    <xtce:Enumeration value="4024" label="SUFlowValveInlet2" />
+                    <xtce:Enumeration value="4025" label="SUFlowValveInlet3" />
+                    <xtce:Enumeration value="4026" label="SUFlowValveOutlet1" />
+                    <xtce:Enumeration value="4027" label="SUFlowValveOutlet2" />
+                    <xtce:Enumeration value="4028" label="SUFlowValveOutlet3" />
+                    <xtce:Enumeration value="4029" label="SUFlowValveTest1" />
+                    <xtce:Enumeration value="4030" label="SUFlowValveTest2" />
+                    <xtce:Enumeration value="4031" label="SUPhotoExposureTime" />
+                    <xtce:Enumeration value="4032" label="SUPhotoInterval" />
+                    <xtce:Enumeration value="4033" label="SUPhotoCroppedResolution" />
+                    <xtce:Enumeration value="4034" label="SUPhotoCompressionRate" />
+                    <xtce:Enumeration value="4035" label="SUExperimentNumber" />
+                    <xtce:Enumeration value="4036" label="SURADFET" />
+                    <xtce:Enumeration value="4037" label="SUCameraTemperature" />
+                    <xtce:Enumeration value="4038" label="SUMCUTemperature" />
+                    <xtce:Enumeration value="4039" label="SUMCUInputVoltage" />
+                    <xtce:Enumeration value="4040" label="SUMCUBootCounter" />
+                    <xtce:Enumeration value="4041" label="SUFlashIntUsedPercentage" />
+                    <xtce:Enumeration value="4042" label="SUFlashUsedPercentage" />
+                    <xtce:Enumeration value="4043" label="SUSRAMUsedPercentage" />
+                    <xtce:Enumeration value="4044" label="SUOnBoardTime" />
+                    <xtce:Enumeration value="4045" label="SUNANDCurrentlyUsedPartition" />
+                    <xtce:Enumeration value="4046" label="SULastFailedEvent" />
+                    <xtce:Enumeration value="4047" label="SUMCUSysTick" />
+                    <xtce:Enumeration value="4048" label="SUNANDFlashLCLThreshold" />
+                    <xtce:Enumeration value="4049" label="SUFlowPumpFlashLCLThreshold" />
+                    <xtce:Enumeration value="4050" label="SUControlPumpFlashLCLThreshold" />
+                    <xtce:Enumeration value="4051" label="SUCameraLCLThreshold" />
+                    <xtce:Enumeration value="4052" label="SUNANDFlashLCLOn" />
+                    <xtce:Enumeration value="4053" label="SUFlowPumpFlashOn" />
+                    <xtce:Enumeration value="4054" label="SUControlPumpFlashLCLOn" />
+                    <xtce:Enumeration value="4055" label="SUCameraON" />
+                    <xtce:Enumeration value="4056" label="SUNANDFlashScrubbingFrequency" />
+                    <xtce:Enumeration value="4057" label="SURAMScrubbingFrequency" />
+                    <xtce:Enumeration value="4058" label="SUProgramFlashScrubbingFrequency" />
+                    <xtce:Enumeration value="4059" label="SUTemperatureFromHumiditySensor1" />
+                    <xtce:Enumeration value="4060" label="SUTemperatureFromHumiditySensor2" />
+
+                </EnumerationList>
+            </xtce:EnumeratedParameterType>
+
         </ParameterTypeSet>
     </xtce:TelemetryMetaData>
 
