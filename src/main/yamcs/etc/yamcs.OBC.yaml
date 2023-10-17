@@ -86,6 +86,10 @@ mdb:
   spec: "mdb/services/ST[06]-ST[23].xml"
 - type: xtce
   spec: "mdb/services/Logger.xml"
+- type: xtce
+  spec: "mdb/su/su-dt.xml"
+- type: xtce
+  spec: "mdb/su/su-xtce.xml"
 
 
 # Configuration for streams created at server startup

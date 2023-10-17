@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpaceSystem name="su-xtce" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
+	shortDescription="This is a bogus satellite telemetry and telecommand database."
+	operationalStatus="unittest">
+    <xtce:TelemetryMetaData>
+        <ParameterSet>
+            <!-- SU parameters that will be used in the environmental campaign-->
+
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUUseRTT"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUUseUART"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUUseCAN"></xtce:Parameter>
+
+            <!-- Temperature-->
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUPCBTemperature1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUPCBTemperature2"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUPCBTemperatureControlValves"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUPCBTemperatureFlowValves"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUPDMSTemperature"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUGrowthMediumTemperature"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUCameraTemperature"></xtce:Parameter>
+
+            <!-- Sensors-->
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUPressureLevelSensor1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUPressureLevelSensor2"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUHumidityLevelSensor1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUHumidityLevelSensor2"></xtce:Parameter>
+            <!--<xtce:Parameter parameterTypeRef="/base-dt/uint64_t" name="SURADFET"></xtce:Parameter> 4036 wont be needed-->
+
+            <!-- Componenets-->
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUPumpFlowRate1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUPumpFlowRate2"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUControlChamberValve1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUControlChamberValve2"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUControlChamberValve3"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUControlSandwitchValve1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUControlSandwitchValve2"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUControlSandwitchValve3"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUFlowValveInlet1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUFlowValveInlet2"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUFlowValveInlet3"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUFlowValveOutlet1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUFlowValveOutlet2"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUFlowValveOutlet3"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUFlowValveTest1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUFlowValveTest2"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SULedIntensity1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SULedIntensity2"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SULedIntensity3"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SULedIntensity4"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUControlPumpFlashLclOn"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUControlPumpFlashLclThreshold"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUFlowPumpFlashOn"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUFlowPumpFlashLclThreshold"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUCameraLCLThreshold"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUCameraOn"></xtce:Parameter>
+
+            <!-- Photos-->
+            <xtce:Parameter parameterTypeRef="/base-dt/uint16_t" name="SUNumberOfPhotosTaken"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUPhotoExposureTime"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/uint16_t" name="SUPhotoInterval"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/su-dt/SUPhotoCroppedResolution_t" name="SUPhotoCroppedResolution"></xtce:Parameter>
+            <!-- <xtce:Parameter parameterTypeRef="/su-dt/SUPhotoCompressionRate_t" name="SUPhotoCompressionRate"></xtce:Parameter>  4034 wont be needed-->
+
+            <!-- Misc-->
+            <xtce:Parameter parameterTypeRef="/su-dt/SUExperimentNo_t" name="SUExperimentNumber"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="SUOnBoardTime"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/uint16_t" name="SULastFailedEvent"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUTemperatureFromHumiditySensor1"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUTemperatureFromHumiditySensor2"></xtce:Parameter>
+
+            <!-- MCU-->
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUMcuTemperature"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUMcuInputVoltage"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="SUMcuBootCounter"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="SUMcuSystick"></xtce:Parameter>
+
+            <!-- Memory-->
+            <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="SUFlashIntUsedPercentage"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="SUFlashUsedPercentage"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="SUSRAMUsedPercentage"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/su-dt/SUNANDMemoryPartition_t" name="SUNANDCurrentlyUsedPartition"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUNANDFlashLclOn"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUNANDFlashLclThreshold"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUNANDFlashScrubbingFrequency"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUProgramFlashScrubbingFrequency"></xtce:Parameter>
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SURAMScrubbingFrequency"></xtce:Parameter>
+
+        </ParameterSet>
+    </xtce:TelemetryMetaData>
+</SpaceSystem>
