@@ -42,6 +42,17 @@
 				<IntegerDataEncoding sizeInBits="8" />
 			</BooleanParameterType>
 
+			<StringParameterType name="auxiliaryData_t">
+				<xtce:StringDataEncoding encoding="UTF-8">
+					<Variable maxSizeInBits="64">
+						<xtce:DynamicValue>
+							<ParameterInstanceRef parameterRef="_yamcs_ignore"/>
+						</xtce:DynamicValue>
+						<xtce:TerminationChar>0A</xtce:TerminationChar>
+					</Variable>
+				</xtce:StringDataEncoding>
+			</StringParameterType>
+
 			<StringParameterType name="string_t">
 				<StringDataEncoding encoding="UTF-8">
 					<Variable maxSizeInBits="4096">
@@ -94,6 +105,17 @@
 
 			<EnumeratedParameterType name="application_process_ID">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="11" />
+				<EnumerationList>
+					<Enumeration value="0" label="OBC" />
+					<Enumeration value="1" label="COMMS" />
+					<Enumeration value="2" label="ADCS" />
+					<Enumeration value="3" label="SU" />
+					<Enumeration value="4" label="GS" />
+				</EnumerationList>
+			</EnumeratedParameterType>
+
+			<EnumeratedParameterType name="application_process_ID_uint16">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
 				<EnumerationList>
 					<Enumeration value="0" label="OBC" />
 					<Enumeration value="1" label="COMMS" />
@@ -201,6 +223,13 @@
 				<ValidRangeSet>
 					<ValidRange minInclusive="1" maxInclusive="5" />
 				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint16_t{1-8}" signed="false">
+				<xtce:IntegerDataEncoding sizeInBits="16"/>
+				<xtce:ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="8"/>
+				</xtce:ValidRangeSet>
 			</IntegerArgumentType>
 
 			<IntegerArgumentType name="uint16_t{1-9}">

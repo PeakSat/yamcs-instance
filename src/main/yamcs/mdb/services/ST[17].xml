@@ -6,6 +6,9 @@
     operationalStatus="unittest">
     
     <xtce:TelemetryMetaData>
+        <ParameterSet>
+            <Parameter name="application_process_ID" parameterTypeRef="/base-dt/application_process_ID_uint16"></Parameter>
+        </ParameterSet>
         <ContainerSet>
 
             <SequenceContainer name="TM(17,2)_are_you_alive_connection_test_report">
@@ -15,6 +18,20 @@
                         <ComparisonList>
                             <Comparison value="17" parameterRef="/pus/service_type_ID_TM" />
                             <Comparison value="2" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
+
+            <SequenceContainer name="TM(17,4)_on_board_connection_test_report">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="application_process_ID" />
+                </EntryList>
+                <BaseContainer containerRef="/pus/packet_header_TM">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="17" parameterRef="/pus/service_type_ID_TM" />
+                            <Comparison value="4" parameterRef="/pus/message_subtype_ID_TM" />
                         </ComparisonList>
                     </RestrictionCriteria>
                 </BaseContainer>
@@ -35,6 +52,24 @@
                 </BaseMetaCommand>
                 <CommandContainer name="TC(17,1)_container">
                     <EntryList />
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(17,3)_ on_board_connection">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="17" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/application_process_ID_uint16" name="application_process_ID" />
+                </ArgumentList>
+                <CommandContainer name="TC(17,3)_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="application_process_ID" />
+                    </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
