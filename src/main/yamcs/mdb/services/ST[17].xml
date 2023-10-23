@@ -7,7 +7,7 @@
     
     <xtce:TelemetryMetaData>
         <ParameterSet>
-            <Parameter name="application_Process_Id" parameterTypeRef="/base-dt/application_process_ID_uint16"></Parameter>
+            <Parameter name="application_process_ID" parameterTypeRef="/base-dt/application_process_ID_uint16"></Parameter>
         </ParameterSet>
         <ContainerSet>
 
