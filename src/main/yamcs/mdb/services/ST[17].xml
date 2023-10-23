@@ -25,7 +25,7 @@
 
             <SequenceContainer name="TM(17,4)_on_board_connection_test_report">
                 <EntryList>
-                    <ParameterRefEntry parameterRef="application_Process_Id" />
+                    <ParameterRefEntry parameterRef="application_process_ID" />
                 </EntryList>
                 <BaseContainer containerRef="/pus/packet_header_TM">
                     <RestrictionCriteria>
@@ -68,7 +68,7 @@
                 </ArgumentList>
                 <CommandContainer name="TC(17,3)_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="application_Process_Id" />
+                        <ArgumentRefEntry argumentRef="application_process_ID" />
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
