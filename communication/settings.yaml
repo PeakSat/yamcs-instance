@@ -2,6 +2,7 @@
 yamcs_port_out: 10025
 obc_port_in: 10015
 adcs_port_in: 10016
+comms_port_in: 10013
 uart_serial_0: "/dev/ttyUSB0"
 uart_serial_1: "/dev/ttyUSB1"
 uart_serial_2: "/dev/ttyUSB2"

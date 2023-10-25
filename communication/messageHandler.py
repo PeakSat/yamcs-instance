@@ -16,6 +16,7 @@ from cobs.cobs import DecodeError
 
 EXCLAMATION_MARK = 0x021
 HASH_TAG = 0x023
+QUESTION_MARK = 0X03F
 SPACE = 0x020
 DELIMITER = b"\x00"
 TC_HEADER = 11
@@ -32,6 +33,7 @@ class ThreadType(Enum):
     TELEMETRY = 0
     OBC = 1
     ADCS = 2
+    COMMS = 3
 
 
 connection_state = ConnectionState.NOT_CONNECTED
@@ -55,6 +57,7 @@ class Settings:
         yamcs_port_out: The port for sending TCs to MCU.
         obc_port: The port for sending TMs to OBC.
         adcs_port: The port for sending TMs to ADCS.
+        comms_port: The port for sending TMs to COMMS.
         can_bus_port: The port for sending TMs to CAN.
         usb_serial_0: The default port if the devboard is connected via USB cable directly.
         uart_serial_0: The default port if the devboard is connected via a UART-to-USB adapter.
@@ -69,6 +72,7 @@ class Settings:
     yamcs_port_out: int
     obc_port_in: int
     adcs_port_in: int
+    comms_port_in:int
     uart_serial_0: str
     usb_serial_0: str
     uart_serial_1: str
@@ -153,6 +157,7 @@ def mcu_client(
 
     obcFileLogger = getFileLogger(ThreadType.OBC)
     adcsFileLogger = getFileLogger(ThreadType.ADCS)
+    commsFileLogger = getFileLogger(ThreadType.COMMS)
     while True:
 
         try:
@@ -180,8 +185,9 @@ def mcu_client(
 
                 idx_obc = message.find(EXCLAMATION_MARK)
                 idx_adcs = message.find(HASH_TAG)
+                idx_comms = message.find(QUESTION_MARK)
 
-                if idx_obc == -1 and idx_adcs == -1:
+                if idx_obc == -1 and idx_adcs == -1 and idx_comms == -1:
                     continue
 
                 if idx_obc != -1:
@@ -193,6 +199,11 @@ def mcu_client(
                     yamcs_port_in = settings.adcs_port_in
                     idx = idx_adcs
                     adcsFileLogger.info(message)
+
+                elif idx_comms != -1:
+                    yamcs_port_in = settings.comms_port_in
+                    idx = idx_comms
+                    commsFileLogger.info(message)
 
                 raw_packet = message[idx + 2:]
                 packet = bytearray()
@@ -345,6 +356,8 @@ def getFileLogger(type: ThreadType) -> Logger:
         return logging.getLogger("obc")
     elif type == ThreadType.ADCS:
         return logging.getLogger("adcs")
+    elif type == ThreadType.COMMS:
+        return logging.getLogger("comms")
 
 
 if __name__ == "__main__":
@@ -383,6 +396,7 @@ if __name__ == "__main__":
     obc_adcs_serial_port = settings.usb_serial_0
     adcs_logs_serial_port = settings.uart_serial_0
     obc_logs_serial_port = settings.uart_serial_1
+    comms_logs_serial_port = settings.uart_serial_1
 
     obc_adcs_listener_thread = Thread(
         target=mcu_client,
@@ -407,6 +421,15 @@ if __name__ == "__main__":
             settings,
             ThreadType.OBC,
             obc_logs_serial_port,
+        ),
+    ).start()
+
+    comms_logger_thread = Thread(
+        target=mcu_client_logger,
+        args=(
+            settings,
+            ThreadType.COMMS,
+            comms_logs_serial_port,
         ),
     ).start()
 
