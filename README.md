@@ -44,20 +44,24 @@ This project defines a few example CCSDS telecommands. Yamcs won't be sending Fr
 
 Telecommands can be sent through the "Commanding" section on YAMCS web interface.
 
+## Instances 
+
+In the **yamcs.yaml** file (located in yamcs-instance/src/main/yamcs/etc) three instances are currently being loaded when yamcs starts, the OBC, the ADCS and the COMMS instance. Each one of them is configured appropriately for the respective subsystem and the operator can choose which instance they want to work with from yamcs' web interface. The file for each instance's configuration is the **yamcs.subsystemName.yaml**. 
+
 ## Data-Links
 
-In yamcs.myproject.yaml file (located in yamcs-instance/src/main/yamcs/etc), six Data-Links are implemented sending and receiving data in different ports. Every time a packet gets sent or received, the count of the respective data-link is increased.
+In each **yamcs.subsystemName.yaml** file (located in yamcs-instance/src/main/yamcs/etc), five Data-Links are implemented sending and receiving data in different ports. Every time a packet gets sent or received, the count of the respective data-link is increased.
 
 * Telemetry Data-Links 
-    * "CAN-bus", receiving data through port 10017
-    * "ADCS-UART", receiving data through port 10016
-    * "OBC-UART", receiving data through port 10015
-    * "UDP_COMMS", receiving data through port 10014
+    * "COMMS-UART", receiving data through port 10013.
+    * "COMMS", receiving data and more specifically frames through port 10014.
+    * "OBC-UART", receiving data through port 10015.
+    * "ADCS-UART", receiving data through port 10016.
 
 * Telecommanding Data-Links
-    * "tcp-out", sending data at port 10025
+    * "tcp-out", which is common for all instances and is sending data at port 10025.
 
-For now, simulator.py sends randomly packets to all three TCP TM Data-Links and custom frames to the UDP_COMMS link.
+For now, simulator.py sends randomly packets to all three TCP TM Data-Links and custom frames to the COMMS link.
 
 ## Mission Database
 
@@ -65,19 +69,28 @@ The Mission Database describes the telemetry and commands that are processed by 
 
 The .xml files (located in yamcs-instance/src/main/yamcs/mdb) contain all the information regarding the parameters, the containers and the commands used in AcubeSAT YAMCS Instance.
 
-* The dt.xml file contains all **ParameterTypes** for Telemetry and **ArgumentTypes** for Telecommanding.
+The mdb is split across multiple folders to ensure readability and maintainability. The folders, as well as their contents are the following: 
 
-* The rest of the .xml files are used to define parameters, containers and commands for the mission. The .xml file in which a paremeter or container or command is defined, reflects its use. More specifically:
-    * **pus.xml**: contains parameters, containers and commands, which implement the principal services that offer great control over reading/writing parameters from the Ground Station. This control refers to:
-        * accessing and modifying parameter values (ST[20] parameter management service) 
-        * generating periodic reports containing parameter values (ST[03] housekeeping service) 
-        * receiving statistics for a large number of parameters (ST[04] parameter statistics reporting service).
-    * **pus-not-used.xml**: its elements are used for monitoring parameters (ST[12] on-board-monitoring service) 
-    * **pus-verification.xml**: contains parameters and containers used to transmit to the Ground Station information about the status of a request's acceptance verification (ST[01] request verification service)
-    * **report-values.xml**: contains commands for requesting the report of specific paramter values (ST[20] parameter management service)
-    * **set-values.xml**: contains commands for setting the values of specific paramterers to new ones (ST[20] parameter management service)
-    * **time-based-scheduling.xml**: contains commands that will be scheduled to be executed later in the mission timeline (ST[11] time-based scheduling service)
-    * **xtce.xml**: contains the ADCS and OBC parameters that will be used during the Environmental Campaign. 
+- The **subystemName folders** which are split between two xmls: 
+    - `subsystemName-dt.xml` --> Contains complex datatypes used by the subsystem.
+    - `subsystemName-xtce.xml` --> Contains all of the subsystem's parameters.
+- The **common folder** which contains two subfolders: 
+    - The **dt folder** which contains **ParameterTypes** and more specifically: 
+        - `base-dt.xml` --> Contains primitive datatypes.
+        - `dt.xml` --> Contains complex datatypes used by the OBC and ADCS subsystems.
+        - `file-handling-dt.xml` --> Contains the datatypes required for the file handling and the image transmission.
+        - `ST[01]-dt.xml` --> Contains the enumeration datatypes used in ST[01].
+        - `time-based-dt.xml` --> Contains the complex datatypes used in ST[11].
+        - `writeable-dt.xml` --> Contains writeable argument datatypes used in ST[20].
+    - The **pus folder** which contains: 
+        - `pus-not-used.xml` --> Its elements are used for monitoring parameters (ST[12] on-board-monitoring service).
+        - `pus.xml` --> Contains the headers used to make up the telemetry and the telecommand packets, as well as the necessary parameters that make up the headers. 
+- The **frames folder**: 
+    - `frames-dt.xml` --> Contains the necessary complex datatypes used in frames.
+    - `frames.xml` --> Contains the frame packets, as well as the required parameters to make them up.
+- The **services folder**: 
+    - `ST[x].xml` --> Contains the parameters and the packets for service ST[x].
+    - `Logger.xml` --> Contains a custom telemetry packet used for transporting message logs.
 
 ## Backup
 
