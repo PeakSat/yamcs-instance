@@ -106,22 +106,11 @@
 			<EnumeratedParameterType name="application_process_ID">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="11" />
 				<EnumerationList>
-					<Enumeration value="0" label="OBC" />
-					<Enumeration value="1" label="COMMS" />
-					<Enumeration value="2" label="ADCS" />
-					<Enumeration value="3" label="SU" />
-					<Enumeration value="4" label="GS" />
-				</EnumerationList>
-			</EnumeratedParameterType>
-
-			<EnumeratedParameterType name="application_process_ID_uint16">
-				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
-				<EnumerationList>
-					<Enumeration value="0" label="OBC" />
-					<Enumeration value="1" label="COMMS" />
-					<Enumeration value="2" label="ADCS" />
-					<Enumeration value="3" label="SU" />
-					<Enumeration value="4" label="GS" />
+					<Enumeration value="1" label="OBC" />
+					<Enumeration value="2" label="COMMS" />
+					<Enumeration value="3" label="ADCS" />
+					<Enumeration value="4" label="SU" />
+					<Enumeration value="5" label="GS" />
 				</EnumerationList>
 			</EnumeratedParameterType>
 
@@ -425,17 +414,6 @@
 
 			<EnumeratedArgumentType name="application_process_ID">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="11" />
-				<EnumerationList>
-					<Enumeration value="0" label="OBC" />
-					<Enumeration value="1" label="COMMS" />
-					<Enumeration value="2" label="ADCS" />
-					<Enumeration value="3" label="SU" />
-					<Enumeration value="4" label="GS" />
-				</EnumerationList>
-			</EnumeratedArgumentType>
-
-			<EnumeratedArgumentType name="application_process_ID_uint16">
-				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
 				<EnumerationList>
 					<Enumeration value="1" label="OBC" />
 					<Enumeration value="2" label="COMMS" />

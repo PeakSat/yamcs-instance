@@ -355,7 +355,7 @@
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="total_identifiers" initialValue="1" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="source_id"/>
-                    <Argument argumentTypeRef="/base-dt/application_process_ID_uint16" name="application_id" initialValue="OBC"/>
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" initialValue="OBC"/>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="sequence_count"/>
                 </ArgumentList>
                 <CommandContainer name="TC(11,5)_container">
@@ -380,7 +380,7 @@
                     <Argument argumentTypeRef="/base-dt/int64_t" name="time_shift_seconds" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="total_identifiers" initialValue="1" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="source_id"/>
-                    <Argument argumentTypeRef="/base-dt/application_process_ID_uint16" name="application_id" initialValue="OBC"/>
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" initialValue="OBC"/>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="sequence_count"/>
                 </ArgumentList>
                 <CommandContainer name="TC(11,7)_container">
@@ -405,7 +405,7 @@
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="total_identifiers" initialValue="1" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="source_id"/>
-                    <Argument argumentTypeRef="/base-dt/application_process_ID_uint16" name="application_id" initialValue="OBC"/>
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" initialValue="OBC"/>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="sequence_count"/>
                 </ArgumentList>
                 <CommandContainer name="TC(11,9)_container">
@@ -429,7 +429,7 @@
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="total_identifiers" initialValue="1" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="source_id"/>
-                    <Argument argumentTypeRef="/base-dt/application_process_ID_uint16" name="application_id" initialValue="OBC"/>
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" initialValue="OBC"/>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="sequence_count"/>
                 </ArgumentList>
                 <CommandContainer name="TC(11,12)_container">
