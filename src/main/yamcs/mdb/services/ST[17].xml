@@ -7,7 +7,7 @@
     
     <xtce:TelemetryMetaData>
         <ParameterSet>
-            <Parameter name="application_process_ID" parameterTypeRef="/base-dt/application_process_ID_uint16"></Parameter>
+            <Parameter name="application_process_ID" parameterTypeRef="/base-dt/application_process_ID"></Parameter>
         </ParameterSet>
         <ContainerSet>
 
@@ -64,7 +64,7 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/application_process_ID_uint16" name="application_process_ID" />
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_process_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(17,3)_container">
                     <EntryList>

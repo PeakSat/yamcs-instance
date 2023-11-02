@@ -12,7 +12,7 @@
                 <MemberList>
                     <Member name="releaseTime" typeRef="/base-dt/generation_time" />
                     <Member name="sourceID" typeRef="/base-dt/uint16_t" />
-                    <Member name="applicationProcessId" typeRef="/base-dt/application_process_ID_uint16" />
+                    <Member name="applicationProcessId" typeRef="/base-dt/application_process_ID" />
                     <Member name="sequenceCount" typeRef="/base-dt/packet_sequence_count_or_packet_name" />
                 </MemberList>
             </AggregateParameterType>
