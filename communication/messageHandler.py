@@ -137,7 +137,7 @@ def mcu_client(
     It listens to the specified serial port for TM messages.
     They usually come in the following form:
     '1801 [debug    ]OBC New TM[3,25] message! 8 1 192 2 0 15 32 3 25 0 2 0 1 37 165 53 0 0 0 0 0 \n'
-    This string is split after the "!" or "#" depending on the subsystem, returning the actual packet.
+    This string is split after the "!", "#" or "?" depending on the subsystem, returning the actual packet.
     All the bytes after that are sent to YAMCS to the corresponding subsystem port.
     If we try to convert the characters one by one from ASCII to integer, we will get something like:
     8 1 1 9 2 0 0 2 0 ... -> garbage
@@ -148,7 +148,7 @@ def mcu_client(
     to parse the whole decimal.
     Note:
         If the debugging messages are altered, this script will have undetermined behavior, since
-        it relies on the existence of the exclamation mark "!" or the hastag "#" to detect actual TMs being sent.
+        it relies on the existence of the exclamation mark "!", the hastag "#" or the question mark "?" to detect actual TMs being sent.
     """
 
     if serial_port is None:
