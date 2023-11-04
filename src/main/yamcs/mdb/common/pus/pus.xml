@@ -177,7 +177,7 @@
                     <Argument argumentTypeRef="/base-dt/packet_version_number" name="packet_version_number" />
                     <Argument argumentTypeRef="/base-dt/packet_type" name="packet_type" />
                     <Argument argumentTypeRef="/base-dt/secondary_header_flag" name="secondary_header_flag" />
-                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_process_ID" initialValue="OBC" />
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_process_ID"/>
                     <Argument argumentTypeRef="/base-dt/sequence_flags" name="sequence_flags" />
                     <!-- Secondary Header -->
                     <Argument argumentTypeRef="/base-dt/uint4_t" name="PUS_version_number" />
