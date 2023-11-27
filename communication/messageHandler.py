@@ -174,7 +174,8 @@ def mcu_client(
             while True:
                 line = ser.readline()
                 try:
-                    message = cobs.decode(line)
+                    # message = cobs.decode(line)
+                    message = line
                 except DecodeError:
                     print("Cobs decode error!")
                     continue
@@ -264,7 +265,8 @@ def mcu_client_logger(
 
             while True:
                 line = ser.readline()
-                message = cobs.decode(line)
+                # message = cobs.decode(line)
+                message = line 
 
                 fileLogger.info(message)
 
@@ -393,36 +395,36 @@ if __name__ == "__main__":
     yamcs_listener_thread = Thread(target=yamcs_client, args=(settings,))
     yamcs_listener_thread.start()
 
-    obc_adcs_serial_port = settings.usb_serial_0
-    adcs_logs_serial_port = settings.uart_serial_0
-    obc_logs_serial_port = settings.uart_serial_1
-    comms_logs_serial_port = settings.uart_serial_1
+    obc_adcs_comms_serial_port = settings.usb_serial_0
+    # adcs_logs_serial_port = settings.uart_serial_0
+    # obc_logs_serial_port = settings.uart_serial_1
+    comms_logs_serial_port = settings.usb_serial_0
 
-    obc_adcs_listener_thread = Thread(
+    obc_adcs_comms_listener_thread = Thread(
         target=mcu_client,
         args=(
             settings,
-            obc_adcs_serial_port,
+            obc_adcs_comms_serial_port,
         ),
     ).start()
 
-    adcs_logger_thread = Thread(
-        target=mcu_client_logger,
-        args=(
-            settings,
-            ThreadType.ADCS,
-            adcs_logs_serial_port,
-        ),
-    ).start()
+    # adcs_logger_thread = Thread(
+    #     target=mcu_client_logger,
+    #     args=(
+    #         settings,
+    #         ThreadType.ADCS,
+    #         adcs_logs_serial_port,
+    #     ),
+    # ).start()
 
-    obc_logger_thread = Thread(
-        target=mcu_client_logger,
-        args=(
-            settings,
-            ThreadType.OBC,
-            obc_logs_serial_port,
-        ),
-    ).start()
+    # obc_logger_thread = Thread(
+    #     target=mcu_client_logger,
+    #     args=(
+    #         settings,
+    #         ThreadType.OBC,
+    #         obc_logs_serial_port,
+    #     ),
+    # ).start()
 
     comms_logger_thread = Thread(
         target=mcu_client_logger,
