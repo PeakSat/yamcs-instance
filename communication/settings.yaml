@@ -1,5 +1,5 @@
 ---
-yamcs_port_out: 10025
+yamcs_port_out: 10026
 obc_port_in: 10015
 adcs_port_in: 10016
 comms_port_in: 10013
