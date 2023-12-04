@@ -5,7 +5,7 @@
 	shortDescription="This is a bogus satellite telemetry and telecommand database."
 	operationalStatus="unittest">
 
-    <!-- Contains COMMS's non primitive parameters and arguments -->
+    <!-- Contains COMMS' non-primitive parameters and arguments -->
 
     <xtce:TelemetryMetaData>
 

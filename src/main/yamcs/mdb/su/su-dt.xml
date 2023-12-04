@@ -10,21 +10,21 @@
         <ParameterTypeSet>
 
             <xtce:EnumeratedParameterType name="SUPhotoCroppedResolution_t">
-                <IntegerDataEncoding sizeInBits="64"></IntegerDataEncoding> <!-- 16bytes in mdb but 8bytes at cross platform software-->
+                <IntegerDataEncoding sizeInBits="64"/> <!-- 16bytes in mdb but 8bytes at cross platform software-->
                 <EnumerationList>
                     <xtce:Enumeration value="0" label="Default" />
                 </EnumerationList>
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="SUPhotoCompressionRate_t"> <!-- Not used in the payload campaign-->
-                <IntegerDataEncoding sizeInBits="32"></IntegerDataEncoding>
+                <IntegerDataEncoding sizeInBits="32"/>
                 <EnumerationList>
                     <xtce:Enumeration value="0" label="None" />
                 </EnumerationList>
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="SUExperimentNo_t"> 
-                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
+                <IntegerDataEncoding sizeInBits="8"/>
                 <EnumerationList>
                     <xtce:Enumeration value="0" label="FirstExperiment" />
                     <xtce:Enumeration value="1" label="SecondExperiment" />
@@ -33,7 +33,7 @@
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="SUNANDMemoryPartition_t"> 
-                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
+                <IntegerDataEncoding sizeInBits="8"/>
                 <EnumerationList>
                     <xtce:Enumeration value="0" label="First" />
                     <xtce:Enumeration value="1" label="Second" />
@@ -117,21 +117,21 @@
         <ArgumentTypeSet>
 
             <xtce:EnumeratedArgumentType name="SUPhotoCroppedResolution_t">
-                <IntegerDataEncoding sizeInBits="64"></IntegerDataEncoding> <!-- 16bytes in mdb but 8bytes at cross platform software-->
+                <IntegerDataEncoding sizeInBits="64"/> <!-- 16bytes in mdb but 8bytes at cross platform software-->
                 <EnumerationList>
                     <xtce:Enumeration value="0" label="Default" />
                 </EnumerationList>
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="SUPhotoCompressionRate_t"> <!-- Not used in the payload campaign-->
-                <IntegerDataEncoding sizeInBits="32"></IntegerDataEncoding>
+                <IntegerDataEncoding sizeInBits="32"/>
                 <EnumerationList>
                     <xtce:Enumeration value="0" label="None" />
                 </EnumerationList>
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="SUExperimentNo_t"> 
-                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
+                <IntegerDataEncoding sizeInBits="8"/>
                 <EnumerationList>
                     <xtce:Enumeration value="0" label="FirstExperiment" />
                     <xtce:Enumeration value="1" label="SecondExperiment" />
@@ -140,7 +140,7 @@
             </xtce:EnumeratedArgumentType>
 
             <xtce:EnumeratedArgumentType name="SUNANDMemoryPartition_t"> 
-                <IntegerDataEncoding sizeInBits="8"></IntegerDataEncoding>
+                <IntegerDataEncoding sizeInBits="8"/>
                 <EnumerationList>
                     <xtce:Enumeration value="0" label="First" />
                     <xtce:Enumeration value="1" label="Second" />

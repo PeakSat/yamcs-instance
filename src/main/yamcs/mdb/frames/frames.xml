@@ -81,15 +81,15 @@
 
              <xtce:SequenceContainer name="Transfer_Frame_Primary_Header">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="Transfer_Frame_Header"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="Transfer_Frame_Header"/>
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
             <xtce:SequenceContainer name="Transfer_Frame_Secondary_Header">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_version_number"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_length"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_data_field"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_version_number"/>
+                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_length"/>
+                    <xtce:ParameterRefEntry parameterRef="transfer_frame_secondary_header_data_field"/>
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
@@ -97,9 +97,9 @@
                 <xtce:LongDescription>The purpose of this field is to provide a standardized mechanism for reporting a small number of real-time functions,
                 </xtce:LongDescription>
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="type_flag"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="report_type"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="operational_control"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="type_flag"/>
+                    <xtce:ParameterRefEntry parameterRef="report_type"/>
+                    <xtce:ParameterRefEntry parameterRef="operational_control"/>
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
@@ -109,7 +109,7 @@
                 sending end.
                 </xtce:LongDescription>
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="CLCW"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="CLCW"/>
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
@@ -118,7 +118,7 @@
                 Frame during the transmission and data handling process.
                 </xtce:LongDescription>
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="frame_error_control"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="frame_error_control"/>
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 
