@@ -106,13 +106,43 @@ The backup scripts are in the `yamcs-instance/backup-scripts` directory. After n
 
 The backups are instance-wide, meaning *everything* is saved; parameters, commands, alerts, logs, etc. These files are saved both locally, at a specified directory (in the backup.sh script) and online at the Google Drive folder of the account `yamcs.backup.acubesat@gmail.com`.
 
-## MCU Communication
+## Communication with the development board
 
-To receive TMs and send TCs to the devboard, simply connect it with the PC using a usb cable and run:
+The development board sends all telemetry over USB and also expects all telecommands via the same route. Although Yamcs should be able to handle communication over usb ports, the lack of documentation on this part has created the need for a different approach. The MessageHandler script (inside the `communication` path). 
+
+There are several files there, each of which serves a different purpose:
+- `logging.conf` is the configuration file for all the logging (where it's stored/displayed, the format of each message etc)
+- `requirements.txt` contains all dependencies of the main script
+- `settings.yaml` stores all static data the script uses
+- `messageHandler.py` is the main script
+
+
+#### Configuration
+
+It's required to install all dependencies for the main script, using:
+```bash
+pip3 install -r requirements.txt
+```
+
+After successfully installing everything, the main script can be run simply by executing:
 
 ```bash
-    cd communication
-    python3 MessageHandler.py
+python3 messageHandler.py
 ```
-The script will automatically connect to the running YAMCS instance and take care of the message forwarding to each end. You can safely remove the unused threads by deleting them. 
 
+After that, and if Yamcs is running and the board is connected, all TMs and TCs should appear on the console the moment they are sent.
+
+#### Logic behind the script
+
+Although the purpose of the script seems simple, the way it's achieved is a bit complicated. Some basic info needed to understand the process is:
+1. The devboard is connected either using a USB-to-USB cable (one end on the PC and the other on the board directly), in which case it shows up as a `usbACM` device, or using a breakout board. The second connection is as follows: Board `<-jumper cables->` breakout board `<-usb cable-> pc`. In this case, the device shows up as a `usbtty` device.
+2. Yamcs sends all TCs and expects all TMs through TCP ports. A TCP port is basically a network service, allowing applications to communicate with each other.
+
+So what the script basically does is that it forwards the messages from the usb port, the device is connected to, over to the tcp port, that Yamcs listens for, and vice versa.
+
+In order to accommodate for multiple devboards connected at once, this process is implemented using different threads. There are two main thread categories, a "Yamcs listener" and an "mcu listener";
+- "Yamcs listener" threads, forwrard the messages (TCs) **from Yamcs** to the devboard.
+
+
+
+- "mcu listener" threads, forwrard the messages (TMs) **from the devboard** (mcu) to Yamcs. Depending on the subsystem the messages are sent from, a special symbol is sent along with the message, in order to be able to separate the different subystems. This is required in order to log the messages into separate files, one for each subystem. After some simple pre-processing (removing redundant spaces and decoding) the final message is sent to Yamcs.
