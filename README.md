@@ -132,10 +132,17 @@ python3 messageHandler.py
 
 After that, and if Yamcs is running and the board is connected, all TMs and TCs should appear on the console the moment they are sent.
 
-#### Logic behind the script
+#### Script Logic
 
 Although the purpose of the script seems simple, the way it's achieved is a bit complicated. Some basic info needed to understand the process is:
-1. The devboard is connected either using a USB-to-USB cable (one end on the PC and the other on the board directly), in which case it shows up as a `usbACM` device, or using a breakout board. The second connection is as follows: Board `<-jumper cables->` breakout board `<-usb cable-> pc`. In this case, the device shows up as a `usbtty` device.
+1. The devboard is connected either using a USB-to-USB cable (one end on the PC and the other on the board directly), in which case it shows up as a `usbACM` device, or using a breakout board. The second connection is as follows: Board `<-jumper cables->` breakout board `<-usb cable-> pc`. In this case, the device shows up as a `usbtty` device. In order to find out on which port the devboard is assigned to, the following command can be executed:
+
+    ```bash
+    ls /dev/tty*
+    ```
+
+    If wether /dev/ttyACM<N> or /dev/ttyUSB<N> shows up (where N is a number, for example /dev/ttyACM0), this means the devboard is connected to the computer. Make sure this serial port matches to the thread configuration, or else no messages will be sent/received.
+
 2. Yamcs sends all TCs and expects all TMs through TCP ports. A TCP port is basically a network service, allowing applications to communicate with each other.
 
 So what the script basically does is that it forwards the messages from the usb port, the device is connected to, over to the tcp port, that Yamcs listens for, and vice versa.
