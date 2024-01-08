@@ -124,7 +124,7 @@ It's required to install all dependencies for the main script, using:
 pip3 install -r requirements.txt
 ```
 
-After successfully installing everything, the main script can be run simply by executing:
+After successfully installing everything, the main script can be run simply by navigating to the `communication/` folder and executing:
 
 ```bash
 python3 messageHandler.py
