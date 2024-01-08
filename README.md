@@ -145,4 +145,5 @@ In order to accommodate for multiple devboards connected at once, this process i
 
 
 
-- "mcu listener" threads, forwrard the messages (TMs) **from the devboard** (mcu) to Yamcs. Depending on the subsystem the messages are sent from, a special symbol is sent along with the message, in order to be able to separate the different subystems. This is required in order to log the messages into separate files, one for each subystem. After some simple pre-processing (removing redundant spaces and decoding) the final message is sent to Yamcs.
+- "mcu listener" threads, forward the messages (TMs) **from the devboard** (mcu) to Yamcs. To distinguish the subsystems the messages are sent from, a special-unique symbol (#, ! or ?) is sent along with each message.
+This is required in order to log the messages into separate files, one for each subsystem. After some simple pre-processing (removing redundant spaces and decoding) the final message is sent to Yamcs.
