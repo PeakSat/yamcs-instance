@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SpaceSystem name="file-handling"
+<SpaceSystem name="ST[06]-ST[23]"
     xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
@@ -9,9 +9,9 @@
     <TelemetryMetaData>
         <ParameterSet>
 
-            <Parameter name="base" parameterTypeRef="/base/string_t" />
-            <Parameter name="number_of_objects" parameterTypeRef="/base/uint8_t" />
-            <Parameter name="object_memory_segment_array" parameterTypeRef="/dt/objectMemorySegmentArray_t" />
+            <Parameter name="base" parameterTypeRef="/base-dt/string_t" />
+            <Parameter name="number_of_objects" parameterTypeRef="/base-dt/uint8_t" />
+            <Parameter name="object_memory_segment_array" parameterTypeRef="/file-handling-dt/objectMemorySegmentArray_t" />
 
         </ParameterSet>
         <ContainerSet>
@@ -62,10 +62,10 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base/string_t" name="source_file_path" />
-                    <Argument argumentTypeRef="/base/string_t" name="source_file_name" />
-                    <Argument argumentTypeRef="/base/string_t" name="target_file_path" />
-                    <Argument argumentTypeRef="/base/string_t" name="target_file_name" />
+                    <Argument argumentTypeRef="/base-dt/string_t" name="source_file_path" />
+                    <Argument argumentTypeRef="/base-dt/string_t" name="source_file_name" />
+                    <Argument argumentTypeRef="/base-dt/string_t" name="target_file_path" />
+                    <Argument argumentTypeRef="/base-dt/string_t" name="target_file_name" />
                 </ArgumentList>
                 <CommandContainer name="TC(23,14)_container">
                     <EntryList>
@@ -86,9 +86,9 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base/string_t" name="base"/>
-                    <Argument argumentTypeRef="/base/uint8_t" name="number_of_objects"/>
-                    <Argument argumentTypeRef="/base/binaryDataArray_t" name="binary_data"/>
+                    <Argument argumentTypeRef="/base-dt/string_t" name="base"/>
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_objects"/>
+                    <Argument argumentTypeRef="/base-dt/binaryDataArray_t" name="binary_data"/>
                 </ArgumentList>
                 <CommandContainer name="TC(6,1)_container">
                     <EntryList>
@@ -108,9 +108,9 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base/string_t" name="base"/>
-                    <Argument argumentTypeRef="/base/uint8_t" name="number_of_objects"/>
-                    <Argument argumentTypeRef="/dt/TC(6,3)_dump_object_memory_data_aggregate" name="object_data"/>
+                    <Argument argumentTypeRef="/base-dt/string_t" name="base"/>
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_objects"/>
+                    <Argument argumentTypeRef="/file-handling-dt/TC(6,3)_dump_object_memory_data_aggregate" name="object_data"/>
                 </ArgumentList>
                 <CommandContainer name="TC(6,3)_container_single">
                     <EntryList>
@@ -130,11 +130,11 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base/string_t" name="base"/>
-                    <Argument argumentTypeRef="/base/uint8_t" name="number_of_objects"/>
-                    <Argument argumentTypeRef="/dt/TC(6,3)_dump_object_memory_data_aggregate" name="object_data1"/>
-                    <Argument argumentTypeRef="/dt/TC(6,3)_dump_object_memory_data_aggregate" name="object_data2"/>
-                    <Argument argumentTypeRef="/dt/TC(6,3)_dump_object_memory_data_aggregate" name="object_data3"/>
+                    <Argument argumentTypeRef="/base-dt/string_t" name="base"/>
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_objects"/>
+                    <Argument argumentTypeRef="/file-handling-dt/TC(6,3)_dump_object_memory_data_aggregate" name="object_data1"/>
+                    <Argument argumentTypeRef="/file-handling-dt/TC(6,3)_dump_object_memory_data_aggregate" name="object_data2"/>
+                    <Argument argumentTypeRef="/file-handling-dt/TC(6,3)_dump_object_memory_data_aggregate" name="object_data3"/>
                 </ArgumentList>
                 <CommandContainer name="TC(6,3)_container">
                     <EntryList>

@@ -1,6 +1,6 @@
-# AcubeSAT YAMCS Instance
+# AcubeSAT YAMCS Instance - COMMS Interface
 
-This repository holds the source code of the YAMCS application used for the AcubeSAT mission.
+This repository holds the source code of the YAMCS application used for the communication with COMMS. To find more information regarding the specific features of this communication as well as the changes made in Yamcs visit the [COMMS - YAMCS interface](https://gitlab.com/acubesat/ops/yamcs-instance/-/wikis/COMMS-YAMCS-Interface-info) wiki page.
 
 The primary **Mission's Database** is stored at YAMCS server, in which **Telemetry** data can be archived and then processed using the YAMCS web interface. The operator can also send **Telecommands** that are stored at the YAMCS database.
 
@@ -29,35 +29,39 @@ To start pushing CCSDS packets into YAMCS, run the included Python script:
 
     python simulator.py
 
-This script opens the packets.raw file and sends packets at 1 Hz over TCP to YAMCS. To see information regarding the incoming packets and updates of the values of the parameters go to the "Packets" and "Parameters" pages, in the Telemetry section, on YAMCS web interface. 
+This script opens the packets.raw file and sends packets at 1 Hz over TCP and frames over UDP to YAMCS. To see information regarding the incoming packets and updates of the values of the parameters go to the "Packets" and "Parameters" pages, in the Telemetry section, on YAMCS web interface. 
 
-The structure of the TM packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32) and the [ECSS-E-ST-70-41C](https://cloud.spacedot.gr/index.php/apps/files/?dir=/AcubeSAT/Subsystems/OBC%20-%20On-board%20Computer/Standards&openfile=18872) standard , consisting of a 6-byte primary header, a 11-byte secondary header and the data field.
+The structure of the TM packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/132x0b3.pdf#page=60) , consisting of a 6-byte tranfer frame primary header and optional 6-byte trailers.
+If there is a need to send specific packets, then [CCSDS Space Data Link Protocols](https://gitlab.com/acubesat/comms/software/ccsds-telemetry-packets) is required. To install, run:
 
-If there is a need to send specific packets, then [ecss-services](https://gitlab.com/acubesat/obc/ecss-services) is required. To install, run:
+    git clone https://gitlab.com/acubesat/comms/software/ccsds-telemetry-packets.git
 
-    git clone https://gitlab.com/acubesat/obc/ecss-services.git --recurse-submodules
-
-Currently, this functionality is implemented in TCP in the branch [`ops-ecss-tcp`](https://gitlab.com/acubesat/obc/ecss-services/-/tree/ops-ecss-tcp). Generated packets will be sent to port 10015 that YAMCS listens to.
+Currently, this functionality is not yet implemented in TCP. When implemented the generated packets will be sent to port 10013 that YAMCS listens to.
 
 ## Telecommanding
 
-This project defines a few example CCSDS telecommands. The structure of the TC packets complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32) and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard, consisting of a 6-byte primary header, a 5-byte secondary header and the data field.
+This project defines a few example CCSDS telecommands. Yamcs won't be sending Frames to COMMS. It will continue to send the TC packets, the structure of which complies with the [CCSDS Space Packet Protocol](https://public.ccsds.org/Pubs/133x0b2e1.pdf#page=32) and the [ECSS-E-ST-70-41C](https://ecss.nl/standard/ecss-e-st-70-41c-space-engineering-telemetry-and-telecommand-packet-utilization-15-april-2016/) standard, consisting of a 6-byte primary header, a 5-byte secondary header and the data field. COMMS will, then, distribute these TCs into Frames.
 
 Telecommands can be sent through the "Commanding" section on YAMCS web interface.
 
+## Instances 
+
+In the **yamcs.yaml** file (located in yamcs-instance/src/main/yamcs/etc) three instances are currently being loaded when yamcs starts, the OBC, the ADCS and the COMMS instance. Each one of them is configured appropriately for the respective subsystem and the operator can choose which instance they want to work with from yamcs' web interface. The file for each instance's configuration is the **yamcs.subsystemName.yaml**. 
+
 ## Data-Links
 
-In yamcs.myproject.yaml file (located in yamcs-instance/src/main/yamcs/etc), four Data-Links are implemented sending and receiving data in different ports. Every time a packet gets sent or received, the count of the respective data-link is increased.
+In each **yamcs.subsystemName.yaml** file (located in yamcs-instance/src/main/yamcs/etc), five Data-Links are implemented sending and receiving data in different ports. Every time a packet gets sent or received, the count of the respective data-link is increased.
 
 * Telemetry Data-Links 
-    * "CAN-bus", receiving data through port 10017
-    * "ADCS-UART", receiving data through port 10016
-    * "OBC-UART", receiving data through port 10015
+    * "COMMS-UART", receiving data through port 10013.
+    * "COMMS", receiving data and more specifically frames through port 10014.
+    * "OBC-UART", receiving data through port 10015.
+    * "ADCS-UART", receiving data through port 10016.
 
-* Telecommanding Data-Link
-    * "tcp-out", sending data at port 10025
+* Telecommanding Data-Links
+    * "tcp-out", which is common for all instances and is sending data at port 10025.
 
-For now, simulator.py sends randomly packets to all three TM Data-Links, but they will, later, be used for the differentiation of the incoming packets based on their origin, as reflected by their names.
+For now, simulator.py sends randomly packets to all three TCP TM Data-Links and custom frames to the COMMS link.
 
 ## Mission Database
 
@@ -65,19 +69,28 @@ The Mission Database describes the telemetry and commands that are processed by 
 
 The .xml files (located in yamcs-instance/src/main/yamcs/mdb) contain all the information regarding the parameters, the containers and the commands used in AcubeSAT YAMCS Instance.
 
-* The dt.xml file contains all **ParameterTypes** for Telemetry and **ArgumentTypes** for Telecommanding.
+The mdb is split across multiple folders to ensure readability and maintainability. The folders, as well as their contents are the following: 
 
-* The rest of the .xml files are used to define parameters, containers and commands for the mission. The .xml file in which a paremeter or container or command is defined, reflects its use. More specifically:
-    * **pus.xml**: contains parameters, containers and commands, which implement the principal services that offer great control over reading/writing parameters from the Ground Station. This control refers to:
-        * accessing and modifying parameter values (ST[20] parameter management service) 
-        * generating periodic reports containing parameter values (ST[03] housekeeping service) 
-        * receiving statistics for a large number of parameters (ST[04] parameter statistics reporting service).
-    * **pus-not-used.xml**: its elements are used for monitoring parameters (ST[12] on-board-monitoring service) 
-    * **pus-verification.xml**: contains parameters and containers used to transmit to the Ground Station information about the status of a request's acceptance verification (ST[01] request verification service)
-    * **report-values.xml**: contains commands for requesting the report of specific paramter values (ST[20] parameter management service)
-    * **set-values.xml**: contains commands for setting the values of specific paramterers to new ones (ST[20] parameter management service)
-    * **time-based-scheduling.xml**: contains commands that will be scheduled to be executed later in the mission timeline (ST[11] time-based scheduling service)
-    * **xtce.xml**: contains the ADCS and OBC parameters that will be used during the Environmental Campaign. 
+- The **subystemName folders** which are split between two xmls: 
+    - `subsystemName-dt.xml` --> Contains complex datatypes used by the subsystem.
+    - `subsystemName-xtce.xml` --> Contains all of the subsystem's parameters.
+- The **common folder** which contains two subfolders: 
+    - The **dt folder** which contains **ParameterTypes** and more specifically: 
+        - `base-dt.xml` --> Contains primitive datatypes.
+        - `dt.xml` --> Contains complex datatypes used by the OBC and ADCS subsystems.
+        - `file-handling-dt.xml` --> Contains the datatypes required for the file handling and the image transmission.
+        - `ST[01]-dt.xml` --> Contains the enumeration datatypes used in ST[01].
+        - `time-based-dt.xml` --> Contains the complex datatypes used in ST[11].
+        - `writeable-dt.xml` --> Contains writeable argument datatypes used in ST[20].
+    - The **pus folder** which contains: 
+        - `pus-not-used.xml` --> Its elements are used for monitoring parameters (ST[12] on-board-monitoring service).
+        - `pus.xml` --> Contains the headers used to make up the telemetry and the telecommand packets, as well as the necessary parameters that make up the headers. 
+- The **frames folder**: 
+    - `frames-dt.xml` --> Contains the necessary complex datatypes used in frames.
+    - `frames.xml` --> Contains the frame packets, as well as the required parameters to make them up.
+- The **services folder**: 
+    - `ST[x].xml` --> Contains the parameters and the packets for service ST[x].
+    - `Logger.xml` --> Contains a custom telemetry packet used for transporting message logs.
 
 ## Backup
 
@@ -93,13 +106,51 @@ The backup scripts are in the `yamcs-instance/backup-scripts` directory. After n
 
 The backups are instance-wide, meaning *everything* is saved; parameters, commands, alerts, logs, etc. These files are saved both locally, at a specified directory (in the backup.sh script) and online at the Google Drive folder of the account `yamcs.backup.acubesat@gmail.com`.
 
-## MCU Communication
+## Communication with the development board
 
-To receive TMs and send TCs to the devboard, simply connect it with the PC using a usb cable and run:
+The development board sends all telemetry over USB and also expects all telecommands via the same route. Although Yamcs should be able to handle communication over usb ports, the lack of documentation on this part has created the need for a different approach. The MessageHandler script (inside the `communication` path). 
+
+There are several files there, each of which serves a different purpose:
+- `logging.conf` is the configuration file for all the logging (where it's stored/displayed, the format of each message etc)
+- `requirements.txt` contains all dependencies of the main script
+- `settings.yaml` stores all static data the script uses
+- `messageHandler.py` is the main script
+
+
+#### Configuration
+
+It's required to install all dependencies for the main script, using:
+```bash
+pip3 install -r requirements.txt
+```
+
+After successfully installing everything, the main script can be run simply by navigating to the `communication/` folder and executing:
 
 ```bash
-    cd communication
-    python3 MessageHandler.py
+python3 messageHandler.py
 ```
-The script will automatically connect to the running YAMCS instance and take care of the message forwarding to each end. You can safely remove the unused threads by deleting them. 
 
+After that, and if Yamcs is running and the board is connected, all TMs and TCs should appear on the console the moment they are sent.
+
+#### Script Logic
+
+Although the purpose of the script seems simple, the way it's achieved is a bit complicated. Some basic info needed to understand the process is:
+1. The devboard is connected either using a USB-to-USB cable (one end on the PC and the other on the board directly), in which case it shows up as a `usbACM` device, or using a breakout board. The second connection is as follows: Board `<-jumper cables->` breakout board `<-usb cable-> pc`. In this case, the device shows up as a `usbtty` device. In order to find out on which port the devboard is assigned to, the following command can be executed:
+
+    ```bash
+    ls /dev/tty*
+    ```
+
+    If wether /dev/ttyACM<N> or /dev/ttyUSB<N> shows up (where N is a number, for example /dev/ttyACM0), this means the devboard is connected to the computer. Make sure this serial port matches to the thread configuration, or else no messages will be sent/received.
+
+2. Yamcs sends all TCs and expects all TMs through TCP ports. A TCP port is basically a network service, allowing applications to communicate with each other.
+
+So what the script basically does is that it forwards the messages from the usb port, the device is connected to, over to the tcp port, that Yamcs listens for, and vice versa.
+
+In order to accommodate for multiple devboards connected at once, this process is implemented using different threads. There are two main thread categories, a "Yamcs listener" and an "mcu listener";
+- "Yamcs listener" threads, forwrard the messages (TCs) **from Yamcs** to the devboard.
+
+
+
+- "mcu listener" threads, forward the messages (TMs) **from the devboard** (mcu) to Yamcs. To distinguish the subsystems the messages are sent from, a special-unique symbol (#, ! or ?) is sent along with each message.
+This is required in order to log the messages into separate files, one for each subsystem. After some simple pre-processing (removing redundant spaces and decoding) the final message is sent to Yamcs.
