@@ -108,13 +108,14 @@ The backups are instance-wide, meaning *everything* is saved; parameters, comman
 
 ## Communication with the development board
 
-The development board sends all telemetry over USB and also expects all telecommands via the same route. Although Yamcs should be able to handle communication over usb ports, the lack of documentation on this part has created the need for a different approach. The MessageHandler script (inside the `communication` path). 
+The development board sends all telemetry over USB and also expects all telecommands via the same route. Although Yamcs should be able to handle communication over usb ports, the lack of documentation on this part has created the need for a different approach. The MessageHandler scripts (inside the `communication` path). 
 
 There are several files there, each of which serves a different purpose:
 - `logging.conf` is the configuration file for all the logging (where it's stored/displayed, the format of each message etc)
 - `requirements.txt` contains all dependencies of the main script
 - `settings.yaml` stores all static data the script uses
-- `messageHandler.py` is the main script
+- `messageHandler.py` is the main script for communication with OBC
+- `COMMSmessageHandler.py` is the main script for communication with COMMS
 
 
 #### Configuration
@@ -129,6 +130,12 @@ After successfully installing everything, the main script can be run simply by n
 ```bash
 python3 messageHandler.py
 ```
+or
+```bash
+python3 COMMSmessageHandler.py
+```
+
+depending on the subsystem you want to communicate with. 
 
 After that, and if Yamcs is running and the board is connected, all TMs and TCs should appear on the console the moment they are sent.
 
