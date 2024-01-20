@@ -135,20 +135,20 @@
         <ContainerSet>
             <xtce:SequenceContainer name="packet_header_TM">
                 <xtce:EntryList>
-                    <xtce:ContainerRefEntry containerRef="secondary_header_TM"></xtce:ContainerRefEntry>
+                    <xtce:ContainerRefEntry containerRef="secondary_header_TM"/>
                 </xtce:EntryList>
-                <xtce:BaseContainer containerRef="primary_header_TM"></xtce:BaseContainer>
+                <xtce:BaseContainer containerRef="primary_header_TM"/>
             </xtce:SequenceContainer>    
 
             <xtce:SequenceContainer name="primary_header_TM">
                 <xtce:EntryList>
-                    <xtce:ParameterRefEntry parameterRef="/pus/packet_version_number"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="/pus/packet_type"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="/pus/secondary_header_flag"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="/pus/application_process_ID"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="/pus/sequence_flags"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="/pus/packet_sequence_count_or_packet_name"></xtce:ParameterRefEntry>
-                    <xtce:ParameterRefEntry parameterRef="/pus/packet_data_length"></xtce:ParameterRefEntry>
+                    <xtce:ParameterRefEntry parameterRef="/pus/packet_version_number"/>
+                    <xtce:ParameterRefEntry parameterRef="/pus/packet_type"/>
+                    <xtce:ParameterRefEntry parameterRef="/pus/secondary_header_flag"/>
+                    <xtce:ParameterRefEntry parameterRef="/pus/application_process_ID"/>
+                    <xtce:ParameterRefEntry parameterRef="/pus/sequence_flags"/>
+                    <xtce:ParameterRefEntry parameterRef="/pus/packet_sequence_count_or_packet_name"/>
+                    <xtce:ParameterRefEntry parameterRef="/pus/packet_data_length"/>
                 </xtce:EntryList>
             </xtce:SequenceContainer>
 

@@ -13,8 +13,8 @@
             <MetaCommand name="dynamic_TC(20,3)_set_float_parameter_values">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="/pus/service_type_ID" argumentValue="20" />
-                        <ArgumentAssignment argumentName="/pus/message_subtype_ID" argumentValue="3" />
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -33,8 +33,8 @@
             <MetaCommand name="TC(20,3)_set_uint8_parameter_values">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="/pus/service_type_ID" argumentValue="20" />
-                        <ArgumentAssignment argumentName="/pus/message_subtype_ID" argumentValue="3" />
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -55,8 +55,8 @@
             <MetaCommand name="dynamic_TC(20,3)_set_int8_parameter_values">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="/pus/service_type_ID" argumentValue="20" />
-                        <ArgumentAssignment argumentName="/pus/message_subtype_ID" argumentValue="3" />
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -75,8 +75,8 @@
             <MetaCommand name="dynamic_TC(20,3)_set_uint32_parameter_values">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="/pus/service_type_ID" argumentValue="20" />
-                        <ArgumentAssignment argumentName="/pus/message_subtype_ID" argumentValue="3" />
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -95,8 +95,8 @@
             <MetaCommand name="TC(20,3)_set_uint64_parameter_values">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="/pus/service_type_ID" argumentValue="20" />
-                        <ArgumentAssignment argumentName="/pus/message_subtype_ID" argumentValue="3" />
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -117,8 +117,8 @@
             <MetaCommand name="dynamic_TC(20,3)_set_bool_parameter_values">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="/pus/service_type_ID" argumentValue="20" />
-                        <ArgumentAssignment argumentName="/pus/message_subtype_ID" argumentValue="3" />
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -137,8 +137,8 @@
             <MetaCommand name="TC(20,3)_set_partition">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="/pus/service_type_ID" argumentValue="20" />
-                        <ArgumentAssignment argumentName="/pus/message_subtype_ID" argumentValue="3" />
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -159,8 +159,8 @@
             <MetaCommand name="TC(20,3)_set_CANBus">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="/pus/service_type_ID" argumentValue="20" />
-                        <ArgumentAssignment argumentName="/pus/message_subtype_ID" argumentValue="3" />
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>

@@ -7,7 +7,7 @@
     
     <xtce:TelemetryMetaData>
         <ParameterSet>
-            <Parameter name="application_process_ID" parameterTypeRef="/base-dt/application_process_ID_uint16"></Parameter>
+            <Parameter name="Application_Process_ID" parameterTypeRef="/base-dt/application_process_ID"/>
         </ParameterSet>
         <ContainerSet>
 
@@ -25,7 +25,7 @@
 
             <SequenceContainer name="TM(17,4)_on_board_connection_test_report">
                 <EntryList>
-                    <ParameterRefEntry parameterRef="application_process_ID" />
+                    <ParameterRefEntry parameterRef="Application_Process_ID" />
                 </EntryList>
                 <BaseContainer containerRef="/pus/packet_header_TM">
                     <RestrictionCriteria>
@@ -64,11 +64,11 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/application_process_ID_uint16" name="application_process_ID" />
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="Application_Process_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(17,3)_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="application_process_ID" />
+                        <ArgumentRefEntry argumentRef="Application_Process_ID" />
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
