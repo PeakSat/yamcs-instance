@@ -20,8 +20,8 @@ if __name__ == "__main__":
         except yaml.YAMLError:
             logging.exception("File reading error.")
 
-    serial_port = settings.uart_serial_0
-    yamcs_listener_thread = Thread(target=yamcs_client, args=(settings,serial_port))
+    serial_port = settings.usb_serial_0
+    yamcs_listener_thread = Thread(target=yamcs_client, args=(settings,serial_port, 'COMMS'))
     yamcs_listener_thread.start()
 
     comms_serial_port = settings.usb_serial_0

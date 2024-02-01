@@ -62,6 +62,7 @@ class Settings:
     """
     yamcs_port_out: int
     comms_port_in: int
+    comms_port_out: int
     obc_port_in: int
     adcs_port_in: int
     uart_serial_0: str
@@ -165,7 +166,8 @@ def mcu_client(
             while True:
                 line = ser.readline()
                 try:
-                    message = cobs.decode(line)
+                    # message = cobs.decode(line)
+                    message = line
                 except DecodeError:
                     print("Cobs decode error!")
                     continue
@@ -255,7 +257,8 @@ def mcu_client_logger(
 
             while True:
                 line = ser.readline()
-                message = cobs.decode(line)
+                # message = cobs.decode(line)
+                message = line
 
                 fileLogger.info(message)
 
@@ -300,7 +303,7 @@ def sendIfConnected(packet: bytearray, settings: Settings, yamcs_port_in: int):
             connection_state = ConnectionState.NOT_CONNECTED
 
 
-def yamcs_client(settings: Settings, serial_port: str = None):
+def yamcs_client(settings: Settings, serial_port: str = None, subsystem: str = None):
     """
     Opens a new TCP stream socket to listen for any TC messages from YAMCS.
     When they arrive, they are encoded using COBS and sent to the serial port.
@@ -314,7 +317,10 @@ def yamcs_client(settings: Settings, serial_port: str = None):
     if serial_port is None:
         serial_port = settings.usb_serial_0
 
-    tcp_client = connect_to_port(settings, settings.yamcs_port_out)
+    if subsystem == 'OBC':
+        tcp_client = connect_to_port(settings, settings.yamcs_port_out)
+    elif subsystem == 'COMMS':
+        tcp_client = connect_to_port(settings, settings.comms_port_out)
 
     while True:
 
