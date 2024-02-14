@@ -81,9 +81,9 @@ dataLinks:
 
   - name: tcp-out
     class: org.yamcs.tctm.TcpTcDataLink
-    stream: tc_realtime_comms
+    stream: tc_realtime
     host: localhost
-    port: 10025
+    port: 10026
     commandPostprocessorClassName: gr.spacedot.acubesat.CustomCommandPostprocessor
 
 mdb:
@@ -155,5 +155,5 @@ streamConfig:
   param: ["pp_realtime", "sys_param", "proc_param"]
   parameterAlarm: ["alarms_realtime"]
   tc:
-    - name: "tc_realtime_comms"
+    - name: "tc_realtime"
       processor: "realtime_comms"

@@ -188,6 +188,22 @@
                     </RestrictionCriteria>
                 </BaseContainer>
             </SequenceContainer>
+
+            <SequenceContainer name="Housekeeping_COMMS">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="/comms-xtce/COMMSPCBTemperature1" />
+                    <ParameterRefEntry parameterRef="/comms-xtce/COMMSPCBTemperature2" />
+                    <ParameterRefEntry parameterRef="/comms-xtce/COMMSMCUTemperature" />
+                    <ParameterRefEntry parameterRef="/comms-xtce/COMMSMCUBootCounter" />
+                </EntryList>
+                <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="6" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
             
         </ContainerSet>
     </xtce:TelemetryMetaData>
