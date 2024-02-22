@@ -6,7 +6,7 @@ from threading import Thread
 from logging import config
 import logging
 import yaml
-from common_module import ThreadType, ConnectionState, Settings, mcu_client, mcu_client_logger, sendIfConnected, yamcs_client, getFileLogger
+from common_module import Settings, mcu_client, yamcs_client
 
 if __name__ == "__main__":
     """
@@ -43,8 +43,8 @@ if __name__ == "__main__":
     yamcs_listener_thread.start()
 
     obc_adcs_serial_port = settings.usb_serial_0
-    adcs_logs_serial_port = settings.uart_serial_0
-    obc_logs_serial_port = settings.uart_serial_1
+    # adcs_logs_serial_port = settings.uart_serial_0
+    # obc_logs_serial_port = settings.uart_serial_1
 
     obc_adcs_listener_thread = Thread(
         target=mcu_client,
@@ -54,21 +54,21 @@ if __name__ == "__main__":
         ),
     ).start()
 
-    adcs_logger_thread = Thread(
-        target=mcu_client_logger,
-        args=(
-            settings,
-            ThreadType.ADCS,
-            adcs_logs_serial_port,
-        ),
-    ).start()
+    # adcs_logger_thread = Thread(
+    #     target=mcu_client_logger,
+    #     args=(
+    #         settings,
+    #         ThreadType.ADCS,
+    #         adcs_logs_serial_port,
+    #     ),
+    # ).start()
 
-    obc_logger_thread = Thread(
-        target=mcu_client_logger,
-        args=(
-            settings,
-            ThreadType.OBC,
-            obc_logs_serial_port,
-        ),
-    ).start()
+    # obc_logger_thread = Thread(
+    #     target=mcu_client_logger,
+    #     args=(
+    #         settings,
+    #         ThreadType.OBC,
+    #         obc_logs_serial_port,
+    #     ),
+    # ).start()
 
