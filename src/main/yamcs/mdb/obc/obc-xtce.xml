@@ -13,7 +13,11 @@
             <Parameter parameterTypeRef="/base-dt/bool_t" name="OBCUseCAN" />
             <Parameter parameterTypeRef="/base-dt/uint16_t" name="OBCBootCounter" />
             <Parameter parameterTypeRef="/base-dt/float_t" name="OBCMCUTemperature" />
-            <Parameter parameterTypeRef="/base-dt/float_t" name="OBCPCBBoardTemperature1" />
+
+            <!--Testing Alarm on that parameter -->
+            <Parameter parameterTypeRef="/obc-dt/float_t_alarm_test_on_OBCPCBBoardTemperature1" name="OBCPCBBoardTemperature1" />
+            
+            
             <Parameter parameterTypeRef="/base-dt/float_t" name="OBCPCBBoardTemperature2" />
             <Parameter parameterTypeRef="/base-dt/uint32_t" name="OBCMCUSysTick" />
             <Parameter parameterTypeRef="/base-dt/uint32_t" name="OBCOnBoardTime" />

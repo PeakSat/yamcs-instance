@@ -99,6 +99,12 @@ def send_tm(simulator):
 
     # sending 2000 packets
     while packetCounter < 400:
+        while True:
+               test_packet = [8, 1, 194, 38, 0, 54, 32, 3, 25, 1, 41, 0, 1, 37, 165, 59, 204, 1, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+               clientconnOBC.send(test_packet)
+               simulator.tm_counter += 1
+               sleep(1)
+       
         with io.open("ecsspackets.raw", "rb") as f:
             header = bytearray(6)
 
