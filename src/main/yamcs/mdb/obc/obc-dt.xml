@@ -46,16 +46,46 @@
                 </EnumerationList>
             </EnumeratedParameterType>
             
-            <FloatParameterType name="float_t_alarm_test_on_OBCPCBBoardTemperature1">
+            <FloatParameterType name="OBCPCBBoardTemperatures_t">
 				<FloatDataEncoding sizeInBits="32" />
                 <DefaultAlarm>
 					<StaticAlarmRanges>
-						<WarningRange minInclusive="40" maxInclusive="85" />
+						<WarningRange minInclusive="-40" maxInclusive="85" />
 					</StaticAlarmRanges>
 				</DefaultAlarm>
 			</FloatParameterType>
 
-        </ParameterTypeSet>        
+            <FloatParameterType name="OBCMCUTemperature_t">
+                <FloatDataEncoding sizeInBits="32">
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minInclusive="-55" maxInclusive="125"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+                </FloatDataEncoding>
+            </FloatParameterType>
+
+
+            <IntegerParameterType name="OBCReconfigurationTimer_t" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
+                <DefaultAlarm >       <!-- Here the minViolations (Default set to 1.) and minConformance (Default set to the same value as minViolations, this attribute indicates the number of succesive instances that do not meet the alarm state.) attributes could be included.-->
+                    <StaticAlarmRanges>
+                        <WarningRange minInclusive="0" maxInclusive="1" />
+
+                    </StaticAlarmRanges>
+                </DefaultAlarm>
+			</IntegerParameterType>
+
+<!-- One characteristic that could be included :  
+             <xtce:StaticAlarmRanges>
+                <xtce:WarningRange minInclusive="-5" maxInclusive="5"/>
+                <xtce:CriticalRange minInclusive="-20" maxInclusive="20"/>
+             </xtce:StaticAlarmRanges>-->
+
+             <!-- Other than that using the AlarmConditions , a MatchCriteria for each alarm level( WatchAlarm, WarningAlarm, DistressAlarm, CriticalAlarm, SevereAlarm) could be used. One important characteristic could be the CustomAlgorithm which is an escape to an externally defined algorithm -->
+
+        </ParameterTypeSet>  
+
     </xtce:TelemetryMetaData>
 
     <xtce:CommandMetaData>
