@@ -116,6 +116,24 @@
                 </EnumerationList>
             </EnumeratedParameterType>
 
+            <FloatParameterType name= "COMMSMCUTemperature_t">
+                <xtce:FloatDataEncoding sizeInBIts="32" />
+                <xtce:DefaultAlarm>
+                    <StaticAlarmRanges>
+                        <WarningRange minInclusive="-55"  maxInclusive="125"/>
+                    </StaticAlarmRanges>
+                </xtce:DefaultAlarm>
+            </FloatParameterType>
+
+            <FloatParameterType name= "COMMSMCUInputVoltage_t">
+                <xtce:FloatDataEncoding sizeInBIts="32" />
+                <xtce:DefaultAlarm>
+                    <StaticAlarmRanges>
+                        <WarningRange minInclusive="3.0"  maxInclusive="3.6"/>
+                    </StaticAlarmRanges>
+                </xtce:DefaultAlarm>
+            </FloatParameterType>
+
             <!-- not used in the Comms Board Campaign -->
 
             <EnumeratedParameterType name="COMMSLNAGain_t">

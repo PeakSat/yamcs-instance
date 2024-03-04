@@ -13,7 +13,6 @@
             <Parameter parameterTypeRef="/base-dt/bool_t" name="OBCUseCAN" />
             <Parameter parameterTypeRef="/base-dt/uint16_t" name="OBCBootCounter" />
 
- <!--Testing Alarm  -->
 
             <Parameter parameterTypeRef="/obc-dt/OBCMCUTemperature_t" name="OBCMCUTemperature" />   <!--(-55 -125) -->
 
