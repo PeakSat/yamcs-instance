@@ -166,7 +166,7 @@
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="1" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="ActiveCAN" initialValue="5018" />
-                    <Argument argumentTypeRef="/dt/active_CAN" name="new_value" />
+                    <Argument argumentTypeRef="/obc-dt/active_CAN" name="new_value" />
                 </ArgumentList>
                 <CommandContainer name="TC(20,3)_CANBus_container">
                     <EntryList>

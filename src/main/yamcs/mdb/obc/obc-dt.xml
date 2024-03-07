@@ -60,6 +60,14 @@
                 </EnumerationList>
         </EnumeratedArgumentType>
 
+        <EnumeratedArgumentType name="active_CAN">
+            <IntegerDataEncoding sizeInBits="8" />
+            <EnumerationList>
+                <Enumeration value="1" label="Main" />
+                <Enumeration value="0" label="Redundant" />
+            </EnumerationList>
+        </EnumeratedArgumentType>
+
         <EnumeratedArgumentType name="OBCOperationalMode_t">
             <IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
             <EnumerationList>
