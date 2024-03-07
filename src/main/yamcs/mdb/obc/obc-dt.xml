@@ -22,8 +22,8 @@
             <EnumeratedParameterType name="OBCCANBUSActive_t">
                 <IntegerDataEncoding sizeInBits="8" />
                 <EnumerationList>
-                    <Enumeration value="0" label="Main" />
-                    <Enumeration value="1" label="Reductant" />
+                    <Enumeration value="1" label="Main" />
+                    <Enumeration value="0" label="Reductant" />
                 </EnumerationList>
             </EnumeratedParameterType>
 

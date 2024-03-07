@@ -224,15 +224,7 @@
                 <IntegerDataEncoding sizeInBits="8" />
                 <EnumerationList>
                     <Enumeration value="1" label="Main" />
-                    <Enumeration value="2" label="Redundant" />
-                </EnumerationList>
-            </EnumeratedArgumentType>
-
-            <EnumeratedArgumentType name="activeCAN_t">
-                <IntegerDataEncoding sizeInBits="8" />
-                <EnumerationList>
-                    <Enumeration value="0" label="Main" />
-                    <Enumeration value="1" label="Reductant" />
+                    <Enumeration value="0" label="Redundant" />
                 </EnumerationList>
             </EnumeratedArgumentType>
 			
