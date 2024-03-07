@@ -60,7 +60,7 @@
                 </EnumerationList>
         </EnumeratedArgumentType>
 
-        <EnumeratedArgumentType name="active_CAN">
+        <EnumeratedArgumentType name="OBCCANBUSActive_t">
             <IntegerDataEncoding sizeInBits="8" />
             <EnumerationList>
                 <Enumeration value="1" label="Main" />
