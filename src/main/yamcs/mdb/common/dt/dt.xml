@@ -219,22 +219,6 @@
                     <Enumeration value="5024" label="OBCMRAMOn" />
                 </EnumerationList>
             </EnumeratedArgumentType>
-
-            <EnumeratedArgumentType name="active_CAN">
-                <IntegerDataEncoding sizeInBits="8" />
-                <EnumerationList>
-                    <Enumeration value="1" label="Main" />
-                    <Enumeration value="2" label="Redundant" />
-                </EnumerationList>
-            </EnumeratedArgumentType>
-
-            <EnumeratedArgumentType name="activeCAN_t">
-                <IntegerDataEncoding sizeInBits="8" />
-                <EnumerationList>
-                    <Enumeration value="0" label="Main" />
-                    <Enumeration value="1" label="Reductant" />
-                </EnumerationList>
-            </EnumeratedArgumentType>
 			
 			<EnumeratedArgumentType name="response_band">
 				<IntegerDataEncoding sizeInBits="1" />
