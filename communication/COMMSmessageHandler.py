@@ -25,7 +25,7 @@ if __name__ == "__main__":
     yamcs_listener_thread.start()
 
     comms_serial_port = settings.usb_serial_0
-    comms_logs_serial_port = settings.usb_serial_0
+    # comms_logs_serial_port = settings.usb_serial_0
 
     comms_listener_thread = Thread(
         target=mcu_client,
@@ -35,12 +35,12 @@ if __name__ == "__main__":
         ),
     ).start()
 
-    comms_logger_thread = Thread(
-        target=mcu_client_logger,
-        args=(
-            settings,
-            ThreadType.COMMS,
-            comms_logs_serial_port,
-        ),
-    ).start()
+    # comms_logger_thread = Thread(
+    #     target=mcu_client_logger,
+    #     args=(
+    #         settings,
+    #         ThreadType.COMMS,
+    #         comms_logs_serial_port,
+    #     ),
+    # ).start()
 

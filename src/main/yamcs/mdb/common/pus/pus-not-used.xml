@@ -56,7 +56,7 @@
 					</ArgumentAssignmentList>
 				</BaseMetaCommand>
 				<ArgumentList>
-					<Argument argumentTypeRef="/dt/active_CAN" name="active_can_bus" />
+					<Argument argumentTypeRef="/obc-dt/OBCCANBUSActive_t" name="active_can_bus" />
 				</ArgumentList>
 				<CommandContainer name="TC(129,420)_container">
 					<EntryList>
