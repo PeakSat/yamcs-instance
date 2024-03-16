@@ -12,15 +12,9 @@
             <Parameter parameterTypeRef="/base-dt/bool_t" name="OBCUseUART" />
             <Parameter parameterTypeRef="/base-dt/bool_t" name="OBCUseCAN" />
             <Parameter parameterTypeRef="/base-dt/uint16_t" name="OBCBootCounter" />
-
-
-            <Parameter parameterTypeRef="/obc-dt/OBCMCUTemperature_t" name="OBCMCUTemperature" />   <!--(-55 -125) -->
-
-            <Parameter parameterTypeRef="/obc-dt/OBCPCBBoardTemperatures_t" name="OBCPCBBoardTemperature1" />    <!--(-40 - 80) -->
-            <Parameter parameterTypeRef="/obc-dt/OBCPCBBoardTemperatures_t" name="OBCPCBBoardTemperature2" />        <!--(-40 - 80) -->
-
-
-
+            <Parameter parameterTypeRef="/obc-dt/OBCMCUTemperature_t" name="OBCMCUTemperature" />  
+            <Parameter parameterTypeRef="/obc-dt/OBCPCBBoardTemperatures_t" name="OBCPCBBoardTemperature1" />    
+            <Parameter parameterTypeRef="/obc-dt/OBCPCBBoardTemperatures_t" name="OBCPCBBoardTemperature2" />        
             <Parameter parameterTypeRef="/base-dt/uint32_t" name="OBCMCUSysTick" />
             <Parameter parameterTypeRef="/base-dt/uint32_t" name="OBCOnBoardTime" />
             <Parameter parameterTypeRef="/obc-dt/OBCMemoryPartition_t" name="OBCMemoryPartition" />
@@ -33,9 +27,7 @@
             <Parameter parameterTypeRef="/base-dt/float_t" name="OBCMRAMON" />
             <Parameter parameterTypeRef="/obc-dt/OBCSpacecraftTimeRef_t" name="OBCSpacecraftTimeRef" />
             <Parameter parameterTypeRef="/obc-dt/OBCOperationalMode_t" name="OBCOperationalMode" />
-
-            <Parameter parameterTypeRef="/obc-dt/OBCReconfigurationTimer_t" name="OBCReconfigurationTimer" />     <!-- 0 - 1 day-->
-
+            <Parameter parameterTypeRef="/obc-dt/OBCReconfigurationTimer_t" name="OBCReconfigurationTimer" /> 
             <Parameter parameterTypeRef="/base-dt/uint16_t" name="OBCLastFailedEvent" />
 
         </ParameterSet>

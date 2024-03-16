@@ -68,21 +68,13 @@
 
             <IntegerParameterType name="OBCReconfigurationTimer_t" signed="false">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
-                <DefaultAlarm >       <!-- Here the minViolations (Default set to 1.) and minConformance (Default set to the same value as minViolations, this attribute indicates the number of succesive instances that do not meet the alarm state.) attributes could be included.-->
+                <DefaultAlarm >      
                     <StaticAlarmRanges>
                         <WarningRange minInclusive="0" maxInclusive="1" />
 
                     </StaticAlarmRanges>
                 </DefaultAlarm>
 			</IntegerParameterType>
-
-<!-- One characteristic that could be included :  
-             <xtce:StaticAlarmRanges>
-                <xtce:WarningRange minInclusive="-5" maxInclusive="5"/>
-                <xtce:CriticalRange minInclusive="-20" maxInclusive="20"/>
-             </xtce:StaticAlarmRanges>-->
-
-             <!-- Other than that using the AlarmConditions , a MatchCriteria for each alarm level( WatchAlarm, WarningAlarm, DistressAlarm, CriticalAlarm, SevereAlarm) could be used. One important characteristic could be the CustomAlgorithm which is an escape to an externally defined algorithm -->
 
         </ParameterTypeSet>  
 

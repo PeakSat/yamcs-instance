@@ -40,15 +40,11 @@
             <xtce:Parameter parameterTypeRef="/base-dt/uint16_t" name="COMMStcFrameSequenceCounter"/>
             <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="COMMSPCBTemperature1"/>
             <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="COMMSPCBTemperature2"/>
-
-            <xtce:Parameter parameterTypeRef="/comms-dt/COMMSMCUTemperature_t" name="COMMSMCUTemperature"/>  <!--   -55 - 125-->
-            <xtce:Parameter parameterTypeRef="/comms-dt/COMMSMCUInputVoltage_t" name="COMMSMCUInputVoltage"/>  <!-- 3.0 - 3.6 -->
-
+            <xtce:Parameter parameterTypeRef="/comms-dt/COMMSMCUTemperature_t" name="COMMSMCUTemperature"/>  
+            <xtce:Parameter parameterTypeRef="/comms-dt/COMMSMCUInputVoltage_t" name="COMMSMCUInputVoltage"/>  
             <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="COMMSMCUBootCounter"/>
             <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="COMMSonBoardTime"/>
-
             <xtce:Parameter parameterTypeRef="/comms-dt/COMMSMemoryPartition_t" name="COMMSnandUsedMemoryPartition"/>
-
             <xtce:Parameter parameterTypeRef="/base-dt/uint16_t" name="COMMSlastFailedEvent"/>
             <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="COMMSMCUSystick"/>
             <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="COMMSFLASHInt"/>
