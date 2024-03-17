@@ -11,7 +11,7 @@
         <ParameterTypeSet>
 
             <IntegerParameterType name="ADCSMagnetometerRaw_t" signed="false">
-				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
                 <DefaultAlarm>
 					<StaticAlarmRanges>
 						<WarningRange minInclusive="-5000" maxInclusive="5000" />
