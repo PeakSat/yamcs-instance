@@ -11,31 +11,25 @@
             <Parameter parameterTypeRef="/base-dt/bool_t" name="ADCSUseUART" />
             <Parameter parameterTypeRef="/base-dt/bool_t" name="ADCSUseCAN" />
             <!--ADCS Parameters that will be used in the Environmental Campaign-->
-
-            <Parameter parameterTypeRef="/adcs-dt/ADCSMagnetometerRaw_t" name="ADCSMagnetometerRawX" /> -
-            <Parameter parameterTypeRef="/adcs-dt/ADCSMagnetometerRaw_t" name="ADCSMagnetometerRawY" /> -
-            <Parameter parameterTypeRef="/adcs-dt/ADCSMagnetometerRaw_t" name="ADCSMagnetometerRawZ" /> -
-            <Parameter parameterTypeRef="/adcs-dt/ADCSMagnetometerFrequency_t" name="ADCSMagnetometerFrequency" /> - 
-
+            <Parameter parameterTypeRef="/adcs-dt/ADCSMagnetometerRaw_t" name="ADCSMagnetometerRawX" /> 
+            <Parameter parameterTypeRef="/adcs-dt/ADCSMagnetometerRaw_t" name="ADCSMagnetometerRawY" /> 
+            <Parameter parameterTypeRef="/adcs-dt/ADCSMagnetometerRaw_t" name="ADCSMagnetometerRawZ" /> 
+            <Parameter parameterTypeRef="/adcs-dt/ADCSMagnetometerFrequency_t" name="ADCSMagnetometerFrequency" /> 
             <Parameter parameterTypeRef="/base-dt/int8_t" name="ADCSMagnetometerCycleCountX" />
             <Parameter parameterTypeRef="/base-dt/int8_t" name="ADCSMagnetometerCycleCountY" />
-            <Parameter parameterTypeRef="/base-dt/int8_t" name="ADCSMagnetometerCycleCountZ" />
-            
-            <Parameter parameterTypeRef="/adcs-dt/ADCSMagnetometerSelfTest_t" name="ADCSMagnetometerSelfTest" /> - --------
-
+            <Parameter parameterTypeRef="/base-dt/int8_t" name="ADCSMagnetometerCycleCountZ" />     
+            <Parameter parameterTypeRef="/adcs-dt/ADCSMagnetometerSelfTest_t" name="ADCSMagnetometerSelfTest" /> 
             <Parameter parameterTypeRef="/base-dt/uint32_t" name="ADCSGyroscopeX" />
             <Parameter parameterTypeRef="/base-dt/uint32_t" name="ADCSGyroscopeY" />
             <Parameter parameterTypeRef="/base-dt/uint32_t" name="ADCSGyroscopeZ" />
             <Parameter parameterTypeRef="/base-dt/bool_t" name="ADCSMagnetometerSignX" />
             <Parameter parameterTypeRef="/base-dt/bool_t" name="ADCSMagnetometerSignY" />
-            <Parameter parameterTypeRef="/base-dt/bool_t" name="ADCSMagnetometerSignZ" />
-            
-            <Parameter parameterTypeRef="/adcs-dt/ADCSGyroscopeAndBoardTemperature_t" name="ADCSGyroscopeXTemperature" /> - 
-            <Parameter parameterTypeRef="/adcs-dt/ADCSGyroscopeAndBoardTemperature_t" name="ADCSGyroscopeYTemperature" /> - 
-            <Parameter parameterTypeRef="/adcs-dt/ADCSGyroscopeAndBoardTemperature_t" name="ADCSGyroscopeZTemperature" /> - 
-            <Parameter parameterTypeRef="/adcs-dt/ADCSGyroscopeAndBoardTemperature_t" name="ADCSBoardTemperature1" /> - 
-            <Parameter parameterTypeRef="/adcs-dt/ADCSGyroscopeAndBoardTemperature_t" name="ADCSBoardTemperature2" /> -
-
+            <Parameter parameterTypeRef="/base-dt/bool_t" name="ADCSMagnetometerSignZ" /> 
+            <Parameter parameterTypeRef="/adcs-dt/ADCSGyroscopeAndBoardTemperature_t" name="ADCSGyroscopeXTemperature" /> 
+            <Parameter parameterTypeRef="/adcs-dt/ADCSGyroscopeAndBoardTemperature_t" name="ADCSGyroscopeYTemperature" /> 
+            <Parameter parameterTypeRef="/adcs-dt/ADCSGyroscopeAndBoardTemperature_t" name="ADCSGyroscopeZTemperature" /> 
+            <Parameter parameterTypeRef="/adcs-dt/ADCSGyroscopeAndBoardTemperature_t" name="ADCSBoardTemperature1" />  
+            <Parameter parameterTypeRef="/adcs-dt/ADCSGyroscopeAndBoardTemperature_t" name="ADCSBoardTemperature2" /> 
             <Parameter parameterTypeRef="/base-dt/bool_t" name="ADCSGyroSignX" />
             <Parameter parameterTypeRef="/base-dt/bool_t" name="ADCSGyroSignY" />
             <Parameter parameterTypeRef="/base-dt/bool_t" name="ADCSGyroSignZ" />
@@ -44,9 +38,7 @@
             <Parameter parameterTypeRef="/base-dt/float_t" name="ADCSGyroBiasZ" />
             <Parameter parameterTypeRef="/base-dt/uint32_t" name="ADCSFlashInt" />
             <Parameter parameterTypeRef="/base-dt/uint32_t" name="ADCSSRAMInt" />
-            
-            <Parameter parameterTypeRef="/adcs-dt/ADCSMCUTemperature_t" name="ADCSMCUTemperature" /> - 
-
+            <Parameter parameterTypeRef="/adcs-dt/ADCSMCUTemperature_t" name="ADCSMCUTemperature" /> 
             <Parameter parameterTypeRef="/base-dt/float_t" name="ADCSMCUOnBoardTime" />
             <Parameter parameterTypeRef="/base-dt/uint64_t" name="ADCSSystick" />
             <Parameter parameterTypeRef="/base-dt/uint16_t" name="ADCSBootCounter" />
