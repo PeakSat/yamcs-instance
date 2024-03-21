@@ -56,13 +56,12 @@
 			</FloatParameterType>
 
             <FloatParameterType name="OBCMCUTemperature_t">
-                <FloatDataEncoding sizeInBits="32">
+                <FloatDataEncoding sizeInBits="32"/>
                     <DefaultAlarm>
                         <StaticAlarmRanges>
                             <WarningRange minInclusive="-55" maxInclusive="125"/>
                         </StaticAlarmRanges>
                     </DefaultAlarm>
-                </FloatDataEncoding>
             </FloatParameterType>
 
 
@@ -71,7 +70,6 @@
                 <DefaultAlarm >      
                     <StaticAlarmRanges>
                         <WarningRange minInclusive="0" maxInclusive="1" />
-
                     </StaticAlarmRanges>
                 </DefaultAlarm>
 			</IntegerParameterType>
