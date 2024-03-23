@@ -13,24 +13,24 @@
             <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUUseCAN"/>
 
             <!-- Temperature-->
-            <xtce:Parameter parameterTypeRef="/su-dt/SUPCBTemperatures_t" name="SUPCBTemperature1"/>- -40 85
-            <xtce:Parameter parameterTypeRef="/su-dt/SUPCBTemperatures_t" name="SUPCBTemperature2"/>- -40 85
-            <xtce:Parameter parameterTypeRef="/su-dt/SUPCBTemperatureControlValves_t" name="SUPCBTemperatureControlValves"/>- 0 50
-            <xtce:Parameter parameterTypeRef="/su-dt/SUPCBTemperatureFlowValves_t" name="SUPCBTemperatureFlowValves"/>- 4 49
-            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUPDMSTemperature"/>----   science mode (25-35) nominal mode(0-TBQ) ----
-            <xtce:Parameter parameterTypeRef="/su-dt/SUGrowthMediumTemperature_t" name="SUGrowthMediumTemperature"/>-   greaterthan0
-            <xtce:Parameter parameterTypeRef="/su-dt/SUCameraTemperature_t" name="SUCameraTemperature"/>-   lessthan50
+            <xtce:Parameter parameterTypeRef="/su-dt/SUPCBTemperatures_t" name="SUPCBTemperature1"/>  <!-- -40 85 -->
+            <xtce:Parameter parameterTypeRef="/su-dt/SUPCBTemperatures_t" name="SUPCBTemperature2"/> <!-- -40 85 -->
+            <xtce:Parameter parameterTypeRef="/su-dt/SUPCBTemperatureControlValves_t" name="SUPCBTemperatureControlValves"/>  <!-- 0 50 -->
+            <xtce:Parameter parameterTypeRef="/su-dt/SUPCBTemperatureFlowValves_t" name="SUPCBTemperatureFlowValves"/> <!-- 4 49 -->
+            <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUPDMSTemperature"/> <!--  science mode (25-35) nominal mode(0-TBQ)  --> <!-- Alarm not implemented yet-->
+            <xtce:Parameter parameterTypeRef="/su-dt/SUGrowthMediumTemperature_t" name="SUGrowthMediumTemperature"/> <!--   greaterthan0 -->
+            <xtce:Parameter parameterTypeRef="/su-dt/SUCameraTemperature_t" name="SUCameraTemperature"/>-  <!-- lessthan50 -->
 
             <!-- Sensors-->
-            <xtce:Parameter parameterTypeRef="/su-dt/SUPressureLevelSensor_t" name="SUPressureLevelSensor1"/>-  0.8  1.2
-            <xtce:Parameter parameterTypeRef="/su-dt/SUPressureLevelSensor_t" name="SUPressureLevelSensor2"/>-   0.8   1.2
-            <xtce:Parameter parameterTypeRef="/su-dt/SUHumidityLevelSensor_t" name="SUHumidityLevelSensor1"/>-   5   15
-            <xtce:Parameter parameterTypeRef="/su-dt/SUHumidityLevelSensor_t" name="SUHumidityLevelSensor2"/>-   5   15
+            <xtce:Parameter parameterTypeRef="/su-dt/SUPressureLevelSensor_t" name="SUPressureLevelSensor1"/> <!--  0.8  1.2 -->
+            <xtce:Parameter parameterTypeRef="/su-dt/SUPressureLevelSensor_t" name="SUPressureLevelSensor2"/> <!--  0.8   1.2 -->
+            <xtce:Parameter parameterTypeRef="/su-dt/SUHumidityLevelSensor_t" name="SUHumidityLevelSensor1"/> <!--  5   15 -->
+            <xtce:Parameter parameterTypeRef="/su-dt/SUHumidityLevelSensor_t" name="SUHumidityLevelSensor2"/> <!--  5   15 -->
             <!--<xtce:Parameter parameterTypeRef="/base-dt/uint64_t" name="SURADFET"/> 4036 wont be needed-->
 
             <!-- Componenets-->
-            <xtce:Parameter parameterTypeRef="/su-dt/SUPumpFlowRate1_t" name="SUPumpFlowRate1"/>-   150  250 
-            <xtce:Parameter parameterTypeRef="/su-dt/SUPumpFlowRate2_t" name="SUPumpFlowRate2"/>-   0
+            <xtce:Parameter parameterTypeRef="/su-dt/SUPumpFlowRate1_t" name="SUPumpFlowRate1"/> <!--  150  250  -->
+            <xtce:Parameter parameterTypeRef="/su-dt/SUPumpFlowRate2_t" name="SUPumpFlowRate2"/> <!--   0 -->
             <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUControlChamberValve1"/>
             <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUControlChamberValve2"/>
             <xtce:Parameter parameterTypeRef="/base-dt/bool_t" name="SUControlChamberValve3"/>
@@ -58,21 +58,21 @@
 
             <!-- Photos-->
             <xtce:Parameter parameterTypeRef="/base-dt/uint16_t" name="SUNumberOfPhotosTaken"/>
-            <xtce:Parameter parameterTypeRef="/su-dt/SUPhotoExposureTime_t" name="SUPhotoExposureTime"/>-   650
-            <xtce:Parameter parameterTypeRef="/su-dt/SUPhotoInterval_t" name="SUPhotoInterval"/>-    20
+            <xtce:Parameter parameterTypeRef="/su-dt/SUPhotoExposureTime_t" name="SUPhotoExposureTime"/> <!--   650 -->
+            <xtce:Parameter parameterTypeRef="/su-dt/SUPhotoInterval_t" name="SUPhotoInterval"/>-   <!-- 20 -->
             <xtce:Parameter parameterTypeRef="/su-dt/SUPhotoCroppedResolution_t" name="SUPhotoCroppedResolution"/>
             <!-- <xtce:Parameter parameterTypeRef="/su-dt/SUPhotoCompressionRate_t" name="SUPhotoCompressionRate"/>  4034 wont be needed-->
 
             <!-- Misc-->
-            <xtce:Parameter parameterTypeRef="/su-dt/SUExperimentNo_t" name="SUExperimentNumber"/>-   1   3
+            <xtce:Parameter parameterTypeRef="/su-dt/SUExperimentNo_t" name="SUExperimentNumber"/>  <!-- 1   3 -->
             <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="SUOnBoardTime"/>
             <xtce:Parameter parameterTypeRef="/base-dt/uint16_t" name="SULastFailedEvent"/>
             <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUTemperatureFromHumiditySensor1"/>
             <xtce:Parameter parameterTypeRef="/base-dt/float_t" name="SUTemperatureFromHumiditySensor2"/>
 
             <!-- MCU-->
-            <xtce:Parameter parameterTypeRef="/su-dt/SUMcuTemperature_t" name="SUMcuTemperature"/>-   -55   125
-            <xtce:Parameter parameterTypeRef="/su-dt/SUMcuInputVoltage_t" name="SUMcuInputVoltage"/>-   3.0   3.6
+            <xtce:Parameter parameterTypeRef="/su-dt/SUMcuTemperature_t" name="SUMcuTemperature"/> <!--  -55   125 -->
+            <xtce:Parameter parameterTypeRef="/su-dt/SUMcuInputVoltage_t" name="SUMcuInputVoltage"/> <!--   3.0   3.6 -->
             <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="SUMcuBootCounter"/>
             <xtce:Parameter parameterTypeRef="/base-dt/uint32_t" name="SUMcuSystick"/>
 

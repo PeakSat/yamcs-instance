@@ -143,14 +143,18 @@
                 </FloatDataEncoding>
             </FloatParameterType>
 
-         <!--     <FloatParameterType name="SUPDMSTemperature_t">
+           <!--  <FloatParameterType name="SUPDMSTemperature_t">
                 <FloatDataEncoding sizeInBits="32"/>
                     <DefaultAlarm>
                         <AlarmConditions>
-
+                            <xtce:WarningAlarm>
+                                <xtce:Comparison>
+                                    <
+                                </xtce:Comparison>
+                            </xtce:WarningAlarm>
                         </AlarmConditions>
                     </DefaultAlarm>
-            </FloatParameterType>   -->
+            </FloatParameterType>  -->
 
             <FloatParameterType name="SUGrowthMediumTemperature_t">
                 <FloatDataEncoding sizeInBits="32"/>
