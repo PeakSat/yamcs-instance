@@ -38,6 +38,10 @@
 				<FloatDataEncoding sizeInBits="32" />
 			</FloatParameterType>
 
+			<FloatParameterType name="double_t">
+				<FloatDataEncoding sizeInBits="64" />
+			</FloatParameterType>			
+
 			<BooleanParameterType name="bool_t">
 				<IntegerDataEncoding sizeInBits="8" />
 			</BooleanParameterType>
