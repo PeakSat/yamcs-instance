@@ -11,9 +11,9 @@
             <Parameter parameterTypeRef="/base-dt/bool_t" name="ADCSUseUART" />
             <Parameter parameterTypeRef="/base-dt/bool_t" name="ADCSUseCAN" />
             <!--ADCS Parameters that will be used in the Environmental Campaign-->
-            <Parameter parameterTypeRef="/base-dt/uint8_t" name="ADCSMagnetometerRawX" />
-            <Parameter parameterTypeRef="/base-dt/uint8_t" name="ADCSMagnetometerRawY" />
-            <Parameter parameterTypeRef="/base-dt/uint8_t" name="ADCSMagnetometerRawZ" />
+            <Parameter parameterTypeRef="/base-dt/double_t" name="ADCSMagnetometerRawX" />
+            <Parameter parameterTypeRef="/base-dt/double_t" name="ADCSMagnetometerRawY" />
+            <Parameter parameterTypeRef="/base-dt/double_t" name="ADCSMagnetometerRawZ" />
             <Parameter parameterTypeRef="/base-dt/uint8_t" name="ADCSMagnetometerFrequency" />
             <Parameter parameterTypeRef="/base-dt/int8_t" name="ADCSMagnetometerCycleCountX" />
             <Parameter parameterTypeRef="/base-dt/int8_t" name="ADCSMagnetometerCycleCountY" />
