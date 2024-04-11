@@ -10,32 +10,33 @@
     <xtce:TelemetryMetaData>
         <ParameterTypeSet>
 
-            <IntegerParameterType name="ADCSMagnetometerRaw_t" signed="false">
-				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+            <xtce:FloatParameterType name="ADCSMagnetometerRaw_t">
+				<FloatDataEncodingDataEncoding sizeInBits="64" />
                 <DefaultAlarm>
 					<StaticAlarmRanges>
 						<WarningRange minInclusive="-5000" maxInclusive="5000" />
 					</StaticAlarmRanges>
 				</DefaultAlarm>
-			</IntegerParameterType>
+			</xtce:FloatParameterType>
 
-            <FloatParameterType name="ADCSMagnetometerFrequency_t">
-                <FloatDataEncoding sizeInBits="32"/>
+            <xtce:IntegerParameterType name="ADCSMagnetometerFrequency_t" >
+               <IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                     <DefaultAlarm>
                         <StaticAlarmRanges>
                             <WarningRange minExclusive="0" maxInclusive="150"/>
                         </StaticAlarmRanges>
                     </DefaultAlarm>
-            </FloatParameterType>
+            </xtce:IntegerParameterType>
 
-            <FloatParameterType name="ADCSMagnetometerSelfTest_t">
-                <FloatDataEncoding sizeInBits="32"/>
+            <xtce:IntegerParameterType name="ADCSMagnetometerSelfTest_t" >
+               <IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
                     <DefaultAlarm>
                         <StaticAlarmRanges>
-                            <WarningRange minInclusive="15" maxInclusive="500"/>
+                            <WarningRange minExclusive="15" maxInclusive="500"/>
                         </StaticAlarmRanges>
                     </DefaultAlarm>
-            </FloatParameterType>
+            </xtce:IntegerParameterType>
+
 
             <FloatParameterType name="ADCSGyroscopeAndBoardTemperature_t">
                 <FloatDataEncoding sizeInBits="32"/>
