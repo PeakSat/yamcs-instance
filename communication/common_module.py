@@ -65,6 +65,7 @@ class Settings:
     comms_port_out: int
     obc_port_in: int
     adcs_port_in: int
+    adcs_port_out: int
     uart_serial_0: str
     usb_serial_0: str
     uart_serial_1: str
@@ -321,6 +322,8 @@ def yamcs_client(settings: Settings, serial_port: str = None, subsystem: str = N
         tcp_client = connect_to_port(settings, settings.yamcs_port_out)
     elif subsystem == 'COMMS':
         tcp_client = connect_to_port(settings, settings.comms_port_out)
+    elif subsystem == 'ADCS':
+        tcp_client = connect_to_port(settings, settings.adcs_port_out)
 
     while True:
 

@@ -40,7 +40,7 @@ dataLinks:
     class: org.yamcs.tctm.TcpTcDataLink
     stream: tc_realtime
     host: localhost
-    port: 10025
+    port: 10024
     commandPostprocessorClassName: gr.spacedot.acubesat.CustomCommandPostprocessor
 
 mdb:
