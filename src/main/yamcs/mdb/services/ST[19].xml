@@ -20,7 +20,7 @@
     <xtce:CommandMetaData>
         <MetaCommandSet>
 
-            <MetaCommand name="TC(19,1)_add event_action definitions">
+            <MetaCommand name="TC(19,1)_add_event_action definitions">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
@@ -32,7 +32,29 @@
                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" initialValue="OBC"/>
                     <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
                 </ArgumentList>
-                <CommandContainer name="TC(11,12)_container">
+                <CommandContainer name="TC(19,1)_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="numberOfEventActionDefinitions" />
+                        <ArgumentRefEntry argumentRef="application_id" />
+                        <ArgumentRefEntry argumentRef="event_definition_ID" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(19,1)_delete_event_action definitions">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="2"/>
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="numberOfEventActionDefinitions" initialValue="0" /> 
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" initialValue="OBC"/>
+                    <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
+                </ArgumentList>
+                <CommandContainer name="TC(19,2)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="numberOfEventActionDefinitions" />
                         <ArgumentRefEntry argumentRef="application_id" />
