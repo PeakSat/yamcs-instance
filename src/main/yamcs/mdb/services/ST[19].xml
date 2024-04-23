@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpaceSystem name="ST[19]" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
+    shortDescription="This is a bogus satellite telemetry and telecommand database."
+    operationalStatus="unittest">
+    
+    <xtce:TelemetryMetaData>
+
+        <ParameterSet>
+            
+        </ParameterSet>
+
+        <ContainerSet>
+
+        </ContainerSet>
+
+    </xtce:TelemetryMetaData>
+
+    <xtce:CommandMetaData>
+        <MetaCommandSet>
+
+            
+            
+        </MetaCommandSet>
+    </xtce:CommandMetaData>
+</SpaceSystem>
