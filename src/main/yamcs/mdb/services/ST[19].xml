@@ -28,7 +28,7 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint8_t" name="numberOfEventActionDefinitions" initialValue="0" /> 
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="numberOfEventActionDefinitions" initialValue="1" /> 
                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" initialValue="OBC"/>
                     <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
                 </ArgumentList>
@@ -50,7 +50,7 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint8_t" name="numberOfEventActionDefinitions" initialValue="0" /> 
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="numberOfEventActionDefinitions" initialValue="1" /> 
                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" initialValue="OBC"/>
                     <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
                 </ArgumentList>
