@@ -65,12 +65,12 @@
                 <BaseMetaCommand metaCommandRef="TC(19,1)_add_event_action_definitions">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="N" argumentValue="1" />
-                        <ArgumentAssignment argumentName="packet_version_number_of_time_scheduled" argumentValue="0" />
-                        <ArgumentAssignment argumentName="packet_type_of_time_scheduled" argumentValue="TC" />
-                        <ArgumentAssignment argumentName="secondary_header_flag_of_time_scheduled" argumentValue="1" />
-                        <ArgumentAssignment argumentName="sequence_flags_of_time_scheduled" argumentValue="3" />
-                        <ArgumentAssignment argumentName="PUS_version_number_of_time_scheduled" argumentValue="2" />
-                        <ArgumentAssignment argumentName="source_ID_of_time_scheduled" argumentValue="5" />
+                        <ArgumentAssignment argumentName="packet_version_number" argumentValue="0" />
+                        <ArgumentAssignment argumentName="packet_type" argumentValue="TC" />
+                        <ArgumentAssignment argumentName="secondary_header_flag" argumentValue="1" />
+                        <ArgumentAssignment argumentName="sequence_flags" argumentValue="3" />
+                        <ArgumentAssignment argumentName="PUS_version_number" argumentValue="2" />
+                        <ArgumentAssignment argumentName="source_ID" argumentValue="5" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <CommandContainer name="TC(19,1)_assignments_container">
