@@ -208,6 +208,22 @@
                 </CommandContainer>
             </MetaCommand>
 
+            <MetaCommand name="TC(19,9)_disable_the_event_action_function">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="9"/>
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <!-- No arguments needed for disabling the  event-action function -->
+                </ArgumentList>
+                <CommandContainer name="TC(19,9)_container">
+                    <!-- No entries needed for disabling the event-action function -->
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
            
 
 
