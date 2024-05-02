@@ -118,6 +118,24 @@
                     <BaseContainer containerRef="TC(19,2)_container" />
                 </CommandContainer>
             </MetaCommand>
+
+            <MetaCommand name="TC(19,3)_delete_all_event_action_definitions">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3"/>
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <!-- No arguments needed for deleting all event-action definitions -->
+                </ArgumentList>
+                <CommandContainer name="TC(19,3)_container">
+                    <!-- No entries needed for deleting all event-action definitions -->
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+
             
         </MetaCommandSet>
     </xtce:CommandMetaData>
