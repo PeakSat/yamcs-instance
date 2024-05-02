@@ -150,6 +150,14 @@
                 </xtce:DimensionList>
             </ArrayParameterType>
 
+            <EnumeratedParameterType name="event_action_status">
+                <xtce:IntegerDataEncoding sizeInbits="8"/>
+                <xtce:EnumerationList>
+                    <Enumeration value="0" label="disabled"/>
+                    <Enumeration value="1" label="enabled"/>
+                </xtce:EnumerationList>
+            </EnumeratedParameterType>
+
             
         </ParameterTypeSet>
     </TelemetryMetaData>

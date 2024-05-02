@@ -8,11 +8,43 @@
     <xtce:TelemetryMetaData>
 
         <ParameterSet>
-
+            <Parameter parameterTypeRef="/base-dt/uint8_t" name="N" />
+            <Parameter parameterTypeRef="/dt/event_ID" name="event_definition_ID"/>
+            <Parameter parameterTypeRef="/dt/event_action_status" name="event_action_status"/>
+            <Parameter parameterTypeRef="/dt/event_ID_array" name="event_ID_array" />
         </ParameterSet>
 
         <ContainerSet>
-
+            <SequenceContainer name="TM(19,7)_event_action_status_report">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="N" />
+                    <ParameterRefEntry parameterRef="event_definition_ID" />
+                    <ParameterRefEntry parameterRef="event_action_status"/>
+                    <ArrayParameterRefEntry parameterRef="event_ID_array">
+                        <DimensionList>
+                            <Dimension>
+                                <StartingIndex>
+                                    <FixedValue>0</FixedValue>
+                                </StartingIndex>
+                                <EndingIndex>
+                                    <DynamicValue>
+                                        <ParameterInstanceRef parameterRef="N" />
+                                        <LinearAdjustment intercept="-1" />
+                                    </DynamicValue>
+                                </EndingIndex>
+                            </Dimension>
+                        </DimensionList>
+                    </ArrayParameterRefEntry>
+                </EntryList>
+                <BaseContainer containerRef="/pus/packet_header_TM">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="19" parameterRef="/pus/service_type_ID_TM" />
+                            <Comparison value="7" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
         </ContainerSet>
 
     </xtce:TelemetryMetaData>
