@@ -21,7 +21,7 @@
     <xtce:CommandMetaData>
         <MetaCommandSet>
 
-                <MetaCommand name="TC(19,1)_add_event_action_definitions">
+                <MetaCommand name="TC(19,1)_add_event_action_definitions" abstract="true">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
@@ -61,7 +61,7 @@
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="TC(19,1)_add_event_action_definitions_assignments" abstract="true">
+            <MetaCommand name="TC(19,1)_add_event_action_definitions_assignments" >
                 <BaseMetaCommand metaCommandRef="TC(19,1)_add_event_action_definitions">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="N" argumentValue="1" />
