@@ -65,7 +65,6 @@
                 <BaseMetaCommand metaCommandRef="TC(19,1)_add_event_action_definitions">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="N" argumentValue="1" />
-                        <ArgumentAssignment argumentName="application_id" argumentValue="1"/>
                         <ArgumentAssignment argumentName="packet_version_number_of_time_scheduled" argumentValue="0" />
                         <ArgumentAssignment argumentName="packet_type_of_time_scheduled" argumentValue="TC" />
                         <ArgumentAssignment argumentName="secondary_header_flag_of_time_scheduled" argumentValue="1" />
