@@ -156,6 +156,44 @@
                 </CommandContainer>
             </MetaCommand>
 
+            <MetaCommand name="TC(19,5)_disable_event_action_definitions">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="5" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint8_t{1-5}" name="N" />
+                    <Argument argumentTypeRef="/dt/event_ID_array" name="events" />
+                </ArgumentList>
+                <CommandContainer name="TC(19,5)_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="N" />
+                        <ArgumentRefEntry argumentRef="events" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(19,6)_report_the_status_of_each_event_action_definition">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="6"/>
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <!-- No arguments needed for reporting the status of each event-action definition -->
+                </ArgumentList>
+                <CommandContainer name="TC(19,6)_container">
+                    <!-- No entries needed for reporting the status for each event-action definition -->
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+           
+
 
             
         </MetaCommandSet>
