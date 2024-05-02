@@ -119,7 +119,7 @@
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="TC(11,3)_reset_time_bsased_schedule">
+            <MetaCommand name="TC(11,3)_reset_time_based_schedule">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="service_type_ID" argumentValue="11" />
