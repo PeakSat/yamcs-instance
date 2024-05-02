@@ -70,6 +70,20 @@
                 </CommandContainer>
             </MetaCommand> 
 
+            <MetaCommand name="TC(19,1)(17,1)">
+                <BaseMetaCommand metaCommandRef="TC(19,1)_add_event_action_definitions_assignments">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID_of_time_scheduled" argumentValue="17" />
+                        <ArgumentAssignment argumentName="message_subtype_ID_of_time_scheduled" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(19,1)(17,1)_container">
+                    <EntryList />
+                    <BaseContainer containerRef="TC(19,1)_assignments_container" />
+                </CommandContainer>
+            </MetaCommand>
+            
+
             <MetaCommand name="TC(19,2)_delete_event_action_definitions">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
