@@ -29,23 +29,21 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="N"  /> 
-                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
-                    <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
+                     <Argument argumentTypeRef="/base-dt/uint16_t" name="N"  /> 
+                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
+                     <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
 
-                     <!--Secondary TC header args-->
-                     <Argument argumentTypeRef="/base-dt/uint4_t" name="PUS_version_number" />
+                     <Argument argumentTypeRef="/base-dt/uint4_t" name="PUS_version_number" initialValue="2" />
                      <Argument argumentTypeRef="/base-dt/completion_ack" name="completion_ack" initialValue="completion_ack" />
                      <Argument argumentTypeRef="/base-dt/progress_of_execution_ack" name="progress_of_execution_ack" initialValue="progress_of_execution_ack" />
                      <Argument argumentTypeRef="/base-dt/start_of_execution_ack" name="start_of_execution_ack"  initialValue="start_of_execution_ack" />
                      <Argument argumentTypeRef="/base-dt/acceptance_ack" name="acceptance_ack" initialValue="acceptance_ack" />
-                     <Argument argumentTypeRef="/base-dt/uint8_t" name="service_type_ID" />
-                     <Argument argumentTypeRef="/base-dt/uint8_t" name="message_subtype_ID" />
-                     <Argument argumentTypeRef="/base-dt/uint16_t" name="source_ID" />
+                     <Argument argumentTypeRef="/base-dt/uint8_t" name="service_type_ID" initialValue="19" />
+                     <Argument argumentTypeRef="/base-dt/uint8_t" name="message_subtype_ID" initialValue="1"/>
                 </ArgumentList>
                 <CommandContainer name="TC(19,1)_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="N" />
+                        <ArgumentRefEntry argumentRef="N"  />
                         <ArgumentRefEntry argumentRef="application_id" />
                         <ArgumentRefEntry argumentRef="event_definition_ID" />
                         <ArgumentRefEntry argumentRef="PUS_version_number" />
@@ -55,29 +53,22 @@
                         <ArgumentRefEntry argumentRef="acceptance_ack" />
                         <ArgumentRefEntry argumentRef="service_type_ID" />
                         <ArgumentRefEntry argumentRef="message_subtype_ID" />
-                        <ArgumentRefEntry argumentRef="source_ID" />
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="TC(19,1)_add_event_action_definitions_assignments" >
+             <MetaCommand name="TC(19,1)_add_event_action_definitions_assignments" >
                 <BaseMetaCommand metaCommandRef="TC(19,1)_add_event_action_definitions">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="N" argumentValue="1" />
-                        <ArgumentAssignment argumentName="packet_version_number" argumentValue="0" />
-                        <ArgumentAssignment argumentName="packet_type" argumentValue="TC" />
-                        <ArgumentAssignment argumentName="secondary_header_flag" argumentValue="1" />
-                        <ArgumentAssignment argumentName="sequence_flags" argumentValue="3" />
-                        <ArgumentAssignment argumentName="PUS_version_number" argumentValue="2" />
-                        <ArgumentAssignment argumentName="source_ID" argumentValue="5" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <CommandContainer name="TC(19,1)_assignments_container">
                     <EntryList />
                     <BaseContainer containerRef="TC(19,1)_container" />
                 </CommandContainer>
-            </MetaCommand>
+            </MetaCommand> 
 
             <MetaCommand name="TC(19,2)_delete_event_action_definitions">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
