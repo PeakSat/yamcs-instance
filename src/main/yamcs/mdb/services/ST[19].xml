@@ -136,6 +136,27 @@
             </MetaCommand>
 
 
+            <MetaCommand name="TC(19,4)_enable_event_action_definitions">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint8_t{1-5}" name="N" />
+                    <Argument argumentTypeRef="/dt/event_ID_array" name="events" />
+                </ArgumentList>
+                <CommandContainer name="TC(19,4)_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="N" />
+                        <ArgumentRefEntry argumentRef="events" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+
             
         </MetaCommandSet>
     </xtce:CommandMetaData>
