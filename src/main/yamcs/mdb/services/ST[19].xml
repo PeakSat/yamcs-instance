@@ -61,7 +61,7 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                     <Argument argumentTypeRef="/base-dt/uint16_t" name="N"  /> 
+                     <Argument argumentTypeRef="/base-dt/uint8_t" name="N"  /> 
                      <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
                      <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
 
@@ -124,7 +124,7 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="N" /> 
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="N" /> 
                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
                     <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
                 </ArgumentList>
@@ -257,9 +257,6 @@
             </MetaCommand>
 
            
-
-
-            
         </MetaCommandSet>
     </xtce:CommandMetaData>
 </SpaceSystem>
