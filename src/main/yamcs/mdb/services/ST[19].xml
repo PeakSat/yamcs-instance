@@ -127,9 +127,9 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint8_t" name="N" /> 
+                    <Argument argumentTypeRef="/base-dt/uint8_t{1-5}" name="N" /> 
                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
-                    <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
+                    <Argument argumentTypeRef="/dt/event_ID_array" name="event_definition_ID"/>
                 </ArgumentList>
                 <CommandContainer name="TC(19,2)_container">
                     <EntryList>
