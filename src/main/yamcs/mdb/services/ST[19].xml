@@ -93,7 +93,7 @@
                 </CommandContainer>
             </MetaCommand>
 
-             <MetaCommand name="TC(19,1)_add_event_action_definitions_assignments" >
+             <MetaCommand name="TC(19,1)_add_event_action_definitions_assignments" abstract="true" >
                 <BaseMetaCommand metaCommandRef="TC(19,1)_add_event_action_definitions">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="N" argumentValue="1" />
