@@ -70,8 +70,8 @@
                      <Argument argumentTypeRef="/base-dt/progress_of_execution_ack" name="progress_of_execution_ack" initialValue="progress_of_execution_ack" />
                      <Argument argumentTypeRef="/base-dt/start_of_execution_ack" name="start_of_execution_ack"  initialValue="start_of_execution_ack" />
                      <Argument argumentTypeRef="/base-dt/acceptance_ack" name="acceptance_ack" initialValue="acceptance_ack" />
-                     <Argument argumentTypeRef="/base-dt/uint8_t" name="service_type_ID" initialValue="19" />
-                     <Argument argumentTypeRef="/base-dt/uint8_t" name="message_subtype_ID" initialValue="1"/>
+                     <Argument argumentTypeRef="/base-dt/uint8_t" name="service_type_ID"  />
+                     <Argument argumentTypeRef="/base-dt/uint8_t" name="message_subtype_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(19,1)_container">
                     <EntryList>
