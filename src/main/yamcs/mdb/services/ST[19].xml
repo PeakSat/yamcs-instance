@@ -65,26 +65,26 @@
                      <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
                      <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
 
-                     <Argument argumentTypeRef="/base-dt/uint4_t" name="PUS_version_number" initialValue="2" />
-                     <Argument argumentTypeRef="/base-dt/completion_ack" name="completion_ack" initialValue="completion_ack" />
-                     <Argument argumentTypeRef="/base-dt/progress_of_execution_ack" name="progress_of_execution_ack" initialValue="progress_of_execution_ack" />
-                     <Argument argumentTypeRef="/base-dt/start_of_execution_ack" name="start_of_execution_ack"  initialValue="start_of_execution_ack" />
-                     <Argument argumentTypeRef="/base-dt/acceptance_ack" name="acceptance_ack" initialValue="acceptance_ack" />
-                     <Argument argumentTypeRef="/base-dt/uint8_t" name="service_type_ID"  />
-                     <Argument argumentTypeRef="/base-dt/uint8_t" name="message_subtype_ID" />
+                     <Argument argumentTypeRef="/base-dt/uint4_t" name="PUS_version_number_of_request" initialValue="2" />
+                     <Argument argumentTypeRef="/base-dt/completion_ack" name="completion_ack_of_request" initialValue="completion_ack" />
+                     <Argument argumentTypeRef="/base-dt/progress_of_execution_ack" name="progress_of_execution_ack_of_request" initialValue="progress_of_execution_ack" />
+                     <Argument argumentTypeRef="/base-dt/start_of_execution_ack" name="start_of_execution_ack_of_request"  initialValue="start_of_execution_ack" />
+                     <Argument argumentTypeRef="/base-dt/acceptance_ack" name="acceptance_ack_of_request" initialValue="acceptance_ack" />
+                     <Argument argumentTypeRef="/base-dt/uint8_t" name="service_type_ID_of_request"  />
+                     <Argument argumentTypeRef="/base-dt/uint8_t" name="message_subtype_ID_of_request" />
                 </ArgumentList>
                 <CommandContainer name="TC(19,1)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="N"  />
                         <ArgumentRefEntry argumentRef="application_id" />
                         <ArgumentRefEntry argumentRef="event_definition_ID" />
-                        <ArgumentRefEntry argumentRef="PUS_version_number" />
-                        <ArgumentRefEntry argumentRef="completion_ack" />
-                        <ArgumentRefEntry argumentRef="progress_of_execution_ack" />
-                        <ArgumentRefEntry argumentRef="start_of_execution_ack" />
-                        <ArgumentRefEntry argumentRef="acceptance_ack" />
-                        <ArgumentRefEntry argumentRef="service_type_ID" />
-                        <ArgumentRefEntry argumentRef="message_subtype_ID" />
+                        <ArgumentRefEntry argumentRef="PUS_version_number_of_request" />
+                        <ArgumentRefEntry argumentRef="completion_ack_of_request" />
+                        <ArgumentRefEntry argumentRef="progress_of_execution_ack_of_request" />
+                        <ArgumentRefEntry argumentRef="start_of_execution_ack_of_request" />
+                        <ArgumentRefEntry argumentRef="acceptance_ack_of_request" />
+                        <ArgumentRefEntry argumentRef="service_type_ID_of_request" />
+                        <ArgumentRefEntry argumentRef="message_subtype_ID_of_request" />
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
