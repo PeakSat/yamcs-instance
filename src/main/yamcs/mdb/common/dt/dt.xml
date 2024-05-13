@@ -158,6 +158,14 @@
                 </xtce:EnumerationList>
             </EnumeratedParameterType>
 
+            <AggregateParameterType name="event_action_status_report_aggregate">
+                <xtce:MemberList>
+                    <Member name="event_definition_ID" typeRef="event_ID"/>
+                    <Member name="event_action_status" typeRef="event_action_status"/>
+                    <Member name="application_ID" typeRef="/base-dt/application_process_ID"/>
+                </xtce:MemberList>
+            </AggregateParameterType>
+
             
         </ParameterTypeSet>
     </TelemetryMetaData>
