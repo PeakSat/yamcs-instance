@@ -16,10 +16,7 @@
             <SequenceContainer name="TM(19,7)_event_action_status_report">
                 <EntryList>
                     <ParameterRefEntry parameterRef="N" />
-                    <ParameterRefEntry parameterRef="event_definition_ID" />
-                    <ParameterRefEntry parameterRef="event_action_status"/>
-                    <ParameterRefEntry parameterRef="application_process_ID"/>
-                    <ArrayParameterRefEntry parameterRef="event_ID_array">
+                    <ArrayParameterRefEntry parameterRef="event_report_array">
                         <DimensionList>
                             <Dimension>
                                 <StartingIndex>
