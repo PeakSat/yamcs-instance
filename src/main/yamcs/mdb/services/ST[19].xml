@@ -204,11 +204,13 @@
                 </BaseMetaCommand>
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint8_t{1-5}" name="N" />
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_process_ID"/>
                     <Argument argumentTypeRef="/dt/event_ID_array" name="events" />
                 </ArgumentList>
                 <CommandContainer name="TC(19,5)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="N" />
+                        <ArgumentRefEntry argumentRef="application_process_ID"/>
                         <ArgumentRefEntry argumentRef="events" />
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
