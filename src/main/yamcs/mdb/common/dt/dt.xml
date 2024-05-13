@@ -166,6 +166,19 @@
                 </xtce:MemberList>
             </AggregateParameterType>
 
+            <ArrayParameterType name="event_action_status_report_array" arrayTypeRef="event_action_status_report_aggregate">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <FixedValue>0</FixedValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayParameterType>
+
             
         </ParameterTypeSet>
     </TelemetryMetaData>
