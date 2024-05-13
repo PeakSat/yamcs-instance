@@ -9,6 +9,7 @@
 
         <ParameterSet>
             <Parameter parameterTypeRef="/base-dt/uint8_t" name="N" />
+            <Parameter parameterTypeRef="/base-dt/application_process_ID" name="application_process_ID"/>
             <Parameter parameterTypeRef="/dt/event_ID" name="event_definition_ID"/>
             <Parameter parameterTypeRef="/dt/event_action_status" name="event_action_status"/>
             <Parameter parameterTypeRef="/dt/event_ID_array" name="event_ID_array" />
@@ -20,6 +21,7 @@
                     <ParameterRefEntry parameterRef="N" />
                     <ParameterRefEntry parameterRef="event_definition_ID" />
                     <ParameterRefEntry parameterRef="event_action_status"/>
+                    <ParameterRefEntry parameterRef="application_process_ID"/>
                     <ArrayParameterRefEntry parameterRef="event_ID_array">
                         <DimensionList>
                             <Dimension>
