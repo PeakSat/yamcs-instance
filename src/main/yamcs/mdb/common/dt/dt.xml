@@ -320,6 +320,19 @@
 				</StringDataEncoding>
 			</StringArgumentType>
 
+            <!-- ST[12] types-->
+
+            <EnumeratedArgumentType name="check_type">
+                <xtce:IntegerDataEncoding sizeInbits="16" >
+                    <EnumerationList>
+                        <Enumeration value="0" label="expected-value-checking"/>
+                        <Enumeration value="1" label="limit-checking"/>
+                        <Enumeration value="2" label="delta-checking"/>
+                    </EnumerationList>
+                </xtce:IntegerDataEncoding>
+            </EnumeratedArgumentType>
+
+
         </ArgumentTypeSet>
     </CommandMetaData>
 </SpaceSystem>
