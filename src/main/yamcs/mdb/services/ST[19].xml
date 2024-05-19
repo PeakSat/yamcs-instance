@@ -8,7 +8,7 @@
     <xtce:TelemetryMetaData>
 
         <ParameterSet>
-            <Parameter parameterTypeRef="/base-dt/uint8_t" name="N" />
+            <Parameter parameterTypeRef="/base-dt/uint16_t" name="N" />
             <Parameter parameterTypeRef="/dt/event_action_status_report_array" name="event_report_array"/>
         </ParameterSet>
 
@@ -123,7 +123,7 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint8_t{1-5}" name="N" /> 
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="N" /> 
                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
                     <Argument argumentTypeRef="/dt/event_ID_array" name="event_definition_ID"/>
                 </ArgumentList>
@@ -175,8 +175,8 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint8_t{1-5}" name="N" />
-                    <Argument argumentTypeRef="/dt/event_ID_array" name="events" />
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="N" />
+                    <Argument argumentTypeRef="/dt/event_ID" name="events" />
                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
                 </ArgumentList>
                 <CommandContainer name="TC(19,4)_container">
@@ -197,9 +197,9 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint8_t{1-5}" name="N" />
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="N" />
                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_process_ID"/>
-                    <Argument argumentTypeRef="/dt/event_ID_array" name="events" />
+                    <Argument argumentTypeRef="/dt/event_ID" name="events" />
                 </ArgumentList>
                 <CommandContainer name="TC(19,5)_container">
                     <EntryList>
