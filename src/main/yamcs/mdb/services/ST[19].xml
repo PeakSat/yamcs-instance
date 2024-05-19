@@ -57,7 +57,7 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                     <Argument argumentTypeRef="/base-dt/uint8_t" name="N"  /> 
+                     <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions"  /> 
                      <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
                      <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
 
@@ -72,7 +72,7 @@
                 </ArgumentList>
                 <CommandContainer name="TC(19,1)_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="N"  />
+                        <ArgumentRefEntry argumentRef="number_of_event_action_definitions"  />
                         <ArgumentRefEntry argumentRef="application_id" />
                         <ArgumentRefEntry argumentRef="event_definition_ID" />
                         <ArgumentRefEntry argumentRef="PUS_version_number_of_request" />
@@ -92,7 +92,7 @@
              <MetaCommand name="TC(19,1)_add_event_action_definitions_assignments" abstract="true" >
                 <BaseMetaCommand metaCommandRef="TC(19,1)_add_event_action_definitions">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="N" argumentValue="1" />
+                        <ArgumentAssignment argumentName="number_of_event_action_definitions" argumentValue="1" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <CommandContainer name="TC(19,1)_assignments_container">
@@ -123,13 +123,13 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint8_t" name="N" /> 
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions" /> 
                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
                     <Argument argumentTypeRef="/dt/event_ID_array" name="event_definition_ID"/>
                 </ArgumentList>
                 <CommandContainer name="TC(19,2)_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="N" />
+                        <ArgumentRefEntry argumentRef="number_of_event_action_definitions" />
                         <ArgumentRefEntry argumentRef="application_id" />
                         <ArgumentRefEntry argumentRef="event_definition_ID" />
                     </EntryList>
@@ -140,7 +140,7 @@
             <MetaCommand name="TC(19,2)_delete_event_action_definitions_assignments" abstract="true">
                 <BaseMetaCommand metaCommandRef="TC(19,2)_delete_event_action_definitions">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="N" argumentValue="1" />
+                        <ArgumentAssignment argumentName="number_of_event_action_definitions" argumentValue="1" />
                         <ArgumentAssignment argumentName="application_id" argumentValue="1"/>
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
@@ -175,13 +175,13 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint8_t" name="N" />
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions" />
                     <Argument argumentTypeRef="/dt/event_ID" name="events" />
                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
                 </ArgumentList>
                 <CommandContainer name="TC(19,4)_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="N" />
+                        <ArgumentRefEntry argumentRef="number_of_event_action_definitions" />
                         <ArgumentRefEntry argumentRef="events" />
                         <ArgumentRefEntry argumentRef="application_id"/>
                     </EntryList>
@@ -197,13 +197,13 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint8_t" name="N" />
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions" />
                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_process_ID"/>
                     <Argument argumentTypeRef="/dt/event_ID" name="events" />
                 </ArgumentList>
                 <CommandContainer name="TC(19,5)_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="N" />
+                        <ArgumentRefEntry argumentRef="number_of_event_action_definitions" />
                         <ArgumentRefEntry argumentRef="application_process_ID"/>
                         <ArgumentRefEntry argumentRef="events" />
                     </EntryList>
