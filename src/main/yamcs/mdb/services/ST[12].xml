@@ -79,7 +79,7 @@
                 </CommandContainer>
             </MetaCommand>
 
-      <!--       <MetaCommand name="TC(12,5)_add_parameter_monitoring_definitions">
+ <!--           <MetaCommand name="TC(12,5)_add_parameter_monitoring_definitions">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="service_type_ID" argumentValue="12" />
@@ -88,16 +88,17 @@
                 </BaseMetaCommand>
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="N" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="PMON_ID" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="monitored_parameter_ID" />
+                    <Argument argumentTypeRef="/dt/parameterId_t" name="PMON_ID" />
+                    <Argument argumentTypeRef="/dt/parameterId_t" name="monitored_parameter_ID" />
 
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="validity_parameter_ID" />
+                    <Argument argumentTypeRef="/dt/parameterId_t" name="validity_parameter_ID" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="mask" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="expected_value" />
+                   <Argument argumentTypeRef="/dt/check_type_dependent_criteria" name="check_type_dependent_criteria"/>
 
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="monitoring_interval" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="monitoring_interval" />  I dont think it is used in obc-code
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="repetition_number" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="check_type" />
+                    <Argument argumentTypeRef="/dt/check_type" name="check_type" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,5)_container">
                     <EntryList>
@@ -112,10 +113,11 @@
                         <ArgumentRefEntry argumentRef="monitoring_interval" />
                         <ArgumentRefEntry argumentRef="repetition_number" />
                         <ArgumentRefEntry argumentRef="check_type" />
+                        <ArgumentRefEntry argumentRef="check_type_dependent_criteria"/>
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
-            </MetaCommand> -->
+            </MetaCommand>  -->
 
             
         </MetaCommandSet>
