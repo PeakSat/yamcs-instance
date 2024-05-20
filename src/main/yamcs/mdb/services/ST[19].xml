@@ -52,8 +52,8 @@
                 <MetaCommand name="TC(19,1)_add_event_action_definitions" abstract="true">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1"/>
+                        <ArgumentAssignment argumentName="service_type_ID_of_request" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID_of_request" argumentValue="1"/>
                         <ArgumentAssignment argumentName="number_of_event_action_definitions" argumentValue="1" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
@@ -109,8 +109,8 @@
             <MetaCommand name="TC(19,2)_delete_event_action_definitions">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="2"/>
+                        <ArgumentAssignment argumentName="service_type_ID_of_request" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID_of_request" argumentValue="2"/>
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -144,8 +144,8 @@
             <MetaCommand name="TC(19,3)_delete_all_event_action_definitions">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3"/>
+                        <ArgumentAssignment argumentName="service_type_ID_of_request" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID_of_request" argumentValue="3"/>
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -161,8 +161,8 @@
             <MetaCommand name="TC(19,4)_enable_event_action_definitions">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
+                        <ArgumentAssignment argumentName="service_type_ID_of_request" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID_of_request" argumentValue="4" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -183,8 +183,8 @@
             <MetaCommand name="TC(19,5)_disable_event_action_definitions">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="5" />
+                        <ArgumentAssignment argumentName="service_type_ID_of_request" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID_of_request" argumentValue="5" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -205,8 +205,8 @@
             <MetaCommand name="TC(19,6)_report_the_status_of_each_event_action_definition">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="6"/>
+                        <ArgumentAssignment argumentName="service_type_ID_of_request" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID_of_request" argumentValue="6"/>
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -221,8 +221,8 @@
             <MetaCommand name="TC(19,8)_enable_the_event_action_function">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="8"/>
+                        <ArgumentAssignment argumentName="service_type_ID_of_request" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID_of_request" argumentValue="8"/>
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -237,8 +237,8 @@
             <MetaCommand name="TC(19,9)_disable_the_event_action_function">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
-                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="9"/>
+                        <ArgumentAssignment argumentName="service_type_ID_of_request" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID_of_request" argumentValue="9"/>
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
