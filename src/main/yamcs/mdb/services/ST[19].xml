@@ -59,7 +59,7 @@
                 </BaseMetaCommand>
                 <ArgumentList>
                      <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions" initialValue="1"  /> 
-                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
+                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id_of_request" />
                      <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
 
                      <Argument argumentTypeRef="/base-dt/uint4_t" name="PUS_version_number_of_request" initialValue="2" />
@@ -74,7 +74,7 @@
                 <CommandContainer name="TC(19,1)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_event_action_definitions"  />
-                        <ArgumentRefEntry argumentRef="application_id" />
+                        <ArgumentRefEntry argumentRef="application_id_of_request" />
                         <ArgumentRefEntry argumentRef="event_definition_ID" />
                         <ArgumentRefEntry argumentRef="PUS_version_number_of_request" />
                         <ArgumentRefEntry argumentRef="completion_ack_of_request" />
@@ -114,32 +114,20 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions" /> 
-                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions"  initialValue="1" /> 
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id_of_request" initialValue="1" />
                     <Argument argumentTypeRef="/dt/event_ID_array" name="event_definition_ID"/>
                 </ArgumentList>
                 <CommandContainer name="TC(19,2)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_event_action_definitions" />
-                        <ArgumentRefEntry argumentRef="application_id" />
+                        <ArgumentRefEntry argumentRef="application_id_of_request" />
                         <ArgumentRefEntry argumentRef="event_definition_ID" />
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="TC(19,2)_delete_event_action_definitions_assignments" abstract="true">
-                <BaseMetaCommand metaCommandRef="TC(19,2)_delete_event_action_definitions">
-                    <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="number_of_event_action_definitions" argumentValue="1" />
-                        <ArgumentAssignment argumentName="application_id" argumentValue="1"/>
-                    </ArgumentAssignmentList>
-                </BaseMetaCommand>
-                <CommandContainer name="TC(19,2)_assignments_container">
-                    <EntryList />
-                    <BaseContainer containerRef="TC(19,2)_container" />
-                </CommandContainer>
-            </MetaCommand>
 
             <MetaCommand name="TC(19,3)_delete_all_event_action_definitions">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
@@ -168,13 +156,13 @@
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions" />
                     <Argument argumentTypeRef="/dt/event_ID" name="events" />
-                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id" />
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id_of_request" />
                 </ArgumentList>
                 <CommandContainer name="TC(19,4)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_event_action_definitions" />
                         <ArgumentRefEntry argumentRef="events" />
-                        <ArgumentRefEntry argumentRef="application_id"/>
+                        <ArgumentRefEntry argumentRef="application_id_of_request"/>
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
