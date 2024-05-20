@@ -54,6 +54,7 @@
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
                         <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1"/>
+                        <ArgumentAssignment argumentName="number_of_event_action_definitions" argumentValue="1" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -89,20 +90,10 @@
                 </CommandContainer>
             </MetaCommand>
 
-             <MetaCommand name="TC(19,1)_add_event_action_definitions_assignments" abstract="true" >
-                <BaseMetaCommand metaCommandRef="TC(19,1)_add_event_action_definitions">
-                    <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="number_of_event_action_definitions" argumentValue="1" />
-                    </ArgumentAssignmentList>
-                </BaseMetaCommand>
-                <CommandContainer name="TC(19,1)_assignments_container">
-                    <EntryList />
-                    <BaseContainer containerRef="TC(19,1)_container" />
-                </CommandContainer>
-            </MetaCommand> 
+         
 
             <MetaCommand name="TC(19,1)(17,1)">
-                <BaseMetaCommand metaCommandRef="TC(19,1)_add_event_action_definitions_assignments">
+                <BaseMetaCommand metaCommandRef="TC(19,1)_add_event_action_definitions">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="service_type_ID_of_request" argumentValue="17" />
                         <ArgumentAssignment argumentName="message_subtype_ID_of_request" argumentValue="1" />
@@ -110,7 +101,7 @@
                 </BaseMetaCommand>
                 <CommandContainer name="TC(19,1)(17,1)_container">
                     <EntryList />
-                    <BaseContainer containerRef="TC(19,1)_assignments_container" />
+                    <BaseContainer containerRef="TC(19,1)_container" />
                 </CommandContainer>
             </MetaCommand>
             
