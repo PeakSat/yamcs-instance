@@ -54,7 +54,6 @@
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
                         <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1"/>
-                        <ArgumentAssignment argumentName="number_of_event_action_definitions" argumentValue="1" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
