@@ -7,6 +7,9 @@ from logging import config
 import logging
 import yaml
 from common_module import Settings, mcu_client, yamcs_client
+import argparse
+from os import path
+
 
 if __name__ == "__main__":
     """
@@ -28,8 +31,20 @@ if __name__ == "__main__":
         ).start()
     """
 
+    args_parser = argparse.ArgumentParser(
+            prog='messageHandler',
+            description='A simple message handler',
+            epilog='Made by SpaceDot')
+
+
+    args_parser.add_argument('--obclog', default="obc.log")
+    args_parser.add_argument('--adcslog', default="adcs.log")
+    args_parser.add_argument('--commslog', default="comms.log")
+
+    args = args_parser.parse_args()
+
     # setup logging
-    config.fileConfig("logging.conf")
+    config.fileConfig('logging.conf')
     with open("settings.yaml", "r") as stream:
         try:
             data = yaml.safe_load(stream)
@@ -40,7 +55,7 @@ if __name__ == "__main__":
 
     serial_port = settings.uart_serial_0
     yamcs_listener_thread = Thread(target=yamcs_client, args=(settings, serial_port, 'OBC'))
-    # yamcs_listener_thread = Thread(target=yamcs_client, args=(settings, serial_port, 'ADCS'))
+    yamcs_listener_thread = Thread(target=yamcs_client, args=(settings, serial_port, 'ADCS'))
     yamcs_listener_thread.start()
 
     obc_adcs_serial_port = settings.uart_serial_0
@@ -52,6 +67,9 @@ if __name__ == "__main__":
         args=(
             settings,
             obc_adcs_serial_port,
+            str(args.obclog), # default = "abc.log",
+            str(args.adcslog), # default = "adcs.log",
+            str(args.commslog) # default = "comms.log"
         ),
     ).start()
 

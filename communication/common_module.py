@@ -3,34 +3,15 @@ from dataclasses import dataclass
 from logging import Logger
 from enum import Enum
 import logging
+from logs import getFileLogger, change_log_file
+from data import *
 import socket
 from time import sleep
 import serial
 from cobs import cobs
 from cobs.cobs import DecodeError
 
-EXCLAMATION_MARK = 0x021
-HASH_TAG = 0x023
-QUESTION_MARK = 0X03F
-SPACE = 0x020
-DELIMITER = b"\x00"
-TC_HEADER = 11
-yamcs_global_socket = None
 
-
-class ConnectionState(Enum):
-    NOT_CONNECTED = 0
-    CONNECTING = 1
-    CONNECTED = 2
-
-
-class ThreadType(Enum):
-    TELEMETRY = 0
-    OBC = 1
-    ADCS = 2
-    COMMS = 3
-
-connection_state = ConnectionState.NOT_CONNECTED
 
 class YAMCSClosedPortException(Exception):
     """Raised when YAMCS refuses connection."""
@@ -123,6 +104,9 @@ def connect_to_port(settings: Settings, port: int) -> socket:
 def mcu_client(
     settings: Settings,
     serial_port: str = None,
+    obc_log_name: str = "abc.log",
+    adcs_log_name: str = "adcs.log",
+    comms_log_name: str = "comms.log"
 ):
     """
 
@@ -147,10 +131,22 @@ def mcu_client(
     if serial_port is None:
         serial_port = settings.usb_serial_0
 
+    #stdout_handler = logging.StreamHandler(sys.stdout)
+    #stdout_handler.setLevel(logging.DEBUG)
+    #stdout_handler.setFormatter(formatter)
+    
 
     obcFileLogger = getFileLogger(ThreadType.OBC)
+    obcFileLogger = change_log_file(obcFileLogger, obc_log_name)
+
     adcsFileLogger = getFileLogger(ThreadType.ADCS)
+    adcsFileLogger = change_log_file(adcsFileLogger, adcs_log_name)
+
+
     commsFileLogger = getFileLogger(ThreadType.COMMS)
+    commsFileLogger = change_log_file(commsFileLogger, comms_log_name)
+
+
     while True:
 
         try:
@@ -350,12 +346,3 @@ def yamcs_client(settings: Settings, serial_port: str = None, subsystem: str = N
             sleep(settings.reconnection_timeout)
 
 
-def getFileLogger(type: ThreadType) -> Logger:
-    if type == ThreadType.TELEMETRY:
-        return logging.getLogger("telemetry")
-    elif type == ThreadType.OBC:
-        return logging.getLogger("obc")
-    elif type == ThreadType.ADCS:
-        return logging.getLogger("adcs")
-    elif type == ThreadType.COMMS:
-        return logging.getLogger("comms")
