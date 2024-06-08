@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpaceSystem name="ST[19]" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
+    shortDescription="This is a bogus satellite telemetry and telecommand database."
+    operationalStatus="unittest">
+    
+    <xtce:TelemetryMetaData>
+
+        <ParameterSet>
+            <Parameter parameterTypeRef="/base-dt/uint16_t" name="N" />
+            <Parameter parameterTypeRef="/dt/event_action_status_report_array" name="event_report_array"/>
+        </ParameterSet>
+
+        <ContainerSet>
+            <SequenceContainer name="TM(19,7)_event_action_status_report">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="N" />
+                    <ArrayParameterRefEntry parameterRef="event_report_array">
+                        <DimensionList>
+                            <Dimension>
+                                <StartingIndex>
+                                    <FixedValue>0</FixedValue>
+                                </StartingIndex>
+                                <EndingIndex>
+                                    <DynamicValue>
+                                        <ParameterInstanceRef parameterRef="N" />
+                                        <LinearAdjustment intercept="-1" />
+                                    </DynamicValue>
+                                </EndingIndex>
+                            </Dimension>
+                        </DimensionList>
+                    </ArrayParameterRefEntry>
+                </EntryList>
+                <BaseContainer containerRef="/pus/packet_header_TM">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="19" parameterRef="/pus/service_type_ID_TM" />
+                            <Comparison value="7" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
+        </ContainerSet>
+
+    </xtce:TelemetryMetaData>
+    
+
+    <xtce:CommandMetaData>
+        <MetaCommandSet>
+
+                <MetaCommand name="TC(19,1)_add_event_action_definitions" abstract="true">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1"/>
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                     <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions" initialValue="1"  /> 
+                     <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id_of_request" />
+                     <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
+
+                     <Argument argumentTypeRef="/base-dt/uint4_t" name="PUS_version_number_of_request" initialValue="2" />
+                     <Argument argumentTypeRef="/base-dt/completion_ack" name="completion_ack_of_request" initialValue="completion_ack" />
+                     <Argument argumentTypeRef="/base-dt/progress_of_execution_ack" name="progress_of_execution_ack_of_request" initialValue="progress_of_execution_ack" />
+                     <Argument argumentTypeRef="/base-dt/start_of_execution_ack" name="start_of_execution_ack_of_request"  initialValue="start_of_execution_ack" />
+                     <Argument argumentTypeRef="/base-dt/acceptance_ack" name="acceptance_ack_of_request" initialValue="acceptance_ack" />
+                     <Argument argumentTypeRef="/base-dt/uint8_t" name="service_type_ID_of_request"  />
+                     <Argument argumentTypeRef="/base-dt/uint8_t" name="message_subtype_ID_of_request" />
+                     <Argument argumentTypeRef="/base-dt/uint16_t" name="source_ID_of_request" initialValue="5"/>
+                </ArgumentList>
+                <CommandContainer name="TC(19,1)_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_event_action_definitions"  />
+                        <ArgumentRefEntry argumentRef="application_id_of_request" />
+                        <ArgumentRefEntry argumentRef="event_definition_ID" />
+                        <ArgumentRefEntry argumentRef="PUS_version_number_of_request" />
+                        <ArgumentRefEntry argumentRef="completion_ack_of_request" />
+                        <ArgumentRefEntry argumentRef="progress_of_execution_ack_of_request" />
+                        <ArgumentRefEntry argumentRef="start_of_execution_ack_of_request" />
+                        <ArgumentRefEntry argumentRef="acceptance_ack_of_request" />
+                        <ArgumentRefEntry argumentRef="service_type_ID_of_request" />
+                        <ArgumentRefEntry argumentRef="message_subtype_ID_of_request" />
+                        <ArgumentRefEntry argumentRef="source_ID_of_request" />
+
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+         
+
+            <MetaCommand name="TC(19,1)(17,1)">
+                <BaseMetaCommand metaCommandRef="TC(19,1)_add_event_action_definitions">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID_of_request" argumentValue="17" />
+                        <ArgumentAssignment argumentName="message_subtype_ID_of_request" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(19,1)(17,1)_container">
+                    <EntryList />
+                    <BaseContainer containerRef="TC(19,1)_container" />
+                </CommandContainer>
+            </MetaCommand>
+            
+
+            <MetaCommand name="TC(19,2)_delete_event_action_definitions">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="2"/>
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions"  initialValue="1" /> 
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id_of_request" initialValue="1" />
+                    <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
+                </ArgumentList>
+                <CommandContainer name="TC(19,2)_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_event_action_definitions" />
+                        <ArgumentRefEntry argumentRef="application_id_of_request" />
+                        <ArgumentRefEntry argumentRef="event_definition_ID" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+
+            <MetaCommand name="TC(19,3)_delete_all_event_action_definitions">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3"/>
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <!-- No arguments needed for deleting all event-action definitions -->
+                </ArgumentList>
+                <CommandContainer name="TC(19,3)_container">
+                    <!-- No entries needed for deleting all event-action definitions -->
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+
+            <MetaCommand name="TC(19,4)_enable_event_action_definitions">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="4" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions" />
+                    <Argument argumentTypeRef="/dt/event_ID" name="events" />
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id_of_request" />
+                </ArgumentList>
+                <CommandContainer name="TC(19,4)_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_event_action_definitions" />
+                        <ArgumentRefEntry argumentRef="events" />
+                        <ArgumentRefEntry argumentRef="application_id_of_request"/>
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(19,5)_disable_event_action_definitions">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="5" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions" initialValue="1" />
+                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_process_ID"/>
+                    <Argument argumentTypeRef="/dt/event_ID" name="events" />
+                </ArgumentList>
+                <CommandContainer name="TC(19,5)_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_event_action_definitions" />
+                        <ArgumentRefEntry argumentRef="application_process_ID"/>
+                        <ArgumentRefEntry argumentRef="events" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(19,6)_report_the_status_of_each_event_action_definition">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="6"/>
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <!-- No arguments needed for reporting the status of each event-action definition -->
+                </ArgumentList>
+                <CommandContainer name="TC(19,6)_container">
+                    <!-- No entries needed for reporting the status for each event-action definition -->
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(19,8)_enable_the_event_action_function">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="8"/>
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <!-- No arguments needed for enabling the  event-action function -->
+                </ArgumentList>
+                <CommandContainer name="TC(19,8)_container">
+                    <!-- No entries needed for enabling the event-action function -->
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="TC(19,9)_disable_the_event_action_function">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="19" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="9"/>
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <!-- No arguments needed for disabling the  event-action function -->
+                </ArgumentList>
+                <CommandContainer name="TC(19,9)_container">
+                    <!-- No entries needed for disabling the event-action function -->
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+           
+        </MetaCommandSet>
+    </xtce:CommandMetaData>
+</SpaceSystem>
