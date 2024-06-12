@@ -150,6 +150,35 @@
                 </xtce:DimensionList>
             </ArrayParameterType>
 
+            <EnumeratedParameterType name="event_action_status">
+                <xtce:IntegerDataEncoding sizeInbits="8"/>
+                <xtce:EnumerationList>
+                    <Enumeration value="0" label="disabled"/>
+                    <Enumeration value="1" label="enabled"/>
+                </xtce:EnumerationList>
+            </EnumeratedParameterType>
+
+            <AggregateParameterType name="event_action_status_report_aggregate">
+                <xtce:MemberList>
+                    <Member name="event_definition_ID" typeRef="event_ID"/>
+                    <Member name="event_action_status" typeRef="event_action_status"/>
+                    <Member name="application_ID" typeRef="/base-dt/application_process_ID"/>
+                </xtce:MemberList>
+            </AggregateParameterType>
+
+            <ArrayParameterType name="event_action_status_report_array" arrayTypeRef="event_action_status_report_aggregate">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <FixedValue>0</FixedValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayParameterType>
+
             
         </ParameterTypeSet>
     </TelemetryMetaData>
