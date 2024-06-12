@@ -85,9 +85,13 @@ mdb:
 - type: xtce
   spec: "mdb/services/ST[04].xml"
 - type: xtce
+  spec: "mdb/services/ST[08].xml"
+- type: xtce
   spec: "mdb/services/ST[11].xml"
 - type: xtce
   spec: "mdb/services/ST[17].xml"
+- type: xtce
+  spec: "mdb/services/ST[19].xml"
 - type: xtce
   spec: "mdb/services/ST[20,3]-set-values.xml"
 - type: xtce
