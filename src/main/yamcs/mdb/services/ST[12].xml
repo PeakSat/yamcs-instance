@@ -15,7 +15,7 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="N" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="N" initialValue="1"/>
                     <Argument argumentTypeRef="/dt/parameterId_t" name="PMON_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,1)_container">
@@ -35,7 +35,7 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="N" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="N" initialValue="1"/>
                     <Argument argumentTypeRef="/dt/parameterId_t" name="PMON_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,2)_container">
