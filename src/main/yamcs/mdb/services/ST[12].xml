@@ -5,6 +5,15 @@
     shortDescription="This is a bogus satellite telemetry and telecommand database."
     operationalStatus="unittest">
     
+
+
+
+
+
+    <!-- When PMON_ID is implemented service 12 should be adjusted accordingly -->
+
+
+
     <xtce:CommandMetaData>
         <MetaCommandSet>
             <MetaCommand name="TC(12,1)_enable_parameter_monitoring_definitions">
@@ -15,12 +24,12 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="N" initialValue="1"/>
-                    <Argument argumentTypeRef="/dt/parameterId_t" name="PMON_ID" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="total_parameters" />
+                    <Argument argumentTypeRef="/dt/parameterIdArray_t" name="PMON_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,1)_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="N" />
+                        <ArgumentRefEntry argumentRef="total_parameters" />
                         <ArgumentRefEntry argumentRef="PMON_ID" />
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
@@ -35,12 +44,12 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="N" initialValue="1"/>
-                    <Argument argumentTypeRef="/dt/parameterId_t" name="PMON_ID" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="total_parameters" />
+                    <Argument argumentTypeRef="/dt/parameterIdArray_t" name="PMON_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,2)_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="N" />
+                        <ArgumentRefEntry argumentRef="total_parameters" />
                         <ArgumentRefEntry argumentRef="PMON_ID" />
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
@@ -79,7 +88,7 @@
                 </CommandContainer>
             </MetaCommand>
 
- <!--           <MetaCommand name="TC(12,5)_add_parameter_monitoring_definitions">
+            <MetaCommand name="TC(12,5)_add_parameter_monitoring_definitions">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="service_type_ID" argumentValue="12" />
@@ -87,22 +96,20 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="N" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="total_parameters" />
                     <Argument argumentTypeRef="/dt/parameterId_t" name="PMON_ID" />
                     <Argument argumentTypeRef="/dt/parameterId_t" name="monitored_parameter_ID" />
 
                     <Argument argumentTypeRef="/dt/parameterId_t" name="validity_parameter_ID" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="mask" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="expected_value" />
-                   <Argument argumentTypeRef="/dt/check_type_dependent_criteria" name="check_type_dependent_criteria"/>
-
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="monitoring_interval" />  I dont think it is used in obc-code
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="monitoring_interval" />  <!--I dont think it is used in obc-code -->
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="repetition_number" />
                     <Argument argumentTypeRef="/dt/check_type" name="check_type" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,5)_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="N" />
+                        <ArgumentRefEntry argumentRef="total_parameters" />
                         <ArgumentRefEntry argumentRef="PMON_ID" />
                         <ArgumentRefEntry argumentRef="monitored_parameter_ID" />
 
@@ -113,12 +120,81 @@
                         <ArgumentRefEntry argumentRef="monitoring_interval" />
                         <ArgumentRefEntry argumentRef="repetition_number" />
                         <ArgumentRefEntry argumentRef="check_type" />
-                        <ArgumentRefEntry argumentRef="check_type_dependent_criteria"/>
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
-            </MetaCommand>  -->
+            </MetaCommand> 
 
+            <MetaCommand name="TC(12,5)_expected_value_checking">
+                <BaseMetaCommand metaCommandRef="TC(12,5)_add_parameter_monitoring_definitions">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="check_type" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="Mask" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="spare" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="Expected_value" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="event_definition_ID" />
+                </ArgumentList>
+                <CommandContainer name="TC(12,5)_expected_value_checking_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="Mask" />
+                        <ArgumentRefEntry argumentRef="spare" /> 
+                        <ArgumentRefEntry argumentRef="Expected_value" /> 
+                        <ArgumentRefEntry argumentRef="event_definition_ID" />               
+                    </EntryList>
+                    <BaseContainer containerRef="TC(12,5)_add_parameter_monitoring_definitions" />
+                </CommandContainer>
+            </MetaCommand> 
+
+            <MetaCommand name="TC(12,5)_limit_checking">
+                <BaseMetaCommand metaCommandRef="TC(12,5)_add_parameter_monitoring_definitions">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="check_type" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="low_limit" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="event_definition_id" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="high_limit" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="event_definition_ID" />
+                </ArgumentList>
+                <CommandContainer name="TC(12,5)_limit_checking_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="low_limit" /> 
+                        <ArgumentRefEntry argumentRef="event_definition_id" /> 
+                        <ArgumentRefEntry argumentRef="high_limit" />              
+                        <ArgumentRefEntry argumentRef="event_definition_ID" /> 
+                    </EntryList>
+                    <BaseContainer containerRef="TC(12,5)_add_parameter_monitoring_definitions" />
+                </CommandContainer>
+            </MetaCommand> 
+
+            <MetaCommand name="TC(12,5)_delta_checking">
+                <BaseMetaCommand metaCommandRef="TC(12,5)_add_parameter_monitoring_definitions">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="check_type" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="low_delta_threshold" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="event_definition_id" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="high_delta_threshold" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="event_definition_ID" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_consecutive_delta_values" />
+                </ArgumentList>
+                <CommandContainer name="TC(12,5)_delta_checking_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="low_delta_threshold" />  
+                        <ArgumentRefEntry argumentRef="event_definition_id" />  
+                        <ArgumentRefEntry argumentRef="high_delta_threshold" /> 
+                        <ArgumentRefEntry argumentRef="event_definition_ID" /> 
+                        <ArgumentRefEntry argumentRef="number_of_consecutive_delta_values" />             
+                    </EntryList>
+                    <BaseContainer containerRef="TC(12,5)_add_parameter_monitoring_definitions" />
+                </CommandContainer>
+            </MetaCommand>
             
         </MetaCommandSet>
     </xtce:CommandMetaData>
