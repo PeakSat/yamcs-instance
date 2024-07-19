@@ -361,6 +361,22 @@
                 </xtce:IntegerDataEncoding>
             </EnumeratedArgumentType>
 
+            <ArrayArgumentType name="check_type_Array_t" arrayTypeRef="check_type">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <DynamicValue>
+                                <ArgumentInstanceRef argumentRef="total_parameters" />
+                                <LinearAdjustment intercept="-1" />
+                            </DynamicValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayArgumentType>
+
 
         </ArgumentTypeSet>
     </CommandMetaData>
