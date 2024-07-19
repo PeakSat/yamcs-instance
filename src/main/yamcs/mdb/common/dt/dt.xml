@@ -377,6 +377,22 @@
                 </DimensionList>
             </ArrayArgumentType>
 
+            <ArrayArgumentType name="event_ID_Array" arrayTypeRef="event_ID">
+                <xtce:DimensionList>
+                    <Dimension>
+                        <xtce:StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </xtce:StartingIndex>
+                        <xtce:EndingIndex>
+                            <DynamicValue>
+                                <xtce:ArgumentInstanceRef argumentRef="total_parameters" />
+                                <xtce:LinearAdjustment intercept="-1"/>
+                            </DynamicValue>
+                        </xtce:EndingIndex>
+                    </Dimension>
+                </xtce:DimensionList>
+            </ArrayArgumentType>
+
 
         </ArgumentTypeSet>
     </CommandMetaData>
