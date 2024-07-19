@@ -97,10 +97,10 @@
                 </BaseMetaCommand>
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="total_parameters" />
-                    <Argument argumentTypeRef="/dt/parameterId_t" name="PMON_ID" />
-                    <Argument argumentTypeRef="/dt/parameterId_t" name="monitored_parameter_ID" />
+                    <Argument argumentTypeRef="/dt/parameterIdArray_t" name="PMON_ID" />
+                    <Argument argumentTypeRef="/dt/parameterIdArray_t" name="monitored_parameter_ID" />
 
-                    <Argument argumentTypeRef="/dt/parameterId_t" name="validity_parameter_ID" />
+                    <Argument argumentTypeRef="/dt/parameterIdArray_t" name="validity_parameter_ID" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="mask" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="expected_value" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="monitoring_interval" />  <!--I dont think it is used in obc-code -->
@@ -132,10 +132,10 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="Mask" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="spare" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="Expected_value" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="event_definition_ID" />
+                    <Argument argumentTypeRef="/base-dt/string_t" name="Mask" />
+                    <Argument argumentTypeRef="/base-dt/string_t" name="spare" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="Expected_value" />deducedtype?
+                    <Argument argumentTypeRef="/dt/event_ID_array" name="event_definition_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,5)_expected_value_checking_container">
                     <EntryList>
@@ -144,7 +144,7 @@
                         <ArgumentRefEntry argumentRef="Expected_value" /> 
                         <ArgumentRefEntry argumentRef="event_definition_ID" />               
                     </EntryList>
-                    <BaseContainer containerRef="TC(12,5)_add_parameter_monitoring_definitions" />
+                    <BaseContainer containerRef="TC(12,5)_container" />
                 </CommandContainer>
             </MetaCommand> 
 
@@ -155,10 +155,10 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="low_limit" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="event_definition_id" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="high_limit" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="event_definition_ID" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="low_limit" />deducedtype?
+                    <Argument argumentTypeRef="/dt/event_ID_array" name="event_definition_id" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="high_limit" />deducedtype?
+                    <Argument argumentTypeRef="/dt/event_ID_array" name="event_definition_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,5)_limit_checking_container">
                     <EntryList>
@@ -167,7 +167,7 @@
                         <ArgumentRefEntry argumentRef="high_limit" />              
                         <ArgumentRefEntry argumentRef="event_definition_ID" /> 
                     </EntryList>
-                    <BaseContainer containerRef="TC(12,5)_add_parameter_monitoring_definitions" />
+                    <BaseContainer containerRef="TC(12,5)_container" />
                 </CommandContainer>
             </MetaCommand> 
 
@@ -178,10 +178,10 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="low_delta_threshold" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="event_definition_id" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="high_delta_threshold" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="event_definition_ID" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="low_delta_threshold" />deducedtype?
+                    <Argument argumentTypeRef="/dt/event_ID_array" name="event_definition_id" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="high_delta_threshold" />deducedtype?
+                    <Argument argumentTypeRef="/dt/event_ID_array" name="event_definition_ID" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_consecutive_delta_values" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,5)_delta_checking_container">
@@ -192,7 +192,7 @@
                         <ArgumentRefEntry argumentRef="event_definition_ID" /> 
                         <ArgumentRefEntry argumentRef="number_of_consecutive_delta_values" />             
                     </EntryList>
-                    <BaseContainer containerRef="TC(12,5)_add_parameter_monitoring_definitions" />
+                    <BaseContainer containerRef="TC(12,5)_container" />
                 </CommandContainer>
             </MetaCommand>
             
