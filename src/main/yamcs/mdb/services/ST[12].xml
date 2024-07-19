@@ -11,6 +11,7 @@
 
 
     <!-- When PMON_ID is implemented service 12 should be adjusted accordingly -->
+     <!--The types and deduced sized should be corrected-adjusted too-->
 
 
 
@@ -101,7 +102,7 @@
                     <Argument argumentTypeRef="/dt/parameterIdArray_t" name="monitored_parameter_ID" />
 
                     <Argument argumentTypeRef="/dt/parameterIdArray_t" name="validity_parameter_ID" />
-                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="mask" />
+                    <Argument argumentTypeRef="/base-dt/stringArray_t" name="mask" />
                     <Argument argumentTypeRef="/base-dt/uint16Array_t" name="expected_value" />deducedtype?
                     <Argument argumentTypeRef="/base-dt/uint16Array_t" name="monitoring_interval" />  <!--I dont think it is used in obc-code -->
                     <Argument argumentTypeRef="/base-dt/uint16Array_t" name="repetition_number" />
@@ -132,8 +133,8 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/string_t" name="Mask" />
-                    <Argument argumentTypeRef="/base-dt/string_t" name="spare" />
+                    <Argument argumentTypeRef="/base-dt/stringArray_t" name="Mask" />
+                    <Argument argumentTypeRef="/base-dt/stringArray_t" name="spare" />
                     <Argument argumentTypeRef="/base-dt/uint16Array_t" name="Expected_value" />deducedtype?
                     <Argument argumentTypeRef="/dt/event_ID_Array" name="event_definition_ID" />
                 </ArgumentList>
