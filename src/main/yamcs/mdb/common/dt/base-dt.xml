@@ -355,6 +355,22 @@
 				</DimensionList>
 			</ArrayArgumentType>
 
+			<ArrayArgumentType name="stringArray_t" arrayTypeRef="string_t">
+				<DimensionList>
+					<Dimension>
+						<StartingIndex>
+							<FixedValue>0</FixedValue>
+						</StartingIndex>
+						<EndingIndex>
+							<DynamicValue>
+								<ArgumentInstanceRef argumentRef="total_parameters" />
+								<LinearAdjustment intercept="-1" />
+							</DynamicValue>
+						</EndingIndex>
+					</Dimension>
+				</DimensionList>
+			</ArrayArgumentType>
+
 			<ArrayArgumentType arrayTypeRef="uint32_t" name="uint32Array_t">
 				<DimensionList>
 					<Dimension>

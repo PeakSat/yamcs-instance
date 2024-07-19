@@ -134,7 +134,7 @@
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/string_t" name="Mask" />
                     <Argument argumentTypeRef="/base-dt/string_t" name="spare" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="Expected_value" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="Expected_value" />deducedtype?
                     <Argument argumentTypeRef="/dt/event_ID_Array" name="event_definition_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,5)_expected_value_checking_container">
@@ -155,9 +155,9 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="low_limit" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="low_limit" />deducedtype?
                     <Argument argumentTypeRef="/dt/event_ID_Array" name="event_definition_id" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="high_limit" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="high_limit" />deducedtype?
                     <Argument argumentTypeRef="/dt/event_ID_Array" name="event_definition_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,5)_limit_checking_container">
@@ -178,11 +178,11 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="low_delta_threshold" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="low_delta_threshold" />deducedtype?
                     <Argument argumentTypeRef="/dt/event_ID_Array" name="event_definition_id" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="high_delta_threshold" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="high_delta_threshold" />deducedtype?
                     <Argument argumentTypeRef="/dt/event_ID_Array" name="event_definition_ID" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_consecutive_delta_values" />
+                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="number_of_consecutive_delta_values" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,5)_delta_checking_container">
                     <EntryList>
