@@ -347,7 +347,7 @@
 						</StartingIndex>
 						<EndingIndex>
 							<DynamicValue>
-								<ArgumentInstanceRef argumentRef="total_structures" />
+								<ArgumentInstanceRef argumentRef="total_parameters" />
 								<LinearAdjustment intercept="-1" />
 							</DynamicValue>
 						</EndingIndex>
