@@ -110,11 +110,6 @@
                         <ArgumentRefEntry argumentRef="PMON_ID" />
                         <ArgumentRefEntry argumentRef="monitored_parameter_ID" />
 
-                        <ArgumentRefEntry argumentRef="validity_parameter_ID" />
-                        <ArgumentRefEntry argumentRef="mask" />
-                        <ArgumentRefEntry argumentRef="expected_value" />
-
-                        <ArgumentRefEntry argumentRef="monitoring_interval" />
                         <ArgumentRefEntry argumentRef="repetition_number" />
                         <ArgumentRefEntry argumentRef="check_type" />
                     </EntryList>
@@ -125,7 +120,7 @@
             <MetaCommand name="TC(12,5)_expected_value_checking">
                 <BaseMetaCommand metaCommandRef="TC(12,5)_add_parameter_monitoring_definitions">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="check_type" argumentValue="0" />
+                        <ArgumentAssignment argumentName="check_type" argumentValue="expected-value-checking" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -148,7 +143,7 @@
             <MetaCommand name="TC(12,5)_limit_checking">
                 <BaseMetaCommand metaCommandRef="TC(12,5)_add_parameter_monitoring_definitions">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="check_type" argumentValue="1" />
+                        <ArgumentAssignment argumentName="check_type" argumentValue="limit-checking" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -171,7 +166,7 @@
             <MetaCommand name="TC(12,5)_delta_checking">
                 <BaseMetaCommand metaCommandRef="TC(12,5)_add_parameter_monitoring_definitions">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="check_type" argumentValue="3" />
+                        <ArgumentAssignment argumentName="check_type" argumentValue="delta-checking" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
