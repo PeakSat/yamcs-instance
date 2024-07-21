@@ -145,9 +145,9 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/double_t" name="low_limit" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/double_t" name="low_limit" />
                     <Argument argumentTypeRef="/dt/event_ID" name="event_definition_id" />
-                    <Argument argumentTypeRef="/base-dt/double_t" name="high_limit" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/double_t" name="high_limit" />
                     <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,5)_limit_checking_container">
@@ -168,9 +168,9 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/double_t" name="low_delta_threshold" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/double_t" name="low_delta_threshold" />
                     <Argument argumentTypeRef="/dt/event_ID" name="event_definition_id" />
-                    <Argument argumentTypeRef="/base-dt/double_t" name="high_delta_threshold" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/double_t" name="high_delta_threshold" />
                     <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID" />
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_consecutive_delta_values" />
                 </ArgumentList>
