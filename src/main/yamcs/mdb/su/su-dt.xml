@@ -30,6 +30,11 @@
                     <xtce:Enumeration value="1" label="SecondExperiment" />
                     <xtce:Enumeration value="2" label="ThirdExperiment" />
                 </EnumerationList>
+                <DefaultAlarm>
+                    <StaticAlarmRanges>
+                        <WarningRange minInclusive="0" maxInclusive="2"/>
+                    </StaticAlarmRanges>
+                </DefaultAlarm>
             </xtce:EnumeratedParameterType>
 
             <xtce:EnumeratedParameterType name="SUNANDMemoryPartition_t"> 
@@ -109,6 +114,137 @@
 
                 </EnumerationList>
             </xtce:EnumeratedParameterType>
+
+            <FloatParameterType name="SUPCBTemperatures_t">
+                <FloatDataEncoding sizeInBits="32"/>
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minInclusive="-40" maxInclusive="85"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+            </FloatParameterType>
+
+            <FloatParameterType name="SUPCBTemperatureControlValves_t">
+                <FloatDataEncoding sizeInBits="32"/>
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minInclusive="0" maxInclusive="50"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+            </FloatParameterType>
+
+            <FloatParameterType name="SUPCBTemperatureFlowValves_t">
+                <FloatDataEncoding sizeInBits="32">
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minInclusive="4" maxInclusive="49"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+                </FloatDataEncoding>
+            </FloatParameterType>
+
+           <!--  <FloatParameterType name="SUPDMSTemperature_t">
+                <FloatDataEncoding sizeInBits="32"/>
+                    <DefaultAlarm>
+                        <AlarmConditions>
+                            <xtce:WarningAlarm>
+                                <xtce:Comparison>
+                                    <
+                                </xtce:Comparison>
+                            </xtce:WarningAlarm>
+                        </AlarmConditions>
+                    </DefaultAlarm>
+            </FloatParameterType>  -->
+
+            <FloatParameterType name="SUGrowthMediumTemperature_t">
+                <FloatDataEncoding sizeInBits="32"/>
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minExclusive="0" />
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+            </FloatParameterType>
+
+            <FloatParameterType name="SUCameraTemperature_t">
+                <FloatDataEncoding sizeInBits="32"/>
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange  maxExclusive="50"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+            </FloatParameterType>
+
+            <FloatParameterType name="SUPressureLevelSensor_t">
+                <FloatDataEncoding sizeInBits="32"/>
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minInclusive="0.8" maxInclusive="1.2"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+            </FloatParameterType>
+
+            <FloatParameterType name="SUHumidityLevelSensor_t">
+                <FloatDataEncoding sizeInBits="32"/>
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minInclusive="5" maxInclusive="15"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+            </FloatParameterType>
+
+            <FloatParameterType name="SUPumpFlowRate1_t">
+                <FloatDataEncoding sizeInBits="32"/>
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minInclusive="150" maxInclusive="250"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+            </FloatParameterType>
+
+            <FloatParameterType name="SUPumpFlowRate2_t">
+                <FloatDataEncoding sizeInBits="32"/>
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minInclusive="0" maxInclusive="0"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+            </FloatParameterType>
+
+            <FloatParameterType name="SUPhotoExposureTime_t">
+                <FloatDataEncoding sizeInBits="32"/>
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minInclusive="650" maxInclusive="650"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+            </FloatParameterType>
+
+            <IntegerParameterType name="SUPhotoInterval_t" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minInclusive="20" maxInclusive="20"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+			</IntegerParameterType>
+
+            <FloatParameterType name="SUMcuTemperature_t">
+                <FloatDataEncoding sizeInBits="32"/>
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minInclusive="-55" maxInclusive="125"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+            </FloatParameterType>
+
+            <FloatParameterType name="SUMcuInputVoltage_t">
+                <FloatDataEncoding sizeInBits="32"/>
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minInclusive="3.0" maxInclusive="3.6"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+            </FloatParameterType>
 
         </ParameterTypeSet>
     </xtce:TelemetryMetaData>

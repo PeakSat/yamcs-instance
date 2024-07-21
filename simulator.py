@@ -99,6 +99,7 @@ def send_tm(simulator):
 
     # sending 2000 packets
     while packetCounter < 400:
+       
         with io.open("ecsspackets.raw", "rb") as f:
             header = bytearray(6)
 

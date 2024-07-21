@@ -45,8 +45,37 @@
                     <Enumeration value="1" label="GroundStation" />
                 </EnumerationList>
             </EnumeratedParameterType>
+            
+            <FloatParameterType name="OBCPCBBoardTemperatures_t">
+				<FloatDataEncoding sizeInBits="32" />
+                <DefaultAlarm>
+					<StaticAlarmRanges>
+						<WarningRange minInclusive="-40" maxInclusive="85" />
+					</StaticAlarmRanges>
+				</DefaultAlarm>
+			</FloatParameterType>
 
-        </ParameterTypeSet>        
+            <FloatParameterType name="OBCMCUTemperature_t">
+                <FloatDataEncoding sizeInBits="32"/>
+                    <DefaultAlarm>
+                        <StaticAlarmRanges>
+                            <WarningRange minInclusive="-55" maxInclusive="125"/>
+                        </StaticAlarmRanges>
+                    </DefaultAlarm>
+            </FloatParameterType>
+
+
+            <IntegerParameterType name="OBCReconfigurationTimer_t" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
+                <DefaultAlarm >      
+                    <StaticAlarmRanges>
+                        <WarningRange minInclusive="0" maxInclusive="1" />
+                    </StaticAlarmRanges>
+                </DefaultAlarm>
+			</IntegerParameterType>
+
+        </ParameterTypeSet>  
+
     </xtce:TelemetryMetaData>
 
     <xtce:CommandMetaData>
