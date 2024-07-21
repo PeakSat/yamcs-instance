@@ -101,10 +101,6 @@
                     <Argument argumentTypeRef="/dt/parameterIdArray_t" name="PMON_ID" />
                     <Argument argumentTypeRef="/dt/parameterIdArray_t" name="monitored_parameter_ID" />
 
-                    <Argument argumentTypeRef="/dt/parameterIdArray_t" name="validity_parameter_ID" />
-                    <Argument argumentTypeRef="/base-dt/stringArray_t" name="mask" />
-                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="expected_value" />deducedtype?
-                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="monitoring_interval" />  <!--I dont think it is used in obc-code -->
                     <Argument argumentTypeRef="/base-dt/uint16Array_t" name="repetition_number" />
                     <Argument argumentTypeRef="/dt/check_type_Array_t" name="check_type" />
                 </ArgumentList>
