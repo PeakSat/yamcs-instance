@@ -124,15 +124,13 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/stringArray_t" name="Mask" />
-                    <Argument argumentTypeRef="/base-dt/stringArray_t" name="spare" />
-                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="Expected_value" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/uint64_t" name="Mask" />
+                    <Argument argumentTypeRef="/base-dt/uint64_t" name="Expected_value" />
                     <Argument argumentTypeRef="/dt/event_ID_Array" name="event_definition_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,5)_expected_value_checking_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="Mask" />
-                        <ArgumentRefEntry argumentRef="spare" /> 
+                        <ArgumentRefEntry argumentRef="Mask" /> 
                         <ArgumentRefEntry argumentRef="Expected_value" /> 
                         <ArgumentRefEntry argumentRef="event_definition_ID" />               
                     </EntryList>
@@ -147,9 +145,9 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="low_limit" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/double_t" name="low_limit" />deducedtype?
                     <Argument argumentTypeRef="/dt/event_ID_Array" name="event_definition_id" />
-                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="high_limit" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/double_t" name="high_limit" />deducedtype?
                     <Argument argumentTypeRef="/dt/event_ID_Array" name="event_definition_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,5)_limit_checking_container">
@@ -170,11 +168,11 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="low_delta_threshold" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/double_t" name="low_delta_threshold" />deducedtype?
                     <Argument argumentTypeRef="/dt/event_ID_Array" name="event_definition_id" />
-                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="high_delta_threshold" />deducedtype?
+                    <Argument argumentTypeRef="/base-dt/double_t" name="high_delta_threshold" />deducedtype?
                     <Argument argumentTypeRef="/dt/event_ID_Array" name="event_definition_ID" />
-                    <Argument argumentTypeRef="/base-dt/uint16Array_t" name="number_of_consecutive_delta_values" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_consecutive_delta_values" />
                 </ArgumentList>
                 <CommandContainer name="TC(12,5)_delta_checking_container">
                     <EntryList>
