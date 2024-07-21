@@ -89,7 +89,7 @@
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="TC(12,5)_add_parameter_monitoring_definitions">
+            <MetaCommand name="TC(12,5)_add_parameter_monitoring_definitions" abstract="true">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="service_type_ID" argumentValue="12" />
