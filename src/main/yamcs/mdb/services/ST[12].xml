@@ -11,7 +11,7 @@
 
 
     <!-- When PMON_ID is implemented service 12 should be adjusted accordingly -->
-     <!--The types and deduced sized should be corrected-adjusted too-->
+     <!-- Also this service should be modified to work as a dynamical struct based on the ECSS standart -->
 
 
 
@@ -88,7 +88,7 @@
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
-
+ 
             <MetaCommand name="TC(12,5)_add_parameter_monitoring_definitions" abstract="true">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
@@ -111,12 +111,14 @@
                         <ArgumentRefEntry argumentRef="monitored_parameter_ID" />
 
                         <ArgumentRefEntry argumentRef="repetition_number" />
-                        <ArgumentRefEntry argumentRef="check_type" />
+                        <ArgumentRefEntry argumentRef="check_type"/>
+                        
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand> 
 
+            
             <MetaCommand name="TC(12,5)_expected_value_checking">
                 <BaseMetaCommand metaCommandRef="TC(12,5)_add_parameter_monitoring_definitions">
                     <ArgumentAssignmentList>
@@ -130,13 +132,13 @@
                 </ArgumentList>
                 <CommandContainer name="TC(12,5)_expected_value_checking_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="Mask" /> 
+                        <ArgumentRefEntry argumentRef="Mask" />
                         <ArgumentRefEntry argumentRef="Expected_value" /> 
                         <ArgumentRefEntry argumentRef="event_definition_ID" />               
                     </EntryList>
                     <BaseContainer containerRef="TC(12,5)_container" />
                 </CommandContainer>
-            </MetaCommand> 
+            </MetaCommand>
 
             <MetaCommand name="TC(12,5)_limit_checking">
                 <BaseMetaCommand metaCommandRef="TC(12,5)_add_parameter_monitoring_definitions">
@@ -185,7 +187,8 @@
                     <BaseContainer containerRef="TC(12,5)_container" />
                 </CommandContainer>
             </MetaCommand>
-            
+
+
         </MetaCommandSet>
     </xtce:CommandMetaData>
 </SpaceSystem>
