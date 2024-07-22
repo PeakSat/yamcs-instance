@@ -122,7 +122,7 @@
             <MetaCommand name="TC(12,5)_expected_value_checking">
                 <BaseMetaCommand metaCommandRef="TC(12,5)_add_parameter_monitoring_definitions">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="check_type" argumentValue="expected-value-checking" />
+                        <ArgumentAssignment argumentName="check_type" argumentValue="expected-value-checking"  />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
@@ -166,7 +166,7 @@
             <MetaCommand name="TC(12,5)_delta_checking">
                 <BaseMetaCommand metaCommandRef="TC(12,5)_add_parameter_monitoring_definitions">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="check_type" argumentValue="delta-checking" />
+                        <ArgumentAssignment argumentName="check_type" argumentValue="delta-checking"  />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>

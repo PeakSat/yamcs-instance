@@ -352,13 +352,12 @@
             <!-- ST[12] types-->
 
             <EnumeratedArgumentType name="check_type">
-                <IntegerDataEncoding sizeInbits="8" >
+                <IntegerDataEncoding sizeInbits="8" />
                     <EnumerationList>
                         <Enumeration value="0" label="expected-value-checking"/>
                         <Enumeration value="1" label="limit-checking"/>
                         <Enumeration value="2" label="delta-checking"/>
                     </EnumerationList>
-                </IntegerDataEncoding>
             </EnumeratedArgumentType>
             
             <ArrayArgumentType name="check_type_Array_t" arrayTypeRef="check_type">
