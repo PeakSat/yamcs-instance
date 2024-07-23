@@ -354,9 +354,9 @@
             <EnumeratedArgumentType name="check_type">
                 <IntegerDataEncoding sizeInbits="8" />
                     <EnumerationList>
-                        <Enumeration value="0" label="expected-value-checking"/>
+                        <Enumeration value="2" label="expected-value-checking"/>
                         <Enumeration value="1" label="limit-checking"/>
-                        <Enumeration value="2" label="delta-checking"/>
+                        <Enumeration value="3" label="delta-checking"/>
                     </EnumerationList>
             </EnumeratedArgumentType>
             
