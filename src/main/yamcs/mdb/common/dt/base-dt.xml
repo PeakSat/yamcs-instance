@@ -160,6 +160,10 @@
 				<FloatDataEncoding sizeInBits="32" />
 			</FloatArgumentType>
 
+			<FloatArgumentType name="double_t">
+				<FloatDataEncoding sizeInBits="64" />
+			</FloatArgumentType>
+
 			<BooleanArgumentType name="bool_t">
 				<IntegerDataEncoding sizeInBits="8" />
 			</BooleanArgumentType>
@@ -332,6 +336,38 @@
 						<EndingIndex>
 							<DynamicValue>
 								<ArgumentInstanceRef argumentRef="total_structures" />
+								<LinearAdjustment intercept="-1" />
+							</DynamicValue>
+						</EndingIndex>
+					</Dimension>
+				</DimensionList>
+			</ArrayArgumentType>
+
+			<ArrayArgumentType name="uint16Array_t" arrayTypeRef="uint16_t">
+				<DimensionList>
+					<Dimension>
+						<StartingIndex>
+							<FixedValue>0</FixedValue>
+						</StartingIndex>
+						<EndingIndex>
+							<DynamicValue>
+								<ArgumentInstanceRef argumentRef="total_parameters" />
+								<LinearAdjustment intercept="-1" />
+							</DynamicValue>
+						</EndingIndex>
+					</Dimension>
+				</DimensionList>
+			</ArrayArgumentType>
+
+			<ArrayArgumentType name="stringArray_t" arrayTypeRef="string_t">
+				<DimensionList>
+					<Dimension>
+						<StartingIndex>
+							<FixedValue>0</FixedValue>
+						</StartingIndex>
+						<EndingIndex>
+							<DynamicValue>
+								<ArgumentInstanceRef argumentRef="total_parameters" />
 								<LinearAdjustment intercept="-1" />
 							</DynamicValue>
 						</EndingIndex>
