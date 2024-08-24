@@ -113,15 +113,13 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions"  initialValue="1" /> 
-                    <Argument argumentTypeRef="/base-dt/application_process_ID" name="application_id_of_request" initialValue="1" />
-                    <Argument argumentTypeRef="/dt/event_ID" name="event_definition_ID"/>
+                    <Argument argumentTypeRef="/base-dt/uint8_t" name="number_of_event_action_definitions"  /> 
+                    <Argument argumentTypeRef="/dt/event_definition_system_ID_array" name="event_definition_system_ID" />
                 </ArgumentList>
                 <CommandContainer name="TC(19,2)_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_event_action_definitions" />
-                        <ArgumentRefEntry argumentRef="application_id_of_request" />
-                        <ArgumentRefEntry argumentRef="event_definition_ID" />
+                        <ArgumentRefEntry argumentRef="event_definition_system_ID" />
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
