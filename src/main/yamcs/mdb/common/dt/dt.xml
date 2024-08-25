@@ -393,6 +393,32 @@
             </ArrayArgumentType>
 
 
+            <!-- ST[12] types-->
+             
+            <AggregateArgumentType name="event_definition_system_ID">
+				<MemberList>
+					<Member typeRef="/base-dt/application_process_ID" name="application_process_ID"/>
+					<Member typeRef="event_ID" name="event_definition_ID"/>
+				</MemberList>
+			</AggregateArgumentType>
+
+			<ArrayArgumentType arrayTypeRef="event_definition_system_ID" name="event_definition_system_ID_array">
+				<DimensionList>
+					<Dimension>
+						<StartingIndex>
+							<FixedValue>0</FixedValue>
+						</StartingIndex>
+						<EndingIndex>
+							<DynamicValue>
+								<ArgumentInstanceRef argumentRef="number_of_event_action_definitions" />
+								<LinearAdjustment intercept="-1" />
+							</DynamicValue>
+						</EndingIndex>
+					</Dimension>
+				</DimensionList>
+			</ArrayArgumentType>
+
+
         </ArgumentTypeSet>
     </CommandMetaData>
 </SpaceSystem>
