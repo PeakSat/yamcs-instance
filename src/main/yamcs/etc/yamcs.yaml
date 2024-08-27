@@ -1,3 +1,4 @@
+
 services:
   - class: org.yamcs.http.HttpServer
     args:
@@ -10,6 +11,10 @@ services:
 # from (by default: target/yamcs). This means that `mvn clean` will remove also persisted data.
 # Change this property to an absolute path in case you want to persist your data.
 dataDir: yamcs-data
+
+yamcs-web:
+  utc: false
+
 
 instances:
   - OBC
