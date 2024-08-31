@@ -3,7 +3,7 @@
 communication/__pycache__/
 !target/
 target/*
-!target/yamcs/cache/yamcs-web/
+!target/yamcs/cache/yamcs-web/*
 *.log
 .vscode
 .idea
