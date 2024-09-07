@@ -11,7 +11,15 @@ import serial
 from cobs import cobs
 from cobs.cobs import DecodeError
 
+class EmptyLogsNames(Exception):
+    """Raised when changes all logs name to empty string."""
 
+    def __init__(
+        self,
+        message="All logs name are empty strings.",
+    ):
+        self.message = message
+        super().__init__(self.message)
 
 class YAMCSClosedPortException(Exception):
     """Raised when YAMCS refuses connection."""
@@ -135,16 +143,25 @@ def mcu_client(
     #stdout_handler.setLevel(logging.DEBUG)
     #stdout_handler.setFormatter(formatter)
     
+    obcFileLogger: Logger = None
+    adcsFileLogger: Logger = None
+    commsFileLogger: Logger = None
 
-    obcFileLogger = getFileLogger(ThreadType.OBC)
-    obcFileLogger = change_log_file(obcFileLogger, obc_log_name)
+    if obc_log_name != "" and adcs_log_name != "" and comms_log_name != "":
+        raise EmptyLogsNames()
 
-    adcsFileLogger = getFileLogger(ThreadType.ADCS)
-    adcsFileLogger = change_log_file(adcsFileLogger, adcs_log_name)
+    if obc_log_name != "":
+        obcFileLogger = getFileLogger(ThreadType.OBC)
+        obcFileLogger = change_log_file(obcFileLogger, obc_log_name)
+
+    if adcs_log_name != "":
+        adcsFileLogger = getFileLogger(ThreadType.ADCS)
+        adcsFileLogger = change_log_file(adcsFileLogger, adcs_log_name)
 
 
-    commsFileLogger = getFileLogger(ThreadType.COMMS)
-    commsFileLogger = change_log_file(commsFileLogger, comms_log_name)
+    if comms_log_name != "":
+        commsFileLogger = getFileLogger(ThreadType.COMMS)
+        commsFileLogger = change_log_file(commsFileLogger, comms_log_name)
 
 
     while True:

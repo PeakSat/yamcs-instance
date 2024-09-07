@@ -17,8 +17,6 @@ if __name__ == "__main__":
             epilog='Made by SpaceDot')
 
 
-    args_parser.add_argument('--obclog', default="obc.log", help="(--obclog obc.log) Change the log file for the OBC system")
-    args_parser.add_argument('--adcslog', default="adcs.log", help="(--adcslog obc.log) Change the log file for the ADCS system")
     args_parser.add_argument('--commslog', default="comms.log", help="(--commslog obc.log) Change the log file for the COMMS system")
 
     args = args_parser.parse_args()
@@ -44,8 +42,8 @@ if __name__ == "__main__":
         args=(
             settings,
             comms_serial_port,
-            str(args.obclog), # default = "abc.log",
-            str(args.adcslog), # default = "adcs.log",
+            "", # default = "abc.log",
+            "", # default = "adcs.log",
             str(args.commslog) # default = "comms.log"
         ),
     ).start()
