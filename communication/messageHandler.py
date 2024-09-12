@@ -66,7 +66,7 @@ if __name__ == "__main__":
         args=(
             settings,
             obc_adcs_serial_port,
-            str(args.obclog), # default = "abc.log",
+            str(args.obclog), # default = "obc.log",
             str(args.adcslog), # default = "adcs.log",
             "" # default = "comms.log"
         ),
