@@ -128,7 +128,7 @@ pip3 install -r requirements.txt
 After successfully installing everything, the main script can be run simply by navigating to the `communication/` folder and executing:
 
 ```bash
-python3 messageHandler.py -adcs "name_for_adcs_file" -obc "name_for_obc_file"
+python3 messageHandler.py -adcs "name_for_adcs_log_file" -obc "name_for_obc_log_file"
 ```
 or
 ```bash
