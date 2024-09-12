@@ -132,7 +132,7 @@ python3 messageHandler.py -adcs "name_for_adcs_log_file" -obc "name_for_obc_log_
 ```
 or
 ```bash
-python3 COMMSmessageHandler.py -comms "name_for_comms_file"
+python3 COMMSmessageHandler.py -comms "name_for_comms_log_file"
 ```
 
 depending on the subsystem you want to communicate with (The name of the log file is optional, if not specified, the default name will be used "obc.log" for OBC, "adcs.log" for ADCS and "comms.log" for COMMS).
