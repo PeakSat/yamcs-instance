@@ -42,7 +42,7 @@ if __name__ == "__main__":
         args=(
             settings,
             comms_serial_port,
-            "", # default = "abc.log",
+            "", # default = "obc.log",
             "", # default = "adcs.log",
             str(args.commslog) # default = "comms.log"
         ),
