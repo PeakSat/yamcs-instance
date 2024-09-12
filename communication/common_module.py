@@ -112,7 +112,7 @@ def connect_to_port(settings: Settings, port: int) -> socket:
 def mcu_client(
     settings: Settings,
     serial_port: str = None,
-    obc_log_name: str = "abc.log",
+    obc_log_name: str = "obc.log",
     adcs_log_name: str = "adcs.log",
     comms_log_name: str = "comms.log"
 ):
