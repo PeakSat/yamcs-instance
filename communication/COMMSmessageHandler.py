@@ -7,9 +7,19 @@ from logging import config
 import logging
 import yaml
 from common_module import ThreadType, ConnectionState, Settings, mcu_client, mcu_client_logger, sendIfConnected, yamcs_client, getFileLogger
-
+import argparse
 
 if __name__ == "__main__":
+
+    args_parser = argparse.ArgumentParser(
+            prog='COMMSmessageHandler',
+            description='A simple message handler for COMMS',
+            epilog='Made by SpaceDot')
+
+
+    args_parser.add_argument('--commslog', default="comms.log", help="(--commslog obc.log) Change the log file for the COMMS system")
+
+    args = args_parser.parse_args()
     # setup logging
     config.fileConfig("logging.conf")
     with open("settings.yaml", "r") as stream:
@@ -32,15 +42,8 @@ if __name__ == "__main__":
         args=(
             settings,
             comms_serial_port,
+            "", # default = "obc.log",
+            "", # default = "adcs.log",
+            str(args.commslog) # default = "comms.log"
         ),
     ).start()
-
-    # comms_logger_thread = Thread(
-    #     target=mcu_client_logger,
-    #     args=(
-    #         settings,
-    #         ThreadType.COMMS,
-    #         comms_logs_serial_port,
-    #     ),
-    # ).start()
-
