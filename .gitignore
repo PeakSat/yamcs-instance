@@ -1,7 +1,16 @@
 
 #exclude target directory
 communication/__pycache__/
-target/
 *.log
 .vscode
 .idea
+
+# ---- exclude yamcs-web folder ----
+!target/
+target/*
+!target/yamcs/
+target/yamcs/*
+!target/yamcs/cache/
+target/yamcs/cache/*
+!target/yamcs/cache/yamcs-web/
+# ----------------------------------
