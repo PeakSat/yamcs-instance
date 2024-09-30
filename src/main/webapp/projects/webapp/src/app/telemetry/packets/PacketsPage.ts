@@ -142,7 +142,7 @@ export class PacketsPage {
         // Subscribe to the data changes in the dataSource.
         this.dataSource.packets$.subscribe((newPackets) => {
           if (newPackets && newPackets.length) {
-            this.jumpToNow();
+            this.updatePackets();
           }
         });
     
@@ -210,6 +210,42 @@ export class PacketsPage {
 
   loadData() {
     this.updateURL();
+    const options: GetPacketsOptions = {};
+    if (this.validStart) {
+      options.start = this.validStart.toISOString();
+    }
+    if (this.validStop) {
+      options.stop = this.validStop.toISOString();
+    }
+    if (this.name) {
+      options.name = this.name;
+    }
+    if (this.link) {
+      options.link = this.link;
+    }
+
+    const dlOptions: DownloadPacketsOptions = {};
+    if (this.validStart) {
+      dlOptions.start = this.validStart.toISOString();
+    }
+    if (this.validStop) {
+      dlOptions.stop = this.validStop.toISOString();
+    }
+    if (this.name) {
+      dlOptions.name = this.name;
+    }
+    if (this.link) {
+      dlOptions.link = this.link;
+    }
+
+    this.dataSource.loadEntries('realtime', options).then(packets => {
+      const downloadURL = this.yamcs.yamcsClient.getPacketsDownloadURL(this.yamcs.instance!, dlOptions);
+      this.downloadURL$.next(downloadURL);
+    });
+  }
+
+  updatePackets() {
+    //this.updateURL();
     const options: GetPacketsOptions = {};
     if (this.validStart) {
       options.start = this.validStart.toISOString();

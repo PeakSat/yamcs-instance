@@ -13,6 +13,9 @@ The application's structure is mainly following the XTCE encoding schema, with t
 
 [Here](https://yamcs.org/getting-started) you can find prerequisites, basic commands and information to get things started with YAMCS.
 
+To build the frontend run:
+    mvn yamcs:webapp
+
 To simply start the main YAMCS instance, run:
 
     mvn yamcs:run
