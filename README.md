@@ -26,6 +26,16 @@ In order to start YAMCS with JMX enabled (required for hot backups) the commmand
 
     mvn yamcs:run -Dyamcs.jvmArgs="-Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
 
+## To Update the Yamcs Frontend
+
+If you need to modify anything in the Yamcs frontend, locate the source code in the following directory:
+yamcs-instance/src/main/webapp/projects/webapp/src
+
+Make your desired changes to the frontend code.
+
+After completing the changes, save the files and run the following Maven command to build the webapp:
+mvn yamcs:webapp
+
 ## Telemetry
 
 To start pushing CCSDS packets into YAMCS, run the included Python script:
