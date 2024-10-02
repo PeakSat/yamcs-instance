@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpaceSystem name="ST[20]-SU" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
+shortDescription="This is a bogus satellite telemetry and telecommand database."
+operationalStatus="unittest">
+
+    <xtce:TelemetryMetaData>
+
+        <ParameterSet>
+            <Parameter name="number_of_parameters" parameterTypeRef="/base-dt/uint16_t">
+                <LongDescription>
+                    The number of parameters requested in a parameter value report
+                </LongDescription>
+            </Parameter>
+
+            <Parameter name="id" parameterTypeRef="/base-dt/uint16_t">
+                <LongDescription>
+                    This parameter holds temporarily the ID of the reported parameters by TM[20,2]
+                </LongDescription>
+            </Parameter>
+
+            <Parameter parameterTypeRef="/base-dt/uint16_t" name="parameterId" />
+            <Parameter parameterTypeRef="/base-dt/uint16_t" name="ReportParametersUnusedStack" />
+            <Parameter parameterTypeRef="/base-dt/uint16_t" name="AvailableHeap" />
+        </ParameterSet>
+
+        <ContainerSet>
+            
+            <xtce:SequenceContainer name="id_value_pairs">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="parameterId"></ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="ReportParametersUnusedStack">
+                        <IncludeCondition>
+                            <Comparison value="6" parameterRef="parameterId" />
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="">
+
+                    </ParameterRefEntry>
+                </EntryList>
+            </xtce:SequenceContainer>
+
+        </ContainerSet>
+
+    </xtce:TelemetryMetaData>
+
+    <xtce:CommandMetaData>
+
+        <MetaCommandSet>
+
+            <xtce:MetaCommand name="TC(20,1)_report_mcu_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8" />
+                    <Argument argumentTypeRef="/base-dt/uint32_t" name="suMCUBootCounter" initialValue="4040"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint32_t" name="suMCUSysTick" initialValue="4047"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suMCUTemperature" initialValue="4038"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suMCUInputVoltage" initialValue="4039"></Argument>
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_mcu_container">
+                    <EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suMCUBootCounter"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suMCUBootCounter"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suMCUBootCounter"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suMCUBootCounter"></xtce:ArgumentRefEntry>
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </xtce:MetaCommand>
+
+        </MetaCommandSet>
+
+    </xtce:CommandMetaData>
+
+</SpaceSystem>
