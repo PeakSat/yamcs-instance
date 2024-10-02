@@ -6,11 +6,5 @@ communication/__pycache__/
 .idea
 
 # ---- exclude yamcs-web folder ----
-!target/
 target/*
-!target/yamcs/
-target/yamcs/*
-!target/yamcs/cache/
-target/yamcs/cache/*
-!target/yamcs/cache/yamcs-web/
 # ----------------------------------
