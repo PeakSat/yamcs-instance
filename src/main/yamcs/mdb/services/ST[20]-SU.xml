@@ -35,10 +35,96 @@ operationalStatus="unittest">
                             <Comparison value="6" parameterRef="parameterId" />
                         </IncludeCondition>
                     </ParameterRefEntry>
-                    <ParameterRefEntry parameterRef="">
-
+                    <ParameterRefEntry parameterRef="AvailableHeap">
+                        <IncludeCondition>
+                            <Comparison value="7" parameterRef="parameterId" />
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUMcuTemperature">
+                        <IncludeCondition>
+                            <Comparison value="4038" parameterRef="parameterId" />
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUMcuSystick">
+                        <IncludeCondition>
+                            <Comparison value="4047" parameterRef="parameterId" />
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUMcuInputVoltage">
+                        <IncludeCondition>
+                            <Comparison value="4039" parameterRef="parameterId" />
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUMcuBootCounter">
+                        <IncludeCondition>
+                            <Comparison value="4040" parameterRef="parameterId" />
+                        </IncludeCondition>
                     </ParameterRefEntry>
                 </EntryList>
+            </xtce:SequenceContainer>
+
+            <xtce:SequenceContainer name="TM(20,2)_parameter_value_report">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="number_of_parameters" />
+                    <ContainerRefEntry containerRef="id_value_pair">
+                        <IncludeCondition>
+                            <Comparison parameterRef="number_of_parameters" value="0" comparisonOperator=">" />
+                        </IncludeCondition>
+                    </ContainerRefEntry>
+                    <ContainerRefEntry containerRef="id_value_pair">
+                        <IncludeCondition>
+                            <Comparison parameterRef="number_of_parameters" value="1" comparisonOperator=">" />
+                        </IncludeCondition>
+                    </ContainerRefEntry>
+                    <ContainerRefEntry containerRef="id_value_pair">
+                        <IncludeCondition>
+                            <Comparison parameterRef="number_of_parameters" value="2" comparisonOperator=">" />
+                        </IncludeCondition>
+                    </ContainerRefEntry>
+                    <ContainerRefEntry containerRef="id_value_pair">
+                        <IncludeCondition>
+                            <Comparison parameterRef="number_of_parameters" value="3" comparisonOperator=">" />
+                        </IncludeCondition>
+                    </ContainerRefEntry>
+                    <ContainerRefEntry containerRef="id_value_pair">
+                        <IncludeCondition>
+                            <Comparison parameterRef="number_of_parameters" value="4" comparisonOperator=">" />
+                        </IncludeCondition>
+                    </ContainerRefEntry>
+                    <ContainerRefEntry containerRef="id_value_pair">
+                        <IncludeCondition>
+                            <Comparison parameterRef="number_of_parameters" value="5" comparisonOperator=">" />
+                        </IncludeCondition>
+                    </ContainerRefEntry>
+                    <ContainerRefEntry containerRef="id_value_pair">
+                        <IncludeCondition>
+                            <Comparison parameterRef="number_of_parameters" value="6" comparisonOperator=">" />
+                        </IncludeCondition>
+                    </ContainerRefEntry>
+                    <ContainerRefEntry containerRef="id_value_pair">
+                        <IncludeCondition>
+                            <Comparison parameterRef="number_of_parameters" value="7" comparisonOperator=">" />
+                        </IncludeCondition>
+                    </ContainerRefEntry>
+                    <ContainerRefEntry containerRef="id_value_pair">
+                        <IncludeCondition>
+                            <Comparison parameterRef="number_of_parameters" value="8" comparisonOperator=">" />
+                        </IncludeCondition>
+                    </ContainerRefEntry>
+                    <ContainerRefEntry containerRef="id_value_pair">
+                        <IncludeCondition>
+                            <Comparison parameterRef="number_of_parameters" value="9" comparisonOperator=">" />
+                        </IncludeCondition>
+                    </ContainerRefEntry>
+                </EntryList>
+                <BaseContainer containerRef="/pus/packet_header_TM">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="20" parameterRef="/pus/service_type_ID_TM" />
+                            <Comparison value="2" parameterRef="/pus/message_subtype_ID_TM" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
             </xtce:SequenceContainer>
 
         </ContainerSet>
@@ -74,6 +160,28 @@ operationalStatus="unittest">
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </xtce:MetaCommand>
+
+            <!-- <xtce:MetaCommand name="TC(20,1)_report_memory_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8" />
+                    <Argument argumentTypeRef="/base-dt/uint32_t" name="suFlashIntUsedPercentage" initialValue="4041"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint32_t" name="suFlashUsedPercentage" initialValue="4042"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint32_t" name="suSRAMUsedPercentage" initialValue="4043"></Argument>
+                    <Argument argumentTypeRef="/su-dt/SUNANDMemoryPartition_t" name="suNANDCurrentlyUsedPartition"></Argument>
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_memory_container">
+                    <EntryList>
+                    
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </xtce:MetaCommand> -->
 
         </MetaCommandSet>
 
