@@ -60,6 +60,41 @@ operationalStatus="unittest">
                             <Comparison value="4040" parameterRef="parameterId" />
                         </IncludeCondition>
                     </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUMcuBootCounter">
+                        <IncludeCondition>
+                            <Comparison value="4040" parameterRef="parameterId" />
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUNANDCurrentlyUsedPartition">
+                        <IncludeCondition>
+                            <Comparison value="4045" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUNANDFlashLclOn">
+                        <IncludeCondition>
+                            <Comparison value="4052" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUNANDFlashLclThreshold">
+                        <IncludeCondition>
+                            <Comparison value="4048" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUNANDFlashScrubbingFrequency">
+                        <IncludeCondition>
+                            <Comparison value="4056" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SURAMScrubbingFrequency">
+                        <IncludeCondition>
+                            <Comparison value="4057" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUProgramFlashScrubbingFrequency">
+                        <IncludeCondition>
+                            <Comparison value="4058" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
                 </EntryList>
             </xtce:SequenceContainer>
 
@@ -153,15 +188,15 @@ operationalStatus="unittest">
                     <EntryList>
                         <xtce:ArgumentRefEntry argumentRef="number_of_parameters"></xtce:ArgumentRefEntry>
                         <xtce:ArgumentRefEntry argumentRef="suMCUBootCounter"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suMCUBootCounter"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suMCUBootCounter"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suMCUBootCounter"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suMCUSysTick"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suMCUSysTick"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suMCUInputVoltage"></xtce:ArgumentRefEntry>
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </xtce:MetaCommand>
 
-            <!-- <xtce:MetaCommand name="TC(20,1)_report_memory_parameter_values">
+            <xtce:MetaCommand name="TC(20,1)_report_memory_parameter_values">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
@@ -173,15 +208,29 @@ operationalStatus="unittest">
                     <Argument argumentTypeRef="/base-dt/uint32_t" name="suFlashIntUsedPercentage" initialValue="4041"></Argument>
                     <Argument argumentTypeRef="/base-dt/uint32_t" name="suFlashUsedPercentage" initialValue="4042"></Argument>
                     <Argument argumentTypeRef="/base-dt/uint32_t" name="suSRAMUsedPercentage" initialValue="4043"></Argument>
-                    <Argument argumentTypeRef="/su-dt/SUNANDMemoryPartition_t" name="suNANDCurrentlyUsedPartition"></Argument>
+                    <Argument argumentTypeRef="/su-dt/SUNANDMemoryPartition_t" name="suNANDCurrentlyUsedPartition" initialValue="4045"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suNANDFlashLclOn" initialValue="4052"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suNANDFlashLclThreshold" initialValue="4048"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suNANDFlashScrubbingFrequency" initialValue="4056"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suRAMScrubbingFrequency" initialValue="4057"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suProgramFlashScrubbingFrequency" initialValue="4058"></Argument>
                 </ArgumentList>
                 <CommandContainer name="TC(20,1)_memory_container">
                     <EntryList>
-                    
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suFlashIntUsedPercentage"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suFlashUsedPercentage"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suSRAMUsedPercentage"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suNANDCurrentlyUsedPartition"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suNANDFlashLclOn"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suNANDFlashLclThreshold"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suNANDFlashScrubbingFrequency"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suRAMScrubbingFrequency"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suProgramFlashScrubbingFrequency"></xtce:ArgumentRefEntry>
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
-            </xtce:MetaCommand> -->
+            </xtce:MetaCommand>
 
         </MetaCommandSet>
 
