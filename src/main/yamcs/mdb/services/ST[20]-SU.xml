@@ -27,9 +27,9 @@ operationalStatus="unittest">
 
         <ContainerSet>
             
-            <xtce:SequenceContainer name="id_value_pairs">
+            <xtce:SequenceContainer name="id_value_pair">
                 <EntryList>
-                    <ParameterRefEntry parameterRef="parameterId"></ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="parameterId" />
                     <ParameterRefEntry parameterRef="ReportParametersUnusedStack">
                         <IncludeCondition>
                             <Comparison value="6" parameterRef="parameterId" />
