@@ -40,6 +40,7 @@ operationalStatus="unittest">
                             <Comparison value="7" parameterRef="parameterId" />
                         </IncludeCondition>
                     </ParameterRefEntry>
+                    <!-- MCU -->
                     <ParameterRefEntry parameterRef="/su-xtce/SUMcuTemperature">
                         <IncludeCondition>
                             <Comparison value="4038" parameterRef="parameterId" />
@@ -60,9 +61,20 @@ operationalStatus="unittest">
                             <Comparison value="4040" parameterRef="parameterId" />
                         </IncludeCondition>
                     </ParameterRefEntry>
-                    <ParameterRefEntry parameterRef="/su-xtce/SUMcuBootCounter">
+                    <!-- MEMORY -->
+                    <ParameterRefEntry parameterRef="/su-xtce/SUFlashIntUsedPercentage">
                         <IncludeCondition>
-                            <Comparison value="4040" parameterRef="parameterId" />
+                            <Comparison value="4041" parameterRef="parameterId"></Comparison>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUFlashUsedPercentage">
+                        <IncludeCondition>
+                            <Comparison value="4042" parameterRef="parameterId"></Comparison>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUSRAMUsedPercentage">
+                        <IncludeCondition>
+                            <Comparison value="4043" parameterRef="parameterId"></Comparison>
                         </IncludeCondition>
                     </ParameterRefEntry>
                     <ParameterRefEntry parameterRef="/su-xtce/SUNANDCurrentlyUsedPartition">
@@ -93,6 +105,137 @@ operationalStatus="unittest">
                     <ParameterRefEntry parameterRef="/su-xtce/SUProgramFlashScrubbingFrequency">
                         <IncludeCondition>
                             <Comparison value="4058" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <!-- COMPONENTS -->
+                    <ParameterRefEntry parameterRef="/su-xtce/SUPumpFlowRate1">
+                        <IncludeCondition>
+                            <Comparison value="4015" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUPumpFlowRate2">
+                        <IncludeCondition>
+                            <Comparison value="4016" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUControlChamberValve1">
+                        <IncludeCondition>
+                            <Comparison value="4017" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUControlChamberValve2">
+                        <IncludeCondition>
+                            <Comparison value="4018" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUControlChamberValve3">
+                        <IncludeCondition>
+                            <Comparison value="4019" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUControlSandwitchValve1">
+                        <IncludeCondition>
+                            <Comparison value="4020" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUControlSandwitchValve2">
+                        <IncludeCondition>
+                            <Comparison value="4021" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUControlSandwitchValve3">
+                        <IncludeCondition>
+                            <Comparison value="4022" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUFlowValveInlet1">
+                        <IncludeCondition>
+                            <Comparison value="4023" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUFlowValveInlet2">
+                        <IncludeCondition>
+                            <Comparison value="4021" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUFlowValveInlet3">
+                        <IncludeCondition>
+                            <Comparison value="4025" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUFlowValveOutlet1">
+                        <IncludeCondition>
+                            <Comparison value="4026" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUFlowValveOutlet2">
+                        <IncludeCondition>
+                            <Comparison value="4027" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUFlowValveOutlet3">
+                        <IncludeCondition>
+                            <Comparison value="4028" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUFlowValveTest1">
+                        <IncludeCondition>
+                            <Comparison value="4029" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUFlowValveTest2">
+                        <IncludeCondition>
+                            <Comparison value="4030" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SULedIntensity1">
+                        <IncludeCondition>
+                            <Comparison value="4006" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SULedIntensity2">
+                        <IncludeCondition>
+                            <Comparison value="4007" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SULedIntensity3">
+                        <IncludeCondition>
+                            <Comparison value="4008" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SULedIntensity4">
+                        <IncludeCondition>
+                            <Comparison value="4009" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUControlPumpFlashLclOn">
+                        <IncludeCondition>
+                            <Comparison value="4054" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUControlPumpFlashLclThreshold">
+                        <IncludeCondition>
+                            <Comparison value="4050" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUFlowPumpFlashOn">
+                        <IncludeCondition>
+                            <Comparison value="4053" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUFlowPumpFlashLclThreshold">
+                        <IncludeCondition>
+                            <Comparison value="4049" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUCameraLCLThreshold">
+                        <IncludeCondition>
+                            <Comparison value="4051" parameterRef="parameterId" />   
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUCameraOn">
+                        <IncludeCondition>
+                            <Comparison value="4055" parameterRef="parameterId" />   
                         </IncludeCondition>
                     </ParameterRefEntry>
                 </EntryList>
@@ -227,6 +370,76 @@ operationalStatus="unittest">
                         <xtce:ArgumentRefEntry argumentRef="suNANDFlashScrubbingFrequency"></xtce:ArgumentRefEntry>
                         <xtce:ArgumentRefEntry argumentRef="suRAMScrubbingFrequency"></xtce:ArgumentRefEntry>
                         <xtce:ArgumentRefEntry argumentRef="suProgramFlashScrubbingFrequency"></xtce:ArgumentRefEntry>
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </xtce:MetaCommand>
+
+            <xtce:MetaCommand name="TC(20,1)_report_component_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8" />
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suControlPumpFlashLclOn" initialValue="4054"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suControlPumpFlashLclThreshold" initialValue="4050"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suFlowPumpFlashOn" initialValue="4053"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suFlowPumpFlashLclThreshold" initialValue="4049"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suCameraOn" initialValue="4055"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suCameraLCLThreshold" initialValue="4051"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suPumpFlowRate1" initialValue="4015"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suPumpFlowRate2" initialValue="4016"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suControlChamberValve1"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suControlChamberValve2"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suControlChamberValve3"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suControlSandwitchValve1"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suControlSandwitchValve2"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suControlSandwitchValve3"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveInlet1"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveInlet2"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveInlet3"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveOutlet1"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveOutlet2"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveOutlet3"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveTest1"></Argument>
+                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveTest2"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suLEDIntensity1" initialValue="4006"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suLEDIntensity2" initialValue="4007"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suLEDIntensity3" initialValue="4008"></Argument>
+                    <Argument argumentTypeRef="/base-dt/float_t" name="suLEDIntensity4" initialValue="4009"></Argument>
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_component_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suControlPumpFlashLclOn"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suControlPumpFlashLclThreshold"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suFlowPumpFlashOn"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suFlowPumpFlashLclThreshold"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suCameraOn"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suCameraLCLThreshold"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suPumpFlowRate1"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suPumpFlowRate2"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suControlChamberValve1"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suControlChamberValve2"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suControlChamberValve3"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suControlSandwitchValve1"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suControlSandwitchValve2"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suControlSandwitchValve3"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suFlowValveInlet1"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suFlowValveInlet2"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suFlowValveInlet3"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suFlowValveOutlet1"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suFlowValveOutlet2"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suFlowValveOutlet3"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suFlowValveTest1"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suFlowValveTest2"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suLEDIntensity1"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suLEDIntensity2"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suLEDIntensity3"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suLEDIntensity4"></ArgumentRefEntry>
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
