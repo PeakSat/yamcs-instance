@@ -40,6 +40,21 @@ operationalStatus="unittest">
                             <Comparison value="7" parameterRef="parameterId" />
                         </IncludeCondition>
                     </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUUseRTT">
+                        <xtce:IncludeCondition>
+                            <Comparison value="8" parameterRef="parameterId"/>
+                        </xtce:IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUUseUART">
+                        <xtce:IncludeCondition>
+                            <Comparison value="9" parameterRef="parameterId"/>
+                        </xtce:IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUUseCAN">
+                        <xtce:IncludeCondition>
+                            <Comparison value="10" parameterRef="parameterId"/>
+                        </xtce:IncludeCondition>
+                    </ParameterRefEntry>
                     <!-- MCU -->
                     <ParameterRefEntry parameterRef="/su-xtce/SUMcuTemperature">
                         <IncludeCondition>
@@ -259,6 +274,33 @@ operationalStatus="unittest">
                             <Comparison value="4033" parameterRef="parameterId"/>
                         </IncludeCondition>
                     </ParameterRefEntry>
+                    <!-- MISC -->
+                    <ParameterRefEntry parameterRef="/su-xtce/SUExperimentNumber">
+                        <IncludeCondition>
+                            <Comparison value="4035" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUOnBoardTime">
+                        <IncludeCondition>
+                            <Comparison value="4044" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SULastFailedEvent">
+                        <IncludeCondition>
+                            <Comparison value="4046" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUTemperatureFromHumiditySensor1">
+                        <IncludeCondition>
+                            <Comparison value="4059" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUTemperatureFromHumiditySensor1">
+                        <IncludeCondition>
+                            <Comparison value="4060" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                     
                 </EntryList>
             </xtce:SequenceContainer>
 
@@ -494,6 +536,32 @@ operationalStatus="unittest">
                 </CommandContainer>
             </MetaCommand>
 
+            <MetaCommand name="TC(20,1)_report_misc_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suExperimentNumber" initialValue="4035"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suOnBoardTime" initialValue="4044"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLastFailedEvent" initialValue="4046"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suTemperatureFromHumiditySensor1" initialValue="4059"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suTemperatureFromHumiditySensor2" initialValue="4060"></Argument>
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_misc_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suExperimentNumber"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suOnBoardTime"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suLastFailedEvent"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suTemperatureFromHumiditySensor1"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suTemperatureFromHumiditySensor2"></ArgumentRefEntry>
+                    </EntryList>
+                </CommandContainer>
+            </MetaCommand>
         </MetaCommandSet>
 
     </xtce:CommandMetaData>
