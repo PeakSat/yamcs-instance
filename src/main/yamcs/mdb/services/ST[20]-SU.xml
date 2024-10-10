@@ -238,6 +238,27 @@ operationalStatus="unittest">
                             <Comparison value="4055" parameterRef="parameterId" />   
                         </IncludeCondition>
                     </ParameterRefEntry>
+                    <!-- PHOTOS -->
+                    <ParameterRefEntry parameterRef="/su-xtce/SUNumberOfPhotosTaken">
+                        <IncludeCondition>
+                            <Comparison value="4014" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUPhotoExposureTime">
+                        <IncludeCondition>
+                            <Comparison value="4031" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUPhotoInterval">
+                        <IncludeCondition>
+                            <Comparison value="4032" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUPhotoCroppedResolution">
+                        <IncludeCondition>
+                            <Comparison value="4033" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
                 </EntryList>
             </xtce:SequenceContainer>
 
@@ -444,6 +465,34 @@ operationalStatus="unittest">
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </xtce:MetaCommand>
+
+            <MetaCommand name="TC(20,1)_report_photos_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suNumberOfPhotosTaken" initialValue="4014"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPhotoExposureTime" initialValue="4031"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPhotoInterval" initialValue="4032"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPhotoCroppedResolution" initialValue="4033"></Argument>
+                    <!-- <Argument argumentTypeRef="/base-dt/uint16_t" name="suPhotoCompressionRate" initialValue="4034"></Argument> wont be needed as mentioned in su-xtce.xml -->
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_photos_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suNumberOfPhotosTaken"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suPhotoExposureTime"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suPhotoInterval"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suPhotoCroppedResolution"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="suPhotoCompressionRate"></ArgumentRefEntry>
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
 
         </MetaCommandSet>
 
