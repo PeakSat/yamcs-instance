@@ -155,7 +155,7 @@ operationalStatus="unittest">
                     </ParameterRefEntry>
                     <ParameterRefEntry parameterRef="/su-xtce/SUFlowValveInlet2">
                         <IncludeCondition>
-                            <Comparison value="4021" parameterRef="parameterId" />   
+                            <Comparison value="4024" parameterRef="parameterId" />   
                         </IncludeCondition>
                     </ParameterRefEntry>
                     <ParameterRefEntry parameterRef="/su-xtce/SUFlowValveInlet3">
@@ -322,10 +322,10 @@ operationalStatus="unittest">
                 </BaseMetaCommand>
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8" />
-                    <Argument argumentTypeRef="/base-dt/uint32_t" name="suMCUBootCounter" initialValue="4040"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint32_t" name="suMCUSysTick" initialValue="4047"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suMCUTemperature" initialValue="4038"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suMCUInputVoltage" initialValue="4039"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suMCUBootCounter" initialValue="4040"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suMCUSysTick" initialValue="4047"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suMCUTemperature" initialValue="4038"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suMCUInputVoltage" initialValue="4039"></Argument>
                 </ArgumentList>
                 <CommandContainer name="TC(20,1)_mcu_container">
                     <EntryList>
@@ -348,15 +348,15 @@ operationalStatus="unittest">
                 </BaseMetaCommand>
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8" />
-                    <Argument argumentTypeRef="/base-dt/uint32_t" name="suFlashIntUsedPercentage" initialValue="4041"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint32_t" name="suFlashUsedPercentage" initialValue="4042"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint32_t" name="suSRAMUsedPercentage" initialValue="4043"></Argument>
-                    <Argument argumentTypeRef="/su-dt/SUNANDMemoryPartition_t" name="suNANDCurrentlyUsedPartition" initialValue="4045"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suNANDFlashLclOn" initialValue="4052"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suNANDFlashLclThreshold" initialValue="4048"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suNANDFlashScrubbingFrequency" initialValue="4056"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suRAMScrubbingFrequency" initialValue="4057"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suProgramFlashScrubbingFrequency" initialValue="4058"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlashIntUsedPercentage" initialValue="4041"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlashUsedPercentage" initialValue="4042"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suSRAMUsedPercentage" initialValue="4043"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suNANDCurrentlyUsedPartition" initialValue="4045"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suNANDFlashLclOn" initialValue="4052"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suNANDFlashLclThreshold" initialValue="4048"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suNANDFlashScrubbingFrequency" initialValue="4056"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suRAMScrubbingFrequency" initialValue="4057"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suProgramFlashScrubbingFrequency" initialValue="4058"></Argument>
                 </ArgumentList>
                 <CommandContainer name="TC(20,1)_memory_container">
                     <EntryList>
@@ -384,32 +384,32 @@ operationalStatus="unittest">
                 </BaseMetaCommand>
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8" />
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suControlPumpFlashLclOn" initialValue="4054"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suControlPumpFlashLclThreshold" initialValue="4050"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suFlowPumpFlashOn" initialValue="4053"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suFlowPumpFlashLclThreshold" initialValue="4049"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suCameraOn" initialValue="4055"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suCameraLCLThreshold" initialValue="4051"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suPumpFlowRate1" initialValue="4015"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suPumpFlowRate2" initialValue="4016"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suControlChamberValve1"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suControlChamberValve2"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suControlChamberValve3"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suControlSandwitchValve1"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suControlSandwitchValve2"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suControlSandwitchValve3"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveInlet1"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveInlet2"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveInlet3"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveOutlet1"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveOutlet2"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveOutlet3"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveTest1"></Argument>
-                    <Argument argumentTypeRef="/base-dt/bool_t" name="suFlowValveTest2"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suLEDIntensity1" initialValue="4006"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suLEDIntensity2" initialValue="4007"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suLEDIntensity3" initialValue="4008"></Argument>
-                    <Argument argumentTypeRef="/base-dt/float_t" name="suLEDIntensity4" initialValue="4009"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlPumpFlashLclOn" initialValue="4054"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlPumpFlashLclThreshold" initialValue="4050"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowPumpFlashOn" initialValue="4053"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowPumpFlashLclThreshold" initialValue="4049"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suCameraOn" initialValue="4055"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suCameraLCLThreshold" initialValue="4051"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPumpFlowRate1" initialValue="4015"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPumpFlowRate2" initialValue="4016"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlChamberValve1" initialValue="4017"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlChamberValve2" initialValue="4018"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlChamberValve3" initialValue="4019"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlSandwitchValve1" initialValue="4020"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlSandwitchValve2" initialValue="4021"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlSandwitchValve3" initialValue="4022"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveInlet1" initialValue="4023"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveInlet2" initialValue="4024"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveInlet3" initialValue="4025"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveOutlet1" initialValue="4026"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveOutlet2" initialValue="4027"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveOutlet3" initialValue="4028"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveTest1" initialValue="4029"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveTest2" initialValue="4030"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLEDIntensity1" initialValue="4006"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLEDIntensity2" initialValue="4007"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLEDIntensity3" initialValue="4008"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLEDIntensity4" initialValue="4009"></Argument>
                 </ArgumentList>
                 <CommandContainer name="TC(20,1)_component_container">
                     <EntryList>
