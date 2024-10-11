@@ -7,7 +7,7 @@
 
     <CommandMetaData>
 
-        <!-- <MetaCommand name="dynamic_TC(20,3)_set_float_parameter_values">
+        <MetaCommand name="dynamic_TC(20,3)_set_float_parameter_values">
             <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                 <ArgumentAssignmentList>
                     <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
@@ -15,7 +15,7 @@
                 </ArgumentAssignmentList>
             </BaseMetaCommand>
         
-        </MetaCommand> -->
+        </MetaCommand>
 
     </CommandMetaData>
 

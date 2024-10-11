@@ -101,7 +101,7 @@ mdb:
 - type: xtce
   spec: "mdb/services/ST[20]-SU.xml"
 - type: xtce
-  spec: "mdb/services/ST[20]-SU-set-values.xml"
+  spec: "mdb/services/ST[20,3]-SU-set-values.xml"
 - type: xtce
   spec: "mdb/su/su-dt.xml"
 - type: xtce
