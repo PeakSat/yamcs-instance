@@ -112,6 +112,33 @@
 
             <ArrayArgumentType arrayTypeRef="TC(20,3)_set_uint32_parameter_values_aggregate" name="writableUint32ParametersArray">
                 <DimensionList>
+                    <Dimension>uint16
+                </DimensionList>
+            </ArrayArgumentType>
+
+            <!-- Writeable uint32 SU -->
+
+            <EnumeratedArgumentType name="writableUint32Parameters_su_t">
+                <IntegerDataEncoding sizeInBits="16" />
+                <EnumerationList>
+                    <Enumeration value="4044" label="SUOnBoardTime"/>
+                    <Enumeration value="4040" label="SUMcuBootCounter"/>
+                    <Enumeration value="4047" label="SUMcuSystick"/>
+                    <Enumeration value="4041" label="SUFlashIntUsedPercentage"/>
+                    <Enumeration value="4042" label="SUFlashUsedPercentage"/>
+                    <Enumeration value="4043" label="SUSRAMUsedPercentage"/>
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
+            <AggregateArgumentType name="TC(20,3)_set_uint32_parameter_values_su_aggregate">
+                <MemberList>
+                    <Member typeRef="writableUint32Parameters_su_t" name="uint32_parameter" />
+                    <Member typeRef="/base-dt/uint32_t" name="new_value" />
+                </MemberList>
+            </AggregateArgumentType>
+
+            <ArrayArgumentType arrayTypeRef="TC(20,3)_set_uint32_parameter_values_su_aggregate" name="writableUint32ParametersArraySU">
+                <DimensionList>
                     <Dimension>
                         <StartingIndex>
                             <FixedValue>0</FixedValue>
@@ -125,6 +152,8 @@
                     </Dimension>
                 </DimensionList>
             </ArrayArgumentType>
+
+            <!-- Writable uint16 SU -->
 
             <!-- Writeable uint64 -->
 
