@@ -17,7 +17,7 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t{1-5}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t{1-18}" name="number_of_parameters" />
                     <Argument argumentTypeRef="/writeable-dt/writableFloatParameterArraySU" name="parameter_ids_and_new_values" />
                 </ArgumentList>
                 <CommandContainer name="dynamic_TC(20,3)_float_container">
@@ -37,10 +37,30 @@
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t{1-2}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/base-dt/uint16_t{1-6}" name="number_of_parameters" />
                     <Argument argumentTypeRef="/writeable-dt/writableUint32ParametersArraySU" name="parameter_ids_and_new_values" />
                 </ArgumentList>
                 <CommandContainer name="dynamic_TC(20,3)_uint32_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="dynamic_TC(20,3)_set_uint16_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t{1-2}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/writeable-dt/writableUint16ParametersArraySU" name="parameter_ids_and_new_values" />
+                </ArgumentList>
+                <CommandContainer name="dynamic_TC(20,3)_uint16_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />

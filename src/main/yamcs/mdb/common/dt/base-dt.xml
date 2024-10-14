@@ -215,10 +215,24 @@
 				</ValidRangeSet>
 			</IntegerArgumentType>
 
+			<IntegerArgumentType name="uint16_t{1-4}" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="4" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
 			<IntegerArgumentType name="uint16_t{1-5}" signed="false">
 				<IntegerDataEncoding sizeInBits="16" />
 				<ValidRangeSet>
 					<ValidRange minInclusive="1" maxInclusive="5" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint16_t{1-6}" signed="false">
+				<IntegerDataEncoding sizeInBits="16" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="6" />
 				</ValidRangeSet>
 			</IntegerArgumentType>
 
@@ -240,6 +254,13 @@
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
 				<ValidRangeSet>
 					<ValidRange minInclusive="1" maxInclusive="10" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint16_t{1-18}" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="18" />
 				</ValidRangeSet>
 			</IntegerArgumentType>
 

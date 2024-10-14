@@ -112,7 +112,50 @@
 
             <ArrayArgumentType arrayTypeRef="TC(20,3)_set_uint32_parameter_values_aggregate" name="writableUint32ParametersArray">
                 <DimensionList>
-                    <Dimension>uint16
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <DynamicValue>
+                                <ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <LinearAdjustment intercept="-1" />
+                            </DynamicValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayArgumentType>
+
+            <!-- Writable uint16 SU -->
+
+            <EnumeratedArgumentType name="writableUint16Parameters_su_t">
+                <IntegerDataEncoding sizeInBits="16"/>
+                <EnumerationList>
+                    <Enumeration value="4014" label="SUNumberOfPhotosTaken"/>
+                    <Enumeration value="4046" label="SULastFailedEvent"/>
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
+            <AggregateArgumentType name="TC(20,3)_set_uint16_parameter_values_su_aggregate">
+                <MemberList>
+                    <Member typeRef="writableUint16Parameters_su_t" name="uint16_parameter" />
+                    <Member typeRef="/base-dt/uint16_t" name="new_value" />
+                </MemberList>
+            </AggregateArgumentType>
+
+            <ArrayArgumentType arrayTypeRef="TC(20,3)_set_uint16_parameter_values_su_aggregate" name="writableUint16ParametersArraySU">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <DynamicValue>
+                                <ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <LinearAdjustment intercept="-1" />
+                            </DynamicValue>
+                        </EndingIndex>
+                    </Dimension>
                 </DimensionList>
             </ArrayArgumentType>
 
@@ -152,8 +195,6 @@
                     </Dimension>
                 </DimensionList>
             </ArrayArgumentType>
-
-            <!-- Writable uint16 SU -->
 
             <!-- Writeable uint64 -->
 
