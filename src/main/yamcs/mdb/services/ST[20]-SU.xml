@@ -530,7 +530,7 @@ operationalStatus="unittest">
                         <ArgumentRefEntry argumentRef="suPhotoExposureTime"></ArgumentRefEntry>
                         <ArgumentRefEntry argumentRef="suPhotoInterval"></ArgumentRefEntry>
                         <ArgumentRefEntry argumentRef="suPhotoCroppedResolution"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suPhotoCompressionRate"></ArgumentRefEntry>
+                        <!-- <ArgumentRefEntry argumentRef="suPhotoCompressionRate"></ArgumentRefEntry> -->
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
