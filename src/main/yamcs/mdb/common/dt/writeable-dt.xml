@@ -44,6 +44,55 @@
                 </DimensionList>
             </ArrayArgumentType>
 
+            <!-- Writeable float SU -->
+
+            <EnumeratedArgumentType name="writableFloatParameters_su_t">
+                <IntegerDataEncoding sizeInBits="16" />
+                <EnumerationList>
+                    <Enumeration value="4004" label="SUPDMSTemperature" />
+                    <Enumeration value="4006" label="SULedIntensity1"/>
+                    <Enumeration value="4007" label="SULedIntensity2"/>
+                    <Enumeration value="4008" label="SULedIntensity3"/>
+                    <Enumeration value="4009" label="SULedIntensity4"/>
+                    <Enumeration value="4054" label="SUControlPumpFlashLclOn"/>
+                    <Enumeration value="4050" label="SUControlPumpFlashLclThreshold"/>
+                    <Enumeration value="4053" label="SUFlowPumpFlashOn"/>
+                    <Enumeration value="4049" label="SUFlowPumpFlashLclThreshold"/>
+                    <Enumeration value="4051" label="SUCameraLCLThreshold"/>
+                    <Enumeration value="4055" label="SUCameraOn"/>
+                    <Enumeration value="4059" label="SUTemperatureFromHumiditySensor1"/>
+                    <Enumeration value="4060" label="SUTemperatureFromHumiditySensor2"/>
+                    <Enumeration value="4052" label="SUNANDFlashLclOn"/>
+                    <Enumeration value="4048" label="SUNANDFlashLclThreshold"/>
+                    <Enumeration value="4056" label="SUNANDFlashScrubbingFrequency"/>
+                    <Enumeration value="4058" label="SUProgramFlashScrubbingFrequency"/>
+                    <Enumeration value="4057" label="SURAMScrubbingFrequency"/>
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
+             <AggregateArgumentType name="TC(20,3)_set_float_parameter_values_su_aggregate">
+                <MemberList>
+                    <Member typeRef="writableFloatParameters_su_t" name="float_parameter" />
+                    <Member typeRef="/base-dt/float_t" name="new_value" />
+                </MemberList>
+            </AggregateArgumentType>
+
+            <ArrayArgumentType arrayTypeRef="TC(20,3)_set_float_parameter_values_su_aggregate" name="writableFloatParameterArraySU">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <DynamicValue>
+                                <ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <LinearAdjustment intercept="-1" />
+                            </DynamicValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayArgumentType>
+
             <!-- Writeable uint32 -->
 
              <EnumeratedArgumentType name="writableUint32Parameters_t">
