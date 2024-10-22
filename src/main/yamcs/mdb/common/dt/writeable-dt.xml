@@ -199,7 +199,7 @@
             <!-- Writable SUPressureLevelSensor -->
 
             <EnumeratedArgumentType name="writableSUPressureLevelSensorParameters_su_t">
-                <IntegerDataEncoding sizeInBits="16" />
+                <FloatDataEncoding sizeInBits="32" />
                 <EnumerationList>
                     <Enumeration value="4010" label="SUPressureLevelSensor1"/>
                     <Enumeration value="4011" label="SUPressureLevelSensor2"/>    
@@ -209,7 +209,7 @@
             <AggregateArgumentType name="TC(20,3)_set_su_pressure_level_sensor_parameter_values_su_aggregate">
                 <MemberList>
                     <Member typeRef="writableSUPressureLevelSensorParameters_su_t" name="su_pressure_level_sensor_parameter" />
-                    <Member typeRef="/su-dt/SUPressureLevelSensor_t" name="new_value" />
+                    <Member typeRef="/base-dt/SUPressureLevelSensor_t" name="new_value" />
                 </MemberList>
             </AggregateArgumentType>
 
