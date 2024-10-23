@@ -520,14 +520,6 @@
 				</EnumerationList>
 			</EnumeratedArgumentType>
 
-			<xtce:FloatArgumentType name="SUPressureLevelSensor_t">
-                <FloatDataEncoding sizeInBits="32"/>
-                <DefaultAlarm>
-                    <StaticAlarmRanges>
-                        <WarningRange minInclusive="0.8" maxInclusive="1.2"/>
-                    </StaticAlarmRanges>
-                </DefaultAlarm>
-            </xtce:FloatArgumentType>
 		</ArgumentTypeSet>
 
 	</CommandMetaData>
