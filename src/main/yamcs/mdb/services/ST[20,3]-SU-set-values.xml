@@ -73,6 +73,37 @@
                 </DimensionList>
             </ArrayArgumentType>
 
+            <!-- writable suNANDCurrentlyUsedPartition SU -->
+
+            <EnumeratedArgumentType name="writableNANDCurrentlyUsedPartitionParameters_su_t">
+                <IntegerDataEncoding sizeInBits="16"/>
+                <EnumerationList>
+                    <Enumeration value="4045" label="SUNANDCurrentlyUsedPartition" />
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
+            <AggregateArgumentType name="TC(20,3)_set_nand_currently_used_partition_parameter_values_su_aggregate">
+                <MemberList>
+                    <Member typeRef="writableNANDCurrentlyUsedPartitionParameters_su_t" name="nand_currently_used_partition_parameter" />
+                    <Member typeRef="/su-dt/SUNANDMemoryPartition_t" name="new_value" />
+                </MemberList>
+            </AggregateArgumentType>
+
+            <ArrayArgumentType arrayTypeRef="TC(20,3)_set_nand_currently_used_partition_parameter_values_su_aggregate" name="writableNANDCurrentlyUsedPartitionParametersArraySU">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <DynamicValue>
+                                <ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <LinearAdjustment intercept="-1" />
+                            </DynamicValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayArgumentType>
 
         </xtce:ArgumentTypeSet>
 
@@ -170,6 +201,26 @@
                     <Argument argumentTypeRef="writableExpertimentNumberParametersArraySU" name="parameter_ids_and_new_values" />
                 </ArgumentList>
                 <CommandContainer name="dynamic_TC(20,3)_experiment_number_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="dynamic_TC(20,3)_set_nand_currently_used_partition_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t{1}" name="number_of_parameters"/>
+                    <Argument argumentTypeRef="writableNANDCurrentlyUsedPartitionParametersArraySU" name="parameter_ids_and_new_values" />
+                </ArgumentList>
+                <CommandContainer name="dynamic_TC(20,3)_nand_currently_used_partition_container">
                     <EntryList>
                         <ArgumentRefEntry argumentRef="number_of_parameters" />
                         <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
