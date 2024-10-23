@@ -72,6 +72,8 @@
                     <Enumeration value="4000" label="SUPCBTemperature1"/>
                     <Enumeration value="4001" label="SUPCBTemperature2"/>
                     <Enumeration value="4031" label="SUPhotoExposureTime"/>
+                    <Enumeration value="4038" label="SUMCUTemperature"/>
+                    <Enumeration value="4039" label="SUMcuInputVoltage"/>
                     <Enumeration value="4005" label="SUGrowthMediumTemperature"/>
                     <Enumeration value="4003" label="SUPCBTemperatureFlowValves"/>
                     <Enumeration value="4002" label="SUPCBTemperatureControlValves"/>
