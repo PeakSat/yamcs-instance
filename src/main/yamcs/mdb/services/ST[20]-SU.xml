@@ -300,7 +300,27 @@ operationalStatus="unittest">
                             <Comparison value="4060" parameterRef="parameterId"/>
                         </IncludeCondition>
                     </ParameterRefEntry>
-                     
+                    <!-- SENSORS -->
+                    <ParameterRefEntry parameterRef="/su-xtce/SUPressureLevelSensor1">
+                        <IncludeCondition>
+                            <Comparison value="4010" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUPressureLevelSensor2">
+                        <IncludeCondition>
+                            <Comparison value="4011" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUHumidityLevelSensor1">
+                        <IncludeCondition>
+                            <Comparison value="4012" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUHumidityLevelSensor2">
+                        <IncludeCondition>
+                            <Comparison value="4013" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
                 </EntryList>
             </xtce:SequenceContainer>
 
@@ -375,6 +395,32 @@ operationalStatus="unittest">
     <xtce:CommandMetaData>
 
         <MetaCommandSet>
+
+            <xtce:MetaCommand name="TC(20,1)_report_sensors_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPressureLevelSensor1" initialValue="4010"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPressureLevelSensor2" initialValue="4011"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suHumidityLevelSensor1" initialValue="4012"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suHumidityLevelSensor2" initialValue="4013"/>
+                </ArgumentList>
+                <CommandContainer name="TC(20,1)_sensors_container">
+                    <EntryList>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suPressureLevelSensor1"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suPressureLevelSensor2"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suHumidityLevelSensor1"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="suHumidityLevelSensor2"></xtce:ArgumentRefEntry>
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </xtce:MetaCommand>
 
             <xtce:MetaCommand name="TC(20,1)_report_mcu_parameter_values">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
