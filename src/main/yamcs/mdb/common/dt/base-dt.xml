@@ -201,6 +201,13 @@
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
 			</IntegerArgumentType>
 
+			<IntegerArgumentType name="uint16_t{1}" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="1" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
 			<IntegerArgumentType name="uint16_t{1-2}" signed="false">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
 				<ValidRangeSet>
