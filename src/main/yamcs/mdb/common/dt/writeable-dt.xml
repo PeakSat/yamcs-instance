@@ -64,6 +64,17 @@
                     <Enumeration value="4060" label="SUTemperatureFromHumiditySensor2"/>
                     <Enumeration value="4010" label="SUPressureLevelSensor1"/>
                     <Enumeration value="4011" label="SUPressureLevelSensor2"/>  
+                    <Enumeration value="4012" label="SUHumidityLevelSensor1"/>
+                    <Enumeration value="4013" label="SUHumidityLevelSensor2"/>
+                    <Enumeration value="4015" label="SUPumpFlowRate1"/>
+                    <Enumeration value="4016" label="SUPumpFlowRate2"/>
+                    <Enumeration value="4037" label="SUCameraTemperature"/>
+                    <Enumeration value="4000" label="SUPCBTemperature1"/>
+                    <Enumeration value="4001" label="SUPCBTemperature2"/>
+                    <Enumeration value="4031" label="SUPhotoExposureTime"/>
+                    <Enumeration value="4005" label="SUGrowthMediumTemperature"/>
+                    <Enumeration value="4003" label="SUPCBTemperatureFlowValves"/>
+                    <Enumeration value="4002" label="SUPCBTemperatureControlValves"/>
                     <Enumeration value="4052" label="SUNANDFlashLclOn"/>
                     <Enumeration value="4048" label="SUNANDFlashLclThreshold"/>
                     <Enumeration value="4056" label="SUNANDFlashScrubbingFrequency"/>
@@ -135,6 +146,7 @@
                 <EnumerationList>
                     <Enumeration value="4014" label="SUNumberOfPhotosTaken"/>
                     <Enumeration value="4046" label="SULastFailedEvent"/>
+                    <Enumeration value="4032" label="SUPhotoInterval"/>
                 </EnumerationList>
             </EnumeratedArgumentType>
 
