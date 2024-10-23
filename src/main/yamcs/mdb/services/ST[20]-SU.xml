@@ -321,6 +321,42 @@ operationalStatus="unittest">
                             <Comparison value="4013" parameterRef="parameterId"/>
                         </IncludeCondition>
                     </ParameterRefEntry>
+                    <!-- TEMPERATURE -->
+                    <ParameterRefEntry parameterRef="/su-xtce/SUPCBTemperature1">
+                        <IncludeCondition>
+                            <Comparison value="4000" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUPCBTemperature2">
+                        <IncludeCondition>
+                            <Comparison value="4001" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUPCBTemperatureControlValves">
+                        <IncludeCondition>
+                            <Comparison value="4002" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUPCBTemperatureFlowValves">
+                        <IncludeCondition>
+                            <Comparison value="4003" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUPDMSTemperature">
+                        <IncludeCondition>
+                            <Comparison value="4004" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUGrowthMediumTemperature">
+                        <IncludeCondition>
+                            <Comparison value="4005" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
+                    <ParameterRefEntry parameterRef="/su-xtce/SUCameraTemperature">
+                        <IncludeCondition>
+                            <Comparison value="4037" parameterRef="parameterId"/>
+                        </IncludeCondition>
+                    </ParameterRefEntry>
                 </EntryList>
             </xtce:SequenceContainer>
 
@@ -396,6 +432,38 @@ operationalStatus="unittest">
 
         <MetaCommandSet>
 
+            <xtce:MetaCommand name="TC(20,1)_report_temperature_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="SUPCBTemperature1" initialValue="4000"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="SUPCBTemperature2" initialValue="4001"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="SUPCBTemperatureControlValves" initialValue="4002"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="SUPCBTemperatureFlowValves" initialValue="4003"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="SUPDMSTemperature" initialValue="4004"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="SUGrowthMediumTemperature" initialValue="4005"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="SUCameraTemperature" initialValue="4037"/>
+                </ArgumentList>     
+                <CommandContainer name="TC(20,1)_temperature_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters"/>
+                        <ArgumentRefEntry argumentRef="SUPCBTemperature1"/>
+                        <ArgumentRefEntry argumentRef="SUPCBTemperature2"/>
+                        <ArgumentRefEntry argumentRef="SUPCBTemperatureControlValves"/>
+                        <ArgumentRefEntry argumentRef="SUPCBTemperatureFlowValves"/>
+                        <ArgumentRefEntry argumentRef="SUPDMSTemperature"/>
+                        <ArgumentRefEntry argumentRef="SUGrowthMediumTemperature"/>
+                        <ArgumentRefEntry argumentRef="SUCameraTemperature"/>
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>           
+            </xtce:MetaCommand>
+
             <xtce:MetaCommand name="TC(20,1)_report_sensors_parameter_values">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">
                     <ArgumentAssignmentList>
@@ -412,11 +480,11 @@ operationalStatus="unittest">
                 </ArgumentList>
                 <CommandContainer name="TC(20,1)_sensors_container">
                     <EntryList>
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suPressureLevelSensor1"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suPressureLevelSensor2"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suHumidityLevelSensor1"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suHumidityLevelSensor2"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
+                        <xtce:ArgumentRefEntry argumentRef="suPressureLevelSensor1"/>
+                        <xtce:ArgumentRefEntry argumentRef="suPressureLevelSensor2"/>
+                        <xtce:ArgumentRefEntry argumentRef="suHumidityLevelSensor1"/>
+                        <xtce:ArgumentRefEntry argumentRef="suHumidityLevelSensor2"/>
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
@@ -438,11 +506,11 @@ operationalStatus="unittest">
                 </ArgumentList>
                 <CommandContainer name="TC(20,1)_mcu_container">
                     <EntryList>
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suMCUBootCounter"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suMCUSysTick"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suMCUSysTick"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suMCUInputVoltage"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
+                        <xtce:ArgumentRefEntry argumentRef="suMCUBootCounter"/>
+                        <xtce:ArgumentRefEntry argumentRef="suMCUSysTick"/>
+                        <xtce:ArgumentRefEntry argumentRef="suMCUSysTick"/>
+                        <xtce:ArgumentRefEntry argumentRef="suMCUInputVoltage"/>
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
@@ -469,16 +537,16 @@ operationalStatus="unittest">
                 </ArgumentList>
                 <CommandContainer name="TC(20,1)_memory_container">
                     <EntryList>
-                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suFlashIntUsedPercentage"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suFlashUsedPercentage"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suSRAMUsedPercentage"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suNANDCurrentlyUsedPartition"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suNANDFlashLclOn"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suNANDFlashLclThreshold"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suNANDFlashScrubbingFrequency"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suRAMScrubbingFrequency"></xtce:ArgumentRefEntry>
-                        <xtce:ArgumentRefEntry argumentRef="suProgramFlashScrubbingFrequency"></xtce:ArgumentRefEntry>
+                        <xtce:ArgumentRefEntry argumentRef="number_of_parameters"/>
+                        <xtce:ArgumentRefEntry argumentRef="suFlashIntUsedPercentage"/>
+                        <xtce:ArgumentRefEntry argumentRef="suFlashUsedPercentage"/>
+                        <xtce:ArgumentRefEntry argumentRef="suSRAMUsedPercentage"/>
+                        <xtce:ArgumentRefEntry argumentRef="suNANDCurrentlyUsedPartition"/>
+                        <xtce:ArgumentRefEntry argumentRef="suNANDFlashLclOn"/>
+                        <xtce:ArgumentRefEntry argumentRef="suNANDFlashLclThreshold"/>
+                        <xtce:ArgumentRefEntry argumentRef="suNANDFlashScrubbingFrequency"/>
+                        <xtce:ArgumentRefEntry argumentRef="suRAMScrubbingFrequency"/>
+                        <xtce:ArgumentRefEntry argumentRef="suProgramFlashScrubbingFrequency"/>
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
@@ -493,62 +561,62 @@ operationalStatus="unittest">
                 </BaseMetaCommand>
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlPumpFlashLclOn" initialValue="4054"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlPumpFlashLclThreshold" initialValue="4050"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowPumpFlashOn" initialValue="4053"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowPumpFlashLclThreshold" initialValue="4049"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suCameraOn" initialValue="4055"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suCameraLCLThreshold" initialValue="4051"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPumpFlowRate1" initialValue="4015"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPumpFlowRate2" initialValue="4016"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlChamberValve1" initialValue="4017"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlChamberValve2" initialValue="4018"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlChamberValve3" initialValue="4019"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlSandwitchValve1" initialValue="4020"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlSandwitchValve2" initialValue="4021"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlSandwitchValve3" initialValue="4022"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveInlet1" initialValue="4023"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveInlet2" initialValue="4024"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveInlet3" initialValue="4025"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveOutlet1" initialValue="4026"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveOutlet2" initialValue="4027"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveOutlet3" initialValue="4028"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveTest1" initialValue="4029"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveTest2" initialValue="4030"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLEDIntensity1" initialValue="4006"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLEDIntensity2" initialValue="4007"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLEDIntensity3" initialValue="4008"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLEDIntensity4" initialValue="4009"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlPumpFlashLclOn" initialValue="4054"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlPumpFlashLclThreshold" initialValue="4050"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowPumpFlashOn" initialValue="4053"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowPumpFlashLclThreshold" initialValue="4049"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suCameraOn" initialValue="4055"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suCameraLCLThreshold" initialValue="4051"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPumpFlowRate1" initialValue="4015"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPumpFlowRate2" initialValue="4016"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlChamberValve1" initialValue="4017"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlChamberValve2" initialValue="4018"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlChamberValve3" initialValue="4019"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlSandwitchValve1" initialValue="4020"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlSandwitchValve2" initialValue="4021"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suControlSandwitchValve3" initialValue="4022"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveInlet1" initialValue="4023"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveInlet2" initialValue="4024"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveInlet3" initialValue="4025"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveOutlet1" initialValue="4026"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveOutlet2" initialValue="4027"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveOutlet3" initialValue="4028"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveTest1" initialValue="4029"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suFlowValveTest2" initialValue="4030"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLEDIntensity1" initialValue="4006"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLEDIntensity2" initialValue="4007"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLEDIntensity3" initialValue="4008"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLEDIntensity4" initialValue="4009"/>
                 </ArgumentList>
                 <CommandContainer name="TC(20,1)_component_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="number_of_parameters"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suControlPumpFlashLclOn"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suControlPumpFlashLclThreshold"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suFlowPumpFlashOn"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suFlowPumpFlashLclThreshold"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suCameraOn"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suCameraLCLThreshold"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suPumpFlowRate1"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suPumpFlowRate2"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suControlChamberValve1"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suControlChamberValve2"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suControlChamberValve3"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suControlSandwitchValve1"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suControlSandwitchValve2"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suControlSandwitchValve3"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suFlowValveInlet1"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suFlowValveInlet2"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suFlowValveInlet3"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suFlowValveOutlet1"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suFlowValveOutlet2"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suFlowValveOutlet3"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suFlowValveTest1"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suFlowValveTest2"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suLEDIntensity1"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suLEDIntensity2"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suLEDIntensity3"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suLEDIntensity4"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="number_of_parameters"/>
+                        <ArgumentRefEntry argumentRef="suControlPumpFlashLclOn"/>
+                        <ArgumentRefEntry argumentRef="suControlPumpFlashLclThreshold"/>
+                        <ArgumentRefEntry argumentRef="suFlowPumpFlashOn"/>
+                        <ArgumentRefEntry argumentRef="suFlowPumpFlashLclThreshold"/>
+                        <ArgumentRefEntry argumentRef="suCameraOn"/>
+                        <ArgumentRefEntry argumentRef="suCameraLCLThreshold"/>
+                        <ArgumentRefEntry argumentRef="suPumpFlowRate1"/>
+                        <ArgumentRefEntry argumentRef="suPumpFlowRate2"/>
+                        <ArgumentRefEntry argumentRef="suControlChamberValve1"/>
+                        <ArgumentRefEntry argumentRef="suControlChamberValve2"/>
+                        <ArgumentRefEntry argumentRef="suControlChamberValve3"/>
+                        <ArgumentRefEntry argumentRef="suControlSandwitchValve1"/>
+                        <ArgumentRefEntry argumentRef="suControlSandwitchValve2"/>
+                        <ArgumentRefEntry argumentRef="suControlSandwitchValve3"/>
+                        <ArgumentRefEntry argumentRef="suFlowValveInlet1"/>
+                        <ArgumentRefEntry argumentRef="suFlowValveInlet2"/>
+                        <ArgumentRefEntry argumentRef="suFlowValveInlet3"/>
+                        <ArgumentRefEntry argumentRef="suFlowValveOutlet1"/>
+                        <ArgumentRefEntry argumentRef="suFlowValveOutlet2"/>
+                        <ArgumentRefEntry argumentRef="suFlowValveOutlet3"/>
+                        <ArgumentRefEntry argumentRef="suFlowValveTest1"/>
+                        <ArgumentRefEntry argumentRef="suFlowValveTest2"/>
+                        <ArgumentRefEntry argumentRef="suLEDIntensity1"/>
+                        <ArgumentRefEntry argumentRef="suLEDIntensity2"/>
+                        <ArgumentRefEntry argumentRef="suLEDIntensity3"/>
+                        <ArgumentRefEntry argumentRef="suLEDIntensity4"/>
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
@@ -563,19 +631,19 @@ operationalStatus="unittest">
                 </BaseMetaCommand>
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8" />
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suNumberOfPhotosTaken" initialValue="4014"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPhotoExposureTime" initialValue="4031"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPhotoInterval" initialValue="4032"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPhotoCroppedResolution" initialValue="4033"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suNumberOfPhotosTaken" initialValue="4014"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPhotoExposureTime" initialValue="4031"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPhotoInterval" initialValue="4032"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suPhotoCroppedResolution" initialValue="4033"/>
                     <!-- <Argument argumentTypeRef="/base-dt/uint16_t" name="suPhotoCompressionRate" initialValue="4034"></Argument> wont be needed as mentioned in su-xtce.xml -->
                 </ArgumentList>
                 <CommandContainer name="TC(20,1)_photos_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="number_of_parameters"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suNumberOfPhotosTaken"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suPhotoExposureTime"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suPhotoInterval"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suPhotoCroppedResolution"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="number_of_parameters"/>
+                        <ArgumentRefEntry argumentRef="suNumberOfPhotosTaken"/>
+                        <ArgumentRefEntry argumentRef="suPhotoExposureTime"/>
+                        <ArgumentRefEntry argumentRef="suPhotoInterval"/>
+                        <ArgumentRefEntry argumentRef="suPhotoCroppedResolution"/>
                         <!-- <ArgumentRefEntry argumentRef="suPhotoCompressionRate"></ArgumentRefEntry> -->
                     </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
@@ -590,21 +658,21 @@ operationalStatus="unittest">
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
                 <ArgumentList>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suExperimentNumber" initialValue="4035"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suOnBoardTime" initialValue="4044"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLastFailedEvent" initialValue="4046"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suTemperatureFromHumiditySensor1" initialValue="4059"></Argument>
-                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suTemperatureFromHumiditySensor2" initialValue="4060"></Argument>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="number_of_parameters" initialValue="8"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suExperimentNumber" initialValue="4035"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suOnBoardTime" initialValue="4044"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suLastFailedEvent" initialValue="4046"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suTemperatureFromHumiditySensor1" initialValue="4059"/>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="suTemperatureFromHumiditySensor2" initialValue="4060"/>
                 </ArgumentList>
                 <CommandContainer name="TC(20,1)_misc_container">
                     <EntryList>
-                        <ArgumentRefEntry argumentRef="number_of_parameters"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suExperimentNumber"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suOnBoardTime"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suLastFailedEvent"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suTemperatureFromHumiditySensor1"></ArgumentRefEntry>
-                        <ArgumentRefEntry argumentRef="suTemperatureFromHumiditySensor2"></ArgumentRefEntry>
+                        <ArgumentRefEntry argumentRef="number_of_parameters"/>
+                        <ArgumentRefEntry argumentRef="suExperimentNumber"/>
+                        <ArgumentRefEntry argumentRef="suOnBoardTime"/>
+                        <ArgumentRefEntry argumentRef="suLastFailedEvent"/>
+                        <ArgumentRefEntry argumentRef="suTemperatureFromHumiditySensor1"/>
+                        <ArgumentRefEntry argumentRef="suTemperatureFromHumiditySensor2"/>
                     </EntryList>
                 </CommandContainer>
             </MetaCommand>
