@@ -1,1 +1,0 @@
-import{B as i,C as a,Re as n,z as r}from"./chunk-YLFXKKOP.js";var u=()=>a(s).canActivate(),s=(()=>{let t=class t{constructor(e){this.yamcsService=e}canActivate(){return this.yamcsService.clearContext(),!0}};t.\u0275fac=function(o){return new(o||t)(i(n))},t.\u0275prov=r({token:t,factory:t.\u0275fac,providedIn:"root"});let c=t;return c})();export{u as a};
