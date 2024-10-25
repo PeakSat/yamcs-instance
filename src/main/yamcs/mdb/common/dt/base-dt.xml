@@ -201,6 +201,13 @@
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
 			</IntegerArgumentType>
 
+			<IntegerArgumentType name="uint16_t{1}" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="1" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
 			<IntegerArgumentType name="uint16_t{1-2}" signed="false">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
 				<ValidRangeSet>
@@ -215,10 +222,24 @@
 				</ValidRangeSet>
 			</IntegerArgumentType>
 
+			<IntegerArgumentType name="uint16_t{1-4}" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="4" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
 			<IntegerArgumentType name="uint16_t{1-5}" signed="false">
 				<IntegerDataEncoding sizeInBits="16" />
 				<ValidRangeSet>
 					<ValidRange minInclusive="1" maxInclusive="5" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint16_t{1-6}" signed="false">
+				<IntegerDataEncoding sizeInBits="16" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="6" />
 				</ValidRangeSet>
 			</IntegerArgumentType>
 
@@ -240,6 +261,13 @@
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
 				<ValidRangeSet>
 					<ValidRange minInclusive="1" maxInclusive="10" />
+				</ValidRangeSet>
+			</IntegerArgumentType>
+
+			<IntegerArgumentType name="uint16_t{1-18}" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<ValidRangeSet>
+					<ValidRange minInclusive="1" maxInclusive="18" />
 				</ValidRangeSet>
 			</IntegerArgumentType>
 
@@ -498,6 +526,7 @@
 					<Enumeration value="1" label="acceptance_ack" />
 				</EnumerationList>
 			</EnumeratedArgumentType>
+
 		</ArgumentTypeSet>
 
 	</CommandMetaData>
