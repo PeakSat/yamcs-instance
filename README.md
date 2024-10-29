@@ -13,6 +13,9 @@ The application's structure is mainly following the XTCE encoding schema, with t
 
 [Here](https://yamcs.org/getting-started) you can find prerequisites, basic commands and information to get things started with YAMCS.
 
+To build the frontend run:
+    mvn yamcs:webapp
+
 To simply start the main YAMCS instance, run:
 
     mvn yamcs:run
@@ -23,6 +26,15 @@ In order to start YAMCS with JMX enabled (required for hot backups) the commmand
 
     mvn yamcs:run -Dyamcs.jvmArgs="-Dcom.sun.management.jmxremote.port=9999 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
 
+## To Update the Yamcs Frontend
+
+1. If you need to modify anything in the Yamcs frontend, locate the source code in the following directory:
+`yamcs-instance/src/main/webapp/projects/webapp/src`
+
+2. Make your desired changes to the frontend code.
+
+3. After completing the changes, save the files and run the following Maven command to build the webapp:
+`mvn yamcs:webapp`
 ## Telemetry
 
 To start pushing CCSDS packets into YAMCS, run the included Python script:
