@@ -21,6 +21,7 @@ instances:
   - OBC
   - ADCS
   - COMMS
+  - SU
   
 buckets:
   - name: files

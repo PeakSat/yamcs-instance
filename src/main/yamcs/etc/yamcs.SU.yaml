@@ -22,11 +22,11 @@ services:
         warmupTime: 60
 
 dataLinks:
-  - name: OBC-UART
+  - name: SU-UART
     class: org.yamcs.tctm.TcpTmDataLink
     stream: tm_realtime
     host: localhost
-    port: 10015
+    port: 10012
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
     packetInputStreamClassName: org.yamcs.tctm.GenericPacketInputStream
     packetInputStreamArgs: 
@@ -40,7 +40,7 @@ dataLinks:
     class: org.yamcs.tctm.TcpTcDataLink
     stream: tc_realtime
     host: localhost
-    port: 10025
+    port: 10023
     commandPostprocessorClassName: gr.spacedot.acubesat.CustomCommandPostprocessor
 
 mdb:

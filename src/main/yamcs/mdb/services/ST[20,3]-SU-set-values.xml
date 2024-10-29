@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpaceSystem name="ST[20,3]-SU-set-values" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
+    shortDescription="This is a bogus satellite telemetry and telecommand database."
+    operationalStatus="unittest">
+
+    <CommandMetaData>
+
+        <xtce:ArgumentTypeSet>
+
+            <!-- Writable photoCroppedResolution SU -->
+
+            <EnumeratedArgumentType name="writablePhotoCroppedResolutionParameters_su_t">
+                <IntegerDataEncoding sizeInBits="16"/>
+                <EnumerationList>
+                    <Enumeration value="4033" label="SUPhotoCroppedResolution" />
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
+            <AggregateArgumentType name="TC(20,3)_set_photo_cropped_resolution_parameter_values_su_aggregate">
+                <MemberList>
+                    <Member typeRef="writablePhotoCroppedResolutionParameters_su_t" name="photo_cropped_resolution_parameter" />
+                    <Member typeRef="/su-dt/SUPhotoCroppedResolution_t" name="new_value" />
+                </MemberList>
+            </AggregateArgumentType>
+
+            <ArrayArgumentType arrayTypeRef="TC(20,3)_set_photo_cropped_resolution_parameter_values_su_aggregate" name="writablePhotoCroppedResolutionParametersArraySU">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <DynamicValue>
+                                <ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <LinearAdjustment intercept="-1" />
+                            </DynamicValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayArgumentType>
+
+            <!-- writable suExpertimentNumber SU -->
+
+            <EnumeratedArgumentType name="writableExpertimentNumberParameters_su_t">
+                <IntegerDataEncoding sizeInBits="16"/>
+                <EnumerationList>
+                    <Enumeration value="4035" label="SUExpertimentNumber" />
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
+            <AggregateArgumentType name="TC(20,3)_set_experiment_number_parameter_values_su_aggregate">
+                <MemberList>
+                    <Member typeRef="writableExpertimentNumberParameters_su_t" name="experiment_number_parameter" />
+                    <Member typeRef="/su-dt/SUExperimentNo_t" name="new_value" />
+                </MemberList>
+            </AggregateArgumentType>
+
+            <ArrayArgumentType arrayTypeRef="TC(20,3)_set_experiment_number_parameter_values_su_aggregate" name="writableExpertimentNumberParametersArraySU">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <DynamicValue>
+                                <ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <LinearAdjustment intercept="-1" />
+                            </DynamicValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayArgumentType>
+
+            <!-- writable suNANDCurrentlyUsedPartition SU -->
+
+            <EnumeratedArgumentType name="writableNANDCurrentlyUsedPartitionParameters_su_t">
+                <IntegerDataEncoding sizeInBits="16"/>
+                <EnumerationList>
+                    <Enumeration value="4045" label="SUNANDCurrentlyUsedPartition" />
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
+            <AggregateArgumentType name="TC(20,3)_set_nand_currently_used_partition_parameter_values_su_aggregate">
+                <MemberList>
+                    <Member typeRef="writableNANDCurrentlyUsedPartitionParameters_su_t" name="nand_currently_used_partition_parameter" />
+                    <Member typeRef="/su-dt/SUNANDMemoryPartition_t" name="new_value" />
+                </MemberList>
+            </AggregateArgumentType>
+
+            <ArrayArgumentType arrayTypeRef="TC(20,3)_set_nand_currently_used_partition_parameter_values_su_aggregate" name="writableNANDCurrentlyUsedPartitionParametersArraySU">
+                <DimensionList>
+                    <Dimension>
+                        <StartingIndex>
+                            <FixedValue>0</FixedValue>
+                        </StartingIndex>
+                        <EndingIndex>
+                            <DynamicValue>
+                                <ArgumentInstanceRef argumentRef="number_of_parameters" />
+                                <LinearAdjustment intercept="-1" />
+                            </DynamicValue>
+                        </EndingIndex>
+                    </Dimension>
+                </DimensionList>
+            </ArrayArgumentType>
+
+        </xtce:ArgumentTypeSet>
+
+        <xtce:MetaCommandSet>
+            
+            <MetaCommand name="dynamic_TC(20,3)_set_float_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t{1-18}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/writeable-dt/writableFloatParameterArraySU" name="parameter_ids_and_new_values" />
+                </ArgumentList>
+                <CommandContainer name="dynamic_TC(20,3)_float_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="dynamic_TC(20,3)_set_uint32_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t{1-6}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/writeable-dt/writableUint32ParametersArraySU" name="parameter_ids_and_new_values" />
+                </ArgumentList>
+                <CommandContainer name="dynamic_TC(20,3)_uint32_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="dynamic_TC(20,3)_set_uint16_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t{1-2}" name="number_of_parameters" />
+                    <Argument argumentTypeRef="/writeable-dt/writableUint16ParametersArraySU" name="parameter_ids_and_new_values" />
+                </ArgumentList>
+                <CommandContainer name="dynamic_TC(20,3)_uint16_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="dynamic_TC(20,3)_set_photo_cropped_resolution_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t{1}" name="number_of_parameters"/>
+                    <Argument argumentTypeRef="writablePhotoCroppedResolutionParametersArraySU" name="parameter_ids_and_new_values" />
+                </ArgumentList>
+                <CommandContainer name="dynamic_TC(20,3)_photo_cropped_resolution_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="dynamic_TC(20,3)_set_experiment_number_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t{1}" name="number_of_parameters"/>
+                    <Argument argumentTypeRef="writableExpertimentNumberParametersArraySU" name="parameter_ids_and_new_values" />
+                </ArgumentList>
+                <CommandContainer name="dynamic_TC(20,3)_experiment_number_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="dynamic_TC(20,3)_set_nand_currently_used_partition_parameter_values">
+                <BaseMetaCommand metaCommandRef="/pus/Header_TC">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="service_type_ID" argumentValue="20" />
+                        <ArgumentAssignment argumentName="message_subtype_ID" argumentValue="3" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t{1}" name="number_of_parameters"/>
+                    <Argument argumentTypeRef="writableNANDCurrentlyUsedPartitionParametersArraySU" name="parameter_ids_and_new_values" />
+                </ArgumentList>
+                <CommandContainer name="dynamic_TC(20,3)_nand_currently_used_partition_container">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="number_of_parameters" />
+                        <ArgumentRefEntry argumentRef="parameter_ids_and_new_values" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+        </xtce:MetaCommandSet>
+
+    </CommandMetaData>
+
+
+</SpaceSystem>
