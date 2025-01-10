@@ -1,4 +1,7 @@
-# AcubeSAT YAMCS Instance - COMMS Interface
+# PeakSat YAMCS Instance
+
+> [!NOTE]  
+> This is a fork of the AcubeSAT Yamcs Instance: https://gitlab.com/acubesat/ops/yamcs-instance
 
 This repository holds the source code of the YAMCS application used for the communication with COMMS. To find more information regarding the specific features of this communication as well as the changes made in Yamcs visit the [COMMS - YAMCS interface](https://gitlab.com/acubesat/ops/yamcs-instance/-/wikis/COMMS-YAMCS-Interface-info) wiki page.
 
