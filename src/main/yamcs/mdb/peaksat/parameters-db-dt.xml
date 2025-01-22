@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpaceSystem name="obc-dt" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
+    shortDescription="This is a bogus satellite telemetry and telecommand database."
+    operationalStatus="unittest">
+    <!-- Contains PeakSats's non primitive parameters and arguments -->
+    <xtce:TelemetryMetaData>
+        <ParameterTypeSet>
+
+            <EnumeratedArgumentType name="SpacecraftTimeRef_t">
+                <IntegerDataEncoding sizeInBits="8" />
+                <EnumerationList>
+                    <Enumeration label="Spacecraft" value="0" />
+                    <Enumeration label="GroundStation" value="1" />
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
+
+            <EnumeratedArgumentType name="MCUFDIR_t">
+                <IntegerDataEncoding sizeInBits="8" />
+                <EnumerationList>
+                    <Enumeration label="OBC" value="0" />
+                    <Enumeration label="ADCS" value="1" />
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
+
+            <EnumeratedArgumentType name="ResetType_t">
+                <IntegerDataEncoding sizeInBits="8" />
+                <EnumerationList>
+                    <Enumeration label="DoNothng" value="0" />
+                    <Enumeration label="Soft" value="55" />
+                    <Enumeration label="Hard" value="66" />
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
+
+            <EnumeratedArgumentType name="ConModeSelect_t">
+                <IntegerDataEncoding sizeInBits="8" />
+                <EnumerationList>
+                    <Enumeration label="ConNone" value="0" />
+                    <Enumeration label="ConBdot" value="1" />
+                    <Enumeration label="ConYspin" value="2" />
+                    <Enumeration label="ConBdot3" value="3" />
+                    <Enumeration label="ConDetumble" value="4" />
+                    <Enumeration label="ConSunYspin" value="5" />
+                    <Enumeration label="ConZspin" value="6" />
+                    <Enumeration label="ConSunZspin" value="7" />
+                    <Enumeration label="ConGGboom" value="8" />
+                    <Enumeration label="ConGGsun" value="9" />
+                    <Enumeration label="ConYwheelInit" value="10" />
+                    <Enumeration label="ConYwheel" value="11" />
+                    <Enumeration label="ConXYZwheel" value="12" />
+                    <Enumeration label="ConSunTrack" value="13" />
+                    <Enumeration label="ConTgtTrack" value="14" />
+                    <Enumeration label="ConTgtSteer" value="15" />
+                    <Enumeration label="ConGndTrack" value="16" />
+                    <Enumeration label="ConIrcTrack" value="17" />
+                    <Enumeration label="ConMoonTrack" value="18" />
+                    <Enumeration label="ConSatTrack" value="19" />
+                    <Enumeration label="ConYawSun" value="20" />
+                    <Enumeration label="ConYawTarget" value="21" />
+                    <Enumeration label="ConRollSun" value="22" />
+                    <Enumeration label="ConRollTarget" value="23" />
+                    <Enumeration label="ConYawTargetBest" value="24" />
+                    <Enumeration label="ConFmcTarget" value="25" />
+                    <Enumeration label="ConYawSunSpin" value="26" />
+                    <Enumeration label="ConSunDetumble" value="27" />
+                    <Enumeration label="ConAstroSteer" value="28" />
+                    <Enumeration label="ConSunPayload" value="29" />
+                    <Enumeration label="ConStopRW" value="50" />
+                    <Enumeration label="ConHxyzRW" value="51" />
+                    <Enumeration label="ConUser" value="100" />
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
+
+            <EnumeratedArgumentType name="RWL0_power_state_t">
+                <IntegerDataEncoding sizeInBits="8" />
+                <EnumerationList>
+                    <Enumeration label="PowerOff" value="0" />
+                    <Enumeration label="PowerOn" value="1" />
+                    <Enumeration label="PowerNoChange" value="2" />
+                    <Enumeration label="PowerAuto" value="3" />
+                    <Enumeration label="PowerOnPass" value="4" />
+                    <Enumeration label="PowerOffUpgrade" value="5" />
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
+
+            <EnumeratedArgumentType name="Antenna_Deployment_Status_t">
+                <IntegerDataEncoding sizeInBits="8" />
+                <EnumerationList>
+                    <Enumeration label="Closed" value="0" />
+                    <Enumeration label="OneDoorOpen" value="1" />
+                    <Enumeration label="TwoDoorOpen" value="2" />
+                    <Enumeration label="ThreeDoorOpen" value="3" />
+                    <Enumeration label="FullyDeployed" value="4" />
+                </EnumerationList>
+            </EnumeratedArgumentType>
+
+        </ParameterTypeSet>
+    </xtce:TelemetryMetaData>
+</SpaceSystem>

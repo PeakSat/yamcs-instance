@@ -84,7 +84,17 @@ xtce_lines.append('        <ParameterSet>')
 xtce_lines.append('            <!--OBC/OBDH Parameters-->')
 
 # TODO: Add the header lines for the dt file
-
+dt_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
+dt_lines.append('<SpaceSystem name="obc-dt" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"')
+dt_lines.append('    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
+dt_lines.append('    xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"')
+dt_lines.append('    shortDescription="This is a bogus satellite telemetry and telecommand database."')
+dt_lines.append('    operationalStatus="unittest">')
+dt_lines.append(' ')
+dt_lines.append('    <!-- Contains PeakSats\'s non primitive parameters and arguments -->')
+dt_lines.append(' ')
+dt_lines.append('    <xtce:TelemetryMetaData>')
+dt_lines.append('        <ParameterTypeSet>')
 
 # Process each subsystem separately
 namespace_blocks = {acronym: [] for acronym in subsystem_config.keys()}
@@ -135,6 +145,10 @@ for idx, row in enumerate(valid_rows):
             variable_name = variable_cell.value.strip()
 
             variable_type = cpp_type_map[type_cell.value.strip()] if type_cell.value and type_cell.value.strip() in cpp_type_map else "CUSTOM-TBA"
+            #### Handle special cases
+            if variable_type == "enum":
+                variable_type = f"{variable_name}_t"
+            
             enum_items = enum_items_cell.value.strip() if enum_items_cell.value else ""
             # Handle float values to remove .0 for whole numbers
             if value_cell.value:
@@ -146,19 +160,36 @@ for idx, row in enumerate(valid_rows):
                 param_value = "0"
 
             parameter_lines = []
-            parameter_lines.append(f"            <Parameter parameterTypeRef=\"base_dt/{variable_type}\" name=\"{variable_name}\"")
+            parameter_lines.append(f"            <Parameter parameterTypeRef=\"base_dt/{variable_type}\" name=\"{acronym}{variable_name}\"")
 
             # Add to the corresponding namespace block
             # block_lines = namespace_blocks[acronym]
             # block_lines.append(f"        {variable_name}ID = {numeric_id}")
 
-            # Enum definitions (if type is "enum")
-            # if variable_type == "enum":
-                # enum_lines = (
-                #     f"    enum {variable_name}_enum : uint8_t {{\n        {enum_items}\n    }};"
-                # )
-                # block_lines.append(enum_lines)
+            #### Handle special cases
+            if variable_type == f"{variable_name}_t":
+                variable_type = "enum"
 
+            # Enum definitions (if type is "enum")
+            enum_lines = []
+            if variable_type == "enum":
+                enum_lines.append(f'')
+                enum_lines.append(f'            <EnumeratedArgumentType name="{variable_name}_t">')
+                enum_lines.append('                <IntegerDataEncoding sizeInBits="8" />')
+                enum_lines.append('                <EnumerationList>')
+                for enum_item in enum_items.split(","):
+                    enum_item = enum_item.strip()
+                    if not enum_item:
+                        continue
+                    enum_item_parts = enum_item.split(" = ")
+                    if len(enum_item_parts) == 2:
+                        label, value = enum_item_parts
+                        enum_lines.append(f'                    <Enumeration label="{label.strip()}" value="{value.strip()}" />')
+                enum_lines.append('                </EnumerationList>')
+                enum_lines.append('            </EnumeratedArgumentType>')
+                enum_lines.append(f'')
+
+            dt_lines.append("\n".join(enum_lines))
             # Parameter initializations
             # if variable_type == "enum":
             #     param_line = f"    inline Parameter<{variable_name}_enum> {variable_name}({param_value});"
@@ -185,6 +216,11 @@ xtce_lines.append('        </ParameterSet>\n')
 xtce_lines.append('    </xtce:TelemetryMetaData>\n')
 xtce_lines.append('</SpaceSystem>')
 
+# Finalize the dt file
+dt_lines.append('        </ParameterTypeSet>')
+dt_lines.append('    </xtce:TelemetryMetaData>')
+dt_lines.append('</SpaceSystem>')
+
 # Build the .hhp file
 # for acronym, block_lines in namespace_blocks.items():
 #     if block_lines:
@@ -201,10 +237,14 @@ xtce_lines.append('</SpaceSystem>')
 # hhp_lines.append("#pragma GCC diagnostic pop")
 
 # Write the xtce file
-output_xtce_file = f"{output_dir}obc-xtce.xml"
+output_xtce_file = f"{output_dir}parameters-db-xtce.xml"
+output_dt_file = f"{output_dir}parameters-db-dt.xml"
 
 with open(output_xtce_file, "w") as xtce_file:
     xtce_file.write("\n".join(xtce_lines))
+
+with open(output_dt_file, "w") as dt_file:
+    dt_file.write("\n".join(line for line in dt_lines if line.strip()))
 
 
 # with open(output_cpp_file, "w") as cpp_file:
@@ -216,3 +256,4 @@ with open(output_xtce_file, "w") as xtce_file:
 
 print(f"Processing complete.")
 print(f"Generated XTCE file: {output_dir}obc-xtce.xml")
+print(f"Generated DT file: {output_dir}obc-dt.xml")
