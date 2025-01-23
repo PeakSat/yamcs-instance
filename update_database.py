@@ -145,9 +145,9 @@ for idx, row in enumerate(valid_rows):
             variable_name = variable_cell.value.strip()
 
             variable_type = cpp_type_map[type_cell.value.strip()] if type_cell.value and type_cell.value.strip() in cpp_type_map else "CUSTOM-TBA"
-            #### Handle special cases
-            if variable_type == "enum":
-                variable_type = f"{variable_name}_t"
+            # #### Handle special cases
+            # if variable_type == "enum":
+            #     variable_type = f"{variable_name}_t"
             
             enum_items = enum_items_cell.value.strip() if enum_items_cell.value else ""
             # Handle float values to remove .0 for whole numbers
@@ -160,7 +160,10 @@ for idx, row in enumerate(valid_rows):
                 param_value = "0"
 
             parameter_lines = []
-            parameter_lines.append(f"            <Parameter parameterTypeRef=\"base_dt/{variable_type}\" name=\"{acronym}{variable_name}\"")
+            if variable_type == "enum":
+                parameter_lines.append(f"            <Parameter parameterTypeRef=\"parameters-db-dt/{variable_name}_t\" name=\"{acronym}{variable_name}\"")
+            else:
+                parameter_lines.append(f"            <Parameter parameterTypeRef=\"base-dt/{variable_type}\" name=\"{acronym}{variable_name}\"")
 
             # Add to the corresponding namespace block
             # block_lines = namespace_blocks[acronym]
@@ -190,7 +193,18 @@ for idx, row in enumerate(valid_rows):
                 enum_lines.append(f'')
 
             dt_lines.append("\n".join(enum_lines))
-            # Parameter initializations
+
+            # if enum_lines and len(enum_lines) > 0:
+            #     dt_lines.append('        </ParameterTypeSet>')
+            #     dt_lines.append('    </xtce:TelemetryMetaData>')
+
+            #     dt_lines.append('    <xtce:CommandMetaData>')
+            #     dt_lines.append('        <ArgumentTypeSet>')
+
+            # # Append enum_lines but swap 'Parameter' for 'Argument'
+            # for line in enum_lines:
+            #     dt_lines.append(line.replace('Parameter', 'Argument'))
+            # # Parameter initializations
             # if variable_type == "enum":
             #     param_line = f"    inline Parameter<{variable_name}_enum> {variable_name}({param_value});"
             # else:
@@ -212,8 +226,8 @@ for idx, row in enumerate(valid_rows):
             break
 
 # Finalize the xtce file
-xtce_lines.append('        </ParameterSet>\n')
-xtce_lines.append('    </xtce:TelemetryMetaData>\n')
+xtce_lines.append('        </ArgumentTypeSet>\n')
+xtce_lines.append('    </xtce:CommandMetaData>\n')
 xtce_lines.append('</SpaceSystem>')
 
 # Finalize the dt file
