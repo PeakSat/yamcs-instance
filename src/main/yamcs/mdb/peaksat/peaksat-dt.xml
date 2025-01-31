@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SpaceSystem name="obc-dt" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+<SpaceSystem name="peaksat-dt" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
     shortDescription="This is a bogus satellite telemetry and telecommand database."
@@ -8,35 +8,35 @@
     <xtce:TelemetryMetaData>
         <ParameterTypeSet>
 
-            <EnumeratedArgumentType name="SpacecraftTimeRef_t">
+            <EnumeratedParameterType name="SpacecraftTimeRef_t">
                 <IntegerDataEncoding sizeInBits="8" />
                 <EnumerationList>
                     <Enumeration label="Spacecraft" value="0" />
                     <Enumeration label="GroundStation" value="1" />
                 </EnumerationList>
-            </EnumeratedArgumentType>
+            </EnumeratedParameterType>
 
 
-            <EnumeratedArgumentType name="MCUFDIR_t">
+            <EnumeratedParameterType name="MCUFDIR_t">
                 <IntegerDataEncoding sizeInBits="8" />
                 <EnumerationList>
                     <Enumeration label="OBC" value="0" />
                     <Enumeration label="ADCS" value="1" />
                 </EnumerationList>
-            </EnumeratedArgumentType>
+            </EnumeratedParameterType>
 
 
-            <EnumeratedArgumentType name="ResetType_t">
+            <EnumeratedParameterType name="ResetType_t">
                 <IntegerDataEncoding sizeInBits="8" />
                 <EnumerationList>
                     <Enumeration label="DoNothng" value="0" />
                     <Enumeration label="Soft" value="55" />
                     <Enumeration label="Hard" value="66" />
                 </EnumerationList>
-            </EnumeratedArgumentType>
+            </EnumeratedParameterType>
 
 
-            <EnumeratedArgumentType name="ConModeSelect_t">
+            <EnumeratedParameterType name="ConModeSelect_t">
                 <IntegerDataEncoding sizeInBits="8" />
                 <EnumerationList>
                     <Enumeration label="ConNone" value="0" />
@@ -73,10 +73,10 @@
                     <Enumeration label="ConHxyzRW" value="51" />
                     <Enumeration label="ConUser" value="100" />
                 </EnumerationList>
-            </EnumeratedArgumentType>
+            </EnumeratedParameterType>
 
 
-            <EnumeratedArgumentType name="RWL0_power_state_t">
+            <EnumeratedParameterType name="RWL0_power_state_t">
                 <IntegerDataEncoding sizeInBits="8" />
                 <EnumerationList>
                     <Enumeration label="PowerOff" value="0" />
@@ -86,10 +86,10 @@
                     <Enumeration label="PowerOnPass" value="4" />
                     <Enumeration label="PowerOffUpgrade" value="5" />
                 </EnumerationList>
-            </EnumeratedArgumentType>
+            </EnumeratedParameterType>
 
 
-            <EnumeratedArgumentType name="Antenna_Deployment_Status_t">
+            <EnumeratedParameterType name="Antenna_Deployment_Status_t">
                 <IntegerDataEncoding sizeInBits="8" />
                 <EnumerationList>
                     <Enumeration label="Closed" value="0" />
@@ -98,7 +98,7 @@
                     <Enumeration label="ThreeDoorOpen" value="3" />
                     <Enumeration label="FullyDeployed" value="4" />
                 </EnumerationList>
-            </EnumeratedArgumentType>
+            </EnumeratedParameterType>
 
         </ParameterTypeSet>
     </xtce:TelemetryMetaData>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SpaceSystem name="obc-xtce" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+<SpaceSystem name="peaksat-xtce" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
     shortDescription="This is a bogus satellite telemetry and telecommand database."
@@ -86,12 +86,12 @@
             <Parameter parameterTypeRef="base-dt/float_t" name="OBDHMCUTemperature"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="OBDHMCUInputVoltage"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="OBDHMCUBootCounter"/>
-            <Parameter parameterTypeRef="parameters-db-dt/SpacecraftTimeRef_t" name="OBDHSpacecraftTimeRef"/>
-            <Parameter parameterTypeRef="base-dt/CUSTOM-TBA" name="OBDHOnBoardTime"/>
+            <Parameter parameterTypeRef="peaksat-dt/SpacecraftTimeRef_t" name="OBDHSpacecraftTimeRef"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDHOnBoardTime"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="OBDHCANBUSLoad1"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="OBDHCANBUSLoad2"/>
-            <Parameter parameterTypeRef="base-dt/CUSTOM-TBA" name="OBDHCANBUSActive"/>
-            <Parameter parameterTypeRef="parameters-db-dt/MCUFDIR_t" name="OBDHMCUFDIR"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDHCANBUSActive"/>
+            <Parameter parameterTypeRef="peaksat-dt/MCUFDIR_t" name="OBDHMCUFDIR"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDHMCURestartSafeModeThreshold"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="OBDHNANDFLASHLCLThreshold"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="OBDHMRAMLCLThreshold"/>
@@ -107,7 +107,7 @@
             <Parameter parameterTypeRef="base-dt/bool_t" name="OBDHUseRTT"/>
             <Parameter parameterTypeRef="base-dt/bool_t" name="OBDHUseUART"/>
             <Parameter parameterTypeRef="base-dt/bool_t" name="OBDHUseCAN"/>
-            <Parameter parameterTypeRef="parameters-db-dt/ResetType_t" name="ADCSResetType"/>
+            <Parameter parameterTypeRef="peaksat-dt/ResetType_t" name="ADCSResetType"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCSEstRpyRoll"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCSEstRpyPitch"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCSEstRpyYaw"/>
@@ -124,17 +124,17 @@
             <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCSStr0AngVelX"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCSStr0AngVelY"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCSStr0AngVelZ"/>
-            <Parameter parameterTypeRef="parameters-db-dt/ConModeSelect_t" name="ADCSConModeSelect"/>
-            <Parameter parameterTypeRef="base-dt/CUSTOM-TBA" name="ADCSConModeDefault"/>
-            <Parameter parameterTypeRef="parameters-db-dt/RWL0_power_state_t" name="ADCSRWL0_power_state"/>
-            <Parameter parameterTypeRef="base-dt/CUSTOM-TBA" name="ADCSRWL1_power_state"/>
-            <Parameter parameterTypeRef="base-dt/CUSTOM-TBA" name="ADCSRWL2_power_state"/>
-            <Parameter parameterTypeRef="base-dt/CUSTOM-TBA" name="ADCSMag0Power"/>
-            <Parameter parameterTypeRef="base-dt/CUSTOM-TBA" name="ADCSGyro0Power"/>
-            <Parameter parameterTypeRef="base-dt/CUSTOM-TBA" name="ADCSGyro1Power"/>
-            <Parameter parameterTypeRef="base-dt/CUSTOM-TBA" name="ADCSFss0Power"/>
-            <Parameter parameterTypeRef="base-dt/CUSTOM-TBA" name="ADCSHss0Power"/>
-            <Parameter parameterTypeRef="base-dt/CUSTOM-TBA" name="ADCSStr0Power"/>
+            <Parameter parameterTypeRef="peaksat-dt/ConModeSelect_t" name="ADCSConModeSelect"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCSConModeDefault"/>
+            <Parameter parameterTypeRef="peaksat-dt/RWL0_power_state_t" name="ADCSRWL0_power_state"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCSRWL1_power_state"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCSRWL2_power_state"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCSMag0Power"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCSGyro0Power"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCSGyro1Power"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCSFss0Power"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCSHss0Power"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCSStr0Power"/>
             <Parameter parameterTypeRef="base-dt/int32_t" name="ADCSSatPosEciX"/>
             <Parameter parameterTypeRef="base-dt/int32_t" name="ADCSSatPosEciY"/>
             <Parameter parameterTypeRef="base-dt/int32_t" name="ADCSSatPosEciZ"/>
@@ -150,10 +150,10 @@
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMScommsUHFBandPATemperature"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMScommsPCBTemperature"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMScommsGNSSTemperature"/>
-            <Parameter parameterTypeRef="parameters-db-dt/Antenna_Deployment_Status_t" name="COMMSAntenna_Deployment_Status"/>
+            <Parameter parameterTypeRef="peaksat-dt/Antenna_Deployment_Status_t" name="COMMSAntenna_Deployment_Status"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMScommit_hash"/>
-        </ArgumentTypeSet>
+        </ParameterSet>
 
-    </xtce:CommandMetaData>
+    </xtce:TelemetryMetaData>
 
 </SpaceSystem>

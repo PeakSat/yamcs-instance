@@ -73,7 +73,7 @@ xtce_lines = []
 
 # Add the header lines for the xtce file
 xtce_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
-xtce_lines.append('<SpaceSystem name="obc-xtce" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"')
+xtce_lines.append('<SpaceSystem name="peaksat-xtce" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"')
 xtce_lines.append('    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
 xtce_lines.append('    xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"')
 xtce_lines.append('    shortDescription="This is a bogus satellite telemetry and telecommand database."')
@@ -85,7 +85,7 @@ xtce_lines.append('            <!--OBC/OBDH Parameters-->')
 
 # TODO: Add the header lines for the dt file
 dt_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
-dt_lines.append('<SpaceSystem name="obc-dt" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"')
+dt_lines.append('<SpaceSystem name="peaksat-dt" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"')
 dt_lines.append('    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
 dt_lines.append('    xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"')
 dt_lines.append('    shortDescription="This is a bogus satellite telemetry and telecommand database."')
@@ -144,7 +144,8 @@ for idx, row in enumerate(valid_rows):
             # Get variable name and type
             variable_name = variable_cell.value.strip()
 
-            variable_type = cpp_type_map[type_cell.value.strip()] if type_cell.value and type_cell.value.strip() in cpp_type_map else "CUSTOM-TBA"
+            ### TODO: Fix special case handling
+            variable_type = cpp_type_map[type_cell.value.strip()] if type_cell.value and type_cell.value.strip() in cpp_type_map else "uint32_t"
             # #### Handle special cases
             # if variable_type == "enum":
             #     variable_type = f"{variable_name}_t"
@@ -161,7 +162,7 @@ for idx, row in enumerate(valid_rows):
 
             parameter_lines = []
             if variable_type == "enum":
-                parameter_lines.append(f"            <Parameter parameterTypeRef=\"parameters-db-dt/{variable_name}_t\" name=\"{acronym}{variable_name}\"")
+                parameter_lines.append(f"            <Parameter parameterTypeRef=\"peaksat-dt/{variable_name}_t\" name=\"{acronym}{variable_name}\"")
             else:
                 parameter_lines.append(f"            <Parameter parameterTypeRef=\"base-dt/{variable_type}\" name=\"{acronym}{variable_name}\"")
 
@@ -177,7 +178,7 @@ for idx, row in enumerate(valid_rows):
             enum_lines = []
             if variable_type == "enum":
                 enum_lines.append(f'')
-                enum_lines.append(f'            <EnumeratedArgumentType name="{variable_name}_t">')
+                enum_lines.append(f'            <EnumeratedParameterType name="{variable_name}_t">')
                 enum_lines.append('                <IntegerDataEncoding sizeInBits="8" />')
                 enum_lines.append('                <EnumerationList>')
                 for enum_item in enum_items.split(","):
@@ -189,7 +190,7 @@ for idx, row in enumerate(valid_rows):
                         label, value = enum_item_parts
                         enum_lines.append(f'                    <Enumeration label="{label.strip()}" value="{value.strip()}" />')
                 enum_lines.append('                </EnumerationList>')
-                enum_lines.append('            </EnumeratedArgumentType>')
+                enum_lines.append('            </EnumeratedParameterType>')
                 enum_lines.append(f'')
 
             dt_lines.append("\n".join(enum_lines))
@@ -226,8 +227,10 @@ for idx, row in enumerate(valid_rows):
             break
 
 # Finalize the xtce file
-xtce_lines.append('        </ArgumentTypeSet>\n')
-xtce_lines.append('    </xtce:CommandMetaData>\n')
+#     dt_lines.append('        </ParameterTypeSet>')
+            #     dt_lines.append('    </xtce:TelemetryMetaData>')
+xtce_lines.append('        </ParameterSet>\n')
+xtce_lines.append('    </xtce:TelemetryMetaData>\n')
 xtce_lines.append('</SpaceSystem>')
 
 # Finalize the dt file
@@ -251,8 +254,8 @@ dt_lines.append('</SpaceSystem>')
 # hhp_lines.append("#pragma GCC diagnostic pop")
 
 # Write the xtce file
-output_xtce_file = f"{output_dir}parameters-db-xtce.xml"
-output_dt_file = f"{output_dir}parameters-db-dt.xml"
+output_xtce_file = f"{output_dir}peaksat-xtce.xml"
+output_dt_file = f"{output_dir}peaksat-dt.xml"
 
 with open(output_xtce_file, "w") as xtce_file:
     xtce_file.write("\n".join(xtce_lines))

@@ -26,7 +26,15 @@
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
 			</IntegerParameterType>
 
+			<IntegerParameterType name="int16_t" signed="true">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+			</IntegerParameterType>
+
 			<IntegerParameterType name="uint32_t" signed="false">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
+			</IntegerParameterType>
+
+			<IntegerParameterType name="int32_t" signed="true">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
 			</IntegerParameterType>
 
