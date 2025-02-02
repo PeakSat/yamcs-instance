@@ -73,6 +73,7 @@
                 </BaseContainer>
             </SequenceContainer>
 
+        <!-- TODO: Update the ST[03] structures -->
          <SequenceContainer name="Housekeeping_OBC_1">
                 <EntryList>
                     <ParameterRefEntry parameterRef="/obc-xtce/OBCPCBBoardTemperature1" />

@@ -84,6 +84,7 @@
                 </DimensionList>
             </ArrayParameterType>
 
+            <!-- TODO: Remove -->
 			<EnumeratedParameterType name="response_band">
 				<IntegerDataEncoding sizeInBits="1" />
 				<EnumerationList>
@@ -121,7 +122,7 @@
                 </DimensionList>
             </ArrayParameterType>
 
-            <!--ST[05] types-->
+            <!--TODO: Update ST[05] types-->
 
             <EnumeratedParameterType name="event_ID">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
@@ -249,6 +250,7 @@
                 </EnumerationList>
             </EnumeratedArgumentType>
 			
+            <!-- TODO: Remove -->
 			<EnumeratedArgumentType name="response_band">
 				<IntegerDataEncoding sizeInBits="1" />
 				<EnumerationList>
@@ -261,6 +263,7 @@
                 <IntegerDataEncoding sizeInBits="1" />
             </BooleanArgumentType>
 
+            <!-- TODO: Update the ST[03] structure definitions -->
             <EnumeratedArgumentType name="structureId_t">
                 <IntegerDataEncoding sizeInBits="8" />
                 <EnumerationList>
@@ -304,7 +307,7 @@
                 </DimensionList>
             </ArrayArgumentType>
 
-            <!-- ST[05] types-->
+            <!-- TODO: Update ST[05] event types-->
 
             <EnumeratedArgumentType name="event_ID">
                 <xtce:IntegerDataEncoding sizeInBits="16"/>

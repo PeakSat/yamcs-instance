@@ -1,5 +1,5 @@
 import openpyxl
-import requests
+# import requests
 import os
 
 # Google Sheets details
@@ -95,6 +95,11 @@ dt_lines.append('    <!-- Contains PeakSats\'s non primitive parameters and argu
 dt_lines.append(' ')
 dt_lines.append('    <xtce:TelemetryMetaData>')
 dt_lines.append('        <ParameterTypeSet>')
+
+parameter_id_lines = []
+parameter_id_lines.append('            <EnumeratedArgumentType name="parameterId_t">')
+parameter_id_lines.append('                <IntegerDataEncoding sizeInBits="16" />')
+parameter_id_lines.append('                <EnumerationList>')
 
 # Process each subsystem separately
 namespace_blocks = {acronym: [] for acronym in subsystem_config.keys()}
@@ -224,6 +229,9 @@ for idx, row in enumerate(valid_rows):
             #     )
             xtce_lines.append(" ".join(parameter_lines) + "/>")
 
+            # Create the parameter ID line
+            parameter_id_lines.append(f'<Enumeration value="{numeric_id}" label="{variable_name}" />\n')
+
             break
 
 # Finalize the xtce file
@@ -274,3 +282,4 @@ with open(output_dt_file, "w") as dt_file:
 print(f"Processing complete.")
 print(f"Generated XTCE file: {output_dir}obc-xtce.xml")
 print(f"Generated DT file: {output_dir}obc-dt.xml")
+print(parameter_id_lines)
