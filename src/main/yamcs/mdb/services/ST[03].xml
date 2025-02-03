@@ -76,23 +76,23 @@
         <!-- TODO: Update the ST[03] structures -->
          <SequenceContainer name="Housekeeping_OBC_1">
                 <EntryList>
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCPCBBoardTemperature1" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCPCBBoardTemperature2" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMCUTemperature" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCBootCounter" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMemoryPartition" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMCUSysTick" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCCANBUSLoad1" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCCANBUSLoad2" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCCANBUSActive" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCNANDFLASHLCLThreshold" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMRAMLCLThreshold" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCNANDFLASHON" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMRAMON" />
-                    <ParameterRefEntry parameterRef="AvailableHeap" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCUseCAN" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCUseUART" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCUseRTT" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHPCBTemperature1" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHPCBTemperature2" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMCUTemperature" />
+                    <!-- <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHBootCounter" /> -->
+                    <!-- <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMemoryPartition" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMCUSysTick" /> -->
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHCANBUSLoad1" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHCANBUSLoad2" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHCANBUSActive" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHNANDFLASHLCLThreshold" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMRAMLCLThreshold" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHNANDFLASHON" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMRAMON" />
+                    <!-- <ParameterRefEntry parameterRef="AvailableHeap" /> -->
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHUseCAN" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHUseUART" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHUseRTT" />
                 </EntryList>
                 <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
                     <RestrictionCriteria>
@@ -105,14 +105,14 @@
 
             <SequenceContainer name="Housekeeping_OBC_3">
                 <EntryList>
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCPCBBoardTemperature1" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCPCBBoardTemperature2" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCSpacecraftTimeRef" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCOperationalMode" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMemoryPartition" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCReconfigurationTimer" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCLastFailedEvent" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMCUSysTick" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHPCBTemperature2" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHPCBTemperature1" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHSpacecraftTimeRef" />
+                    <!-- <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHOperationalMode" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMemoryPartition" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHReconfigurationTimer" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHLastFailedEvent" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMCUSysTick" /> -->
                 </EntryList>
                 <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
                     <RestrictionCriteria>
@@ -123,7 +123,7 @@
                 </BaseContainer>
             </SequenceContainer>
 
-            <SequenceContainer name="Housekeeping_ADCS_0,01">
+            <!-- <SequenceContainer name="Housekeeping_ADCS_0,01">
                 <EntryList>
                     <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMagnetometerRawX" />
                     <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMagnetometerRawY" />
@@ -204,7 +204,7 @@
                         </ComparisonList>
                     </RestrictionCriteria>
                 </BaseContainer>
-            </SequenceContainer>
+            </SequenceContainer> -->
             
         </ContainerSet>
     </xtce:TelemetryMetaData>
