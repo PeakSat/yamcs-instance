@@ -53,7 +53,7 @@ if __name__ == "__main__":
             logging.exception("File reading error.")
 
     serial_port = settings.uart_serial_0
-    yamcs_listener_thread = Thread(target=yamcs_client, args=(settings, serial_port, 'PeakSat'))
+    yamcs_listener_thread = Thread(target=yamcs_client, args=(settings, serial_port, 'OBC'))
     # yamcs_listener_thread = Thread(target=yamcs_client, args=(settings, serial_port, 'ADCS'))
     yamcs_listener_thread.start()
 

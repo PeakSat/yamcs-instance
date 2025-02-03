@@ -336,47 +336,28 @@ def yamcs_client(settings: Settings, serial_port: str = None, subsystem: str = N
     # elif subsystem == 'ADCS':
     #     tcp_client = connect_to_port(settings, settings.adcs_port_out)
 
-    port = serial.Serial(
+    while True:
+
+        try:
+            port = serial.Serial(
                 port=serial_port,
                 baudrate=settings.baud_rate,
                 timeout=settings.serial_timeout,
             )
-    
-    while True:
-        data, _ = tcp_client.recvfrom(settings.max_tc_size)
-        logging.info("YAMCS: " + data.hex())
-        if len(data) >= TC_HEADER:
-            logging.info("YAMCS: " + data.hex())
-            encoded_data = cobs.encode(data)
-            print("Port is: ", port.name, "Status: ",port.is_open)
-            port.write(encoded_data)
-            port.write(DELIMITER)
-        sleep(settings.reconnection_timeout)
+            while True:
+                data, _ = tcp_client.recvfrom(settings.max_tc_size)
+                if len(data) >= TC_HEADER:
+                    logging.info("YAMCS: " + data.hex())
+                    encoded_data = cobs.encode(data)
+                    port.write(encoded_data)
+                    port.write(DELIMITER)
 
-    # while True:
-
-    #     try:
-    #         port = serial.Serial(
-    #             port=serial_port,
-    #             baudrate=settings.baud_rate,
-    #             timeout=settings.serial_timeout,
-    #         )
-    #         while True:
-    #             data, _ = tcp_client.recvfrom(settings.max_tc_size)
-    #             if len(data) >= TC_HEADER:
-    #                 logging.info("YAMCS: " + data.hex())
-    #                 encoded_data = cobs.encode(data)
-    #                 print("Port is: ", port.name, "Status: ",port.is_open)
-
-    #                 port.write(encoded_data)
-    #                 port.write(DELIMITER)
-
-    #     except serial.SerialException:
-    #         logging.warning(
-    #             "No device is connected at port "
-    #             + serial_port
-    #             + ". Please connect a device."
-    #         )
-    #         sleep(settings.reconnection_timeout)
+        except serial.SerialException:
+            logging.warning(
+                "No device is connected at port "
+                + serial_port
+                + ". Please connect a device."
+            )
+            sleep(settings.reconnection_timeout)
 
 
