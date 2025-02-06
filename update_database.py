@@ -184,6 +184,9 @@ for idx, row in enumerate(valid_rows):
             else:
                 param_value = "0"
 
+            if acronym == "EPS":
+                acronym = ""
+
             parameter_lines = []
             if variable_type == "enum":
                 parameter_lines.append(f"            <Parameter parameterTypeRef=\"peaksat-dt/{variable_name}_t\" name=\"{acronym}{variable_name}\"")
@@ -256,6 +259,55 @@ id_lines.append('                <IntegerDataEncoding sizeInBits="16" />')
 id_lines.append('                <EnumerationList>')
 id_lines.append(parameter_id_lines)
 id_lines.append('                </EnumerationList>')
+id_lines.append('            </EnumeratedParameterType>')
+id_lines.append('')
+id_lines.append('            <ArrayParameterType name="parameterIdArray_t" arrayTypeRef="parameterId_t">')
+id_lines.append('               <DimensionList>')
+id_lines.append('                   <Dimension>')
+id_lines.append('                       <StartingIndex>')
+id_lines.append('                           <FixedValue>0</FixedValue>')
+id_lines.append('                      </StartingIndex>')
+id_lines.append('                      <EndingIndex>')
+id_lines.append('                           <DynamicValue>')
+id_lines.append('                               <ArgumentInstanceRef argumentRef="total_parameters" />')
+id_lines.append('                               <LinearAdjustment intercept="-1" />')
+id_lines.append('                           </DynamicValue>')
+id_lines.append('                       </EndingIndex>')
+id_lines.append('                   </Dimension>')
+id_lines.append('               </DimensionList>')
+id_lines.append('           </ArrayParameterType>')
+id_lines.append('        </ParameterTypeSet>')
+id_lines.append('    </TelemetryMetaData>')
+id_lines.append('')
+id_lines.append('    <CommandMetaData>')
+id_lines.append('        <ArgumentTypeSet>')
+id_lines.append('            <EnumeratedArgumentType name="parameterId_t">')
+id_lines.append('                <IntegerDataEncoding sizeInBits="16" />')
+id_lines.append('                <EnumerationList>')
+id_lines.append(parameter_id_lines)
+id_lines.append('                </EnumerationList>')
+id_lines.append('            </EnumeratedArgumentType>')
+id_lines.append('        </ArgumentTypeSet>')
+id_lines.append('')
+id_lines.append('       <ArgumentTypeSet>')
+id_lines.append('           <ArrayArgumentType name="parameterIdArray_t" arrayTypeRef="parameterId_t">')
+id_lines.append('              <DimensionList>')
+id_lines.append('                  <Dimension>')
+id_lines.append('                      <StartingIndex>')
+id_lines.append('                          <FixedValue>0</FixedValue>')
+id_lines.append('                     </StartingIndex>')
+id_lines.append('                     <EndingIndex>')
+id_lines.append('                          <DynamicValue>')
+id_lines.append('                              <ArgumentInstanceRef argumentRef="total_parameters" />')
+id_lines.append('                              <LinearAdjustment intercept="-1" />')
+id_lines.append('                          </DynamicValue>')
+id_lines.append('                      </EndingIndex>')
+id_lines.append('                  </Dimension>')
+id_lines.append('              </DimensionList>')
+id_lines.append('          </ArrayArgumentType>')
+id_lines.append('      <ArgumentTypeSet>')
+id_lines.append('   <CommandMetaData>')
+id_lines.append('</SpaceSystem>')
 
 # Write the xtce file
 output_xtce_file = f"{output_dir}peaksat-xtce.xml"
@@ -271,10 +323,10 @@ with open(output_dt_file, "w") as dt_file:
     dt_file.write("\n".join(line for line in dt_lines if line.strip()))
 
 # Flatten the parameter_id_lines list
-flattened_parameter_id_lines = [item for sublist in parameter_id_lines for item in (sublist if isinstance(sublist, list) else [sublist])]
+id_lines = [item for sublist in id_lines for item in (sublist if isinstance(sublist, list) else [sublist])]
 
 with open(output_parameter_id_file, "w") as parameter_id_file:
-    parameter_id_file.write("\n".join(parameter_id_lines))
+    parameter_id_file.write("\n".join(id_lines))
 
 print(f"Processing complete.")
 print(f"Generated XTCE file: {output_dir}obc-xtce.xml")
