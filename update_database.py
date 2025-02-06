@@ -1,5 +1,5 @@
 import openpyxl
-# import requests
+import requests
 import os
 
 # Google Sheets details
@@ -11,21 +11,43 @@ xlsx_export_url = f"https://docs.google.com/spreadsheets/d/{spreadsheet_id}/expo
 # Output file
 output_file = "mission_database.xlsx"
 
-# try:
-#     # Send GET request
-#     response = requests.get(xlsx_export_url)
+try:
+    # Send GET request
+    response = requests.get(xlsx_export_url)
 
-#     # Check if the request was successful
-#     if response.status_code == 200:
-#         # Write the content to a file
-#         with open(output_file, "wb") as file:
-#             file.write(response.content)
-#         print(f"Excel file downloaded successfully as '{output_file}'")
-#     else:
-#         print(f"Failed to download Excel file. HTTP Status Code: {response.status_code}")
-# except Exception as e:
-#     print(f"An error occurred: {e}")
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Write the content to a file
+        with open(output_file, "wb") as file:
+            file.write(response.content)
+        print(f"Excel file downloaded successfully as '{output_file}'")
+    else:
+        print(f"Failed to download Excel file. HTTP Status Code: {response.status_code}")
+except Exception as e:
+    print(f"An error occurred: {e}")
 
+# Type encoding dictionary for the last 4 bits
+type_encoding = {
+    "uint8_t": 0,
+    "bool_t" : 0,
+    "int8_t": 1,
+    "uint16_t": 2,
+    "int16_t": 3,
+    "uint32_t": 4,
+    "int32_t": 5,
+    "uint64_t": 6,
+    "int64_t": 7,
+    "float_t": 8,
+    "double_t": 9,
+}
+
+# Function to encode the ID
+def encode_id(numeric_id, variable_type):
+    if variable_type not in type_encoding:
+        print(f"Error: Type '{variable_type}' not found in type encoding dictionary. Defaulting to 'uint64_t'.")
+        variable_type = "uint64_t"
+    type_code = type_encoding[variable_type]
+    return (numeric_id << 4) | type_code
 
 # Subsystem acronyms and their corresponding number offsets
 subsystem_config = {
@@ -151,9 +173,6 @@ for idx, row in enumerate(valid_rows):
 
             ### TODO: Fix special case handling
             variable_type = cpp_type_map[type_cell.value.strip()] if type_cell.value and type_cell.value.strip() in cpp_type_map else "uint32_t"
-            # #### Handle special cases
-            # if variable_type == "enum":
-            #     variable_type = f"{variable_name}_t"
             
             enum_items = enum_items_cell.value.strip() if enum_items_cell.value else ""
             # Handle float values to remove .0 for whole numbers
@@ -200,37 +219,18 @@ for idx, row in enumerate(valid_rows):
 
             dt_lines.append("\n".join(enum_lines))
 
-            # if enum_lines and len(enum_lines) > 0:
-            #     dt_lines.append('        </ParameterTypeSet>')
-            #     dt_lines.append('    </xtce:TelemetryMetaData>')
+            # Encode the ID with the new encoding rule
+            encoded_id = encode_id(numeric_id, variable_type)
 
-            #     dt_lines.append('    <xtce:CommandMetaData>')
-            #     dt_lines.append('        <ArgumentTypeSet>')
+            # Skip duplicates
+            if encoded_id in processed_ids:
+                continue
 
-            # # Append enum_lines but swap 'Parameter' for 'Argument'
-            # for line in enum_lines:
-            #     dt_lines.append(line.replace('Parameter', 'Argument'))
-            # # Parameter initializations
-            # if variable_type == "enum":
-            #     param_line = f"    inline Parameter<{variable_name}_enum> {variable_name}({param_value});"
-            # else:
-            #     param_line = f"    inline Parameter<{variable_type}> {variable_name}({param_value});"
-            # block_lines.append(param_line)
 
-            # Add to .cpp file
-            # is_last_row = idx == len(valid_rows) - 1
-            # if is_last_row:
-            #     cpp_lines.append(
-            #         f'        {{{acronym}Parameters::{variable_name}ID, {acronym}Parameters::{variable_name}}}'
-            #     )
-            # else:
-            #     cpp_lines.append(
-            #         f'        {{{acronym}Parameters::{variable_name}ID, {acronym}Parameters::{variable_name}}},'
-            #     )
             xtce_lines.append(" ".join(parameter_lines) + "/>")
 
             # Create the parameter ID line
-            parameter_id_lines.append(f'<Enumeration value="{numeric_id}" label="{variable_name}" />\n')
+            parameter_id_lines.append(f'                    <Enumeration value=\"{encoded_id}\" label=\"{acronym}{variable_name}\" />')
 
             break
 
@@ -246,24 +246,23 @@ dt_lines.append('        </ParameterTypeSet>')
 dt_lines.append('    </xtce:TelemetryMetaData>')
 dt_lines.append('</SpaceSystem>')
 
-# Build the .hhp file
-# for acronym, block_lines in namespace_blocks.items():
-#     if block_lines:
-#         hhp_lines.append(f"namespace {acronym}Parameters {{")
-#         hhp_lines.append("    enum ParameterID : uint16_t {")
-#         hhp_lines.append(",\n".join(line for line in block_lines if "ID =" in line))
-#         hhp_lines.append("    };")
-#         hhp_lines.extend(
-#             line for line in block_lines if not line.startswith("        ")
-#         )
-#         hhp_lines.append("}")
+id_lines = []
 
-# # Add footer to the .hhp file
-# hhp_lines.append("#pragma GCC diagnostic pop")
+id_lines.append('<!--Contains all ParameterTypes for Telemetry and ArgumentTypes for Telecommanding.-->')
+id_lines.append('    <TelemetryMetaData>')
+id_lines.append('        <ParameterTypeSet>')
+id_lines.append('            <EnumeratedParameterType name="parameterId_t">')
+id_lines.append('                <IntegerDataEncoding sizeInBits="16" />')
+id_lines.append('                <EnumerationList>')
+id_lines.append(parameter_id_lines)
+id_lines.append('                </EnumerationList>')
 
 # Write the xtce file
 output_xtce_file = f"{output_dir}peaksat-xtce.xml"
 output_dt_file = f"{output_dir}peaksat-dt.xml"
+output_parameter_id_file = f"src/main/yamcs/mdb/peaksat/parameter_id.xml"
+
+print(parameter_id_lines)
 
 with open(output_xtce_file, "w") as xtce_file:
     xtce_file.write("\n".join(xtce_lines))
@@ -271,15 +270,12 @@ with open(output_xtce_file, "w") as xtce_file:
 with open(output_dt_file, "w") as dt_file:
     dt_file.write("\n".join(line for line in dt_lines if line.strip()))
 
+# Flatten the parameter_id_lines list
+flattened_parameter_id_lines = [item for sublist in parameter_id_lines for item in (sublist if isinstance(sublist, list) else [sublist])]
 
-# with open(output_cpp_file, "w") as cpp_file:
-#     cpp_file.write("\n".join(cpp_lines))
-
-# # Write the .hhp file
-# with open(output_hhp_file, "w") as hhp_file:
-#     hhp_file.write("\n".join(hhp_lines))
+with open(output_parameter_id_file, "w") as parameter_id_file:
+    parameter_id_file.write("\n".join(parameter_id_lines))
 
 print(f"Processing complete.")
 print(f"Generated XTCE file: {output_dir}obc-xtce.xml")
 print(f"Generated DT file: {output_dir}obc-dt.xml")
-print(parameter_id_lines)
