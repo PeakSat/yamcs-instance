@@ -98,8 +98,8 @@
                 </BaseMetaCommand>
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="total_parameters" initialValue="1" />
-                    <Argument argumentTypeRef="/dt/parameterId_t" name="PMON_ID" />
-                    <Argument argumentTypeRef="/dt/parameterId_t" name="monitored_parameter_ID" />
+                    <Argument argumentTypeRef="/parameter-ids/parameterId_t" name="PMON_ID" />
+                    <Argument argumentTypeRef="/parameter-ids/parameterId_t" name="monitored_parameter_ID" />
 
                     <Argument argumentTypeRef="/base-dt/uint16_t" name="repetition_number" />
                     <Argument argumentTypeRef="/dt/check_type" name="check_type" />

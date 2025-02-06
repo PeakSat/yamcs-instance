@@ -73,6 +73,8 @@ mdb:
   spec: "mdb/peaksat/peaksat-dt.xml"
 - type: xtce
   spec: "mdb/peaksat/peaksat-xtce.xml"
+- type: xtce
+  spec: "mdb/peaksat/parameter_id.xml"
 # - type: xtce
 #   spec: "mdb/frames/frames-dt.xml"
 # - type: xtce

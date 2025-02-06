@@ -1,10 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SpaceSystem name="parameter-ids" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"
+    shortDescription="This is a bogus satellite telemetry and telecommand database."
+    operationalStatus="unittest">
 <!--Contains all ParameterTypes for Telemetry and ArgumentTypes for Telecommanding.-->
     <TelemetryMetaData>
         <ParameterTypeSet>
             <EnumeratedParameterType name="parameterId_t">
-                <IntegerDataEncoding sizeInBits="16" />
-                <EnumerationList>
-            <EnumeratedArgumentType name="parameterId_t">
                 <IntegerDataEncoding sizeInBits="16" />
                 <EnumerationList>
                     <Enumeration value="240021" label="PAYpointing_offset_x" />
@@ -867,7 +870,7 @@
                     <Enumeration value="160690" label="COMMScommit_hash" />
                 </EnumerationList>
             </EnumeratedParameterType>
-
+ 
             <ArrayParameterType name="parameterIdArray_t" arrayTypeRef="parameterId_t">
                <DimensionList>
                    <Dimension>
@@ -885,12 +888,9 @@
            </ArrayParameterType>
         </ParameterTypeSet>
     </TelemetryMetaData>
-
+ 
     <CommandMetaData>
         <ArgumentTypeSet>
-            <EnumeratedArgumentType name="parameterId_t">
-                <IntegerDataEncoding sizeInBits="16" />
-                <EnumerationList>
             <EnumeratedArgumentType name="parameterId_t">
                 <IntegerDataEncoding sizeInBits="16" />
                 <EnumerationList>
@@ -1755,7 +1755,7 @@
                 </EnumerationList>
             </EnumeratedArgumentType>
         </ArgumentTypeSet>
-
+ 
        <ArgumentTypeSet>
            <ArrayArgumentType name="parameterIdArray_t" arrayTypeRef="parameterId_t">
               <DimensionList>
@@ -1772,6 +1772,6 @@
                   </Dimension>
               </DimensionList>
           </ArrayArgumentType>
-      <ArgumentTypeSet>
-   <CommandMetaData>
+      </ArgumentTypeSet>
+   </CommandMetaData>
 </SpaceSystem>
