@@ -1,0 +1,35 @@
+# The IP of the YAMCS instance
+yamcs-address: "127.0.0.1"
+
+# Common UDP port for received telemetry from all available communication interfaces
+yamcs-tm-port: 10015
+
+# Select the desired transport interface. The available options are:
+#  - canbus: ISOTP CAN bus
+#  - gr-zmq: PUB/SUB messages sources and sinks of GNU Radio
+transport:
+  canbus:
+    # CAN interface to be used. Use the command `ip link` to find the proper name
+    iface: can0
+    # The ID of the remote peer used to accept ISOTP frames
+    remote-tx-id: 1
+    # The ID of the remote peer used to receive ISOTP frames
+    remote-rx-id: 2
+    # The ID of the node to transmit ISOTP frames
+    tx-id: 18
+    # The ID of the node to transmit FC ISOTP frames
+    rx-id: 17
+
+    # The YAMCS UDP port for TC
+    yamcs-tc-port: 10025
+
+  gr-zmq:
+    # ZeroMQ URI of the publisher. The publisher published all received messages
+    PUB_URI: "tcp://127.0.0.1:55001"
+    # ZeroMQ URI of the subscriber. The publisher published all received messages
+    SUB_URI: "tcp://127.0.0.1:55000"
+    # If ZMQ is used to transmit frames through the radio a fixed uplink frame lenfth is needed
+    frame_size: 252
+
+    # The YAMCS UDP port for TC
+    yamcs-tc-port: 10026

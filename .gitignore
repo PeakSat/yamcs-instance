@@ -1,7 +1,7 @@
 
 #exclude target directory
-communication/__pycache__/
+communication/__pycache__/*
 *.log
 .vscode
 .idea
-target/
+target/*

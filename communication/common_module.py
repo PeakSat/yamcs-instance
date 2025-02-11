@@ -190,27 +190,25 @@ def mcu_client(
                 # not using decode("utf-8") since it will break printing (all new line characters will result in an new line)
                 logging.info(f"{ser.name}: {message}")
 
-                idx_obc = message.find(EXCLAMATION_MARK)
-                idx_adcs = message.find(HASH_TAG)
-                idx_comms = message.find(QUESTION_MARK)
+                idx = message.find(EXCLAMATION_MARK)
+                yamcs_port_in = settings.obc_port_in
+                # if idx_obc == -1 and idx_adcs == -1 and idx_comms == -1:
+                #     continue
 
-                if idx_obc == -1 and idx_adcs == -1 and idx_comms == -1:
-                    continue
+                # if idx_obc != -1:
+                #     yamcs_port_in = settings.obc_port_in
+                #     idx = idx_obc
+                #     obcFileLogger.info(message)
 
-                if idx_obc != -1:
-                    yamcs_port_in = settings.obc_port_in
-                    idx = idx_obc
-                    obcFileLogger.info(message)
+                # elif idx_adcs != -1:
+                #     yamcs_port_in = settings.adcs_port_in
+                #     idx = idx_adcs
+                #     adcsFileLogger.info(message)
 
-                elif idx_adcs != -1:
-                    yamcs_port_in = settings.adcs_port_in
-                    idx = idx_adcs
-                    adcsFileLogger.info(message)
-
-                elif idx_comms != -1:
-                    yamcs_port_in = settings.comms_port_in
-                    idx = idx_comms
-                    commsFileLogger.info(message)
+                # elif idx_comms != -1:
+                #     yamcs_port_in = settings.comms_port_in
+                #     idx = idx_comms
+                #     commsFileLogger.info(message)
 
                 raw_packet = message[idx + 2:]
                 packet = bytearray()
@@ -328,15 +326,15 @@ def yamcs_client(settings: Settings, serial_port: str = None, subsystem: str = N
     messages.
     """
 
-    if serial_port is None:
-        serial_port = settings.usb_serial_0
+    # if serial_port is None:
+    #     serial_port = settings.usb_serial_0
 
-    if subsystem == 'OBC':
-        tcp_client = connect_to_port(settings, settings.yamcs_port_out)
-    elif subsystem == 'COMMS':
-        tcp_client = connect_to_port(settings, settings.comms_port_out)
-    elif subsystem == 'ADCS':
-        tcp_client = connect_to_port(settings, settings.adcs_port_out)
+    # if subsystem == 'OBC':
+    tcp_client = connect_to_port(settings, settings.yamcs_port_out)
+    # elif subsystem == 'COMMS':
+    #     tcp_client = connect_to_port(settings, settings.comms_port_out)
+    # elif subsystem == 'ADCS':
+    #     tcp_client = connect_to_port(settings, settings.adcs_port_out)
 
     while True:
 

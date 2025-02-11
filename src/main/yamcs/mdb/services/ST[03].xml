@@ -11,7 +11,7 @@
             <!-- Parameters used in TM(3,10) Container -->
             <Parameter name="periodic_generation_action_status_ST03" parameterTypeRef="/base-dt/uint8_t" />
             <Parameter name="collection_interval_ST03" parameterTypeRef="/base-dt/uint32_t" />
-            <Parameter name="parameter_ID_ST03" parameterTypeRef="/dt/parameterIdArray_t" />
+            <Parameter name="parameter_ID_ST03" parameterTypeRef="/parameter-ids/parameterIdArray_t" />
             <Parameter parameterTypeRef="/base-dt/uint16_t" name="AvailableHeap" />
             <Parameter name="number_of_simply_commutated_parameters" parameterTypeRef="/base-dt/uint16_t">
                 <LongDescription>
@@ -73,25 +73,26 @@
                 </BaseContainer>
             </SequenceContainer>
 
-         <SequenceContainer name="Housekeeping_OBC_1">
+        <!-- TODO: Update the ST[03] structures -->
+            <SequenceContainer name="Housekeeping_OBC_1">
                 <EntryList>
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCPCBBoardTemperature1" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCPCBBoardTemperature2" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMCUTemperature" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCBootCounter" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMemoryPartition" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMCUSysTick" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCCANBUSLoad1" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCCANBUSLoad2" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCCANBUSActive" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCNANDFLASHLCLThreshold" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMRAMLCLThreshold" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCNANDFLASHON" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMRAMON" />
-                    <ParameterRefEntry parameterRef="AvailableHeap" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCUseCAN" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCUseUART" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCUseRTT" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHPCBTemperature1" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHPCBTemperature2" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMCUTemperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMCUBootCounter" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMemoryPartition" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMCUSystick" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHCANBUSLoad1" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHCANBUSLoad2" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHCANBUSActive" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHNANDFLASHLCLThreshold" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMRAMLCLThreshold" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHNANDFLASHON" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMRAMON" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHUseCAN" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHUseUART" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHUseRTT" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHOnBoardTime" />
                 </EntryList>
                 <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
                     <RestrictionCriteria>
@@ -102,16 +103,16 @@
                 </BaseContainer>
             </SequenceContainer>
 
-            <SequenceContainer name="Housekeeping_OBC_3">
+            <SequenceContainer name="Housekeeping_OBC_2">
                 <EntryList>
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCPCBBoardTemperature1" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCPCBBoardTemperature2" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCSpacecraftTimeRef" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCOperationalMode" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMemoryPartition" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCReconfigurationTimer" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCLastFailedEvent" />
-                    <ParameterRefEntry parameterRef="/obc-xtce/OBCMCUSysTick" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHPCBTemperature1" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHPCBTemperature2" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHSpacecraftTimeRef" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHOperationalMode" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMemoryPartition" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHReconfigurationTimer" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHLastFailedEvent" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMCUSystick" />
                 </EntryList>
                 <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
                     <RestrictionCriteria>
@@ -122,14 +123,54 @@
                 </BaseContainer>
             </SequenceContainer>
 
-            <SequenceContainer name="Housekeeping_ADCS_0,01">
+             <SequenceContainer name="Housekeeping_EPS_1">
                 <EntryList>
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMagnetometerRawX" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMagnetometerRawY" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMagnetometerRawZ" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSGyroscopeX" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSGyroscopeY" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSGyroscopeZ" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_MODE" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_CONF" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_RESET_CAUSE" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_UPTIME" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_ERROR" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_RC_CNT_PWRON" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_RC_CNT_WDG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_RC_CNT_CMD" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_RC_CNT_MCU" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_RC_CNT_EMLOPO" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_PREVCMD_ELAPSED" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_UNIX_TIME" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_UNIX_YEAR" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_UNIX_MONTH" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_UNIX_DAY" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_UNIX_HOUR" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_UNIX_MINUTE" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_UNIX_SECOND" />
+                </EntryList>
+                <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="2" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
+
+             <SequenceContainer name="Housekeeping_COMMS_1">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSuhf_power_amp_temp" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSpcb_temp" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSgnss_temp" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSantenna_deployment_status" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSgnss_lat" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSgnss_long" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSgnss_alt" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSgnss_time" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSgnss_ack_timeout" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSgnss_cmd_retries" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSgnss_error_timeout" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSerror_timeout_cnt_thrhd" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSgnss_delay_cmds" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSsatellites_tracked" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMSgnss_fix_quality" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMScommit_hash" />
                 </EntryList>
                 <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
                     <RestrictionCriteria>
@@ -140,66 +181,86 @@
                 </BaseContainer>
             </SequenceContainer>
 
-            <SequenceContainer name="Housekeeping_ADCS_3">
+            <SequenceContainer name="Housekeeping_PAY_1">
                 <EntryList>
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMagnetometerFrequency" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMagnetometerCycleCountX" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMagnetometerCycleCountY" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMagnetometerCycleCountZ" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMagnetometerSelfTest" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSGyroscopeXTemperature" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSGyroscopeYTemperature" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSGyroscopeZTemperature" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSBoardTemperature1" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSBoardTemperature2" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMCUTemperature" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSBootCounter" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMCUOnBoardTime" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSSystick" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYpointing_offset_x" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYpointing_offset_y" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYpointing_offset_z" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYuptime" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYtime" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYpsu_12v" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYpsu_5v" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYpsu_33v" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYmcu_die_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYmain_board_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYseed_ld_output_power" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfsm_chamber_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfsm_chamber_pressure" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfsmd_voltage_converter_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfsmd_drivers_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYcamera_pcb_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYcamera_sensor_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfso_aux_temperature_1" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfso_aux_temperature_2" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYoad_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYoptical_amplifier_combiner_heater_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYoptical_amplifier_fiber_mirror_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYoptical_amplifier_circulator_heater_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYldd_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYld_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYldd_12v_current" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYldd_psu_12v" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYldd_converter_input_current" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYldd_ld_v" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYldd_ld_dac_set_v" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfsm_driver_12v_current" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYflashes_33v_current" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfpga_5v_current" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYsdd_33v_current" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYpump_ld_power" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYmcu_33v_current" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfpga_die_temperature" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfpga_vdd1_voltage" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfpga_vdd18_voltage" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfpga_vdd25_voltage" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYseed_ld_incoming_power" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYamplifier_output_power" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYamplifier_output_reflected_power" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYseed_diode_bias_current" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYtec_current" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYldd_output_current" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYsd_temperature_violations" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYend_uptime" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYresponse" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYdevice" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfirmware" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfirmware_is_confirmed" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYbitstream" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYsoftcpu_1_firmware" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYsoftcpu_2_firmware" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYsoftcpu_3_firmware" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYsoftcpu_4_firmware" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYsoftcpu_5_firmware" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYsoftcpu_6_firmware" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYsoftcpu_7_firmware" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYsoftcpu_8_firmware" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYboot_count" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYtransmission_count" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYhw_det" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYstorage0" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYstorage1" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYstorage2" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYstorage3" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYldd_fault" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfsm_fault" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYfpga_fault" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYv_cam_fault" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/PAYsdd_fault" />
                 </EntryList>
                 <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
                     <RestrictionCriteria>
                         <ComparisonList>
                             <Comparison value="4" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
-                        </ComparisonList>
-                    </RestrictionCriteria>
-                </BaseContainer>
-            </SequenceContainer>
-
-            <SequenceContainer name="Housekeeping_ADCS_5">
-                <EntryList>
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMagnetometerSignX" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMagnetometerSignY" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSMagnetometerSignZ" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSGyroSignX" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSGyroSignY" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSGyroSignZ" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSGyroBiasX" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSGyroBiasY" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSGyroBiasZ" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSFlashInt" />
-                    <ParameterRefEntry parameterRef="/adcs-xtce/ADCSSRAMInt" />
-                </EntryList>
-                <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
-                    <RestrictionCriteria>
-                        <ComparisonList>
-                            <Comparison value="5" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
-                        </ComparisonList>
-                    </RestrictionCriteria>
-                </BaseContainer>
-            </SequenceContainer>
-
-            <SequenceContainer name="Housekeeping_COMMS">
-                <EntryList>
-                    <ParameterRefEntry parameterRef="/comms-xtce/COMMSPCBTemperature1" />
-                    <ParameterRefEntry parameterRef="/comms-xtce/COMMSPCBTemperature2" />
-                    <ParameterRefEntry parameterRef="/comms-xtce/COMMSMCUTemperature" />
-                    <ParameterRefEntry parameterRef="/comms-xtce/COMMSMCUBootCounter" />
-                </EntryList>
-                <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
-                    <RestrictionCriteria>
-                        <ComparisonList>
-                            <Comparison value="6" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
                         </ComparisonList>
                     </RestrictionCriteria>
                 </BaseContainer>
@@ -222,7 +283,7 @@
                     <Argument argumentTypeRef="/base-dt/uint8_t" name="new_structure_id" />
                     <Argument argumentTypeRef="/base-dt/uint32_t" name="collection_interval_milliseconds" />
                     <Argument argumentTypeRef="/base-dt/uint16_t{1-10}" name="total_parameters" />
-                    <Argument argumentTypeRef="/dt/parameterIdArray_t" name="parameters" />
+                    <Argument argumentTypeRef="/parameter-ids/parameterIdArray_t" name="parameters" />
                 </ArgumentList>
                 <CommandContainer name="TC(3,1)_create_a_parameter_report_structure">
                     <EntryList>
@@ -244,6 +305,7 @@
                 </BaseMetaCommand>
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint8_t{1-5}" name="total_structures" />
+                    <!-- TODO: Fix housekeeping structures -->
                     <Argument argumentTypeRef="/dt/structureIdArray_t" name="structures" />
                 </ArgumentList>
                 <CommandContainer name="TC(3,9)_container">
@@ -284,6 +346,7 @@
                 </BaseMetaCommand>
                 <ArgumentList>
                     <Argument argumentTypeRef="/base-dt/uint8_t{1-5}" name="total_structures" />
+                    <!-- TODO: Update housekeeping structs -->
                     <Argument argumentTypeRef="/dt/structureIdArray_t" name="structures" />
                 </ArgumentList>
                 <CommandContainer name="TC(3,27)_container">

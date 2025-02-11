@@ -18,10 +18,7 @@ yamcs-web:
 
 
 instances:
-  - OBC
-  - ADCS
-  - COMMS
-  - SU
+  - PeakSat
   
 buckets:
   - name: files

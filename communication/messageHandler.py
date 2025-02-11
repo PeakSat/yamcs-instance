@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
     serial_port = settings.uart_serial_0
     yamcs_listener_thread = Thread(target=yamcs_client, args=(settings, serial_port, 'OBC'))
-    yamcs_listener_thread = Thread(target=yamcs_client, args=(settings, serial_port, 'ADCS'))
+    # yamcs_listener_thread = Thread(target=yamcs_client, args=(settings, serial_port, 'ADCS'))
     yamcs_listener_thread.start()
 
     obc_adcs_serial_port = settings.uart_serial_0
@@ -82,11 +82,11 @@ if __name__ == "__main__":
     # ).start()
 
     # obc_logger_thread = Thread(
-    #     target=mcu_client_logger,
+    #     target=yamcs_client,
     #     args=(
     #         settings,
-    #         ThreadType.OBC,
-    #         obc_logs_serial_port,
+    #         serial_port,
+    #         'PeakSat',
     #     ),
     # ).start()
 
