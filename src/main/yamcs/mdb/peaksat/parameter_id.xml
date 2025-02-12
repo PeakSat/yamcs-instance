@@ -678,8 +678,8 @@
                     <Enumeration value="409507" label="EPS_ADC_MCU_TEMP_V25T30" />
                     <Enumeration value="409523" label="EPS_ADC_MCU_TEMP_V25T85" />
                     <Enumeration value="80020" label="OBDHdebugCounter" />
-                    <Enumeration value="80040" label="OBDHPCBTemperature1" />
-                    <Enumeration value="80056" label="OBDHPCBTemperature2" />
+                    <Enumeration value="5000" label="OBDHPCBTemperature1" />
+                    <Enumeration value="5001" label="OBDHPCBTemperature2" />
                     <Enumeration value="80072" label="OBDHMCUTemperature" />
                     <Enumeration value="80088" label="OBDHMCUInputVoltage" />
                     <Enumeration value="80100" label="OBDHMCUSystick" />

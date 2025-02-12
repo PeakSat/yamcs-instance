@@ -78,7 +78,7 @@
                 <EntryList>
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHPCBTemperature1" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHPCBTemperature2" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMCUTemperature" />
+                    <!-- <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMCUTemperature" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMCUBootCounter" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMemoryPartition" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHMCUSystick" />
@@ -92,7 +92,7 @@
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHUseCAN" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHUseUART" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHUseRTT" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHOnBoardTime" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDHOnBoardTime" /> -->
                 </EntryList>
                 <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
                     <RestrictionCriteria>

@@ -180,8 +180,9 @@ def mcu_client(
             while True:
                 line = ser.readline()
                 try:
-                    # message = cobs.decode(line)
-                    message = line
+                    # logging.info(f"{ser.name} ENCODED: {line}")
+                    message = cobs.decode(line)
+                    # message = line
                 except DecodeError:
                     print("Cobs decode error!")
                     continue
@@ -190,46 +191,43 @@ def mcu_client(
                 # not using decode("utf-8") since it will break printing (all new line characters will result in an new line)
                 logging.info(f"{ser.name}: {message}")
 
-                idx = message.find(EXCLAMATION_MARK)
-                yamcs_port_in = settings.obc_port_in
-                # if idx_obc == -1 and idx_adcs == -1 and idx_comms == -1:
-                #     continue
+                if b"message!" in message and b"END" in message:
+                    idx = message.find(b"message!") + len(b"message!")
+                    logging.info(f"IDX: {idx}")
+                    yamcs_port_in = settings.obc_port_in
 
-                # if idx_obc != -1:
-                #     yamcs_port_in = settings.obc_port_in
-                #     idx = idx_obc
-                #     obcFileLogger.info(message)
+                    id_end = message.find(b"END", idx + 1)
+                    logging.info(f"ID_END: {id_end}")
+                    raw_packet = message[idx + 1:id_end]  # Changed idx + 2 to idx + 1
+                    packet = bytearray()
+                    packet_byte_decimal = 0
+                    for packet_byte in raw_packet:
+                        if packet_byte == SPACE:
+                            packet_byte_decimal = clamp(packet_byte_decimal, 0, 255)
+                            packet.append(packet_byte_decimal)
+                            packet_byte_decimal = 0
+                        else:
+                            packet_byte_int = packet_byte - 48
+                            packet_byte_decimal = packet_byte_decimal * 10 + packet_byte_int
 
-                # elif idx_adcs != -1:
-                #     yamcs_port_in = settings.adcs_port_in
-                #     idx = idx_adcs
-                #     adcsFileLogger.info(message)
+                    decimal_string = ' '.join(str(byte) for byte in packet)
+                    logging.info(f"Packet in decimal: {decimal_string}")
 
-                # elif idx_comms != -1:
-                #     yamcs_port_in = settings.comms_port_in
-                #     idx = idx_comms
-                #     commsFileLogger.info(message)
-
-                raw_packet = message[idx + 2:]
-                packet = bytearray()
-                packet_byte_decimal = 0
-                for packet_byte in raw_packet:
-                    if packet_byte == SPACE:
-                        packet_byte_decimal = clamp(packet_byte_decimal, 0, 255)
-                        packet.append(packet_byte_decimal)
-                        packet_byte_decimal = 0
-                    else:
-                        packet_byte_int = packet_byte - 48
-                        packet_byte_decimal = packet_byte_decimal * 10 + packet_byte_int
-
-                Thread(
-                    target=sendIfConnected,
-                    args=(
-                        packet,
-                        settings,
-                        yamcs_port_in,
-                    ),
-                ).start()
+                    packet = packet + bytearray([0, 0])
+                    sendIfConnected(packet, settings, yamcs_port_in)
+                
+                # decoded_packet = cobs.decode(packet)
+                # if yamcs_global_socket is not None:
+                # socket.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 1)
+                # sendIfConnected(packet, settings, yamcs_port_in)
+                # Thread(
+                #     target=sendIfConnected,
+                #     args=(
+                #         packet,
+                #         settings,
+                #         yamcs_port_in,
+                #     ),
+                # ).start()
         except serial.SerialException:
             logging.warning(
                 "No device is connected at port "
@@ -307,12 +305,16 @@ def sendIfConnected(packet: bytearray, settings: Settings, yamcs_port_in: int):
         connection_state = ConnectionState.CONNECTED
         yamcs_global_socket.send(bytes(packet))
 
+        logging.info(f"Connected. Sent: {packet}")
+
     elif connection_state == ConnectionState.CONNECTED:
         try:
             yamcs_global_socket.send(bytes(packet))
+            logging.info(f"Connected. Sent: {packet}")
         except BrokenPipeError:
             yamcs_global_socket = None
             connection_state = ConnectionState.NOT_CONNECTED
+            logging.error("YAMCS has crashed. Reconnecting...")
 
 
 def yamcs_client(settings: Settings, serial_port: str = None, subsystem: str = None):

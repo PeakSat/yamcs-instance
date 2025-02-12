@@ -26,11 +26,11 @@ dataLinks:
     class: org.yamcs.tctm.TcpTmDataLink
     stream: tm_realtime
     host: localhost
-    port: 10015
+    port: 10016
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
     packetInputStreamClassName: org.yamcs.tctm.GenericPacketInputStream
     packetInputStreamArgs: 
-        maxPacketLength: 65536
+        maxPacketLength: 100
         lengthFieldOffset: 4  
         lengthFieldLength: 2 
         lengthAdjustment: 7

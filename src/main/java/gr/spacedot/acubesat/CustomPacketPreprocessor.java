@@ -34,6 +34,8 @@ public class CustomPacketPreprocessor extends AbstractPacketPreprocessor {
 
         byte[] bytes = packet.getPacket();
 
+
+        LOGGER.info("Packet received: " + bytes.length + " bytes");
         // Expect at least the length of CCSDS primary and secondary header
         if (bytes.length < 17) {
             eventProducer.sendWarning("SHORT_PACKET",
