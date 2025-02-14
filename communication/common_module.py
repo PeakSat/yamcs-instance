@@ -175,7 +175,7 @@ def mcu_client(
 
             # Read any messages already stored to the buffer.
             # If YAMCS receives this, it's gonna fail and the script will produce a TCP exception.
-            ser.readline()
+            # ser.readline()
 
             while True:
                 line = ser.readline()
@@ -213,8 +213,12 @@ def mcu_client(
                     decimal_string = ' '.join(str(byte) for byte in packet)
                     logging.info(f"Packet in decimal: {decimal_string}")
 
-                    packet = packet + bytearray([0, 0])
-                    sendIfConnected(packet, settings, yamcs_port_in)
+                    # packet = packet + bytearray([0, 0])
+                    # Verify packet integrity before sending
+                    if len(packet) > 6:
+                        sendIfConnected(packet, settings, yamcs_port_in)
+                    else:
+                        logging.error("Empty packet, not sending.")
                 
                 # decoded_packet = cobs.decode(packet)
                 # if yamcs_global_socket is not None:
@@ -281,7 +285,15 @@ def mcu_client_logger(
             )
             sleep(settings.reconnection_timeout)
 
-
+def flush_socket(sock):
+    """ Read and discard any leftover data in the socket buffer """
+    sock.setblocking(0)  # Set socket to non-blocking mode
+    try:
+        while sock.recv(4096):  # Read until there's no more data
+            pass
+    except BlockingIOError:
+        pass  # No more data left
+    sock.setblocking(1)  # Restore to blocking mode
 
 def sendIfConnected(packet: bytearray, settings: Settings, yamcs_port_in: int):
     """
@@ -303,14 +315,26 @@ def sendIfConnected(packet: bytearray, settings: Settings, yamcs_port_in: int):
         yamcs_global_socket = connect_to_port(settings, yamcs_port_in)
 
         connection_state = ConnectionState.CONNECTED
-        yamcs_global_socket.send(bytes(packet))
+        # flush_socket(yamcs_global_socket)
+        # try:
+        # data = yamcs_global_socket.recv(2)
+        # logging.info(f"Received from YAMCS: {data}")
+        # except BlockingIOError:
+        #     pass
+        yamcs_global_socket.sendall(bytes(packet))
+        # yamcs_global_socket.send(bytes(packet))
 
-        logging.info(f"Connected. Sent: {packet}")
+        logging.info(f"Connected. Sent: {bytes(packet)}")
 
     elif connection_state == ConnectionState.CONNECTED:
         try:
-            yamcs_global_socket.send(bytes(packet))
-            logging.info(f"Connected. Sent: {packet}")
+            # try:
+            # data = yamcs_global_socket.recv(2)
+            # logging.info(f"Received from YAMCS: {data}")
+            # except BlockingIOError:
+                # pass
+            yamcs_global_socket.sendall(bytes(packet))
+            logging.info(f"Connected. Sent: {bytes(packet)}")
         except BrokenPipeError:
             yamcs_global_socket = None
             connection_state = ConnectionState.NOT_CONNECTED

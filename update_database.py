@@ -51,11 +51,11 @@ def encode_id(numeric_id, variable_type):
 
 # Subsystem acronyms and their corresponding number offsets
 subsystem_config = {
-    "OBDH": 5000,
-    "COMMS": 10000,
-    "PAY": 15000,
-    "ADCS": 20000,
-    "EPS": 25000,
+    "OBDH": 0,
+    "COMMS": 819,
+    "PAY": 1638,
+    "ADCS": 2457,
+    "EPS": 3276,
 }
 
 # Dictionary mapping C++ types to _t counterparts
@@ -184,14 +184,11 @@ for idx, row in enumerate(valid_rows):
             else:
                 param_value = "0"
 
-            if acronym == "EPS":
-                acronym = ""
-
             parameter_lines = []
             if variable_type == "enum":
-                parameter_lines.append(f"            <Parameter parameterTypeRef=\"peaksat-dt/{variable_name}_t\" name=\"{acronym}{variable_name}\"")
+                parameter_lines.append(f"            <Parameter parameterTypeRef=\"peaksat-dt/{variable_name}_t\" name=\"{acronym}_{variable_name}\"")
             else:
-                parameter_lines.append(f"            <Parameter parameterTypeRef=\"base-dt/{variable_type}\" name=\"{acronym}{variable_name}\"")
+                parameter_lines.append(f"            <Parameter parameterTypeRef=\"base-dt/{variable_type}\" name=\"{acronym}_{variable_name}\"")
 
             # Add to the corresponding namespace block
             # block_lines = namespace_blocks[acronym]
