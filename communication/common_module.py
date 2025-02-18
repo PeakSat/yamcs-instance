@@ -181,8 +181,8 @@ def mcu_client(
                 line = ser.readline()
                 try:
                     # logging.info(f"{ser.name} ENCODED: {line}")
-                    message = cobs.decode(line)
-                    # message = line
+                    # message = cobs.decode(line)
+                    message = line
                 except DecodeError:
                     print("Cobs decode error!")
                     continue
