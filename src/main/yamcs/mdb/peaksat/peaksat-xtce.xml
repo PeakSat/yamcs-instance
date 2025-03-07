@@ -847,28 +847,28 @@
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_ModelSunOrcX"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_ModelSunOrcY"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_ModelSunOrcZ"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_uhf_power_amp_temp"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_pcb_temp"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_gnss_temp"/>
-            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_antenna_deployment_status"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_cw_interval"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_bfsk_beacon_interval"/>
-            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_uhf_tx_power"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_rssi"/>
-            <Parameter parameterTypeRef="base-dt/int32_t" name="COMMS_gnss_lat"/>
-            <Parameter parameterTypeRef="base-dt/int32_t" name="COMMS_gnss_long"/>
-            <Parameter parameterTypeRef="base-dt/int32_t" name="COMMS_gnss_alt"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_gnss_time"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_gnss_ack_timeout"/>
-            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_gnss_cmd_retries"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_gnss_error_timeout"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_error_timeout_cnt_thrhd"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_gnss_delay_cmds"/>
-            <Parameter parameterTypeRef="base-dt/int8_t" name="COMMS_satellites_tracked"/>
-            <Parameter parameterTypeRef="base-dt/int8_t" name="COMMS_gnss_fix_quality"/>
-            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_gnss_TM_data_period"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_commit_hash"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_emmc_usage"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_UHF_POWER_AMP_TEMP"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_PCB_TEMP"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_GNSS_TEMP"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_ANTENNA_DEPLOYMENT_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_CW_INTERVAL"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_BFSK_BEAKON_INTERVAL"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_UHF_TX_POWER"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_RSSI"/>
+            <Parameter parameterTypeRef="base-dt/int32_t" name="COMMS_GNSS_LAT"/>
+            <Parameter parameterTypeRef="base-dt/int32_t" name="COMMS_GNSS_LONG"/>
+            <Parameter parameterTypeRef="base-dt/int32_t" name="COMMS_GNSS_ALT"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_GNSS_TIME"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_GNSS_ACK_TIMEOUT"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_CMD_RETRIES"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_GNSS_ERROR_TIMEOUT"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_ERROR_TIMEOUT_CNT_THRHD"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_GNSS_DELAY_CMDS"/>
+            <Parameter parameterTypeRef="base-dt/int8_t" name="COMMS_SATELLITES_TRACKED"/>
+            <Parameter parameterTypeRef="base-dt/int8_t" name="COMMS_GNSS_FIX_QUALITY"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_TM_DATA_PERIOD"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_COMMIT_HASH"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_EMMC_USAGE"/>
         </ParameterSet>
 
     </xtce:TelemetryMetaData>

@@ -230,7 +230,7 @@ for idx, row in enumerate(valid_rows):
             xtce_lines.append(" ".join(parameter_lines) + "/>")
 
             # Create the parameter ID line
-            parameter_id_lines.append(f'                    <Enumeration value=\"{encoded_id}\" label=\"{acronym}{variable_name}\" />')
+            parameter_id_lines.append(f'                    <Enumeration value=\"{encoded_id}\" label=\"{acronym}_{variable_name}\" />')
 
             break
 
@@ -249,7 +249,7 @@ dt_lines.append('</SpaceSystem>')
 id_lines = []
 
 id_lines.append('<?xml version="1.0" encoding="UTF-8"?>')
-id_lines.append('<SpaceSystem name="dt" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"')
+id_lines.append('<SpaceSystem name="parameter-ids" xmlns:xtce="http://www.omg.org/spec/XTCE/20180204"')
 id_lines.append('    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"')
 id_lines.append('    xsi:schemaLocation="http://www.omg.org/spec/XTCE/20180204 https://www.omg.org/spec/XTCE/20180204/SpaceSystem.xsd"')
 id_lines.append('    shortDescription="This is a bogus satellite telemetry and telecommand database."')
