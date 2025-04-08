@@ -34,6 +34,8 @@ public class CustomPacketPreprocessor extends AbstractPacketPreprocessor {
 
         byte[] bytes = packet.getPacket();
 
+
+        LOGGER.info("Packet received: " + bytes.length + " bytes");
         // Expect at least the length of CCSDS primary and secondary header
         if (bytes.length < 17) {
             eventProducer.sendWarning("SHORT_PACKET",
@@ -44,7 +46,9 @@ public class CustomPacketPreprocessor extends AbstractPacketPreprocessor {
 
         // Verify continuity for a given APID based on the CCSDS sequence counter
         int apidseqcount = ByteBuffer.wrap(bytes).getInt(0); // first 4 bytes (0-3)
-        int datalength = ByteBuffer.wrap(bytes).getShort(4) + 1; // get 2 bytes (4-5)
+        // TODO: Add an extra 2 bytes from the standard to the data length. Pending OBC change
+        int datalength = ByteBuffer.wrap(bytes).getShort(4) + 3; // get 2 bytes (4-5)
+        LOGGER.info("Data length: " + datalength);
         int apid = (apidseqcount >> 16) & 0x07FF; // 11 bits 
         int seqcount = (apidseqcount) & 0x3FFF; // 14 bits
         int packversion = (apidseqcount >> 29) & 0x7; // 3 bits

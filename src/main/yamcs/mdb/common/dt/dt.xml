@@ -178,6 +178,79 @@
 				</StringDataEncoding>
 			</StringArgumentType>
 
+            <EnumeratedArgumentType name="function_ID">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<EnumerationList>
+					<Enumeration value="1" label="requestStateChange" shortDescription="ArgNum: 1, Args: (uint16_t obcState)" />
+					<Enumeration value="2" label="requestStateChangeCommissioning" shortDescription="ArgNum: 0, Args: ()" />
+					<Enumeration value="3" label="requestStateChangeSafe" shortDescription="ArgNum: 0, Args: ()" />
+					<Enumeration value="4" label="requestStateChangeCritical" shortDescription="ArgNum: 0, Args: ()" />
+					<Enumeration value="5" label="requestStateChangeEmergency" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="6" label="requestStateChangeNominal" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="7" label="requestStateChangePayload" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="8" label="houseKeepingAll" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="9" label="houseKeepingSubsystem" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="10" label="TODO: Download Data from optical pass" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="11" label="SetSpacecraftTime" shortDescription="ArgNum: 1, Args: (uint64_t time)" />
+                    <Enumeration value="12" label="PingComponent" shortDescription="ArgNum: 1, Args: (uint64_t time)" />
+                    <Enumeration value="13" label="SetParameter" shortDescription="ArgNum: 2, Args: (uint16_t parameterID, uint64_t parameterValue)" />
+                    <Enumeration value="14" label="" />
+                    <Enumeration value="15" label="" />
+                    <Enumeration value="16" label="" />
+                    <Enumeration value="40" label="gnssDataDownload" shortDescription="ArgNum: 3, Args: (uint32_t period, uint32_t secondsPrior, uint32_t numberOfSamples)" />
+                    <Enumeration value="41" label="ceaseTransmissions" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="60" label="powerCycleSubsystem" shortDescription="ArgNum: 1, Args: (uint8_t EPSChannel)" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
+            <EnumeratedArgumentType name="EPSChannel_t">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+				<EnumerationList>
+					<Enumeration value="1" label="ADCS VBAT" />
+                    <Enumeration value="2" label="ADCS 5V" shortDescription="ADCS 5V" />
+                    <Enumeration value="3" label="PANELS 5V" shortDescription="PANELS 5V" />
+                    <Enumeration value="4" label="ADM 5V 1" shortDescription="ADM 5V 1" />
+                    <Enumeration value="5" label="ADM 5V 2" shortDescription="ADM 5V 2" />
+                    <Enumeration value="6" label="ADCS 3V3" shortDescription="ADCS 3V3" />
+                    <Enumeration value="7" label="OBC 3V3" shortDescription="OBC 3V3" />
+                    <Enumeration value="8" label="RED 3V3" shortDescription="RED 3V3" />
+                    <Enumeration value="12" label="ATLAS 5V 1" shortDescription="ATLAS 5V 1" />
+                    <Enumeration value="13" label="ATLAS 5V 2" shortDescription="ATLAS 5V 2" />
+                    <Enumeration value="14" label="COMMS 12V" shortDescription="COMMS 12V" />
+                    <Enumeration value="15" label="ATLAS 12V" shortDescription="ATLAS 12V" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
+            <EnumeratedArgumentType name="componentID_t">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+				<EnumerationList>
+                    <Enumeration value="60" label="OBC - Temperature Sensor A" />
+                    <Enumeration value="61" label="OBC - Temperature Sensor B" />
+                    <Enumeration value="62" label="OBC - NAND" />
+                    <Enumeration value="63" label="OBC - MRAM" />
+                    <Enumeration value="64" label="ADCS - Cube Mag" />
+                    <Enumeration value="65" label="ADCS - Cube Mag Redundant" />
+                    <Enumeration value="66" label="ADCS - Cube Sun" />
+                    <Enumeration value="67" label="ADCS - Cube Earth" />
+                    <Enumeration value="68" label="ADCS - Cube Star" />
+                    <Enumeration value="69" label="ADCS - Cube Wheel 0" />
+                    <Enumeration value="70" label="ADCS - Cube Wheel 1" />
+                    <Enumeration value="71" label="ADCS - Cube Wheel 2" />
+                    <Enumeration value="72" label="ADCS - GYRO 0" />
+                    <Enumeration value="73" label="ADCS - GYRO 1" />
+                    <Enumeration value="74" label="ADCS - MTQ 0" />
+                    <Enumeration value="75" label="ADCS - MTQ 1" />
+                    <Enumeration value="76" label="ADCS - MTQ 2" />
+                    <Enumeration value="77" label="COMMS - TMP 0" />
+                    <Enumeration value="78" label="COMMS - TMP 1" />
+                    <Enumeration value="79" label="COMMS - TMP 2" />
+                    <Enumeration value="80" label="COMMS - INA" />
+                    <Enumeration value="81" label="COMMS - GNSS" />
+                    <Enumeration value="82" label="COMMS - eMMC" />
+                    <Enumeration value="83" label="COMMS - RF Transceiver" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
             <!-- ST[12] types-->
 
             <EnumeratedArgumentType name="check_type">

@@ -395,6 +395,22 @@
 				</DimensionList>
 			</ArrayArgumentType>
 
+			<ArrayArgumentType name="uint16Array_t-FuncArg" arrayTypeRef="uint16_t">
+				<DimensionList>
+					<Dimension>
+						<StartingIndex>
+							<FixedValue>0</FixedValue>
+						</StartingIndex>
+						<EndingIndex>
+							<DynamicValue>
+								<ArgumentInstanceRef argumentRef="number_of_arguments" />
+								<LinearAdjustment intercept="-1" />
+							</DynamicValue>
+						</EndingIndex>
+					</Dimension>
+				</DimensionList>
+			</ArrayArgumentType>
+
 			<ArrayArgumentType name="stringArray_t" arrayTypeRef="string_t">
 				<DimensionList>
 					<Dimension>
