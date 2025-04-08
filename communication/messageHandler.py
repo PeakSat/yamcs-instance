@@ -8,6 +8,7 @@ import logging
 import yaml
 from common_module import Settings, mcu_client, yamcs_client
 import argparse
+import sys
 from os import path
 
 
@@ -39,6 +40,7 @@ if __name__ == "__main__":
 
     args_parser.add_argument('--obclog', default="obc.log", help="(--obclog obc.log) Change the log file for the OBC system")
     args_parser.add_argument('--adcslog', default="adcs.log", help="(--adcslog obc.log) Change the log file for the ADCS system")
+    args_parser.add_argument('--port', default=None, help="(--port /dev/tty/<PORT>) Change the serial port for the connected DUT")
 
     args = args_parser.parse_args()
 
@@ -52,7 +54,12 @@ if __name__ == "__main__":
         except yaml.YAMLError:
             logging.exception("File reading error.")
 
+    if args.port is not None:
+        print("Using provided serial port: ", args.port)
+        settings.uart_serial_0 = args.port
+        
     serial_port = settings.uart_serial_0
+
     yamcs_listener_thread = Thread(target=yamcs_client, args=(settings, serial_port, 'OBC'))
     # yamcs_listener_thread = Thread(target=yamcs_client, args=(settings, serial_port, 'ADCS'))
     yamcs_listener_thread.start()
