@@ -109,7 +109,7 @@
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_PCB_TEMPERATURE_2" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_SPACECRAFT_TIME_REF" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_OPERATIONAL_MODE" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_MemoryPartition" />
+                    <!-- <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_MemoryPartition" /> -->
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_RECONFIGURATION_TIMER" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_LAST_FAILED_EVENT" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_MCU_SYSTICK" />

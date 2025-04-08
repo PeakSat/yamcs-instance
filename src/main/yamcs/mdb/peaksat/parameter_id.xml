@@ -690,32 +690,42 @@
                     <Enumeration value="240" label="OBDH_SPACECRAFT_TIME_REF" />
                     <Enumeration value="260" label="OBDH_RECONFIGURATION_TIMER" />
                     <Enumeration value="294" label="OBDH_ON_BOARD_TIME" />
-                    <Enumeration value="392" label="OBDH_CAN_BUS_LOAD_1" />
-                    <Enumeration value="408" label="OBDH_CAN_BUS_LOAD_2" />
                     <Enumeration value="416" label="OBDH_CAN_BUS_ACTIVE" />
                     <Enumeration value="432" label="OBDH_MCU_FDIR" />
-                    <Enumeration value="448" label="OBDH_MCURestartSafeModeThreshold" />
-                    <Enumeration value="472" label="OBDH_NANDFLASHLCLThreshold" />
-                    <Enumeration value="488" label="OBDH_MRAMLCLThreshold" />
-                    <Enumeration value="496" label="OBDH_NANDFLASHON" />
-                    <Enumeration value="512" label="OBDH_MRAMON" />
-                    <Enumeration value="532" label="OBDH_FlashInt" />
-                    <Enumeration value="548" label="OBDH_SRAMInt" />
-                    <Enumeration value="564" label="OBDH_AvailableMRAM" />
-                    <Enumeration value="580" label="OBDH_AvailableNAND" />
-                    <Enumeration value="592" label="OBDH_MemoryPartition" />
-                    <Enumeration value="616" label="OBDH_NANDFLASHScrubbingFrequency" />
-                    <Enumeration value="632" label="OBDH_ΜRAMScrubbingFrequency" />
-                    <Enumeration value="648" label="OBDH_ProgramFlashScrubbingFrequency" />
+                    <Enumeration value="448" label="OBDH_MCU_RESTART_SAFE_MODE_THRESHOLD" />
+                    <Enumeration value="472" label="OBDH_NAND_FLASH_LCL_THRESHOLD" />
+                    <Enumeration value="488" label="OBDH_MRAM_LCL_THRESHOLD" />
+                    <Enumeration value="496" label="OBDH_NAND_FLASH_ON" />
+                    <Enumeration value="512" label="OBDH_MRAM_ON" />
+                    <Enumeration value="532" label="OBDH_FLASH_INT" />
+                    <Enumeration value="548" label="OBDH_SRAM_INT" />
+                    <Enumeration value="564" label="OBDH_AVAILABLE_MRAM" />
+                    <Enumeration value="580" label="OBDH_AVAILABLE_NAND" />
+                    <Enumeration value="592" label="OBDH_MEMORY_PARTITION" />
+                    <Enumeration value="616" label="OBDH_NAND_FLASH_SCRUBBING_FREEQUENCY" />
+                    <Enumeration value="632" label="OBDH_ΜRAM_SCRUBBING_FREEQIENCY" />
+                    <Enumeration value="648" label="OBDH_PROGRAM_FLASH_SCRUBBING_FREEQUENCY" />
                     <Enumeration value="706" label="OBDH_COMMIT_HASH" />
                     <Enumeration value="724" label="OBDH_CAN_ACK_TIMEOUT" />
-                    <Enumeration value="740" label="OBDH_CAN_FrameRetransimtCount" />
-                    <Enumeration value="756" label="OBDH_CAN_TransmitFailureCount" />
-                    <Enumeration value="768" label="OBDH_UseRTT" />
-                    <Enumeration value="784" label="OBDH_UseUART" />
-                    <Enumeration value="800" label="OBDH_UseCAN" />
+                    <Enumeration value="740" label="OBDH_CAN_FRAME_RETRANSMIT_COUNT" />
+                    <Enumeration value="756" label="OBDH_CAN_TRANSMIT_FAILURE_COUNT" />
+                    <Enumeration value="768" label="OBDH_USE_RTT" />
+                    <Enumeration value="784" label="OBDH_USE_UART" />
+                    <Enumeration value="800" label="OBDH_USE_CAN" />
                     <Enumeration value="820" label="OBDH_HEARTBEAT_PERIOD" />
                     <Enumeration value="836" label="OBDH_LAST_RESET_CAUSE" />
+                    <Enumeration value="848" label="OBDH_RTC_OFFSET_THRESHOLD" />
+                    <Enumeration value="864" label="OBDH_USE_GNSS_PPS" />
+                    <Enumeration value="884" label="OBDH_STORED_TMS_COUNT" />
+                    <Enumeration value="900" label="OBDH_GNSS_UPDATE_TIME_INTERVAL" />
+                    <Enumeration value="918" label="OBDH_PERIODIC_100MS_BITFLAG" />
+                    <Enumeration value="934" label="OBDH_PERIODIC_1SEC_BITFLAG" />
+                    <Enumeration value="950" label="OBDH_PERIODIC_10SEC_BITFLAG" />
+                    <Enumeration value="966" label="OBDH_APERIODIC_BITFLAG" />
+                    <Enumeration value="982" label="OBDH_PERIODIC_1MIN_BITFLAG" />
+                    <Enumeration value="998" label="OBDH_PERIODIC_5MIN_BITFLAG" />
+                    <Enumeration value="1014" label="OBDH_PERIODIC_10MIN_BITFLAG" />
+                    <Enumeration value="1030" label="OBDH_PERIODIC_5SEC_BITFLAG" />
                     <Enumeration value="39328" label="ADCS_ResetType" />
                     <Enumeration value="39348" label="ADCS_UnixTimeSeconds" />
                     <Enumeration value="39364" label="ADCS_UnixTimeNanoSeconds" />
@@ -738,6 +748,28 @@
                     <Enumeration value="39636" label="ADCS_Fss0Power" />
                     <Enumeration value="39652" label="ADCS_Hss0Power" />
                     <Enumeration value="39668" label="ADCS_Str0Power" />
+                    <Enumeration value="41491" label="ADCS_Mag0McuTemp" />
+                    <Enumeration value="41506" label="ADCS_Mag0McuCurrent" />
+                    <Enumeration value="41523" label="ADCS_Mag1McuTemp" />
+                    <Enumeration value="41538" label="ADCS_Mag1McuCurrent" />
+                    <Enumeration value="41555" label="ADCS_Fss0McuTemp" />
+                    <Enumeration value="41570" label="ADCS_Fss0McuCurrent" />
+                    <Enumeration value="41587" label="ADCS_Hss0McuTemp" />
+                    <Enumeration value="41602" label="ADCS_Hss0McuCurrent" />
+                    <Enumeration value="41619" label="ADCS_Str0McuTemp" />
+                    <Enumeration value="41634" label="ADCS_Str0McuCurrent" />
+                    <Enumeration value="41651" label="ADCS_Rwl0McuTemp" />
+                    <Enumeration value="41666" label="ADCS_Rwl0McuCurrent" />
+                    <Enumeration value="41683" label="ADCS_Rwl1McuTemp" />
+                    <Enumeration value="41698" label="ADCS_Rwl1McuCurren" />
+                    <Enumeration value="41715" label="ADCS_Rwl2McuTemp" />
+                    <Enumeration value="41730" label="ADCS_Rwl2McuCurrent" />
+                    <Enumeration value="41747" label="ADCS_McuTemp" />
+                    <Enumeration value="41762" label="ADCS_McuCurrent" />
+                    <Enumeration value="41778" label="ADCS_GyroCurrent" />
+                    <Enumeration value="41800" label="ADCS_Mtq1TotalCurrentAveragePos" />
+                    <Enumeration value="41816" label="ADCS_Mtq2TotalCurrentAveragePos" />
+                    <Enumeration value="41832" label="ADCS_Mtq3TotalCurrentAveragePos" />
                     <Enumeration value="39680" label="ADCS_RwlFailId" />
                     <Enumeration value="39696" label="ADCS_MountStackX" />
                     <Enumeration value="39716" label="ADCS_MountStackY" />
@@ -854,13 +886,14 @@
                     <Enumeration value="13160" label="COMMS_GNSS_TEMP" />
                     <Enumeration value="13184" label="COMMS_ANTENNA_DEPLOYMENT_STATUS" />
                     <Enumeration value="13234" label="COMMS_CW_INTERVAL" />
-                    <Enumeration value="13250" label="COMMS_BFSK_BEAKON_INTERVAL" />
+                    <Enumeration value="13250" label="COMMS_BFSK_BEACON_INTERVAL" />
                     <Enumeration value="13268" label="COMMS_UHF_TX_POWER" />
                     <Enumeration value="13352" label="COMMS_RSSI" />
+                    <Enumeration value="13394" label="COMMS_REJECTED_PACKETS" />
                     <Enumeration value="13605" label="COMMS_GNSS_LAT" />
                     <Enumeration value="13621" label="COMMS_GNSS_LONG" />
                     <Enumeration value="13637" label="COMMS_GNSS_ALT" />
-                    <Enumeration value="13656" label="COMMS_GNSS_TIME" />
+                    <Enumeration value="13654" label="COMMS_GNSS_TIME" />
                     <Enumeration value="13666" label="COMMS_GNSS_ACK_TIMEOUT" />
                     <Enumeration value="13680" label="COMMS_GNSS_CMD_RETRIES" />
                     <Enumeration value="13698" label="COMMS_GNSS_ERROR_TIMEOUT" />
@@ -869,8 +902,19 @@
                     <Enumeration value="13745" label="COMMS_SATELLITES_TRACKED" />
                     <Enumeration value="13761" label="COMMS_GNSS_FIX_QUALITY" />
                     <Enumeration value="13776" label="COMMS_GNSS_TM_DATA_PERIOD" />
-                    <Enumeration value="13796" label="COMMS_COMMIT_HASH" />
-                    <Enumeration value="14488" label="COMMS_EMMC_USAGE" />
+                    <Enumeration value="13792" label="COMMS_GNSS_TIME_STATUS" />
+                    <Enumeration value="13808" label="COMMS_GNSS_PPS_ACTIVE" />
+                    <Enumeration value="13828" label="COMMS_COMMIT_HASH" />
+                    <Enumeration value="14520" label="COMMS_EMMC_USAGE" />
+                    <Enumeration value="14537" label="COMMS_POWER" />
+                    <Enumeration value="14553" label="COMMS_CURRENT" />
+                    <Enumeration value="14569" label="COMMS_VOLTAGE" />
+                    <Enumeration value="14580" label="COMMS_DROPPED_CAN_MES" />
+                    <Enumeration value="14592" label="COMMS_GNSS_MESSAGE_TIME" />
+                    <Enumeration value="14608" label="COMMS_GNSS_MESSAGE_PAYLOAD_TIME" />
+                    <Enumeration value="14624" label="COMMS_SCIENCE_MODE" />
+                    <Enumeration value="14649" label="COMMS_SEMIMAJOR_AXIS" />
+                    <Enumeration value="14665" label="COMMS_ECCENTRINITY" />
                 </EnumerationList>
             </EnumeratedParameterType>
  
@@ -1577,32 +1621,42 @@
                     <Enumeration value="240" label="OBDH_SPACECRAFT_TIME_REF" />
                     <Enumeration value="260" label="OBDH_RECONFIGURATION_TIMER" />
                     <Enumeration value="294" label="OBDH_ON_BOARD_TIME" />
-                    <Enumeration value="392" label="OBDH_CAN_BUS_LOAD_1" />
-                    <Enumeration value="408" label="OBDH_CAN_BUS_LOAD_2" />
                     <Enumeration value="416" label="OBDH_CAN_BUS_ACTIVE" />
                     <Enumeration value="432" label="OBDH_MCU_FDIR" />
-                    <Enumeration value="448" label="OBDH_MCURestartSafeModeThreshold" />
-                    <Enumeration value="472" label="OBDH_NANDFLASHLCLThreshold" />
-                    <Enumeration value="488" label="OBDH_MRAMLCLThreshold" />
-                    <Enumeration value="496" label="OBDH_NANDFLASHON" />
-                    <Enumeration value="512" label="OBDH_MRAMON" />
-                    <Enumeration value="532" label="OBDH_FlashInt" />
-                    <Enumeration value="548" label="OBDH_SRAMInt" />
-                    <Enumeration value="564" label="OBDH_AvailableMRAM" />
-                    <Enumeration value="580" label="OBDH_AvailableNAND" />
-                    <Enumeration value="592" label="OBDH_MemoryPartition" />
-                    <Enumeration value="616" label="OBDH_NANDFLASHScrubbingFrequency" />
-                    <Enumeration value="632" label="OBDH_ΜRAMScrubbingFrequency" />
-                    <Enumeration value="648" label="OBDH_ProgramFlashScrubbingFrequency" />
+                    <Enumeration value="448" label="OBDH_MCU_RESTART_SAFE_MODE_THRESHOLD" />
+                    <Enumeration value="472" label="OBDH_NAND_FLASH_LCL_THRESHOLD" />
+                    <Enumeration value="488" label="OBDH_MRAM_LCL_THRESHOLD" />
+                    <Enumeration value="496" label="OBDH_NAND_FLASH_ON" />
+                    <Enumeration value="512" label="OBDH_MRAM_ON" />
+                    <Enumeration value="532" label="OBDH_FLASH_INT" />
+                    <Enumeration value="548" label="OBDH_SRAM_INT" />
+                    <Enumeration value="564" label="OBDH_AVAILABLE_MRAM" />
+                    <Enumeration value="580" label="OBDH_AVAILABLE_NAND" />
+                    <Enumeration value="592" label="OBDH_MEMORY_PARTITION" />
+                    <Enumeration value="616" label="OBDH_NAND_FLASH_SCRUBBING_FREEQUENCY" />
+                    <Enumeration value="632" label="OBDH_ΜRAM_SCRUBBING_FREEQIENCY" />
+                    <Enumeration value="648" label="OBDH_PROGRAM_FLASH_SCRUBBING_FREEQUENCY" />
                     <Enumeration value="706" label="OBDH_COMMIT_HASH" />
                     <Enumeration value="724" label="OBDH_CAN_ACK_TIMEOUT" />
-                    <Enumeration value="740" label="OBDH_CAN_FrameRetransimtCount" />
-                    <Enumeration value="756" label="OBDH_CAN_TransmitFailureCount" />
-                    <Enumeration value="768" label="OBDH_UseRTT" />
-                    <Enumeration value="784" label="OBDH_UseUART" />
-                    <Enumeration value="800" label="OBDH_UseCAN" />
+                    <Enumeration value="740" label="OBDH_CAN_FRAME_RETRANSMIT_COUNT" />
+                    <Enumeration value="756" label="OBDH_CAN_TRANSMIT_FAILURE_COUNT" />
+                    <Enumeration value="768" label="OBDH_USE_RTT" />
+                    <Enumeration value="784" label="OBDH_USE_UART" />
+                    <Enumeration value="800" label="OBDH_USE_CAN" />
                     <Enumeration value="820" label="OBDH_HEARTBEAT_PERIOD" />
                     <Enumeration value="836" label="OBDH_LAST_RESET_CAUSE" />
+                    <Enumeration value="848" label="OBDH_RTC_OFFSET_THRESHOLD" />
+                    <Enumeration value="864" label="OBDH_USE_GNSS_PPS" />
+                    <Enumeration value="884" label="OBDH_STORED_TMS_COUNT" />
+                    <Enumeration value="900" label="OBDH_GNSS_UPDATE_TIME_INTERVAL" />
+                    <Enumeration value="918" label="OBDH_PERIODIC_100MS_BITFLAG" />
+                    <Enumeration value="934" label="OBDH_PERIODIC_1SEC_BITFLAG" />
+                    <Enumeration value="950" label="OBDH_PERIODIC_10SEC_BITFLAG" />
+                    <Enumeration value="966" label="OBDH_APERIODIC_BITFLAG" />
+                    <Enumeration value="982" label="OBDH_PERIODIC_1MIN_BITFLAG" />
+                    <Enumeration value="998" label="OBDH_PERIODIC_5MIN_BITFLAG" />
+                    <Enumeration value="1014" label="OBDH_PERIODIC_10MIN_BITFLAG" />
+                    <Enumeration value="1030" label="OBDH_PERIODIC_5SEC_BITFLAG" />
                     <Enumeration value="39328" label="ADCS_ResetType" />
                     <Enumeration value="39348" label="ADCS_UnixTimeSeconds" />
                     <Enumeration value="39364" label="ADCS_UnixTimeNanoSeconds" />
@@ -1625,6 +1679,28 @@
                     <Enumeration value="39636" label="ADCS_Fss0Power" />
                     <Enumeration value="39652" label="ADCS_Hss0Power" />
                     <Enumeration value="39668" label="ADCS_Str0Power" />
+                    <Enumeration value="41491" label="ADCS_Mag0McuTemp" />
+                    <Enumeration value="41506" label="ADCS_Mag0McuCurrent" />
+                    <Enumeration value="41523" label="ADCS_Mag1McuTemp" />
+                    <Enumeration value="41538" label="ADCS_Mag1McuCurrent" />
+                    <Enumeration value="41555" label="ADCS_Fss0McuTemp" />
+                    <Enumeration value="41570" label="ADCS_Fss0McuCurrent" />
+                    <Enumeration value="41587" label="ADCS_Hss0McuTemp" />
+                    <Enumeration value="41602" label="ADCS_Hss0McuCurrent" />
+                    <Enumeration value="41619" label="ADCS_Str0McuTemp" />
+                    <Enumeration value="41634" label="ADCS_Str0McuCurrent" />
+                    <Enumeration value="41651" label="ADCS_Rwl0McuTemp" />
+                    <Enumeration value="41666" label="ADCS_Rwl0McuCurrent" />
+                    <Enumeration value="41683" label="ADCS_Rwl1McuTemp" />
+                    <Enumeration value="41698" label="ADCS_Rwl1McuCurren" />
+                    <Enumeration value="41715" label="ADCS_Rwl2McuTemp" />
+                    <Enumeration value="41730" label="ADCS_Rwl2McuCurrent" />
+                    <Enumeration value="41747" label="ADCS_McuTemp" />
+                    <Enumeration value="41762" label="ADCS_McuCurrent" />
+                    <Enumeration value="41778" label="ADCS_GyroCurrent" />
+                    <Enumeration value="41800" label="ADCS_Mtq1TotalCurrentAveragePos" />
+                    <Enumeration value="41816" label="ADCS_Mtq2TotalCurrentAveragePos" />
+                    <Enumeration value="41832" label="ADCS_Mtq3TotalCurrentAveragePos" />
                     <Enumeration value="39680" label="ADCS_RwlFailId" />
                     <Enumeration value="39696" label="ADCS_MountStackX" />
                     <Enumeration value="39716" label="ADCS_MountStackY" />
@@ -1741,13 +1817,14 @@
                     <Enumeration value="13160" label="COMMS_GNSS_TEMP" />
                     <Enumeration value="13184" label="COMMS_ANTENNA_DEPLOYMENT_STATUS" />
                     <Enumeration value="13234" label="COMMS_CW_INTERVAL" />
-                    <Enumeration value="13250" label="COMMS_BFSK_BEAKON_INTERVAL" />
+                    <Enumeration value="13250" label="COMMS_BFSK_BEACON_INTERVAL" />
                     <Enumeration value="13268" label="COMMS_UHF_TX_POWER" />
                     <Enumeration value="13352" label="COMMS_RSSI" />
+                    <Enumeration value="13394" label="COMMS_REJECTED_PACKETS" />
                     <Enumeration value="13605" label="COMMS_GNSS_LAT" />
                     <Enumeration value="13621" label="COMMS_GNSS_LONG" />
                     <Enumeration value="13637" label="COMMS_GNSS_ALT" />
-                    <Enumeration value="13656" label="COMMS_GNSS_TIME" />
+                    <Enumeration value="13654" label="COMMS_GNSS_TIME" />
                     <Enumeration value="13666" label="COMMS_GNSS_ACK_TIMEOUT" />
                     <Enumeration value="13680" label="COMMS_GNSS_CMD_RETRIES" />
                     <Enumeration value="13698" label="COMMS_GNSS_ERROR_TIMEOUT" />
@@ -1756,8 +1833,19 @@
                     <Enumeration value="13745" label="COMMS_SATELLITES_TRACKED" />
                     <Enumeration value="13761" label="COMMS_GNSS_FIX_QUALITY" />
                     <Enumeration value="13776" label="COMMS_GNSS_TM_DATA_PERIOD" />
-                    <Enumeration value="13796" label="COMMS_COMMIT_HASH" />
-                    <Enumeration value="14488" label="COMMS_EMMC_USAGE" />
+                    <Enumeration value="13792" label="COMMS_GNSS_TIME_STATUS" />
+                    <Enumeration value="13808" label="COMMS_GNSS_PPS_ACTIVE" />
+                    <Enumeration value="13828" label="COMMS_COMMIT_HASH" />
+                    <Enumeration value="14520" label="COMMS_EMMC_USAGE" />
+                    <Enumeration value="14537" label="COMMS_POWER" />
+                    <Enumeration value="14553" label="COMMS_CURRENT" />
+                    <Enumeration value="14569" label="COMMS_VOLTAGE" />
+                    <Enumeration value="14580" label="COMMS_DROPPED_CAN_MES" />
+                    <Enumeration value="14592" label="COMMS_GNSS_MESSAGE_TIME" />
+                    <Enumeration value="14608" label="COMMS_GNSS_MESSAGE_PAYLOAD_TIME" />
+                    <Enumeration value="14624" label="COMMS_SCIENCE_MODE" />
+                    <Enumeration value="14649" label="COMMS_SEMIMAJOR_AXIS" />
+                    <Enumeration value="14665" label="COMMS_ECCENTRINITY" />
                 </EnumerationList>
             </EnumeratedArgumentType>
         </ArgumentTypeSet>

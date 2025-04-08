@@ -178,6 +178,49 @@
 				</StringDataEncoding>
 			</StringArgumentType>
 
+            <EnumeratedArgumentType name="function_ID">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
+				<EnumerationList>
+					<Enumeration value="1" label="requestStateChange" shortDescription="ArgNum: 1, Args: (uint16_t obcState)" />
+					<Enumeration value="2" label="requestStateChangeCommissioning" shortDescription="ArgNum: 0, Args: ()" />
+					<Enumeration value="3" label="requestStateChangeSafe" shortDescription="ArgNum: 0, Args: ()" />
+					<Enumeration value="4" label="requestStateChangeCritical" shortDescription="ArgNum: 0, Args: ()" />
+					<Enumeration value="5" label="requestStateChangeEmergency" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="6" label="requestStateChangeNominal" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="7" label="requestStateChangePayload" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="8" label="houseKeepingAll" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="9" label="houseKeepingSubsystem" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="10" label="TODO: Download Data from optical pass" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="11" label="SetSpacecraftTime" shortDescription="ArgNum: 1, Args: (uint64_t time)" />
+                    <Enumeration value="12" label="PingComponent" shortDescription="ArgNum: 1, Args: (uint64_t time)" />
+                    <Enumeration value="13" label="SetParameter" shortDescription="ArgNum: 2, Args: (uint16_t parameterID, uint64_t parameterValue)" />
+                    <Enumeration value="14" label="" />
+                    <Enumeration value="15" label="" />
+                    <Enumeration value="16" label="" />
+                    <Enumeration value="40" label="gnssDataDownload" shortDescription="ArgNum: 3, Args: (uint32_t period, uint32_t secondsPrior, uint32_t numberOfSamples)" />
+                    <Enumeration value="41" label="ceaseTransmissions" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="60" label="powerCycleSubsystem" shortDescription="ArgNum: 1, Args: (uint8_t EPSChannel)" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
+            <EnumeratedArgumentType name="EPSChannel_t">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+				<EnumerationList>
+					<Enumeration value="1" label="ADCS VBAT" />
+                    <Enumeration value="2" label="ADCS 5V" shortDescription="ADCS 5V" />
+                    <Enumeration value="3" label="PANELS 5V" shortDescription="PANELS 5V" />
+                    <Enumeration value="4" label="ADM 5V 1" shortDescription="ADM 5V 1" />
+                    <Enumeration value="5" label="ADM 5V 2" shortDescription="ADM 5V 2" />
+                    <Enumeration value="6" label="ADCS 3V3" shortDescription="ADCS 3V3" />
+                    <Enumeration value="7" label="OBC 3V3" shortDescription="OBC 3V3" />
+                    <Enumeration value="8" label="RED 3V3" shortDescription="RED 3V3" />
+                    <Enumeration value="12" label="ATLAS 5V 1" shortDescription="ATLAS 5V 1" />
+                    <Enumeration value="13" label="ATLAS 5V 2" shortDescription="ATLAS 5V 2" />
+                    <Enumeration value="14" label="COMMS 12V" shortDescription="COMMS 12V" />
+                    <Enumeration value="15" label="ATLAS 12V" shortDescription="ATLAS 12V" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
             <!-- ST[12] types-->
 
             <EnumeratedArgumentType name="check_type">

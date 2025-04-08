@@ -688,32 +688,42 @@
             <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_SPACECRAFT_TIME_REF"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_RECONFIGURATION_TIMER"/>
             <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_ON_BOARD_TIME"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_CAN_BUS_LOAD_1"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_CAN_BUS_LOAD_2"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_CAN_BUS_ACTIVE"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_MCU_FDIR"/>
-            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_MCURestartSafeModeThreshold"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_NANDFLASHLCLThreshold"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_MRAMLCLThreshold"/>
-            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_NANDFLASHON"/>
-            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_MRAMON"/>
-            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_FlashInt"/>
-            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_SRAMInt"/>
-            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_AvailableMRAM"/>
-            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_AvailableNAND"/>
-            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_MemoryPartition"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_NANDFLASHScrubbingFrequency"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_ΜRAMScrubbingFrequency"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_ProgramFlashScrubbingFrequency"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_MCU_RESTART_SAFE_MODE_THRESHOLD"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_NAND_FLASH_LCL_THRESHOLD"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_MRAM_LCL_THRESHOLD"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_NAND_FLASH_ON"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_MRAM_ON"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_FLASH_INT"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_SRAM_INT"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_AVAILABLE_MRAM"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_AVAILABLE_NAND"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_MEMORY_PARTITION"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_NAND_FLASH_SCRUBBING_FREEQUENCY"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_ΜRAM_SCRUBBING_FREEQIENCY"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_PROGRAM_FLASH_SCRUBBING_FREEQUENCY"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="OBDH_COMMIT_HASH"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_CAN_ACK_TIMEOUT"/>
-            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_CAN_FrameRetransimtCount"/>
-            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_CAN_TransmitFailureCount"/>
-            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_UseRTT"/>
-            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_UseUART"/>
-            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_UseCAN"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_CAN_FRAME_RETRANSMIT_COUNT"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_CAN_TRANSMIT_FAILURE_COUNT"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_USE_RTT"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_USE_UART"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_USE_CAN"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_HEARTBEAT_PERIOD"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_LAST_RESET_CAUSE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_RTC_OFFSET_THRESHOLD"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_USE_GNSS_PPS"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_STORED_TMS_COUNT"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_GNSS_UPDATE_TIME_INTERVAL"/>
+            <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_PERIODIC_100MS_BITFLAG"/>
+            <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_PERIODIC_1SEC_BITFLAG"/>
+            <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_PERIODIC_10SEC_BITFLAG"/>
+            <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_APERIODIC_BITFLAG"/>
+            <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_PERIODIC_1MIN_BITFLAG"/>
+            <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_PERIODIC_5MIN_BITFLAG"/>
+            <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_PERIODIC_10MIN_BITFLAG"/>
+            <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_PERIODIC_5SEC_BITFLAG"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="ADCS_ResetType"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_UnixTimeSeconds"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_UnixTimeNanoSeconds"/>
@@ -736,6 +746,28 @@
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_Fss0Power"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_Hss0Power"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_Str0Power"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Mag0McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Mag0McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Mag1McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Mag1McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Fss0McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Fss0McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Hss0McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Hss0McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Str0McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Str0McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Rwl0McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Rwl0McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Rwl1McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Rwl1McuCurren"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Rwl2McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Rwl2McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_GyroCurrent"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Mtq1TotalCurrentAveragePos"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Mtq2TotalCurrentAveragePos"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Mtq3TotalCurrentAveragePos"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="ADCS_RwlFailId"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="ADCS_MountStackX"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_MountStackY"/>
@@ -852,13 +884,14 @@
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_GNSS_TEMP"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_ANTENNA_DEPLOYMENT_STATUS"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_CW_INTERVAL"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_BFSK_BEAKON_INTERVAL"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_BFSK_BEACON_INTERVAL"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_UHF_TX_POWER"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_RSSI"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_REJECTED_PACKETS"/>
             <Parameter parameterTypeRef="base-dt/int32_t" name="COMMS_GNSS_LAT"/>
             <Parameter parameterTypeRef="base-dt/int32_t" name="COMMS_GNSS_LONG"/>
             <Parameter parameterTypeRef="base-dt/int32_t" name="COMMS_GNSS_ALT"/>
-            <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_GNSS_TIME"/>
+            <Parameter parameterTypeRef="base-dt/uint64_t" name="COMMS_GNSS_TIME"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_GNSS_ACK_TIMEOUT"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_CMD_RETRIES"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_GNSS_ERROR_TIMEOUT"/>
@@ -867,8 +900,19 @@
             <Parameter parameterTypeRef="base-dt/int8_t" name="COMMS_SATELLITES_TRACKED"/>
             <Parameter parameterTypeRef="base-dt/int8_t" name="COMMS_GNSS_FIX_QUALITY"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_TM_DATA_PERIOD"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_TIME_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="COMMS_GNSS_PPS_ACTIVE"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_COMMIT_HASH"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_EMMC_USAGE"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_POWER"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_CURRENT"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_VOLTAGE"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_DROPPED_CAN_MES"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_MESSAGE_TIME"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_MESSAGE_PAYLOAD_TIME"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="COMMS_SCIENCE_MODE"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_SEMIMAJOR_AXIS"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_ECCENTRINITY"/>
         </ParameterSet>
 
     </xtce:TelemetryMetaData>
