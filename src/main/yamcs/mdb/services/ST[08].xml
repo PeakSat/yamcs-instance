@@ -96,6 +96,24 @@
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
+
+            <MetaCommand name="PingComponent_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="pingComponent" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/dt/componentID_t" name="componentID" />
+                </ArgumentList>
+                <CommandContainer name="TC(8,1)_ComponentPing">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="componentID" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
             
         </MetaCommandSet>
     </xtce:CommandMetaData>

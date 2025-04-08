@@ -221,6 +221,36 @@
 				</EnumerationList>
 			</EnumeratedArgumentType>
 
+            <EnumeratedArgumentType name="componentID_t">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+				<EnumerationList>
+                    <Enumeration value="60" label="OBC - Temperature Sensor A" />
+                    <Enumeration value="61" label="OBC - Temperature Sensor B" />
+                    <Enumeration value="62" label="OBC - NAND" />
+                    <Enumeration value="63" label="OBC - MRAM" />
+                    <Enumeration value="64" label="ADCS - Cube Mag" />
+                    <Enumeration value="65" label="ADCS - Cube Mag Redundant" />
+                    <Enumeration value="66" label="ADCS - Cube Sun" />
+                    <Enumeration value="67" label="ADCS - Cube Earth" />
+                    <Enumeration value="68" label="ADCS - Cube Star" />
+                    <Enumeration value="69" label="ADCS - Cube Wheel 0" />
+                    <Enumeration value="70" label="ADCS - Cube Wheel 1" />
+                    <Enumeration value="71" label="ADCS - Cube Wheel 2" />
+                    <Enumeration value="72" label="ADCS - GYRO 0" />
+                    <Enumeration value="73" label="ADCS - GYRO 1" />
+                    <Enumeration value="74" label="ADCS - MTQ 0" />
+                    <Enumeration value="75" label="ADCS - MTQ 1" />
+                    <Enumeration value="76" label="ADCS - MTQ 2" />
+                    <Enumeration value="77" label="COMMS - TMP 0" />
+                    <Enumeration value="78" label="COMMS - TMP 1" />
+                    <Enumeration value="79" label="COMMS - TMP 2" />
+                    <Enumeration value="80" label="COMMS - INA" />
+                    <Enumeration value="81" label="COMMS - GNSS" />
+                    <Enumeration value="82" label="COMMS - eMMC" />
+                    <Enumeration value="83" label="COMMS - RF Transceiver" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
             <!-- ST[12] types-->
 
             <EnumeratedArgumentType name="check_type">
