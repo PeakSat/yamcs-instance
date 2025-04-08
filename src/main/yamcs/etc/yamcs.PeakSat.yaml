@@ -33,7 +33,8 @@ dataLinks:
         maxPacketLength: 100
         lengthFieldOffset: 4  
         lengthFieldLength: 2 
-        lengthAdjustment: 7
+        # TODO: Change to 7. Pending OBC firmware update
+        lengthAdjustment: 9
         initialBytesToStrip: 0
   
   # - name: udp-rf-tc
