@@ -30,7 +30,7 @@ dataLinks:
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
     packetInputStreamClassName: org.yamcs.tctm.GenericPacketInputStream
     packetInputStreamArgs: 
-        maxPacketLength: 100
+        maxPacketLength: 65536
         lengthFieldOffset: 4  
         lengthFieldLength: 2 
         # TODO: Change to 7. Pending OBC firmware update
