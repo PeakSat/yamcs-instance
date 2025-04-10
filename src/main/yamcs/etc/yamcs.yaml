@@ -15,6 +15,9 @@ dataDir: yamcs-data
 yamcs-web:
   utc: false
   staticRoot: ../../target/generated-resources/webapp/acubesat-webapp/webapp
+  tag: PeakSat
+  logo: peaksat_logo.png
+  disableLoginForm: false
 
 
 instances:
