@@ -30,11 +30,11 @@ dataLinks:
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
     packetInputStreamClassName: org.yamcs.tctm.GenericPacketInputStream
     packetInputStreamArgs: 
-        maxPacketLength: 65536
+        maxPacketLength: 100
         lengthFieldOffset: 4  
         lengthFieldLength: 2 
         # TODO: Change to 7. Pending OBC firmware update
-        lengthAdjustment: 9
+        lengthAdjustment: 6
         initialBytesToStrip: 0
   
   # - name: udp-rf-tc

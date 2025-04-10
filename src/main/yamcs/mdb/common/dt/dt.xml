@@ -192,7 +192,7 @@
                     <Enumeration value="9" label="houseKeepingSubsystem" shortDescription="ArgNum: 0, Args: ()" />
                     <Enumeration value="10" label="TODO: Download Data from optical pass" shortDescription="ArgNum: 0, Args: ()" />
                     <Enumeration value="11" label="SetSpacecraftTime" shortDescription="ArgNum: 1, Args: (uint64_t time)" />
-                    <Enumeration value="12" label="PingComponent" shortDescription="ArgNum: 1, Args: (uint64_t time)" />
+                    <Enumeration value="12" label="pingComponent" shortDescription="ArgNum: 1, Args: (uint64_t time)" />
                     <Enumeration value="13" label="SetParameter" shortDescription="ArgNum: 2, Args: (uint16_t parameterID, uint64_t parameterValue)" />
                     <Enumeration value="14" label="" />
                     <Enumeration value="15" label="" />

@@ -374,6 +374,7 @@ def yamcs_client(settings: Settings, serial_port: str = None, subsystem: str = N
             )
             while True:
                 data, _ = tcp_client.recvfrom(settings.max_tc_size)
+                logging.debug(f"Received from YAMCS: {data}")
                 if len(data) >= TC_HEADER:
                     logging.info("YAMCS: " + data.hex())
                     encoded_data = cobs.encode(data)
