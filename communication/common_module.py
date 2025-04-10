@@ -191,14 +191,16 @@ def mcu_client(
                 # not using decode("utf-8") since it will break printing (all new line characters will result in an new line)
                 logging.info(f"{ser.name}: {message}")
 
-                if b"message!" in message and b"END" in message:
+                # if b"message!" in message and b"END" in message:
+                if b"message!" in message:
                     idx = message.find(b"message!") + len(b"message!")
                     logging.info(f"IDX: {idx}")
                     yamcs_port_in = settings.obc_port_in
 
-                    id_end = message.find(b"END", idx + 1)
-                    logging.info(f"ID_END: {id_end}")
-                    raw_packet = message[idx + 1:id_end]  # Changed idx + 2 to idx + 1
+                    # id_end = message.find(b"END", idx + 1)
+                    # logging.info(f"ID_END: {id_end}")
+                    # raw_packet = message[idx + 1:id_end]  # Changed idx + 2 to idx + 1
+                    raw_packet = message[idx + 1:]
                     packet = bytearray()
                     packet_byte_decimal = 0
                     for packet_byte in raw_packet:
