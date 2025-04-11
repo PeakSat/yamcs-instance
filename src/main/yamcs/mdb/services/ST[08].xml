@@ -91,6 +91,18 @@
                 </CommandContainer>
             </MetaCommand>
 
+            <MetaCommand name="RequestStateChangeSafe_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="requestStateChangeSafe" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_RequestStateChangeSafe">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
             <MetaCommand name="ArmRequestStateChangePayload_TC[8,1]">
                 <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
                     <ArgumentAssignmentList>

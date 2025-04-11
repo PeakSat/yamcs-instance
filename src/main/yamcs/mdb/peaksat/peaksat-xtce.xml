@@ -684,7 +684,7 @@
             <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_MCU_SYSTICK"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="OBDH_LAST_FAILED_EVENT"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="OBDH_MCU_BOOT_COUNTER"/>
-            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_OPERATIONAL_MODE"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="OBDH_OPERATIONAL_MODE"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_SPACECRAFT_TIME_REF"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_RECONFIGURATION_TIMER"/>
             <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_ON_BOARD_TIME"/>
@@ -724,6 +724,7 @@
             <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_PERIODIC_5MIN_BITFLAG"/>
             <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_PERIODIC_10MIN_BITFLAG"/>
             <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_PERIODIC_5SEC_BITFLAG"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_TELEMETRY_FORWARD"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="ADCS_ResetType"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_UnixTimeSeconds"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_UnixTimeNanoSeconds"/>
@@ -904,15 +905,19 @@
             <Parameter parameterTypeRef="base-dt/bool_t" name="COMMS_GNSS_PPS_ACTIVE"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_COMMIT_HASH"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_EMMC_USAGE"/>
-            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_POWER"/>
-            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_CURRENT"/>
-            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_VOLTAGE"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_RF_5V_POWER"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_RF_5V_CURRENT"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_RF_5V_VOLTAGE"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_DROPPED_CAN_MES"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_MESSAGE_TIME"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_MESSAGE_PAYLOAD_TIME"/>
             <Parameter parameterTypeRef="base-dt/bool_t" name="COMMS_SCIENCE_MODE"/>
             <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_SEMIMAJOR_AXIS"/>
             <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_ECCENTRINITY"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_TRANSMITTED_PACKETS"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_NOT_TXFE_PACKETS"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_ALL_RECEIVED_PACKETS"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_LAST_RECEIVED_LENGTH"/>
         </ParameterSet>
 
     </xtce:TelemetryMetaData>

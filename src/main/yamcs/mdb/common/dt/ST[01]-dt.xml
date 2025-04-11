@@ -101,9 +101,93 @@
 			<EnumeratedParameterType name="ExecutionCompletionErrorType_t">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="16" />
 				<EnumerationList>
-					<Enumeration value="0" label="UnknownExecutionCompletionError" />
+					<!-- <Enumeration value="0" label="UnknownExecutionCompletionError" />
 					<Enumeration value="1" label="ChecksumFailed" />
-					<Enumeration value="2" label="AddressOutOfRange" />
+					<Enumeration value="2" label="AddressOutOfRange" /> -->
+					<Enumeration value="0" label="GENERIC_NONE" />
+					<Enumeration value="1" label="GENERIC_TODO" />
+					<Enumeration value="2" label="GENERIC_NOT_IMPLEMENTED" />
+					<Enumeration value="3" label="GENERIC_TIMEOUT" />
+					<Enumeration value="4" label="GENERIC_UNKNOWN" />
+					<Enumeration value="5" label="GENERIC_NO_RESPONSE" />
+					<Enumeration value="6" label="GENERIC_CAN_INVALID_MESSAGE_ID" />
+					<Enumeration value="7" label="ADCS_OK" />
+					<Enumeration value="8" label="ADCS_NULLPTR" />
+					<Enumeration value="9" label="ADCS_SIZE" />
+					<Enumeration value="10" label="ADCS_SIZEL" />
+					<Enumeration value="11" label="ADCS_SIZEH" />
+					<Enumeration value="12" label="ADCS_OVRRUN" />
+					<Enumeration value="13" label="ADCS_PARAM" />
+					<Enumeration value="14" label="ADCS_TOUT" />
+					<Enumeration value="15" label="ADCS_NACK" />
+					<Enumeration value="16" label="ADCS_BUSY" />
+					<Enumeration value="17" label="ADCS_FRAME" />
+					<Enumeration value="18" label="ADCS_CRC" />
+					<Enumeration value="19" label="ADCS_READ" />
+					<Enumeration value="20" label="ADCS_WRITE" />
+					<Enumeration value="21" label="ADCS_CAN_ID" />
+					<Enumeration value="22" label="ADCS_CAN_ERR" />
+					<Enumeration value="23" label="ADCS_UKN_NACK" />
+					<Enumeration value="24" label="ADCS_NODE_TYPE" />
+					<Enumeration value="25" label="ADCS_FTP" />
+					<Enumeration value="26" label="ADCS_USAGE" />
+					<Enumeration value="27" label="ADCS_AUTOD" />
+					<Enumeration value="28" label="ADCS_IMG" />
+					<Enumeration value="29" label="ADCS_EXIST" />
+					<Enumeration value="30" label="ADCS_USER_DATA" />
+					<Enumeration value="31" label="ADCS_COMMIT" />
+					<Enumeration value="32" label="ADCS_TCTLM_PROTOCOL" />
+					<Enumeration value="33" label="ADCS_UNKNOWN" />
+					<Enumeration value="34" label="ADCS_TLM_SIZE" />
+					<Enumeration value="35" label="ADCS_TCTLM_ID" />
+					<Enumeration value="36" label="ADCS_TCTLM_INVALID_ID" />
+					<Enumeration value="37" label="ADCS_TCTLM_INVALID_LENGTH" />
+					<Enumeration value="38" label="ADCS_TCTLM_INVALID_PARAM" />
+					<Enumeration value="39" label="ADCS_TCTLM_CRC" />
+					<Enumeration value="40" label="ADCS_TCTLM_NOT_IMPLEMENTED" />
+					<Enumeration value="41" label="ADCS_TCTLM_BUSY" />
+					<Enumeration value="42" label="ADCS_TCTLM_SEQUENCE" />
+					<Enumeration value="43" label="ADCS_TCTLM_INTERNAL" />
+					<Enumeration value="44" label="ADCS_TCTLM_PASS_TOUT" />
+					<Enumeration value="45" label="ADCS_TCTLM_PASS_TARGET" />
+					<Enumeration value="46" label="ADCS_CSP_RECV_TIMEOUT" />
+					<Enumeration value="47" label="ADCS_CSP_BUFFER_NONE" />
+					<Enumeration value="48" label="ADCS_TODO" />
+					<Enumeration value="49" label="OBDH_CAN_TX_FAILED" />
+					<Enumeration value="50" label="OBDH_CAN_ACK_TIMEOUT" />
+					<Enumeration value="51" label="TTC_CAN_TX_FAILED" />
+					<Enumeration value="52" label="TTC_CAN_ACK_TIMEOUT" />
+					<Enumeration value="53" label="OBDH_EPS_I2C_OVER_CAN_FAILED" />
+					<Enumeration value="54" label="OBDH_PING_COMMS_FAILED" />
+					<Enumeration value="55" label="OBDH_PING_ADCS_FAILED" />
+					<Enumeration value="56" label="OBDH_PING_EPS_FAILED" />
+					<Enumeration value="57" label="OBDH_PING_PAY_FAILED" />
+					<Enumeration value="58" label="OBDH_PING_ADM_FAILED" />
+					<Enumeration value="59" label="OBDH_PING_OBC_TEMP_SENSOR_0_FAILED" />
+					<Enumeration value="60" label="OBDH_PING_OBC_TEMP_SENSOR_1_FAILED" />
+					<Enumeration value="61" label="OBDH_PING_OBC_NAND_FAILED" />
+					<Enumeration value="62" label="OBDH_PING_OBC_MRAM_FAILED" />
+					<Enumeration value="63" label="OBDH_PING_ADCS_CUBEMAG_FAILED" />
+					<Enumeration value="64" label="OBDH_PING_ADCS_CUBESENSE_FAILED" />
+					<Enumeration value="65" label="OBDH_PING_ADCS_CUBESTAR_FAILED" />
+					<Enumeration value="66" label="OBDH_PING_ADCS_CUBEWHEEL_FAILED" />
+					<Enumeration value="67" label="EPS_NONE" />
+					<Enumeration value="68" label="EPS_I2C_WRITE" />
+					<Enumeration value="69" label="EPS_I2C_READ" />
+					<Enumeration value="70" label="EPS_I2C_INVALID_PARAMS" />
+					<Enumeration value="71" label="EPS_I2C_TIMEOUT" />
+					<Enumeration value="72" label="EPS_STAT_REJECTED" />
+					<Enumeration value="73" label="EPS_STAT_INVALID_COMMAND_CODE" />
+					<Enumeration value="74" label="EPS_STAT_PARAM_MISSING" />
+					<Enumeration value="75" label="EPS_STAT_PARAM_INVALID" />
+					<Enumeration value="76" label="EPS_STAT_UNAVAILABLE_IN_CONFIG" />
+					<Enumeration value="77" label="EPS_STAT_INVALID_IDENTIFIER" />
+					<Enumeration value="78" label="EPS_STAT_INTERNAL_PROCESS" />
+					<Enumeration value="79" label="EPS_STAT_COMMAND_RESPONSE" />
+					<Enumeration value="80" label="EPS_STAT_UNKNOWN" />
+					<Enumeration value="81" label="EPS_INVALID_CHANNEL" />
+					<Enumeration value="82" label="EPS_COMMAND_NOT_ARMED" />
+					<Enumeration value="83" label="EPS_UNKNOWN" />
 				</EnumerationList>
 			</EnumeratedParameterType>
 

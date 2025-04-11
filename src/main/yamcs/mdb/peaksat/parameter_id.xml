@@ -686,7 +686,7 @@
                     <Enumeration value="100" label="OBDH_MCU_SYSTICK" />
                     <Enumeration value="114" label="OBDH_LAST_FAILED_EVENT" />
                     <Enumeration value="130" label="OBDH_MCU_BOOT_COUNTER" />
-                    <Enumeration value="144" label="OBDH_OPERATIONAL_MODE" />
+                    <Enumeration value="146" label="OBDH_OPERATIONAL_MODE" />
                     <Enumeration value="240" label="OBDH_SPACECRAFT_TIME_REF" />
                     <Enumeration value="260" label="OBDH_RECONFIGURATION_TIMER" />
                     <Enumeration value="294" label="OBDH_ON_BOARD_TIME" />
@@ -726,6 +726,7 @@
                     <Enumeration value="998" label="OBDH_PERIODIC_5MIN_BITFLAG" />
                     <Enumeration value="1014" label="OBDH_PERIODIC_10MIN_BITFLAG" />
                     <Enumeration value="1030" label="OBDH_PERIODIC_5SEC_BITFLAG" />
+                    <Enumeration value="1040" label="OBDH_TELEMETRY_FORWARD" />
                     <Enumeration value="39328" label="ADCS_ResetType" />
                     <Enumeration value="39348" label="ADCS_UnixTimeSeconds" />
                     <Enumeration value="39364" label="ADCS_UnixTimeNanoSeconds" />
@@ -894,27 +895,31 @@
                     <Enumeration value="13621" label="COMMS_GNSS_LONG" />
                     <Enumeration value="13637" label="COMMS_GNSS_ALT" />
                     <Enumeration value="13654" label="COMMS_GNSS_TIME" />
-                    <Enumeration value="13666" label="COMMS_GNSS_ACK_TIMEOUT" />
-                    <Enumeration value="13680" label="COMMS_GNSS_CMD_RETRIES" />
-                    <Enumeration value="13698" label="COMMS_GNSS_ERROR_TIMEOUT" />
-                    <Enumeration value="13714" label="COMMS_ERROR_TIMEOUT_CNT_THRHD" />
-                    <Enumeration value="13730" label="COMMS_GNSS_DELAY_CMDS" />
-                    <Enumeration value="13745" label="COMMS_SATELLITES_TRACKED" />
-                    <Enumeration value="13761" label="COMMS_GNSS_FIX_QUALITY" />
-                    <Enumeration value="13776" label="COMMS_GNSS_TM_DATA_PERIOD" />
-                    <Enumeration value="13792" label="COMMS_GNSS_TIME_STATUS" />
-                    <Enumeration value="13808" label="COMMS_GNSS_PPS_ACTIVE" />
-                    <Enumeration value="13828" label="COMMS_COMMIT_HASH" />
-                    <Enumeration value="14520" label="COMMS_EMMC_USAGE" />
-                    <Enumeration value="14537" label="COMMS_POWER" />
-                    <Enumeration value="14553" label="COMMS_CURRENT" />
-                    <Enumeration value="14569" label="COMMS_VOLTAGE" />
-                    <Enumeration value="14580" label="COMMS_DROPPED_CAN_MES" />
-                    <Enumeration value="14592" label="COMMS_GNSS_MESSAGE_TIME" />
-                    <Enumeration value="14608" label="COMMS_GNSS_MESSAGE_PAYLOAD_TIME" />
-                    <Enumeration value="14624" label="COMMS_SCIENCE_MODE" />
-                    <Enumeration value="14649" label="COMMS_SEMIMAJOR_AXIS" />
-                    <Enumeration value="14665" label="COMMS_ECCENTRINITY" />
+                    <Enumeration value="13682" label="COMMS_GNSS_ACK_TIMEOUT" />
+                    <Enumeration value="13696" label="COMMS_GNSS_CMD_RETRIES" />
+                    <Enumeration value="13714" label="COMMS_GNSS_ERROR_TIMEOUT" />
+                    <Enumeration value="13730" label="COMMS_ERROR_TIMEOUT_CNT_THRHD" />
+                    <Enumeration value="13746" label="COMMS_GNSS_DELAY_CMDS" />
+                    <Enumeration value="13761" label="COMMS_SATELLITES_TRACKED" />
+                    <Enumeration value="13777" label="COMMS_GNSS_FIX_QUALITY" />
+                    <Enumeration value="13792" label="COMMS_GNSS_TM_DATA_PERIOD" />
+                    <Enumeration value="13808" label="COMMS_GNSS_TIME_STATUS" />
+                    <Enumeration value="13824" label="COMMS_GNSS_PPS_ACTIVE" />
+                    <Enumeration value="13844" label="COMMS_COMMIT_HASH" />
+                    <Enumeration value="14536" label="COMMS_EMMC_USAGE" />
+                    <Enumeration value="14553" label="COMMS_RF_5V_POWER" />
+                    <Enumeration value="14585" label="COMMS_RF_5V_CURRENT" />
+                    <Enumeration value="14617" label="COMMS_RF_5V_VOLTAGE" />
+                    <Enumeration value="14644" label="COMMS_DROPPED_CAN_MES" />
+                    <Enumeration value="14656" label="COMMS_GNSS_MESSAGE_TIME" />
+                    <Enumeration value="14672" label="COMMS_GNSS_MESSAGE_PAYLOAD_TIME" />
+                    <Enumeration value="14688" label="COMMS_SCIENCE_MODE" />
+                    <Enumeration value="14713" label="COMMS_SEMIMAJOR_AXIS" />
+                    <Enumeration value="14745" label="COMMS_ECCENTRINITY" />
+                    <Enumeration value="14772" label="COMMS_TRANSMITTED_PACKETS" />
+                    <Enumeration value="14788" label="COMMS_NOT_TXFE_PACKETS" />
+                    <Enumeration value="14804" label="COMMS_ALL_RECEIVED_PACKETS" />
+                    <Enumeration value="14820" label="COMMS_LAST_RECEIVED_LENGTH" />
                 </EnumerationList>
             </EnumeratedParameterType>
  
@@ -1617,7 +1622,7 @@
                     <Enumeration value="100" label="OBDH_MCU_SYSTICK" />
                     <Enumeration value="114" label="OBDH_LAST_FAILED_EVENT" />
                     <Enumeration value="130" label="OBDH_MCU_BOOT_COUNTER" />
-                    <Enumeration value="144" label="OBDH_OPERATIONAL_MODE" />
+                    <Enumeration value="146" label="OBDH_OPERATIONAL_MODE" />
                     <Enumeration value="240" label="OBDH_SPACECRAFT_TIME_REF" />
                     <Enumeration value="260" label="OBDH_RECONFIGURATION_TIMER" />
                     <Enumeration value="294" label="OBDH_ON_BOARD_TIME" />
@@ -1657,6 +1662,7 @@
                     <Enumeration value="998" label="OBDH_PERIODIC_5MIN_BITFLAG" />
                     <Enumeration value="1014" label="OBDH_PERIODIC_10MIN_BITFLAG" />
                     <Enumeration value="1030" label="OBDH_PERIODIC_5SEC_BITFLAG" />
+                    <Enumeration value="1040" label="OBDH_TELEMETRY_FORWARD" />
                     <Enumeration value="39328" label="ADCS_ResetType" />
                     <Enumeration value="39348" label="ADCS_UnixTimeSeconds" />
                     <Enumeration value="39364" label="ADCS_UnixTimeNanoSeconds" />
@@ -1825,27 +1831,31 @@
                     <Enumeration value="13621" label="COMMS_GNSS_LONG" />
                     <Enumeration value="13637" label="COMMS_GNSS_ALT" />
                     <Enumeration value="13654" label="COMMS_GNSS_TIME" />
-                    <Enumeration value="13666" label="COMMS_GNSS_ACK_TIMEOUT" />
-                    <Enumeration value="13680" label="COMMS_GNSS_CMD_RETRIES" />
-                    <Enumeration value="13698" label="COMMS_GNSS_ERROR_TIMEOUT" />
-                    <Enumeration value="13714" label="COMMS_ERROR_TIMEOUT_CNT_THRHD" />
-                    <Enumeration value="13730" label="COMMS_GNSS_DELAY_CMDS" />
-                    <Enumeration value="13745" label="COMMS_SATELLITES_TRACKED" />
-                    <Enumeration value="13761" label="COMMS_GNSS_FIX_QUALITY" />
-                    <Enumeration value="13776" label="COMMS_GNSS_TM_DATA_PERIOD" />
-                    <Enumeration value="13792" label="COMMS_GNSS_TIME_STATUS" />
-                    <Enumeration value="13808" label="COMMS_GNSS_PPS_ACTIVE" />
-                    <Enumeration value="13828" label="COMMS_COMMIT_HASH" />
-                    <Enumeration value="14520" label="COMMS_EMMC_USAGE" />
-                    <Enumeration value="14537" label="COMMS_POWER" />
-                    <Enumeration value="14553" label="COMMS_CURRENT" />
-                    <Enumeration value="14569" label="COMMS_VOLTAGE" />
-                    <Enumeration value="14580" label="COMMS_DROPPED_CAN_MES" />
-                    <Enumeration value="14592" label="COMMS_GNSS_MESSAGE_TIME" />
-                    <Enumeration value="14608" label="COMMS_GNSS_MESSAGE_PAYLOAD_TIME" />
-                    <Enumeration value="14624" label="COMMS_SCIENCE_MODE" />
-                    <Enumeration value="14649" label="COMMS_SEMIMAJOR_AXIS" />
-                    <Enumeration value="14665" label="COMMS_ECCENTRINITY" />
+                    <Enumeration value="13682" label="COMMS_GNSS_ACK_TIMEOUT" />
+                    <Enumeration value="13696" label="COMMS_GNSS_CMD_RETRIES" />
+                    <Enumeration value="13714" label="COMMS_GNSS_ERROR_TIMEOUT" />
+                    <Enumeration value="13730" label="COMMS_ERROR_TIMEOUT_CNT_THRHD" />
+                    <Enumeration value="13746" label="COMMS_GNSS_DELAY_CMDS" />
+                    <Enumeration value="13761" label="COMMS_SATELLITES_TRACKED" />
+                    <Enumeration value="13777" label="COMMS_GNSS_FIX_QUALITY" />
+                    <Enumeration value="13792" label="COMMS_GNSS_TM_DATA_PERIOD" />
+                    <Enumeration value="13808" label="COMMS_GNSS_TIME_STATUS" />
+                    <Enumeration value="13824" label="COMMS_GNSS_PPS_ACTIVE" />
+                    <Enumeration value="13844" label="COMMS_COMMIT_HASH" />
+                    <Enumeration value="14536" label="COMMS_EMMC_USAGE" />
+                    <Enumeration value="14553" label="COMMS_RF_5V_POWER" />
+                    <Enumeration value="14585" label="COMMS_RF_5V_CURRENT" />
+                    <Enumeration value="14617" label="COMMS_RF_5V_VOLTAGE" />
+                    <Enumeration value="14644" label="COMMS_DROPPED_CAN_MES" />
+                    <Enumeration value="14656" label="COMMS_GNSS_MESSAGE_TIME" />
+                    <Enumeration value="14672" label="COMMS_GNSS_MESSAGE_PAYLOAD_TIME" />
+                    <Enumeration value="14688" label="COMMS_SCIENCE_MODE" />
+                    <Enumeration value="14713" label="COMMS_SEMIMAJOR_AXIS" />
+                    <Enumeration value="14745" label="COMMS_ECCENTRINITY" />
+                    <Enumeration value="14772" label="COMMS_TRANSMITTED_PACKETS" />
+                    <Enumeration value="14788" label="COMMS_NOT_TXFE_PACKETS" />
+                    <Enumeration value="14804" label="COMMS_ALL_RECEIVED_PACKETS" />
+                    <Enumeration value="14820" label="COMMS_LAST_RECEIVED_LENGTH" />
                 </EnumerationList>
             </EnumeratedArgumentType>
         </ArgumentTypeSet>
