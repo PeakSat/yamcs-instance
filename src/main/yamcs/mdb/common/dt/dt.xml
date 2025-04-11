@@ -203,7 +203,7 @@
                     <Enumeration value="12" label="pingComponent" shortDescription="ArgNum: 1, Args: (uint64_t time)" />
                     <Enumeration value="13" label="SetParameter" shortDescription="ArgNum: 2, Args: (uint16_t parameterID, uint64_t parameterValue)" />
                     <Enumeration value="14" label="" />
-                    <Enumeration value="15" label="" />
+                    <Enumeration value="15" label="armRequestStateChangePayload" />
                     <Enumeration value="16" label="" />
                     <Enumeration value="40" label="gnssDataDownload" shortDescription="ArgNum: 3, Args: (uint32_t period, uint32_t secondsPrior, uint32_t numberOfSamples)" />
                     <Enumeration value="41" label="ceaseTransmissions" shortDescription="ArgNum: 0, Args: ()" />
