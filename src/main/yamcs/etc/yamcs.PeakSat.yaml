@@ -30,7 +30,7 @@ dataLinks:
     packetPreprocessorClassName: gr.spacedot.acubesat.CustomPacketPreprocessor
     packetInputStreamClassName: org.yamcs.tctm.GenericPacketInputStream
     packetInputStreamArgs: 
-        maxPacketLength: 100
+        maxPacketLength: 65536
         lengthFieldOffset: 4  
         lengthFieldLength: 2 
         # TODO: Change to 7. Pending OBC firmware update
@@ -96,8 +96,8 @@ mdb:
   spec: "mdb/services/ST[01].xml"
 - type: xtce
   spec: "mdb/services/ST[03].xml"
-# - type: xtce
-#   spec: "mdb/services/ST[04].xml"
+- type: xtce
+  spec: "mdb/services/ST[05].xml"
 - type: xtce
   spec: "mdb/services/ST[08].xml"
 # - type: xtce
@@ -108,8 +108,8 @@ mdb:
   spec: "mdb/services/ST[17].xml"
 # - type: xtce
 #   spec: "mdb/services/ST[19].xml"
-# - type: xtce
-#   spec: "mdb/services/ST[20,3]-set-values.xml"
+- type: xtce
+  spec: "mdb/services/ST[20,3]-set-values.xml"
 # - type: xtce
 #   spec: "mdb/services/ST[20]-reporting.xml"
 # - type: xtce
