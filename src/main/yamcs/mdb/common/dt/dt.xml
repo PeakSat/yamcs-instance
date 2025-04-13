@@ -146,14 +146,15 @@
                     <Enumeration value="2" label="MediumSeverityUnknownEvent"/>
                     <Enumeration value="3" label="HighSeverityUnknownEvent"/>
                     <!-- <Enumeration value="5" label="FailedStartOfExecution"/> -->
-                    <Enumeration value="4" label="Housekeeping_OBC_1"/>
-                    <Enumeration value="5" label="Housekeeping_OBC_2"/>
+                    <!-- <Enumeration value="4" label="Housekeeping_OBC_1"/> -->
+                    <!-- <Enumeration value="5" label="Housekeeping_OBC_2"/> -->
                     <Enumeration value="6" label="OBC_MCUTempLowLimit"/>
                     <Enumeration value="7" label="EPS_BatteryVoltageLowLimit"/>
                     <Enumeration value="8" label="EPS_BatteryTempLowLimit"/>
                     <Enumeration value="9" label="EPS_BatteryTempHighLimit"/>
                     <Enumeration value="10" label="EPS_BoardTempLowLimit"/>
                     <Enumeration value="11" label="EPS_BoardTempHighLimit"/>
+                    <Enumeration value="12" label="SYS_StateChangeSafe"/>
                 </xtce:EnumerationList>
             </EnumeratedArgumentType>
 

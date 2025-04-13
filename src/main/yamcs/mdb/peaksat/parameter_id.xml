@@ -762,7 +762,7 @@
                     <Enumeration value="41651" label="ADCS_Rwl0McuTemp" />
                     <Enumeration value="41666" label="ADCS_Rwl0McuCurrent" />
                     <Enumeration value="41683" label="ADCS_Rwl1McuTemp" />
-                    <Enumeration value="41698" label="ADCS_Rwl1McuCurren" />
+                    <Enumeration value="41698" label="ADCS_Rwl1McuCurrent" />
                     <Enumeration value="41715" label="ADCS_Rwl2McuTemp" />
                     <Enumeration value="41730" label="ADCS_Rwl2McuCurrent" />
                     <Enumeration value="41747" label="ADCS_McuTemp" />
@@ -1698,7 +1698,7 @@
                     <Enumeration value="41651" label="ADCS_Rwl0McuTemp" />
                     <Enumeration value="41666" label="ADCS_Rwl0McuCurrent" />
                     <Enumeration value="41683" label="ADCS_Rwl1McuTemp" />
-                    <Enumeration value="41698" label="ADCS_Rwl1McuCurren" />
+                    <Enumeration value="41698" label="ADCS_Rwl1McuCurrent" />
                     <Enumeration value="41715" label="ADCS_Rwl2McuTemp" />
                     <Enumeration value="41730" label="ADCS_Rwl2McuCurrent" />
                     <Enumeration value="41747" label="ADCS_McuTemp" />

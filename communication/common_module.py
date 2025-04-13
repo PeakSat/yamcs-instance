@@ -377,8 +377,10 @@ def yamcs_client(settings: Settings, serial_port: str = None, subsystem: str = N
                 logging.debug(f"Received from YAMCS: {data}")
                 if len(data) >= TC_HEADER:
                     logging.info("YAMCS: " + data.hex())
-                    encoded_data = cobs.encode(data)
-                    port.write(encoded_data)
+                    # encoded_data = cobs.encode(data)
+                    # logging.info(f"Encoded: {encoded_data.hex()}")
+                    # port.write(encoded_data)
+                    port.write(data)
                     port.write(DELIMITER)
 
         except serial.SerialException:

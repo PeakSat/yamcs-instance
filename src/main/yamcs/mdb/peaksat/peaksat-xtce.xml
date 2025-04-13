@@ -760,7 +760,7 @@
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Rwl0McuTemp"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Rwl0McuCurrent"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Rwl1McuTemp"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Rwl1McuCurren"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Rwl1McuCurrent"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Rwl2McuTemp"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Rwl2McuCurrent"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_McuTemp"/>

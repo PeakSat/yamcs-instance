@@ -7,7 +7,6 @@
     <!-- Contains PeakSats's non primitive parameters and arguments -->
     <xtce:TelemetryMetaData>
         <ParameterTypeSet>
-            
         </ParameterTypeSet>
     </xtce:TelemetryMetaData>
 </SpaceSystem>
