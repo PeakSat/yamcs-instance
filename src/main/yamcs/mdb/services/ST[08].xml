@@ -150,6 +150,42 @@
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
+
+            <MetaCommand name="CeaseRFTransmissions_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="ceaseTransmissions" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="forceKey" />
+                </ArgumentList>
+                <CommandContainer name="TC(8,1)_CeaseTransmissions">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="forceKey" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="EnableRFTransmissions_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="enableTransmissions" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/uint16_t" name="forceKey" />
+                </ArgumentList>
+                <CommandContainer name="TC(8,1)_EnableTransmissions">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="forceKey" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
             
         </MetaCommandSet>
     </xtce:CommandMetaData>

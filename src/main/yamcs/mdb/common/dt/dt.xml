@@ -42,13 +42,22 @@
                 <xtce:IntegerDataEncoding sizeInBits="16"/>
                 <xtce:EnumerationList>
                     <Enumeration value="0" label="InformativeUnknownEvent"/>
-                    <Enumeration value="1" label="WWDGReset"/>
-                    <Enumeration value="2" label="AssertionFail"/>
-                    <Enumeration value="3" label="MCUStart"/>
-                    <Enumeration value="4" label="LowSeverityUnknownEvent"/>
-                    <Enumeration value="5" label="MediumSeverityUnknownEvent"/>
-                    <Enumeration value="6" label="HighSeverityUnknownEvent"/>
-                    <Enumeration value="7" label="FailedStartOfExecution"/>
+                    <!-- <Enumeration value="1" label="WWDGReset"/> -->
+                    <!-- <Enumeration value="2" label="AssertionFail"/> -->
+                    <!-- <Enumeration value="3" label="MCUStart"/> -->
+                    <Enumeration value="1" label="LowSeverityUnknownEvent"/>
+                    <Enumeration value="2" label="MediumSeverityUnknownEvent"/>
+                    <Enumeration value="3" label="HighSeverityUnknownEvent"/>
+                    <!-- <Enumeration value="5" label="FailedStartOfExecution"/> -->
+                    <!-- <Enumeration value="4" label="Housekeeping_OBC_1"/> -->
+                    <!-- <Enumeration value="5" label="Housekeeping_OBC_2"/> -->
+                    <Enumeration value="6" label="OBC_MCUTempLowLimit"/>
+                    <Enumeration value="7" label="EPS_BatteryVoltageLowLimit"/>
+                    <Enumeration value="8" label="EPS_BatteryTempLowLimit"/>
+                    <Enumeration value="9" label="EPS_BatteryTempHighLimit"/>
+                    <Enumeration value="10" label="EPS_BoardTempLowLimit"/>
+                    <Enumeration value="11" label="EPS_BoardTempHighLimit"/>
+                    <Enumeration value="12" label="SYS_StateChangeSafe"/>
                 </xtce:EnumerationList>
             </EnumeratedParameterType>
 
@@ -112,8 +121,11 @@
                     <Enumeration value="0" label="Housekeeping_OBC_1" />
                     <Enumeration value="1" label="Housekeeping_OBC_2" />
                     <Enumeration value="2" label="Housekeeping_EPS_1" />
-                    <Enumeration value="3" label="Housekeeping_COMMS_1" />
-                    <Enumeration value="4" label="Housekeeping_PAY_1" />
+                    <Enumeration value="3" label="Housekeeping_EPS_Battery_Pack" />
+                    <Enumeration value="4" label="Housekeeping_EPS_Channels" />
+                    <Enumeration value="5" label="Housekeeping_COMMS" />
+                    <Enumeration value="6" label="Housekeeping_ADCS" />
+                    <Enumeration value="10" label="Housekeeping_PAY_1" />
                 </EnumerationList>
             </EnumeratedArgumentType>
 
@@ -208,6 +220,7 @@
                     <Enumeration value="16" label="" />
                     <Enumeration value="40" label="gnssDataDownload" shortDescription="ArgNum: 3, Args: (uint32_t period, uint32_t secondsPrior, uint32_t numberOfSamples)" />
                     <Enumeration value="41" label="ceaseTransmissions" shortDescription="ArgNum: 0, Args: ()" />
+                    <Enumeration value="42" label="enableTransmissions" shortDescription="ArgNum: 0, Args: ()" />
                     <Enumeration value="60" label="powerCycleSubsystem" shortDescription="ArgNum: 1, Args: (uint8_t EPSChannel)" />
 				</EnumerationList>
 			</EnumeratedArgumentType>

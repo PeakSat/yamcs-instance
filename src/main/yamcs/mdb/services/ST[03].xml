@@ -327,6 +327,9 @@
                     <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_TRANSMITTED_PACKETS" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_ALL_RECEIVED_PACKETS" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_LAST_RECEIVED_LENGTH" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_LAST_RECEIVED_TIMESTAMP" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_LAST_RECEIVED_TYPE" />
                 </EntryList>
                 <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
                     <RestrictionCriteria>

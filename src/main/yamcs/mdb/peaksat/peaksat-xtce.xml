@@ -684,7 +684,7 @@
             <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_MCU_SYSTICK"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="OBDH_LAST_FAILED_EVENT"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="OBDH_MCU_BOOT_COUNTER"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="OBDH_OPERATIONAL_MODE"/>
+            <Parameter parameterTypeRef="peaksat-dt/SpacecraftMode_t" name="OBDH_OPERATIONAL_MODE"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_SPACECRAFT_TIME_REF"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_RECONFIGURATION_TIMER"/>
             <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_ON_BOARD_TIME"/>
