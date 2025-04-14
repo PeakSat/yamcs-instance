@@ -228,14 +228,14 @@
             <EnumeratedArgumentType name="EPSChannel_t">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
 				<EnumerationList>
-					<Enumeration value="1" label="ADCS VBAT" />
-                    <Enumeration value="2" label="ADCS 5V" shortDescription="ADCS 5V" />
-                    <Enumeration value="3" label="PANELS 5V" shortDescription="PANELS 5V" />
-                    <Enumeration value="4" label="ADM 5V 1" shortDescription="ADM 5V 1" />
-                    <Enumeration value="5" label="ADM 5V 2" shortDescription="ADM 5V 2" />
-                    <Enumeration value="6" label="ADCS 3V3" shortDescription="ADCS 3V3" />
-                    <Enumeration value="7" label="OBC 3V3" shortDescription="OBC 3V3" />
-                    <Enumeration value="8" label="RED 3V3" shortDescription="RED 3V3" />
+					<Enumeration value="0" label="ADCS VBAT" />
+                    <Enumeration value="1" label="ADCS 5V" shortDescription="ADCS 5V" />
+                    <Enumeration value="2" label="PANELS 5V" shortDescription="PANELS 5V" />
+                    <Enumeration value="3" label="ADM 5V 1" shortDescription="ADM 5V 1" />
+                    <Enumeration value="4" label="ADM 5V 2" shortDescription="ADM 5V 2" />
+                    <Enumeration value="5" label="ADCS 3V3" shortDescription="ADCS 3V3" />
+                    <Enumeration value="6" label="OBC 3V3" shortDescription="OBC 3V3" />
+                    <Enumeration value="7" label="RED 3V3" shortDescription="RED 3V3" />
                     <Enumeration value="12" label="ATLAS 5V 1" shortDescription="ATLAS 5V 1" />
                     <Enumeration value="13" label="ATLAS 5V 2" shortDescription="ATLAS 5V 2" />
                     <Enumeration value="14" label="COMMS 12V" shortDescription="COMMS 12V" />
