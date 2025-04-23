@@ -221,11 +221,45 @@
                     <Enumeration value="40" label="gnssDataDownload" shortDescription="ArgNum: 3, Args: (uint32_t period, uint32_t secondsPrior, uint32_t numberOfSamples)" />
                     <Enumeration value="41" label="ceaseTransmissions" shortDescription="ArgNum: 0, Args: ()" />
                     <Enumeration value="42" label="enableTransmissions" shortDescription="ArgNum: 0, Args: ()" />
-                    <Enumeration value="60" label="powerCycleSubsystem" shortDescription="ArgNum: 1, Args: (uint8_t EPSChannel)" />
-                    <Enumeration value="70" label="setRWL0SpeedOn" shortDescription="" />
-                    <Enumeration value="71" label="setRWL0SpeedOff" shortDescription="" />
-                    <Enumeration value="72" label="turnRWL0PowerOn" shortDescription="" />
-                    <Enumeration value="73" label="turnRWL0PowerOff" shortDescription="" />
+                    <Enumeration value="61" label="I2CWriteRegister" shortDescription="EPS Function" />
+                    <Enumeration value="62" label="I2CReadRegister" shortDescription="EPS Function" />
+                    <Enumeration value="63" label="outputBusChannelOn" shortDescription="EPS Function" />
+                    <Enumeration value="64" label="outputBusChannelOff" shortDescription="EPS Function" />
+                    <Enumeration value="65" label="moveToNominal" shortDescription="EPS Function" />
+                    <Enumeration value="66" label="moveToSafe" shortDescription="EPS Function" />
+                    <Enumeration value="67" label="getSystemStatus" shortDescription="EPS Function" />
+                    <Enumeration value="68" label="getOCFState" shortDescription="EPS Function" />
+                    <Enumeration value="69" label="getABFState" shortDescription="EPS Function" />
+                    <Enumeration value="70" label="getPCUEng" shortDescription="EPS Function" />
+                    <Enumeration value="71" label="getPDUEng" shortDescription="EPS Function" />
+                    <Enumeration value="72" label="getPBUEng" shortDescription="EPS Function" />
+                    <Enumeration value="73" label="getPIUEng" shortDescription="EPS Function" />
+                    <Enumeration value="74" label="parameterSet" shortDescription="EPS Function" />
+                    <Enumeration value="75" label="parameterGet" shortDescription="EPS Function" />
+                    <Enumeration value="76" label="configResetArm" shortDescription="EPS Function" />
+                    <Enumeration value="77" label="configReset" shortDescription="EPS Function" />
+                    <Enumeration value="78" label="confLoad" shortDescription="EPS Function" />
+                    <Enumeration value="79" label="confSave" shortDescription="EPS Function" />
+                    <Enumeration value="80" label="setTime" shortDescription="EPS Function" />
+                    <Enumeration value="81" label="zeroResetCounters" shortDescription="EPS Function" />
+                    <Enumeration value="82" label="zeroOCF" shortDescription="EPS Function" />
+                    <Enumeration value="83" label="systemResetArm" shortDescription="EPS Function" />
+                    <Enumeration value="84" label="systemReset" shortDescription="EPS Function" />
+                    <Enumeration value="100" label="adcsSetPowerState" shortDescription="ADCS Function" />
+                    <Enumeration value="101" label="adcsGetPowerState" shortDescription="ADCS Function" />
+                    <Enumeration value="102" label="adcsSetRWLOpenLoop" shortDescription="ADCS Function" />
+                    <Enumeration value="103" label="adcsSetMtqOpenLoop" shortDescription="ADCS Function" />
+                    <Enumeration value="104" label="adcsSetConMode" shortDescription="ADCS Function" />
+                    <Enumeration value="105" label="adcsFetchConMode" shortDescription="ADCS Function" />
+                    <Enumeration value="106" label="adcsSetEstimator" shortDescription="ADCS Function" />
+                    <Enumeration value="107" label="adcsFetchEstimators" shortDescription="ADCS Function" />
+                    <Enumeration value="108" label="adcsSetOrbitMode" shortDescription="ADCS Function" />
+                    <Enumeration value="109" label="adcsFetchOrbitMode" shortDescription="ADCS Function" />
+                    <Enumeration value="110" label="adcsSetReferenceRpy" shortDescription="ADCS Function" />
+                    <Enumeration value="111" label="adcsFetchReferenceRpy" shortDescription="ADCS Function" />
+                    <Enumeration value="112" label="adcsSetReferenceTarget" shortDescription="ADCS Function" />
+                    <Enumeration value="113" label="adcsFetchReferenceTarget" shortDescription="ADCS Function" />
+                    <Enumeration value="114" label="adcsFetchHealthData" shortDescription="ADCS Function" />
 				</EnumerationList>
 			</EnumeratedArgumentType>
 
@@ -250,6 +284,10 @@
             <EnumeratedArgumentType name="componentID_t">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
 				<EnumerationList>
+                    <Enumeration value="0" label="COMMS - Subsystem MCU" />
+                    <Enumeration value="1" label="ADCS - Subsystem MCU" />
+                    <Enumeration value="2" label="ATLAS - Subsystem MCU" />
+                    <Enumeration value="3" label="EPS - Subsystem MCU" />
                     <Enumeration value="60" label="OBC - Temperature Sensor A" />
                     <Enumeration value="61" label="OBC - Temperature Sensor B" />
                     <Enumeration value="62" label="OBC - NAND" />

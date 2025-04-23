@@ -115,24 +115,6 @@
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="PowerCycleSubsystem_TC[8,1]">
-                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
-                    <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="funcID" argumentValue="powerCycleSubsystem" />
-                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="1" />
-                    </ArgumentAssignmentList>
-                </BaseMetaCommand>
-                <ArgumentList>
-                    <Argument argumentTypeRef="/dt/EPSChannel_t" name="epsChannel" />
-                </ArgumentList>
-                <CommandContainer name="TC(8,1)_PowerCycleSubsystem">
-                    <EntryList>
-                        <ArgumentRefEntry argumentRef="epsChannel" />
-                    </EntryList>
-                    <BaseContainer containerRef="/pus/Header_TC" />
-                </CommandContainer>
-            </MetaCommand>
-
             <MetaCommand name="PingComponent_TC[8,1]">
                 <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
                     <ArgumentAssignmentList>
@@ -187,54 +169,282 @@
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="SetRWL0SpeedOn_TC[8,1]">
+            <MetaCommand name="OutputBusChannelOn_TC[8,1]">
                 <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="funcID" argumentValue="setRWL0SpeedOn" />
-                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                        <ArgumentAssignment argumentName="funcID" argumentValue="outputBusChannelOn" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="1" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
-                <CommandContainer name="TC(8,1)_SetRWL0SpeedOn">
+                <ArgumentList>
+                    <Argument argumentTypeRef="/dt/EPSChannel_t" name="epsChannel" />
+                </ArgumentList>
+                <CommandContainer name="TC(8,1)_MoveToNominal">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="epsChannel" />
+                    </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="SetRWL0SpeedOff_TC[8,1]">
+            <MetaCommand name="OutputBusChannelOff_TC[8,1]">
                 <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="funcID" argumentValue="setRWL0SpeedOff" />
-                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                        <ArgumentAssignment argumentName="funcID" argumentValue="outputBusChannelOff" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="1" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
-                <CommandContainer name="TC(8,1)_SetRWL0SpeedOff">
+                <ArgumentList>
+                    <Argument argumentTypeRef="/dt/EPSChannel_t" name="epsChannel" />
+                </ArgumentList>
+                <CommandContainer name="TC(8,1)_MoveToNominal">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="epsChannel" />
+                    </EntryList>
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="TurnRWL0PowerOn_TC[8,1]">
+            <MetaCommand name="MoveToNominal_TC[8,1]">
                 <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="funcID" argumentValue="turnRWL0PowerOn" />
+                        <ArgumentAssignment argumentName="funcID" argumentValue="moveToNominal" />
                         <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
-                <CommandContainer name="TC(8,1)_TurnRWL0PowerOn">
+                <CommandContainer name="TC(8,1)_MoveToNominal">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+    
+            <MetaCommand name="MoveToSafe_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="moveToSafe" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_MoveToSafe">
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="TurnRWL0PowerOff_TC[8,1]">
+            <MetaCommand name="GetSystemStatus_TC[8,1]">
                 <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
                     <ArgumentAssignmentList>
-                        <ArgumentAssignment argumentName="funcID" argumentValue="turnRWL0PowerOff" />
+                        <ArgumentAssignment argumentName="funcID" argumentValue="getSystemStatus" />
                         <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
                     </ArgumentAssignmentList>
                 </BaseMetaCommand>
-                <CommandContainer name="TC(8,1)_TurnRWL0PowerOff">
+                <CommandContainer name="TC(8,1)_GetSystemStatus">
                     <BaseContainer containerRef="/pus/Header_TC" />
                 </CommandContainer>
             </MetaCommand>
-            
+
+            <MetaCommand name="GetOCFState_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="getOCFState" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_GetOCFState">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="GetABFState_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="getABFState" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_GetABFState">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="GetPCUEng_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="getPCUEng" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_GetPCUEng">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="GetPDUEng_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="getPDUEng" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_GetPDUEng">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="GetPBUEng_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="getPBUEng" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_GetPBUEng">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="GetPIUEng_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="getPIUEng" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_GetPIUEng">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="ParameterSet_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="parameterSet" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_ParameterSet">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="ParameterGet_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="parameterGet" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_ParameterGet">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="ConfigResetArm_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="configResetArm" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_ConfigResetArm">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="ConfigReset_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="configReset" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_ConfigReset">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="ConfLoad_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="confLoad" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_ConfLoad">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="ConfSave_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="confSave" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_ConfSave">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="SetTime_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="setTime" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_SetTime">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="ZeroResetCounters_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="zeroResetCounters" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_ZeroResetCounters">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="ZeroOCF_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="zeroOCF" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_ZeroOCF">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="SystemResetArm_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="systemResetArm" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_SystemResetArm">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="SystemReset_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="systemReset" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_SystemReset">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
         </MetaCommandSet>
     </xtce:CommandMetaData>
 </SpaceSystem>
