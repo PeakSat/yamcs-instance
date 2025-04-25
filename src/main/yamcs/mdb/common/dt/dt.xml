@@ -281,6 +281,90 @@
 				</EnumerationList>
 			</EnumeratedArgumentType>
 
+            <EnumeratedArgumentType name="ADCSComponentPower_t">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+				<EnumerationList>
+                    <Enumeration value="0" label="rwl0Power" />
+                    <Enumeration value="1" label="rwl1Power" />
+                    <Enumeration value="2" label="rwl2Power" />
+                    <Enumeration value="3" label="rwl3Power" />
+                    <Enumeration value="4" label="mag0Power" />
+                    <Enumeration value="5" label="mag1Power" />
+                    <Enumeration value="6" label="gyro0Power" />
+                    <Enumeration value="7" label="gyro1Power" />
+                    <Enumeration value="8" label="fss0Power" />
+                    <Enumeration value="9" label="fss1Power" />
+                    <Enumeration value="10" label="fss2Power" />
+                    <Enumeration value="11" label="fss3Power" />
+                    <Enumeration value="12" label="hss0Power" />
+                    <Enumeration value="13" label="hss1Power" />
+                    <Enumeration value="14" label="str0Power" />
+                    <Enumeration value="15" label="str1Power" />
+                    <Enumeration value="16" label="extSensor0Power" />
+                    <Enumeration value="17" label="extSensor1Power" />
+                    <Enumeration value="18" label="extGyro0Power" />
+                    <Enumeration value="19" label="extGyro1Power" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
+            <EnumeratedArgumentType name="ADCSPowerState_t">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+				<EnumerationList>
+                    <Enumeration value="0" label="POWER_OFF" />
+                    <Enumeration value="1" label="POWER_ON" />
+                    <Enumeration value="2" label="POWER_NO_CHANGE" />
+                    <Enumeration value="3" label="POWER_AUTO" />
+                    <Enumeration value="4" label="POWER_ON_PASS" />
+                    <Enumeration value="5" label="POWER_OFF_UPGRADE" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
+            <EnumeratedArgumentType name="ADCSControlMode_t">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+				<EnumerationList>
+                    <Enumeration value="0" label="NONE" />
+                    <Enumeration value="1" label="BDOT" />
+                    <Enumeration value="2" label="YSPIN" />
+                    <Enumeration value="3" label="BDOT_3" />
+                    <Enumeration value="4" label="DETUMBLE" />
+                    <Enumeration value="5" label="SUN_YSPIN" />
+                    <Enumeration value="6" label="ZSPIN" />
+                    <Enumeration value="7" label="SUN_ZSPIN" />
+                    <Enumeration value="8" label="GGBOOM" />
+                    <Enumeration value="9" label="GGSUN" />
+                    <Enumeration value="10" label="YWHEEL_INIT" />
+                    <Enumeration value="11" label="YWHEEL" />
+                    <Enumeration value="12" label="XYZWHEEL" />
+                    <Enumeration value="13" label="SUN_TRACK" />
+                    <Enumeration value="14" label="TGT_TRACK" />
+                    <Enumeration value="15" label="TGT_STEER" />
+                    <Enumeration value="16" label="GND_TRACK" />
+                    <Enumeration value="17" label="IRC_TRACK" />
+                    <Enumeration value="18" label="MOON_TRACK" />
+                    <Enumeration value="19" label="SAT_TRACK" />
+                    <Enumeration value="20" label="YAW_SUN" />
+                    <Enumeration value="21" label="YAW_TARGET" />
+                    <Enumeration value="22" label="ROLL_SUN" />
+                    <Enumeration value="23" label="ROLL_TARGET" />
+                    <Enumeration value="24" label="YAW_TARGET_BEST" />
+                    <Enumeration value="25" label="FMC_TARGET" />
+                    <Enumeration value="26" label="YAW_SUN_SPIN" />
+                    <Enumeration value="27" label="SUN_DETUMBLE" />
+                    <Enumeration value="28" label="ASTRO_STEER" />
+                    <Enumeration value="29" label="SUN_PAYLOAD" />
+                    <Enumeration value="50" label="STOP_RW" />
+                    <Enumeration value="51" label="HXYZ_RW" />
+                    <Enumeration value="100" label="USER" />
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
+            <EnumeratedArgumentType name="ADCSEstimatorMode_t">
+				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
+				<EnumerationList>
+                    
+				</EnumerationList>
+			</EnumeratedArgumentType>
+
             <EnumeratedArgumentType name="componentID_t">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="8" />
 				<EnumerationList>
