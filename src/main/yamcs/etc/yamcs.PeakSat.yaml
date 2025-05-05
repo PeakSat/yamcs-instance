@@ -110,8 +110,8 @@ mdb:
 #   spec: "mdb/services/ST[19].xml"
 - type: xtce
   spec: "mdb/services/ST[20,3]-set-values.xml"
-# - type: xtce
-#   spec: "mdb/services/ST[20]-reporting.xml"
+- type: xtce
+  spec: "mdb/services/ST[20]-reporting.xml"
 # - type: xtce
 #   spec: "mdb/services/ST[20]-SU.xml"
 # - type: xtce
