@@ -7,19 +7,6 @@
     <!-- Contains PeakSats's non primitive parameters and arguments -->
     <xtce:TelemetryMetaData>
         <ParameterTypeSet>
-            <EnumeratedParameterType name="SpacecraftMode_t">
-                    <IntegerDataEncoding sizeInBits="16" />
-                    <EnumerationList>
-                        <Enumeration value="0" label="INIT_MODE" />
-                        <Enumeration value="22339" label="COMMISSIONING_MODE" />
-                        <Enumeration value="28220" label="SAFE_MODE" />
-                        <Enumeration value="39881" label="NOMINAL_MODE" />
-                        <Enumeration value="55894" label="PAYLOAD_MODE" />
-                        <Enumeration value="47277" label="CRITICAL_MODE" />
-                        <Enumeration value="16242" label="EMERGENCY_MODE" />
-                        <Enumeration value="65535" label="UNDEFINED_MODE" />
-                    </EnumerationList>
-                </EnumeratedParameterType>
         </ParameterTypeSet>
     </xtce:TelemetryMetaData>
 </SpaceSystem>
