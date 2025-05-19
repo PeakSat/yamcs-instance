@@ -79,6 +79,7 @@ cpp_type_map = {
 # Paths to the Excel file and output directories
 excel_file = "mission_database.xlsx"
 output_dir = "src/main/yamcs/mdb/peaksat/"
+xml_dir = "src/main/yamcs/mdb/"
 
 # Ensure the output directories exist
 os.makedirs(output_dir, exist_ok=True)
@@ -119,6 +120,7 @@ dt_lines.append('    <xtce:TelemetryMetaData>')
 dt_lines.append('        <ParameterTypeSet>')
 
 parameter_id_lines = []
+st20_pairs = []
 # parameter_id_lines.append('            <EnumeratedArgumentType name="parameterId_t">')
 # parameter_id_lines.append('                <IntegerDataEncoding sizeInBits="16" />')
 # parameter_id_lines.append('                <EnumerationList>')
@@ -231,6 +233,11 @@ for idx, row in enumerate(valid_rows):
 
             # Create the parameter ID line
             parameter_id_lines.append(f'                    <Enumeration value=\"{encoded_id}\" label=\"{acronym}_{variable_name}\" />')
+            st20_pairs.append(f'                <ParameterRefEntry parameterRef="/peaksat-xtce/{acronym}_{variable_name}">')
+            st20_pairs.append(f'                    <IncludeCondition>')
+            st20_pairs.append(f'                        <Comparison value="{encoded_id}" parameterRef="parameterId" />')
+            st20_pairs.append(f'                    </IncludeCondition>')
+            st20_pairs.append(f'                </ParameterRefEntry>')
 
             break
 
@@ -245,6 +252,32 @@ xtce_lines.append('</SpaceSystem>')
 dt_lines.append('        </ParameterTypeSet>')
 dt_lines.append('    </xtce:TelemetryMetaData>')
 dt_lines.append('</SpaceSystem>')
+
+# Update the ST[20]-reporting.xml file
+output_st20_file = f"{xml_dir}/services/ST[20]-reporting.xml"
+
+# Read the existing file
+with open(output_st20_file, "r") as st20_file:
+    st20_lines = st20_file.readlines()
+
+# Find the guards and insert the st20_pairs lines
+begin_guard = "            <!-- BEGIN ID VALUE PAIRS -->\n"
+end_guard = "            <!-- END ID VALUE PAIRS -->\n"
+
+try:
+    begin_index = st20_lines.index(begin_guard) + 1
+    end_index = st20_lines.index(end_guard)
+    print(f"Begin index: {begin_index}, End index: {end_index}")
+
+    # Insert the st20_pairs lines between the guards
+    st20_lines = st20_lines[:begin_index] + [line + "\n" for line in st20_pairs] + st20_lines[end_index:]
+except ValueError:
+    print("Error: Guards not found in the ST[20]-reporting.xml file.")
+    raise
+
+# Write the updated content back to the file
+with open(output_st20_file, "w") as st20_file:
+    st20_file.writelines(st20_lines)
 
 id_lines = []
 

@@ -283,7 +283,7 @@
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="32" />
 			</IntegerArgumentType>
 
-			<IntegerArgumentType name="int64_t" signed="true">
+			<IntegerArgumentType name="int64_t" signed="true" sizeInBits="64">
 				<IntegerDataEncoding sizeInBits="64" />
 			</IntegerArgumentType>
 
@@ -294,7 +294,7 @@
 				</ValidRangeSet>
 			</IntegerArgumentType>
 
-			<IntegerArgumentType name="uint64_t" signed="false">
+			<IntegerArgumentType name="uint64_t" signed="false" sizeInBits="64">
 				<IntegerDataEncoding encoding="unsigned" sizeInBits="64" />
 			</IntegerArgumentType>
 

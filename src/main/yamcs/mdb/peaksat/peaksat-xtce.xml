@@ -676,6 +676,24 @@
             <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_ADC_MCU_TEMP_V25T30"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_ADC_MCU_TEMP_V25T85"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CURR_VD6_ENG"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH15_VOLT_ENG"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH15_CURR_ENG"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH15_POWE_ENG"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH16_VOLT_ENG"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH16_CURR_ENG"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH16_POWE_ENG"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH15_VOLT_RAW"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH15_CURR_RAW"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH15_POWE_RAW"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH16_VOLT_RAW"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH16_CURR_RAW"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH16_POWE_RAW"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH15_VOLT_RA"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH15_CURR_RA"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH15_POWE_RA"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH16_VOLT_RA"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH16_CURR_RA"/>
+            <Parameter parameterTypeRef="base-dt/int16_t" name="EPS_VIP_CH16_POWE_RA"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_DEBUG_COUNTER"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_PCB_TEMPERATURE_1"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="OBDH_PCB_TEMPERATURE_2"/>
@@ -684,7 +702,7 @@
             <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_MCU_SYSTICK"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="OBDH_LAST_FAILED_EVENT"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="OBDH_MCU_BOOT_COUNTER"/>
-            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_OPERATIONAL_MODE"/>
+            <Parameter parameterTypeRef="base-dt/uint16_t" name="OBDH_OPERATIONAL_MODE"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_SPACECRAFT_TIME_REF"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_RECONFIGURATION_TIMER"/>
             <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_ON_BOARD_TIME"/>
@@ -724,6 +742,25 @@
             <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_PERIODIC_5MIN_BITFLAG"/>
             <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_PERIODIC_10MIN_BITFLAG"/>
             <Parameter parameterTypeRef="base-dt/uint64_t" name="OBDH_PERIODIC_5SEC_BITFLAG"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_TELEMETRY_FORWARD"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_INIT_LOAD_DEFAULT"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_COMMISSIONING_SUCCESS"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_SAVED_ADM_DEPLOY_TIMER_COUNTER"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="OBDH_CONFIRM_UHF"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="OBDH_SAVED_ADM_CONFIRM_TIMER_COUNTER"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_MODULE_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_NAND_1_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_NAND_2_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_MRAM_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_CAN_1_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_CAN_2_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_ADM_I2C_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_MCP_I2C_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_EPS_I2C_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_TEMPERATURE_SENSOR_1_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_TEMPERATURE_SENSOR_2_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_ANTENNA_DEPLOYMENT_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_GPIO_FORCE_ADM"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="ADCS_ResetType"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_UnixTimeSeconds"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_UnixTimeNanoSeconds"/>
@@ -737,34 +774,35 @@
             <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Ixy"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Ixz"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Iyz"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_RWL0_power_state"/>
-            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_RWL1_power_state"/>
-            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_RWL2_power_state"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="ADCS_Rwl0Power"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_Rwl1Power"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_Rwl2Power"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_Mag0Power"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_Mag1Power"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_Gyro0Power"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_Gyro1Power"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_Fss0Power"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_Hss0Power"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_Str0Power"/>
-            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Mag0McuTemp"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Mag0McuCurrent"/>
-            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Mag1McuTemp"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Mag1McuCurrent"/>
-            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Fss0McuTemp"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Fss0McuCurrent"/>
-            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Hss0McuTemp"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Hss0McuCurrent"/>
-            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Str0McuTemp"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Str0McuCurrent"/>
-            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Rwl0McuTemp"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Rwl0McuCurrent"/>
-            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Rwl1McuTemp"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Rwl1McuCurren"/>
-            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Rwl2McuTemp"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_Rwl2McuCurrent"/>
-            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_McuTemp"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_McuCurrent"/>
-            <Parameter parameterTypeRef="base-dt/uint16_t" name="ADCS_GyroCurrent"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Mag0McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Mag0McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Mag1McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Mag1McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Fss0McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Fss0McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Hss0McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Hss0McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Str0McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Str0McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Rwl0McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Rwl0McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Rwl1McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Rwl1McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Rwl2McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_Rwl2McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_McuTemp"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_McuCurrent"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="ADCS_GyroCurrent"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Mtq1TotalCurrentAveragePos"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Mtq2TotalCurrentAveragePos"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Mtq3TotalCurrentAveragePos"/>
@@ -855,15 +893,19 @@
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_ConModeAuto"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_SunKeepoutAng"/>
             <Parameter parameterTypeRef="base-dt/bool_t" name="ADCS_SunAvoidEn"/>
-            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_RpyCmdRoll"/>
-            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_RpyCmdPitch"/>
-            <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_RpyCmdYaw"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_RpyCmdRoll"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_RpyCmdPitch"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_RpyCmdYaw"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Mtq0OnTimeCmd"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Mtq1OnTimeCmd"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_Mtq2OnTimeCmd"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Rwl0SpeedCmd"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Rwl1SpeedCmd"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Rwl2SpeedCmd"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Kp3"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Kd3"/>
+            <Parameter parameterTypeRef="base-dt/float_t" name="ADCS_Ki3"/>
+            <Parameter parameterTypeRef="base-dt/bool_t" name="ADCS_YawCompensate"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_TgtTrackBodyVecX"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_TgtTrackBodyVecY"/>
             <Parameter parameterTypeRef="base-dt/int16_t" name="ADCS_TgtTrackBodyVecZ"/>
@@ -882,7 +924,6 @@
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_UHF_POWER_AMP_TEMP"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_PCB_TEMP"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_GNSS_TEMP"/>
-            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_ANTENNA_DEPLOYMENT_STATUS"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_CW_INTERVAL"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_BFSK_BEACON_INTERVAL"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_UHF_TX_POWER"/>
@@ -903,16 +944,65 @@
             <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_TIME_STATUS"/>
             <Parameter parameterTypeRef="base-dt/bool_t" name="COMMS_GNSS_PPS_ACTIVE"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_COMMIT_HASH"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_CAN_ACTIVE_BUS"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN_RETRANSMIT_COUNTER"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN_TRANSMIT_FAILURE_COUNTER"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_HAL_ERROR_CODE"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_HAL_ERROR_CODE"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_TxErrorCnt"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_RxErrorCnt"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_RxErrorPassive"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_ErrorLogging"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_TxErrorCnt"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_RxErrorCnt"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_RxErrorPassive"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_ErrorLogging"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_LastErrorCode"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_DataLastErrorCode"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_Activity"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_ErrorPassive"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_Warning"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_BusOff"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_RxESIflag"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_RxBRSflag"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_RxFDFflag"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_ProtocolException"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN1_TDCvalue"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_LastErrorCode"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_DataLastErrorCode"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_Activity"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_ErrorPassive"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_Warning"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_BusOff"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_RxESIflag"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_RxBRSflag"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_RxFDFflag"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_ProtocolException"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN2_TDCvalue"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_EMMC_USAGE"/>
-            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_POWER"/>
-            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_CURRENT"/>
-            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_VOLTAGE"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_RF_5V_POWER"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_RF_5V_CURRENT"/>
+            <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_RF_5V_VOLTAGE"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_DROPPED_CAN_MES"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_MESSAGE_TIME"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_MESSAGE_PAYLOAD_TIME"/>
             <Parameter parameterTypeRef="base-dt/bool_t" name="COMMS_SCIENCE_MODE"/>
             <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_SEMIMAJOR_AXIS"/>
             <Parameter parameterTypeRef="base-dt/double_t" name="COMMS_ECCENTRINITY"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_TRANSMITTED_PACKETS"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_NOT_TXFE_PACKETS"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_ALL_RECEIVED_PACKETS"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_LAST_RECEIVED_LENGTH"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_ARM_CEASE_RF_TRANSMISSION"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_TX_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_RX_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_CAN_GATEKEEPER_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_CAN_PARSER_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_HOUSEKEEPING_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_EPS_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_ADCS_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN_APPLICATION_ERROR_PARAMETERER_DONT_EXIST"/>
         </ParameterSet>
 
     </xtce:TelemetryMetaData>

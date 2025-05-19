@@ -109,7 +109,7 @@
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_PCB_TEMPERATURE_2" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_SPACECRAFT_TIME_REF" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_OPERATIONAL_MODE" />
-                    <!-- <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_MemoryPartition" /> -->
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_MEMORY_PARTITION" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_RECONFIGURATION_TIMER" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_LAST_FAILED_EVENT" />
                     <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_MCU_SYSTICK" />
@@ -153,29 +153,82 @@
                 </BaseContainer>
             </SequenceContainer>
 
-             <SequenceContainer name="Housekeeping_COMMS_1">
+            <SequenceContainer name="Housekeeping_EPS_Battery_Pack">
                 <EntryList>
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_UHF_POWER_AMP_TEMP" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_PCB_TEMP" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_GNSS_TEMP" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_ANTENNA_DEPLOYMENT_STATUS" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_GNSS_LAT" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_GNSS_LONG" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_GNSS_ALT" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_GNSS_TIME" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_GNSS_ACK_TIMEOUT" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_GNSS_CMD_RETRIES" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_GNSS_ERROR_TIMEOUT" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_ERROR_TIMEOUT_CNT_THRHD" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_GNSS_DELAY_CMDS" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_SATELLITES_TRACKED" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_GNSS_FIX_QUALITY" />
-                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_COMMIT_HASH" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BRDSUP_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_TEMP_MCU_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_VOLT_INPUT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CURR_INPUT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_POWE_INPUT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_STAT_BU" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP1_INPUT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_CURR_BP1_INPUT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_POWE_BP1_INPUT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_STAT_BP1_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP1_CELL1_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP1_CELL2_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP1_CELL3_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP1_CELL4_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_BAT_TEMP1_BP1_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_BAT_TEMP2_BP1_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_BAT_TEMP3_BP1_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP2_INPUT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_CURR_BP2_INPUT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_POWE_BP2_INPUT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_STAT_BP2_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP2_CELL1_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP2_CELL2_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP2_CELL3_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP2_CELL4_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_BAT_TEMP1_BP2_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_BAT_TEMP2_BP2_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_BAT_TEMP3_BP2_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP3_INPUT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_CURR_BP3_INPUT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_POWE_BP3_INPUT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_STAT_BP3_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP3_CELL1_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP3_CELL2_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP3_CELL3_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VOLT_BP3_CELL4_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_BAT_TEMP1_BP3_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_BAT_TEMP2_BP3_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_BAT_TEMP3_BP3_ENG" />
                 </EntryList>
                 <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
                     <RestrictionCriteria>
                         <ComparisonList>
                             <Comparison value="3" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
+
+             <SequenceContainer name="Housekeeping_EPS_Channels">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH00_VOLT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH00_CURR_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH01_VOLT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH01_CURR_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH02_VOLT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH02_CURR_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH03_VOLT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH03_CURR_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH04_VOLT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH04_CURR_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH05_VOLT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH05_CURR_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH06_VOLT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH06_CURR_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH07_VOLT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH07_CURR_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH14_VOLT_ENG" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/EPS_VIP_CH14_CURR_ENG" />
+                </EntryList>
+                <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="4" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
                         </ComparisonList>
                     </RestrictionCriteria>
                 </BaseContainer>
@@ -260,7 +313,64 @@
                 <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
                     <RestrictionCriteria>
                         <ComparisonList>
-                            <Comparison value="4" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
+                            <Comparison value="10" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
+
+            <SequenceContainer name="Housekeeping_COMMS">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_RF_5V_POWER" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_RF_5V_CURRENT" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_RF_5V_VOLTAGE" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_TRANSMITTED_PACKETS" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_ALL_RECEIVED_PACKETS" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_LAST_RECEIVED_LENGTH" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_PCB_TEMP" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_GNSS_TEMP" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_UHF_POWER_AMP_TEMP" />
+                </EntryList>
+                <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="5" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
+
+            <SequenceContainer name="Housekeeping_ADCS">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/ADCS_Rwl0McuTemp" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/ADCS_Rwl0McuCurrent" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/ADCS_Rwl1McuTemp" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/ADCS_Rwl1McuCurrent" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/ADCS_Rwl2McuTemp" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/ADCS_Rwl2McuCurrent" />
+                </EntryList>
+                <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="6" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
+
+            <SequenceContainer name="Housekeeping_UHF_Antenna">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_MCU_BOOT_COUNTER" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_COMMISSIONING_SUCCESS" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_SAVED_ADM_DEPLOY_TIMER_COUNTER" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_SAVED_ADM_CONFIRM_TIMER_COUNTER" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_GPIO_FORCE_ADM" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_ANTENNA_DEPLOYMENT_STATUS" />
+                </EntryList>
+                <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="7" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
                         </ComparisonList>
                     </RestrictionCriteria>
                 </BaseContainer>
