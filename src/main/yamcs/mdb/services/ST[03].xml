@@ -357,6 +357,24 @@
                     </RestrictionCriteria>
                 </BaseContainer>
             </SequenceContainer>
+
+            <SequenceContainer name="Housekeeping_UHF_Antenna">
+                <EntryList>
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_MCU_BOOT_COUNTER" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_COMMISSIONING_SUCCESS" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_SAVED_ADM_DEPLOY_TIMER_COUNTER" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_SAVED_ADM_CONFIRM_TIMER_COUNTER" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_GPIO_FORCE_ADM" />
+                    <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_ANTENNA_DEPLOYMENT_STATUS" />
+                </EntryList>
+                <BaseContainer containerRef="TM(3,25)_housekeeping_parameter_report">
+                    <RestrictionCriteria>
+                        <ComparisonList>
+                            <Comparison value="7" parameterRef="housekeeping_parameter_report_structure_ID_ST03" />
+                        </ComparisonList>
+                    </RestrictionCriteria>
+                </BaseContainer>
+            </SequenceContainer>
             
         </ContainerSet>
     </xtce:TelemetryMetaData>

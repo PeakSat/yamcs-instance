@@ -761,6 +761,8 @@
                     <Enumeration value="1408" label="OBDH_EPS_I2C_STATUS" />
                     <Enumeration value="1424" label="OBDH_TEMPERATURE_SENSOR_1_STATUS" />
                     <Enumeration value="1440" label="OBDH_TEMPERATURE_SENSOR_2_STATUS" />
+                    <Enumeration value="1456" label="OBDH_ANTENNA_DEPLOYMENT_STATUS" />
+                    <Enumeration value="1472" label="OBDH_GPIO_FORCE_ADM" />
                     <Enumeration value="39328" label="ADCS_ResetType" />
                     <Enumeration value="39348" label="ADCS_UnixTimeSeconds" />
                     <Enumeration value="39364" label="ADCS_UnixTimeNanoSeconds" />
@@ -924,7 +926,6 @@
                     <Enumeration value="13128" label="COMMS_UHF_POWER_AMP_TEMP" />
                     <Enumeration value="13144" label="COMMS_PCB_TEMP" />
                     <Enumeration value="13160" label="COMMS_GNSS_TEMP" />
-                    <Enumeration value="13184" label="COMMS_ANTENNA_DEPLOYMENT_STATUS" />
                     <Enumeration value="13234" label="COMMS_CW_INTERVAL" />
                     <Enumeration value="13250" label="COMMS_BFSK_BEACON_INTERVAL" />
                     <Enumeration value="13268" label="COMMS_UHF_TX_POWER" />
@@ -996,6 +997,14 @@
                     <Enumeration value="14836" label="COMMS_LAST_RECEIVED_LENGTH" />
                     <Enumeration value="14848" label="COMMS_ARM_CEASE_RF_TRANSMISSION" />
                     <Enumeration value="14864" label="COMMS_TX_TASK_STATE" />
+                    <Enumeration value="14880" label="COMMS_RX_TASK_STATE" />
+                    <Enumeration value="14896" label="COMMS_GNSS_TASK_STATE" />
+                    <Enumeration value="14928" label="COMMS_CAN_GATEKEEPER_TASK_STATE" />
+                    <Enumeration value="14944" label="COMMS_CAN_PARSER_TASK_STATE" />
+                    <Enumeration value="14960" label="COMMS_HOUSEKEEPING_TASK_STATE" />
+                    <Enumeration value="14976" label="COMMS_EPS_TASK_STATE" />
+                    <Enumeration value="14992" label="COMMS_ADCS_TASK_STATE" />
+                    <Enumeration value="15012" label="COMMS_CAN_APPLICATION_ERROR_PARAMETERER_DONT_EXIST" />
                 </EnumerationList>
             </EnumeratedParameterType>
  
@@ -1773,6 +1782,8 @@
                     <Enumeration value="1408" label="OBDH_EPS_I2C_STATUS" />
                     <Enumeration value="1424" label="OBDH_TEMPERATURE_SENSOR_1_STATUS" />
                     <Enumeration value="1440" label="OBDH_TEMPERATURE_SENSOR_2_STATUS" />
+                    <Enumeration value="1456" label="OBDH_ANTENNA_DEPLOYMENT_STATUS" />
+                    <Enumeration value="1472" label="OBDH_GPIO_FORCE_ADM" />
                     <Enumeration value="39328" label="ADCS_ResetType" />
                     <Enumeration value="39348" label="ADCS_UnixTimeSeconds" />
                     <Enumeration value="39364" label="ADCS_UnixTimeNanoSeconds" />
@@ -1936,7 +1947,6 @@
                     <Enumeration value="13128" label="COMMS_UHF_POWER_AMP_TEMP" />
                     <Enumeration value="13144" label="COMMS_PCB_TEMP" />
                     <Enumeration value="13160" label="COMMS_GNSS_TEMP" />
-                    <Enumeration value="13184" label="COMMS_ANTENNA_DEPLOYMENT_STATUS" />
                     <Enumeration value="13234" label="COMMS_CW_INTERVAL" />
                     <Enumeration value="13250" label="COMMS_BFSK_BEACON_INTERVAL" />
                     <Enumeration value="13268" label="COMMS_UHF_TX_POWER" />
@@ -2008,6 +2018,14 @@
                     <Enumeration value="14836" label="COMMS_LAST_RECEIVED_LENGTH" />
                     <Enumeration value="14848" label="COMMS_ARM_CEASE_RF_TRANSMISSION" />
                     <Enumeration value="14864" label="COMMS_TX_TASK_STATE" />
+                    <Enumeration value="14880" label="COMMS_RX_TASK_STATE" />
+                    <Enumeration value="14896" label="COMMS_GNSS_TASK_STATE" />
+                    <Enumeration value="14928" label="COMMS_CAN_GATEKEEPER_TASK_STATE" />
+                    <Enumeration value="14944" label="COMMS_CAN_PARSER_TASK_STATE" />
+                    <Enumeration value="14960" label="COMMS_HOUSEKEEPING_TASK_STATE" />
+                    <Enumeration value="14976" label="COMMS_EPS_TASK_STATE" />
+                    <Enumeration value="14992" label="COMMS_ADCS_TASK_STATE" />
+                    <Enumeration value="15012" label="COMMS_CAN_APPLICATION_ERROR_PARAMETERER_DONT_EXIST" />
                 </EnumerationList>
             </EnumeratedArgumentType>
         </ArgumentTypeSet>

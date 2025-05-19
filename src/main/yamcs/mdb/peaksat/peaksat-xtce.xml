@@ -759,6 +759,8 @@
             <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_EPS_I2C_STATUS"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_TEMPERATURE_SENSOR_1_STATUS"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_TEMPERATURE_SENSOR_2_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_ANTENNA_DEPLOYMENT_STATUS"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="OBDH_GPIO_FORCE_ADM"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="ADCS_ResetType"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_UnixTimeSeconds"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="ADCS_UnixTimeNanoSeconds"/>
@@ -922,7 +924,6 @@
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_UHF_POWER_AMP_TEMP"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_PCB_TEMP"/>
             <Parameter parameterTypeRef="base-dt/float_t" name="COMMS_GNSS_TEMP"/>
-            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_ANTENNA_DEPLOYMENT_STATUS"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_CW_INTERVAL"/>
             <Parameter parameterTypeRef="base-dt/uint16_t" name="COMMS_BFSK_BEACON_INTERVAL"/>
             <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_UHF_TX_POWER"/>
@@ -994,6 +995,14 @@
             <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_LAST_RECEIVED_LENGTH"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_ARM_CEASE_RF_TRANSMISSION"/>
             <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_TX_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_RX_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_GNSS_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_CAN_GATEKEEPER_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_CAN_PARSER_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_HOUSEKEEPING_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_EPS_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint8_t" name="COMMS_ADCS_TASK_STATE"/>
+            <Parameter parameterTypeRef="base-dt/uint32_t" name="COMMS_CAN_APPLICATION_ERROR_PARAMETERER_DONT_EXIST"/>
         </ParameterSet>
 
     </xtce:TelemetryMetaData>

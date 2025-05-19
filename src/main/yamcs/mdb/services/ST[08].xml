@@ -133,6 +133,18 @@
                 </CommandContainer>
             </MetaCommand>
 
+            <MetaCommand name="ConfirmUHFDeployment_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="confirmUHF" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_ConfirmUHFDeployment">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
             <MetaCommand name="PingComponent_TC[8,1]">
                 <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
                     <ArgumentAssignmentList>

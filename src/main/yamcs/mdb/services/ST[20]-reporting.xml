@@ -3788,6 +3788,16 @@
                         <Comparison value="1440" parameterRef="parameterId" />
                     </IncludeCondition>
                 </ParameterRefEntry>
+                <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_ANTENNA_DEPLOYMENT_STATUS">
+                    <IncludeCondition>
+                        <Comparison value="1456" parameterRef="parameterId" />
+                    </IncludeCondition>
+                </ParameterRefEntry>
+                <ParameterRefEntry parameterRef="/peaksat-xtce/OBDH_GPIO_FORCE_ADM">
+                    <IncludeCondition>
+                        <Comparison value="1472" parameterRef="parameterId" />
+                    </IncludeCondition>
+                </ParameterRefEntry>
                 <ParameterRefEntry parameterRef="/peaksat-xtce/ADCS_ResetType">
                     <IncludeCondition>
                         <Comparison value="39328" parameterRef="parameterId" />
@@ -4603,11 +4613,6 @@
                         <Comparison value="13160" parameterRef="parameterId" />
                     </IncludeCondition>
                 </ParameterRefEntry>
-                <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_ANTENNA_DEPLOYMENT_STATUS">
-                    <IncludeCondition>
-                        <Comparison value="13184" parameterRef="parameterId" />
-                    </IncludeCondition>
-                </ParameterRefEntry>
                 <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_CW_INTERVAL">
                     <IncludeCondition>
                         <Comparison value="13234" parameterRef="parameterId" />
@@ -4963,6 +4968,46 @@
                         <Comparison value="14864" parameterRef="parameterId" />
                     </IncludeCondition>
                 </ParameterRefEntry>
+                <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_RX_TASK_STATE">
+                    <IncludeCondition>
+                        <Comparison value="14880" parameterRef="parameterId" />
+                    </IncludeCondition>
+                </ParameterRefEntry>
+                <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_GNSS_TASK_STATE">
+                    <IncludeCondition>
+                        <Comparison value="14896" parameterRef="parameterId" />
+                    </IncludeCondition>
+                </ParameterRefEntry>
+                <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_CAN_GATEKEEPER_TASK_STATE">
+                    <IncludeCondition>
+                        <Comparison value="14928" parameterRef="parameterId" />
+                    </IncludeCondition>
+                </ParameterRefEntry>
+                <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_CAN_PARSER_TASK_STATE">
+                    <IncludeCondition>
+                        <Comparison value="14944" parameterRef="parameterId" />
+                    </IncludeCondition>
+                </ParameterRefEntry>
+                <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_HOUSEKEEPING_TASK_STATE">
+                    <IncludeCondition>
+                        <Comparison value="14960" parameterRef="parameterId" />
+                    </IncludeCondition>
+                </ParameterRefEntry>
+                <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_EPS_TASK_STATE">
+                    <IncludeCondition>
+                        <Comparison value="14976" parameterRef="parameterId" />
+                    </IncludeCondition>
+                </ParameterRefEntry>
+                <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_ADCS_TASK_STATE">
+                    <IncludeCondition>
+                        <Comparison value="14992" parameterRef="parameterId" />
+                    </IncludeCondition>
+                </ParameterRefEntry>
+                <ParameterRefEntry parameterRef="/peaksat-xtce/COMMS_CAN_APPLICATION_ERROR_PARAMETERER_DONT_EXIST">
+                    <IncludeCondition>
+                        <Comparison value="15012" parameterRef="parameterId" />
+                    </IncludeCondition>
+                </ParameterRefEntry>
             <!-- END ID VALUE PAIRS -->
             </EntryList>
         </SequenceContainer>
@@ -4971,52 +5016,52 @@
                  <ParameterRefEntry parameterRef="number_of_parameters" />
                  <ContainerRefEntry containerRef="id_value_pair">
                      <IncludeCondition>
-                         <Comparison parameterRef="number_of_parameters" value="1" comparisonOperator=">" />
+                         <Comparison parameterRef="number_of_parameters" value="1" comparisonOperator=">=" />
                      </IncludeCondition>
                  </ContainerRefEntry>
                  <ContainerRefEntry containerRef="id_value_pair">
                      <IncludeCondition>
-                         <Comparison parameterRef="number_of_parameters" value="2" comparisonOperator=">" />
+                         <Comparison parameterRef="number_of_parameters" value="2" comparisonOperator=">=" />
                      </IncludeCondition>
                  </ContainerRefEntry>
                  <ContainerRefEntry containerRef="id_value_pair">
                      <IncludeCondition>
-                         <Comparison parameterRef="number_of_parameters" value="3" comparisonOperator=">" />
+                         <Comparison parameterRef="number_of_parameters" value="3" comparisonOperator=">=" />
                      </IncludeCondition>
                  </ContainerRefEntry>
                  <ContainerRefEntry containerRef="id_value_pair">
                      <IncludeCondition>
-                         <Comparison parameterRef="number_of_parameters" value="4" comparisonOperator=">" />
+                         <Comparison parameterRef="number_of_parameters" value="4" comparisonOperator=">=" />
                      </IncludeCondition>
                  </ContainerRefEntry>
                  <ContainerRefEntry containerRef="id_value_pair">
                      <IncludeCondition>
-                         <Comparison parameterRef="number_of_parameters" value="5" comparisonOperator=">" />
+                         <Comparison parameterRef="number_of_parameters" value="5" comparisonOperator=">=" />
                      </IncludeCondition>
                  </ContainerRefEntry>
                  <ContainerRefEntry containerRef="id_value_pair">
                      <IncludeCondition>
-                         <Comparison parameterRef="number_of_parameters" value="6" comparisonOperator=">" />
+                         <Comparison parameterRef="number_of_parameters" value="6" comparisonOperator=">=" />
                      </IncludeCondition>
                  </ContainerRefEntry>
                  <ContainerRefEntry containerRef="id_value_pair">
                      <IncludeCondition>
-                         <Comparison parameterRef="number_of_parameters" value="7" comparisonOperator=">" />
+                         <Comparison parameterRef="number_of_parameters" value="7" comparisonOperator=">=" />
                      </IncludeCondition>
                  </ContainerRefEntry>
                  <ContainerRefEntry containerRef="id_value_pair">
                      <IncludeCondition>
-                         <Comparison parameterRef="number_of_parameters" value="8" comparisonOperator=">" />
+                         <Comparison parameterRef="number_of_parameters" value="8" comparisonOperator=">=" />
                      </IncludeCondition>
                  </ContainerRefEntry>
                  <ContainerRefEntry containerRef="id_value_pair">
                      <IncludeCondition>
-                         <Comparison parameterRef="number_of_parameters" value="9" comparisonOperator=">" />
+                         <Comparison parameterRef="number_of_parameters" value="9" comparisonOperator=">=" />
                      </IncludeCondition>
                  </ContainerRefEntry>
                  <ContainerRefEntry containerRef="id_value_pair">
                      <IncludeCondition>
-                         <Comparison parameterRef="number_of_parameters" value="10" comparisonOperator=">" />
+                         <Comparison parameterRef="number_of_parameters" value="10" comparisonOperator=">=" />
                      </IncludeCondition>
                  </ContainerRefEntry>
              </EntryList>
