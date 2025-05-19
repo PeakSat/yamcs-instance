@@ -1,0 +1,5 @@
+/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/build/CMakeFiles/satnogs-comms-gateway.dir
+/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/build/CMakeFiles/package.dir
+/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/build/CMakeFiles/package_source.dir
+/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/build/CMakeFiles/edit_cache.dir
+/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/build/CMakeFiles/rebuild_cache.dir

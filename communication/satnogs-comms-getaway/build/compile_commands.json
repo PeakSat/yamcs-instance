@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/build",
+  "command": "/usr/bin/c++ -DBOOST_SYSTEM_DYN_LINK -DBOOST_SYSTEM_NO_LIB -I/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway -I/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/build -std=gnu++17 -o CMakeFiles/satnogs-comms-gateway.dir/src/can_transport.cpp.o -c /home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/src/can_transport.cpp",
+  "file": "/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/src/can_transport.cpp",
+  "output": "CMakeFiles/satnogs-comms-gateway.dir/src/can_transport.cpp.o"
+},
+{
+  "directory": "/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/build",
+  "command": "/usr/bin/c++ -DBOOST_SYSTEM_DYN_LINK -DBOOST_SYSTEM_NO_LIB -I/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway -I/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/build -std=gnu++17 -o CMakeFiles/satnogs-comms-gateway.dir/src/gr_zmq_transport.cpp.o -c /home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/src/gr_zmq_transport.cpp",
+  "file": "/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/src/gr_zmq_transport.cpp",
+  "output": "CMakeFiles/satnogs-comms-gateway.dir/src/gr_zmq_transport.cpp.o"
+},
+{
+  "directory": "/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/build",
+  "command": "/usr/bin/c++ -DBOOST_SYSTEM_DYN_LINK -DBOOST_SYSTEM_NO_LIB -I/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway -I/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/build -std=gnu++17 -o CMakeFiles/satnogs-comms-gateway.dir/src/main.cpp.o -c /home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/src/main.cpp",
+  "file": "/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/src/main.cpp",
+  "output": "CMakeFiles/satnogs-comms-gateway.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/build",
+  "command": "/usr/bin/c++ -DBOOST_SYSTEM_DYN_LINK -DBOOST_SYSTEM_NO_LIB -I/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway -I/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/build -std=gnu++17 -o CMakeFiles/satnogs-comms-gateway.dir/src/udp_transport.cpp.o -c /home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/src/udp_transport.cpp",
+  "file": "/home/kikas/repos/yamcs-instance/communication/satnogs-comms-getaway/src/udp_transport.cpp",
+  "output": "CMakeFiles/satnogs-comms-gateway.dir/src/udp_transport.cpp.o"
+}
+]

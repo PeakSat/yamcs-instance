@@ -8,20 +8,20 @@ yamcs-tm-port: 10015
 #  - canbus: ISOTP CAN bus
 #  - gr-zmq: PUB/SUB messages sources and sinks of GNU Radio
 transport:
-  canbus:
-    # CAN interface to be used. Use the command `ip link` to find the proper name
-    iface: can0
-    # The ID of the remote peer used to accept ISOTP frames
-    remote-tx-id: 1
-    # The ID of the remote peer used to receive ISOTP frames
-    remote-rx-id: 2
-    # The ID of the node to transmit ISOTP frames
-    tx-id: 18
-    # The ID of the node to transmit FC ISOTP frames
-    rx-id: 17
+  # canbus:
+  #   # CAN interface to be used. Use the command `ip link` to find the proper name
+  #   iface: can0
+  #   # The ID of the remote peer used to accept ISOTP frames
+  #   remote-tx-id: 1
+  #   # The ID of the remote peer used to receive ISOTP frames
+  #   remote-rx-id: 2
+  #   # The ID of the node to transmit ISOTP frames
+  #   tx-id: 18
+  #   # The ID of the node to transmit FC ISOTP frames
+  #   rx-id: 17
 
-    # The YAMCS UDP port for TC
-    yamcs-tc-port: 10025
+  #   # The YAMCS UDP port for TC
+  #   yamcs-tc-port: 10025
 
   gr-zmq:
     # ZeroMQ URI of the publisher. The publisher published all received messages
