@@ -203,7 +203,7 @@
                 </CommandContainer>
             </MetaCommand>
 
-            <MetaCommand name="TC(11,4)(3,1)_time_based_scheduled_create_a_parameter_report_structure">
+            <!-- <MetaCommand name="TC(11,4)(3,1)_time_based_scheduled_create_a_parameter_report_structure">
                 <BaseMetaCommand metaCommandRef="TC(11,4)_insert_activity_into_time_based_schedule_assignments">
                     <ArgumentAssignmentList>
                         <ArgumentAssignment argumentName="service_type_ID_of_time_scheduled" argumentValue="3" />
@@ -343,7 +343,7 @@
                     </EntryList>
                     <BaseContainer containerRef="TC(11,4)_assignments_container" />
                 </CommandContainer>
-            </MetaCommand>
+            </MetaCommand> -->
 
             <MetaCommand name="TC(11,5)_delete_activities_by_id_single">
                 <BaseMetaCommand metaCommandRef="/pus/Header_TC">

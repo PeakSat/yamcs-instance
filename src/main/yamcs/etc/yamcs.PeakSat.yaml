@@ -60,8 +60,8 @@ mdb:
 #   spec: "mdb/common/dt/writeable-dt.xml"
 # - type: xtce
 #   spec: "mdb/common/dt/file-handling-dt.xml"
-# - type: xtce
-#   spec: "mdb/common/dt/time-based-dt.xml"
+- type: xtce
+  spec: "mdb/common/dt/time-based-dt.xml"
 - type: xtce
   spec: "mdb/common/dt/ST[01]-dt.xml"
 - type: xtce
@@ -100,8 +100,8 @@ mdb:
   spec: "mdb/services/ST[05].xml"
 - type: xtce
   spec: "mdb/services/ST[08].xml"
-# - type: xtce
-#   spec: "mdb/services/ST[11].xml"
+- type: xtce
+  spec: "mdb/services/ST[11].xml"
 # - type: xtce
 #   spec: "mdb/services/ST[12].xml"
 - type: xtce
