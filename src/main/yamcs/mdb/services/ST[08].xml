@@ -145,6 +145,60 @@
                 </CommandContainer>
             </MetaCommand>
 
+            <MetaCommand name="GenerateHouskeepingSelectionFile_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="generateHousekeepingSelectionFile" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="4" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/string_filename" name="filename" />
+                    <Argument argumentTypeRef="/base-dt/uint32_t" name="TM_bitflag" />
+                    <Argument argumentTypeRef="/base-dt/uint32_t" name="timestamp_start" />
+                    <Argument argumentTypeRef="/base-dt/uint32_t" name="timestamp_end" />
+                </ArgumentList>
+                <CommandContainer name="TC(8,1)_GenerateHouskeepingSelectionFile">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="filename" />
+                        <ArgumentRefEntry argumentRef="TM_bitflag" />
+                        <ArgumentRefEntry argumentRef="timestamp_start" />
+                        <ArgumentRefEntry argumentRef="timestamp_end" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="RequestFileDownload_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="requestFileDownload" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="1" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <ArgumentList>
+                    <Argument argumentTypeRef="/base-dt/string_filename" name="filename" />
+                </ArgumentList>
+                <CommandContainer name="TC(8,1)_RequestFileDownload">
+                    <EntryList>
+                        <ArgumentRefEntry argumentRef="filename" />
+                    </EntryList>
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
+            <MetaCommand name="RequestAvailableFiles_TC[8,1]">
+                <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
+                    <ArgumentAssignmentList>
+                        <ArgumentAssignment argumentName="funcID" argumentValue="requestAvailableFiles" />
+                        <ArgumentAssignment argumentName="number_of_arguments" argumentValue="0" />
+                    </ArgumentAssignmentList>
+                </BaseMetaCommand>
+                <CommandContainer name="TC(8,1)_RequestAvailableFiles">
+                    <BaseContainer containerRef="/pus/Header_TC" />
+                </CommandContainer>
+            </MetaCommand>
+
             <MetaCommand name="PingComponent_TC[8,1]">
                 <BaseMetaCommand metaCommandRef="/ST[08]/TC(8,1)_perform_function">
                     <ArgumentAssignmentList>

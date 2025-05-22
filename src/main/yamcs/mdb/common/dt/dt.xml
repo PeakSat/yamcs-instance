@@ -219,6 +219,9 @@
                     <Enumeration value="15" label="armRequestStateChangePayload" />
                     <Enumeration value="16" label="" />
                     <Enumeration value="17" label="confirmUHF" />
+                    <Enumeration value="22" label="generateHouskeepingSelectionFile" />
+                    <Enumeration value="23" label="requestFileDownload" />
+                    <Enumeration value="24" label="requestAvailableFiles" />
                     <Enumeration value="40" label="gnssDataDownload" shortDescription="ArgNum: 3, Args: (uint32_t period, uint32_t secondsPrior, uint32_t numberOfSamples)" />
                     <Enumeration value="41" label="ceaseTransmissions" shortDescription="ArgNum: 0, Args: ()" />
                     <Enumeration value="42" label="enableTransmissions" shortDescription="ArgNum: 0, Args: ()" />

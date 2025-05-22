@@ -76,6 +76,27 @@
 				</StringDataEncoding>
 			</StringParameterType>
 
+			<!-- <StringParameterType name="string_filename">
+				<StringDataEncoding encoding="UTF-8">
+					<Variable maxSizeInBits="80">
+						<DynamicValue>
+							<ParameterInstanceRef parameterRef="_yamcs_ignore" />
+						</DynamicValue>
+					</Variable>
+				</StringDataEncoding>
+			</StringParameterType> -->
+
+			<StringParameterType name="string_filename">
+				<UnitSet/>
+				<StringDataEncoding>
+					<SizeInBits>
+						<Fixed>
+							<FixedValue>80</FixedValue>
+						</Fixed>
+					</SizeInBits>
+				</StringDataEncoding>
+			</StringParameterType>
+
 			<StringParameterType name="string1_t">
 				<StringDataEncoding encoding="UTF-8">
 					<Variable maxSizeInBits="4096">
@@ -306,6 +327,17 @@
 						</DynamicValue>
 						<TerminationChar>00</TerminationChar>
 					</Variable>
+				</StringDataEncoding>
+			</StringArgumentType>
+
+			<StringArgumentType name="string_filename">
+				<UnitSet/>
+				<StringDataEncoding>
+					<SizeInBits>
+						<Fixed>
+							<FixedValue>80</FixedValue>
+						</Fixed>
+					</SizeInBits>
 				</StringDataEncoding>
 			</StringArgumentType>
 
