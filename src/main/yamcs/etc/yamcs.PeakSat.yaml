@@ -37,12 +37,12 @@ dataLinks:
         lengthAdjustment: 7
         initialBytesToStrip: 0
   
-  - name: udp-rf-tc
-    class: org.yamcs.tctm.UdpTcDataLink
-    stream: tc_realtime
-    host: localhost
-    port: 10026
-    commandPostprocessorClassName: gr.spacedot.acubesat.CustomCommandPostprocessor
+  # - name: udp-rf-tc
+  #   class: org.yamcs.tctm.UdpTcDataLink
+  #   stream: tc_realtime
+  #   host: localhost
+  #   port: 10026
+  #   commandPostprocessorClassName: gr.spacedot.acubesat.CustomCommandPostprocessor
 
   - name: tcp-out
     class: org.yamcs.tctm.TcpTcDataLink
